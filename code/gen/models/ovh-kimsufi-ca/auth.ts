@@ -6,44 +6,6 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Details about the current authentication",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Details about the current authentication",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "auth.Details",
-          "responseType": "auth.Details"
-        }
-      ],
-      "path": "/auth/details"
-    },
-    {
-      "description": "Expire current credential",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Expire current credential",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/auth/logout"
-    },
-    {
       "description": "Get the current credential details",
       "operations": [
         {
@@ -116,6 +78,44 @@ export const schema: Schema = {
         }
       ],
       "path": "/auth/credential"
+    },
+    {
+      "description": "Expire current credential",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Expire current credential",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/auth/logout"
+    },
+    {
+      "description": "Details about the current authentication",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Details about the current authentication",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "auth.Details",
+          "responseType": "auth.Details"
+        }
+      ],
+      "path": "/auth/details"
     }
   ],
   "basePath": "https://ca.api.kimsufi.com/1.0",

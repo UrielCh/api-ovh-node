@@ -40,6 +40,19 @@ export namespace dedicated {
          */
         export type DatacenterEnum = "gsw" | "pdc1"
         /**
+         * Housing bay High Availablility offers
+         * type fullname: dedicated.housing.HaRoutingOfferEnum
+         */
+        export type HaRoutingOfferEnum = "ha2x2" | "ha2x4"
+        /**
+         * A structure describing informations for High Availability routing service orderable for this housing bay
+         * interface fullName: dedicated.housing.HaRoutingOrderable.HaRoutingOrderable
+         */
+        export interface HaRoutingOrderable {
+            offer: dedicated.housing.HaRoutingOfferEnum[];
+            orderable: boolean;
+        }
+        /**
          * Housing bay
          * interface fullName: dedicated.housing.Housing.Housing
          */
@@ -275,7 +288,7 @@ export interface Dedicated {
                              * Alter this object properties
                              * PUT /dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}
                              */
-                            $put(params: { cifs: boolean, ftp: boolean, ipBlock: string, isApplied: boolean, lastUpdate: string, nfs: boolean }): Promise<void>;
+                            $put(params?: { cifs?: boolean, ftp?: boolean, ipBlock?: string, isApplied?: boolean, lastUpdate?: string, nfs?: boolean }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -329,7 +342,7 @@ export interface Dedicated {
                  * Alter this object properties
                  * PUT /dedicated/housing/{serviceName}/serviceInfos
                  */
-                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */

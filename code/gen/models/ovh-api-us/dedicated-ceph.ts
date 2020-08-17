@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://api.us.ovhcloud.com:443/1.0/dedicated/ceph.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the CEPH service",
@@ -36,7 +36,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -55,6 +55,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "ID of cluster",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "dedicated.ceph.clusterUpdate.crushTunablesEnum",
               "description": "Tunables of cluster",
               "fullType": "dedicated.ceph.clusterUpdate.crushTunablesEnum",
@@ -68,14 +76,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "label",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -98,7 +98,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -117,19 +117,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "ID of cluster",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "ip[]",
               "description": "List of new ACLs",
               "fullType": "ip[]",
               "name": "aclList",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -152,7 +152,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -160,7 +160,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Acl ID",
+              "description": "ID of ACL",
               "fullType": "string",
               "name": "aclId",
               "paramType": "path",
@@ -180,7 +180,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -188,7 +188,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Acl ID",
+              "description": "ID of ACL",
               "fullType": "string",
               "name": "aclId",
               "paramType": "path",
@@ -214,7 +214,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -240,7 +240,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -248,7 +248,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Fs name",
+              "description": "CephFS filesystem name",
               "fullType": "string",
               "name": "fsName",
               "paramType": "path",
@@ -268,7 +268,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -276,7 +276,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Fs name",
+              "description": "CephFS filesystem name",
               "fullType": "string",
               "name": "fsName",
               "paramType": "path",
@@ -302,7 +302,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -310,7 +310,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Fs name",
+              "description": "CephFS filesystem name",
               "fullType": "string",
               "name": "fsName",
               "paramType": "path",
@@ -336,17 +336,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Fs name",
+              "description": "ID of cluster",
               "fullType": "string",
-              "name": "fsName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "CephFS filesystem name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "fsName",
               "paramType": "path",
               "required": true
             }
@@ -402,7 +402,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your ceph cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -428,7 +428,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -454,7 +454,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -474,18 +474,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of new pool",
+              "description": "ID of cluster",
               "fullType": "string",
-              "name": "poolName",
-              "paramType": "body",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of new pool",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "name": "poolName",
+              "paramType": "body",
               "required": true
             }
           ],
@@ -508,7 +508,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -516,7 +516,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pool name",
+              "description": "name of ceph pool",
               "fullType": "string",
               "name": "poolName",
               "paramType": "path",
@@ -536,17 +536,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pool name",
+              "description": "ID of cluster",
               "fullType": "string",
-              "name": "poolName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "name of pool",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "poolName",
               "paramType": "path",
               "required": true
             }
@@ -570,7 +570,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your ceph cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -590,14 +590,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your ceph cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -623,7 +623,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -649,7 +649,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -657,7 +657,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Task ID",
+              "description": "ID of task",
               "fullType": "string",
               "name": "taskId",
               "paramType": "path",
@@ -683,7 +683,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your ceph cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -709,7 +709,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -729,18 +729,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of new user",
+              "description": "ID of cluster",
               "fullType": "string",
-              "name": "userName",
-              "paramType": "body",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of new user",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "name": "userName",
+              "paramType": "body",
               "required": true
             }
           ],
@@ -763,7 +763,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "User name",
+              "description": "Name of ceph user",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
@@ -771,7 +771,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -791,7 +791,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "User name",
+              "description": "Name of ceph user",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
@@ -799,7 +799,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -825,7 +825,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "User name",
+              "description": "Name of ceph user",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
@@ -833,7 +833,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -852,28 +852,28 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.ceph.userPoolPermSetAll.permissions[]",
-              "description": "Permissions",
-              "fullType": "dedicated.ceph.userPoolPermSetAll.permissions[]",
-              "name": "permissions",
-              "paramType": "body",
-              "required": false
+              "dataType": "string",
+              "description": "Name of ceph user",
+              "fullType": "string",
+              "name": "userName",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "User name",
-              "fullType": "string",
-              "name": "userName",
-              "paramType": "path",
-              "required": true
+              "dataType": "dedicated.ceph.userPoolPermSetAll.permissions[]",
+              "description": "Permissions",
+              "fullType": "dedicated.ceph.userPoolPermSetAll.permissions[]",
+              "name": "permissions",
+              "paramType": "body",
+              "required": false
             }
           ],
           "responseType": "string"
@@ -889,18 +889,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of Ceph pool",
+              "description": "Name of ceph user",
               "fullType": "string",
-              "name": "poolName",
-              "paramType": "body",
+              "name": "userName",
+              "paramType": "path",
               "required": true
             },
             {
-              "dataType": "boolean",
-              "description": "Class read permission",
-              "fullType": "boolean",
-              "name": "classRead",
-              "paramType": "body",
+              "dataType": "string",
+              "description": "ID of cluster",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             },
             {
@@ -937,18 +937,18 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User name",
+              "description": "Name of Ceph pool",
               "fullType": "string",
-              "name": "userName",
-              "paramType": "path",
+              "name": "poolName",
+              "paramType": "body",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "boolean",
+              "description": "Class read permission",
+              "fullType": "boolean",
+              "name": "classRead",
+              "paramType": "body",
               "required": true
             }
           ],
@@ -971,7 +971,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "User name",
+              "description": "Name of ceph user",
               "fullType": "string",
               "name": "userName",
               "paramType": "path",
@@ -979,7 +979,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -987,7 +987,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pool name",
+              "description": "Name of Ceph pool",
               "fullType": "string",
               "name": "poolName",
               "paramType": "path",
@@ -1012,7 +1012,7 @@ export const schema: Schema = {
           "description": "Family of IP ACL",
           "fullType": "dedicated.ceph.aclGet.response.familyEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.ceph.aclGet.response.familyEnum"
         },
         "id": {
@@ -1020,7 +1020,7 @@ export const schema: Schema = {
           "description": "ID of IP ACL",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "netmask": {
@@ -1028,7 +1028,7 @@ export const schema: Schema = {
           "description": "Netmask of IP ACL",
           "fullType": "ip",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "network": {
@@ -1036,7 +1036,7 @@ export const schema: Schema = {
           "description": "Network of IP ACL",
           "fullType": "ip",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ip"
         }
       }
@@ -1061,7 +1061,7 @@ export const schema: Schema = {
           "description": "Family of IP ACL",
           "fullType": "dedicated.ceph.aclList.response.familyEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.ceph.aclList.response.familyEnum"
         },
         "id": {
@@ -1069,7 +1069,7 @@ export const schema: Schema = {
           "description": "ID of IP ACL",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "netmask": {
@@ -1077,7 +1077,7 @@ export const schema: Schema = {
           "description": "Netmask of IP ACL",
           "fullType": "ip",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "network": {
@@ -1085,7 +1085,7 @@ export const schema: Schema = {
           "description": "Network of IP ACL",
           "fullType": "ip",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ip"
         }
       }
@@ -1110,7 +1110,7 @@ export const schema: Schema = {
           "description": "Filesystem state",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "fsName": {
@@ -1118,7 +1118,7 @@ export const schema: Schema = {
           "description": "Filesystem name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1133,7 +1133,7 @@ export const schema: Schema = {
           "description": "Filesystem state",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "fsName": {
@@ -1141,7 +1141,7 @@ export const schema: Schema = {
           "description": "Filesystem name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1156,7 +1156,7 @@ export const schema: Schema = {
           "description": "List of CEPH monitor IPs",
           "fullType": "ip[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ip[]"
         },
         "cephVersion": {
@@ -1164,7 +1164,7 @@ export const schema: Schema = {
           "description": "Used version of ceph",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "createDate": {
@@ -1172,7 +1172,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "crushTunables": {
@@ -1180,7 +1180,7 @@ export const schema: Schema = {
           "description": "Tunables of cluster",
           "fullType": "dedicated.ceph.clusterGet.response.crushTunablesEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.ceph.clusterGet.response.crushTunablesEnum"
         },
         "label": {
@@ -1188,7 +1188,7 @@ export const schema: Schema = {
           "description": "Name of cluster",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "region": {
@@ -1196,7 +1196,7 @@ export const schema: Schema = {
           "description": "Name of region where cluster is located",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceName": {
@@ -1204,7 +1204,7 @@ export const schema: Schema = {
           "description": "ID of cluster",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "size": {
@@ -1212,7 +1212,7 @@ export const schema: Schema = {
           "description": "Size of cluster in TB",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "state": {
@@ -1220,7 +1220,7 @@ export const schema: Schema = {
           "description": "State of cluster",
           "fullType": "dedicated.ceph.clusterGet.response.stateEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.ceph.clusterGet.response.stateEnum"
         },
         "status": {
@@ -1228,7 +1228,7 @@ export const schema: Schema = {
           "description": "Status of cluster",
           "fullType": "dedicated.ceph.clusterGet.response.statusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.ceph.clusterGet.response.statusEnum"
         },
         "updateDate": {
@@ -1236,7 +1236,7 @@ export const schema: Schema = {
           "description": "Last update date",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1290,7 +1290,7 @@ export const schema: Schema = {
           "description": "All available space in bytes",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "healthy": {
@@ -1298,7 +1298,7 @@ export const schema: Schema = {
           "description": "True or False",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "serviceName": {
@@ -1306,7 +1306,7 @@ export const schema: Schema = {
           "description": "ID of cluster",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -1314,7 +1314,7 @@ export const schema: Schema = {
           "description": "Status of ceph cluster",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "totalBytes": {
@@ -1322,7 +1322,7 @@ export const schema: Schema = {
           "description": "Total cluster space in bytes",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "usedBytes": {
@@ -1330,7 +1330,7 @@ export const schema: Schema = {
           "description": "Used cluster space in bytes",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -1361,7 +1361,7 @@ export const schema: Schema = {
           "description": "Determine if pool should be backuped",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "minActiveReplicas": {
@@ -1369,7 +1369,7 @@ export const schema: Schema = {
           "description": "Minimum active replicas",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
@@ -1377,7 +1377,7 @@ export const schema: Schema = {
           "description": "Name of ceph user",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "poolType": {
@@ -1385,7 +1385,7 @@ export const schema: Schema = {
           "description": "Type of pool",
           "fullType": "dedicated.ceph.poolGet.response.poolTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.ceph.poolGet.response.poolTypeEnum"
         },
         "replicaCount": {
@@ -1393,7 +1393,7 @@ export const schema: Schema = {
           "description": "Number of replica",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "serviceName": {
@@ -1401,7 +1401,7 @@ export const schema: Schema = {
           "description": "ID of cluster",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1426,7 +1426,7 @@ export const schema: Schema = {
           "description": "Determine if pool should be backuped",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "minActiveReplicas": {
@@ -1434,7 +1434,7 @@ export const schema: Schema = {
           "description": "Minimum active replicas",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
@@ -1442,7 +1442,7 @@ export const schema: Schema = {
           "description": "Name of ceph user",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "poolType": {
@@ -1450,7 +1450,7 @@ export const schema: Schema = {
           "description": "Type of pool",
           "fullType": "dedicated.ceph.poolList.response.poolTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.ceph.poolList.response.poolTypeEnum"
         },
         "replicaCount": {
@@ -1458,7 +1458,7 @@ export const schema: Schema = {
           "description": "Number of replica",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "serviceName": {
@@ -1466,7 +1466,7 @@ export const schema: Schema = {
           "description": "ID of cluster",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1491,7 +1491,7 @@ export const schema: Schema = {
           "description": "Creation date of task",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "finishDate": {
@@ -1507,7 +1507,7 @@ export const schema: Schema = {
           "description": "Name of task",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "state": {
@@ -1523,7 +1523,7 @@ export const schema: Schema = {
           "description": "Type of task",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1549,7 +1549,7 @@ export const schema: Schema = {
           "description": "ID of task",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -1557,7 +1557,7 @@ export const schema: Schema = {
           "description": "Name of task",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1572,7 +1572,7 @@ export const schema: Schema = {
           "description": "Key of user to connect into cluster",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "mdsCaps": {
@@ -1580,7 +1580,7 @@ export const schema: Schema = {
           "description": "Capabilities of user on MDS",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "monCaps": {
@@ -1588,7 +1588,7 @@ export const schema: Schema = {
           "description": "Capabilities of user on MON",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -1596,7 +1596,7 @@ export const schema: Schema = {
           "description": "Name of ceph user",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "osdCaps": {
@@ -1604,7 +1604,7 @@ export const schema: Schema = {
           "description": "Capabilities of user on OSD",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceName": {
@@ -1612,7 +1612,7 @@ export const schema: Schema = {
           "description": "ID of cluster",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1627,7 +1627,7 @@ export const schema: Schema = {
           "description": "Key of user to connect into cluster",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "mdsCaps": {
@@ -1635,7 +1635,7 @@ export const schema: Schema = {
           "description": "Capabilities of user on MDS",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "monCaps": {
@@ -1643,7 +1643,7 @@ export const schema: Schema = {
           "description": "Capabilities of user on MON",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -1651,7 +1651,7 @@ export const schema: Schema = {
           "description": "Name of ceph user",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "osdCaps": {
@@ -1659,7 +1659,7 @@ export const schema: Schema = {
           "description": "Capabilities of user on OSD",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceName": {
@@ -1667,7 +1667,7 @@ export const schema: Schema = {
           "description": "ID of cluster",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1682,7 +1682,7 @@ export const schema: Schema = {
           "description": "Class read permission",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "classWrite": {
@@ -1690,7 +1690,7 @@ export const schema: Schema = {
           "description": "Class write permission",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "execute": {
@@ -1698,7 +1698,7 @@ export const schema: Schema = {
           "description": "Execute permission",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "poolName": {
@@ -1706,7 +1706,7 @@ export const schema: Schema = {
           "description": "Name of Ceph pool",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "read": {
@@ -1714,7 +1714,7 @@ export const schema: Schema = {
           "description": "Read permission",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "write": {
@@ -1722,7 +1722,7 @@ export const schema: Schema = {
           "description": "Write permission",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -1737,7 +1737,7 @@ export const schema: Schema = {
           "description": "Class read permission",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "classWrite": {
@@ -1745,7 +1745,7 @@ export const schema: Schema = {
           "description": "Class write permission",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "execute": {
@@ -1753,7 +1753,7 @@ export const schema: Schema = {
           "description": "Execute permission",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "poolName": {
@@ -1761,7 +1761,7 @@ export const schema: Schema = {
           "description": "Name of Ceph pool",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "read": {
@@ -1769,7 +1769,7 @@ export const schema: Schema = {
           "description": "Read permission",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "write": {
@@ -1777,7 +1777,7 @@ export const schema: Schema = {
           "description": "Write permission",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -1790,31 +1790,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -1822,7 +1818,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -1901,42 +1896,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -1950,7 +1945,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -1973,21 +1968,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

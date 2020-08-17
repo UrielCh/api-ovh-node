@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/email/pro.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the PROEMAIL service",
@@ -36,7 +36,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -56,14 +56,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "email.pro.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "email.pro.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -88,14 +88,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service",
-              "fullType": "string",
-              "name": "service",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Filter the value of id property (like)",
               "fullType": "long",
@@ -110,6 +102,14 @@ export const schema: Schema = {
               "name": "primaryEmailAddress",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pro organization",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -131,7 +131,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -139,7 +139,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -159,7 +159,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -167,7 +167,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -187,14 +187,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "email.pro.Account",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "email.pro.Account",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -202,7 +202,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -228,7 +228,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -236,7 +236,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -264,7 +264,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -272,7 +272,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -298,15 +298,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Alias",
-              "fullType": "string",
-              "name": "alias",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -314,9 +306,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Alias",
+              "fullType": "string",
+              "name": "alias",
               "paramType": "path",
               "required": true
             }
@@ -334,7 +334,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -342,7 +342,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -384,7 +384,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -392,7 +392,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -418,7 +418,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -426,7 +426,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -454,7 +454,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -462,7 +462,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -488,7 +488,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -496,7 +496,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -524,7 +524,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -532,7 +532,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -558,7 +558,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -566,7 +566,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -574,7 +574,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Allowed account ID",
+              "description": "Account id to give full access",
               "fullType": "long",
               "name": "allowedAccountId",
               "paramType": "path",
@@ -594,7 +594,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -602,7 +602,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -610,7 +610,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Allowed account ID",
+              "description": "Account id to give full access",
               "fullType": "long",
               "name": "allowedAccountId",
               "paramType": "path",
@@ -636,17 +636,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             }
@@ -672,7 +672,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -680,7 +680,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -706,7 +706,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -714,7 +714,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -722,7 +722,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Allowed account ID",
+              "description": "Account id to give send as",
               "fullType": "long",
               "name": "allowedAccountId",
               "paramType": "path",
@@ -742,7 +742,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -750,7 +750,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -758,7 +758,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Allowed account ID",
+              "description": "Account id to give send as",
               "fullType": "long",
               "name": "allowedAccountId",
               "paramType": "path",
@@ -784,17 +784,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             }
@@ -820,7 +820,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -828,7 +828,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -854,7 +854,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -862,7 +862,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -870,7 +870,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Allowed account ID",
+              "description": "Account id to give send on behalf to",
               "fullType": "long",
               "name": "allowedAccountId",
               "paramType": "path",
@@ -890,7 +890,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -898,7 +898,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -906,7 +906,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Allowed account ID",
+              "description": "Account id to give send on behalf to",
               "fullType": "long",
               "name": "allowedAccountId",
               "paramType": "path",
@@ -932,7 +932,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -940,7 +940,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -966,7 +966,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "The internal name of your pro organization",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
               "paramType": "path",
@@ -974,17 +982,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Task id",
               "fullType": "long",
               "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service",
-              "fullType": "string",
-              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -1008,17 +1008,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Email",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             }
@@ -1042,7 +1042,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1068,7 +1068,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1093,20 +1093,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service",
-              "fullType": "string",
-              "name": "service",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "email.pro.ObjectStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "email.pro.ObjectStateEnum",
               "name": "state",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pro organization",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -1129,14 +1129,6 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "email.pro.DomainTypeEnum",
-              "description": "Type of domain that You want to install",
-              "fullType": "email.pro.DomainTypeEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Domain to install on server",
               "fullType": "string",
@@ -1153,6 +1145,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "email.pro.DomainTypeEnum",
+              "description": "Type of domain that You want to install",
+              "fullType": "email.pro.DomainTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "boolean",
               "description": "If you host domain in OVH we can configure mx record automatically",
               "fullType": "boolean",
@@ -1162,7 +1162,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1188,17 +1188,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
-              "name": "domainName",
+              "name": "service",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "service",
+              "name": "domainName",
               "paramType": "path",
               "required": true
             }
@@ -1216,7 +1216,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1244,14 +1244,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "email.pro.Domain",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "email.pro.Domain",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1285,7 +1285,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1313,7 +1313,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1340,14 +1340,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "text",
-              "description": "Signature, added at the bottom of your organization emails",
-              "fullType": "text",
-              "name": "content",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Activate the disclaimer only for external emails",
               "fullType": "boolean",
@@ -1356,8 +1348,16 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "text",
+              "description": "Signature, added at the bottom of your organization emails",
+              "fullType": "text",
+              "name": "content",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1385,14 +1385,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "email.pro.disclaimer",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "email.pro.disclaimer",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1426,7 +1426,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1460,22 +1460,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
-              "fullType": "string",
-              "name": "service",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of lastName property (like)",
-              "fullType": "string",
-              "name": "lastName",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of displayName property (like)",
               "fullType": "string",
               "name": "displayName",
@@ -1492,6 +1476,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Filter the value of externalEmailAddress property (like)",
+              "fullType": "string",
+              "name": "externalEmailAddress",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Filter the value of firstName property (like)",
               "fullType": "string",
               "name": "firstName",
@@ -1500,11 +1492,19 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of externalEmailAddress property (like)",
+              "description": "Filter the value of lastName property (like)",
               "fullType": "string",
-              "name": "externalEmailAddress",
+              "name": "lastName",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pro organization",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -1520,22 +1520,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Contact last name",
-              "fullType": "string",
-              "name": "lastName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Hide the contact in Global Address List",
-              "fullType": "boolean",
-              "name": "hiddenFromGAL",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Contact display name",
               "fullType": "string",
               "name": "displayName",
@@ -1544,9 +1528,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Contact initials",
+              "description": "Contact email address",
               "fullType": "string",
-              "name": "initials",
+              "name": "externalEmailAddress",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Hide the contact in Global Address List",
+              "fullType": "boolean",
+              "name": "hiddenFromGAL",
               "paramType": "body",
               "required": false
             },
@@ -1560,15 +1552,23 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Contact email address",
+              "description": "Contact initials",
               "fullType": "string",
-              "name": "externalEmailAddress",
+              "name": "initials",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "Contact last name",
+              "fullType": "string",
+              "name": "lastName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1594,7 +1594,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1602,7 +1602,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "External email address",
+              "description": "Contact email",
               "fullType": "string",
               "name": "externalEmailAddress",
               "paramType": "path",
@@ -1622,7 +1622,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1630,7 +1630,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "External email address",
+              "description": "Contact email",
               "fullType": "string",
               "name": "externalEmailAddress",
               "paramType": "path",
@@ -1650,14 +1650,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "email.pro.ExternalContact",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "email.pro.ExternalContact",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1665,7 +1665,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "External email address",
+              "description": "Contact email",
               "fullType": "string",
               "name": "externalEmailAddress",
               "paramType": "path",
@@ -1691,7 +1691,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1717,7 +1717,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1737,14 +1737,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1770,7 +1770,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1796,7 +1796,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1804,7 +1804,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Task id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1830,7 +1830,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service",
+              "description": "The internal name of your pro organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
@@ -1863,7 +1863,7 @@ export const schema: Schema = {
           "description": "Indicates if the account is configured",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "creationDate": {
@@ -1903,7 +1903,7 @@ export const schema: Schema = {
           "description": "Email domain",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "expirationDate": {
@@ -1935,7 +1935,7 @@ export const schema: Schema = {
           "description": "Hide account in Global Address List",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "id": {
@@ -1943,7 +1943,7 @@ export const schema: Schema = {
           "description": "Account id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "initial": {
@@ -1991,7 +1991,7 @@ export const schema: Schema = {
           "description": "Account login",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "mailingFilter": {
@@ -2015,7 +2015,7 @@ export const schema: Schema = {
           "description": "Default email for this mailbox",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "quota": {
@@ -2023,7 +2023,7 @@ export const schema: Schema = {
           "description": "Account maximum size",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "renewPeriod": {
@@ -2039,7 +2039,7 @@ export const schema: Schema = {
           "description": "Spam and Antivirus configuration",
           "fullType": "email.pro.spamAndVirusConfiguration",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "email.pro.spamAndVirusConfiguration"
         },
         "spamDetected": {
@@ -2047,7 +2047,7 @@ export const schema: Schema = {
           "description": "Account was sending spam",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "spamTicketNumber": {
@@ -2063,7 +2063,7 @@ export const schema: Schema = {
           "description": "Account state",
           "fullType": "email.pro.ObjectStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "email.pro.ObjectStateEnum"
         },
         "taskPendingId": {
@@ -2086,7 +2086,7 @@ export const schema: Schema = {
           "description": "Alias",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "creationDate": {
@@ -2094,7 +2094,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "taskPendingId": {
@@ -2102,7 +2102,7 @@ export const schema: Schema = {
           "description": "Pending task id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2117,7 +2117,7 @@ export const schema: Schema = {
           "description": "Determines if ingoing message has been received",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "canSendEmail": {
@@ -2125,7 +2125,7 @@ export const schema: Schema = {
           "description": "Determines if outgoing message has been delivered",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "connectiveWebmail": {
@@ -2133,7 +2133,7 @@ export const schema: Schema = {
           "description": "Determines if possible to authenticate with credentials",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isLocked": {
@@ -2141,7 +2141,7 @@ export const schema: Schema = {
           "description": "Determines if account is locked",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isMxValid": {
@@ -2149,7 +2149,7 @@ export const schema: Schema = {
           "description": "Determines if MX record for account's domain is properly set",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isSpammer": {
@@ -2157,7 +2157,7 @@ export const schema: Schema = {
           "description": "Determines if account is flagged as spammer",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isSrvValid": {
@@ -2165,7 +2165,7 @@ export const schema: Schema = {
           "description": "Determines if SRV (autodiscovery) record for account's domain is properly set",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isSuspended": {
@@ -2173,7 +2173,7 @@ export const schema: Schema = {
           "description": "Determines if account is suspended",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "lastCheck": {
@@ -2181,7 +2181,7 @@ export const schema: Schema = {
           "description": "Last performed diagnostics date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -2196,7 +2196,7 @@ export const schema: Schema = {
           "description": "Account id to give full access",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "creationDate": {
@@ -2204,7 +2204,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "taskPendingId": {
@@ -2212,7 +2212,7 @@ export const schema: Schema = {
           "description": "Pending task id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2227,7 +2227,7 @@ export const schema: Schema = {
           "description": "Account id to give send as",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "creationDate": {
@@ -2235,7 +2235,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "taskPendingId": {
@@ -2243,7 +2243,7 @@ export const schema: Schema = {
           "description": "Pending task id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2258,7 +2258,7 @@ export const schema: Schema = {
           "description": "Account id to give send on behalf to",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "creationDate": {
@@ -2266,7 +2266,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "taskPendingId": {
@@ -2274,7 +2274,7 @@ export const schema: Schema = {
           "description": "Pending task id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2330,7 +2330,7 @@ export const schema: Schema = {
           "description": "List of aliases for this domain",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "domainValidated": {
@@ -2338,7 +2338,7 @@ export const schema: Schema = {
           "description": "Domain validation status",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isAliasDomain": {
@@ -2346,7 +2346,7 @@ export const schema: Schema = {
           "description": "Indicate if this domain is an alias for another domain",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "mxIsValid": {
@@ -2354,7 +2354,7 @@ export const schema: Schema = {
           "description": "If true your dns mx configuration is valid",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "mxRecord": {
@@ -2378,7 +2378,7 @@ export const schema: Schema = {
           "description": "Domain name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "srvIsValid": {
@@ -2386,7 +2386,7 @@ export const schema: Schema = {
           "description": "If true your dns srv record is valid",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "srvRecord": {
@@ -2402,7 +2402,7 @@ export const schema: Schema = {
           "description": "Domain state",
           "fullType": "email.pro.ObjectStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "email.pro.ObjectStateEnum"
         },
         "taskPendingId": {
@@ -2410,7 +2410,7 @@ export const schema: Schema = {
           "description": "Pending taks id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "type": {
@@ -2418,7 +2418,7 @@ export const schema: Schema = {
           "description": "Domain type",
           "fullType": "email.pro.DomainTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "email.pro.DomainTypeEnum"
         }
       }
@@ -2443,7 +2443,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "displayName": {
@@ -2451,7 +2451,7 @@ export const schema: Schema = {
           "description": "Contact display name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "externalEmailAddress": {
@@ -2459,7 +2459,7 @@ export const schema: Schema = {
           "description": "Contact email",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "firstName": {
@@ -2475,7 +2475,7 @@ export const schema: Schema = {
           "description": "Hide the contact in Global Address List",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "id": {
@@ -2483,7 +2483,7 @@ export const schema: Schema = {
           "description": "Contact id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "initials": {
@@ -2507,7 +2507,7 @@ export const schema: Schema = {
           "description": "Contact state",
           "fullType": "email.pro.ObjectStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "email.pro.ObjectStateEnum"
         },
         "taskPendingId": {
@@ -2515,7 +2515,7 @@ export const schema: Schema = {
           "description": "Task pending id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2570,7 +2570,7 @@ export const schema: Schema = {
           "description": "ipV4",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "ipV6": {
@@ -2586,7 +2586,7 @@ export const schema: Schema = {
           "description": "If true your dns A record is valid",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isAaaaValid": {
@@ -2594,7 +2594,7 @@ export const schema: Schema = {
           "description": "If true your dns AAAA record is valid",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isPtrV6Valid": {
@@ -2602,7 +2602,7 @@ export const schema: Schema = {
           "description": "If true your dns ptrV6 record is valid",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isPtrValid": {
@@ -2610,7 +2610,7 @@ export const schema: Schema = {
           "description": "If true your dns ptr record is valid",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "state": {
@@ -2618,7 +2618,7 @@ export const schema: Schema = {
           "description": "Server state",
           "fullType": "email.pro.ServerStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "email.pro.ServerStateEnum"
         },
         "taskPendingId": {
@@ -2626,7 +2626,7 @@ export const schema: Schema = {
           "description": "Task pending id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "version": {
@@ -2660,7 +2660,7 @@ export const schema: Schema = {
           "description": "enable policy for strong and secure passwords",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "displayName": {
@@ -2676,7 +2676,7 @@ export const schema: Schema = {
           "description": "Domain name of your service",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "hostname": {
@@ -2700,7 +2700,7 @@ export const schema: Schema = {
           "description": "number of minutes account will remain locked if it occurs",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lockoutObservationWindow": {
@@ -2708,7 +2708,7 @@ export const schema: Schema = {
           "description": "number of minutes that must elapse after a failed logon to reset lockout trigger",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lockoutThreshold": {
@@ -2732,7 +2732,7 @@ export const schema: Schema = {
           "description": "Maximum message size that You can receive in MB",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxSendSize": {
@@ -2740,7 +2740,7 @@ export const schema: Schema = {
           "description": "Maximum message size that You can send in MB",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "minPasswordAge": {
@@ -2764,7 +2764,7 @@ export const schema: Schema = {
           "description": "Type of your offer",
           "fullType": "email.pro.ServiceOfferEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "email.pro.ServiceOfferEnum"
         },
         "spamAndVirusConfiguration": {
@@ -2772,7 +2772,7 @@ export const schema: Schema = {
           "description": "Spam and Antivirus configuration",
           "fullType": "email.pro.spamAndVirusConfiguration",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "email.pro.spamAndVirusConfiguration"
         },
         "state": {
@@ -2780,7 +2780,7 @@ export const schema: Schema = {
           "description": "State of your service",
           "fullType": "email.pro.ServiceStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "email.pro.ServiceStateEnum"
         },
         "taskPendingId": {
@@ -2788,7 +2788,7 @@ export const schema: Schema = {
           "description": "Task pending id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "webUrl": {
@@ -2843,7 +2843,7 @@ export const schema: Schema = {
           "description": "Function name",
           "fullType": "email.pro.TaskFunctionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "email.pro.TaskFunctionEnum"
         },
         "id": {
@@ -2851,7 +2851,7 @@ export const schema: Schema = {
           "description": "Task id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "status": {
@@ -2859,7 +2859,7 @@ export const schema: Schema = {
           "description": "Task status",
           "fullType": "email.pro.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "email.pro.TaskStatusEnum"
         },
         "todoDate": {
@@ -2867,7 +2867,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -2948,7 +2948,7 @@ export const schema: Schema = {
           "description": "Signature, added at the bottom of your organization emails",
           "fullType": "text",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "text"
         },
         "creationDate": {
@@ -2956,7 +2956,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "name": {
@@ -2964,7 +2964,7 @@ export const schema: Schema = {
           "description": "Disclaimer name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "outsideOnly": {
@@ -2972,7 +2972,7 @@ export const schema: Schema = {
           "description": "Activate the disclaimer only for external emails",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "taskPendingId": {
@@ -2980,7 +2980,7 @@ export const schema: Schema = {
           "description": "task pending id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -3003,57 +3003,50 @@ export const schema: Schema = {
         "checkDKIM": {
           "canBeNull": false,
           "description": "Check DKIM of message",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "checkSPF": {
           "canBeNull": false,
           "description": "Check SPF of message",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteSpam": {
           "canBeNull": false,
           "description": "If message is a spam delete it",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteVirus": {
           "canBeNull": false,
           "description": "If message is a virus delete it",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "putInJunk": {
           "canBeNull": false,
           "description": "If message is a spam or virus put in junk. Overridden by deleteSpam or deleteVirus",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "tagSpam": {
           "canBeNull": false,
           "description": "If message is a spam change its subject",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "tagVirus": {
           "canBeNull": false,
           "description": "If message is a virus change its subject",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -3066,31 +3059,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -3098,7 +3087,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -3142,42 +3130,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -3191,7 +3179,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -3214,21 +3202,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

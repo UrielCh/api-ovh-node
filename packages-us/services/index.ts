@@ -14,8 +14,51 @@ export namespace complexType {
         value: T;
     }
 }
+export namespace order {
+    /**
+     * type fullname: order.CurrencyCodeEnum
+     */
+    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    /**
+     * Price with it's currency and textual representation
+     * interface fullName: order.Price.Price
+     */
+    export interface Price {
+        currencyCode: order.CurrencyCodeEnum;
+        text: string;
+        value: number;
+    }
+}
 export namespace services {
     export namespace billing {
+        /**
+         * Invoice details
+         * interface fullName: services.billing.Invoice.Invoice
+         */
+        export interface Invoice {
+            date: string;
+            id: string;
+            lines: services.billing.InvoiceLine[];
+        }
+        /**
+         * Item details
+         * interface fullName: services.billing.InvoiceLine.InvoiceLine
+         */
+        export interface InvoiceLine {
+            description: string;
+            periodEnd?: string;
+            periodStart?: string;
+            price: order.Price;
+            quantity: number;
+            serviceName: string;
+            totalPrice: order.Price;
+            type: services.billing.InvoiceLineTypeEnum;
+        }
+        /**
+         * Type of line
+         * type fullname: services.billing.InvoiceLineTypeEnum
+         */
+        export type InvoiceLineTypeEnum = "accessory" | "consumption" | "creation" | "deposit" | "duration" | "gift" | "installation" | "misc" | "other" | "outplan" | "quantity" | "special" | "voucher"
         export namespace engagement {
             /**
              * Description of an Engagement

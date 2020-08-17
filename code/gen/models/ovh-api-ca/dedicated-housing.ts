@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://ca.api.ovh.com:443/1.0/dedicated/housing.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the HOUSING service",
@@ -36,7 +36,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -62,7 +62,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -82,7 +82,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -102,7 +102,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -128,7 +128,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -148,27 +148,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "boolean",
-              "description": "Wether to allow the FTP protocol for this ACL",
-              "fullType": "boolean",
-              "name": "ftp",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "ipBlock",
-              "description": "The IP Block specific to this ACL. It musts belong to your server.",
-              "fullType": "ipBlock",
-              "name": "ipBlock",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
               "description": "Wether to allow the NFS protocol for this ACL",
               "fullType": "boolean",
               "name": "nfs",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Wether to allow the FTP protocol for this ACL",
+              "fullType": "boolean",
+              "name": "ftp",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "boolean",
@@ -179,8 +171,16 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "ipBlock",
+              "description": "The IP Block specific to this ACL. It musts belong to your server.",
+              "fullType": "ipBlock",
+              "name": "ipBlock",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -205,18 +205,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipBlock",
-              "description": "Ip block",
-              "fullType": "ipBlock",
-              "name": "ipBlock",
+              "dataType": "string",
+              "description": "The internal name of your Housing bay",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "ipBlock",
+              "description": "The IP Block specific to this ACL",
+              "fullType": "ipBlock",
+              "name": "ipBlock",
               "paramType": "path",
               "required": true
             }
@@ -234,7 +234,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -242,7 +242,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": "Ip block",
+              "description": "The IP Block specific to this ACL",
               "fullType": "ipBlock",
               "name": "ipBlock",
               "paramType": "path",
@@ -262,14 +262,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "dedicated.server.BackupFtpAcl",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "dedicated.server.BackupFtpAcl",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -277,7 +277,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": "Ip block",
+              "description": "The IP Block specific to this ACL",
               "fullType": "ipBlock",
               "name": "ipBlock",
               "paramType": "path",
@@ -303,7 +303,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -329,7 +329,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -355,7 +355,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -381,7 +381,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -401,14 +401,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -433,14 +433,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.housing.TaskFunctionEnum",
               "description": "Filter the value of function property (=)",
               "fullType": "dedicated.housing.TaskFunctionEnum",
@@ -455,6 +447,14 @@ export const schema: Schema = {
               "name": "status",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your Housing bay",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -476,7 +476,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -484,7 +484,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Task ID",
+              "description": "the id of the task",
               "fullType": "long",
               "name": "taskId",
               "paramType": "path",
@@ -509,18 +509,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Task ID",
-              "fullType": "long",
-              "name": "taskId",
+              "dataType": "string",
+              "description": "The internal name of your Housing bay",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "the id of the task",
+              "fullType": "long",
+              "name": "taskId",
               "paramType": "path",
               "required": true
             }
@@ -543,16 +543,14 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
@@ -623,17 +621,15 @@ export const schema: Schema = {
         "free": {
           "canBeNull": false,
           "description": "Is this APC free",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "orderable": {
           "canBeNull": false,
           "description": "Is an APC is orderable for this housing bay",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -647,6 +643,37 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "DatacenterEnum",
       "namespace": "dedicated.housing"
+    },
+    "dedicated.housing.HaRoutingOfferEnum": {
+      "description": "Housing bay High Availablility offers",
+      "enum": [
+        "ha2x2",
+        "ha2x4"
+      ],
+      "enumType": "string",
+      "id": "HaRoutingOfferEnum",
+      "namespace": "dedicated.housing"
+    },
+    "dedicated.housing.HaRoutingOrderable": {
+      "description": "A structure describing informations for High Availability routing service orderable for this housing bay",
+      "id": "HaRoutingOrderable",
+      "namespace": "dedicated.housing",
+      "properties": {
+        "offer": {
+          "canBeNull": false,
+          "description": "High Availability routing service offers",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.housing.HaRoutingOfferEnum[]"
+        },
+        "orderable": {
+          "canBeNull": false,
+          "description": "Is a routing service is orderable for this housing bay",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
     },
     "dedicated.housing.Housing": {
       "description": "Housing bay",
@@ -666,7 +693,7 @@ export const schema: Schema = {
           "description": "The name you give to the bay",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "network": {
@@ -674,7 +701,7 @@ export const schema: Schema = {
           "description": "Housing bay network",
           "fullType": "dedicated.housing.NetworkInfo[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.housing.NetworkInfo[]"
         },
         "options": {
@@ -682,7 +709,7 @@ export const schema: Schema = {
           "description": "Housing bay options",
           "fullType": "dedicated.housing.Options",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.housing.Options"
         },
         "rack": {
@@ -690,7 +717,7 @@ export const schema: Schema = {
           "description": "The bay's description",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "securityCode": {
@@ -698,7 +725,7 @@ export const schema: Schema = {
           "description": "Bay Security code",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -711,7 +738,6 @@ export const schema: Schema = {
         "gateway": {
           "canBeNull": true,
           "description": "Network gateway of the bay",
-          "fullType": "ip",
           "readOnly": false,
           "required": false,
           "type": "ip"
@@ -719,15 +745,13 @@ export const schema: Schema = {
         "network": {
           "canBeNull": false,
           "description": "Network address of the bay",
-          "fullType": "ipBlock",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipBlock"
         },
         "reservedAddresses": {
           "canBeNull": true,
           "description": "Reserved addresses. You should not use them in your network",
-          "fullType": "ip[]",
           "readOnly": false,
           "required": false,
           "type": "ip[]"
@@ -742,17 +766,15 @@ export const schema: Schema = {
         "port": {
           "canBeNull": false,
           "description": "Router port number",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "router": {
           "canBeNull": false,
           "description": "Router in charge of your network",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -765,7 +787,6 @@ export const schema: Schema = {
         "ipv4": {
           "canBeNull": true,
           "description": "IPv4 network information",
-          "fullType": "dedicated.housing.IpInfo",
           "readOnly": false,
           "required": false,
           "type": "dedicated.housing.IpInfo"
@@ -773,7 +794,6 @@ export const schema: Schema = {
         "ipv6": {
           "canBeNull": true,
           "description": "IPv6 network information",
-          "fullType": "dedicated.housing.IpInfo",
           "readOnly": false,
           "required": false,
           "type": "dedicated.housing.IpInfo"
@@ -781,7 +801,6 @@ export const schema: Schema = {
         "link": {
           "canBeNull": true,
           "description": "Router related information",
-          "fullType": "dedicated.housing.LinkInfo",
           "readOnly": false,
           "required": false,
           "type": "dedicated.housing.LinkInfo"
@@ -796,25 +815,22 @@ export const schema: Schema = {
         "apcCount": {
           "canBeNull": false,
           "description": "Number of APC connected to this housing bay",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "handsneyes": {
           "canBeNull": false,
           "description": "Is this housing bay have handsneyes service",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "highAvailabilityRouting": {
           "canBeNull": false,
           "description": "High Availability routing service offer",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -845,7 +861,7 @@ export const schema: Schema = {
           "description": "Function name",
           "fullType": "dedicated.housing.TaskFunctionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.housing.TaskFunctionEnum"
         },
         "lastUpdate": {
@@ -861,7 +877,7 @@ export const schema: Schema = {
           "description": "Task Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
@@ -869,7 +885,7 @@ export const schema: Schema = {
           "description": "Task status",
           "fullType": "dedicated.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.TaskStatusEnum"
         },
         "taskId": {
@@ -877,7 +893,7 @@ export const schema: Schema = {
           "description": "the id of the task",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -906,7 +922,7 @@ export const schema: Schema = {
           "description": "The backup FTP server name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "quota": {
@@ -930,7 +946,7 @@ export const schema: Schema = {
           "description": "The backup FTP type",
           "fullType": "dedicated.server.BackupStorageTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.BackupStorageTypeEnum"
         },
         "usage": {
@@ -953,7 +969,7 @@ export const schema: Schema = {
           "description": "Wether to allow the CIFS (SMB) protocol for this ACL",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "ftp": {
@@ -961,7 +977,7 @@ export const schema: Schema = {
           "description": "Wether to allow the FTP protocol for this ACL",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "ipBlock": {
@@ -969,7 +985,7 @@ export const schema: Schema = {
           "description": "The IP Block specific to this ACL",
           "fullType": "ipBlock",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipBlock"
         },
         "isApplied": {
@@ -977,7 +993,7 @@ export const schema: Schema = {
           "description": "Whether the rule has been applied on the Backup Ftp",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "lastUpdate": {
@@ -985,7 +1001,7 @@ export const schema: Schema = {
           "description": "Date of the last object modification",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "nfs": {
@@ -993,7 +1009,7 @@ export const schema: Schema = {
           "description": "Wether to allow the NFS protocol for this ACL",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -1034,7 +1050,7 @@ export const schema: Schema = {
           "description": "Function name",
           "fullType": "dedicated.TaskFunctionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.TaskFunctionEnum"
         },
         "lastUpdate": {
@@ -1050,7 +1066,7 @@ export const schema: Schema = {
           "description": "Task Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
@@ -1058,7 +1074,7 @@ export const schema: Schema = {
           "description": "Task status",
           "fullType": "dedicated.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.TaskStatusEnum"
         },
         "taskId": {
@@ -1066,7 +1082,7 @@ export const schema: Schema = {
           "description": "the id of the task",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -1079,31 +1095,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -1111,7 +1123,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -1155,42 +1166,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -1204,7 +1215,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -1227,21 +1238,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

@@ -295,7 +295,7 @@ export interface Email {
              * Alter this object properties
              * PUT /email/mxplan/{service}
              */
-            $put(params: { complexityEnabled: boolean, displayName?: string, domain: string, hostname?: string, lastUpdateDate?: string, lockoutDuration: number, lockoutObservationWindow: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize: number, maxSendSize: number, minPasswordAge?: number, minPasswordLength?: number, offer: email.mxplan.ServiceOfferEnum, spamAndVirusConfiguration: email.pro.spamAndVirusConfiguration, state: email.pro.ServiceStateEnum, taskPendingId: number, webUrl?: string }): Promise<void>;
+            $put(params?: { complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: email.mxplan.ServiceOfferEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, state?: email.pro.ServiceStateEnum, taskPendingId?: number, webUrl?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -325,7 +325,7 @@ export interface Email {
                      * Alter this object properties
                      * PUT /email/mxplan/{service}/account/{email}
                      */
-                    $put(params: { SAMAccountName?: string, configured: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, displayName?: string, domain: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, hiddenFromGAL: boolean, id: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, login: string, mailingFilter?: email.pro.MailingFilterEnum[], passwordLastUpdate?: string, primaryEmailAddress: string, quota: number, renewPeriod?: email.pro.renewPeriodEnum, spamAndVirusConfiguration: email.pro.spamAndVirusConfiguration, spamDetected: boolean, spamTicketNumber?: number, state: email.pro.ObjectStateEnum, taskPendingId?: number }): Promise<void>;
+                    $put(params?: { SAMAccountName?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, displayName?: string, domain?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, login?: string, mailingFilter?: email.pro.MailingFilterEnum[], passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewPeriod?: email.pro.renewPeriodEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.pro.ObjectStateEnum, taskPendingId?: number }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -540,7 +540,7 @@ export interface Email {
                      * Alter this object properties
                      * PUT /email/mxplan/{service}/domain/{domainName}
                      */
-                    $put(params: { cnameToCheck?: string, domainAliases: string[], domainValidated: boolean, isAliasDomain: boolean, mxIsValid: boolean, mxRecord: string[], mxRelay?: string, name: string, srvIsValid: boolean, srvRecord: string[], state: email.pro.ObjectStateEnum, taskPendingId: number, type: email.pro.DomainTypeEnum }): Promise<void>;
+                    $put(params?: { cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, srvIsValid?: boolean, srvRecord?: string[], state?: email.pro.ObjectStateEnum, taskPendingId?: number, type?: email.pro.DomainTypeEnum }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -565,7 +565,7 @@ export interface Email {
                          * Alter this object properties
                          * PUT /email/mxplan/{service}/domain/{domainName}/disclaimer
                          */
-                        $put(params: { content: string, creationDate: string, name: string, outsideOnly: boolean, taskPendingId: number }): Promise<void>;
+                        $put(params?: { content?: string, creationDate?: string, name?: string, outsideOnly?: boolean, taskPendingId?: number }): Promise<void>;
                         /**
                          * Controle cache
                          */
@@ -614,7 +614,7 @@ export interface Email {
                      * Alter this object properties
                      * PUT /email/mxplan/{service}/externalContact/{externalEmailAddress}
                      */
-                    $put(params: { creationDate: string, displayName: string, externalEmailAddress: string, firstName?: string, hiddenFromGAL: boolean, id: number, initials?: string, lastName?: string, state: email.pro.ObjectStateEnum, taskPendingId: number }): Promise<void>;
+                    $put(params?: { creationDate?: string, displayName?: string, externalEmailAddress?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, state?: email.pro.ObjectStateEnum, taskPendingId?: number }): Promise<void>;
                     /**
                      * Controle cache
                      */

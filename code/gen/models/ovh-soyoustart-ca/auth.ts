@@ -6,25 +6,6 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Expire current credential",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Expire current credential",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/auth/logout"
-    },
-    {
       "description": "Get the time of OVH servers",
       "operations": [
         {
@@ -42,6 +23,25 @@ export const schema: Schema = {
         }
       ],
       "path": "/auth/time"
+    },
+    {
+      "description": "Details about the current authentication",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Details about the current authentication",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "auth.Details",
+          "responseType": "auth.Details"
+        }
+      ],
+      "path": "/auth/details"
     },
     {
       "description": "Operations with credentials",
@@ -99,23 +99,23 @@ export const schema: Schema = {
       "path": "/auth/currentCredential"
     },
     {
-      "description": "Details about the current authentication",
+      "description": "Expire current credential",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Details about the current authentication",
-          "httpMethod": "GET",
+          "description": "Expire current credential",
+          "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [],
           "resellerOnly": false,
-          "responseFullType": "auth.Details",
-          "responseType": "auth.Details"
+          "responseFullType": "void",
+          "responseType": "void"
         }
       ],
-      "path": "/auth/details"
+      "path": "/auth/logout"
     }
   ],
   "basePath": "https://ca.api.soyoustart.com/1.0",

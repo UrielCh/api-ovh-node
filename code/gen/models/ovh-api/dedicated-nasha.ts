@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/dedicated/nasha.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the STORAGE service",
@@ -53,7 +53,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -73,14 +73,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "dedicated.nasha.Storage",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "dedicated.nasha.Storage",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -107,7 +107,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -115,7 +115,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -123,14 +123,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -188,7 +188,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -214,7 +214,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -233,6 +233,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Partition size",
+              "fullType": "long",
+              "name": "size",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
               "description": "Partition name",
               "fullType": "string",
@@ -249,16 +257,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Partition size",
-              "fullType": "long",
-              "name": "size",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -284,17 +284,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "The internal name of your storage",
               "fullType": "string",
-              "name": "partitionName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "the given name of partition",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "partitionName",
               "paramType": "path",
               "required": true
             }
@@ -312,7 +312,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -320,7 +320,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -340,24 +340,24 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "dedicated.nasha.Partition",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "dedicated.nasha.Partition",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "The internal name of your storage",
               "fullType": "string",
-              "name": "partitionName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "the given name of partition",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "partitionName",
               "paramType": "path",
               "required": true
             }
@@ -381,17 +381,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "The internal name of your storage",
               "fullType": "string",
-              "name": "partitionName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "the given name of partition",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "partitionName",
               "paramType": "path",
               "required": true
             }
@@ -408,14 +408,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipBlock",
-              "description": "Ip or block to add",
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "dedicated.storage.AclTypeEnum",
               "description": "ACL type",
               "fullType": "dedicated.storage.AclTypeEnum",
@@ -424,8 +416,16 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "ipBlock",
+              "description": "Ip or block to add",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -433,7 +433,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -459,7 +459,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -467,7 +467,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -475,7 +475,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": "Ip",
+              "description": "the ip in root on storage",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -495,7 +495,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -503,7 +503,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -511,7 +511,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": "Ip",
+              "description": "the ip in root on storage",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -537,7 +537,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -545,7 +545,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -571,7 +571,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -579,7 +579,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -605,7 +605,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -613,7 +613,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -649,7 +649,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -657,7 +657,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -683,7 +683,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -691,7 +691,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -699,7 +699,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "name of the snapshot",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -719,7 +719,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -727,7 +727,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -735,7 +735,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "name of the snapshot",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -761,17 +761,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "The internal name of your storage",
               "fullType": "string",
-              "name": "partitionName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "the given name of partition",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "partitionName",
               "paramType": "path",
               "required": true
             }
@@ -787,6 +787,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "dedicated.storage.RecordSizeEnum",
+              "description": "ZFS recordsize",
+              "fullType": "dedicated.storage.RecordSizeEnum",
+              "name": "recordsize",
+              "paramType": "body",
+              "required": false
+            },
             {
               "dataType": "dedicated.storage.AtimeEnum",
               "description": "atime setting",
@@ -804,16 +812,8 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "dedicated.storage.RecordSizeEnum",
-              "description": "ZFS recordsize",
-              "fullType": "dedicated.storage.RecordSizeEnum",
-              "name": "recordsize",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -821,7 +821,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -847,7 +847,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -855,7 +855,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -891,7 +891,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -899,7 +899,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -925,7 +925,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "The internal name of your storage",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -933,17 +941,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Uid",
+              "description": "the uid to set quota on",
               "fullType": "long",
               "name": "uid",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -960,16 +960,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Uid",
-              "fullType": "long",
-              "name": "uid",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -977,9 +969,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "the uid to set quota on",
+              "fullType": "long",
+              "name": "uid",
               "paramType": "path",
               "required": true
             }
@@ -1003,7 +1003,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1011,7 +1011,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -1039,7 +1039,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1047,7 +1047,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -1073,7 +1073,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "The internal name of your storage",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -1081,17 +1089,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "dedicated.storage.SnapshotEnum",
-              "description": "Snapshot type",
+              "description": "the interval of snapshot",
               "fullType": "dedicated.storage.SnapshotEnum",
               "name": "snapshotType",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1109,7 +1109,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1117,7 +1117,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partition name",
+              "description": "the given name of partition",
               "fullType": "string",
               "name": "partitionName",
               "paramType": "path",
@@ -1125,7 +1125,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "dedicated.storage.SnapshotEnum",
-              "description": "Snapshot type",
+              "description": "the interval of snapshot",
               "fullType": "dedicated.storage.SnapshotEnum",
               "name": "snapshotType",
               "paramType": "path",
@@ -1150,27 +1150,27 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Partition name",
-              "fullType": "string",
-              "name": "partitionName",
-              "paramType": "path",
+              "dataType": "dedicated.storage.PartitionUsageTypeEnum",
+              "description": "The type of statistic to be fetched",
+              "fullType": "dedicated.storage.PartitionUsageTypeEnum",
+              "name": "type",
+              "paramType": "query",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "dedicated.storage.PartitionUsageTypeEnum",
-              "description": "The type of statistic to be fetched",
-              "fullType": "dedicated.storage.PartitionUsageTypeEnum",
-              "name": "type",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "the given name of partition",
+              "fullType": "string",
+              "name": "partitionName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1193,7 +1193,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1213,14 +1213,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1245,12 +1245,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "dedicated.TaskStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "dedicated.TaskStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "dedicated.storage.TaskFunctionEnum",
@@ -1261,12 +1261,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "dedicated.TaskStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "dedicated.TaskStatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your storage",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -1288,7 +1288,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1296,7 +1296,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Task ID",
+              "description": "id of the task",
               "fullType": "long",
               "name": "taskId",
               "paramType": "path",
@@ -1322,7 +1322,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1347,19 +1347,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.storage.NasUsageTypeEnum",
               "description": "The type of statistic to be fetched",
               "fullType": "dedicated.storage.NasUsageTypeEnum",
               "name": "type",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your storage",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1382,7 +1382,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your storage",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1407,16 +1407,14 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
@@ -1429,17 +1427,15 @@ export const schema: Schema = {
         "datacenters": {
           "canBeNull": false,
           "description": "Zone of the DC",
-          "fullType": "dedicated.NasHAAvailabilityDatacenter[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.NasHAAvailabilityDatacenter[]"
         },
         "offer": {
           "canBeNull": false,
           "description": "Name of the offer",
-          "fullType": "dedicated.NasHAOfferEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.NasHAOfferEnum"
         }
       }
@@ -1452,17 +1448,15 @@ export const schema: Schema = {
         "availability": {
           "canBeNull": false,
           "description": "The availability",
-          "fullType": "dedicated.NasHAAvailabilityEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.NasHAAvailabilityEnum"
         },
         "datacenter": {
           "canBeNull": false,
           "description": "The code of the datacenter",
-          "fullType": "dedicated.NasHAZoneEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.NasHAZoneEnum"
         }
       }
@@ -1555,7 +1549,7 @@ export const schema: Schema = {
           "description": "Task type of operation",
           "fullType": "dedicated.storage.TaskFunctionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.storage.TaskFunctionEnum"
         },
         "partitionName": {
@@ -1571,7 +1565,7 @@ export const schema: Schema = {
           "description": "The actual state of the task",
           "fullType": "dedicated.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.TaskStatusEnum"
         },
         "storageName": {
@@ -1587,7 +1581,7 @@ export const schema: Schema = {
           "description": "id of the task",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "todoDate": {
@@ -1610,7 +1604,7 @@ export const schema: Schema = {
           "description": "the id of the access",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "ip": {
@@ -1618,7 +1612,7 @@ export const schema: Schema = {
           "description": "the ip in root on storage",
           "fullType": "ipBlock",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipBlock"
         },
         "type": {
@@ -1626,7 +1620,7 @@ export const schema: Schema = {
           "description": "ACL type",
           "fullType": "dedicated.storage.AclTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.storage.AclTypeEnum"
         }
       }
@@ -1649,7 +1643,7 @@ export const schema: Schema = {
           "description": "the given name of partition",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "protocol": {
@@ -1657,7 +1651,7 @@ export const schema: Schema = {
           "description": "must be nfs cifs or both",
           "fullType": "dedicated.storage.ProtocolEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.storage.ProtocolEnum"
         },
         "size": {
@@ -1665,7 +1659,7 @@ export const schema: Schema = {
           "description": "Partition size",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "usedBySnapshots": {
@@ -1688,7 +1682,7 @@ export const schema: Schema = {
           "description": "the size to set in MB",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "uid": {
@@ -1696,7 +1690,7 @@ export const schema: Schema = {
           "description": "the uid to set quota on",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -1711,7 +1705,7 @@ export const schema: Schema = {
           "description": "the interval of snapshot",
           "fullType": "dedicated.storage.SnapshotEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.storage.SnapshotEnum"
         }
       }
@@ -1726,7 +1720,7 @@ export const schema: Schema = {
           "description": "True, if partition creation is allowed on this nas HA",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "customName": {
@@ -1758,7 +1752,7 @@ export const schema: Schema = {
           "description": "Send an email to customer if any issue is detected",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "serviceName": {
@@ -1766,7 +1760,7 @@ export const schema: Schema = {
           "description": "The storage service name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "zpoolCapacity": {
@@ -1774,7 +1768,7 @@ export const schema: Schema = {
           "description": "percentage of nas space used in %",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "zpoolSize": {
@@ -1782,8 +1776,47 @@ export const schema: Schema = {
           "description": "the size of the nas",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
+        }
+      }
+    },
+    "dedicated.nasha.Vrack": {
+      "description": "Partition Vrack",
+      "id": "Vrack",
+      "namespace": "dedicated.nasha",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "serviceIp": {
+          "canBeNull": false,
+          "description": "service ip",
+          "fullType": "ipInterface",
+          "readOnly": true,
+          "required": false,
+          "type": "ipInterface"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "type of",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "vrackName": {
+          "canBeNull": false,
+          "description": "vrack name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -1805,7 +1838,7 @@ export const schema: Schema = {
           "description": "name of the snapshot",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1820,7 +1853,7 @@ export const schema: Schema = {
           "description": "atime setting",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -1828,7 +1861,7 @@ export const schema: Schema = {
           "description": "ID",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "recordsize": {
@@ -1836,7 +1869,7 @@ export const schema: Schema = {
           "description": "ZFS recordsize",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "sync": {
@@ -1844,7 +1877,7 @@ export const schema: Schema = {
           "description": "sync setting",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1978,31 +2011,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -2010,7 +2039,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -2089,42 +2117,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -2138,7 +2166,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -2161,21 +2189,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/freefax.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the VOIP service",
@@ -53,7 +53,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Freefax number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -73,14 +73,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "freefax.FreefaxProperties",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "freefax.FreefaxProperties",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Freefax number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -106,7 +106,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Freefax number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -132,7 +132,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Freefax number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -158,7 +158,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Freefax number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -178,14 +178,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Freefax number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -211,7 +211,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Freefax number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -231,14 +231,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.VoicemailProperties",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.VoicemailProperties",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Freefax number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -272,7 +272,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Freefax number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -306,7 +306,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Freefax number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -332,7 +332,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Freefax number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -358,7 +358,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Freefax number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -381,17 +381,15 @@ export const schema: Schema = {
         "faxs": {
           "canBeNull": false,
           "description": "The number of equivalement remaining french faxs",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "points": {
           "canBeNull": false,
           "description": "Total balance available in points",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -406,7 +404,7 @@ export const schema: Schema = {
           "description": "Number of max tentative of fax sending",
           "fullType": "telephony.FaxSendingTries",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.FaxSendingTries"
         },
         "faxQuality": {
@@ -414,7 +412,7 @@ export const schema: Schema = {
           "description": "Quality of fax sending",
           "fullType": "telephony.FaxQualityEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.FaxQualityEnum"
         },
         "faxTagLine": {
@@ -422,7 +420,7 @@ export const schema: Schema = {
           "description": "Customised freefax header",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "fromEmail": {
@@ -430,7 +428,7 @@ export const schema: Schema = {
           "description": "FROM email header",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "fromName": {
@@ -438,7 +436,7 @@ export const schema: Schema = {
           "description": "Name of the sender of the email",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "number": {
@@ -446,7 +444,7 @@ export const schema: Schema = {
           "description": "Freefax number in international format",
           "fullType": "phoneNumber",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "redirectionEmail": {
@@ -454,7 +452,7 @@ export const schema: Schema = {
           "description": "Email address to redirect fax response.",
           "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         }
       }
@@ -467,31 +465,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -499,7 +493,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -543,42 +536,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -592,7 +585,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -615,21 +608,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }
@@ -693,16 +686,14 @@ export const schema: Schema = {
       "properties": {
         "email": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
           "canBeNull": false,
-          "fullType": "telephony.ServiceVoicemailMailOptionEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.ServiceVoicemailMailOptionEnum"
         }
       }
@@ -736,17 +727,15 @@ export const schema: Schema = {
         "external": {
           "canBeNull": false,
           "description": "The external voicemail number",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "internal": {
           "canBeNull": false,
           "description": "The internal voicemail number",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -761,7 +750,7 @@ export const schema: Schema = {
           "description": "Name of the voicemail panel announce file",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "audioFormat": {
@@ -769,7 +758,7 @@ export const schema: Schema = {
           "description": "Format of the voicemail audio file attached to emails",
           "fullType": "telephony.ServiceVoicemailAudioFormatEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.ServiceVoicemailAudioFormatEnum"
         },
         "doNotRecord": {
@@ -777,7 +766,7 @@ export const schema: Schema = {
           "description": "Don't allow callers to leave voicemails",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forcePassword": {
@@ -785,7 +774,7 @@ export const schema: Schema = {
           "description": "Force password request to access the voicemail panel",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "fromEmail": {
@@ -793,7 +782,7 @@ export const schema: Schema = {
           "description": "Email address from which emails will be sent",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "fromName": {
@@ -801,7 +790,7 @@ export const schema: Schema = {
           "description": "Name from which emails will be sent",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "fullGreetingSoundId": {
@@ -817,7 +806,7 @@ export const schema: Schema = {
           "description": "Type of the greeting to play",
           "fullType": "telephony.VoicemailGreetingEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.VoicemailGreetingEnum"
         },
         "isNewVersion": {
@@ -825,7 +814,7 @@ export const schema: Schema = {
           "description": "Current voicemail version",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "keepMessage": {
@@ -833,7 +822,7 @@ export const schema: Schema = {
           "description": "Don't delete voicemails after they've been sent by email",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "redirectionEmails": {
@@ -841,7 +830,7 @@ export const schema: Schema = {
           "description": "Email addresses to notify when a new voicemail is left",
           "fullType": "telephony.ServiceVoicemailNotifications[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.ServiceVoicemailNotifications[]"
         },
         "shortGreetingSoundId": {
@@ -857,7 +846,7 @@ export const schema: Schema = {
           "description": "Play the temporary greeting instead of the regular one",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "temporaryGreetingSoundId": {
@@ -873,7 +862,7 @@ export const schema: Schema = {
           "description": "Quantity of unread voicemails",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }

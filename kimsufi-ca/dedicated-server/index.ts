@@ -23,11 +23,11 @@ export namespace complexType {
     }
     /**
      * Key and value, with proper key strings
-     * interface fullName: complexType.SafeKeyValue.SafeKeyValue
+     * interface fullName: complexType.SafeKeyValueCanBeNull.SafeKeyValueCanBeNull
      */
-    export interface SafeKeyValue<T> {
-        key: string;
-        value: T;
+    export interface SafeKeyValueCanBeNull<T> {
+        key?: string;
+        value?: T;
     }
     /**
      * A numeric value tagged with its unit
@@ -199,6 +199,17 @@ export namespace dedicated {
          * type fullname: dedicated.server.ByoiStatusEnum
          */
         export type ByoiStatusEnum = "doing" | "done" | "error"
+        /**
+         * Configurations used by cloud-init or cloudbase-init
+         * interface fullName: dedicated.server.ConfigDrive.ConfigDrive
+         */
+        export interface ConfigDrive {
+            enable?: boolean;
+            hostname?: string;
+            sshKey?: string;
+            userData?: string;
+            userMetadatas?: complexType.SafeKeyValueCanBeNull<string>[];
+        }
         /**
          * cpu family 
          * type fullname: dedicated.server.CpuFamilyEnum
@@ -1062,7 +1073,7 @@ export interface Dedicated {
                  * Start an install with your own image
                  * POST /dedicated/server/{serviceName}/bringYourOwnImage
                  */
-                $post(params: { checkSum: string, checkSumType: dedicated.CheckSumTypesEnum, description?: string, diskGroupId?: number, hostname: string, httpHeader?: complexType.SafeKeyValue<string>[], sshKey: string, type: dedicated.ImageTypesEnum, URL: string, userData?: string, userMetadatas?: complexType.SafeKeyValue<string>[] }): Promise<void>;
+                $post(params: { checkSum: string, checkSumType: dedicated.CheckSumTypesEnum, configdrive?: dedicated.server.ConfigDrive, description?: string, diskGroupId?: number, httpHeader?: complexType.SafeKeyValueCanBeNull<string>[], type: dedicated.ImageTypesEnum, URL: string }): Promise<void>;
                 /**
                  * Controle cache
                  */

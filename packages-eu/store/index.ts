@@ -61,17 +61,15 @@ export namespace MarketPlaceContact {
     }
 }
 export namespace MarketPlacePartnerProduct {
-    export namespace edit {
-        /**
-         * product
-         * interface fullName: MarketPlacePartnerProduct.edit.response.response
-         */
-        export interface response {
-            category: string;
-            description: string;
-            name: string;
-            otherDetails?: string;
-        }
+    /**
+     * product
+     * interface fullName: MarketPlacePartnerProduct.edit_response.edit_response
+     */
+    export interface edit_response {
+        category: string;
+        description: string;
+        name: string;
+        otherDetails?: string;
     }
 }
 export namespace complexType {
@@ -270,12 +268,12 @@ export interface Store {
                  * List partner's products
                  * GET /store/partner/{partnerId}/product
                  */
-                $get(): Promise<MarketPlacePartnerProduct.edit.response[]>;
+                $get(): Promise<MarketPlacePartnerProduct.edit_response[]>;
                 /**
                  * Create a new product for partner
                  * POST /store/partner/{partnerId}/product
                  */
-                $post(params: { category: string, description: string, name: string, otherDetails?: string }): Promise<MarketPlacePartnerProduct.edit.response>;
+                $post(params: { category: string, description: string, name: string, otherDetails?: string }): Promise<MarketPlacePartnerProduct.edit_response>;
                 /**
                  * Controle cache
                  */
@@ -290,12 +288,12 @@ export interface Store {
                      * Get partner info
                      * GET /store/partner/{partnerId}/product/{productId}
                      */
-                    $get(): Promise<MarketPlacePartnerProduct.edit.response>;
+                    $get(): Promise<MarketPlacePartnerProduct.edit_response>;
                     /**
                      * Edit product info
                      * PUT /store/partner/{partnerId}/product/{productId}
                      */
-                    $put(params?: { category?: string, description?: string, name?: string, otherDetails?: string }): Promise<MarketPlacePartnerProduct.edit.response>;
+                    $put(params?: { category?: string, description?: string, name?: string, otherDetails?: string }): Promise<MarketPlacePartnerProduct.edit_response>;
                     /**
                      * Controle cache
                      */

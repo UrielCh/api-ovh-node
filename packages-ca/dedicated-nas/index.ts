@@ -155,7 +155,7 @@ export interface Dedicated {
              * Alter this object properties
              * PUT /dedicated/nas/{serviceName}
              */
-            $put(params: { canCreatePartition: boolean, customName?: string, datacenter?: string, ip?: string, mountPath: string, serviceName: string, zpoolSize: number }): Promise<void>;
+            $put(params?: { canCreatePartition?: boolean, customName?: string, datacenter?: string, ip?: string, mountPath?: string, serviceName?: string, zpoolSize?: number }): Promise<void>;
             /**
              * Controle cache
              */
@@ -190,7 +190,7 @@ export interface Dedicated {
                      * Alter this object properties
                      * PUT /dedicated/nas/{serviceName}/partition/{partitionName}
                      */
-                    $put(params: { partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number }): Promise<void>;
+                    $put(params?: { partitionName?: string, protocol?: dedicated.storage.ProtocolEnum, size?: number }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -282,7 +282,7 @@ export interface Dedicated {
                  * Alter this object properties
                  * PUT /dedicated/nas/{serviceName}/serviceInfos
                  */
-                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */

@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/distribution/image.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Missing description",
@@ -19,7 +19,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "distribution.image.service",
-              "description": "Service type",
+              "description": "service type name",
               "fullType": "distribution.image.service",
               "name": "serviceType",
               "paramType": "path",
@@ -45,7 +45,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "distribution.image.service",
-              "description": "Service type",
+              "description": "service type name",
               "fullType": "distribution.image.service",
               "name": "serviceType",
               "paramType": "path",
@@ -53,7 +53,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Image name",
+              "description": "image name",
               "fullType": "string",
               "name": "imageName",
               "paramType": "path",
@@ -78,7 +78,7 @@ export const schema: Schema = {
           "description": "The image name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "packages": {
@@ -86,7 +86,7 @@ export const schema: Schema = {
           "description": "Packages informations",
           "fullType": "distribution.image.package[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "distribution.image.package[]"
         },
         "properties": {
@@ -94,7 +94,7 @@ export const schema: Schema = {
           "description": "Image properties",
           "fullType": "distribution.image.properties",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "distribution.image.properties"
         },
         "service": {
@@ -102,7 +102,7 @@ export const schema: Schema = {
           "description": "The service type name",
           "fullType": "distribution.image.service",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "distribution.image.service"
         }
       }
@@ -117,7 +117,7 @@ export const schema: Schema = {
           "description": "Package alias",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -125,7 +125,7 @@ export const schema: Schema = {
           "description": "Package name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "version": {
@@ -133,7 +133,7 @@ export const schema: Schema = {
           "description": "Package version",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -148,7 +148,7 @@ export const schema: Schema = {
           "description": "The image category",
           "fullType": "distribution.image.properties.category",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "distribution.image.properties.category"
         }
       }

@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://ca.api.ovh.com:443/1.0/sslGateway.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the SSLGATEWAY service",
@@ -79,7 +79,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -99,14 +99,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "sslGateway.SslGateway",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "sslGateway.SslGateway",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -133,7 +133,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -141,7 +141,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -149,14 +149,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -180,6 +180,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "service.TerminationFutureUseEnum",
+              "description": "What next after your termination request",
+              "fullType": "service.TerminationFutureUseEnum",
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
+            },
             {
               "dataType": "service.TerminationReasonEnum",
               "description": "Reason of your termination request",
@@ -205,16 +213,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "service.TerminationFutureUseEnum",
-              "description": "What next after your termination request",
-              "fullType": "service.TerminationFutureUseEnum",
-              "name": "futureUse",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -240,7 +240,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -268,7 +268,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -294,7 +294,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -302,7 +302,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of your domain",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -321,18 +321,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your SSL Gateway",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of your domain",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -356,7 +356,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -390,7 +390,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -416,7 +416,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -452,7 +452,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -478,7 +478,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -486,7 +486,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of your server",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -506,7 +506,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -514,7 +514,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of your server",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -534,14 +534,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "sslGateway.Server",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "sslGateway.Server",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -549,7 +549,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of your server",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -575,7 +575,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -595,14 +595,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -628,7 +628,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -654,7 +654,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -662,7 +662,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the task",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -688,7 +688,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your SSL Gateway",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -711,31 +711,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -743,7 +739,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -822,42 +817,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -871,7 +866,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -894,21 +889,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }
@@ -923,7 +918,7 @@ export const schema: Schema = {
           "description": "Domain name attached to your SSL Gateway",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -931,7 +926,7 @@ export const schema: Schema = {
           "description": "Id of your domain",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "state": {
@@ -939,7 +934,7 @@ export const schema: Schema = {
           "description": "Domain state",
           "fullType": "sslGateway.DomainStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "sslGateway.DomainStateEnum"
         }
       }
@@ -966,33 +961,29 @@ export const schema: Schema = {
         "domain": {
           "canBeNull": false,
           "description": "Customer domain name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "ip6s": {
           "canBeNull": false,
           "description": "Eligible IP(s) v6 for this domain",
-          "fullType": "ipv6[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipv6[]"
         },
         "ips": {
           "canBeNull": false,
           "description": "Eligible IP(s) for this domain",
-          "fullType": "ipv4[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipv4[]"
         },
         "isHostedByOvh": {
           "canBeNull": false,
           "description": "Whether this domain is hosted by Ovh or not",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -1004,16 +995,14 @@ export const schema: Schema = {
       "properties": {
         "ip": {
           "canBeNull": false,
-          "fullType": "ipBlock[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipBlock[]"
         },
         "zone": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1040,7 +1029,7 @@ export const schema: Schema = {
           "description": "IP address of the server attached to your SSL Gateway",
           "fullType": "ip",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "id": {
@@ -1048,7 +1037,7 @@ export const schema: Schema = {
           "description": "Id of your server",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "port": {
@@ -1056,7 +1045,7 @@ export const schema: Schema = {
           "description": "Port of your server attached to your SSL Gateway",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "state": {
@@ -1064,7 +1053,7 @@ export const schema: Schema = {
           "description": "Server state",
           "fullType": "sslGateway.ServerStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "sslGateway.ServerStateEnum"
         }
       }
@@ -1120,7 +1109,7 @@ export const schema: Schema = {
           "description": "Set to true to enable Strict-Transport-Security HTTP header",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "httpsRedirect": {
@@ -1128,7 +1117,7 @@ export const schema: Schema = {
           "description": "Set to true to enable https redirect",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "ipv4": {
@@ -1136,7 +1125,7 @@ export const schema: Schema = {
           "description": "The IPv4 you need to put in the A field of your domain name",
           "fullType": "ipv4",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipv4"
         },
         "ipv6": {
@@ -1160,7 +1149,7 @@ export const schema: Schema = {
           "description": "Current offer for your SSL Gateway",
           "fullType": "sslGateway.OfferEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "sslGateway.OfferEnum"
         },
         "reverse": {
@@ -1176,7 +1165,7 @@ export const schema: Schema = {
           "description": "Set to true to contact backend servers over HTTPS",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "serviceName": {
@@ -1184,7 +1173,7 @@ export const schema: Schema = {
           "description": "The internal name of your SSL Gateway",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "sslConfiguration": {
@@ -1200,7 +1189,7 @@ export const schema: Schema = {
           "description": "Current state of your SSL Gateway",
           "fullType": "sslGateway.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "sslGateway.StateEnum"
         },
         "zones": {
@@ -1208,7 +1197,7 @@ export const schema: Schema = {
           "description": "Zones of your SSL Gateway",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         }
       }
@@ -1239,7 +1228,7 @@ export const schema: Schema = {
           "description": "The action made",
           "fullType": "sslGateway.TaskActionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "sslGateway.TaskActionEnum"
         },
         "creationDate": {
@@ -1247,7 +1236,7 @@ export const schema: Schema = {
           "description": "Creation date of your task",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -1255,7 +1244,7 @@ export const schema: Schema = {
           "description": "Id of the task",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "progress": {
@@ -1263,7 +1252,7 @@ export const schema: Schema = {
           "description": "Task progress percentage",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "status": {
@@ -1271,7 +1260,7 @@ export const schema: Schema = {
           "description": "Current status of your task",
           "fullType": "sslGateway.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "sslGateway.TaskStatusEnum"
         }
       }

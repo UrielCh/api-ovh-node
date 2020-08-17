@@ -1474,7 +1474,7 @@ export interface Dbaas {
                                  * Controle cache
                                  */
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                                $(indexId: string | number): {
+                                $(indexId: string): {
                                     /**
                                      * Detach a elasticsearch index from specified elasticsearch alias
                                      * DELETE /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}
@@ -1502,7 +1502,7 @@ export interface Dbaas {
                                  * Controle cache
                                  */
                                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                                $(streamId: string | number): {
+                                $(streamId: string): {
                                     /**
                                      * Detach a graylog stream from specified elasticsearch alias
                                      * DELETE /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}
@@ -2013,7 +2013,7 @@ export interface Dbaas {
                  * Alter this object properties
                  * PUT /dbaas/logs/{serviceName}/serviceInfos
                  */
-                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */

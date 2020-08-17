@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/connectivity.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Get the details for a building",
@@ -181,17 +181,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Eligibility test reference",
+              "description": "Choosen offer product code",
               "fullType": "string",
-              "name": "eligibilityReference",
+              "name": "productCode",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Choosen offer product code",
+              "description": "Eligibility test reference",
               "fullType": "string",
-              "name": "productCode",
+              "name": "eligibilityReference",
               "paramType": "body",
               "required": true
             }
@@ -293,17 +293,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Street number",
+              "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
               "fullType": "string",
-              "name": "streetNumber",
+              "name": "streetCode",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
+              "description": "Street number",
               "fullType": "string",
-              "name": "streetCode",
+              "name": "streetNumber",
               "paramType": "body",
               "required": true
             }
@@ -327,17 +327,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
+              "description": "Street number",
               "fullType": "string",
-              "name": "streetCode",
+              "name": "streetNumber",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Street number",
+              "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
               "fullType": "string",
-              "name": "streetNumber",
+              "name": "streetCode",
               "paramType": "body",
               "required": true
             }
@@ -386,18 +386,18 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "connectivity.eligibility.LineStatusEnum",
-              "description": "Status of the line number",
-              "fullType": "connectivity.eligibility.LineStatusEnum",
-              "name": "status",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Line number",
               "fullType": "string",
               "name": "lineNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "connectivity.eligibility.LineStatusEnum",
+              "description": "Status of the line number",
+              "fullType": "connectivity.eligibility.LineStatusEnum",
+              "name": "status",
               "paramType": "body",
               "required": true
             }
@@ -603,7 +603,6 @@ export const schema: Schema = {
         "building": {
           "canBeNull": true,
           "description": "Name of the building, if any",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -611,15 +610,13 @@ export const schema: Schema = {
         "city": {
           "canBeNull": false,
           "description": "City name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "door": {
           "canBeNull": true,
           "description": "Identifier of the door, if any",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -627,7 +624,6 @@ export const schema: Schema = {
         "floor": {
           "canBeNull": true,
           "description": "Identifier of the floor, if any",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -635,7 +631,6 @@ export const schema: Schema = {
         "housingComplex": {
           "canBeNull": true,
           "description": "Name of the housing complex, if any",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -643,15 +638,13 @@ export const schema: Schema = {
         "inseeCode": {
           "canBeNull": false,
           "description": "INSEE code",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "ownerName": {
           "canBeNull": true,
           "description": "Owner name, this information can be restricted",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -659,7 +652,6 @@ export const schema: Schema = {
         "stairs": {
           "canBeNull": true,
           "description": "Identifier of the stair, if any",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -667,7 +659,6 @@ export const schema: Schema = {
         "streetCode": {
           "canBeNull": true,
           "description": "Street code, an unique identifier of the street, hidden for unlisted number",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -675,7 +666,6 @@ export const schema: Schema = {
         "streetName": {
           "canBeNull": true,
           "description": "Street name, hidden for unlisted number",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -683,7 +673,6 @@ export const schema: Schema = {
         "streetNumber": {
           "canBeNull": true,
           "description": "Street number, usually a number and an indication if applicable (B for bis, T for ter, etc...) and hidden for unlisted number",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -691,9 +680,8 @@ export const schema: Schema = {
         "zipCode": {
           "canBeNull": false,
           "description": "ZIP code",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -706,15 +694,13 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "Building name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "nro": {
           "canBeNull": true,
           "description": "Building NRO (Optical main distribution frame)",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -722,25 +708,22 @@ export const schema: Schema = {
         "reference": {
           "canBeNull": false,
           "description": "Identifier which refer to a building uniquely",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "stairs": {
           "canBeNull": false,
           "description": "Stairs for this building",
-          "fullType": "connectivity.eligibility.BuildingStair[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.BuildingStair[]"
         },
         "type": {
           "canBeNull": false,
           "description": "Building type",
-          "fullType": "connectivity.eligibility.BuildingTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.BuildingTypeEnum"
         }
       }
@@ -753,17 +736,15 @@ export const schema: Schema = {
         "floors": {
           "canBeNull": false,
           "description": "List of floor indentifier, \"_NA_\" if no identifier is available",
-          "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "stair": {
           "canBeNull": false,
           "description": "Stair identifier, \"_NA_\" if no identifier is available",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -786,23 +767,20 @@ export const schema: Schema = {
         "city": {
           "canBeNull": false,
           "description": "Name of the city",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "inseeCode": {
           "canBeNull": false,
           "description": "INSEE code of the city",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "locality": {
           "canBeNull": true,
           "description": "Locality (subset of a city)",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -810,9 +788,8 @@ export const schema: Schema = {
         "zipCode": {
           "canBeNull": false,
           "description": "Zip code of the city",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -825,7 +802,6 @@ export const schema: Schema = {
         "availablePairs": {
           "canBeNull": true,
           "description": "Number of available pairs. This is given only for an eligibility test.",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -833,7 +809,6 @@ export const schema: Schema = {
         "maxAvailablePairs": {
           "canBeNull": true,
           "description": "Number of maximun available pairs using desaturation. This is given only for an eligibility test.",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -841,7 +816,6 @@ export const schema: Schema = {
         "nra": {
           "canBeNull": true,
           "description": "NRA (\"Nœud de raccordement abonné\" in french) is an identifier of the building where is the Main Distribution Frames for the copper line. This is given only for an eligibility test.",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -849,23 +823,20 @@ export const schema: Schema = {
         "sectionsLengths": {
           "canBeNull": false,
           "description": "Sections lengths of the copper line. This is given only for an eligibility test.",
-          "fullType": "connectivity.eligibility.SectionLength[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.SectionLength[]"
         },
         "status": {
           "canBeNull": false,
           "description": "Status of the copper line",
-          "fullType": "connectivity.eligibility.LineStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.LineStatusEnum"
         },
         "underConstruction": {
           "canBeNull": true,
           "description": "Is the line under construction ? This is given only for an eligibility test.",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -873,9 +844,8 @@ export const schema: Schema = {
         "unlistedNumber": {
           "canBeNull": false,
           "description": "Is the number unlisted ? (\"sur liste rouge\" in french)",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -888,25 +858,22 @@ export const schema: Schema = {
         "eligibilityReference": {
           "canBeNull": false,
           "description": "Eligibility unique reference",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "endpoint": {
           "canBeNull": false,
           "description": "Endpoint informations",
-          "fullType": "connectivity.eligibility.Endpoint",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.Endpoint"
         },
         "offers": {
           "canBeNull": false,
           "description": "Offers informations",
-          "fullType": "connectivity.eligibility.Offer[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.Offer[]"
         }
       }
@@ -919,15 +886,13 @@ export const schema: Schema = {
         "address": {
           "canBeNull": false,
           "description": "Address",
-          "fullType": "connectivity.eligibility.Address",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.Address"
         },
         "copperInfo": {
           "canBeNull": true,
           "description": "Copper informations, if any",
-          "fullType": "connectivity.eligibility.CopperInfo",
           "readOnly": false,
           "required": false,
           "type": "connectivity.eligibility.CopperInfo"
@@ -935,7 +900,6 @@ export const schema: Schema = {
         "fiberInfo": {
           "canBeNull": true,
           "description": "Fiber informations, if any",
-          "fullType": "connectivity.eligibility.FiberInfo",
           "readOnly": false,
           "required": false,
           "type": "connectivity.eligibility.FiberInfo"
@@ -943,7 +907,6 @@ export const schema: Schema = {
         "portability": {
           "canBeNull": true,
           "description": "Portability informations, for copper only",
-          "fullType": "connectivity.eligibility.Portability",
           "readOnly": false,
           "required": false,
           "type": "connectivity.eligibility.Portability"
@@ -951,17 +914,15 @@ export const schema: Schema = {
         "reference": {
           "canBeNull": false,
           "description": "Reference of the endpoint",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "referenceType": {
           "canBeNull": false,
           "description": "Reference type",
-          "fullType": "connectivity.eligibility.EndpointReferenceTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.EndpointReferenceTypeEnum"
         }
       }
@@ -985,31 +946,27 @@ export const schema: Schema = {
         "buildingName": {
           "canBeNull": false,
           "description": "Building name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "buildingReference": {
           "canBeNull": false,
           "description": "Building unique identifier",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "buildingType": {
           "canBeNull": false,
           "description": "Building type",
-          "fullType": "connectivity.eligibility.BuildingTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.BuildingTypeEnum"
         },
         "nro": {
           "canBeNull": true,
           "description": "NRO (\"Nœud de raccordement optique\" in french) is an identifier of the building where is the Optical Distribution Frame (ODF) of the fiber",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -1017,17 +974,15 @@ export const schema: Schema = {
         "operatorCode": {
           "canBeNull": false,
           "description": "Operator code",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "operatorName": {
           "canBeNull": false,
           "description": "Operator name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1040,25 +995,22 @@ export const schema: Schema = {
         "address": {
           "canBeNull": false,
           "description": "Line address",
-          "fullType": "connectivity.eligibility.Address",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.Address"
         },
         "copperInfo": {
           "canBeNull": false,
           "description": "Copper informations",
-          "fullType": "connectivity.eligibility.CopperInfo",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.CopperInfo"
         },
         "lineNumber": {
           "canBeNull": false,
           "description": "Line number",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1081,25 +1033,22 @@ export const schema: Schema = {
         "endDate": {
           "canBeNull": false,
           "description": "End date",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "startDate": {
           "canBeNull": false,
           "description": "Start date",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "uiCode": {
           "canBeNull": false,
           "description": "An opaque string that represents an intervention unit",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1112,17 +1061,15 @@ export const schema: Schema = {
         "canBookFakeMeeting": {
           "canBeNull": false,
           "description": "Whether or not it is possible to book a fake meeting",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "meetingSlots": {
           "canBeNull": false,
           "description": "A time slot",
-          "fullType": "connectivity.eligibility.MeetingSlot[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.MeetingSlot[]"
         }
       }
@@ -1135,7 +1082,6 @@ export const schema: Schema = {
         "availabilityDate": {
           "canBeNull": true,
           "description": "Availability date of the offer (if code of non eligibility is COPPER_NOT_YET_AVAILABLE, FIBER_NOT_YET_AVAILABLE or PRODUCT_NOT_YET_AVAILABLE)",
-          "fullType": "datetime",
           "readOnly": false,
           "required": false,
           "type": "datetime"
@@ -1143,17 +1089,15 @@ export const schema: Schema = {
         "code": {
           "canBeNull": false,
           "description": "Code of the message",
-          "fullType": "connectivity.eligibility.MessageCodeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.MessageCodeEnum"
         },
         "message": {
           "canBeNull": false,
           "description": "Message",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1215,17 +1159,15 @@ export const schema: Schema = {
         "eligibility": {
           "canBeNull": false,
           "description": "Eligibility result for the offer",
-          "fullType": "connectivity.eligibility.OfferEligibility",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.OfferEligibility"
         },
         "product": {
           "canBeNull": false,
           "description": "Product informations",
-          "fullType": "connectivity.eligibility.OfferProduct",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.OfferProduct"
         }
       }
@@ -1238,23 +1180,20 @@ export const schema: Schema = {
         "activationTypes": {
           "canBeNull": false,
           "description": "Activation type list, for copper only",
-          "fullType": "connectivity.eligibility.ActivationTypeEnum[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.ActivationTypeEnum[]"
         },
         "eligible": {
           "canBeNull": false,
           "description": "Is the endpoint eligible to this offer ?",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "estimatedDownloadRate": {
           "canBeNull": true,
           "description": "Estimated download rate, for copper and non guaranteed offers only",
-          "fullType": "double",
           "readOnly": false,
           "required": false,
           "type": "double"
@@ -1262,7 +1201,6 @@ export const schema: Schema = {
         "estimatedUploadRate": {
           "canBeNull": true,
           "description": "Estimated upload rate, for copper and non guaranteed offers only",
-          "fullType": "double",
           "readOnly": false,
           "required": false,
           "type": "double"
@@ -1270,17 +1208,15 @@ export const schema: Schema = {
         "reasons": {
           "canBeNull": false,
           "description": "Reasons when not eligible, if any",
-          "fullType": "connectivity.eligibility.Message[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.Message[]"
         },
         "underConditions": {
           "canBeNull": false,
           "description": "Warnings to consider when eligible, if any",
-          "fullType": "connectivity.eligibility.Message[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.Message[]"
         }
       }
@@ -1293,47 +1229,41 @@ export const schema: Schema = {
         "code": {
           "canBeNull": false,
           "description": "Product code, an unique identifier for the product",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "downloadRate": {
           "canBeNull": false,
           "description": "Download rate in Mb",
-          "fullType": "double",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "double"
         },
         "grt": {
           "canBeNull": false,
           "description": "GRT (Guaranteed Restoration Time) available list",
-          "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "guaranteed": {
           "canBeNull": false,
           "description": "Is the rates guaranteed ?",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "name": {
           "canBeNull": false,
           "description": "Name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "pairs": {
           "canBeNull": true,
           "description": "Number of copper pairs required, for copper only",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -1341,23 +1271,20 @@ export const schema: Schema = {
         "provider": {
           "canBeNull": false,
           "description": "Provider",
-          "fullType": "connectivity.eligibility.OfferProductProviderEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.OfferProductProviderEnum"
         },
         "type": {
           "canBeNull": false,
           "description": "Type of the product",
-          "fullType": "connectivity.eligibility.OfferProductTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.OfferProductTypeEnum"
         },
         "unbundlingType": {
           "canBeNull": true,
           "description": "Unbundling type : full or partial, for copper only",
-          "fullType": "connectivity.eligibility.OfferProductUnbundlingTypeEnum",
           "readOnly": false,
           "required": false,
           "type": "connectivity.eligibility.OfferProductUnbundlingTypeEnum"
@@ -1365,9 +1292,8 @@ export const schema: Schema = {
         "uploadRate": {
           "canBeNull": false,
           "description": "Upload rate in Mb",
-          "fullType": "double",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "double"
         }
       }
@@ -1414,15 +1340,13 @@ export const schema: Schema = {
         "eligibility": {
           "canBeNull": false,
           "description": "Eligibility informations",
-          "fullType": "connectivity.eligibility.PortabilityEligibility",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.PortabilityEligibility"
         },
         "quarantineEndDate": {
           "canBeNull": true,
           "description": "Date of the end of quarantine, if any",
-          "fullType": "datetime",
           "readOnly": false,
           "required": false,
           "type": "datetime"
@@ -1430,7 +1354,6 @@ export const schema: Schema = {
         "type": {
           "canBeNull": true,
           "description": "Portability type, if a portability is ongoing",
-          "fullType": "connectivity.eligibility.PortabilityTypeEnum",
           "readOnly": false,
           "required": false,
           "type": "connectivity.eligibility.PortabilityTypeEnum"
@@ -1445,25 +1368,22 @@ export const schema: Schema = {
         "eligible": {
           "canBeNull": false,
           "description": "Is the portability eligible for this line ?",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "reasons": {
           "canBeNull": false,
           "description": "Reasons when not eligible, if any",
-          "fullType": "connectivity.eligibility.Message[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.Message[]"
         },
         "underConditions": {
           "canBeNull": false,
           "description": "Warnings to consider when eligible, if any",
-          "fullType": "connectivity.eligibility.Message[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.Message[]"
         }
       }
@@ -1489,17 +1409,15 @@ export const schema: Schema = {
         "diameter": {
           "canBeNull": false,
           "description": "Diameter in millimeters of the copper line section",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "length": {
           "canBeNull": false,
           "description": "Lenght in meters of the copper line section",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -1512,17 +1430,15 @@ export const schema: Schema = {
         "streetCode": {
           "canBeNull": false,
           "description": "Identifier which refer to a street uniquely",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "streetName": {
           "canBeNull": false,
           "description": "Street name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1575,7 +1491,7 @@ export const schema: Schema = {
           "description": "Begin date, the work planned operation starts at this time",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "dateEnd": {
@@ -1583,7 +1499,7 @@ export const schema: Schema = {
           "description": "End date, the work planned operation finishes at the time",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -1591,7 +1507,7 @@ export const schema: Schema = {
           "description": "Work Planned operation id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "interventionType": {
@@ -1599,7 +1515,7 @@ export const schema: Schema = {
           "description": "Full description of the work planned operation",
           "fullType": "connectivity.maintenance.InterventionTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "connectivity.maintenance.InterventionTypeEnum"
         },
         "operator": {
@@ -1607,7 +1523,7 @@ export const schema: Schema = {
           "description": "Concerned operator by work planned operation",
           "fullType": "connectivity.OperatorEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "connectivity.OperatorEnum"
         },
         "technology": {
@@ -1615,7 +1531,7 @@ export const schema: Schema = {
           "description": "Technology impacted by the work planned operation",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1638,7 +1554,7 @@ export const schema: Schema = {
           "description": "Creation date, the generic incident has been detected",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "departments": {
@@ -1646,7 +1562,7 @@ export const schema: Schema = {
           "description": "List of impacted department codes",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "endDate": {
@@ -1662,7 +1578,7 @@ export const schema: Schema = {
           "description": "Generic incident id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "nra": {
@@ -1670,7 +1586,7 @@ export const schema: Schema = {
           "description": "List of impacted NRA/NRO",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "operators": {
@@ -1678,7 +1594,7 @@ export const schema: Schema = {
           "description": "List of impacted operators",
           "fullType": "connectivity.OperatorEnum[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "connectivity.OperatorEnum[]"
         },
         "status": {
@@ -1686,7 +1602,7 @@ export const schema: Schema = {
           "description": "Status (detected: we detected a potential generic incident, validated: the operators or our tech teams have confirmed the generic incident, closed: the generic incident is resolved and closed)",
           "fullType": "connectivity.monitoring.GenericIncidentStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "connectivity.monitoring.GenericIncidentStatusEnum"
         },
         "taskId": {
@@ -1721,7 +1637,6 @@ export const schema: Schema = {
         "error": {
           "canBeNull": true,
           "description": "Error",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -1729,7 +1644,6 @@ export const schema: Schema = {
         "result": {
           "canBeNull": true,
           "description": "Result of the call",
-          "fullType": "T",
           "readOnly": false,
           "required": false,
           "type": "T"
@@ -1737,9 +1651,8 @@ export const schema: Schema = {
         "status": {
           "canBeNull": false,
           "description": "Status of the call",
-          "fullType": "xdsl.AsyncTaskStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "xdsl.AsyncTaskStatusEnum"
         }
       }
@@ -1755,7 +1668,6 @@ export const schema: Schema = {
         "error": {
           "canBeNull": true,
           "description": "Error",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -1763,7 +1675,6 @@ export const schema: Schema = {
         "result": {
           "canBeNull": true,
           "description": "Result of the call",
-          "fullType": "T[]",
           "readOnly": false,
           "required": false,
           "type": "T[]"
@@ -1771,9 +1682,8 @@ export const schema: Schema = {
         "status": {
           "canBeNull": false,
           "description": "Status of the call",
-          "fullType": "xdsl.AsyncTaskStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "xdsl.AsyncTaskStatusEnum"
         }
       }

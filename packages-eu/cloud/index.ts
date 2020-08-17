@@ -122,6 +122,11 @@ export namespace cloud {
     }
     /**
      * Enum values for State
+     * type fullname: cloud.ExecutionState
+     */
+    export type ExecutionState = "IDLE" | "RUNNING" | "SUCCESS" | "ERROR" | "PAUSED"
+    /**
+     * Enum values for State
      * type fullname: cloud.ExecutionStateEnum
      */
     export type ExecutionStateEnum = "IDLE" | "RUNNING" | "SUCCESS" | "ERROR" | "PAUSED"
@@ -160,6 +165,11 @@ export namespace cloud {
     }
     /**
      * Enum values for Status
+     * type fullname: cloud.LabStatus
+     */
+    export type LabStatus = "open" | "activating" | "activated" | "closed"
+    /**
+     * Enum values for Status
      * type fullname: cloud.LabStatusEnum
      */
     export type LabStatusEnum = "open" | "activating" | "activated" | "closed"
@@ -177,6 +187,11 @@ export namespace cloud {
         startedAt?: string;
         status: cloud.OperationStatusEnum;
     }
+    /**
+     * Enum values for Status
+     * type fullname: cloud.OperationStatus
+     */
+    export type OperationStatus = "created" | "in-progress" | "completed" | "in-error" | "unknown"
     /**
      * Enum values for Status
      * type fullname: cloud.OperationStatusEnum
@@ -462,6 +477,15 @@ export namespace cloud {
     }
     /**
      * Missing description
+     * interface fullName: cloud.ProjectNetworkPrivateSubnetUpdate.ProjectNetworkPrivateSubnetUpdate
+     */
+    export interface ProjectNetworkPrivateSubnetUpdate {
+        dhcp: boolean;
+        disableGateway: boolean;
+        gatewayIp?: string;
+    }
+    /**
+     * Missing description
      * interface fullName: cloud.ProjectNetworkPrivateUpdate.ProjectNetworkPrivateUpdate
      */
     export interface ProjectNetworkPrivateUpdate {
@@ -634,14 +658,29 @@ export namespace cloud {
     }
     /**
      * Enum values for ContinentCode
+     * type fullname: cloud.RegionContinent
+     */
+    export type RegionContinent = "EU" | "NA" | "US" | "ASIA"
+    /**
+     * Enum values for ContinentCode
      * type fullname: cloud.RegionContinentEnum
      */
     export type RegionContinentEnum = "EU" | "NA" | "US" | "ASIA"
     /**
      * Enum values for Status
+     * type fullname: cloud.RegionStatus
+     */
+    export type RegionStatus = "UP" | "DOWN" | "MAINTENANCE"
+    /**
+     * Enum values for Status
      * type fullname: cloud.RegionStatusEnum
      */
     export type RegionStatusEnum = "UP" | "DOWN" | "MAINTENANCE"
+    /**
+     * Enum values for Status
+     * type fullname: cloud.ServiceStatus
+     */
+    export type ServiceStatus = "UP" | "DOWN"
     /**
      * Enum values for Status
      * type fullname: cloud.ServiceStatusEnum
@@ -984,6 +1023,11 @@ export namespace cloud {
         }
         /**
          * UnitQuantity
+         * type fullname: cloud.billingView.UnitQuantity
+         */
+        export type UnitQuantity = "GiB" | "GiBh" | "Hour"
+        /**
+         * UnitQuantity
          * type fullname: cloud.billingView.UnitQuantityEnum
          */
         export type UnitQuantityEnum = "GiB" | "GiBh" | "Hour" | "Minute" | "Second" | "Unit"
@@ -1011,6 +1055,16 @@ export namespace cloud {
         export interface VolumeSnapshot {
             quantity: cloud.billingView.Quantity;
             totalPrice: number;
+        }
+    }
+    export namespace capabilities {
+        /**
+         * Capability
+         * interface fullName: cloud.capabilities.Capability.Capability
+         */
+        export interface Capability {
+            enabled: boolean;
+            name: string;
         }
     }
     export namespace common {
@@ -1097,6 +1151,45 @@ export namespace cloud {
             id: string;
             password?: string;
             user: string;
+        }
+        export namespace registry {
+            /**
+             * Region of the registry
+             * type fullname: cloud.containerRegistry.registry.RegionEnum
+             */
+            export type RegionEnum = "GRA7"
+            /**
+             * Managed docker registry
+             * interface fullName: cloud.containerRegistry.registry.Registry.Registry
+             */
+            export interface Registry {
+                createdAt: string;
+                id: string;
+                name: string;
+                projectID: string;
+                region: cloud.containerRegistry.registry.RegionEnum;
+                status: cloud.containerRegistry.registry.StatusEnum;
+                updatedAt: string;
+                url: string;
+                version: string;
+            }
+            /**
+             * Status of the registry
+             * type fullname: cloud.containerRegistry.registry.StatusEnum
+             */
+            export type StatusEnum = "ERROR" | "READY" | "DELETED" | "SUSPENDED" | "INSTALLING" | "UPDATING" | "RESTORING" | "SUSPENDING" | "DELETING"
+        }
+        export namespace user {
+            /**
+             * Docker registry user
+             * interface fullName: cloud.containerRegistry.user.User.User
+             */
+            export interface User {
+                email: string;
+                id: string;
+                password?: string;
+                user: string;
+            }
         }
     }
     export namespace flavor {
@@ -1289,9 +1382,19 @@ export namespace cloud {
         }
         /**
          * MetricsPeriod
+         * type fullname: cloud.instance.MetricsPeriod
+         */
+        export type MetricsPeriod = "lastday" | "lastmonth" | "lastweek" | "lastyear" | "today"
+        /**
+         * MetricsPeriod
          * type fullname: cloud.instance.MetricsPeriodEnum
          */
         export type MetricsPeriodEnum = "lastday" | "lastmonth" | "lastweek" | "lastyear" | "today"
+        /**
+         * MetricsType
+         * type fullname: cloud.instance.MetricsType
+         */
+        export type MetricsType = "mem:used" | "mem:max" | "cpu:used" | "cpu:max" | "net:tx" | "net:rx"
         /**
          * MetricsType
          * type fullname: cloud.instance.MetricsTypeEnum
@@ -1447,7 +1550,12 @@ export namespace cloud {
          * Enum values for available regions when creating a cluster
          * type fullname: cloud.kube.ClusterCreationRegionEnum
          */
-        export type ClusterCreationRegionEnum = "GRA5" | "GRA7" | "BHS5"
+        export type ClusterCreationRegionEnum = "GRA5" | "GRA7" | "BHS5" | "SBG5"
+        /**
+         * Enum values for Status
+         * type fullname: cloud.kube.ClusterStatus
+         */
+        export type ClusterStatus = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "READY"
         /**
          * Enum values for Status
          * type fullname: cloud.kube.ClusterStatusEnum
@@ -1464,9 +1572,19 @@ export namespace cloud {
         }
         /**
          * Enum values for category
+         * type fullname: cloud.kube.FlavorCategory
+         */
+        export type FlavorCategory = "c" | "g" | "t" | "b" | "r"
+        /**
+         * Enum values for category
          * type fullname: cloud.kube.FlavorCategoryEnum
          */
         export type FlavorCategoryEnum = "c" | "g" | "t" | "b" | "r" | "i"
+        /**
+         * Enum values for State
+         * type fullname: cloud.kube.FlavorState
+         */
+        export type FlavorState = "available" | "unavailable"
         /**
          * Enum values for State
          * type fullname: cloud.kube.FlavorStateEnum
@@ -1529,9 +1647,19 @@ export namespace cloud {
         export type NodePoolStatusEnum = "INSTALLING" | "UPDATING" | "REDEPLOYING" | "RESIZING" | "RESETTING" | "DELETING" | "ERROR" | "READY"
         /**
          * Enum values for Status
+         * type fullname: cloud.kube.NodeStatus
+         */
+        export type NodeStatus = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "READY"
+        /**
+         * Enum values for Status
          * type fullname: cloud.kube.NodeStatusEnum
          */
         export type NodeStatusEnum = "INSTALLING" | "REDEPLOYING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "READY"
+        /**
+         * Enum values for available regions
+         * type fullname: cloud.kube.Region
+         */
+        export type Region = "GRA5" | "GRA7" | "BHS5"
         /**
          * Enum values for available regions
          * type fullname: cloud.kube.RegionEnum
@@ -1539,9 +1667,19 @@ export namespace cloud {
         export type RegionEnum = "GRA5" | "GRA7" | "BHS5" | "SBG5"
         /**
          * Enum values for worker nodes reset policy
+         * type fullname: cloud.kube.ResetWorkerNodesPolicy
+         */
+        export type ResetWorkerNodesPolicy = "reinstall" | "delete"
+        /**
+         * Enum values for worker nodes reset policy
          * type fullname: cloud.kube.ResetWorkerNodesPolicyEnum
          */
         export type ResetWorkerNodesPolicyEnum = "reinstall" | "delete"
+        /**
+         * Enum values for UpdatePolicy
+         * type fullname: cloud.kube.UpdatePolicy
+         */
+        export type UpdatePolicy = "ALWAYS_UPDATE" | "MINIMAL_DOWNTIME" | "NEVER_UPDATE"
         /**
          * Enum values for UpdatePolicy
          * type fullname: cloud.kube.UpdatePolicyEnum
@@ -1549,14 +1687,29 @@ export namespace cloud {
         export type UpdatePolicyEnum = "ALWAYS_UPDATE" | "MINIMAL_DOWNTIME" | "NEVER_UPDATE"
         /**
          * Enum values for UpdateStrategy
+         * type fullname: cloud.kube.UpdateStrategy
+         */
+        export type UpdateStrategy = "LATEST_PATCH" | "NEXT_MINOR"
+        /**
+         * Enum values for UpdateStrategy
          * type fullname: cloud.kube.UpdateStrategyEnum
          */
         export type UpdateStrategyEnum = "LATEST_PATCH" | "NEXT_MINOR"
         /**
          * List of available versions for upgrade
+         * type fullname: cloud.kube.UpgradeVersion
+         */
+        export type UpgradeVersion = "1.12" | "1.13" | "1.14" | "1.15" | "1.16"
+        /**
+         * List of available versions for upgrade
          * type fullname: cloud.kube.UpgradeVersionEnum
          */
         export type UpgradeVersionEnum = "1.14" | "1.15" | "1.16" | "1.17" | "1.18"
+        /**
+         * List of available versions for installation
+         * type fullname: cloud.kube.Version
+         */
+        export type Version = "1.13" | "1.14" | "1.15"
         /**
          * List of available versions for installation
          * type fullname: cloud.kube.VersionEnum
@@ -1855,6 +2008,11 @@ export namespace cloud {
         export type ProductNameEnum = "registry"
         /**
          * Possible values for project status
+         * type fullname: cloud.project.ProjectStatus
+         */
+        export type ProjectStatus = "creating" | "deleted" | "deleting" | "ok" | "suspended"
+        /**
+         * Possible values for project status
          * type fullname: cloud.project.ProjectStatusEnum
          */
         export type ProjectStatusEnum = "creating" | "deleted" | "deleting" | "ok" | "suspended"
@@ -1941,6 +2099,20 @@ export namespace cloud {
                     minReplicas?: number;
                 }
                 /**
+                 * Backend serving the model
+                 * interface fullName: cloud.project.ai.serving.Backend.Backend
+                 */
+                export interface Backend {
+                    id: cloud.project.ai.serving.BackendIdEnum;
+                    link: string;
+                    name: string;
+                }
+                /**
+                 * Backend serving the model
+                 * type fullname: cloud.project.ai.serving.BackendIdEnum
+                 */
+                export type BackendIdEnum = "serving-runtime" | "bentoml"
+                /**
                  * Compute Flavor for the Serving Engine
                  * interface fullName: cloud.project.ai.serving.Flavor.Flavor
                  */
@@ -1948,6 +2120,25 @@ export namespace cloud {
                     description: string;
                     id: string;
                 }
+                /**
+                 * Framework of the model
+                 * interface fullName: cloud.project.ai.serving.Framework.Framework
+                 */
+                export interface Framework {
+                    backends: cloud.project.ai.serving.BackendIdEnum[];
+                    docPage: string;
+                    id: cloud.project.ai.serving.FrameworkIdEnum;
+                    link: string;
+                    logo: string;
+                    name: string;
+                    recommendedBackend: cloud.project.ai.serving.BackendIdEnum;
+                    version: string;
+                }
+                /**
+                 * Framework of the model
+                 * type fullname: cloud.project.ai.serving.FrameworkIdEnum
+                 */
+                export type FrameworkIdEnum = "onnx" | "tensorflow_1" | "torch" | "huggingface" | "pmml" | "flow"
                 /**
                  * Metrics information
                  * interface fullName: cloud.project.ai.serving.Metrics.Metrics
@@ -1985,7 +2176,9 @@ export namespace cloud {
                  */
                 export interface ModelDefinition {
                     autoscalingSpec?: cloud.project.ai.serving.AutoscalingSpec;
+                    backend?: cloud.project.ai.serving.BackendIdEnum;
                     flavor: string;
+                    framework?: cloud.project.ai.serving.FrameworkIdEnum;
                     id: string;
                     imageId?: string;
                     storagePath?: string;
@@ -1996,6 +2189,8 @@ export namespace cloud {
                  * interface fullName: cloud.project.ai.serving.ModelWorkflowTemplateParameter.ModelWorkflowTemplateParameter
                  */
                 export interface ModelWorkflowTemplateParameter {
+                    backend?: cloud.project.ai.serving.BackendIdEnum;
+                    framework?: cloud.project.ai.serving.FrameworkIdEnum;
                     imageId?: string;
                     storagePath?: string;
                 }
@@ -2076,6 +2271,171 @@ export namespace cloud {
                  * type fullname: cloud.project.ai.serving.WorkflowTemplateEnum
                  */
                 export type WorkflowTemplateEnum = "build-image" | "preset-image"
+            }
+            export namespace training {
+                /**
+                 * Authorization status
+                 * interface fullName: cloud.project.ai.training.AuthorizationStatus.AuthorizationStatus
+                 */
+                export interface AuthorizationStatus {
+                    authorized: boolean;
+                }
+                /**
+                 * Training Platform Data Object
+                 * interface fullName: cloud.project.ai.training.Data.Data
+                 */
+                export interface Data {
+                    account: string;
+                    container: string;
+                    containerRegion: string;
+                    created: string;
+                    id: string;
+                    name: string;
+                    pullDate?: string;
+                    pullStatus?: cloud.project.ai.training.DataSyncStatusEnum;
+                    pushDate?: string;
+                    pushStatus?: cloud.project.ai.training.DataSyncStatusEnum;
+                    region: string;
+                    user: string;
+                }
+                /**
+                 * Training Platform Data Spec Object
+                 * interface fullName: cloud.project.ai.training.DataSpec.DataSpec
+                 */
+                export interface DataSpec {
+                    container: string;
+                    containerRegion: string;
+                    name: string;
+                    region: string;
+                    sync: boolean;
+                    user: string;
+                }
+                /**
+                 * Data Sync Direction
+                 * type fullname: cloud.project.ai.training.DataSyncDirectionEnum
+                 */
+                export type DataSyncDirectionEnum = "pull" | "push"
+                /**
+                 * Training Platform Data Sync Request Object
+                 * interface fullName: cloud.project.ai.training.DataSyncRequest.DataSyncRequest
+                 */
+                export interface DataSyncRequest {
+                    direction: cloud.project.ai.training.DataSyncDirectionEnum;
+                }
+                /**
+                 * Data Sync Direction
+                 * type fullname: cloud.project.ai.training.DataSyncStatusEnum
+                 */
+                export type DataSyncStatusEnum = "running" | "pending" | "error" | "done"
+                /**
+                 * Training Platform Data Object
+                 * interface fullName: cloud.project.ai.training.Features.Features
+                 */
+                export interface Features {
+                    dashboard: boolean;
+                    registry: boolean;
+                }
+                /**
+                 * Training Platform Job Object
+                 * interface fullName: cloud.project.ai.training.Job.Job
+                 */
+                export interface Job {
+                    accessUrl?: string;
+                    command: string[];
+                    created: string;
+                    data: string[];
+                    id: string;
+                    image: string;
+                    name: string;
+                    region: string;
+                    resourceUsageUrl?: string;
+                    resources: cloud.project.ai.training.JobResource;
+                    state: cloud.project.ai.training.JobStatusEnum;
+                    totalRuntime?: number;
+                    updatedOn: string;
+                    user: string;
+                }
+                /**
+                 * Job Logs
+                 * interface fullName: cloud.project.ai.training.JobLogs.JobLogs
+                 */
+                export interface JobLogs {
+                    lastActivity?: string;
+                    logs: cloud.project.ai.training.LogLine[];
+                }
+                /**
+                 * Training Platform Job Resource Object
+                 * interface fullName: cloud.project.ai.training.JobResource.JobResource
+                 */
+                export interface JobResource {
+                    gpu?: number;
+                }
+                /**
+                 * Training Platform Job Spec Object to create a job
+                 * interface fullName: cloud.project.ai.training.JobSpec.JobSpec
+                 */
+                export interface JobSpec {
+                    command: string[];
+                    data: string[];
+                    image: string;
+                    name?: string;
+                    region: string;
+                    resources: cloud.project.ai.training.JobResource;
+                    user: string;
+                }
+                /**
+                 * Status of the job
+                 * type fullname: cloud.project.ai.training.JobStatusEnum
+                 */
+                export type JobStatusEnum = "CANCELLED" | "CANCELLING" | "FAILED" | "INTERRUPTED" | "SUCCEEDED" | "QUEUING" | "QUEUED" | "RUNNING"
+                /**
+                 * Log line
+                 * interface fullName: cloud.project.ai.training.LogLine.LogLine
+                 */
+                export interface LogLine {
+                    content?: string;
+                    timestamp?: string;
+                }
+                /**
+                 * A Image of a preset data science image
+                 * interface fullName: cloud.project.ai.training.PresetImage.PresetImage
+                 */
+                export interface PresetImage {
+                    description: string;
+                    id: string;
+                    link?: string;
+                    name: string;
+                    ramRequirementMB?: number;
+                }
+                /**
+                 * AI Training Region
+                 * interface fullName: cloud.project.ai.training.Region.Region
+                 */
+                export interface Region {
+                    cliInstallUrl: string;
+                    consoleUrl: string;
+                    documentationUrl: string;
+                    id: string;
+                    maxGpu: number;
+                    version: string;
+                }
+                /**
+                 * Representation of a registry
+                 * interface fullName: cloud.project.ai.training.Registry.Registry
+                 */
+                export interface Registry {
+                    custom: boolean;
+                    password: string;
+                    url: string;
+                    username: string;
+                }
+                /**
+                 * Registry attachment response
+                 * interface fullName: cloud.project.ai.training.RegistryResponse.RegistryResponse
+                 */
+                export interface RegistryResponse {
+                    message: string;
+                }
             }
         }
         export namespace dataProcessing {
@@ -2693,12 +3053,28 @@ export namespace cloud {
     }
     export namespace usage {
         /**
+         * PaymentTypeEnum
+         * type fullname: cloud.usage.PaymentTypeEnum
+         */
+        export type PaymentTypeEnum = "pre" | "post"
+        /**
          * Period
          * interface fullName: cloud.usage.Period.Period
          */
         export interface Period {
             from: string;
             to: string;
+        }
+        /**
+         * UsageBill
+         * interface fullName: cloud.usage.UsageBill.UsageBill
+         */
+        export interface UsageBill {
+            bill_id: string;
+            credit: number;
+            part: number;
+            payment_type: cloud.usage.PaymentTypeEnum;
+            total: number;
         }
         /**
          * UsageCurrent
@@ -2710,6 +3086,13 @@ export namespace cloud {
             monthlyUsage?: cloud.billingView.MonthlyResources;
             period: cloud.usage.Period;
             resourcesUsage?: cloud.billingView.TypedResources[];
+        }
+        /**
+         * UsageCurrentBills
+         * interface fullName: cloud.usage.UsageCurrentBills.UsageCurrentBills
+         */
+        export interface UsageCurrentBills {
+            bills: cloud.usage.UsageBill[];
         }
         /**
          * UsageForecast
@@ -2743,6 +3126,13 @@ export namespace cloud {
             monthlyUsage?: cloud.billingView.MonthlyResources;
             period: cloud.usage.Period;
             resourcesUsage?: cloud.billingView.TypedResources[];
+        }
+        /**
+         * UsageHistoryDetailBills
+         * interface fullName: cloud.usage.UsageHistoryDetailBills.UsageHistoryDetailBills
+         */
+        export interface UsageHistoryDetailBills {
+            bills: cloud.usage.UsageBill[];
         }
     }
     export namespace user {
@@ -3080,12 +3470,34 @@ export interface Cloud {
             ai: {
                 capabilities: {
                     serving: {
+                        backend: {
+                            /**
+                             * List Serving Engine available backends
+                             * GET /cloud/project/{serviceName}/ai/capabilities/serving/backend
+                             */
+                            $get(): Promise<cloud.project.ai.serving.Backend[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         flavor: {
                             /**
                              * List Serving Engine available flavor
                              * GET /cloud/project/{serviceName}/ai/capabilities/serving/flavor
                              */
                             $get(): Promise<cloud.project.ai.serving.Flavor[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        framework: {
+                            /**
+                             * List Serving Engine available frameworks
+                             * GET /cloud/project/{serviceName}/ai/capabilities/serving/framework
+                             */
+                            $get(): Promise<cloud.project.ai.serving.Framework[]>;
                             /**
                              * Controle cache
                              */
@@ -3166,7 +3578,7 @@ export interface Cloud {
                              * Create a new model
                              * POST /cloud/project/{serviceName}/ai/serving/{namespaceId}/model
                              */
-                            $post(params: { autoscalingSpec?: cloud.project.ai.serving.AutoscalingSpec, flavor: string, id: string, imageId?: string, storagePath?: string, workflowTemplate?: cloud.project.ai.serving.WorkflowTemplateEnum }): Promise<cloud.project.ai.serving.Model>;
+                            $post(params: { autoscalingSpec?: cloud.project.ai.serving.AutoscalingSpec, backend?: cloud.project.ai.serving.BackendIdEnum, flavor: string, framework?: cloud.project.ai.serving.FrameworkIdEnum, id: string, imageId?: string, storagePath?: string, workflowTemplate?: cloud.project.ai.serving.WorkflowTemplateEnum }): Promise<cloud.project.ai.serving.Model>;
                             /**
                              * Controle cache
                              */
@@ -3284,7 +3696,7 @@ export interface Cloud {
                      * Alter this object properties
                      * PUT /cloud/project/{serviceName}/alerting/{id}
                      */
-                    $put(params: { creationDate: string, delay: cloud.AlertingDelayEnum, email: string, formattedMonthlyThreshold: orderPrice, id: string, monthlyThreshold: number }): Promise<void>;
+                    $put(params?: { creationDate?: string, delay?: cloud.AlertingDelayEnum, email?: string, formattedMonthlyThreshold?: orderPrice, id?: string, monthlyThreshold?: number }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -3508,7 +3920,7 @@ export interface Cloud {
                          * Controle cache
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        $(userID: string | number): {
+                        $(userID: string): {
                             /**
                              * Delete a registry user
                              * DELETE /cloud/project/{serviceName}/containerRegistry/{registryID}/users/{userID}
@@ -4739,7 +5151,7 @@ export interface Cloud {
                  * Alter this object properties
                  * PUT /cloud/project/{serviceName}/serviceInfos
                  */
-                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */

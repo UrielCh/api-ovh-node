@@ -42,7 +42,7 @@ export namespace hosting {
          * Private database orderable versions
          * type fullname: hosting.PrivateDatabase.OrderableVersionEnum
          */
-        export type OrderableVersionEnum = "mariadb_10.1" | "mariadb_10.2" | "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mongodb_3.4" | "mongodb_4.0" | "mysql_5.5" | "mysql_5.6" | "mysql_5.7" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "postgresql_9.4" | "postgresql_9.5" | "postgresql_9.6" | "redis_3.2" | "redis_4.0"
+        export type OrderableVersionEnum = "mariadb_10.1" | "mariadb_10.2" | "mariadb_10.3" | "mariadb_10.4" | "mariadb_10.5" | "mongodb_3.4" | "mongodb_4.0" | "mysql_5.5" | "mysql_5.6" | "mysql_5.7" | "mysql_8.0" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "postgresql_9.4" | "postgresql_9.5" | "postgresql_9.6" | "redis_3.2" | "redis_4.0"
     }
     export namespace web {
         /**
@@ -494,19 +494,6 @@ export namespace hosting {
              * type fullname: hosting.web.database.VersionEnum
              */
             export type VersionEnum = "3.4" | "4.0" | "5.1" | "5.5" | "5.6" | "8.4"
-            /**
-             * Dump
-             * interface fullName: hosting.web.database.dump.dump
-             */
-            export interface dump {
-                creationDate: string;
-                deletionDate: string;
-                id: number;
-                status: hosting.web.database.dump.StatusEnum;
-                taskId?: number;
-                type: hosting.web.database.dump.DateEnum;
-                url?: string;
-            }
             export namespace dump {
                 /**
                  * List of dump types
@@ -519,6 +506,19 @@ export namespace hosting {
                  */
                 export type StatusEnum = "created" | "creating" | "deleting"
             }
+        }
+        /**
+         * Dump
+         * interface fullName: hosting.web.database_dump.database_dump
+         */
+        export interface database_dump {
+            creationDate: string;
+            deletionDate: string;
+            id: number;
+            status: hosting.web.database.dump.StatusEnum;
+            taskId?: number;
+            type: hosting.web.database.dump.DateEnum;
+            url?: string;
         }
         /**
          * Dump
@@ -728,18 +728,6 @@ export namespace hosting {
                 zip?: string;
                 zipStatus?: hosting.web.localSeo.FieldStatusEnum;
             }
-            /**
-             * Local SEO accounts
-             * interface fullName: hosting.web.localSeo.account.account
-             */
-            export interface account {
-                creationDate: string;
-                email: string;
-                id: number;
-                lastUpdate: string;
-                status: hosting.web.localSeo.account.StatusEnum;
-                taskId?: number;
-            }
             export namespace account {
                 /**
                  * Availability of an email address for a local SEO order
@@ -751,22 +739,6 @@ export namespace hosting {
                  * type fullname: hosting.web.localSeo.account.StatusEnum
                  */
                 export type StatusEnum = "created" | "creating" | "deleting" | "updating"
-            }
-            /**
-             * Local SEO locations
-             * interface fullName: hosting.web.localSeo.location.location
-             */
-            export interface location {
-                accountId?: number;
-                address?: string;
-                country: hosting.web.localSeo.location.CountryEnum;
-                creationDate: string;
-                id: number;
-                lastUpdate: string;
-                name?: string;
-                offer: hosting.web.localSeo.location.OfferEnum;
-                status: hosting.web.localSeo.location.StatusEnum;
-                taskId?: number;
             }
             export namespace location {
                 /**
@@ -785,6 +757,34 @@ export namespace hosting {
                  */
                 export type StatusEnum = "created" | "creating" | "deleting" | "updating"
             }
+        }
+        /**
+         * Local SEO accounts
+         * interface fullName: hosting.web.localSeo_account.localSeo_account
+         */
+        export interface localSeo_account {
+            creationDate: string;
+            email: string;
+            id: number;
+            lastUpdate: string;
+            status: hosting.web.localSeo.account.StatusEnum;
+            taskId?: number;
+        }
+        /**
+         * Local SEO locations
+         * interface fullName: hosting.web.localSeo_location.localSeo_location
+         */
+        export interface localSeo_location {
+            accountId?: number;
+            address?: string;
+            country: hosting.web.localSeo.location.CountryEnum;
+            creationDate: string;
+            id: number;
+            lastUpdate: string;
+            name?: string;
+            offer: hosting.web.localSeo.location.OfferEnum;
+            status: hosting.web.localSeo.location.StatusEnum;
+            taskId?: number;
         }
         export namespace mail {
             /**
@@ -996,20 +996,18 @@ export namespace hosting {
             taskId?: number;
             type: string;
         }
-        export namespace ssl {
-            /**
-             * Hostedssl Report
-             * interface fullName: hosting.web.ssl.report.report
-             */
-            export interface report {
-                certificateSigningRequestStatus: hosting.web.hostedssl.ReportValueEnum;
-                domainControlValidationStatus: hosting.web.hostedssl.ReportValueEnum;
-                organizationValidationStatus: hosting.web.hostedssl.ReportValueEnum;
-                phoneCallApprovalStatus: hosting.web.hostedssl.ReportValueEnum;
-                providerOrderId: string;
-                termsAndConditionsAcceptanceStatus: hosting.web.hostedssl.ReportValueEnum;
-                tradeNameVerificationStatus: hosting.web.hostedssl.ReportValueEnum;
-            }
+        /**
+         * Hostedssl Report
+         * interface fullName: hosting.web.ssl_report.ssl_report
+         */
+        export interface ssl_report {
+            certificateSigningRequestStatus: hosting.web.hostedssl.ReportValueEnum;
+            domainControlValidationStatus: hosting.web.hostedssl.ReportValueEnum;
+            organizationValidationStatus: hosting.web.hostedssl.ReportValueEnum;
+            phoneCallApprovalStatus: hosting.web.hostedssl.ReportValueEnum;
+            providerOrderId: string;
+            termsAndConditionsAcceptanceStatus: hosting.web.hostedssl.ReportValueEnum;
+            tradeNameVerificationStatus: hosting.web.hostedssl.ReportValueEnum;
         }
         /**
          * Tasks
@@ -1318,7 +1316,7 @@ export interface Hosting {
              * Alter this object properties
              * PUT /hosting/web/{serviceName}
              */
-            $put(params: { availableBoostOffer: hosting.web.AvailableOfferStruct[], boostOffer?: hosting.web.OfferCapabilitiesEnum, cluster: string, clusterIp?: string, clusterIpv6?: string, countriesIp?: hosting.web.CountriesIp[], datacenter: hosting.web.DatacenterEnum, displayName?: string, filer?: string, hasCdn?: boolean, hasHostedSsl?: boolean, home: string, hostingIp?: string, hostingIpv6?: string, lastOvhConfigScan?: string, offer: hosting.web.OfferCapabilitiesEnum, operatingSystem: hosting.web.OperatingSystemEnum, phpVersions: hosting.web.PhpVersion[], primaryLogin: string, quotaSize: complexType.UnitAndValue<number>, quotaUsed?: complexType.UnitAndValue<number>, recommendedOffer?: hosting.web.OfferEnum, resourceType: hosting.web.ResourceEnum, serviceManagementAccess: hosting.web.ServiceAccess, serviceName: string, state: hosting.web.StateEnum, token?: string, trafficQuotaSize?: complexType.UnitAndValue<number>, trafficQuotaUsed?: complexType.UnitAndValue<number>, updates: string[] }): Promise<void>;
+            $put(params?: { availableBoostOffer?: hosting.web.AvailableOfferStruct[], boostOffer?: hosting.web.OfferCapabilitiesEnum, cluster?: string, clusterIp?: string, clusterIpv6?: string, countriesIp?: hosting.web.CountriesIp[], datacenter?: hosting.web.DatacenterEnum, displayName?: string, filer?: string, hasCdn?: boolean, hasHostedSsl?: boolean, home?: string, hostingIp?: string, hostingIpv6?: string, lastOvhConfigScan?: string, offer?: hosting.web.OfferCapabilitiesEnum, operatingSystem?: hosting.web.OperatingSystemEnum, phpVersions?: hosting.web.PhpVersion[], primaryLogin?: string, quotaSize?: complexType.UnitAndValue<number>, quotaUsed?: complexType.UnitAndValue<number>, recommendedOffer?: hosting.web.OfferEnum, resourceType?: hosting.web.ResourceEnum, serviceManagementAccess?: hosting.web.ServiceAccess, serviceName?: string, state?: hosting.web.StateEnum, token?: string, trafficQuotaSize?: complexType.UnitAndValue<number>, trafficQuotaUsed?: complexType.UnitAndValue<number>, updates?: string[] }): Promise<void>;
             /**
              * Controle cache
              */
@@ -1364,7 +1362,7 @@ export interface Hosting {
                      * Alter this object properties
                      * PUT /hosting/web/{serviceName}/attachedDomain/{domain}
                      */
-                    $put(params: { cdn: hosting.web.attachedDomain.CdnEnum, domain: string, firewall: hosting.web.attachedDomain.FirewallEnum, ipLocation?: hosting.web.CountryEnum, ownLog?: string, path: string, runtimeId?: number, ssl?: boolean, status: hosting.web.attachedDomain.StatusEnum, taskId?: number }): Promise<void>;
+                    $put(params?: { cdn?: hosting.web.attachedDomain.CdnEnum, domain?: string, firewall?: hosting.web.attachedDomain.FirewallEnum, ipLocation?: hosting.web.CountryEnum, ownLog?: string, path?: string, runtimeId?: number, ssl?: boolean, status?: hosting.web.attachedDomain.StatusEnum, taskId?: number }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -1511,7 +1509,7 @@ export interface Hosting {
                      * Alter this object properties
                      * PUT /hosting/web/{serviceName}/cron/{id}
                      */
-                    $put(params: { command: string, description?: string, email?: string, frequency: string, id: number, language: hosting.web.cron.LanguageEnum, state: hosting.web.cron.StateEnum, status: hosting.web.cron.StatusEnum }): Promise<void>;
+                    $put(params?: { command?: string, description?: string, email?: string, frequency?: string, id?: number, language?: hosting.web.cron.LanguageEnum, state?: hosting.web.cron.StateEnum, status?: hosting.web.cron.StatusEnum }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -1606,7 +1604,7 @@ export interface Hosting {
                              * Get this object properties
                              * GET /hosting/web/{serviceName}/database/{name}/dump/{id}
                              */
-                            $get(): Promise<hosting.web.database.dump>;
+                            $get(): Promise<hosting.web.database_dump>;
                             /**
                              * Controle cache
                              */
@@ -1740,7 +1738,7 @@ export interface Hosting {
                  * Alter this object properties
                  * PUT /hosting/web/{serviceName}/email
                  */
-                $put(params: { bounce: number, email?: string, maxPerDay: number, sent: number, sentToday: number, state: hosting.web.mail.StateEnum }): Promise<void>;
+                $put(params?: { bounce?: number, email?: string, maxPerDay?: number, sent?: number, sentToday?: number, state?: hosting.web.mail.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1853,7 +1851,7 @@ export interface Hosting {
                      * Alter this object properties
                      * PUT /hosting/web/{serviceName}/envVar/{key}
                      */
-                    $put(params: { key: string, status: hosting.web.envVar.StatusEnum, taskId?: number, type: hosting.web.envVar.TypeEnum, value: string }): Promise<void>;
+                    $put(params?: { key?: string, status?: hosting.web.envVar.StatusEnum, taskId?: number, type?: hosting.web.envVar.TypeEnum, value?: string }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -1991,7 +1989,7 @@ export interface Hosting {
                          * Get this object properties
                          * GET /hosting/web/{serviceName}/localSeo/account/{id}
                          */
-                        $get(): Promise<hosting.web.localSeo.account>;
+                        $get(): Promise<hosting.web.localSeo_account>;
                         /**
                          * Controle cache
                          */
@@ -2035,7 +2033,7 @@ export interface Hosting {
                          * Get this object properties
                          * GET /hosting/web/{serviceName}/localSeo/location/{id}
                          */
-                        $get(): Promise<hosting.web.localSeo.location>;
+                        $get(): Promise<hosting.web.localSeo_location>;
                         /**
                          * Controle cache
                          */
@@ -2224,7 +2222,7 @@ export interface Hosting {
                              * Alter this object properties
                              * PUT /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}
                              */
-                            $put(params: { creationDate: string, description?: string, login: string, ownLogsId?: number, status: hosting.web.userLogs.StatusEnum, taskId?: number }): Promise<void>;
+                            $put(params?: { creationDate?: string, description?: string, login?: string, ownLogsId?: number, status?: hosting.web.userLogs.StatusEnum, taskId?: number }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -2329,7 +2327,7 @@ export interface Hosting {
                      * Alter this object properties
                      * PUT /hosting/web/{serviceName}/runtime/{id}
                      */
-                    $put(params: { appBootstrap?: string, appEnv: hosting.web.runtime.EnvEnum, creationDate: string, id: number, isDefault: boolean, isDeletable: boolean, lastUpdate: string, name?: string, publicDir?: string, status: hosting.web.runtime.StateEnum, taskId?: number, type: hosting.web.runtime.TypeEnum }): Promise<void>;
+                    $put(params?: { appBootstrap?: string, appEnv?: hosting.web.runtime.EnvEnum, creationDate?: string, id?: number, isDefault?: boolean, isDeletable?: boolean, lastUpdate?: string, name?: string, publicDir?: string, status?: hosting.web.runtime.StateEnum, taskId?: number, type?: hosting.web.runtime.TypeEnum }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -2368,7 +2366,7 @@ export interface Hosting {
                  * Alter this object properties
                  * PUT /hosting/web/{serviceName}/serviceInfos
                  */
-                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -2421,7 +2419,7 @@ export interface Hosting {
                      * Get this object properties
                      * GET /hosting/web/{serviceName}/ssl/report
                      */
-                    $get(): Promise<hosting.web.ssl.report>;
+                    $get(): Promise<hosting.web.ssl_report>;
                     /**
                      * Controle cache
                      */
@@ -2513,7 +2511,7 @@ export interface Hosting {
                      * Alter this object properties
                      * PUT /hosting/web/{serviceName}/user/{login}
                      */
-                    $put(params: { home: string, isPrimaryAccount: boolean, login: string, serviceManagementCredentials: hosting.web.user.ServiceCredentials, sshState: hosting.web.user.SshStateEnum, state: hosting.web.user.StateEnum, status: hosting.web.user.StatusEnum, taskId?: number }): Promise<void>;
+                    $put(params?: { home?: string, isPrimaryAccount?: boolean, login?: string, serviceManagementCredentials?: hosting.web.user.ServiceCredentials, sshState?: hosting.web.user.SshStateEnum, state?: hosting.web.user.StateEnum, status?: hosting.web.user.StatusEnum, taskId?: number }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -2561,7 +2559,7 @@ export interface Hosting {
                      * Alter this object properties
                      * PUT /hosting/web/{serviceName}/userLogs/{login}
                      */
-                    $put(params: { creationDate: string, description?: string, login: string, ownLogsId?: number, status: hosting.web.userLogs.StatusEnum, taskId?: number }): Promise<void>;
+                    $put(params?: { creationDate?: string, description?: string, login?: string, ownLogsId?: number, status?: hosting.web.userLogs.StatusEnum, taskId?: number }): Promise<void>;
                     /**
                      * Controle cache
                      */

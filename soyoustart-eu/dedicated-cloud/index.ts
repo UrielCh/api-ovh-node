@@ -14,6 +14,13 @@ export namespace complexType {
         value: T;
     }
 }
+export namespace coreTypes {
+    /**
+     * ISO country codes
+     * type fullname: coreTypes.CountryEnum
+     */
+    export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
+}
 export namespace dedicated {
     /**
      * ovh datacenter
@@ -37,6 +44,31 @@ export namespace dedicatedCloud {
      * type fullname: dedicatedCloud.AllowedNetworkStateEnum
      */
     export type AllowedNetworkStateEnum = "allowed" | "toDelete" | "toUpdate"
+    /**
+     * AutoScale configuration
+     * interface fullName: dedicatedCloud.AutoScaleConfig.AutoScaleConfig
+     */
+    export interface AutoScaleConfig {
+        cpuMaxThreshold: number;
+        cpuMinThreshold: number;
+        description?: string;
+        id: number;
+        maxNumOfHosts: number;
+        memMaxThreshold: number;
+        memMinThreshold: number;
+        minNumOfHosts: number;
+        storageMaxThreshold: number;
+        timeDelayScaleIn: number;
+        timeDelayScaleOut: number;
+        timeDelayStorageScaleOut: number;
+    }
+    /**
+     * Private Cloud AutoScale option
+     * interface fullName: dedicatedCloud.AutoScaleVirtual.AutoScaleVirtual
+     */
+    export interface AutoScaleVirtual {
+        state: dedicatedCloudoptionStateEnum;
+    }
     /**
      * Backup configured on a given Datacenter
      * interface fullName: dedicatedCloud.Backup.Backup
@@ -96,6 +128,20 @@ export namespace dedicatedCloud {
         nexus1000vStatus: dedicatedCloudcapabilitiesFeatureStatusEnum;
         upgradable: boolean;
         userAccessPolicyStatus: dedicatedCloudcapabilitiesFeatureStatusEnum;
+    }
+    /**
+     * Private Cloud Cluster
+     * interface fullName: dedicatedCloud.Cluster.Cluster
+     */
+    export interface Cluster {
+        autoscale?: dedicatedCloudclusterAutoScale;
+        drsMode: dedicatedCloudclusterClusterDrsModeEnum;
+        drsStatus: dedicatedCloudclusterClusterConfigsStatusEnum;
+        evcMode: string;
+        haStatus: dedicatedCloudclusterClusterConfigsStatusEnum;
+        id: number;
+        name: string;
+        vmwareClusterId: string;
     }
     /**
      * The commercial name component
@@ -694,6 +740,36 @@ export namespace dedicatedCloud {
          * type fullname: dedicatedCloud.capabilities.FeatureStatusEnum
          */
         export type FeatureStatusEnum = "active" | "comingSoon" | "no"
+    }
+    export namespace cluster {
+        /**
+         * Details about AutoScale
+         * interface fullName: dedicatedCloud.cluster.AutoScale.AutoScale
+         */
+        export interface AutoScale {
+            autoScaleInHost: dedicatedCloudclusterAutoScaleModeEnum;
+            autoScaleOutHost: dedicatedCloudclusterAutoScaleModeEnum;
+            autoScaleOutStorage: dedicatedCloudclusterAutoScaleModeEnum;
+            configId: number;
+            id: number;
+            inMaintenanceMode: boolean;
+            state: dedicatedCloudoptionStateEnum;
+        }
+        /**
+         * Modes of the AutoScale service
+         * type fullname: dedicatedCloud.cluster.AutoScaleModeEnum
+         */
+        export type AutoScaleModeEnum = "automatic" | "manual"
+        /**
+         * Config status of the cluster
+         * type fullname: dedicatedCloud.cluster.ClusterConfigsStatusEnum
+         */
+        export type ClusterConfigsStatusEnum = "disabled" | "enabled" | "unknown"
+        /**
+         * Config status of the cluster
+         * type fullname: dedicatedCloud.cluster.ClusterDrsModeEnum
+         */
+        export type ClusterDrsModeEnum = "fullyAutomated" | "manual" | "partiallyAutomated"
     }
     /**
      * Private Cloud
@@ -1376,7 +1452,7 @@ export interface DedicatedCloud {
          * Alter this object properties
          * PUT /dedicatedCloud/{serviceName}
          */
-        $put(params: { advancedSecurity: boolean, bandwidth: string, billingType: dedicatedCloudBillingTypeEnum, certifiedInterfaceUrl: string, commercialRange: string, description: string, generation: dedicatedCloudGenerationEnum, location: string, managementInterface: dedicatedCloudManagementInterfaceEnum, serviceName: string, servicePackName?: string, spla: boolean, sslV3?: boolean, state: dedicatedCloudStateEnum, userAccessPolicy: dedicatedCloudUserAccessPolicyEnum, userLimitConcurrentSession: number, userLogoutPolicy: dedicatedCloudUserLogoutPolicyEnum, userSessionTimeout: number, vScopeUrl: string, version: dedicatedCloudVersion, webInterfaceUrl: string }): Promise<dedicatedCloud.Task>;
+        $put(params?: { advancedSecurity?: boolean, bandwidth?: string, billingType?: dedicatedCloudBillingTypeEnum, certifiedInterfaceUrl?: string, commercialRange?: string, description?: string, generation?: dedicatedCloudGenerationEnum, location?: string, managementInterface?: dedicatedCloudManagementInterfaceEnum, serviceName?: string, servicePackName?: string, spla?: boolean, sslV3?: boolean, state?: dedicatedCloudStateEnum, userAccessPolicy?: dedicatedCloudUserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloudUserLogoutPolicyEnum, userSessionTimeout?: number, vScopeUrl?: string, version?: dedicatedCloudVersion, webInterfaceUrl?: string }): Promise<dedicatedCloud.Task>;
         /**
          * Controle cache
          */
@@ -1411,7 +1487,7 @@ export interface DedicatedCloud {
                  * Alter this object properties
                  * PUT /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
                  */
-                $put(params: { description?: string, network: string, networkAccessId: number, state: dedicatedCloudAllowedNetworkStateEnum }): Promise<dedicatedCloud.Task>;
+                $put(params?: { description?: string, network?: string, networkAccessId?: number, state?: dedicatedCloudAllowedNetworkStateEnum }): Promise<dedicatedCloud.Task>;
                 /**
                  * Controle cache
                  */
@@ -1468,6 +1544,17 @@ export interface DedicatedCloud {
              * GET /dedicatedCloud/{serviceName}/capabilities
              */
             $get(): Promise<dedicatedCloud.Capabilities>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        changeContact: {
+            /**
+             * Launch a contact change procedure
+             * POST /dedicatedCloud/{serviceName}/changeContact
+             */
+            $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
             /**
              * Controle cache
              */
@@ -1549,7 +1636,7 @@ export interface DedicatedCloud {
                  * Alter this object properties
                  * PUT /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
                  */
-                $put(params: { commercialName: dedicatedCloudCommercialNameEnum, commercialRangeName: string, datacenterId: number, description: string, horizonViewName?: string, isRemovable: boolean, name: string, version: string }): Promise<dedicatedCloud.Task>;
+                $put(params?: { commercialName?: dedicatedCloudCommercialNameEnum, commercialRangeName?: string, datacenterId?: number, description?: string, horizonViewName?: string, isRemovable?: boolean, name?: string, version?: string }): Promise<dedicatedCloud.Task>;
                 /**
                  * Controle cache
                  */
@@ -2874,7 +2961,7 @@ export interface DedicatedCloud {
              * Alter this object properties
              * PUT /dedicatedCloud/{serviceName}/serviceInfos
              */
-            $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
+            $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -3170,7 +3257,7 @@ export interface DedicatedCloud {
                          * Alter this object properties
                          * PUT /dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}
                          */
-                        $put(params: { canAddRessource: boolean, datacenterId: number, networkRole: dedicatedCloudrightNetworkRoleEnum, right: dedicatedCloudrightRightEnum, rightId: number, vmNetworkRole: dedicatedCloudrightVmNetworkRoleEnum }): Promise<dedicatedCloud.Task>;
+                        $put(params?: { canAddRessource?: boolean, datacenterId?: number, networkRole?: dedicatedCloudrightNetworkRoleEnum, right?: dedicatedCloudrightRightEnum, rightId?: number, vmNetworkRole?: dedicatedCloudrightVmNetworkRoleEnum }): Promise<dedicatedCloud.Task>;
                         /**
                          * Controle cache
                          */
@@ -3431,15 +3518,18 @@ export interface DedicatedCloud {
  * Extra Alias to bypass relativer namespace colitions
  */
 type dedicatedCloudAllowedNetworkStateEnum = dedicatedCloud.AllowedNetworkStateEnum;
+type dedicatedCloudoptionStateEnum = dedicatedCloud.option.StateEnum;
 type dedicatedCloudbackupOfferTypeEnum = dedicatedCloud.backup.OfferTypeEnum;
 type dedicatedCloudBackupStateEnum = dedicatedCloud.BackupStateEnum;
 type dedicatedCloudbackupBackupDaysEnum = dedicatedCloud.backup.BackupDaysEnum;
 type dedicatedCloudbackupStateEnum = dedicatedCloud.backup.StateEnum;
 type dedicatedCloudcapabilitiesFeatureStatusEnum = dedicatedCloud.capabilities.FeatureStatusEnum;
+type dedicatedCloudclusterAutoScale = dedicatedCloud.cluster.AutoScale;
+type dedicatedCloudclusterClusterDrsModeEnum = dedicatedCloud.cluster.ClusterDrsModeEnum;
+type dedicatedCloudclusterClusterConfigsStatusEnum = dedicatedCloud.cluster.ClusterConfigsStatusEnum;
 type dedicatedCloudHypervisorVersionEnum = dedicatedCloud.HypervisorVersionEnum;
 type dedicatedCloudrightNetworkRoleEnum = dedicatedCloud.right.NetworkRoleEnum;
 type dedicatedCloudCommercialNameEnum = dedicatedCloud.CommercialNameEnum;
-type dedicatedCloudoptionStateEnum = dedicatedCloud.option.StateEnum;
 type dedicatedCloudoptionAccessNetworkStateEnum = dedicatedCloud.optionAccessNetwork.StateEnum;
 type dedicatedCloudressourcesBillingTypeEnum = dedicatedCloud.ressources.BillingTypeEnum;
 type dedicatedCloudfilerStateEnum = dedicatedCloud.filer.StateEnum;
@@ -3468,6 +3558,7 @@ type dedicatedCloudbackupJobStateEnum = dedicatedCloud.backup.JobStateEnum;
 type dedicatedCloudbackupRestorePoint = dedicatedCloud.backup.RestorePoint;
 type dedicatedCloudbackupOptimizeMessageEnum = dedicatedCloud.backup.OptimizeMessageEnum;
 type dedicatedCloudbackupOptimizeRecommendationEnum = dedicatedCloud.backup.OptimizeRecommendationEnum;
+type dedicatedCloudclusterAutoScaleModeEnum = dedicatedCloud.cluster.AutoScaleModeEnum;
 type dedicatedCloudBillingTypeEnum = dedicatedCloud.BillingTypeEnum;
 type dedicatedCloudGenerationEnum = dedicatedCloud.GenerationEnum;
 type dedicatedCloudManagementInterfaceEnum = dedicatedCloud.ManagementInterfaceEnum;

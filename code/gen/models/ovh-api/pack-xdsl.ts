@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/pack/xdsl.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the PACK service",
@@ -36,7 +36,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -56,14 +56,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "pack.xdsl.PackAdsl",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "pack.xdsl.PackAdsl",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -88,6 +88,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The line number to test, if no address",
+              "fullType": "string",
+              "name": "lineNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "xdsl.eligibility.Address",
               "description": "The address to test, if no lineNumber",
               "fullType": "xdsl.eligibility.Address",
@@ -97,15 +105,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The line number to test, if no address",
-              "fullType": "string",
-              "name": "lineNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -130,34 +130,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "pack.xdsl.addressMove.Landline",
-              "description": "Data identifying the landline at the new address, if available",
-              "fullType": "pack.xdsl.addressMove.Landline",
-              "name": "landline",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "The date when the customer is no longer at the current address. Must be between now and +30 days",
-              "fullType": "datetime",
-              "name": "moveOutDate",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Whether or not the current number should be kept",
-              "fullType": "boolean",
-              "name": "keepCurrentNumber",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "pack.xdsl.addressMove.Creation",
-              "description": "The data to create a new line if lineNumber is not available",
-              "fullType": "pack.xdsl.addressMove.Creation",
-              "name": "creation",
+              "dataType": "xdsl.eligibility.ProviderEnum",
+              "description": "Provider of the new line",
+              "fullType": "xdsl.eligibility.ProviderEnum",
+              "name": "provider",
               "paramType": "body",
               "required": false
             },
@@ -170,16 +146,40 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "xdsl.eligibility.ProviderEnum",
-              "description": "Provider of the new line",
-              "fullType": "xdsl.eligibility.ProviderEnum",
-              "name": "provider",
+              "dataType": "boolean",
+              "description": "Whether or not the current number should be kept",
+              "fullType": "boolean",
+              "name": "keepCurrentNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "The date when the customer is no longer at the current address. Must be between now and +30 days",
+              "fullType": "datetime",
+              "name": "moveOutDate",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "pack.xdsl.addressMove.Landline",
+              "description": "Data identifying the landline at the new address, if available",
+              "fullType": "pack.xdsl.addressMove.Landline",
+              "name": "landline",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "pack.xdsl.addressMove.Creation",
+              "description": "The data to create a new line if lineNumber is not available",
+              "fullType": "pack.xdsl.addressMove.Creation",
+              "name": "creation",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -208,9 +208,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Floor identifier, \"null\" if no identifier is available",
+              "description": "Stair identifier, \"null\" if no identifier is available",
               "fullType": "string",
-              "name": "floor",
+              "name": "stair",
               "paramType": "body",
               "required": true
             },
@@ -223,18 +223,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "datetime",
-              "description": "The date when the customer is no longer at the current address. Must be between now and +30 days. The default date will be the one in 30 days from now.",
-              "fullType": "datetime",
-              "name": "moveOutDate",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Stair identifier, \"null\" if no identifier is available",
+              "description": "Floor identifier, \"null\" if no identifier is available",
               "fullType": "string",
-              "name": "stair",
+              "name": "floor",
               "paramType": "body",
               "required": true
             },
@@ -247,6 +239,14 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "datetime",
+              "description": "The date when the customer is no longer at the current address. Must be between now and +30 days. The default date will be the one in 30 days from now.",
+              "fullType": "datetime",
+              "name": "moveOutDate",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
               "description": "Building reference for FTTH offers",
               "fullType": "string",
@@ -256,7 +256,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -281,68 +281,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "You explicitly accept the terms of the contract corresponding to your new offer",
-              "fullType": "boolean",
-              "name": "acceptContracts",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Floor identifier, \"null\" if no identifier is available",
-              "fullType": "string",
-              "name": "floor",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "The date when the customer is no longer at the current address. Must be between now and +30 days. The default date will be the one in 30 days from now.",
-              "fullType": "datetime",
-              "name": "moveOutDate",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Reference of the new offer",
-              "fullType": "string",
-              "name": "offerName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "nicShipping if a shipping is needed",
-              "fullType": "string",
-              "name": "nicShipping",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "long",
               "description": "Number of months of re-engagement",
               "fullType": "long",
               "name": "engageMonths",
               "paramType": "body",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Eligibility reference",
-              "fullType": "string",
-              "name": "eligibilityReference",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Whether or not the current number should be kept",
-              "fullType": "boolean",
-              "name": "keepCurrentNumber",
-              "paramType": "body",
-              "required": true
             },
             {
               "dataType": "string",
@@ -353,42 +297,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "xdsl.eligibility.BookMeetingSlot",
-              "description": "Data to book a meeting slot",
-              "fullType": "xdsl.eligibility.BookMeetingSlot",
-              "name": "meeting",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "pack.xdsl.migration.OfferOption[]",
-              "description": "Options wanted in the new offer",
-              "fullType": "pack.xdsl.migration.OfferOption[]",
-              "name": "options",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Product code, an unique identifier for the product from addressMove/offer",
+              "description": "nicShipping if a shipping is needed",
               "fullType": "string",
-              "name": "productCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Mondial relay ID if a shipping is needed",
-              "fullType": "long",
-              "name": "mondialRelayId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Building reference for FTTH offers",
-              "fullType": "string",
-              "name": "buildingReference",
+              "name": "nicShipping",
               "paramType": "body",
               "required": false
             },
@@ -402,17 +314,73 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Reference of the Optical Termination Point",
+              "description": "Building reference for FTTH offers",
               "fullType": "string",
-              "name": "otpReference",
+              "name": "buildingReference",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "xdsl.eligibility.BookMeetingSlot",
+              "description": "Data to book a meeting slot",
+              "fullType": "xdsl.eligibility.BookMeetingSlot",
+              "name": "meeting",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "boolean",
-              "description": "Do you have an Optical Termination Point (Point de Terminaison Optique) at home ?",
+              "description": "You explicitly accept the terms of the contract corresponding to your new offer",
               "fullType": "boolean",
-              "name": "otp",
+              "name": "acceptContracts",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Product code, an unique identifier for the product from addressMove/offer",
+              "fullType": "string",
+              "name": "productCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Whether or not the current number should be kept",
+              "fullType": "boolean",
+              "name": "keepCurrentNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "The date when the customer is no longer at the current address. Must be between now and +30 days. The default date will be the one in 30 days from now.",
+              "fullType": "datetime",
+              "name": "moveOutDate",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Mondial relay ID if a shipping is needed",
+              "fullType": "long",
+              "name": "mondialRelayId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Eligibility reference",
+              "fullType": "string",
+              "name": "eligibilityReference",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Reference of the new offer",
+              "fullType": "string",
+              "name": "offerName",
               "paramType": "body",
               "required": true
             },
@@ -426,7 +394,39 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "Floor identifier, \"null\" if no identifier is available",
+              "fullType": "string",
+              "name": "floor",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Reference of the Optical Termination Point",
+              "fullType": "string",
+              "name": "otpReference",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "pack.xdsl.migration.OfferOption[]",
+              "description": "Options wanted in the new offer",
+              "fullType": "pack.xdsl.migration.OfferOption[]",
+              "name": "options",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Do you have an Optical Termination Point (Point de Terminaison Optique) at home ?",
+              "fullType": "boolean",
+              "name": "otp",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -460,7 +460,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -486,7 +486,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -512,7 +512,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -539,7 +539,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -547,7 +547,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -555,14 +555,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -588,7 +588,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -614,7 +614,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -640,7 +640,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -692,7 +692,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -718,7 +718,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -744,18 +744,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The email address",
               "fullType": "string",
               "name": "email",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pack",
+              "fullType": "string",
+              "name": "packName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -778,7 +778,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -814,7 +814,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -840,7 +840,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -866,7 +866,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -874,7 +874,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -900,7 +900,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -926,18 +926,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Email",
               "fullType": "string",
               "name": "email",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pack",
+              "fullType": "string",
+              "name": "packName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -960,7 +960,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -999,7 +999,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1025,18 +1025,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Email",
               "fullType": "string",
               "name": "email",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pack",
+              "fullType": "string",
+              "name": "packName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1059,7 +1059,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1090,6 +1090,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Email address",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "First name",
               "fullType": "string",
               "name": "firstName",
@@ -1105,26 +1113,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Initials",
-              "fullType": "string",
-              "name": "initials",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "password",
               "description": "Password",
               "fullType": "password",
               "name": "password",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Email address",
-              "fullType": "string",
-              "name": "email",
               "paramType": "body",
               "required": true
             },
@@ -1138,7 +1130,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "Initials",
+              "fullType": "string",
+              "name": "initials",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1164,7 +1164,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1172,7 +1172,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -1198,7 +1198,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1224,7 +1224,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1250,7 +1250,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1286,7 +1286,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1312,7 +1312,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1320,7 +1320,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -1340,7 +1340,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1348,7 +1348,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -1374,7 +1374,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1382,7 +1382,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -1416,7 +1416,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1424,7 +1424,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -1450,7 +1450,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1458,7 +1458,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -1484,7 +1484,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1510,7 +1510,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1518,7 +1518,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -1544,7 +1544,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1552,7 +1552,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -1577,10 +1577,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "pack.xdsl.migration.OfferServiceToDelete[]",
-              "description": "List of domains of services to delete if needed",
-              "fullType": "pack.xdsl.migration.OfferServiceToDelete[]",
-              "name": "subServicesToDelete",
+              "dataType": "boolean",
+              "description": "You explicitly accept the terms of the contract corresponding to your new offer",
+              "fullType": "boolean",
+              "name": "acceptContracts",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Do you have an Optical Termination Point (Point de Terminaison Optique) at home ?",
+              "fullType": "boolean",
+              "name": "otp",
               "paramType": "body",
               "required": false
             },
@@ -1593,54 +1601,6 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Reference of the Optical Termination Point",
-              "fullType": "string",
-              "name": "otpReference",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Number of months of re-engagement",
-              "fullType": "long",
-              "name": "engageMonths",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Mondial relay ID if a shipping is needed",
-              "fullType": "long",
-              "name": "mondialRelayId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Do you have an Optical Termination Point (Point de Terminaison Optique) at home ?",
-              "fullType": "boolean",
-              "name": "otp",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Stair identifier, \"_NA_\" if no identifier is available",
-              "fullType": "string",
-              "name": "stair",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Reference of the new offer",
-              "fullType": "string",
-              "name": "offerName",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "pack.xdsl.migration.OfferOption[]",
               "description": "Options wanted in the new offer",
               "fullType": "pack.xdsl.migration.OfferOption[]",
@@ -1649,26 +1609,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Floor identifier, \"_NA_\" if no identifier is available",
-              "fullType": "string",
-              "name": "floor",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "You explicitly accept the terms of the contract corresponding to your new offer",
-              "fullType": "boolean",
-              "name": "acceptContracts",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Customer contact phone number",
-              "fullType": "string",
-              "name": "contactPhone",
+              "dataType": "pack.xdsl.migration.OfferServiceToDelete[]",
+              "description": "List of domains of services to delete if needed",
+              "fullType": "pack.xdsl.migration.OfferServiceToDelete[]",
+              "name": "subServicesToDelete",
               "paramType": "body",
               "required": false
             },
@@ -1682,7 +1626,63 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "Customer contact phone number",
+              "fullType": "string",
+              "name": "contactPhone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Number of months of re-engagement",
+              "fullType": "long",
+              "name": "engageMonths",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Floor identifier, \"_NA_\" if no identifier is available",
+              "fullType": "string",
+              "name": "floor",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Reference of the Optical Termination Point",
+              "fullType": "string",
+              "name": "otpReference",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Stair identifier, \"_NA_\" if no identifier is available",
+              "fullType": "string",
+              "name": "stair",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Mondial relay ID if a shipping is needed",
+              "fullType": "long",
+              "name": "mondialRelayId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Reference of the new offer",
+              "fullType": "string",
+              "name": "offerName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1708,7 +1708,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1750,7 +1750,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1776,7 +1776,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1802,7 +1802,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1852,7 +1852,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1878,7 +1878,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1903,20 +1903,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Pack name",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "datetime",
               "description": "The desired resiliation date",
               "fullType": "datetime",
               "name": "resiliationDate",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pack",
+              "fullType": "string",
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "pack.xdsl.ResiliationTerms"
@@ -1938,7 +1938,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1958,14 +1958,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -1991,7 +1991,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2016,19 +2016,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Pack name",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "pack.xdsl.ShippingAddressContextEnum",
               "description": "Context",
               "fullType": "pack.xdsl.ShippingAddressContextEnum",
               "name": "context",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pack",
+              "fullType": "string",
+              "name": "packName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2051,7 +2051,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2077,7 +2077,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2103,7 +2103,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2147,7 +2147,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2173,7 +2173,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2199,7 +2199,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2225,7 +2225,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2253,14 +2253,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Subdomain",
-              "fullType": "string",
-              "name": "subdomain",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Domain name",
               "fullType": "string",
               "name": "domain",
@@ -2269,7 +2261,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "Subdomain",
+              "fullType": "string",
+              "name": "subdomain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2295,7 +2295,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2321,17 +2321,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "The internal name of your pack",
               "fullType": "string",
-              "name": "domain",
+              "name": "packName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "",
               "fullType": "string",
-              "name": "packName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             }
@@ -2355,7 +2355,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2363,7 +2363,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -2388,14 +2388,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Pack name",
-              "fullType": "string",
-              "name": "packName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "pack.xdsl.TaskStatusEnum",
               "description": "Filter the value of status property (=)",
               "fullType": "pack.xdsl.TaskStatusEnum",
@@ -2410,6 +2402,14 @@ export const schema: Schema = {
               "name": "function",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pack",
+              "fullType": "string",
+              "name": "packName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -2431,7 +2431,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2439,7 +2439,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2465,7 +2465,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2491,7 +2491,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2511,7 +2511,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2537,25 +2537,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Last name",
-              "fullType": "string",
-              "name": "lastName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Zip code",
               "fullType": "string",
               "name": "zipCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "First name",
-              "fullType": "string",
-              "name": "firstName",
               "paramType": "body",
               "required": true
             },
@@ -2569,6 +2553,22 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "First name",
+              "fullType": "string",
+              "name": "firstName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Last name",
+              "fullType": "string",
+              "name": "lastName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Address, including street name",
               "fullType": "string",
               "name": "address",
@@ -2577,7 +2577,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2603,7 +2603,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2629,7 +2629,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2655,7 +2655,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2683,14 +2683,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Mondial relay ID",
-              "fullType": "string",
-              "name": "mondialRelayId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Shipping ID for the order",
               "fullType": "string",
               "name": "shippingId",
@@ -2699,7 +2691,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "Mondial relay ID",
+              "fullType": "string",
+              "name": "mondialRelayId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2725,7 +2725,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2733,7 +2733,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -2759,7 +2759,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pack name",
+              "description": "The internal name of your pack",
               "fullType": "string",
               "name": "packName",
               "paramType": "path",
@@ -2784,16 +2784,14 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
@@ -2806,15 +2804,13 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "Building name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "nro": {
           "canBeNull": true,
           "description": "Building NRO (Optical main distribution frame)",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -2822,25 +2818,22 @@ export const schema: Schema = {
         "reference": {
           "canBeNull": false,
           "description": "Identifier which refer to a building uniquely",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "stairs": {
           "canBeNull": false,
           "description": "Stairs for this building",
-          "fullType": "connectivity.eligibility.BuildingStair[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.BuildingStair[]"
         },
         "type": {
           "canBeNull": false,
           "description": "Building type",
-          "fullType": "connectivity.eligibility.BuildingTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.BuildingTypeEnum"
         }
       }
@@ -2853,17 +2846,15 @@ export const schema: Schema = {
         "floors": {
           "canBeNull": false,
           "description": "List of floor indentifier, \"_NA_\" if no identifier is available",
-          "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "stair": {
           "canBeNull": false,
           "description": "Stair identifier, \"_NA_\" if no identifier is available",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -3147,23 +3138,20 @@ export const schema: Schema = {
       "properties": {
         "content": {
           "canBeNull": false,
-          "fullType": "text",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "text"
         },
         "name": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "url": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -3196,23 +3184,20 @@ export const schema: Schema = {
       "properties": {
         "currencyCode": {
           "canBeNull": false,
-          "fullType": "order.CurrencyCodeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.CurrencyCodeEnum"
         },
         "text": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "double",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "double"
         }
       }
@@ -3228,7 +3213,6 @@ export const schema: Schema = {
         "error": {
           "canBeNull": true,
           "description": "Error",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -3236,7 +3220,6 @@ export const schema: Schema = {
         "result": {
           "canBeNull": true,
           "description": "Result of the call",
-          "fullType": "T",
           "readOnly": false,
           "required": false,
           "type": "T"
@@ -3244,9 +3227,8 @@ export const schema: Schema = {
         "status": {
           "canBeNull": false,
           "description": "Status of the call",
-          "fullType": "pack.xdsl.AsyncTaskStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.AsyncTaskStatusEnum"
         }
       }
@@ -3270,7 +3252,6 @@ export const schema: Schema = {
         "address": {
           "canBeNull": true,
           "description": "contact address",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -3278,7 +3259,6 @@ export const schema: Schema = {
         "city": {
           "canBeNull": true,
           "description": "contact city",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -3286,23 +3266,20 @@ export const schema: Schema = {
         "country": {
           "canBeNull": false,
           "description": "contact country",
-          "fullType": "nichandle.CountryEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "nichandle.CountryEnum"
         },
         "email": {
           "canBeNull": false,
           "description": "contact email",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "firstname": {
           "canBeNull": true,
           "description": "contact firstname",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -3310,7 +3287,6 @@ export const schema: Schema = {
         "name": {
           "canBeNull": true,
           "description": "contact name",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -3318,7 +3294,6 @@ export const schema: Schema = {
         "organisation": {
           "canBeNull": true,
           "description": "contact organisation",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -3326,7 +3301,6 @@ export const schema: Schema = {
         "phone": {
           "canBeNull": true,
           "description": "contact phone",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -3334,7 +3308,6 @@ export const schema: Schema = {
         "phoneCountry": {
           "canBeNull": true,
           "description": "contact phoneCountry",
-          "fullType": "nichandle.CountryEnum",
           "readOnly": false,
           "required": false,
           "type": "nichandle.CountryEnum"
@@ -3342,7 +3315,6 @@ export const schema: Schema = {
         "zip": {
           "canBeNull": true,
           "description": "contact zip",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -3369,21 +3341,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "exchangeService": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "organizationName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -3397,7 +3369,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -3410,49 +3382,43 @@ export const schema: Schema = {
         "antispamEnabled": {
           "canBeNull": false,
           "description": "Is the anti-spam enabled ?",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "antivirusEnabled": {
           "canBeNull": false,
           "description": "Is the anti-virus enabled ?",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "offer": {
           "canBeNull": false,
           "description": "Offer name",
-          "fullType": "pack.xdsl.HostedEmail.AccountOfferEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.HostedEmail.AccountOfferEnum"
         },
         "primaryEmailAddress": {
           "canBeNull": false,
           "description": "Primary email address",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "quota": {
           "canBeNull": false,
           "description": "Quota of the mailbox",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         },
         "size": {
           "canBeNull": false,
           "description": "Size of the maibox",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         }
       }
@@ -3474,25 +3440,22 @@ export const schema: Schema = {
         "services": {
           "canBeNull": false,
           "description": "List of services configurations",
-          "fullType": "pack.xdsl.HostedEmail.ConfigurationService[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.HostedEmail.ConfigurationService[]"
         },
         "status": {
           "canBeNull": false,
           "description": "Status",
-          "fullType": "pack.xdsl.HostedEmail.ConfigurationStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.HostedEmail.ConfigurationStatusEnum"
         },
         "webmailUrl": {
           "canBeNull": false,
           "description": "Webmail url",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -3505,39 +3468,34 @@ export const schema: Schema = {
         "host": {
           "canBeNull": false,
           "description": "Service host",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "ip": {
           "canBeNull": false,
           "description": "Service IP",
-          "fullType": "ip",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "port": {
           "canBeNull": false,
           "description": "Service port",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "service": {
           "canBeNull": false,
           "description": "Service name",
-          "fullType": "pack.xdsl.HostedEmail.ConfigurationServiceEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.HostedEmail.ConfigurationServiceEnum"
         },
         "smtpAuth": {
           "canBeNull": true,
           "description": "Does the service use SMTP AUTH ?",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -3545,9 +3503,8 @@ export const schema: Schema = {
         "startTls": {
           "canBeNull": false,
           "description": "Does the service use STARTTLS ?",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -3586,7 +3543,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -3601,14 +3558,14 @@ export const schema: Schema = {
           "description": "Size of the hubic account in bytes",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "isUsed": {
@@ -3616,7 +3573,7 @@ export const schema: Schema = {
           "description": "Indicate if the voucher is used or not",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "size": {
@@ -3624,7 +3581,7 @@ export const schema: Schema = {
           "description": "Human readable size of the hubic account",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "voucher": {
@@ -3647,7 +3604,7 @@ export const schema: Schema = {
           "description": "Capabilities of the pack",
           "fullType": "pack.xdsl.PackCapabilities",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.PackCapabilities"
         },
         "description": {
@@ -3663,7 +3620,7 @@ export const schema: Schema = {
           "description": "Name of the offer",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "offerPrice": {
@@ -3671,7 +3628,7 @@ export const schema: Schema = {
           "description": "Price of the offer",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "packName": {
@@ -3679,7 +3636,7 @@ export const schema: Schema = {
           "description": "Name of the xdsl pack",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -3692,18 +3649,58 @@ export const schema: Schema = {
         "canMoveAddress": {
           "canBeNull": false,
           "description": "Whether or not this pack can move address",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isLegacyOffer": {
           "canBeNull": false,
           "description": "Whether or not this pack is from an old offer",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
+        }
+      }
+    },
+    "pack.xdsl.PackDetail": {
+      "description": "Information about pack xdsl",
+      "id": "PackDetail",
+      "namespace": "pack.xdsl",
+      "properties": {
+        "accessname": {
+          "canBeNull": false,
+          "description": "Reference of the access",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the access",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "number": {
+          "canBeNull": false,
+          "description": "Number of the line",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "packname": {
+          "canBeNull": false,
+          "description": "Name of the pack",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of the access",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.DslTypeEnum"
         }
       }
     },
@@ -3715,33 +3712,29 @@ export const schema: Schema = {
         "dateTodo": {
           "canBeNull": false,
           "description": "Date when the resiliation will take effect",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "needModemReturn": {
           "canBeNull": false,
           "description": "If the customer needs to return his modem",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "registrationDate": {
           "canBeNull": false,
           "description": "Date when the resiliation was asked",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
           "canBeNull": false,
           "description": "Status of the resiliation",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -3770,7 +3763,6 @@ export const schema: Schema = {
         "comment": {
           "canBeNull": true,
           "description": "Comment about this resiliation",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -3778,9 +3770,8 @@ export const schema: Schema = {
         "type": {
           "canBeNull": false,
           "description": "Type of reason for the resiliation",
-          "fullType": "pack.xdsl.ResiliationReasonEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.ResiliationReasonEnum"
         }
       }
@@ -3793,15 +3784,13 @@ export const schema: Schema = {
         "due": {
           "canBeNull": false,
           "description": "Price due at resiliationDate",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "engageDate": {
           "canBeNull": true,
           "description": "Date until which the customer is engaged",
-          "fullType": "datetime",
           "readOnly": false,
           "required": false,
           "type": "datetime"
@@ -3809,25 +3798,22 @@ export const schema: Schema = {
         "minResiliationDate": {
           "canBeNull": false,
           "description": "Minimum date at which the pack can be resiliated",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "resiliationDate": {
           "canBeNull": false,
           "description": "Date at which the pack will be resiliated",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "resiliationReasons": {
           "canBeNull": false,
           "description": "List of available resiliation reasons",
-          "fullType": "pack.xdsl.ResiliationReasonEnum[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.ResiliationReasonEnum[]"
         }
       }
@@ -3841,21 +3827,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
           "canBeNull": false,
           "fullType": "double",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "double"
         },
         "type": {
           "canBeNull": false,
           "fullType": "pack.xdsl.ServiceNameEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.ServiceNameEnum"
         }
       }
@@ -3867,30 +3853,26 @@ export const schema: Schema = {
       "properties": {
         "inCreation": {
           "canBeNull": false,
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
           "canBeNull": false,
-          "fullType": "pack.xdsl.ServiceNameEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.ServiceNameEnum"
         },
         "total": {
           "canBeNull": false,
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "used": {
           "canBeNull": false,
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -3929,51 +3911,44 @@ export const schema: Schema = {
       "properties": {
         "address": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "cityName": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "countryCode": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "firstName": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "lastName": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "shippingId": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "zipCode": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -3995,16 +3970,14 @@ export const schema: Schema = {
       "properties": {
         "defaultSubDomain": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "domain": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4016,44 +3989,38 @@ export const schema: Schema = {
       "properties": {
         "bkId": {
           "canBeNull": false,
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "id": {
           "canBeNull": false,
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "previewImg": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "reference": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "thumbImage": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4067,28 +4034,28 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "pack.xdsl.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.TaskStatusEnum"
         },
         "updateDate": {
           "canBeNull": false,
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -4115,33 +4082,29 @@ export const schema: Schema = {
         "isAllowed": {
           "canBeNull": false,
           "description": "Tells whether or not the service can be unpacked",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "price": {
           "canBeNull": false,
           "description": "Price bill on the unpack action",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "renewPeriod": {
           "canBeNull": false,
           "description": "Renew period in month of the service",
-          "fullType": "double",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "double"
         },
         "renewPrice": {
           "canBeNull": false,
           "description": "The price it will cost when it will be renew",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -4153,56 +4116,48 @@ export const schema: Schema = {
       "properties": {
         "deposit": {
           "canBeNull": true,
-          "fullType": "order.Price",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
         },
         "fees": {
           "canBeNull": true,
-          "fullType": "order.Price",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
         },
         "image": {
           "canBeNull": true,
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
         },
         "label": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "max": {
           "canBeNull": true,
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
         },
         "name": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "needShipping": {
           "canBeNull": false,
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "url": {
           "canBeNull": true,
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -4217,30 +4172,26 @@ export const schema: Schema = {
         "needPayment": {
           "canBeNull": false,
           "description": "Whether or not this order need to be payed manually",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "orderId": {
           "canBeNull": false,
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "orderUrl": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "taskIds": {
           "canBeNull": false,
-          "fullType": "long[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long[]"
         }
       }
@@ -4254,14 +4205,14 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4274,17 +4225,15 @@ export const schema: Schema = {
         "address": {
           "canBeNull": false,
           "description": "The address",
-          "fullType": "xdsl.eligibility.Address",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "xdsl.eligibility.Address"
         },
         "meeting": {
           "canBeNull": false,
           "description": "Data to book a meeting slot",
-          "fullType": "xdsl.eligibility.BookMeetingSlot",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "xdsl.eligibility.BookMeetingSlot"
         }
       }
@@ -4297,7 +4246,6 @@ export const schema: Schema = {
         "keepCurrentPortability": {
           "canBeNull": true,
           "description": "Tells if the current number portability can be kept after the address move. Null if no number were ported.",
-          "fullType": "xdsl.eligibility.Portability",
           "readOnly": false,
           "required": false,
           "type": "xdsl.eligibility.Portability"
@@ -4305,9 +4253,8 @@ export const schema: Schema = {
         "offers": {
           "canBeNull": false,
           "description": "The available offers at this address",
-          "fullType": "pack.xdsl.addressMove.Offer[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.addressMove.Offer[]"
         }
       }
@@ -4320,23 +4267,20 @@ export const schema: Schema = {
         "lineNumber": {
           "canBeNull": false,
           "description": "The number of the landline",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "portLineNumber": {
           "canBeNull": false,
           "description": "Whether or not tha lineNumber should be ported to OVH, if eligibile",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "rio": {
           "canBeNull": true,
           "description": "A token to prove the ownership of the line number, needed to port the number",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -4344,17 +4288,15 @@ export const schema: Schema = {
         "status": {
           "canBeNull": false,
           "description": "The status of the landline",
-          "fullType": "xdsl.eligibility.LandlineStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "xdsl.eligibility.LandlineStatusEnum"
         },
         "unbundling": {
           "canBeNull": false,
           "description": "The unbundling of the landline",
-          "fullType": "xdsl.DeconsolidationEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "xdsl.DeconsolidationEnum"
         }
       }
@@ -4367,23 +4309,20 @@ export const schema: Schema = {
         "contracts": {
           "canBeNull": false,
           "description": "Contracts details for this offer",
-          "fullType": "order.Contract[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Contract[]"
         },
         "description": {
           "canBeNull": false,
           "description": "Description of the offer",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engageMonths": {
           "canBeNull": true,
           "description": "Number of months of engagement",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -4391,7 +4330,6 @@ export const schema: Schema = {
         "modemReferenceToReturn": {
           "canBeNull": true,
           "description": "Modem reference (Mac or Serial) to be returned",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -4399,65 +4337,57 @@ export const schema: Schema = {
         "needModem": {
           "canBeNull": false,
           "description": "Tells if the offer needs a modem",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "needNewModem": {
           "canBeNull": false,
           "description": "Tells if the customer will have to change its modem",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "offerName": {
           "canBeNull": false,
           "description": "Name of the offer",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "options": {
           "canBeNull": false,
           "description": "Available options for the migration",
-          "fullType": "pack.xdsl.migration.OfferAvailableOption[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.migration.OfferAvailableOption[]"
         },
         "prices": {
           "canBeNull": false,
           "description": "Prices detailed applicable for this offer",
-          "fullType": "pack.xdsl.addressMove.PriceOffer",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.addressMove.PriceOffer"
         },
         "productCodes": {
           "canBeNull": false,
           "description": "List of product from provider available for an offer",
-          "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "subServicesToDelete": {
           "canBeNull": false,
           "description": "List of sub services to delete",
-          "fullType": "pack.xdsl.migration.SubServiceToDelete[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.migration.SubServiceToDelete[]"
         },
         "url": {
           "canBeNull": false,
           "description": "URL of the offer",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4470,9 +4400,8 @@ export const schema: Schema = {
         "offers": {
           "canBeNull": false,
           "description": "Array of offers",
-          "fullType": "pack.xdsl.addressMove.MoveOffer[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.addressMove.MoveOffer[]"
         }
       }
@@ -4485,47 +4414,41 @@ export const schema: Schema = {
         "address": {
           "canBeNull": false,
           "description": "Address of the landline",
-          "fullType": "xdsl.eligibility.Address",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "xdsl.eligibility.Address"
         },
         "estimatedDownload": {
           "canBeNull": false,
           "description": "The estimated download synchronisation in kbps",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "estimatedUpload": {
           "canBeNull": false,
           "description": "The estimated upload synchronisation in kbps",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lineSectionsLength": {
           "canBeNull": false,
           "description": "Detailed information about the sections between the DSLAM and the telephone jack",
-          "fullType": "xdsl.LineSectionLength[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "xdsl.LineSectionLength[]"
         },
         "lineStatus": {
           "canBeNull": false,
           "description": "The status of the landline",
-          "fullType": "xdsl.eligibility.LandlineStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "xdsl.eligibility.LandlineStatusEnum"
         },
         "meetingSlots": {
           "canBeNull": true,
           "description": "Available meeting slots for the creation of this offer.",
-          "fullType": "xdsl.eligibility.MeetingSlots",
           "readOnly": false,
           "required": false,
           "type": "xdsl.eligibility.MeetingSlots"
@@ -4533,81 +4456,71 @@ export const schema: Schema = {
         "nra": {
           "canBeNull": false,
           "description": "The NRA of the landline",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "offerCode": {
           "canBeNull": false,
           "description": "The code of the offer",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "portability": {
           "canBeNull": false,
           "description": "Tells whether the tested number can be ported to OVH or not",
-          "fullType": "xdsl.eligibility.Portability",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "xdsl.eligibility.Portability"
         },
         "price": {
           "canBeNull": false,
           "description": "The price of this offer",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "provider": {
           "canBeNull": false,
           "description": "Status of the request",
-          "fullType": "xdsl.eligibility.ProviderEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "xdsl.eligibility.ProviderEnum"
         },
         "reseller": {
           "canBeNull": false,
           "description": "Whether this is a reseller offer or not",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "syncDownload": {
           "canBeNull": false,
           "description": "The download synchronisation in kbps",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "syncUpload": {
           "canBeNull": false,
           "description": "The upload synchronisation in kbps",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "type": {
           "canBeNull": false,
           "description": "DSL technology",
-          "fullType": "xdsl.DslTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "xdsl.DslTypeEnum"
         },
         "unbundling": {
           "canBeNull": false,
           "description": "The unbundling type",
-          "fullType": "xdsl.DeconsolidationEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "xdsl.DeconsolidationEnum"
         }
       }
@@ -4620,15 +4533,13 @@ export const schema: Schema = {
         "description": {
           "canBeNull": false,
           "description": "Description of the price",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "price": {
           "canBeNull": true,
           "description": "Price of the offer",
-          "fullType": "order.Price",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
@@ -4643,49 +4554,43 @@ export const schema: Schema = {
         "currentOfferPrice": {
           "canBeNull": false,
           "description": "Price of the current offer",
-          "fullType": "pack.xdsl.addressMove.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.addressMove.Price"
         },
         "due": {
           "canBeNull": false,
           "description": "Upgrade offer price",
-          "fullType": "pack.xdsl.addressMove.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.addressMove.Price"
         },
         "firstYearPromo": {
           "canBeNull": false,
           "description": "Subscription price the first year",
-          "fullType": "pack.xdsl.addressMove.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.addressMove.Price"
         },
         "installFees": {
           "canBeNull": false,
           "description": "Installation fees",
-          "fullType": "pack.xdsl.addressMove.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.addressMove.Price"
         },
         "modemRental": {
           "canBeNull": false,
           "description": "Price for modem rental",
-          "fullType": "pack.xdsl.addressMove.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.addressMove.Price"
         },
         "price": {
           "canBeNull": false,
           "description": "Price of the offer",
-          "fullType": "pack.xdsl.addressMove.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.addressMove.Price"
         }
       }
@@ -4698,39 +4603,34 @@ export const schema: Schema = {
         "contractList": {
           "canBeNull": false,
           "description": "DEPRECATED - List of contracts",
-          "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "contracts": {
           "canBeNull": false,
           "description": "List of contracts for this offer",
-          "fullType": "order.Contract[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Contract[]"
         },
         "currentOfferPrice": {
           "canBeNull": false,
           "description": "Price of the current offer",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "description": {
           "canBeNull": false,
           "description": "Description of the offer",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "due": {
           "canBeNull": true,
           "description": "Price to make the migration",
-          "fullType": "order.Price",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
@@ -4738,7 +4638,6 @@ export const schema: Schema = {
         "engageMonths": {
           "canBeNull": true,
           "description": "Number of months of engagement",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -4746,15 +4645,13 @@ export const schema: Schema = {
         "engagementMonths": {
           "canBeNull": false,
           "description": "List of number of months possible for engagement",
-          "fullType": "long[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long[]"
         },
         "firstYearPromo": {
           "canBeNull": true,
           "description": "Subscription price the first year",
-          "fullType": "order.Price",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
@@ -4762,7 +4659,6 @@ export const schema: Schema = {
         "installFees": {
           "canBeNull": true,
           "description": "Installation fees",
-          "fullType": "order.Price",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
@@ -4770,7 +4666,6 @@ export const schema: Schema = {
         "modemMacToReturn": {
           "canBeNull": true,
           "description": "Mac address of the modem to be returned",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -4778,7 +4673,6 @@ export const schema: Schema = {
         "modemRental": {
           "canBeNull": true,
           "description": "Price for modem rental",
-          "fullType": "order.Price",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
@@ -4786,57 +4680,50 @@ export const schema: Schema = {
         "needModem": {
           "canBeNull": false,
           "description": "Tells if the offer needs a modem",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "needNewModem": {
           "canBeNull": false,
           "description": "Tells if the customer will have to change its modem",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "offerName": {
           "canBeNull": false,
           "description": "Name of the offer",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "options": {
           "canBeNull": false,
           "description": "Available options for the migration",
-          "fullType": "pack.xdsl.migration.OfferAvailableOption[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.migration.OfferAvailableOption[]"
         },
         "price": {
           "canBeNull": false,
           "description": "Price of the offer",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "subServicesToDelete": {
           "canBeNull": false,
           "description": "List of sub services to delete",
-          "fullType": "pack.xdsl.migration.SubServiceToDelete[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.migration.SubServiceToDelete[]"
         },
         "url": {
           "canBeNull": false,
           "description": "URL of the offer",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4849,17 +4736,15 @@ export const schema: Schema = {
         "buildings": {
           "canBeNull": false,
           "description": "Array of buildings",
-          "fullType": "connectivity.eligibility.Building[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "connectivity.eligibility.Building[]"
         },
         "offers": {
           "canBeNull": false,
           "description": "Array of offers",
-          "fullType": "pack.xdsl.migration.MigrationOffer[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.migration.MigrationOffer[]"
         }
       }
@@ -4872,39 +4757,34 @@ export const schema: Schema = {
         "duration": {
           "canBeNull": false,
           "description": "Number of months paid for",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "included": {
           "canBeNull": false,
           "description": "Number of slots included by default in this offer",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
           "canBeNull": false,
           "description": "Name of the option",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "optional": {
           "canBeNull": false,
           "description": "Number of optional slots that can be puchased",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "optionalPrice": {
           "canBeNull": true,
           "description": "Price of an additional slot. You pay this price everytime the duration is expired",
-          "fullType": "order.Price",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
@@ -4919,17 +4799,15 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "Name of the option",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "quantity": {
           "canBeNull": false,
           "description": "Number of slots, couting included slots",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -4942,17 +4820,15 @@ export const schema: Schema = {
         "service": {
           "canBeNull": false,
           "description": "Type of the service",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
           "canBeNull": false,
           "description": "Type of the service to delete",
-          "fullType": "pack.xdsl.ServiceNameEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.ServiceNameEnum"
         }
       }
@@ -4965,25 +4841,22 @@ export const schema: Schema = {
         "numberToDelete": {
           "canBeNull": false,
           "description": "Number of services to be deleted",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "services": {
           "canBeNull": false,
           "description": "List of domains of sub services",
-          "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "type": {
           "canBeNull": false,
           "description": "Type of service to be deleted",
-          "fullType": "pack.xdsl.ServiceNameEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.ServiceNameEnum"
         }
       }
@@ -4996,33 +4869,29 @@ export const schema: Schema = {
         "amount": {
           "canBeNull": false,
           "description": "Amount of the promotion code",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "canGenerate": {
           "canBeNull": false,
           "description": "True if the promotion code generation is available",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "engagement": {
           "canBeNull": false,
           "description": "Number of months of engagement",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "reasonCodes": {
           "canBeNull": false,
           "description": "Enum of the possible errors",
-          "fullType": "pack.xdsl.promotionCode.ReasonCodes[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "pack.xdsl.promotionCode.ReasonCodes[]"
         }
       }
@@ -5048,31 +4917,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -5080,7 +4945,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -5124,42 +4988,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -5173,7 +5037,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -5196,21 +5060,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }
@@ -5247,17 +5111,15 @@ export const schema: Schema = {
         "diameter": {
           "canBeNull": false,
           "description": "The diameter of this section in millimeters",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "length": {
           "canBeNull": false,
           "description": "The length of this section in meters",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -5270,7 +5132,6 @@ export const schema: Schema = {
         "building": {
           "canBeNull": true,
           "description": "Name of the building, if any",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5278,15 +5139,13 @@ export const schema: Schema = {
         "city": {
           "canBeNull": false,
           "description": "Informations about the city",
-          "fullType": "xdsl.eligibility.City",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "xdsl.eligibility.City"
         },
         "door": {
           "canBeNull": true,
           "description": "Identifier of the door, if any",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5294,7 +5153,6 @@ export const schema: Schema = {
         "floor": {
           "canBeNull": true,
           "description": "Identifier of the floor, if any",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5302,7 +5160,6 @@ export const schema: Schema = {
         "logo": {
           "canBeNull": true,
           "description": "Identifier of the historical operator landmark, if any",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5310,7 +5167,6 @@ export const schema: Schema = {
         "owner": {
           "canBeNull": true,
           "description": "Owner of the line, this information can be restricted",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5318,7 +5174,6 @@ export const schema: Schema = {
         "residence": {
           "canBeNull": true,
           "description": "Name of the residence, if any",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5326,7 +5181,6 @@ export const schema: Schema = {
         "stair": {
           "canBeNull": true,
           "description": "Identifier of the stair, if any",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5334,7 +5188,6 @@ export const schema: Schema = {
         "street": {
           "canBeNull": true,
           "description": "Informations about the street",
-          "fullType": "xdsl.eligibility.Street",
           "readOnly": false,
           "required": false,
           "type": "xdsl.eligibility.Street"
@@ -5342,7 +5195,6 @@ export const schema: Schema = {
         "streetNumber": {
           "canBeNull": true,
           "description": "Number on the street",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5357,15 +5209,13 @@ export const schema: Schema = {
         "fakeMeeting": {
           "canBeNull": false,
           "description": "Whether or not to book a fake meeting slots (if no slots are available)",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "meetingSlot": {
           "canBeNull": true,
           "description": "The time slot to book, null if fakeMeeting is true",
-          "fullType": "xdsl.eligibility.MeetingSlot",
           "readOnly": false,
           "required": false,
           "type": "xdsl.eligibility.MeetingSlot"
@@ -5373,7 +5223,6 @@ export const schema: Schema = {
         "name": {
           "canBeNull": true,
           "description": "The name of the customer",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5388,15 +5237,13 @@ export const schema: Schema = {
         "inseeCode": {
           "canBeNull": false,
           "description": "INSEE code of the city",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "locality": {
           "canBeNull": true,
           "description": "Locality (subset of a city)",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5404,17 +5251,15 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "Name of the city",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "zipCode": {
           "canBeNull": false,
           "description": "Zip code of the city",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5427,17 +5272,15 @@ export const schema: Schema = {
         "code": {
           "canBeNull": false,
           "description": "A code identifying the message",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "message": {
           "canBeNull": false,
           "description": "A message",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5460,25 +5303,22 @@ export const schema: Schema = {
         "endDate": {
           "canBeNull": false,
           "description": "The end of the time slot",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "startDate": {
           "canBeNull": false,
           "description": "The beginning of the time slot",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "uiCode": {
           "canBeNull": false,
           "description": "An opaque string that represents an intervention unit",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5491,17 +5331,15 @@ export const schema: Schema = {
         "canBookFakeMeeting": {
           "canBeNull": false,
           "description": "Whether or not it is possible to book a fake meeting",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "meetingSlots": {
           "canBeNull": false,
           "description": "A time slot",
-          "fullType": "xdsl.eligibility.MeetingSlot[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "xdsl.eligibility.MeetingSlot[]"
         }
       }
@@ -5514,33 +5352,29 @@ export const schema: Schema = {
         "comments": {
           "canBeNull": false,
           "description": "The reason(s) of the negative portability eligibility",
-          "fullType": "xdsl.eligibility.CodeAndMessage[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "xdsl.eligibility.CodeAndMessage[]"
         },
         "eligible": {
           "canBeNull": false,
           "description": "Whether or not it is possible to port the line number. If false, commentList contains the reason(s)",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "underCondition": {
           "canBeNull": false,
           "description": "Whether or not the portability is possible under condition. If true, warningList contains the reason(s)",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "warnings": {
           "canBeNull": false,
           "description": "The special condition(s) of the portability",
-          "fullType": "xdsl.eligibility.CodeAndMessage[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "xdsl.eligibility.CodeAndMessage[]"
         }
       }
@@ -5566,17 +5400,15 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "Name of the street",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "rivoliCode": {
           "canBeNull": false,
           "description": "RIVOLI identifier of the street",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5589,9 +5421,8 @@ export const schema: Schema = {
         "email": {
           "canBeNull": false,
           "description": "Mail used for the voucher",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }

@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://api.us.ovhcloud.com:443/1.0/cloud.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Missing description",
@@ -180,7 +180,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -240,17 +240,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Flavor ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "flavorId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Flavor ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "flavorId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -611,17 +611,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -646,17 +646,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             }
@@ -895,17 +895,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -993,17 +993,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             }
@@ -1075,17 +1075,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             }
@@ -1109,17 +1109,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1150,17 +1150,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1184,17 +1184,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             }
@@ -1561,7 +1561,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Migration ID",
+              "description": "Migration id",
               "fullType": "string",
               "name": "migrationId",
               "paramType": "path",
@@ -1597,17 +1597,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Migration id",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "migrationId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Migration ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "migrationId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1747,17 +1747,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Network ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "networkId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Network ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "networkId",
               "paramType": "path",
               "required": true
             }
@@ -1857,17 +1857,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Network ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "networkId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Network ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "networkId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1899,17 +1899,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Subnet ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "subnetId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Subnet ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "subnetId",
               "paramType": "path",
               "required": true
             }
@@ -2124,17 +2124,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Region name",
+              "description": "Service name",
               "fullType": "string",
-              "name": "regionName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Region name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "regionName",
               "paramType": "path",
               "required": true
             }
@@ -2227,17 +2227,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Region name",
+              "description": "Service name",
               "fullType": "string",
-              "name": "regionName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Region name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "regionName",
               "paramType": "path",
               "required": true
             }
@@ -2261,17 +2261,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Region name",
+              "description": "Service name",
               "fullType": "string",
-              "name": "regionName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Region name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "regionName",
               "paramType": "path",
               "required": true
             }
@@ -2296,17 +2296,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Region name",
+              "description": "Service name",
               "fullType": "string",
-              "name": "regionName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Region name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "regionName",
               "paramType": "path",
               "required": true
             }
@@ -2330,17 +2330,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Region name",
+              "description": "Service name",
               "fullType": "string",
-              "name": "regionName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Region name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "regionName",
               "paramType": "path",
               "required": true
             },
@@ -2366,9 +2366,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Backup workflow ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "backupWorkflowId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -2382,9 +2382,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Backup workflow ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "backupWorkflowId",
               "paramType": "path",
               "required": true
             }
@@ -2460,7 +2460,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2480,14 +2480,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2766,17 +2766,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Stack ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "stackId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Stack ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "stackId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2800,17 +2800,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Stack ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "stackId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Stack ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "stackId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3159,17 +3159,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Container ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "containerId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Container ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "containerId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3234,7 +3234,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3340,18 +3340,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "User ID",
-              "fullType": "long",
-              "name": "userId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
               "paramType": "path",
               "required": true
             }
@@ -3535,18 +3535,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "User ID",
-              "fullType": "long",
-              "name": "userId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
               "paramType": "path",
               "required": true
             }
@@ -3641,6 +3641,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Role ID",
+              "fullType": "string",
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
@@ -3652,14 +3660,6 @@ export const schema: Schema = {
               "description": "User ID",
               "fullType": "long",
               "name": "userId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Role ID",
-              "fullType": "string",
-              "name": "roleId",
               "paramType": "path",
               "required": true
             }
@@ -3847,17 +3847,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Snapshot ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "snapshotId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Snapshot ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "snapshotId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4343,6 +4343,19 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.ExecutionState": {
+      "description": "Enum values for State",
+      "enum": [
+        "IDLE",
+        "RUNNING",
+        "SUCCESS",
+        "ERROR",
+        "PAUSED"
+      ],
+      "enumType": "string",
+      "id": "ExecutionState",
+      "namespace": "cloud"
+    },
     "cloud.ExecutionStateEnum": {
       "description": "Enum values for State",
       "enum": [
@@ -4435,6 +4448,18 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.LabStatus": {
+      "description": "Enum values for Status",
+      "enum": [
+        "open",
+        "activating",
+        "activated",
+        "closed"
+      ],
+      "enumType": "string",
+      "id": "LabStatus",
+      "namespace": "cloud"
+    },
     "cloud.LabStatusEnum": {
       "description": "Enum values for Status",
       "enum": [
@@ -4517,6 +4542,19 @@ export const schema: Schema = {
           "type": "cloud.OperationStatusEnum"
         }
       }
+    },
+    "cloud.OperationStatus": {
+      "description": "Enum values for Status",
+      "enum": [
+        "created",
+        "in-progress",
+        "completed",
+        "in-error",
+        "unknown"
+      ],
+      "enumType": "string",
+      "id": "OperationStatus",
+      "namespace": "cloud"
     },
     "cloud.OperationStatusEnum": {
       "description": "Enum values for Status",
@@ -5006,6 +5044,21 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.ProjectMigrationUpdate": {
+      "description": "Missing description",
+      "id": "ProjectMigrationUpdate",
+      "namespace": "cloud",
+      "properties": {
+        "date": {
+          "canBeNull": false,
+          "description": "Migration date (RFC3339)",
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": true,
+          "type": "datetime"
+        }
+      }
+    },
     "cloud.ProjectNetworkPrivateCreation": {
       "description": "Missing description",
       "id": "ProjectNetworkPrivateCreation",
@@ -5104,6 +5157,37 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "ip"
+        }
+      }
+    },
+    "cloud.ProjectNetworkPrivateSubnetUpdate": {
+      "description": "Missing description",
+      "id": "ProjectNetworkPrivateSubnetUpdate",
+      "namespace": "cloud",
+      "properties": {
+        "dhcp": {
+          "canBeNull": false,
+          "description": "Set to true if you don't want to set a default gateway IP",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "disableGateway": {
+          "canBeNull": false,
+          "description": "Set to true if you want to disable the default gateway",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "gatewayIp": {
+          "canBeNull": true,
+          "description": "Gateway IP (this field is used if noGateway = false)",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -5622,6 +5706,18 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.RegionContinent": {
+      "description": "Enum values for ContinentCode",
+      "enum": [
+        "EU",
+        "NA",
+        "US",
+        "ASIA"
+      ],
+      "enumType": "string",
+      "id": "RegionContinent",
+      "namespace": "cloud"
+    },
     "cloud.RegionContinentEnum": {
       "description": "Enum values for ContinentCode",
       "enum": [
@@ -5634,6 +5730,17 @@ export const schema: Schema = {
       "id": "RegionContinentEnum",
       "namespace": "cloud"
     },
+    "cloud.RegionStatus": {
+      "description": "Enum values for Status",
+      "enum": [
+        "UP",
+        "DOWN",
+        "MAINTENANCE"
+      ],
+      "enumType": "string",
+      "id": "RegionStatus",
+      "namespace": "cloud"
+    },
     "cloud.RegionStatusEnum": {
       "description": "Enum values for Status",
       "enum": [
@@ -5643,6 +5750,16 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "RegionStatusEnum",
+      "namespace": "cloud"
+    },
+    "cloud.ServiceStatus": {
+      "description": "Enum values for Status",
+      "enum": [
+        "UP",
+        "DOWN"
+      ],
+      "enumType": "string",
+      "id": "ServiceStatus",
       "namespace": "cloud"
     },
     "cloud.ServiceStatusEnum": {
@@ -5924,6 +6041,907 @@ export const schema: Schema = {
         },
         "name": {
           "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.billingView.BandwidthInstance": {
+      "description": "BandwidthInstance",
+      "id": "BandwidthInstance",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "quantity": {
+          "canBeNull": false,
+          "description": "Total bandwidth in GiB",
+          "fullType": "cloud.billingView.Quantity",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.Quantity"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.BandwidthStorage": {
+      "description": "BandwidthStorage",
+      "id": "BandwidthStorage",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "quantity": {
+          "canBeNull": false,
+          "description": "Total bandwidth in GiB",
+          "fullType": "cloud.billingView.Quantity",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.Quantity"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.Component": {
+      "description": "Component",
+      "id": "Component",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the component",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Total quantity for the component",
+          "fullType": "cloud.billingView.Quantity",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.Quantity"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price for this component",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.HourlyInstance": {
+      "description": "HourlyInstance",
+      "id": "HourlyInstance",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "details": {
+          "canBeNull": false,
+          "description": "Details about hourly instances",
+          "fullType": "cloud.billingView.HourlyInstanceDetail[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.HourlyInstanceDetail[]"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Hours of run instances",
+          "fullType": "cloud.billingView.Quantity",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.Quantity"
+        },
+        "reference": {
+          "canBeNull": false,
+          "description": "Instance reference",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Instance region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.HourlyInstanceBandwidth": {
+      "description": "HourlyInstanceBandwidth",
+      "id": "HourlyInstanceBandwidth",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "incomingBandwidth": {
+          "canBeNull": true,
+          "description": "Instance incoming bandwidth details",
+          "fullType": "cloud.billingView.BandwidthInstance",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.BandwidthInstance"
+        },
+        "outgoingBandwidth": {
+          "canBeNull": true,
+          "description": "Instance outgoing bandwidth details",
+          "fullType": "cloud.billingView.BandwidthInstance",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.BandwidthInstance"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.HourlyInstanceDetail": {
+      "description": "HourlyInstanceDetail",
+      "id": "HourlyInstanceDetail",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "instanceId": {
+          "canBeNull": false,
+          "description": "Instance ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Hours of run instances",
+          "fullType": "cloud.billingView.Quantity",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.Quantity"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.HourlyInstanceOption": {
+      "description": "HourlyInstanceOption",
+      "id": "HourlyInstanceOption",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "details": {
+          "canBeNull": false,
+          "description": "Details about hourly instances option",
+          "fullType": "cloud.billingView.HourlyInstanceOptionDetail[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.HourlyInstanceOptionDetail[]"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Quantity of instance hours running with this option",
+          "fullType": "cloud.billingView.Quantity",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.Quantity"
+        },
+        "reference": {
+          "canBeNull": false,
+          "description": "Instance reference",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Instance region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.HourlyInstanceOptionDetail": {
+      "description": "HourlyInstanceOptionDetail",
+      "id": "HourlyInstanceOptionDetail",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "instanceId": {
+          "canBeNull": false,
+          "description": "Instance ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Quantity of instance hours running with this option",
+          "fullType": "cloud.billingView.Quantity",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.Quantity"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.HourlyResources": {
+      "description": "HourlyResources",
+      "id": "HourlyResources",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "instance": {
+          "canBeNull": false,
+          "description": "Details about hourly instances",
+          "fullType": "cloud.billingView.HourlyInstance[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.HourlyInstance[]"
+        },
+        "instanceBandwidth": {
+          "canBeNull": false,
+          "description": "Details about instances bandwidth consumption",
+          "fullType": "cloud.billingView.HourlyInstanceBandwidth[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.HourlyInstanceBandwidth[]"
+        },
+        "instanceOption": {
+          "canBeNull": false,
+          "description": "Details about hourly instances options",
+          "fullType": "cloud.billingView.HourlyInstanceOption[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.HourlyInstanceOption[]"
+        },
+        "snapshot": {
+          "canBeNull": false,
+          "description": "Details about hourly snapshots",
+          "fullType": "cloud.billingView.HourlySnapshot[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.HourlySnapshot[]"
+        },
+        "storage": {
+          "canBeNull": false,
+          "description": "Details about hourly storage",
+          "fullType": "cloud.billingView.HourlyStorage[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.HourlyStorage[]"
+        },
+        "volume": {
+          "canBeNull": false,
+          "description": "Details about hourly volumes",
+          "fullType": "cloud.billingView.HourlyVolume[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.HourlyVolume[]"
+        }
+      }
+    },
+    "cloud.billingView.HourlySnapshot": {
+      "description": "HourlySnapshot",
+      "id": "HourlySnapshot",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "instance": {
+          "canBeNull": true,
+          "description": "Instance snapshot details",
+          "fullType": "cloud.billingView.InstanceSnapshot",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.InstanceSnapshot"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "volume": {
+          "canBeNull": true,
+          "description": "Volume snapshot details",
+          "fullType": "cloud.billingView.VolumeSnapshot",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.VolumeSnapshot"
+        }
+      }
+    },
+    "cloud.billingView.HourlyStorage": {
+      "description": "HourlyStorage",
+      "id": "HourlyStorage",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "incomingBandwidth": {
+          "canBeNull": true,
+          "description": "Storage incoming bandwidth details",
+          "fullType": "cloud.billingView.BandwidthStorage",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.BandwidthStorage"
+        },
+        "outgoingBandwidth": {
+          "canBeNull": true,
+          "description": "Storage outgoing bandwidth details",
+          "fullType": "cloud.billingView.BandwidthStorage",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.BandwidthStorage"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "stored": {
+          "canBeNull": true,
+          "description": "Information about stored data",
+          "fullType": "cloud.billingView.StoredStorage",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.StoredStorage"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Storage type",
+          "fullType": "cloud.billingView.StorageTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.StorageTypeEnum"
+        }
+      }
+    },
+    "cloud.billingView.HourlyVolume": {
+      "description": "HourlyVolume",
+      "id": "HourlyVolume",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "details": {
+          "canBeNull": false,
+          "description": "Detail about volume consumption",
+          "fullType": "cloud.billingView.HourlyVolumeDetail[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.HourlyVolumeDetail[]"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Total GiBh of volume",
+          "fullType": "cloud.billingView.Quantity",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.Quantity"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Volume type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.billingView.HourlyVolumeDetail": {
+      "description": "HourlyVolumeDetail",
+      "id": "HourlyVolumeDetail",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "quantity": {
+          "canBeNull": false,
+          "description": "GiBh of volume",
+          "fullType": "cloud.billingView.Quantity",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.Quantity"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "volumeId": {
+          "canBeNull": false,
+          "description": "Volume ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.billingView.InstanceSnapshot": {
+      "description": "InstanceSnapshot",
+      "id": "InstanceSnapshot",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "quantity": {
+          "canBeNull": false,
+          "description": "GiBh stored",
+          "fullType": "cloud.billingView.Quantity",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.Quantity"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.MonthlyInstance": {
+      "description": "MonthlyInstance",
+      "id": "MonthlyInstance",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "details": {
+          "canBeNull": false,
+          "description": "Details about monthly instances",
+          "fullType": "cloud.billingView.MonthlyInstanceDetail[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.MonthlyInstanceDetail[]"
+        },
+        "reference": {
+          "canBeNull": false,
+          "description": "Instance reference",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Instance region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.MonthlyInstanceDetail": {
+      "description": "MonthlyInstanceDetail",
+      "id": "MonthlyInstanceDetail",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "activation": {
+          "canBeNull": false,
+          "description": "Monthly instance activation",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "instanceId": {
+          "canBeNull": false,
+          "description": "Instance ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.MonthlyInstanceOption": {
+      "description": "MonthlyInstanceOption",
+      "id": "MonthlyInstanceOption",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "details": {
+          "canBeNull": false,
+          "description": "Details about monthly instances",
+          "fullType": "cloud.billingView.MonthlyInstanceOptionDetail[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.MonthlyInstanceOptionDetail[]"
+        },
+        "reference": {
+          "canBeNull": false,
+          "description": "Instance reference",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Instance region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.MonthlyInstanceOptionDetail": {
+      "description": "MonthlyInstanceOptionDetail",
+      "id": "MonthlyInstanceOptionDetail",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "instanceId": {
+          "canBeNull": false,
+          "description": "Instance ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.MonthlyResources": {
+      "description": "MonthlyResources",
+      "id": "MonthlyResources",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "instance": {
+          "canBeNull": false,
+          "description": "Details about monthly instances",
+          "fullType": "cloud.billingView.MonthlyInstance[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.MonthlyInstance[]"
+        },
+        "instanceOption": {
+          "canBeNull": false,
+          "description": "Details about monthly instances options",
+          "fullType": "cloud.billingView.MonthlyInstanceOption[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.MonthlyInstanceOption[]"
+        }
+      }
+    },
+    "cloud.billingView.Quantity": {
+      "description": "Quantity",
+      "id": "Quantity",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "description": "Quantity unit",
+          "fullType": "cloud.billingView.UnitQuantityEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.UnitQuantityEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Quantity value",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.RegionalizedResource": {
+      "description": "RegionalizedResource",
+      "id": "RegionalizedResource",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "components": {
+          "canBeNull": false,
+          "description": "List of components",
+          "fullType": "cloud.billingView.Component[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.Component[]"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region of the resource",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.billingView.StorageTypeEnum": {
+      "description": "StorageTypeEnum",
+      "enum": [
+        "pcs",
+        "pca"
+      ],
+      "enumType": "string",
+      "id": "StorageTypeEnum",
+      "namespace": "cloud.billingView"
+    },
+    "cloud.billingView.StoredStorage": {
+      "description": "StoredStorage",
+      "id": "StoredStorage",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "quantity": {
+          "canBeNull": false,
+          "description": "GiBh stored",
+          "fullType": "cloud.billingView.Quantity",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.Quantity"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.TypedResources": {
+      "description": "TypedResources",
+      "id": "TypedResources",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "resources": {
+          "canBeNull": false,
+          "description": "Resources per region",
+          "fullType": "cloud.billingView.RegionalizedResource[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.RegionalizedResource[]"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of the resources",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.billingView.UnitQuantityEnum": {
+      "description": "UnitQuantity",
+      "enum": [
+        "GiB",
+        "GiBh",
+        "Hour",
+        "Minute",
+        "Second",
+        "Unit"
+      ],
+      "enumType": "string",
+      "id": "UnitQuantityEnum",
+      "namespace": "cloud.billingView"
+    },
+    "cloud.billingView.UsedCredit": {
+      "description": "UsedCredit",
+      "id": "UsedCredit",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Credit description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Credit ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "usedAmount": {
+          "canBeNull": false,
+          "description": "Total credit used",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.UsedCredits": {
+      "description": "UsedCredits",
+      "id": "UsedCredits",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "details": {
+          "canBeNull": false,
+          "description": "Details about credits that will be used",
+          "fullType": "cloud.billingView.UsedCredit[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.UsedCredit[]"
+        },
+        "totalCredit": {
+          "canBeNull": false,
+          "description": "Total credit that will be used to pay the bill",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.VolumeSnapshot": {
+      "description": "VolumeSnapshot",
+      "id": "VolumeSnapshot",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "quantity": {
+          "canBeNull": false,
+          "description": "GiBh stored",
+          "fullType": "cloud.billingView.Quantity",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.Quantity"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.capabilities.Capability": {
+      "description": "Capability",
+      "id": "Capability",
+      "namespace": "cloud.capabilities",
+      "properties": {
+        "enabled": {
+          "canBeNull": false,
+          "description": "Capability status",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Capability name",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -6688,6 +7706,19 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.instance.MetricsPeriod": {
+      "description": "MetricsPeriod",
+      "enum": [
+        "lastday",
+        "lastmonth",
+        "lastweek",
+        "lastyear",
+        "today"
+      ],
+      "enumType": "string",
+      "id": "MetricsPeriod",
+      "namespace": "cloud.instance"
+    },
     "cloud.instance.MetricsPeriodEnum": {
       "description": "MetricsPeriod",
       "enum": [
@@ -6699,6 +7730,20 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "MetricsPeriodEnum",
+      "namespace": "cloud.instance"
+    },
+    "cloud.instance.MetricsType": {
+      "description": "MetricsType",
+      "enum": [
+        "mem:used",
+        "mem:max",
+        "cpu:used",
+        "cpu:max",
+        "net:tx",
+        "net:rx"
+      ],
+      "enumType": "string",
+      "id": "MetricsType",
       "namespace": "cloud.instance"
     },
     "cloud.instance.MetricsTypeEnum": {
@@ -7117,7 +8162,7 @@ export const schema: Schema = {
           "description": "The planned date of the migration",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "migrationId": {
@@ -7125,7 +8170,7 @@ export const schema: Schema = {
           "description": "Migration Id",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "resourceId": {
@@ -7133,7 +8178,7 @@ export const schema: Schema = {
           "description": "The id of the resource to migrate",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "resourceType": {
@@ -7141,7 +8186,7 @@ export const schema: Schema = {
           "description": "The type of the resource to migrate",
           "fullType": "cloud.migration.ResourceTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloud.migration.ResourceTypeEnum"
         }
       }
@@ -7414,7 +8459,7 @@ export const schema: Schema = {
           "description": "Order creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "orderId": {
@@ -7422,7 +8467,7 @@ export const schema: Schema = {
           "description": "Order id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "planCode": {
@@ -7430,7 +8475,7 @@ export const schema: Schema = {
           "description": "Order plan code",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceName": {
@@ -7445,7 +8490,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "cloud.order.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloud.order.StatusEnum"
         }
       }
@@ -7461,6 +8506,19 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "StatusEnum",
       "namespace": "cloud.order"
+    },
+    "cloud.project.ProjectStatus": {
+      "description": "Possible values for project status",
+      "enum": [
+        "creating",
+        "deleted",
+        "deleting",
+        "ok",
+        "suspended"
+      ],
+      "enumType": "string",
+      "id": "ProjectStatus",
+      "namespace": "cloud.project"
     },
     "cloud.project.ProjectStatusEnum": {
       "description": "Possible values for project status",
@@ -8409,6 +9467,304 @@ export const schema: Schema = {
       "id": "TypeEnum",
       "namespace": "cloud.storage"
     },
+    "cloud.usage.PaymentTypeEnum": {
+      "description": "PaymentTypeEnum",
+      "enum": [
+        "pre",
+        "post"
+      ],
+      "enumType": "string",
+      "id": "PaymentTypeEnum",
+      "namespace": "cloud.usage"
+    },
+    "cloud.usage.Period": {
+      "description": "Period",
+      "id": "Period",
+      "namespace": "cloud.usage",
+      "properties": {
+        "from": {
+          "canBeNull": false,
+          "description": "Usage from",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "to": {
+          "canBeNull": false,
+          "description": "Usage to",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "cloud.usage.UsageBill": {
+      "description": "UsageBill",
+      "id": "UsageBill",
+      "namespace": "cloud.usage",
+      "properties": {
+        "bill_id": {
+          "canBeNull": false,
+          "description": "ID of the bill",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "credit": {
+          "canBeNull": false,
+          "description": "Amount of credits used in this bill (not necessarily on part)",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "part": {
+          "canBeNull": false,
+          "description": "Amount of the bill that accounts for services for the usage period, credits not taken into account",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "payment_type": {
+          "canBeNull": false,
+          "description": "Payment type",
+          "fullType": "cloud.usage.PaymentTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.usage.PaymentTypeEnum"
+        },
+        "total": {
+          "canBeNull": false,
+          "description": "Total amount of the bill, credits not taken into account",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.usage.UsageCurrent": {
+      "description": "UsageCurrent",
+      "id": "UsageCurrent",
+      "namespace": "cloud.usage",
+      "properties": {
+        "hourlyUsage": {
+          "canBeNull": true,
+          "description": "Hourly usage",
+          "fullType": "cloud.billingView.HourlyResources",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.HourlyResources"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Entry last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "monthlyUsage": {
+          "canBeNull": true,
+          "description": "Monthly usage",
+          "fullType": "cloud.billingView.MonthlyResources",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.MonthlyResources"
+        },
+        "period": {
+          "canBeNull": false,
+          "description": "Usage dates (from/to)",
+          "fullType": "cloud.usage.Period",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.usage.Period"
+        },
+        "resourcesUsage": {
+          "canBeNull": true,
+          "description": "Resource usage (billed per hour/minute/second/unit)",
+          "fullType": "cloud.billingView.TypedResources[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.TypedResources[]"
+        }
+      }
+    },
+    "cloud.usage.UsageCurrentBills": {
+      "description": "UsageCurrentBills",
+      "id": "UsageCurrentBills",
+      "namespace": "cloud.usage",
+      "properties": {
+        "bills": {
+          "canBeNull": false,
+          "description": "Bills related to the current usage",
+          "fullType": "cloud.usage.UsageBill[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.usage.UsageBill[]"
+        }
+      }
+    },
+    "cloud.usage.UsageForecast": {
+      "description": "UsageForecast",
+      "id": "UsageForecast",
+      "namespace": "cloud.usage",
+      "properties": {
+        "hourlyUsage": {
+          "canBeNull": true,
+          "description": "Hourly forecast",
+          "fullType": "cloud.billingView.HourlyResources",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.HourlyResources"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Entry last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "monthlyUsage": {
+          "canBeNull": true,
+          "description": "Monthly forecast",
+          "fullType": "cloud.billingView.MonthlyResources",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.MonthlyResources"
+        },
+        "period": {
+          "canBeNull": false,
+          "description": "Forecast dates (from/to)",
+          "fullType": "cloud.usage.Period",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.usage.Period"
+        },
+        "resourcesUsage": {
+          "canBeNull": true,
+          "description": "Resource usage forecast (billed per hour/minute/second/unit)",
+          "fullType": "cloud.billingView.TypedResources[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.TypedResources[]"
+        },
+        "usableCredits": {
+          "canBeNull": true,
+          "description": "Usable credit to pay next bill",
+          "fullType": "cloud.billingView.UsedCredits",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.UsedCredits"
+        }
+      }
+    },
+    "cloud.usage.UsageHistory": {
+      "description": "UsageHistory",
+      "id": "UsageHistory",
+      "namespace": "cloud.usage",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Usage id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Entry last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "period": {
+          "canBeNull": false,
+          "description": "Usage dates (from/to)",
+          "fullType": "cloud.usage.Period",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.usage.Period"
+        }
+      }
+    },
+    "cloud.usage.UsageHistoryDetail": {
+      "description": "UsageHistoryDetail",
+      "id": "UsageHistoryDetail",
+      "namespace": "cloud.usage",
+      "properties": {
+        "hourlyUsage": {
+          "canBeNull": true,
+          "description": "Hourly usage",
+          "fullType": "cloud.billingView.HourlyResources",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.HourlyResources"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Usage id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Entry last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "monthlyUsage": {
+          "canBeNull": true,
+          "description": "Monthly usage",
+          "fullType": "cloud.billingView.MonthlyResources",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.MonthlyResources"
+        },
+        "period": {
+          "canBeNull": false,
+          "description": "Usage dates (from/to)",
+          "fullType": "cloud.usage.Period",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.usage.Period"
+        },
+        "resourcesUsage": {
+          "canBeNull": true,
+          "description": "Resource usage (billed per hour/minute/second/unit)",
+          "fullType": "cloud.billingView.TypedResources[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.TypedResources[]"
+        }
+      }
+    },
+    "cloud.usage.UsageHistoryDetailBills": {
+      "description": "UsageHistoryDetailBills",
+      "id": "UsageHistoryDetailBills",
+      "namespace": "cloud.usage",
+      "properties": {
+        "bills": {
+          "canBeNull": false,
+          "description": "Bills related to the usage",
+          "fullType": "cloud.usage.UsageBill[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.usage.UsageBill[]"
+        }
+      }
+    },
     "cloud.user.Openrc": {
       "description": "Openrc",
       "id": "Openrc",
@@ -8804,31 +10160,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -8836,7 +10188,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8915,42 +10266,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -8964,7 +10315,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -8987,21 +10338,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

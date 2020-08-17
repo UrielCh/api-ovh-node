@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://api.us.ovhcloud.com:443/1.0/services.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Get list of your service details",
@@ -37,7 +37,7 @@ export const schema: Schema = {
             {
               "dataType": "long",
               "description": "Service ID",
-              "fullType": "long",
+              "fullType": "coreTypes.ServiceId:long",
               "name": "serviceId",
               "paramType": "path",
               "required": true
@@ -63,7 +63,7 @@ export const schema: Schema = {
             {
               "dataType": "long",
               "description": "Service ID",
-              "fullType": "long",
+              "fullType": "coreTypes.ServiceId:long",
               "name": "serviceId",
               "paramType": "path",
               "required": true
@@ -89,7 +89,7 @@ export const schema: Schema = {
             {
               "dataType": "long",
               "description": "Service ID",
-              "fullType": "long",
+              "fullType": "coreTypes.ServiceId:long",
               "name": "serviceId",
               "paramType": "path",
               "required": true
@@ -113,19 +113,186 @@ export const schema: Schema = {
       "properties": {
         "key": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
+    },
+    "order.CurrencyCodeEnum": {
+      "enum": [
+        "AUD",
+        "CAD",
+        "CZK",
+        "EUR",
+        "GBP",
+        "LTL",
+        "MAD",
+        "N/A",
+        "PLN",
+        "SGD",
+        "TND",
+        "USD",
+        "XOF",
+        "points"
+      ],
+      "enumType": "string",
+      "id": "CurrencyCodeEnum",
+      "namespace": "order"
+    },
+    "order.Price": {
+      "description": "Price with it's currency and textual representation",
+      "id": "Price",
+      "namespace": "order",
+      "properties": {
+        "currencyCode": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "order.CurrencyCodeEnum"
+        },
+        "text": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "services.billing.Invoice": {
+      "description": "Invoice details",
+      "id": "Invoice",
+      "namespace": "services.billing",
+      "properties": {
+        "date": {
+          "canBeNull": false,
+          "description": "Invoice date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Invoice reference",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "lines": {
+          "canBeNull": false,
+          "description": "Invoice details",
+          "fullType": "services.billing.InvoiceLine[]",
+          "readOnly": true,
+          "required": false,
+          "type": "services.billing.InvoiceLine[]"
+        }
+      }
+    },
+    "services.billing.InvoiceLine": {
+      "description": "Item details",
+      "id": "InvoiceLine",
+      "namespace": "services.billing",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of item",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "periodEnd": {
+          "canBeNull": true,
+          "description": "End period",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "periodStart": {
+          "canBeNull": true,
+          "description": "Start period",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Price without tax",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Quantity of item",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Associated service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Price with tax",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of item",
+          "fullType": "services.billing.InvoiceLineTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "services.billing.InvoiceLineTypeEnum"
+        }
+      }
+    },
+    "services.billing.InvoiceLineTypeEnum": {
+      "description": "Type of line",
+      "enum": [
+        "accessory",
+        "consumption",
+        "creation",
+        "deposit",
+        "duration",
+        "gift",
+        "installation",
+        "misc",
+        "other",
+        "outplan",
+        "quantity",
+        "special",
+        "voucher"
+      ],
+      "enumType": "string",
+      "id": "InvoiceLineTypeEnum",
+      "namespace": "services.billing"
     },
     "services.billing.engagement.Engagement": {
       "description": "Description of an Engagement",
@@ -137,7 +304,7 @@ export const schema: Schema = {
           "description": "Current engagement period",
           "fullType": "services.billing.engagement.EngagementPeriod",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "services.billing.engagement.EngagementPeriod"
         }
       }
@@ -160,7 +327,7 @@ export const schema: Schema = {
           "description": "Beginning of the period",
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         }
       }
@@ -206,7 +373,7 @@ export const schema: Schema = {
           "description": "Plan code",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "invoiceName": {
@@ -214,7 +381,7 @@ export const schema: Schema = {
           "description": "Invoice Name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -229,7 +396,7 @@ export const schema: Schema = {
           "description": "Product description",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -237,7 +404,7 @@ export const schema: Schema = {
           "description": "Product name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -252,7 +419,7 @@ export const schema: Schema = {
           "description": "Display name of the resource",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -260,7 +427,7 @@ export const schema: Schema = {
           "description": "Name of the resource",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "product": {
@@ -299,7 +466,7 @@ export const schema: Schema = {
           "description": "Variables to use in the path",
           "fullType": "complexType.SafeKeyValue<string>[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.SafeKeyValue<string>[]"
         }
       }
@@ -314,7 +481,7 @@ export const schema: Schema = {
           "description": "Billing information",
           "fullType": "services.expanded.Billing",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "services.expanded.Billing"
         },
         "parentServiceId": {
@@ -323,14 +490,14 @@ export const schema: Schema = {
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
           "required": false,
-          "type": "coreTypes.ServiceId:long"
+          "type": "long"
         },
         "resource": {
           "canBeNull": false,
           "description": "Resource",
           "fullType": "services.expanded.Resource",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "services.expanded.Resource"
         },
         "route": {
@@ -346,8 +513,8 @@ export const schema: Schema = {
           "description": "Service ID",
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         }
       }
     }

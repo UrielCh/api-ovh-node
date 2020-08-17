@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/partners.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Company.list",
@@ -30,99 +30,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Company's twitter url, must resemble \"https://twitter.com/ovh\")",
+              "description": "Name of the company",
               "fullType": "string",
-              "name": "twitter",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "Partner.technicalAdvancedResourcesRangeEnum",
-              "description": "Estimation of the number of resources that have technical skills on OVH solutions the company has",
-              "fullType": "Partner.technicalAdvancedResourcesRangeEnum",
-              "name": "OVHTechnicalAdvancedResources",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "Partner.externalCertifications",
-              "description": "Certifications obtained from other enterprises",
-              "fullType": "Partner.externalCertifications",
-              "name": "externalCertifications",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "Partner.partnerKnowledges",
-              "description": "How did you heard about the OVH's partnership program",
-              "fullType": "Partner.partnerKnowledges",
-              "name": "partnerKnowledges",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Company's city",
-              "fullType": "string",
-              "name": "city",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "Partner.employeesNumberEnum",
-              "description": "Estimation of the number of employees",
-              "fullType": "Partner.employeesNumberEnum",
-              "name": "employeesNumber",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "Partner.revenueRangeEnum",
-              "description": "Estimation of the revenue of the company",
-              "fullType": "Partner.revenueRangeEnum",
-              "name": "revenue",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "Partner.OVHCustomersAdvisedEnum",
-              "description": "Estimation of the number of accompanied customers in using OVH's solutions",
-              "fullType": "Partner.OVHCustomersAdvisedEnum",
-              "name": "OVHCustomersAdvised",
+              "name": "name",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Company's linkedin url, must resemble \"https://www.linkedin.com/in/ovh\")",
+              "description": "The commercial name of the company",
               "fullType": "string",
-              "name": "linkedin",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Company's logo url",
-              "fullType": "string",
-              "name": "logo",
+              "name": "commercialName",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "Partner.clientKinds",
-              "description": "Kind of client the company target",
-              "fullType": "Partner.clientKinds",
-              "name": "clientKinds",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "Partner.productCountries",
-              "description": "In which country the company products of solutions are available",
-              "fullType": "Partner.productCountries",
-              "name": "productCountries",
-              "paramType": "body",
-              "required": false
             },
             {
               "dataType": "string",
@@ -142,57 +62,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Company's email",
+              "description": "Company's city",
               "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Company's facebook url, must resemble \"https://www.facebook.com/ovh\")",
-              "fullType": "string",
-              "name": "facebook",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Company's summary",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "Partner.technicalExpertResourcesRangeEnum",
-              "description": "Estimation of the number of expert resources for OVH solutions the company has",
-              "fullType": "Partner.technicalExpertResourcesRangeEnum",
-              "name": "OVHTechnicalExpertResources",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "Partner.activitySectors",
-              "description": "Company's sector of activity",
-              "fullType": "Partner.activitySectors",
-              "name": "activitySectors",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Name of the company",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The commercial name of the company",
-              "fullType": "string",
-              "name": "commercialName",
+              "name": "city",
               "paramType": "body",
               "required": true
             },
@@ -214,9 +86,113 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Company's phone",
+              "fullType": "string",
+              "name": "phone",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Company's website",
               "fullType": "string",
               "name": "website",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Company's summary",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Company's email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Company's linkedin url, must resemble \"https://www.linkedin.com/in/ovh\")",
+              "fullType": "string",
+              "name": "linkedin",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Company's facebook url, must resemble \"https://www.facebook.com/ovh\")",
+              "fullType": "string",
+              "name": "facebook",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Company's twitter url, must resemble \"https://twitter.com/ovh\")",
+              "fullType": "string",
+              "name": "twitter",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Company's logo url",
+              "fullType": "string",
+              "name": "logo",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "Partner.employeesNumberEnum",
+              "description": "Estimation of the number of employees",
+              "fullType": "Partner.employeesNumberEnum",
+              "name": "employeesNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "Partner.revenueRangeEnum",
+              "description": "Estimation of the revenue of the company",
+              "fullType": "Partner.revenueRangeEnum",
+              "name": "revenue",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "Partner.knowledgeResourcesRangeEnum",
+              "description": "Estimation of the number of resources knowing OVH product the company has",
+              "fullType": "Partner.knowledgeResourcesRangeEnum",
+              "name": "OVHKnowledgeResources",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "Partner.technicalAdvancedResourcesRangeEnum",
+              "description": "Estimation of the number of resources that have technical skills on OVH solutions the company has",
+              "fullType": "Partner.technicalAdvancedResourcesRangeEnum",
+              "name": "OVHTechnicalAdvancedResources",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "Partner.technicalExpertResourcesRangeEnum",
+              "description": "Estimation of the number of expert resources for OVH solutions the company has",
+              "fullType": "Partner.technicalExpertResourcesRangeEnum",
+              "name": "OVHTechnicalExpertResources",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "Partner.OVHCustomersAdvisedEnum",
+              "description": "Estimation of the number of accompanied customers in using OVH's solutions",
+              "fullType": "Partner.OVHCustomersAdvisedEnum",
+              "name": "OVHCustomersAdvised",
               "paramType": "body",
               "required": true
             },
@@ -237,14 +213,6 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "Partner.knowledgeResourcesRangeEnum",
-              "description": "Estimation of the number of resources knowing OVH product the company has",
-              "fullType": "Partner.knowledgeResourcesRangeEnum",
-              "name": "OVHKnowledgeResources",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "Partner.OVHProductsUsed",
               "description": "OVH's product the company's solutions relies on",
               "fullType": "Partner.OVHProductsUsed",
@@ -253,12 +221,44 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Company's phone",
-              "fullType": "string",
-              "name": "phone",
+              "dataType": "Partner.clientKinds",
+              "description": "Kind of client the company target",
+              "fullType": "Partner.clientKinds",
+              "name": "clientKinds",
               "paramType": "body",
-              "required": true
+              "required": false
+            },
+            {
+              "dataType": "Partner.activitySectors",
+              "description": "Company's sector of activity",
+              "fullType": "Partner.activitySectors",
+              "name": "activitySectors",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "Partner.productCountries",
+              "description": "In which country the company products of solutions are available",
+              "fullType": "Partner.productCountries",
+              "name": "productCountries",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "Partner.externalCertifications",
+              "description": "Certifications obtained from other enterprises",
+              "fullType": "Partner.externalCertifications",
+              "name": "externalCertifications",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "Partner.partnerKnowledges",
+              "description": "How did you heard about the OVH's partnership program",
+              "fullType": "Partner.partnerKnowledges",
+              "name": "partnerKnowledges",
+              "paramType": "body",
+              "required": false
             }
           ],
           "responseType": "Partner.Company"
@@ -280,7 +280,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Company ID",
+              "description": "Company's id",
               "fullType": "string",
               "name": "companyId",
               "paramType": "path",
@@ -300,7 +300,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Company ID",
+              "description": "Company's id",
               "fullType": "string",
               "name": "companyId",
               "paramType": "path",
@@ -320,121 +320,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Company's street address",
+              "description": "Company's id",
               "fullType": "string",
-              "name": "address",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Company's zipCode",
-              "fullType": "string",
-              "name": "zipCode",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Company's registration number",
-              "fullType": "string",
-              "name": "registrationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Company's linkedin url, must resemble \"https://www.linkedin.com/in/ovh\")",
-              "fullType": "string",
-              "name": "linkedin",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "Partner.employeesNumberEnum",
-              "description": "Estimation of the number of employees",
-              "fullType": "Partner.employeesNumberEnum",
-              "name": "effective",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "Partner.OVHCertifications",
-              "description": "OVH certification acquired",
-              "fullType": "Partner.OVHCertifications",
-              "name": "OVHCertifications",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "Partner.partnerKnowledges",
-              "description": "How did you heard about the OVH's partnership program",
-              "fullType": "Partner.partnerKnowledges",
-              "name": "partnerKnowledges",
-              "paramType": "body",
-              "required": false
+              "name": "companyId",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
               "description": "Name of the company",
               "fullType": "string",
               "name": "name",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Company's phone",
-              "fullType": "string",
-              "name": "phone",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Company's logo url",
-              "fullType": "string",
-              "name": "logo",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "Partner.knowledgeResourcesRangeEnum",
-              "description": "Estimation of the number of resources knowing OVH product the company has",
-              "fullType": "Partner.knowledgeResourcesRangeEnum",
-              "name": "OVHKnowledgeResources",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "Partner.expertisesChoices",
-              "description": "Company's domain of competence",
-              "fullType": "Partner.expertisesChoices",
-              "name": "expertises",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "Partner.OVHCustomersAdvisedEnum",
-              "description": "Estimation of the number of accompanied customers in using OVH's solutions",
-              "fullType": "Partner.OVHCustomersAdvisedEnum",
-              "name": "OVHCustomersAdvised",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "Partner.activitySectors",
-              "description": "Company's sector of activity",
-              "fullType": "Partner.activitySectors",
-              "name": "activitySectors",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "Partner.productCountries",
-              "description": "In which country the company products of solutions are available",
-              "fullType": "Partner.productCountries",
-              "name": "productCountries",
               "paramType": "body",
               "required": false
             },
@@ -448,9 +344,49 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Company's registration number",
+              "fullType": "string",
+              "name": "registrationNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Company's street address",
+              "fullType": "string",
+              "name": "address",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Company's city",
               "fullType": "string",
               "name": "city",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Company's zipCode",
+              "fullType": "string",
+              "name": "zipCode",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": "Company's country",
+              "fullType": "nichandle.CountryEnum",
+              "name": "country",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Company's phone",
+              "fullType": "string",
+              "name": "phone",
               "paramType": "body",
               "required": false
             },
@@ -464,30 +400,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Company's email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "Partner.revenueRangeEnum",
-              "description": "Estimation of the revenue of the company",
-              "fullType": "Partner.revenueRangeEnum",
-              "name": "revenue",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "Partner.technicalExpertResourcesRangeEnum",
-              "description": "Estimation of the number of expert resources for OVH solutions the company has",
-              "fullType": "Partner.technicalExpertResourcesRangeEnum",
-              "name": "OVHTechnicalExpertResources",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Company's summary",
               "fullType": "string",
               "name": "description",
@@ -495,26 +407,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "Partner.clientKinds",
-              "description": "Kind of client the company target",
-              "fullType": "Partner.clientKinds",
-              "name": "clientKinds",
+              "dataType": "string",
+              "description": "Company's email",
+              "fullType": "string",
+              "name": "email",
               "paramType": "body",
               "required": false
             },
             {
-              "dataType": "Partner.externalCertifications",
-              "description": "Certifications obtained from other enterprises",
-              "fullType": "Partner.externalCertifications",
-              "name": "externalCertifications",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Company's country",
-              "fullType": "nichandle.CountryEnum",
-              "name": "country",
+              "dataType": "string",
+              "description": "Company's linkedin url, must resemble \"https://www.linkedin.com/in/ovh\")",
+              "fullType": "string",
+              "name": "linkedin",
               "paramType": "body",
               "required": false
             },
@@ -535,10 +439,74 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "string",
+              "description": "Company's logo url",
+              "fullType": "string",
+              "name": "logo",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "Partner.employeesNumberEnum",
+              "description": "Estimation of the number of employees",
+              "fullType": "Partner.employeesNumberEnum",
+              "name": "effective",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "Partner.revenueRangeEnum",
+              "description": "Estimation of the revenue of the company",
+              "fullType": "Partner.revenueRangeEnum",
+              "name": "revenue",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "Partner.knowledgeResourcesRangeEnum",
+              "description": "Estimation of the number of resources knowing OVH product the company has",
+              "fullType": "Partner.knowledgeResourcesRangeEnum",
+              "name": "OVHKnowledgeResources",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "Partner.technicalAdvancedResourcesRangeEnum",
               "description": "Estimation of the number of resources that have technical skills on OVH solutions the company has",
               "fullType": "Partner.technicalAdvancedResourcesRangeEnum",
               "name": "OVHTechnicalAdvancedResources",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "Partner.technicalExpertResourcesRangeEnum",
+              "description": "Estimation of the number of expert resources for OVH solutions the company has",
+              "fullType": "Partner.technicalExpertResourcesRangeEnum",
+              "name": "OVHTechnicalExpertResources",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "Partner.expertisesChoices",
+              "description": "Company's domain of competence",
+              "fullType": "Partner.expertisesChoices",
+              "name": "expertises",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "Partner.OVHCertifications",
+              "description": "OVH certification acquired",
+              "fullType": "Partner.OVHCertifications",
+              "name": "OVHCertifications",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "Partner.OVHCustomersAdvisedEnum",
+              "description": "Estimation of the number of accompanied customers in using OVH's solutions",
+              "fullType": "Partner.OVHCustomersAdvisedEnum",
+              "name": "OVHCustomersAdvised",
               "paramType": "body",
               "required": false
             },
@@ -551,12 +519,44 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Company ID",
-              "fullType": "string",
-              "name": "companyId",
-              "paramType": "path",
-              "required": true
+              "dataType": "Partner.clientKinds",
+              "description": "Kind of client the company target",
+              "fullType": "Partner.clientKinds",
+              "name": "clientKinds",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "Partner.activitySectors",
+              "description": "Company's sector of activity",
+              "fullType": "Partner.activitySectors",
+              "name": "activitySectors",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "Partner.productCountries",
+              "description": "In which country the company products of solutions are available",
+              "fullType": "Partner.productCountries",
+              "name": "productCountries",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "Partner.externalCertifications",
+              "description": "Certifications obtained from other enterprises",
+              "fullType": "Partner.externalCertifications",
+              "name": "externalCertifications",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "Partner.partnerKnowledges",
+              "description": "How did you heard about the OVH's partnership program",
+              "fullType": "Partner.partnerKnowledges",
+              "name": "partnerKnowledges",
+              "paramType": "body",
+              "required": false
             }
           ],
           "responseType": "Partner.Company"
@@ -578,7 +578,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Company ID",
+              "description": "Company's id",
               "fullType": "string",
               "name": "companyId",
               "paramType": "path",
@@ -597,19 +597,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Company's id",
+              "fullType": "string",
+              "name": "companyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "boolean",
               "description": "I have read the terms and conditions of the OVH partner program and accept them",
               "fullType": "boolean",
               "name": "termsAndConditionsOfServiceAccepted",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Company ID",
-              "fullType": "string",
-              "name": "companyId",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -632,7 +632,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Company ID",
+              "description": "Company's id",
               "fullType": "string",
               "name": "companyId",
               "paramType": "path",
@@ -652,11 +652,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Contact's twitter url, must resemble \"https://twitter.com/ovh\")",
+              "description": "Company's id",
               "fullType": "string",
-              "name": "twitter",
-              "paramType": "body",
-              "required": false
+              "name": "companyId",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "Partner.Nic[]",
@@ -684,25 +684,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Contact's function in the company",
+              "description": "Contact's email",
               "fullType": "string",
-              "name": "role",
+              "name": "email",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Contact's linkedin url, must resemble \"https://www.linkedin.com/in/ovh\")",
+              "description": "Contact's function in the company",
               "fullType": "string",
-              "name": "linkedin",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Contact's email",
-              "fullType": "string",
-              "name": "email",
+              "name": "role",
               "paramType": "body",
               "required": true
             },
@@ -716,9 +708,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Contact's linkedin url, must resemble \"https://www.linkedin.com/in/ovh\")",
+              "fullType": "string",
+              "name": "linkedin",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Contact's facebook url, must resemble \"https://www.facebook.com/ovh\")",
               "fullType": "string",
               "name": "facebook",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Contact's twitter url, must resemble \"https://twitter.com/ovh\")",
+              "fullType": "string",
+              "name": "twitter",
               "paramType": "body",
               "required": false
             },
@@ -729,14 +737,6 @@ export const schema: Schema = {
               "name": "newsletter",
               "paramType": "body",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Company ID",
-              "fullType": "string",
-              "name": "companyId",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "Partner.Contact"
@@ -758,17 +758,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Contact ID",
+              "description": "Company's id",
               "fullType": "string",
-              "name": "contactId",
+              "name": "companyId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Company ID",
+              "description": "Contact's id",
               "fullType": "string",
-              "name": "companyId",
+              "name": "contactId",
               "paramType": "path",
               "required": true
             }
@@ -786,7 +786,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Company ID",
+              "description": "Company's id",
               "fullType": "string",
               "name": "companyId",
               "paramType": "path",
@@ -794,7 +794,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Contact ID",
+              "description": "Contact's id",
               "fullType": "string",
               "name": "contactId",
               "paramType": "path",
@@ -813,34 +813,26 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Company's id",
+              "fullType": "string",
+              "name": "companyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Contact's id",
+              "fullType": "string",
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "Partner.Nic[]",
               "description": "List of nics to associate with this contact",
               "fullType": "Partner.Nic[]",
               "name": "otherNics",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Contact's phone number",
-              "fullType": "string",
-              "name": "phone",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Contact's linkedin url, must resemble \"https://www.linkedin.com/in/ovh\")",
-              "fullType": "string",
-              "name": "linkedin",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Contact's facebook url, must resemble \"https://www.facebook.com/ovh\")",
-              "fullType": "string",
-              "name": "facebook",
               "paramType": "body",
               "required": false
             },
@@ -878,6 +870,30 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Contact's phone number",
+              "fullType": "string",
+              "name": "phone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Contact's linkedin url, must resemble \"https://www.linkedin.com/in/ovh\")",
+              "fullType": "string",
+              "name": "linkedin",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Contact's facebook url, must resemble \"https://www.facebook.com/ovh\")",
+              "fullType": "string",
+              "name": "facebook",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Contact's twitter url, must resemble \"https://twitter.com/ovh\")",
               "fullType": "string",
               "name": "twitter",
@@ -891,22 +907,6 @@ export const schema: Schema = {
               "name": "newsletter",
               "paramType": "body",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Company ID",
-              "fullType": "string",
-              "name": "companyId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Contact ID",
-              "fullType": "string",
-              "name": "contactId",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "Partner.Contact"
@@ -927,7 +927,7 @@ export const schema: Schema = {
           "description": "You are eligible for the OVH Services Program Partners (OSPP) with the following tiering level",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -942,7 +942,7 @@ export const schema: Schema = {
           "description": "OVH certification acquired",
           "fullType": "Partner.OVHCertifications",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "Partner.OVHCertifications"
         },
         "OVHCustomersAdvised": {
@@ -950,7 +950,7 @@ export const schema: Schema = {
           "description": "Estimation of the number of accompanied customers in using OVH's solutions",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "OVHKnowledgeResources": {
@@ -958,7 +958,7 @@ export const schema: Schema = {
           "description": "Estimation of the number of resources knowing OVH product the company has",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "OVHProductsUsed": {
@@ -966,7 +966,7 @@ export const schema: Schema = {
           "description": "OVH's product the company's solutions relies on",
           "fullType": "Partner.OVHProductsUsed",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "Partner.OVHProductsUsed"
         },
         "OVHTechnicalAdvancedResources": {
@@ -974,7 +974,7 @@ export const schema: Schema = {
           "description": "Estimation of the number of resources that have technical skills on OVH solutions the company has",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "OVHTechnicalExpertResources": {
@@ -982,7 +982,7 @@ export const schema: Schema = {
           "description": "Estimation of the number of expert resources for OVH solutions the company has",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "activitySectors": {
@@ -990,7 +990,7 @@ export const schema: Schema = {
           "description": "Company's sector of activity",
           "fullType": "Partner.activitySectors",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "Partner.activitySectors"
         },
         "address": {
@@ -998,7 +998,7 @@ export const schema: Schema = {
           "description": "Company's street address",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "city": {
@@ -1006,7 +1006,7 @@ export const schema: Schema = {
           "description": "Company's city",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "clientKinds": {
@@ -1014,7 +1014,7 @@ export const schema: Schema = {
           "description": "Kind of client the company target",
           "fullType": "Partner.clientKinds",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "Partner.clientKinds"
         },
         "commercialName": {
@@ -1022,7 +1022,7 @@ export const schema: Schema = {
           "description": "The commercial name of the company",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "country": {
@@ -1030,7 +1030,7 @@ export const schema: Schema = {
           "description": "Company's country",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "description": {
@@ -1038,7 +1038,7 @@ export const schema: Schema = {
           "description": "Company's summary",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "email": {
@@ -1046,7 +1046,7 @@ export const schema: Schema = {
           "description": "Company's email",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "employeesNumber": {
@@ -1054,7 +1054,7 @@ export const schema: Schema = {
           "description": "Estimation of the number of employees",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "expertises": {
@@ -1062,7 +1062,7 @@ export const schema: Schema = {
           "description": "Company's domain of competence",
           "fullType": "Partner.expertisesChoices",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "Partner.expertisesChoices"
         },
         "externalCertifications": {
@@ -1070,7 +1070,7 @@ export const schema: Schema = {
           "description": "Certifications obtained from other enterprises",
           "fullType": "Partner.externalCertifications",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "Partner.externalCertifications"
         },
         "facebook": {
@@ -1078,7 +1078,7 @@ export const schema: Schema = {
           "description": "Company's facebook profile url",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "linkedin": {
@@ -1086,7 +1086,7 @@ export const schema: Schema = {
           "description": "Company's linkedin profile url",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "logo": {
@@ -1094,7 +1094,7 @@ export const schema: Schema = {
           "description": "Company's logo",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -1102,7 +1102,7 @@ export const schema: Schema = {
           "description": "Name of the company",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "partnerKnowledges": {
@@ -1110,7 +1110,7 @@ export const schema: Schema = {
           "description": "How did you heard about the OVH's partnership program",
           "fullType": "Partner.partnerKnowledges",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "Partner.partnerKnowledges"
         },
         "phone": {
@@ -1118,7 +1118,7 @@ export const schema: Schema = {
           "description": "Company's phone number",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "productCountries": {
@@ -1126,7 +1126,7 @@ export const schema: Schema = {
           "description": "In which country the company products of solutions are available",
           "fullType": "Partner.productCountries",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "Partner.productCountries"
         },
         "registrationNumber": {
@@ -1134,7 +1134,7 @@ export const schema: Schema = {
           "description": "Company's registration number",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "revenue": {
@@ -1142,7 +1142,7 @@ export const schema: Schema = {
           "description": "Estimation of the revenue of the company",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -1150,7 +1150,7 @@ export const schema: Schema = {
           "description": "Registration status ",
           "fullType": "Partner.companyStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "Partner.companyStatusEnum"
         },
         "twitter": {
@@ -1158,7 +1158,7 @@ export const schema: Schema = {
           "description": "Company's twitter profile url",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "website": {
@@ -1166,7 +1166,7 @@ export const schema: Schema = {
           "description": "Company's website",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "zipCode": {
@@ -1174,7 +1174,7 @@ export const schema: Schema = {
           "description": "Company's zipCode",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1189,7 +1189,7 @@ export const schema: Schema = {
           "description": "Contact's email",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "facebook": {
@@ -1205,7 +1205,7 @@ export const schema: Schema = {
           "description": "Contact's first name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "lastName": {
@@ -1213,7 +1213,7 @@ export const schema: Schema = {
           "description": "Contact's last name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "linkedin": {
@@ -1229,7 +1229,7 @@ export const schema: Schema = {
           "description": "Newsletter subscription choice",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "otherNics": {
@@ -1237,7 +1237,7 @@ export const schema: Schema = {
           "description": "List of nics to associate with this contact",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "phone": {
@@ -1245,7 +1245,7 @@ export const schema: Schema = {
           "description": "Contact's phone number",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "role": {
@@ -1253,7 +1253,7 @@ export const schema: Schema = {
           "description": "Contact's function in the company",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "twitter": {
@@ -1276,7 +1276,7 @@ export const schema: Schema = {
           "description": "Nic",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1335,7 +1335,7 @@ export const schema: Schema = {
           "description": "Cloud solutions",
           "fullType": "Partner.OVHProductsUsedCloud",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "Partner.OVHProductsUsedCloud"
         },
         "mobileHosting": {
@@ -1343,7 +1343,7 @@ export const schema: Schema = {
           "description": "Mobile Hosting solutions",
           "fullType": "Partner.OVHProductsUsedMobileHosting",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "Partner.OVHProductsUsedMobileHosting"
         },
         "telecom": {
@@ -1351,7 +1351,7 @@ export const schema: Schema = {
           "description": "Telecom solutions",
           "fullType": "Partner.OVHProductsUsedTelecom",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "Partner.OVHProductsUsedTelecom"
         },
         "web": {
@@ -1359,7 +1359,7 @@ export const schema: Schema = {
           "description": "WEB solutions",
           "fullType": "Partner.OVHProductsUsedWeb",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "Partner.OVHProductsUsedWeb"
         }
       }
@@ -1374,7 +1374,7 @@ export const schema: Schema = {
           "description": "Cloud Desktop",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "cloudDesktopInfrastructure": {
@@ -1382,7 +1382,7 @@ export const schema: Schema = {
           "description": "Cloud Desktop Infrastructure",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "dedicated": {
@@ -1390,7 +1390,7 @@ export const schema: Schema = {
           "description": "Dedicated Serveurs",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "nas": {
@@ -1398,7 +1398,7 @@ export const schema: Schema = {
           "description": "NAS",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "networkAndSecurity": {
@@ -1406,7 +1406,7 @@ export const schema: Schema = {
           "description": "Network and security solutions",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "privateCloud": {
@@ -1414,7 +1414,7 @@ export const schema: Schema = {
           "description": "Private Cloud",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "publicCloud": {
@@ -1422,7 +1422,7 @@ export const schema: Schema = {
           "description": "Public Cloud",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "vps": {
@@ -1430,7 +1430,7 @@ export const schema: Schema = {
           "description": "VPS",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "vrack": {
@@ -1438,7 +1438,7 @@ export const schema: Schema = {
           "description": "vRack / vRack Connect",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -1453,7 +1453,7 @@ export const schema: Schema = {
           "description": "Logs Data Platforms",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "metrics": {
@@ -1461,7 +1461,7 @@ export const schema: Schema = {
           "description": "Metrics Data Platforms",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -1476,7 +1476,7 @@ export const schema: Schema = {
           "description": "ADSL / SDSL",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "fax": {
@@ -1484,7 +1484,7 @@ export const schema: Schema = {
           "description": "Fax",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "overTheBox": {
@@ -1492,7 +1492,7 @@ export const schema: Schema = {
           "description": "OverTheBox",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "sms": {
@@ -1500,7 +1500,7 @@ export const schema: Schema = {
           "description": "SMS",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "voip": {
@@ -1508,7 +1508,7 @@ export const schema: Schema = {
           "description": "VoIP",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -1523,7 +1523,7 @@ export const schema: Schema = {
           "description": "Domain name",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "exchange": {
@@ -1531,7 +1531,7 @@ export const schema: Schema = {
           "description": "Microsoft Exchange 2016",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "office": {
@@ -1539,7 +1539,7 @@ export const schema: Schema = {
           "description": "Microsoft Office 365 (CSP2)",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "sharepoint": {
@@ -1547,7 +1547,7 @@ export const schema: Schema = {
           "description": "Microsoft Sharepoint 2016",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "webHosting": {
@@ -1555,7 +1555,7 @@ export const schema: Schema = {
           "description": "Web Hosting",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -1570,7 +1570,7 @@ export const schema: Schema = {
           "description": "Bank / Insurance / Finance",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "businessServiceOrIndividuals": {
@@ -1578,7 +1578,7 @@ export const schema: Schema = {
           "description": "Business Services / Individuals",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "communicationOrMedia": {
@@ -1586,7 +1586,7 @@ export const schema: Schema = {
           "description": "Communication / Media",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "digitalServicesCompanies": {
@@ -1594,7 +1594,7 @@ export const schema: Schema = {
           "description": "Digital Services Companies",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "ecommerce": {
@@ -1602,7 +1602,7 @@ export const schema: Schema = {
           "description": "E-commerce",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "health": {
@@ -1610,7 +1610,7 @@ export const schema: Schema = {
           "description": "Health",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "industryTransportationEnegy": {
@@ -1618,7 +1618,7 @@ export const schema: Schema = {
           "description": "Industry / Transportation / Energy",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "other": {
@@ -1634,7 +1634,7 @@ export const schema: Schema = {
           "description": "Other IT / Telecom professions",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "publicSectorOrEducation": {
@@ -1642,7 +1642,7 @@ export const schema: Schema = {
           "description": "Public Sector / Education",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "resellerITOrTelecom": {
@@ -1650,7 +1650,7 @@ export const schema: Schema = {
           "description": "Reseller of IT / Telecom services",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "softwareEditor": {
@@ -1658,7 +1658,7 @@ export const schema: Schema = {
           "description": "Software editor",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "tradeTradingDistribution": {
@@ -1666,7 +1666,7 @@ export const schema: Schema = {
           "description": "Trade / Trading / Distribution",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "videoGames": {
@@ -1674,7 +1674,7 @@ export const schema: Schema = {
           "description": "Video games / Online games",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "webAgency": {
@@ -1682,7 +1682,7 @@ export const schema: Schema = {
           "description": "Web Agency",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -1697,7 +1697,7 @@ export const schema: Schema = {
           "description": "Associations",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "individual": {
@@ -1705,7 +1705,7 @@ export const schema: Schema = {
           "description": "Individual",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "largeGroup": {
@@ -1713,7 +1713,7 @@ export const schema: Schema = {
           "description": "Large Group",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "mediumBusiness": {
@@ -1721,7 +1721,7 @@ export const schema: Schema = {
           "description": "Medium Business",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "other": {
@@ -1737,7 +1737,7 @@ export const schema: Schema = {
           "description": "Public Sector",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "startup": {
@@ -1745,7 +1745,7 @@ export const schema: Schema = {
           "description": "Startup",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -1785,7 +1785,7 @@ export const schema: Schema = {
           "description": "Consulting",
           "fullType": "Partner.expertisesChoicesConsulting",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "Partner.expertisesChoicesConsulting"
         },
         "installationAndIntegration": {
@@ -1793,7 +1793,7 @@ export const schema: Schema = {
           "description": "Installation and integration",
           "fullType": "Partner.expertisesChoicesInstallationAndIntegration",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "Partner.expertisesChoicesInstallationAndIntegration"
         },
         "outsourcingAndMaintenance": {
@@ -1801,7 +1801,7 @@ export const schema: Schema = {
           "description": "Outsourcing And Maintenance",
           "fullType": "Partner.expertisesChoicesOutsourcingAndMaintenance",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "Partner.expertisesChoicesOutsourcingAndMaintenance"
         },
         "softwareAndDevelopment": {
@@ -1809,7 +1809,7 @@ export const schema: Schema = {
           "description": "Software And Development",
           "fullType": "Partner.expertisesChoicesSoftwareAndDevelopment",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "Partner.expertisesChoicesSoftwareAndDevelopment"
         }
       }
@@ -1824,7 +1824,7 @@ export const schema: Schema = {
           "description": "IT security",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "auditAndConsulting": {
@@ -1832,7 +1832,7 @@ export const schema: Schema = {
           "description": "Audit and Consulting",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "infrastructureArchitecture": {
@@ -1840,7 +1840,7 @@ export const schema: Schema = {
           "description": "Infrastructure Architecture",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "marketingCommerceAndCommunication": {
@@ -1848,7 +1848,7 @@ export const schema: Schema = {
           "description": "Marketing, Commerce and Communication",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "searchEngineOptimization": {
@@ -1856,7 +1856,7 @@ export const schema: Schema = {
           "description": "SEO-SEA Search Engine Optimization",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -1871,7 +1871,7 @@ export const schema: Schema = {
           "description": "Cloud infrastructure installation and integration",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "networkEquipment": {
@@ -1879,7 +1879,7 @@ export const schema: Schema = {
           "description": "Installation and integration of network equipment",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "peripheralsAndMobilitySolutions": {
@@ -1887,7 +1887,7 @@ export const schema: Schema = {
           "description": "Installation and integration of peripherals and mobility solutions",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "telecomEquipmentAndInfrastructure": {
@@ -1895,7 +1895,7 @@ export const schema: Schema = {
           "description": "Installation and integration of telecom equipment and infrastructure",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -1910,7 +1910,7 @@ export const schema: Schema = {
           "description": "Computer support",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "maintenanceOfNetworkEquipment": {
@@ -1918,7 +1918,7 @@ export const schema: Schema = {
           "description": "Maintenance of network equipment / servers",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "outsourcing": {
@@ -1926,7 +1926,7 @@ export const schema: Schema = {
           "description": "Outsourcing",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -1941,7 +1941,7 @@ export const schema: Schema = {
           "description": "Advice and expertises",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "maintenanceOrApplicationManagement": {
@@ -1949,7 +1949,7 @@ export const schema: Schema = {
           "description": "Maintenance / Application Management",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "networkEquipment": {
@@ -1957,7 +1957,7 @@ export const schema: Schema = {
           "description": "Installation and integration of network equipment",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "softwareSolutions": {
@@ -1965,7 +1965,7 @@ export const schema: Schema = {
           "description": "Software solutions (collaborative solutions, virtual offices)",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -1980,7 +1980,7 @@ export const schema: Schema = {
           "description": "AWS",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "cisco": {
@@ -1988,7 +1988,7 @@ export const schema: Schema = {
           "description": "Cisco",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "intel": {
@@ -1996,7 +1996,7 @@ export const schema: Schema = {
           "description": "Intel",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "microsoft": {
@@ -2004,7 +2004,7 @@ export const schema: Schema = {
           "description": "Microsoft",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "other": {
@@ -2020,7 +2020,7 @@ export const schema: Schema = {
           "description": "VMWare",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -2047,7 +2047,7 @@ export const schema: Schema = {
           "description": "Events",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forum": {
@@ -2055,7 +2055,7 @@ export const schema: Schema = {
           "description": "Forum",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "media": {
@@ -2063,7 +2063,7 @@ export const schema: Schema = {
           "description": "Media",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "other": {
@@ -2079,7 +2079,7 @@ export const schema: Schema = {
           "description": "Search engine",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "socialNetwork": {
@@ -2087,7 +2087,7 @@ export const schema: Schema = {
           "description": "Social Networks",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "website": {
@@ -2095,7 +2095,7 @@ export const schema: Schema = {
           "description": "OVH website",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -2110,7 +2110,7 @@ export const schema: Schema = {
           "description": "Australia",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "brazil": {
@@ -2118,7 +2118,7 @@ export const schema: Schema = {
           "description": "Brazil",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "canada": {
@@ -2126,7 +2126,7 @@ export const schema: Schema = {
           "description": "Canada",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "czechRepublic": {
@@ -2134,7 +2134,7 @@ export const schema: Schema = {
           "description": "Czech republic",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "finland": {
@@ -2142,7 +2142,7 @@ export const schema: Schema = {
           "description": "Finland",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "france": {
@@ -2150,7 +2150,7 @@ export const schema: Schema = {
           "description": "France",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "germany": {
@@ -2158,7 +2158,7 @@ export const schema: Schema = {
           "description": "Germany",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "ireland": {
@@ -2166,7 +2166,7 @@ export const schema: Schema = {
           "description": "Ireland",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "italy": {
@@ -2174,7 +2174,7 @@ export const schema: Schema = {
           "description": "Italy",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "lithuania": {
@@ -2182,7 +2182,7 @@ export const schema: Schema = {
           "description": "Lithuania",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "morocco": {
@@ -2190,7 +2190,7 @@ export const schema: Schema = {
           "description": "Morocco",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "netherlands": {
@@ -2198,7 +2198,7 @@ export const schema: Schema = {
           "description": "Netherlands",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "other": {
@@ -2214,7 +2214,7 @@ export const schema: Schema = {
           "description": "Poland",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "portugal": {
@@ -2222,7 +2222,7 @@ export const schema: Schema = {
           "description": "Portugal",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "senegal": {
@@ -2230,7 +2230,7 @@ export const schema: Schema = {
           "description": "Senegal",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "singapore": {
@@ -2238,7 +2238,7 @@ export const schema: Schema = {
           "description": "Singapore",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "spain": {
@@ -2246,7 +2246,7 @@ export const schema: Schema = {
           "description": "Spain",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "tunisia": {
@@ -2254,7 +2254,7 @@ export const schema: Schema = {
           "description": "Tunisia",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "uk": {
@@ -2262,7 +2262,7 @@ export const schema: Schema = {
           "description": "UK",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -2277,6 +2277,7 @@ export const schema: Schema = {
         "IDoNotWishToDiscloseThisInformation"
       ],
       "enumType": "string",
+      "errorValue": "IDoNotWishToDiscloseThisInformation",
       "id": "revenueRangeEnum",
       "namespace": "Partner"
     },

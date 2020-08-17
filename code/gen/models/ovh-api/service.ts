@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/service.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the services",
@@ -36,8 +36,8 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Service ID",
-              "fullType": "long",
+              "description": "The internal ID of your service",
+              "fullType": "coreTypes.ServiceId:long",
               "name": "serviceId",
               "paramType": "path",
               "required": true
@@ -56,15 +56,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "serviceList.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "serviceList.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Service ID",
-              "fullType": "long",
+              "description": "The internal ID of your service",
+              "fullType": "coreTypes.ServiceId:long",
               "name": "serviceId",
               "paramType": "path",
               "required": true
@@ -89,7 +89,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service ID",
+              "description": "Service Id",
               "fullType": "string",
               "name": "serviceId",
               "paramType": "path",
@@ -116,6 +116,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service Id",
+              "fullType": "string",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "boolean",
               "description": "Indicates if renew order is generated",
               "fullType": "boolean",
@@ -126,7 +134,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Renew duration",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -134,17 +142,9 @@ export const schema: Schema = {
             {
               "dataType": "long[]",
               "description": "List of services to renew",
-              "fullType": "long[]",
+              "fullType": "coreTypes.ServiceId[]:long[]",
               "name": "services",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service ID",
-              "fullType": "string",
-              "name": "serviceId",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -167,8 +167,8 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Service ID",
-              "fullType": "long",
+              "description": "The internal ID of your service",
+              "fullType": "coreTypes.ServiceId:long",
               "name": "serviceId",
               "paramType": "path",
               "required": true
@@ -193,8 +193,8 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Service ID",
-              "fullType": "long",
+              "description": "The internal ID of your service",
+              "fullType": "coreTypes.ServiceId:long",
               "name": "serviceId",
               "paramType": "path",
               "required": true
@@ -219,8 +219,8 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Service ID",
-              "fullType": "long",
+              "description": "The internal ID of your service",
+              "fullType": "coreTypes.ServiceId:long",
               "name": "serviceId",
               "paramType": "path",
               "required": true
@@ -244,16 +244,14 @@ export const schema: Schema = {
       "properties": {
         "key": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
@@ -286,23 +284,20 @@ export const schema: Schema = {
       "properties": {
         "currencyCode": {
           "canBeNull": false,
-          "fullType": "order.CurrencyCodeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.CurrencyCodeEnum"
         },
         "text": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "double",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "double"
         }
       }
@@ -327,7 +322,6 @@ export const schema: Schema = {
         "code": {
           "canBeNull": true,
           "description": "Product code",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -335,9 +329,8 @@ export const schema: Schema = {
         "product": {
           "canBeNull": false,
           "description": "Product plan information",
-          "fullType": "service.plan.Product",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "service.plan.Product"
         }
       }
@@ -350,7 +343,6 @@ export const schema: Schema = {
         "dayOfMonth": {
           "canBeNull": true,
           "description": "Renew day number",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -358,7 +350,6 @@ export const schema: Schema = {
         "interval": {
           "canBeNull": true,
           "description": "Interval between each renewal",
-          "fullType": "service.renew.Interval",
           "readOnly": false,
           "required": false,
           "type": "service.renew.Interval"
@@ -366,15 +357,13 @@ export const schema: Schema = {
         "mode": {
           "canBeNull": false,
           "description": "Renewal mode",
-          "fullType": "service.renew.Mode",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "service.renew.Mode"
         },
         "possibleIntervals": {
           "canBeNull": true,
           "description": "Possible interval between each renewal",
-          "fullType": "service.renew.Interval[]",
           "readOnly": false,
           "required": false,
           "type": "service.renew.Interval[]"
@@ -382,9 +371,8 @@ export const schema: Schema = {
         "possibleModes": {
           "canBeNull": false,
           "description": "Possible renewal mode",
-          "fullType": "service.renew.Mode[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "service.renew.Mode[]"
         }
       }
@@ -397,15 +385,13 @@ export const schema: Schema = {
         "displayName": {
           "canBeNull": false,
           "description": "Custom display name of the service",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
           "canBeNull": true,
           "description": "Name of the service",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -413,7 +399,6 @@ export const schema: Schema = {
         "state": {
           "canBeNull": true,
           "description": "Resource state",
-          "fullType": "service.ResourceStateEnum",
           "readOnly": false,
           "required": false,
           "type": "service.ResourceStateEnum"
@@ -445,7 +430,6 @@ export const schema: Schema = {
         "path": {
           "canBeNull": true,
           "description": "Path to use in API",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -453,7 +437,6 @@ export const schema: Schema = {
         "url": {
           "canBeNull": true,
           "description": "Path with variables applyed",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -461,10 +444,142 @@ export const schema: Schema = {
         "vars": {
           "canBeNull": false,
           "description": "Variables to use in the path",
-          "fullType": "complexType.SafeKeyValue<string>[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.SafeKeyValue<string>[]"
+        }
+      }
+    },
+    "service.consumption.Transaction": {
+      "description": "List of consumptions recorded in a range",
+      "id": "Transaction",
+      "namespace": "service.consumption",
+      "properties": {
+        "beginDate": {
+          "canBeNull": false,
+          "description": "Begin date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "creationDate": {
+          "canBeNull": true,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "elements": {
+          "canBeNull": false,
+          "description": "List of product plan code consumption",
+          "fullType": "service.consumption.transaction.Element[]",
+          "readOnly": true,
+          "required": false,
+          "type": "service.consumption.transaction.Element[]"
+        },
+        "endDate": {
+          "canBeNull": true,
+          "description": "End date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": true,
+          "description": "Transaction ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "lastUpdate": {
+          "canBeNull": true,
+          "description": "Last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Consumption amount price",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": "Service ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "service.consumption.transaction.Element": {
+      "description": "Element of consumption for resource",
+      "id": "Element",
+      "namespace": "service.consumption.transaction",
+      "properties": {
+        "details": {
+          "canBeNull": false,
+          "description": "List of consumption details for this planCode",
+          "fullType": "service.consumption.transaction.element.Detail[]",
+          "readOnly": true,
+          "required": false,
+          "type": "service.consumption.transaction.element.Detail[]"
+        },
+        "planCode": {
+          "canBeNull": false,
+          "description": "Identifier of the offer",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Consumption amount price",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Consumption quantity",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "service.consumption.transaction.element.Detail": {
+      "description": "Element of consumption for resource",
+      "id": "Detail",
+      "namespace": "service.consumption.transaction.Element",
+      "properties": {
+        "quantity": {
+          "canBeNull": false,
+          "description": "Consumption quantity",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "unique_id": {
+          "canBeNull": true,
+          "description": "Unique ID associated to one service element",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -476,7 +591,6 @@ export const schema: Schema = {
         "name": {
           "canBeNull": true,
           "description": "Product name",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -522,18 +636,119 @@ export const schema: Schema = {
         "renewPeriod": {
           "canBeNull": false,
           "description": "ISO8601 formatted renewal duration",
-          "fullType": "duration",
+          "fullType": "duration:string",
           "readOnly": true,
-          "required": true,
-          "type": "duration"
+          "required": false,
+          "type": "string"
         },
         "strategies": {
           "canBeNull": false,
           "description": "List possible strategies",
           "fullType": "service.renew.RenewStrategy[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.renew.RenewStrategy[]"
+        }
+      }
+    },
+    "service.renew.RenewForecast": {
+      "description": "Representation of service's renew forecasting",
+      "id": "RenewForecast",
+      "namespace": "service.renew",
+      "properties": {
+        "details": {
+          "canBeNull": false,
+          "description": "Forecast details",
+          "fullType": "service.renew.RenewForecastDetail[]",
+          "readOnly": true,
+          "required": false,
+          "type": "service.renew.RenewForecastDetail[]"
+        },
+        "prices": {
+          "canBeNull": false,
+          "description": "Prices for renew forecasting",
+          "fullType": "service.renew.RenewForecastPrices",
+          "readOnly": true,
+          "required": false,
+          "type": "service.renew.RenewForecastPrices"
+        }
+      }
+    },
+    "service.renew.RenewForecastDetail": {
+      "description": "Representation of a product renew pricing",
+      "id": "RenewForecastDetail",
+      "namespace": "service.renew",
+      "properties": {
+        "description": {
+          "canBeNull": true,
+          "description": "Detail description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Quantity",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Associated service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "unitPrice": {
+          "canBeNull": false,
+          "description": "Price for one unit",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
+    },
+    "service.renew.RenewForecastPrices": {
+      "description": "Prices for renew forecasting",
+      "id": "RenewForecastDetailPrices",
+      "namespace": "service.renew",
+      "properties": {
+        "tax": {
+          "canBeNull": false,
+          "description": "Tax",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "withTax": {
+          "canBeNull": false,
+          "description": "Total price with tax",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "withoutTax": {
+          "canBeNull": false,
+          "description": "Total price without tax",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
         }
       }
     },
@@ -563,7 +778,7 @@ export const schema: Schema = {
           "description": "ID of the renew Order",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "password": {
@@ -571,7 +786,7 @@ export const schema: Schema = {
           "description": "Password",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "pdfUrl": {
@@ -579,7 +794,7 @@ export const schema: Schema = {
           "description": "Public pdf URL of the generated renew Order",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "priceWithTax": {
@@ -587,7 +802,7 @@ export const schema: Schema = {
           "description": "Price of the product with tax",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "priceWithoutTax": {
@@ -595,7 +810,7 @@ export const schema: Schema = {
           "description": "Price of the product without tax",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "retractionDate": {
@@ -611,7 +826,7 @@ export const schema: Schema = {
           "description": "Value of the tax",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "url": {
@@ -619,7 +834,7 @@ export const schema: Schema = {
           "description": "Public URL to display generated renew Order",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -634,7 +849,7 @@ export const schema: Schema = {
           "description": "Price of the product",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "priceInUcents": {
@@ -642,23 +857,23 @@ export const schema: Schema = {
           "description": "Price of the product in micro-centims",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "services": {
           "canBeNull": false,
           "description": "Services renewed by strategy",
-          "fullType": "coreTypes.ServiceId:long[]",
+          "fullType": "coreTypes.ServiceId[]:long[]",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long[]"
+          "required": false,
+          "type": "long[]"
         },
         "servicesDetails": {
           "canBeNull": false,
           "description": "Details of services renewed by strategy",
           "fullType": "service.renew.Service[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.renew.Service[]"
         }
       }
@@ -673,15 +888,15 @@ export const schema: Schema = {
           "description": "ID of the service",
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "serviceName": {
           "canBeNull": false,
           "description": "Name of the service",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceType": {
@@ -689,7 +904,7 @@ export const schema: Schema = {
           "description": "Type of the service",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -704,7 +919,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "details": {
@@ -712,7 +927,7 @@ export const schema: Schema = {
           "description": "Resource details",
           "fullType": "complexType.SafeKeyValue<string>[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "complexType.SafeKeyValue<string>[]"
         },
         "engagementDate": {
@@ -744,7 +959,7 @@ export const schema: Schema = {
           "description": "Plan service description",
           "fullType": "service.Plan",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.Plan"
         },
         "quantity": {
@@ -752,7 +967,7 @@ export const schema: Schema = {
           "description": "Quantity",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "renew": {
@@ -768,7 +983,7 @@ export const schema: Schema = {
           "description": "Resource service description",
           "fullType": "service.Resource",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "service.Resource"
         },
         "route": {
@@ -776,7 +991,7 @@ export const schema: Schema = {
           "description": "Route to use in API",
           "fullType": "service.Route",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.Route"
         },
         "state": {
@@ -784,7 +999,7 @@ export const schema: Schema = {
           "description": "Billing state of your service",
           "fullType": "service.BillingStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.BillingStateEnum"
         }
       }

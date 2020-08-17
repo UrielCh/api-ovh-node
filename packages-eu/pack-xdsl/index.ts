@@ -214,6 +214,17 @@ export namespace pack {
             isLegacyOffer: boolean;
         }
         /**
+         * Information about pack xdsl
+         * interface fullName: pack.xdsl.PackDetail.PackDetail
+         */
+        export interface PackDetail {
+            accessname: string;
+            description: string;
+            number: string;
+            packname: string;
+            type: xdslDslTypeEnum;
+        }
+        /**
          * Details about the resiliation
          * interface fullName: pack.xdsl.ResiliationFollowUpDetail.ResiliationFollowUpDetail
          */
@@ -744,7 +755,7 @@ export interface Pack {
              * Alter this object properties
              * PUT /pack/xdsl/{packName}
              */
-            $put(params: { capabilities: pack.xdsl.PackCapabilities, description?: string, offerDescription: string, offerPrice: order.Price, packName: string }): Promise<void>;
+            $put(params?: { capabilities?: pack.xdsl.PackCapabilities, description?: string, offerDescription?: string, offerPrice?: order.Price, packName?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -1261,7 +1272,7 @@ export interface Pack {
                  * Alter this object properties
                  * PUT /pack/xdsl/{packName}/serviceInfos
                  */
-                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1542,6 +1553,7 @@ export interface Pack {
 /**
  * Extra Alias to bypass relativer namespace colitions
  */
+type xdslDslTypeEnum = xdsl.DslTypeEnum;
 type xdsleligibilityAddress = xdsl.eligibility.Address;
 type xdsleligibilityBookMeetingSlot = xdsl.eligibility.BookMeetingSlot;
 type xdsleligibilityPortability = xdsl.eligibility.Portability;
@@ -1550,4 +1562,3 @@ type xdslDeconsolidationEnum = xdsl.DeconsolidationEnum;
 type xdslLineSectionLength = xdsl.LineSectionLength;
 type xdsleligibilityMeetingSlots = xdsl.eligibility.MeetingSlots;
 type xdsleligibilityProviderEnum = xdsl.eligibility.ProviderEnum;
-type xdslDslTypeEnum = xdsl.DslTypeEnum;

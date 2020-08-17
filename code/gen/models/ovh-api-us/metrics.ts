@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://api.us.ovhcloud.com:443/1.0/metrics.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the METRICS service",
@@ -36,7 +36,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of your service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -64,7 +64,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of your service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -122,7 +122,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your metrics",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -148,7 +148,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of your service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -182,18 +182,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "access token",
+              "description": "Name of your service",
               "fullType": "string",
-              "name": "accessToken",
-              "paramType": "body",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "access token",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "name": "accessToken",
+              "paramType": "body",
               "required": true
             }
           ],
@@ -215,19 +215,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Name of your service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "long",
               "description": "New value for overquota",
               "fullType": "long",
               "name": "quota",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -250,7 +250,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your metrics",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -270,14 +270,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your metrics",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -303,7 +303,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your metrics",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -329,7 +329,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of your service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -364,19 +364,19 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "string",
+              "description": "Name of your service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "metrics.api.PermissionEnum",
               "description": "Type of the new token. Read or Write",
               "fullType": "metrics.api.PermissionEnum",
               "name": "permission",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -399,17 +399,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Token ID",
+              "description": "Name of your service",
               "fullType": "string",
-              "name": "tokenId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of the desired token",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "tokenId",
               "paramType": "path",
               "required": true
             }
@@ -427,17 +427,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Token ID",
+              "description": "Name of your service",
               "fullType": "string",
-              "name": "tokenId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "ID of the desired token",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "tokenId",
               "paramType": "path",
               "required": true
             }
@@ -463,7 +463,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of your service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -471,7 +471,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Token ID",
+              "description": "ID of the desired token",
               "fullType": "string",
               "name": "tokenId",
               "paramType": "path",
@@ -496,7 +496,7 @@ export const schema: Schema = {
           "description": "Current Daily data points",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "mads": {
@@ -504,7 +504,7 @@ export const schema: Schema = {
           "description": "Current monthly active data streams",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -519,7 +519,7 @@ export const schema: Schema = {
           "description": "Label key",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
@@ -527,7 +527,7 @@ export const schema: Schema = {
           "description": "Label value",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -552,7 +552,7 @@ export const schema: Schema = {
           "description": "Daily data points",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lastModification": {
@@ -560,7 +560,7 @@ export const schema: Schema = {
           "description": "Time of last modification",
           "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "mads": {
@@ -568,7 +568,7 @@ export const schema: Schema = {
           "description": "Monthly active device streams",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -593,7 +593,7 @@ export const schema: Schema = {
           "description": "Description of a region",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -601,7 +601,7 @@ export const schema: Schema = {
           "description": "Name of a region",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -616,7 +616,7 @@ export const schema: Schema = {
           "description": "Description of a service",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -624,7 +624,7 @@ export const schema: Schema = {
           "description": "Name of a service",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "offer": {
@@ -632,7 +632,7 @@ export const schema: Schema = {
           "description": "Offer used for the service",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "quota": {
@@ -640,7 +640,7 @@ export const schema: Schema = {
           "description": "Quota used for the service",
           "fullType": "metrics.api.Option",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "metrics.api.Option"
         },
         "region": {
@@ -648,7 +648,7 @@ export const schema: Schema = {
           "description": "Region holding the service",
           "fullType": "metrics.api.Region",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "metrics.api.Region"
         },
         "shouldUpgrade": {
@@ -656,7 +656,7 @@ export const schema: Schema = {
           "description": "Indicator if the service should be upgraded based on current quota and offer",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "status": {
@@ -664,7 +664,7 @@ export const schema: Schema = {
           "description": "Status of a service",
           "fullType": "metrics.api.ServiceStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "metrics.api.ServiceStatusEnum"
         },
         "type": {
@@ -672,7 +672,7 @@ export const schema: Schema = {
           "description": "Type of the service: cloud or live",
           "fullType": "metrics.api.OfferTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "metrics.api.OfferTypeEnum"
         }
       }
@@ -699,7 +699,7 @@ export const schema: Schema = {
           "description": "The actual access token",
           "fullType": "password",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "password"
         },
         "createdAt": {
@@ -707,7 +707,7 @@ export const schema: Schema = {
           "description": "Token creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
@@ -715,7 +715,7 @@ export const schema: Schema = {
           "description": "Description of the token",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "expiredAt": {
@@ -723,7 +723,7 @@ export const schema: Schema = {
           "description": "Token expiration date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -731,7 +731,7 @@ export const schema: Schema = {
           "description": "Id of the token",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "isRevoked": {
@@ -739,7 +739,7 @@ export const schema: Schema = {
           "description": "Is your token revoked?",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "labels": {
@@ -747,7 +747,7 @@ export const schema: Schema = {
           "description": "Labels for the token if set",
           "fullType": "metrics.api.Label[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "metrics.api.Label[]"
         },
         "type": {
@@ -755,7 +755,7 @@ export const schema: Schema = {
           "description": "Token type: read or write",
           "fullType": "metrics.api.PermissionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "metrics.api.PermissionEnum"
         }
       }
@@ -768,31 +768,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -800,7 +796,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -879,42 +874,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -928,7 +923,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -951,21 +946,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

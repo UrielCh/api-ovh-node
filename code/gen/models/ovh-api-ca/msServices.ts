@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://ca.api.ovh.com:443/1.0/msServices.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the MSSERVICES service",
@@ -53,7 +53,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "Sharepoint customer's service",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -79,7 +79,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "Sharepoint customer's service",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -99,14 +99,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "Sharepoint customer's service",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -132,7 +132,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -152,14 +152,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "msServices.ActiveDirectoryOrganizationalUnit",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "msServices.ActiveDirectoryOrganizationalUnit",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -184,12 +184,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "long",
+              "description": "Filter the value of id property (like)",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "string",
@@ -200,12 +200,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "long",
-              "description": "Filter the value of id property (like)",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your Active Directory organization",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -227,7 +227,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -235,7 +235,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "User Principal Name",
               "fullType": "string",
               "name": "userPrincipalName",
               "paramType": "path",
@@ -255,14 +255,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "msServices.Account",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "msServices.Account",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -270,7 +270,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "User Principal Name",
               "fullType": "string",
               "name": "userPrincipalName",
               "paramType": "path",
@@ -304,7 +304,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -312,7 +312,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "User Principal Name",
               "fullType": "string",
               "name": "userPrincipalName",
               "paramType": "path",
@@ -338,7 +338,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -346,7 +346,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "User Principal Name",
               "fullType": "string",
               "name": "userPrincipalName",
               "paramType": "path",
@@ -366,24 +366,24 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "msServices.ExchangeInformation",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "msServices.ExchangeInformation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
-              "name": "userPrincipalName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "User Principal Name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "userPrincipalName",
               "paramType": "path",
               "required": true
             }
@@ -407,17 +407,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
-              "name": "userPrincipalName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "User Principal Name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "userPrincipalName",
               "paramType": "path",
               "required": true
             }
@@ -441,7 +441,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -449,7 +449,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "User Principal Name",
               "fullType": "string",
               "name": "userPrincipalName",
               "paramType": "path",
@@ -469,7 +469,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -477,7 +477,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "User Principal Name",
               "fullType": "string",
               "name": "userPrincipalName",
               "paramType": "path",
@@ -497,7 +497,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -505,7 +505,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "User Principal Name",
               "fullType": "string",
               "name": "userPrincipalName",
               "paramType": "path",
@@ -539,7 +539,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -547,7 +547,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "User Principal Name",
               "fullType": "string",
               "name": "userPrincipalName",
               "paramType": "path",
@@ -573,7 +573,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -581,7 +581,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "User Principal Name",
               "fullType": "string",
               "name": "userPrincipalName",
               "paramType": "path",
@@ -607,7 +607,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -615,7 +615,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "User Principal Name",
               "fullType": "string",
               "name": "userPrincipalName",
               "paramType": "path",
@@ -641,7 +641,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -649,7 +649,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "User Principal Name",
               "fullType": "string",
               "name": "userPrincipalName",
               "paramType": "path",
@@ -669,14 +669,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "msServices.SharepointInformation",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "msServices.SharepointInformation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -684,7 +684,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "User Principal Name",
               "fullType": "string",
               "name": "userPrincipalName",
               "paramType": "path",
@@ -710,7 +710,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -718,7 +718,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "User Principal Name",
               "fullType": "string",
               "name": "userPrincipalName",
               "paramType": "path",
@@ -744,7 +744,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -752,7 +752,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "User Principal Name",
               "fullType": "string",
               "name": "userPrincipalName",
               "paramType": "path",
@@ -778,7 +778,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -786,7 +786,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "User Principal Name",
               "fullType": "string",
               "name": "userPrincipalName",
               "paramType": "path",
@@ -806,7 +806,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -814,7 +814,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "User Principal Name",
               "fullType": "string",
               "name": "userPrincipalName",
               "paramType": "path",
@@ -842,17 +842,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
-              "name": "userPrincipalName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "User Principal Name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "userPrincipalName",
               "paramType": "path",
               "required": true
             }
@@ -876,7 +876,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -884,7 +884,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User principal name",
+              "description": "User Principal Name",
               "fullType": "string",
               "name": "userPrincipalName",
               "paramType": "path",
@@ -910,7 +910,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -936,7 +936,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -956,14 +956,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "msServices.ExchangeService",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "msServices.ExchangeService",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -989,7 +989,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1015,7 +1015,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1041,7 +1041,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1049,7 +1049,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Task id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1075,7 +1075,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1101,7 +1101,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1121,14 +1121,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "msServices.SharepointService",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "msServices.SharepointService",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1154,7 +1154,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1179,11 +1179,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "msServices.LicensePeriodEnum",
+              "description": "Period of time used to determine sharepoint account license statistics",
+              "fullType": "msServices.LicensePeriodEnum",
+              "name": "period",
+              "paramType": "query",
               "required": true
             },
             {
@@ -1195,11 +1195,11 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "msServices.LicensePeriodEnum",
-              "description": "Period of time used to determine sharepoint account license statistics",
-              "fullType": "msServices.LicensePeriodEnum",
-              "name": "period",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The internal name of your Active Directory organization",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1222,7 +1222,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1247,12 +1247,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "msServices.TaskStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "msServices.TaskStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "string",
@@ -1263,12 +1263,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "msServices.TaskStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "msServices.TaskStatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your Active Directory organization",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -1290,7 +1290,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1298,7 +1298,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Task id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1324,7 +1324,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1344,7 +1344,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1378,7 +1378,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1404,7 +1404,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1424,7 +1424,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1449,12 +1449,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "msServices.SyncLicenseEnum",
+              "description": "License type",
+              "fullType": "msServices.SyncLicenseEnum",
+              "name": "license",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "msServices.LicensePeriodEnum",
@@ -1465,12 +1465,12 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "msServices.SyncLicenseEnum",
-              "description": "License type",
-              "fullType": "msServices.SyncLicenseEnum",
-              "name": "license",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your Active Directory organization",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "msServices.SyncDailyLicense[]"
@@ -1491,14 +1491,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "msServices.TaskStatusEnum",
               "description": "Filter the value of status property (=)",
               "fullType": "msServices.TaskStatusEnum",
@@ -1513,6 +1505,14 @@ export const schema: Schema = {
               "name": "function",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your Active Directory organization",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -1534,7 +1534,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1542,7 +1542,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Task id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1568,7 +1568,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1596,7 +1596,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1622,7 +1622,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1630,7 +1630,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Suffix",
+              "description": "UPN suffix",
               "fullType": "string",
               "name": "suffix",
               "paramType": "path",
@@ -1650,7 +1650,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Active Directory organization",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1658,7 +1658,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Suffix",
+              "description": "UPN suffix",
               "fullType": "string",
               "name": "suffix",
               "paramType": "path",
@@ -1723,7 +1723,7 @@ export const schema: Schema = {
           "description": "Account id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "initials": {
@@ -1779,7 +1779,7 @@ export const schema: Schema = {
           "description": "Account state",
           "fullType": "msServices.ObjectStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.ObjectStateEnum"
         },
         "taskPendingId": {
@@ -1787,7 +1787,7 @@ export const schema: Schema = {
           "description": "Pending task for this account",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "userPrincipalName": {
@@ -1795,7 +1795,7 @@ export const schema: Schema = {
           "description": "User Principal Name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1810,7 +1810,7 @@ export const schema: Schema = {
           "description": "Flag indicating if passwords should be forced to follow Microsoft's password guidelines",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "lockoutDuration": {
@@ -1818,7 +1818,7 @@ export const schema: Schema = {
           "description": "Account lock time (in minutes) when too much passwords have been tried",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lockoutObservationWindow": {
@@ -1826,7 +1826,7 @@ export const schema: Schema = {
           "description": "Time (in minutes) before the password attempts counter is reset",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lockoutThreshold": {
@@ -1866,7 +1866,7 @@ export const schema: Schema = {
           "description": "Name of the Active Directory organizational unit",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "officeTenantServiceName": {
@@ -1882,7 +1882,7 @@ export const schema: Schema = {
           "description": "Current state of the Active Directory organizational unit",
           "fullType": "msServices.ServiceStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.ServiceStateEnum"
         },
         "taskPendingId": {
@@ -1890,7 +1890,7 @@ export const schema: Schema = {
           "description": "Task pending id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -1905,7 +1905,7 @@ export const schema: Schema = {
           "description": "Link expiration date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "url": {
@@ -1913,7 +1913,7 @@ export const schema: Schema = {
           "description": "ADSync software executable link",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1928,7 +1928,7 @@ export const schema: Schema = {
           "description": "Exchange account license",
           "fullType": "msServices.ExchangeLicenceEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "msServices.ExchangeLicenceEnum"
         },
         "configured": {
@@ -1936,7 +1936,7 @@ export const schema: Schema = {
           "description": "Indicates if the account is configured",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "creationDate": {
@@ -2000,7 +2000,7 @@ export const schema: Schema = {
           "description": "Visibility in Global Address List",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "id": {
@@ -2008,7 +2008,7 @@ export const schema: Schema = {
           "description": "Account id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "litigation": {
@@ -2016,7 +2016,7 @@ export const schema: Schema = {
           "description": "Litigation hold feature enabled on this mailbox",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "litigationPeriod": {
@@ -2040,7 +2040,7 @@ export const schema: Schema = {
           "description": "Count the number of related aliases attached to this account",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "outlookLicense": {
@@ -2048,7 +2048,7 @@ export const schema: Schema = {
           "description": "Outlook licence attached",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "owaLimited": {
@@ -2056,7 +2056,7 @@ export const schema: Schema = {
           "description": "OWA policy restriction is applied",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "primaryEmailAddress": {
@@ -2064,7 +2064,7 @@ export const schema: Schema = {
           "description": "Primary address of the mailbox",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "quota": {
@@ -2072,7 +2072,7 @@ export const schema: Schema = {
           "description": "Maximum mailbox usage in GB (overall size)",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "renewOutlookPeriod": {
@@ -2096,7 +2096,7 @@ export const schema: Schema = {
           "description": "Spam and Antivirus configuration",
           "fullType": "msServices.SpamAndVirusConfiguration",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "msServices.SpamAndVirusConfiguration"
         },
         "spamDetected": {
@@ -2104,7 +2104,7 @@ export const schema: Schema = {
           "description": "Spam activity detected on this mailbox",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "spamTicketNumber": {
@@ -2120,7 +2120,7 @@ export const schema: Schema = {
           "description": "Mailbox state",
           "fullType": "msServices.ObjectStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.ObjectStateEnum"
         },
         "taskPendingId": {
@@ -2128,7 +2128,7 @@ export const schema: Schema = {
           "description": "Pending task id for this account",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2162,7 +2162,7 @@ export const schema: Schema = {
           "description": "Exchange service name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "hostname": {
@@ -2178,7 +2178,7 @@ export const schema: Schema = {
           "description": "Maximum allowable size for received messages in MB",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxSendSize": {
@@ -2186,7 +2186,7 @@ export const schema: Schema = {
           "description": "Maximum allowable size of sent messages in MB",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "offer": {
@@ -2194,7 +2194,7 @@ export const schema: Schema = {
           "description": "Exchange service offer",
           "fullType": "msServices.ServiceOfferEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.ServiceOfferEnum"
         },
         "spamAndVirusConfiguration": {
@@ -2202,7 +2202,7 @@ export const schema: Schema = {
           "description": "Spam and Antivirus configuration",
           "fullType": "msServices.SpamAndVirusConfiguration",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "msServices.SpamAndVirusConfiguration"
         },
         "sslExpirationDate": {
@@ -2218,7 +2218,7 @@ export const schema: Schema = {
           "description": "Exchange service state",
           "fullType": "msServices.ServiceStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.ServiceStateEnum"
         },
         "taskPendingId": {
@@ -2226,7 +2226,7 @@ export const schema: Schema = {
           "description": "Task pending id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2262,7 +2262,7 @@ export const schema: Schema = {
           "description": "Indicates if Multi Factor Authentication is activated on this account",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "state": {
@@ -2270,7 +2270,7 @@ export const schema: Schema = {
           "description": "Current status of Multi Factor Authentication feature",
           "fullType": "msServices.ObjectStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.ObjectStateEnum"
         },
         "taskPendingId": {
@@ -2278,7 +2278,7 @@ export const schema: Schema = {
           "description": "Pending task for Multi Factor Authentication",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2352,16 +2352,14 @@ export const schema: Schema = {
       "properties": {
         "license": {
           "canBeNull": false,
-          "fullType": "msServices.SharepointLicenseEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "msServices.SharepointLicenseEnum"
         },
         "licenseQuantity": {
           "canBeNull": false,
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2373,16 +2371,14 @@ export const schema: Schema = {
       "properties": {
         "accountLicense": {
           "canBeNull": false,
-          "fullType": "msServices.SharepointAccountLicense[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "msServices.SharepointAccountLicense[]"
         },
         "date": {
           "canBeNull": false,
-          "fullType": "date",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "date"
         }
       }
@@ -2397,7 +2393,7 @@ export const schema: Schema = {
           "description": "The rights assigned to the sharepoint account",
           "fullType": "msServices.SharepointAccountAccessRightsEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "msServices.SharepointAccountAccessRightsEnum"
         },
         "activeDirectoryAccountId": {
@@ -2405,7 +2401,7 @@ export const schema: Schema = {
           "description": "Active Directory Account id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "configured": {
@@ -2413,7 +2409,7 @@ export const schema: Schema = {
           "description": "Indicates if the account is configured",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "currentUsage": {
@@ -2437,7 +2433,7 @@ export const schema: Schema = {
           "description": "Sharepoint account id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "license": {
@@ -2445,7 +2441,7 @@ export const schema: Schema = {
           "description": "Sharepoint account license",
           "fullType": "msServices.SharepointLicenseEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.SharepointLicenseEnum"
         },
         "officeLicense": {
@@ -2453,7 +2449,7 @@ export const schema: Schema = {
           "description": "office license is available",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "quota": {
@@ -2461,7 +2457,7 @@ export const schema: Schema = {
           "description": "OneDrive maximum size in byte",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "state": {
@@ -2469,7 +2465,7 @@ export const schema: Schema = {
           "description": "Sharepoint account state",
           "fullType": "msServices.ObjectStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.ObjectStateEnum"
         },
         "taskPendingId": {
@@ -2477,7 +2473,7 @@ export const schema: Schema = {
           "description": "Pending task for this sharepoint account",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2518,7 +2514,7 @@ export const schema: Schema = {
           "description": "Internal service name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "farmUrl": {
@@ -2526,7 +2522,7 @@ export const schema: Schema = {
           "description": "Sharepoint farm url",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "offer": {
@@ -2534,7 +2530,7 @@ export const schema: Schema = {
           "description": "Sharepoint offer",
           "fullType": "msServices.SharepointServiceOfferEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.SharepointServiceOfferEnum"
         },
         "quota": {
@@ -2542,7 +2538,7 @@ export const schema: Schema = {
           "description": "Shared space maximum size in byte",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "state": {
@@ -2550,7 +2546,7 @@ export const schema: Schema = {
           "description": "Sharepoint service state",
           "fullType": "msServices.ServiceStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.ServiceStateEnum"
         },
         "taskPendingId": {
@@ -2558,7 +2554,7 @@ export const schema: Schema = {
           "description": "Task pending id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "url": {
@@ -2581,7 +2577,7 @@ export const schema: Schema = {
           "description": "Internal service name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -2604,57 +2600,50 @@ export const schema: Schema = {
         "checkDKIM": {
           "canBeNull": false,
           "description": "Check DKIM of message",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "checkSPF": {
           "canBeNull": false,
           "description": "Check SPF of message",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteSpam": {
           "canBeNull": false,
           "description": "If message is a spam delete it",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteVirus": {
           "canBeNull": false,
           "description": "If message is a virus delete it",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "putInJunk": {
           "canBeNull": false,
           "description": "If message is a spam or virus put in junk. Overridden by deleteSpam or deleteVirus",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "tagSpam": {
           "canBeNull": false,
           "description": "If message is a spam change its subject",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "tagVirus": {
           "canBeNull": false,
           "description": "If message is a virus change its subject",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -2667,17 +2656,15 @@ export const schema: Schema = {
         "license": {
           "canBeNull": false,
           "description": "the kind of license under which sync account is contracted",
-          "fullType": "msServices.SyncLicenseEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "msServices.SyncLicenseEnum"
         },
         "licenseQuantity": {
           "canBeNull": false,
           "description": "number of license instances",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2690,17 +2677,15 @@ export const schema: Schema = {
         "accountLicense": {
           "canBeNull": false,
           "description": "sync account license usage",
-          "fullType": "msServices.SyncAccountLicense[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "msServices.SyncAccountLicense[]"
         },
         "date": {
           "canBeNull": false,
           "description": "the date used to determine sync account license usage",
-          "fullType": "date",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "date"
         }
       }
@@ -2715,7 +2700,7 @@ export const schema: Schema = {
           "description": "Indicates if the account is configured",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "license": {
@@ -2723,7 +2708,7 @@ export const schema: Schema = {
           "description": "Sync account license",
           "fullType": "msServices.SyncLicenseEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.SyncLicenseEnum"
         },
         "state": {
@@ -2731,7 +2716,7 @@ export const schema: Schema = {
           "description": "Sync account state",
           "fullType": "msServices.ObjectStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.ObjectStateEnum"
         },
         "taskPendingId": {
@@ -2739,7 +2724,7 @@ export const schema: Schema = {
           "description": "Pending task for this sync account",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2764,7 +2749,7 @@ export const schema: Schema = {
           "description": "Exchange service state",
           "fullType": "msServices.ServiceStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.ServiceStateEnum"
         },
         "taskPendingId": {
@@ -2772,7 +2757,7 @@ export const schema: Schema = {
           "description": "Task pending id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2795,7 +2780,7 @@ export const schema: Schema = {
           "description": "Function name",
           "fullType": "msServices.TaskFunctionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.TaskFunctionEnum"
         },
         "id": {
@@ -2803,7 +2788,7 @@ export const schema: Schema = {
           "description": "Task id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "status": {
@@ -2811,7 +2796,7 @@ export const schema: Schema = {
           "description": "Task status",
           "fullType": "msServices.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.TaskStatusEnum"
         },
         "todoDate": {
@@ -2819,7 +2804,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -2896,7 +2881,7 @@ export const schema: Schema = {
           "description": "Function name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -2904,7 +2889,7 @@ export const schema: Schema = {
           "description": "Task id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "status": {
@@ -2912,7 +2897,7 @@ export const schema: Schema = {
           "description": "Task status",
           "fullType": "msServices.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.TaskStatusEnum"
         },
         "todoDate": {
@@ -2920,7 +2905,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -2943,7 +2928,7 @@ export const schema: Schema = {
           "description": "Function name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -2951,7 +2936,7 @@ export const schema: Schema = {
           "description": "Task id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "status": {
@@ -2959,7 +2944,7 @@ export const schema: Schema = {
           "description": "Task status",
           "fullType": "msServices.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.TaskStatusEnum"
         },
         "todoDate": {
@@ -2967,7 +2952,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -2990,7 +2975,7 @@ export const schema: Schema = {
           "description": "Ownership for upn suffix confirmed",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "state": {
@@ -2998,7 +2983,7 @@ export const schema: Schema = {
           "description": "UPN suffix state",
           "fullType": "msServices.UPNStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "msServices.UPNStateEnum"
         },
         "suffix": {
@@ -3006,7 +2991,7 @@ export const schema: Schema = {
           "description": "UPN suffix",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "taskPendingId": {
@@ -3014,7 +2999,7 @@ export const schema: Schema = {
           "description": "Pending task for this upnSuffix",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -3027,31 +3012,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -3059,7 +3040,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -3103,42 +3083,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -3152,7 +3132,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -3175,21 +3155,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

@@ -119,6 +119,16 @@ export namespace dedicated {
             zpoolSize: number;
         }
         /**
+         * Partition Vrack
+         * interface fullName: dedicated.nasha.Vrack.Vrack
+         */
+        export interface Vrack {
+            id: number;
+            serviceIp: string;
+            type: string;
+            vrackName: string;
+        }
+        /**
          * Custom Snapshot
          * interface fullName: dedicated.nasha.customSnap.customSnap
          */
@@ -281,7 +291,7 @@ export interface Dedicated {
              * Alter this object properties
              * PUT /dedicated/nasha/{serviceName}
              */
-            $put(params: { canCreatePartition: boolean, customName?: string, datacenter?: string, ip?: string, monitored: boolean, serviceName: string, zpoolCapacity: number, zpoolSize: number }): Promise<void>;
+            $put(params?: { canCreatePartition?: boolean, customName?: string, datacenter?: string, ip?: string, monitored?: boolean, serviceName?: string, zpoolCapacity?: number, zpoolSize?: number }): Promise<void>;
             /**
              * Controle cache
              */
@@ -338,7 +348,7 @@ export interface Dedicated {
                      * Alter this object properties
                      * PUT /dedicated/nasha/{serviceName}/partition/{partitionName}
                      */
-                    $put(params: { partitionCapacity?: number, partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number, usedBySnapshots?: number }): Promise<void>;
+                    $put(params?: { partitionCapacity?: number, partitionName?: string, protocol?: dedicated.storage.ProtocolEnum, size?: number, usedBySnapshots?: number }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -532,7 +542,7 @@ export interface Dedicated {
                  * Alter this object properties
                  * PUT /dedicated/nasha/{serviceName}/serviceInfos
                  */
-                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */

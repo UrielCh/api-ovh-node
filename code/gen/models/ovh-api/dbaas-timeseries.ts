@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/dbaas/timeseries.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the PAAS_TIMESERIES service",
@@ -53,7 +53,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your timeseries project",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -73,14 +73,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "timeseries.Project",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "timeseries.Project",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your timeseries project",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -107,7 +107,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -115,7 +115,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -123,14 +123,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your timeseries project",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -156,7 +156,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Service Name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -182,7 +182,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Service Name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -200,6 +200,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service Name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "string",
               "description": "Description",
@@ -223,14 +231,6 @@ export const schema: Schema = {
               "name": "tags",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "paas.timeseries.Key"
@@ -252,7 +252,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Service Name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -260,7 +260,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Key ID",
+              "description": "Key id",
               "fullType": "string",
               "name": "keyId",
               "paramType": "path",
@@ -280,7 +280,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Service Name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -288,7 +288,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Key ID",
+              "description": "Key id",
               "fullType": "string",
               "name": "keyId",
               "paramType": "path",
@@ -308,6 +308,22 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Service Name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Key id",
+              "fullType": "string",
+              "name": "keyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Description",
               "fullType": "string",
               "name": "description",
@@ -315,9 +331,9 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "tsaas.PermissionEnum[]",
+              "dataType": "paas.timeseries.PermissionEnum[]",
               "description": "Permissions associated to this key",
-              "fullType": "tsaas.PermissionEnum[]",
+              "fullType": "paas.timeseries.PermissionEnum[]",
               "name": "permissions",
               "paramType": "body",
               "required": true
@@ -328,22 +344,6 @@ export const schema: Schema = {
               "fullType": "paas.timeseries.Tag[]",
               "name": "tags",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Key ID",
-              "fullType": "string",
-              "name": "keyId",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -366,7 +366,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Service Name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -392,7 +392,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your timeseries project",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -412,14 +412,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your timeseries project",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -443,6 +443,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service Name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "string",
               "description": "Project name",
@@ -482,14 +490,6 @@ export const schema: Schema = {
               "name": "raTokenKey",
               "paramType": "body",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "paas.timeseries.Project"
@@ -511,14 +511,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Service Name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "tsaas.OpenTSDBToken[]"
+          "responseType": "paas.timeseries.OpenTSDBToken[]"
         },
         {
           "apiStatus": {
@@ -529,6 +529,22 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service Name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Token description",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
             {
               "dataType": "string",
               "description": "Permission",
@@ -544,25 +560,9 @@ export const schema: Schema = {
               "name": "tags",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Token description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
-          "responseType": "tsaas.OpenTSDBToken"
+          "responseType": "paas.timeseries.OpenTSDBToken"
         }
       ],
       "path": "/dbaas/timeseries/{serviceName}/token/opentsdb"
@@ -581,7 +581,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Service Name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -589,7 +589,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Token ID",
+              "description": "token id",
               "fullType": "string",
               "name": "tokenId",
               "paramType": "path",
@@ -609,7 +609,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Service Name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -617,14 +617,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Token ID",
+              "description": "token id",
               "fullType": "string",
               "name": "tokenId",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "tsaas.OpenTSDBToken"
+          "responseType": "paas.timeseries.OpenTSDBToken"
         }
       ],
       "path": "/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}"
@@ -642,16 +642,14 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
@@ -684,23 +682,20 @@ export const schema: Schema = {
       "properties": {
         "currencyCode": {
           "canBeNull": false,
-          "fullType": "order.CurrencyCodeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.CurrencyCodeEnum"
         },
         "text": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "double",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "double"
         }
       }
@@ -715,7 +710,7 @@ export const schema: Schema = {
           "description": "Consumption start date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "generated": {
@@ -723,7 +718,7 @@ export const schema: Schema = {
           "description": "Timestamp of consumption generation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "items": {
@@ -731,7 +726,7 @@ export const schema: Schema = {
           "description": "List of consumption items",
           "fullType": "paas.timeseries.ConsumptionItem[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "paas.timeseries.ConsumptionItem[]"
         },
         "to": {
@@ -739,7 +734,7 @@ export const schema: Schema = {
           "description": "Consumption end date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "total": {
@@ -747,7 +742,7 @@ export const schema: Schema = {
           "description": "Total",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -760,17 +755,17 @@ export const schema: Schema = {
         "metricName": {
           "canBeNull": false,
           "description": "Metric name",
-          "fullType": "tsaas.MetricNameEnum",
+          "fullType": "paas.timeseries.consumption.item.MetricNameEnum",
           "readOnly": true,
-          "required": true,
-          "type": "tsaas.MetricNameEnum"
+          "required": false,
+          "type": "paas.timeseries.consumption.item.MetricNameEnum"
         },
         "price": {
           "canBeNull": false,
           "description": "Price",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "quantity": {
@@ -778,7 +773,7 @@ export const schema: Schema = {
           "description": "Quantity consumed in unit",
           "fullType": "complexType.UnitAndValue<double>",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<double>"
         },
         "unitPrice": {
@@ -786,7 +781,7 @@ export const schema: Schema = {
           "description": "Unit price",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -801,7 +796,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -809,23 +804,23 @@ export const schema: Schema = {
           "description": "Id",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "permissions": {
           "canBeNull": false,
           "description": "List of permissions",
-          "fullType": "tsaas.PermissionEnum[]",
+          "fullType": "paas.timeseries.PermissionEnum[]",
           "readOnly": true,
-          "required": true,
-          "type": "tsaas.PermissionEnum[]"
+          "required": false,
+          "type": "paas.timeseries.PermissionEnum[]"
         },
         "secret": {
           "canBeNull": false,
           "description": "Secret part",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "tags": {
@@ -833,10 +828,74 @@ export const schema: Schema = {
           "description": "List of tags",
           "fullType": "paas.timeseries.Tag[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "paas.timeseries.Tag[]"
         }
       }
+    },
+    "paas.timeseries.OpenTSDBToken": {
+      "description": "Description not available",
+      "id": "OpenTSDBToken",
+      "namespace": "tsaas",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "permission": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "protocol": {
+          "canBeNull": false,
+          "description": "protocol",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "secret": {
+          "canBeNull": false,
+          "description": "Secret part",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
+        "tags": {
+          "canBeNull": false,
+          "description": "List of tags",
+          "fullType": "paas.timeseries.Tag[]",
+          "readOnly": true,
+          "required": false,
+          "type": "paas.timeseries.Tag[]"
+        }
+      }
+    },
+    "paas.timeseries.PermissionEnum": {
+      "description": "Tokens permissions",
+      "enum": [
+        "READ",
+        "WRITE"
+      ],
+      "enumType": "string",
+      "id": "PermissionEnum",
+      "namespace": "tsaas"
     },
     "paas.timeseries.Project": {
       "description": "Project",
@@ -856,7 +915,7 @@ export const schema: Schema = {
           "description": "Name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "region": {
@@ -864,7 +923,7 @@ export const schema: Schema = {
           "description": "Region",
           "fullType": "paas.timeseries.Region",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "paas.timeseries.Region"
         },
         "serviceName": {
@@ -872,7 +931,7 @@ export const schema: Schema = {
           "description": "Id",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -887,7 +946,7 @@ export const schema: Schema = {
           "description": "Current value",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "max": {
@@ -895,18 +954,28 @@ export const schema: Schema = {
           "description": "Max allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "type": {
           "canBeNull": false,
           "description": "Type (ie: mads, ddp, ...)",
-          "fullType": "tsaas.QuotaTypeEnum",
+          "fullType": "paas.timeseries.QuotaTypeEnum",
           "readOnly": true,
-          "required": true,
-          "type": "tsaas.QuotaTypeEnum"
+          "required": false,
+          "type": "paas.timeseries.QuotaTypeEnum"
         }
       }
+    },
+    "paas.timeseries.QuotaTypeEnum": {
+      "description": "Project quotas",
+      "enum": [
+        "ddp",
+        "mads"
+      ],
+      "enumType": "string",
+      "id": "QuotaTypeEnum",
+      "namespace": "tsaas"
     },
     "paas.timeseries.Region": {
       "description": "Region",
@@ -918,7 +987,7 @@ export const schema: Schema = {
           "description": "Name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -926,7 +995,7 @@ export const schema: Schema = {
           "description": "Id",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "url": {
@@ -934,7 +1003,7 @@ export const schema: Schema = {
           "description": "URL",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -949,7 +1018,7 @@ export const schema: Schema = {
           "description": "Key",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
@@ -957,10 +1026,108 @@ export const schema: Schema = {
           "description": "Value",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
+    },
+    "paas.timeseries.Warp10Token": {
+      "description": "Token to use Warp10 functions",
+      "id": "Warp10Token",
+      "namespace": "tsaas",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "expiryTimestamp": {
+          "canBeNull": false,
+          "description": "Timestamp of expiration of the token",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "maxFetch": {
+          "canBeNull": false,
+          "description": "Maximum depth of the stack allowed",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maxGts": {
+          "canBeNull": false,
+          "description": "Maximum number of GTS retrieved allowed",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maxOps": {
+          "canBeNull": false,
+          "description": "maximum number of operations allowed",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "permissions": {
+          "canBeNull": false,
+          "description": "permission",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "protocol": {
+          "canBeNull": false,
+          "description": "protocol",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "queryToken": {
+          "canBeNull": false,
+          "description": "Query token used to authentificate queries",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
+        "secret": {
+          "canBeNull": false,
+          "description": "Secret part",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        }
+      }
+    },
+    "paas.timeseries.consumption.item.MetricNameEnum": {
+      "description": "Metric name",
+      "enum": [
+        "storage",
+        "input",
+        "output"
+      ],
+      "enumType": "string",
+      "id": "MetricNameEnum",
+      "namespace": "tsaas"
     },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",
@@ -970,31 +1137,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -1002,7 +1165,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -1046,42 +1208,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -1095,7 +1257,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -1118,21 +1280,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }
@@ -1179,7 +1341,7 @@ export const schema: Schema = {
           "description": "timeseries Project id",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -1203,91 +1365,6 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "StatusTypeEnum",
       "namespace": "timeseries"
-    },
-    "tsaas.MetricNameEnum": {
-      "description": "Metric name",
-      "enum": [
-        "storage",
-        "input",
-        "output"
-      ],
-      "enumType": "string",
-      "id": "MetricNameEnum",
-      "namespace": "tsaas"
-    },
-    "tsaas.OpenTSDBToken": {
-      "description": "Description not available",
-      "id": "OpenTSDBToken",
-      "namespace": "tsaas",
-      "properties": {
-        "description": {
-          "canBeNull": false,
-          "description": "Description",
-          "fullType": "string",
-          "readOnly": true,
-          "required": true,
-          "type": "string"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Id",
-          "fullType": "string",
-          "readOnly": true,
-          "required": true,
-          "type": "string"
-        },
-        "permission": {
-          "canBeNull": false,
-          "fullType": "string",
-          "readOnly": true,
-          "required": true,
-          "type": "string"
-        },
-        "protocol": {
-          "canBeNull": false,
-          "description": "protocol",
-          "fullType": "string",
-          "readOnly": true,
-          "required": true,
-          "type": "string"
-        },
-        "secret": {
-          "canBeNull": false,
-          "description": "Secret part",
-          "fullType": "password",
-          "readOnly": true,
-          "required": true,
-          "type": "password"
-        },
-        "tags": {
-          "canBeNull": false,
-          "description": "List of tags",
-          "fullType": "paas.timeseries.Tag[]",
-          "readOnly": true,
-          "required": true,
-          "type": "paas.timeseries.Tag[]"
-        }
-      }
-    },
-    "tsaas.PermissionEnum": {
-      "description": "Tokens permissions",
-      "enum": [
-        "READ",
-        "WRITE"
-      ],
-      "enumType": "string",
-      "id": "PermissionEnum",
-      "namespace": "tsaas"
-    },
-    "tsaas.QuotaTypeEnum": {
-      "description": "Project quotas",
-      "enum": [
-        "ddp",
-        "mads"
-      ],
-      "enumType": "string",
-      "id": "QuotaTypeEnum",
-      "namespace": "tsaas"
     }
   },
   "resourcePath": "/dbaas/timeseries"

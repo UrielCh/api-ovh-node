@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://ca.api.ovh.com:443/1.0/status.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "API to get incidents or maintenances linked to nichandle services",
@@ -42,7 +42,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "status.Task.Task[]"
+          "responseType": "status.Task[]"
         }
       ],
       "path": "/status/task"
@@ -85,7 +85,7 @@ export const schema: Schema = {
       "id": "TaskTypeEnum",
       "namespace": "ovhstatus.task"
     },
-    "status.Reply.Reply": {
+    "status.Reply": {
       "description": "A reply is useful to know the progress of a task",
       "id": "Reply",
       "namespace": "status.Reply",
@@ -95,7 +95,7 @@ export const schema: Schema = {
           "description": "The comment of the reply",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "date": {
@@ -103,12 +103,12 @@ export const schema: Schema = {
           "description": "The date of the reply",
           "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
     },
-    "status.Task.Task": {
+    "status.Task": {
       "description": "A task linked to one of your services",
       "id": "Task",
       "namespace": "status.Task",
@@ -118,7 +118,7 @@ export const schema: Schema = {
           "description": "The category of the task",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "endDate": {
@@ -134,7 +134,7 @@ export const schema: Schema = {
           "description": "The impact of the task",
           "fullType": "ovhstatus.task.TaskImpactEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ovhstatus.task.TaskImpactEnum"
         },
         "impactedService": {
@@ -142,7 +142,7 @@ export const schema: Schema = {
           "description": "Your impacted service linked to the task",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "progress": {
@@ -150,7 +150,7 @@ export const schema: Schema = {
           "description": "The task progression from 0 to 100",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "project": {
@@ -158,7 +158,7 @@ export const schema: Schema = {
           "description": "The project of task",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "reference": {
@@ -166,16 +166,16 @@ export const schema: Schema = {
           "description": "The reference of the task",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "replies": {
           "canBeNull": false,
           "description": "The replies of the task",
-          "fullType": "status.Reply.Reply[]",
+          "fullType": "status.Reply[]",
           "readOnly": false,
-          "required": true,
-          "type": "status.Reply.Reply[]"
+          "required": false,
+          "type": "status.Reply[]"
         },
         "startDate": {
           "canBeNull": true,
@@ -190,7 +190,7 @@ export const schema: Schema = {
           "description": "The status of the task",
           "fullType": "ovhstatus.task.TaskStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ovhstatus.task.TaskStatusEnum"
         },
         "title": {
@@ -198,7 +198,7 @@ export const schema: Schema = {
           "description": "The title of the task",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
@@ -206,7 +206,7 @@ export const schema: Schema = {
           "description": "The type of the task",
           "fullType": "ovhstatus.task.TaskTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ovhstatus.task.TaskTypeEnum"
         },
         "uuid": {
@@ -214,7 +214,7 @@ export const schema: Schema = {
           "description": "The task uuid",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }

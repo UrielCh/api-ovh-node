@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/deskaas.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the DESKAAS service",
@@ -36,7 +36,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -70,7 +70,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -96,16 +96,8 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The contact to set as billing contact",
-              "fullType": "string",
-              "name": "contactBilling",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -113,14 +105,22 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The contact to set as billing contact",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "contactBilling",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -178,7 +178,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -204,7 +204,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -230,7 +230,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -256,7 +256,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -282,7 +282,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -308,7 +308,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -328,14 +328,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -360,20 +360,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "deskaas.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "deskaas.TaskStateEnum",
               "name": "state",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -394,18 +394,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Task ID",
-              "fullType": "long",
-              "name": "taskId",
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Task id",
+              "fullType": "long",
+              "name": "taskId",
               "paramType": "path",
               "required": true
             }
@@ -429,7 +429,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -471,7 +471,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -497,7 +497,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -531,7 +531,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -565,7 +565,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -590,20 +590,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "deskaas.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "deskaas.TaskStateEnum",
               "name": "state",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -625,7 +625,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -633,7 +633,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Task ID",
+              "description": "Task id",
               "fullType": "long",
               "name": "taskId",
               "paramType": "path",
@@ -658,16 +658,14 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
@@ -711,7 +709,7 @@ export const schema: Schema = {
           "description": "Task name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "progress": {
@@ -719,7 +717,7 @@ export const schema: Schema = {
           "description": "Current progress",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "state": {
@@ -727,7 +725,7 @@ export const schema: Schema = {
           "description": "Current Task state",
           "fullType": "deskaas.TaskStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "deskaas.TaskStateEnum"
         },
         "taskId": {
@@ -735,7 +733,7 @@ export const schema: Schema = {
           "description": "Task id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -768,35 +766,35 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "deskaas.user.ActivationStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "deskaas.user.ActivationStateEnum"
         },
         "email": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "state": {
           "canBeNull": false,
           "fullType": "deskaas.user.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "deskaas.user.StateEnum"
         },
         "userId": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -811,7 +809,7 @@ export const schema: Schema = {
           "description": "Alias determined by the use",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "dataDisk": {
@@ -819,7 +817,7 @@ export const schema: Schema = {
           "description": "Data allocated to desktop",
           "fullType": "complexType.UnitAndValue<double>",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<double>"
         },
         "ip": {
@@ -835,7 +833,7 @@ export const schema: Schema = {
           "description": "Operating system of desktop",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "planCode": {
@@ -843,7 +841,7 @@ export const schema: Schema = {
           "description": "Profile of Virtual Desktop",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "ram": {
@@ -851,7 +849,7 @@ export const schema: Schema = {
           "description": "RAM allocated to desktop",
           "fullType": "complexType.UnitAndValue<double>",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<double>"
         },
         "reference": {
@@ -859,7 +857,7 @@ export const schema: Schema = {
           "description": "Reference of Virtual Desktop",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceName": {
@@ -867,7 +865,7 @@ export const schema: Schema = {
           "description": "Service name of your Desktop As A Service",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "state": {
@@ -875,7 +873,7 @@ export const schema: Schema = {
           "description": "Current state of your Virtual Desktop",
           "fullType": "deskaas.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "deskaas.StateEnum"
         },
         "url": {
@@ -891,7 +889,7 @@ export const schema: Schema = {
           "description": "Vcpu allocated to desktop",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -904,65 +902,57 @@ export const schema: Schema = {
         "deniedChars": {
           "canBeNull": false,
           "description": "List of denied characters in the password",
-          "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "digitMandatory": {
           "canBeNull": false,
           "description": "Whether or not a digit (0-9) is mandatory in the password",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "letterMandatory": {
           "canBeNull": false,
           "description": "Whether or not a letter (a-z or A-Z) is mandatory in the password",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "lowercaseLetterMandatory": {
           "canBeNull": false,
           "description": "Whether or not a lowercase letter (a-z) is mandatory in the password",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "maxLength": {
           "canBeNull": false,
           "description": "Maximum lenght of the password",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "minLength": {
           "canBeNull": false,
           "description": "Minimum lenght of the password",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "specialMandatory": {
           "canBeNull": false,
           "description": "Whether or not a special character (\\W or _) is mandatory in the password",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "uppercaseLetterMandatory": {
           "canBeNull": false,
           "description": "Whether or not an uppercase letter (A-Z) is mandatory in the password",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -1001,31 +991,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -1033,7 +1019,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -1112,42 +1097,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -1161,7 +1146,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -1184,21 +1169,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

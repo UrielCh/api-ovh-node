@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.soyoustart.com:443/1.0/secret.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Retrieve a secret sent by email",
@@ -42,17 +42,15 @@ export const schema: Schema = {
         "expiration": {
           "canBeNull": false,
           "description": "Expiration time of the secret",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "secret": {
           "canBeNull": false,
           "description": "The secret",
-          "fullType": "password",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "password"
         }
       }

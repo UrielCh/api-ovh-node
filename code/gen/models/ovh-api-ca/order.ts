@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://ca.api.ovh.com:443/1.0/order.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Missing description",
@@ -915,7 +915,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart ID",
+              "description": "Cart identifier",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -934,11 +934,11 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             },
             {
@@ -952,7 +952,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -966,11 +966,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
               "required": true
             }
           ],
@@ -993,7 +993,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart ID",
+              "description": "Cart identifier",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1011,6 +1011,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "long",
               "description": "Cart item to be linked",
@@ -1030,7 +1038,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -1049,14 +1057,6 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -1339,7 +1339,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart ID",
+              "description": "Cart identifier",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1375,6 +1375,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Identifier of a dedicated server offer",
               "fullType": "string",
               "name": "planCode",
@@ -1384,7 +1392,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -1403,14 +1411,6 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -1433,7 +1433,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart ID",
+              "description": "Cart identifier",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -1468,6 +1468,14 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "long",
               "description": "Cart item to be linked",
               "fullType": "long",
@@ -1486,7 +1494,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -1505,14 +1513,6 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -2394,7 +2394,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart ID",
+              "description": "Cart identifier",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -2414,6 +2414,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Identifier of the IP address reseller offer",
               "fullType": "string",
               "name": "planCode",
@@ -2423,7 +2431,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -2442,14 +2450,6 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -2560,18 +2560,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Item ID",
               "fullType": "long",
               "name": "itemId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
               "paramType": "path",
               "required": true
             }
@@ -2637,18 +2637,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Item ID",
               "fullType": "long",
               "name": "itemId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
               "paramType": "path",
               "required": true
             }
@@ -2749,18 +2749,18 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Item ID",
-              "fullType": "long",
-              "name": "itemId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Cart ID",
               "fullType": "string",
               "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Item ID",
+              "fullType": "long",
+              "name": "itemId",
               "paramType": "path",
               "required": true
             }
@@ -4067,7 +4067,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart ID",
+              "description": "Cart identifier",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -4087,18 +4087,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
+              "description": "Cart identifier",
               "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             },
             {
@@ -4112,17 +4104,25 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Cart ID",
+              "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
               "required": true
             }
           ],
@@ -4145,7 +4145,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart ID",
+              "description": "Cart identifier",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -4173,26 +4173,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
+              "description": "Cart identifier",
               "fullType": "string",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             },
             {
@@ -4213,10 +4197,26 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cart ID",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
               "required": true
             }
           ],
@@ -4239,7 +4239,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart ID",
+              "description": "Cart identifier",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -4259,6 +4259,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Identifier of the Private Cloud Reseller Enterprise offer",
               "fullType": "string",
               "name": "planCode",
@@ -4268,7 +4276,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -4287,14 +4295,6 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -4317,7 +4317,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart ID",
+              "description": "Cart identifier",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -4344,6 +4344,14 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "long",
               "description": "Cart item to be linked",
               "fullType": "long",
@@ -4362,7 +4370,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -4381,14 +4389,6 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -4578,7 +4578,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart ID",
+              "description": "Cart identifier",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -4598,6 +4598,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Identifier of the SSL Comodo offer",
               "fullType": "string",
               "name": "planCode",
@@ -4607,7 +4615,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -4626,14 +4634,6 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -4656,7 +4656,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart ID",
+              "description": "Cart identifier",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -4684,26 +4684,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
+              "description": "Cart identifier",
               "fullType": "string",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             },
             {
@@ -4724,10 +4708,26 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cart ID",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
               "required": true
             }
           ],
@@ -5163,7 +5163,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart ID",
+              "description": "Cart identifier",
               "fullType": "string",
               "name": "cartId",
               "paramType": "path",
@@ -5182,11 +5182,11 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             },
             {
@@ -5200,7 +5200,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -5214,11 +5214,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
               "required": true
             }
           ],
@@ -5372,7 +5372,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of baremetal servers service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5390,14 +5390,6 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
             {
               "dataType": "string",
               "description": "Cart identifier",
@@ -5417,7 +5409,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -5431,8 +5423,16 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of baremetal servers service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5475,7 +5475,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of Cloud Project",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5512,7 +5512,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -5535,7 +5535,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of Cloud Project",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5578,7 +5578,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of Dedicated service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5598,6 +5598,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Identifier of the additional dedicated offer",
               "fullType": "string",
               "name": "planCode",
@@ -5607,7 +5615,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -5630,15 +5638,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of Dedicated service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5690,7 +5690,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of Domain service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5710,22 +5710,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Cart identifier",
               "fullType": "string",
               "name": "cartId",
@@ -5743,14 +5727,30 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal ID of Domain service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5793,7 +5793,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of IP Load-Balancing service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5830,7 +5830,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -5853,7 +5853,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of IP Load-Balancing service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5896,7 +5896,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of Logs service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5933,7 +5933,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -5956,7 +5956,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of Logs service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5999,7 +5999,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The private cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6036,7 +6036,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -6059,7 +6059,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The private cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6102,7 +6102,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The private cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6122,8 +6122,24 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
+              "description": "Cart identifier",
               "fullType": "string",
+              "name": "cartId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the additional private cloud offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -6146,23 +6162,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Identifier of the additional private cloud offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The private cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6205,7 +6205,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The private cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6225,22 +6225,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Pricing mode selected for the purchase of the product",
-              "fullType": "string",
-              "name": "pricingMode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity of product desired",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Cart identifier",
               "fullType": "string",
               "name": "cartId",
@@ -6258,14 +6242,30 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The private cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6308,7 +6308,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The private cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6328,6 +6328,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Identifier of the additional private cloud enterprise offer",
               "fullType": "string",
               "name": "planCode",
@@ -6337,7 +6345,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -6360,15 +6368,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The private cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6411,7 +6411,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of Sharepoint service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6431,6 +6431,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Identifier of the additional Sharepoint offer",
               "fullType": "string",
               "name": "planCode",
@@ -6440,7 +6448,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -6463,15 +6471,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of Sharepoint service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6514,7 +6514,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of SSL Gateway service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6551,7 +6551,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -6574,7 +6574,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of SSL Gateway service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6617,7 +6617,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your VPS service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6654,7 +6654,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -6677,7 +6677,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your VPS service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6720,7 +6720,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of Web Hosting service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6757,7 +6757,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Duration selected for the purchase of the product",
-              "fullType": "string",
+              "fullType": "duration",
               "name": "duration",
               "paramType": "body",
               "required": true
@@ -6780,7 +6780,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of Web Hosting service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7436,7 +7436,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "order.catalog.public.Catalog"
+          "responseType": "order.catalog.public.DedicatedServerCatalog"
         }
       ],
       "path": "/order/catalog/public/baremetalServers"
@@ -7743,7 +7743,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your CDN offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7768,19 +7768,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Backend number that will be ordered",
               "fullType": "long",
               "name": "backend",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your CDN offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -7802,8 +7802,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Backend number that will be ordered",
+              "fullType": "long",
+              "name": "backend",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your CDN offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7815,14 +7823,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Backend number that will be ordered",
-              "fullType": "long",
-              "name": "backend",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -7847,7 +7847,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your CDN offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7880,19 +7880,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "cdnanycast.OrderCacheRuleEnum",
               "description": "cache rule upgrade option to 100 or 1000",
               "fullType": "cdnanycast.OrderCacheRuleEnum",
               "name": "cacheRule",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your CDN offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -7914,27 +7914,27 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
+              "dataType": "cdnanycast.OrderCacheRuleEnum",
+              "description": "cache rule upgrade option to 100 or 1000",
+              "fullType": "cdnanycast.OrderCacheRuleEnum",
+              "name": "cacheRule",
+              "paramType": "query",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your CDN offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "cdnanycast.OrderCacheRuleEnum",
-              "description": "cache rule upgrade option to 100 or 1000",
-              "fullType": "cdnanycast.OrderCacheRuleEnum",
-              "name": "cacheRule",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -7959,7 +7959,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your CDN offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7992,19 +7992,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "cdnanycast.OrderQuotaEnum",
               "description": "quota number in TB that will be added to the CDN service",
               "fullType": "cdnanycast.OrderQuotaEnum",
               "name": "quota",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your CDN offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -8026,27 +8026,27 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
+              "dataType": "cdnanycast.OrderQuotaEnum",
+              "description": "quota number in TB that will be added to the CDN service",
+              "fullType": "cdnanycast.OrderQuotaEnum",
+              "name": "quota",
+              "paramType": "query",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your CDN offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "cdnanycast.OrderQuotaEnum",
-              "description": "quota number in TB that will be added to the CDN service",
-              "fullType": "cdnanycast.OrderQuotaEnum",
-              "name": "quota",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -8071,7 +8071,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your CDN offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8122,7 +8122,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8147,19 +8147,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Amount to add in your cloud credit",
               "fullType": "long",
               "name": "amount",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The project id",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -8184,7 +8184,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8210,10 +8210,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance id where ip will be routed to",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "name": "instanceId",
+              "paramType": "query",
               "required": true
             },
             {
@@ -8234,10 +8234,10 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Instance id where ip will be routed to",
+              "description": "The project id",
               "fullType": "string",
-              "name": "instanceId",
-              "paramType": "query",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -8278,7 +8278,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8321,7 +8321,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8347,7 +8347,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8373,7 +8373,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8401,7 +8401,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Housing bay",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8434,18 +8434,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.NasHAZoneEnum",
-              "description": "Nas HA localization",
-              "fullType": "dedicated.NasHAZoneEnum",
-              "name": "datacenter",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "dedicated.NasHAOfferEnum",
               "description": "Capacity of Nas HA offer",
               "fullType": "dedicated.NasHAOfferEnum",
               "name": "model",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.NasHAZoneEnum",
+              "description": "Nas HA localization",
+              "fullType": "dedicated.NasHAZoneEnum",
+              "name": "datacenter",
               "paramType": "query",
               "required": true
             }
@@ -8468,11 +8468,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
+              "dataType": "dedicated.NasHAOfferEnum",
+              "description": "Capacity of Nas HA offer",
+              "fullType": "dedicated.NasHAOfferEnum",
+              "name": "model",
+              "paramType": "query",
               "required": true
             },
             {
@@ -8484,11 +8484,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.NasHAOfferEnum",
-              "description": "Capacity of Nas HA offer",
-              "fullType": "dedicated.NasHAOfferEnum",
-              "name": "model",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -8504,18 +8504,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.NasHAZoneEnum",
-              "description": "Nas HA localization",
-              "fullType": "dedicated.NasHAZoneEnum",
-              "name": "datacenter",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "dedicated.NasHAOfferEnum",
               "description": "Capacity of Nas HA offer",
               "fullType": "dedicated.NasHAOfferEnum",
               "name": "model",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.NasHAZoneEnum",
+              "description": "Nas HA localization",
+              "fullType": "dedicated.NasHAZoneEnum",
+              "name": "datacenter",
               "paramType": "body",
               "required": true
             },
@@ -8564,7 +8564,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8589,19 +8589,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.server.BackupStorageCapacityEnum",
               "description": "The capacity in gigabytes of your backup storage",
               "fullType": "dedicated.server.BackupStorageCapacityEnum",
               "name": "capacity",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -8623,8 +8623,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "dedicated.server.BackupStorageCapacityEnum",
+              "description": "The capacity in gigabytes of your backup storage",
+              "fullType": "dedicated.server.BackupStorageCapacityEnum",
+              "name": "capacity",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8636,14 +8644,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.BackupStorageCapacityEnum",
-              "description": "The capacity in gigabytes of your backup storage",
-              "fullType": "dedicated.server.BackupStorageCapacityEnum",
-              "name": "capacity",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -8668,7 +8668,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8701,11 +8701,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "dedicated.server.BandwidthOrderTypeEnum",
+              "description": "bandwidth type",
+              "fullType": "dedicated.server.BandwidthOrderTypeEnum",
+              "name": "type",
+              "paramType": "query",
               "required": true
             },
             {
@@ -8717,11 +8717,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.server.BandwidthOrderTypeEnum",
-              "description": "bandwidth type",
-              "fullType": "dedicated.server.BandwidthOrderTypeEnum",
-              "name": "type",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -8743,19 +8743,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
+              "dataType": "dedicated.server.BandwidthOrderTypeEnum",
+              "description": "bandwidth type",
+              "fullType": "dedicated.server.BandwidthOrderTypeEnum",
+              "name": "type",
+              "paramType": "query",
               "required": true
             },
             {
@@ -8767,11 +8759,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.server.BandwidthOrderTypeEnum",
-              "description": "bandwidth type",
-              "fullType": "dedicated.server.BandwidthOrderTypeEnum",
-              "name": "type",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -8787,14 +8787,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.server.BandwidthOrderEnum",
-              "description": "Bandwidth to allocate",
-              "fullType": "dedicated.server.BandwidthOrderEnum",
-              "name": "bandwidth",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "dedicated.server.BandwidthOrderTypeEnum",
               "description": "bandwidth type",
               "fullType": "dedicated.server.BandwidthOrderTypeEnum",
@@ -8803,8 +8795,16 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "dedicated.server.BandwidthOrderEnum",
+              "description": "Bandwidth to allocate",
+              "fullType": "dedicated.server.BandwidthOrderEnum",
+              "name": "bandwidth",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8837,19 +8837,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.server.BandwidthvRackOrderEnum",
               "description": "vRack Bandwidth to allocate",
               "fullType": "dedicated.server.BandwidthvRackOrderEnum",
               "name": "bandwidth",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -8871,8 +8871,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "dedicated.server.BandwidthvRackOrderEnum",
+              "description": "vRack Bandwidth to allocate",
+              "fullType": "dedicated.server.BandwidthvRackOrderEnum",
+              "name": "bandwidth",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8884,14 +8892,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.BandwidthvRackOrderEnum",
-              "description": "vRack Bandwidth to allocate",
-              "fullType": "dedicated.server.BandwidthvRackOrderEnum",
-              "name": "bandwidth",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -8916,7 +8916,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8949,19 +8949,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.server.IpCountryEnum",
               "description": "Ip localization",
               "fullType": "dedicated.server.IpCountryEnum",
               "name": "country",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -8983,8 +8983,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "dedicated.server.IpCountryEnum",
+              "description": "Ip localization",
+              "fullType": "dedicated.server.IpCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8996,14 +9004,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.IpCountryEnum",
-              "description": "Ip localization",
-              "fullType": "dedicated.server.IpCountryEnum",
-              "name": "country",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -9028,7 +9028,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9061,19 +9061,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.server.OrderableSysFeatureEnum",
               "description": "the feature",
               "fullType": "dedicated.server.OrderableSysFeatureEnum",
               "name": "feature",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -9095,8 +9095,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "dedicated.server.OrderableSysFeatureEnum",
+              "description": "the feature",
+              "fullType": "dedicated.server.OrderableSysFeatureEnum",
+              "name": "feature",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9108,14 +9116,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.OrderableSysFeatureEnum",
-              "description": "the feature",
-              "fullType": "dedicated.server.OrderableSysFeatureEnum",
-              "name": "feature",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -9140,7 +9140,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9173,19 +9173,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.server.FirewallModelEnum",
               "description": "Firewall type",
               "fullType": "dedicated.server.FirewallModelEnum",
               "name": "firewallModel",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -9207,8 +9207,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "dedicated.server.FirewallModelEnum",
+              "description": "Firewall type",
+              "fullType": "dedicated.server.FirewallModelEnum",
+              "name": "firewallModel",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9220,14 +9228,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.FirewallModelEnum",
-              "description": "Firewall type",
-              "fullType": "dedicated.server.FirewallModelEnum",
-              "name": "firewallModel",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -9252,7 +9252,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9285,11 +9285,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "dedicated.server.IpCountryEnum",
+              "description": "IP localization",
+              "fullType": "dedicated.server.IpCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicated.server.IpTypeOrderableEnum",
+              "description": "The type of IP",
+              "fullType": "dedicated.server.IpTypeOrderableEnum",
+              "name": "type",
+              "paramType": "query",
               "required": true
             },
             {
@@ -9297,14 +9305,6 @@ export const schema: Schema = {
               "description": "Your organisation id to add on block informations",
               "fullType": "string",
               "name": "organisationId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "dedicated.server.IpCountryEnum",
-              "description": "IP localization",
-              "fullType": "dedicated.server.IpCountryEnum",
-              "name": "country",
               "paramType": "query",
               "required": false
             },
@@ -9317,11 +9317,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.server.IpTypeOrderableEnum",
-              "description": "The type of IP",
-              "fullType": "dedicated.server.IpTypeOrderableEnum",
-              "name": "type",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -9343,19 +9343,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "dedicated.server.IpCountryEnum",
+              "description": "IP localization",
+              "fullType": "dedicated.server.IpCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": false
             },
             {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
+              "dataType": "dedicated.server.IpTypeOrderableEnum",
+              "description": "The type of IP",
+              "fullType": "dedicated.server.IpTypeOrderableEnum",
+              "name": "type",
+              "paramType": "query",
               "required": true
             },
             {
@@ -9363,14 +9363,6 @@ export const schema: Schema = {
               "description": "Your organisation id to add on block informations",
               "fullType": "string",
               "name": "organisationId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "dedicated.server.IpCountryEnum",
-              "description": "IP localization",
-              "fullType": "dedicated.server.IpCountryEnum",
-              "name": "country",
               "paramType": "query",
               "required": false
             },
@@ -9383,11 +9375,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.server.IpTypeOrderableEnum",
-              "description": "The type of IP",
-              "fullType": "dedicated.server.IpTypeOrderableEnum",
-              "name": "type",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -9403,12 +9403,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.server.IpBlockSizeEnum",
-              "description": "IP block size",
-              "fullType": "dedicated.server.IpBlockSizeEnum",
-              "name": "blockSize",
+              "dataType": "dedicated.server.IpCountryEnum",
+              "description": "IP localization",
+              "fullType": "dedicated.server.IpCountryEnum",
+              "name": "country",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "dedicated.server.IpTypeOrderableEnum",
@@ -9427,16 +9427,16 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "dedicated.server.IpCountryEnum",
-              "description": "IP localization",
-              "fullType": "dedicated.server.IpCountryEnum",
-              "name": "country",
+              "dataType": "dedicated.server.IpBlockSizeEnum",
+              "description": "IP block size",
+              "fullType": "dedicated.server.IpBlockSizeEnum",
+              "name": "blockSize",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9470,14 +9470,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "IP migration token",
               "fullType": "string",
               "name": "token",
@@ -9490,6 +9482,14 @@ export const schema: Schema = {
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -9512,22 +9512,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "IP migration token",
               "fullType": "string",
               "name": "token",
@@ -9540,6 +9524,22 @@ export const schema: Schema = {
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -9572,7 +9572,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9606,7 +9606,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9632,17 +9632,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Duration",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
-              "name": "duration",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Duration",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "duration",
               "paramType": "path",
               "required": true
             }
@@ -9660,7 +9660,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9694,7 +9694,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9720,7 +9720,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9748,7 +9748,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9782,7 +9782,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9808,7 +9808,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9836,17 +9836,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Duration",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
-              "name": "duration",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Duration",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "duration",
               "paramType": "path",
               "required": true
             }
@@ -9869,19 +9869,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.server.IpStaticCountryEnum",
               "description": "Ip localization",
               "fullType": "dedicated.server.IpStaticCountryEnum",
               "name": "country",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -9903,8 +9903,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "dedicated.server.IpStaticCountryEnum",
+              "description": "Ip localization",
+              "fullType": "dedicated.server.IpStaticCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9916,14 +9924,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.IpStaticCountryEnum",
-              "description": "Ip localization",
-              "fullType": "dedicated.server.IpStaticCountryEnum",
-              "name": "country",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -9948,7 +9948,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9981,19 +9981,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.server.TrafficOrderEnum",
               "description": "amount of traffic to allocate",
               "fullType": "dedicated.server.TrafficOrderEnum",
               "name": "traffic",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -10015,8 +10015,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "dedicated.server.TrafficOrderEnum",
+              "description": "amount of traffic to allocate",
+              "fullType": "dedicated.server.TrafficOrderEnum",
+              "name": "traffic",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10028,14 +10036,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.TrafficOrderEnum",
-              "description": "amount of traffic to allocate",
-              "fullType": "dedicated.server.TrafficOrderEnum",
-              "name": "traffic",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -10060,7 +10060,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10093,19 +10093,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.server.UsbKeyCapacityEnum",
               "description": "Capacity in gigabytes",
               "fullType": "dedicated.server.UsbKeyCapacityEnum",
               "name": "capacity",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -10127,8 +10127,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "dedicated.server.UsbKeyCapacityEnum",
+              "description": "Capacity in gigabytes",
+              "fullType": "dedicated.server.UsbKeyCapacityEnum",
+              "name": "capacity",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10140,14 +10148,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.UsbKeyCapacityEnum",
-              "description": "Capacity in gigabytes",
-              "fullType": "dedicated.server.UsbKeyCapacityEnum",
-              "name": "capacity",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -10172,7 +10172,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10229,7 +10229,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10257,19 +10257,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicatedCloud.AdditionalBandwidthEnum",
               "description": "How much additional bandwidth do you want ?",
               "fullType": "dedicatedCloud.AdditionalBandwidthEnum",
               "name": "bandwidth",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -10294,8 +10294,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "dedicatedCloud.AdditionalBandwidthEnum",
+              "description": "How much additional bandwidth do you want ?",
+              "fullType": "dedicatedCloud.AdditionalBandwidthEnum",
+              "name": "bandwidth",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10307,14 +10315,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicatedCloud.AdditionalBandwidthEnum",
-              "description": "How much additional bandwidth do you want ?",
-              "fullType": "dedicatedCloud.AdditionalBandwidthEnum",
-              "name": "bandwidth",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -10342,7 +10342,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10378,18 +10378,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Private Cloud)",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of filer you want to order (default 1)",
+              "fullType": "long",
+              "name": "quantity",
               "paramType": "query",
               "required": false
             },
@@ -10402,12 +10402,12 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Quantity of filer you want to order (default 1)",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -10431,26 +10431,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Private Cloud)",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of filer you want to order (default 1)",
+              "fullType": "long",
+              "name": "quantity",
               "paramType": "query",
               "required": false
             },
@@ -10463,12 +10455,20 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Quantity of filer you want to order (default 1)",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "order.Order"
@@ -10494,14 +10494,6 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Filer profile you want to order (\"name\" field in a profile returned by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Quantity of filer you want to order (default 1)",
               "fullType": "long",
@@ -10511,7 +10503,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Filer profile you want to order (\"name\" field in a profile returned by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10547,12 +10547,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "long",
+              "description": "Quantity of hosts you want to order (default 1)",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "string",
@@ -10571,12 +10571,12 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Quantity of hosts you want to order (default 1)",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -10600,20 +10600,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
+              "dataType": "long",
+              "description": "Quantity of hosts you want to order (default 1)",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "string",
@@ -10632,12 +10624,20 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Quantity of hosts you want to order (default 1)",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "order.Order"
@@ -10680,7 +10680,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10717,25 +10717,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Information visible on whois (minimum 3 and maximum 250 alphanumeric characters)",
               "fullType": "string",
               "name": "description",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Information visible on whois (between 2 and maximum 20 alphanumeric characters)",
-              "fullType": "string",
-              "name": "networkName",
               "paramType": "query",
               "required": true
             },
@@ -10748,10 +10732,26 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "string",
+              "description": "Information visible on whois (between 2 and maximum 20 alphanumeric characters)",
+              "fullType": "string",
+              "name": "networkName",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "dedicatedCloud.IpCountriesEnum",
               "description": "This Ip block country",
               "fullType": "dedicatedCloud.IpCountriesEnum",
               "name": "country",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Basic information of how will this bloc be used (as \"web\",\"ssl\",\"cloud\" or other things)",
+              "fullType": "string",
+              "name": "usage",
               "paramType": "query",
               "required": true
             },
@@ -10765,10 +10765,10 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Basic information of how will this bloc be used (as \"web\",\"ssl\",\"cloud\" or other things)",
+              "description": "",
               "fullType": "string",
-              "name": "usage",
-              "paramType": "query",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -10794,33 +10794,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Information visible on whois (minimum 3 and maximum 250 alphanumeric characters)",
               "fullType": "string",
               "name": "description",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Information visible on whois (between 2 and maximum 20 alphanumeric characters)",
-              "fullType": "string",
-              "name": "networkName",
               "paramType": "query",
               "required": true
             },
@@ -10833,10 +10809,26 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "string",
+              "description": "Information visible on whois (between 2 and maximum 20 alphanumeric characters)",
+              "fullType": "string",
+              "name": "networkName",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "dedicatedCloud.IpCountriesEnum",
               "description": "This Ip block country",
               "fullType": "dedicatedCloud.IpCountriesEnum",
               "name": "country",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Basic information of how will this bloc be used (as \"web\",\"ssl\",\"cloud\" or other things)",
+              "fullType": "string",
+              "name": "usage",
               "paramType": "query",
               "required": true
             },
@@ -10850,10 +10842,18 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Basic information of how will this bloc be used (as \"web\",\"ssl\",\"cloud\" or other things)",
+              "description": "",
               "fullType": "string",
-              "name": "usage",
-              "paramType": "query",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -10880,14 +10880,6 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Information visible on whois (between 2 and maximum 20 alphanumeric characters)",
-              "fullType": "string",
-              "name": "networkName",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "dedicatedCloud.OrderableIpBlockRangeEnum",
               "description": "The network ranges orderable",
               "fullType": "dedicatedCloud.OrderableIpBlockRangeEnum",
@@ -10896,10 +10888,26 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "string",
+              "description": "Information visible on whois (between 2 and maximum 20 alphanumeric characters)",
+              "fullType": "string",
+              "name": "networkName",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "dedicatedCloud.IpCountriesEnum",
               "description": "This Ip block country",
               "fullType": "dedicatedCloud.IpCountriesEnum",
               "name": "country",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Basic information of how will this bloc be used (as \"web\",\"ssl\",\"cloud\" or other things)",
+              "fullType": "string",
+              "name": "usage",
               "paramType": "body",
               "required": true
             },
@@ -10913,15 +10921,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Basic information of how will this bloc be used (as \"web\",\"ssl\",\"cloud\" or other things)",
-              "fullType": "string",
-              "name": "usage",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10958,7 +10958,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10981,7 +10981,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11009,18 +11009,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicatedCloud.ressources.UpgradeTypeEnum",
-              "description": "The type of upgrade you want to process on the ressource(s)",
-              "fullType": "dedicatedCloud.ressources.UpgradeTypeEnum",
-              "name": "upgradeType",
+              "dataType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
+              "description": "The type of ressource you want to upgrade.",
+              "fullType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
+              "name": "upgradedRessourceType",
               "paramType": "query",
               "required": true
             },
@@ -11033,11 +11025,19 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
-              "description": "The type of ressource you want to upgrade.",
-              "fullType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
-              "name": "upgradedRessourceType",
+              "dataType": "dedicatedCloud.ressources.UpgradeTypeEnum",
+              "description": "The type of upgrade you want to process on the ressource(s)",
+              "fullType": "dedicatedCloud.ressources.UpgradeTypeEnum",
+              "name": "upgradeType",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -11062,26 +11062,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicatedCloud.ressources.UpgradeTypeEnum",
-              "description": "The type of upgrade you want to process on the ressource(s)",
-              "fullType": "dedicatedCloud.ressources.UpgradeTypeEnum",
-              "name": "upgradeType",
+              "dataType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
+              "description": "The type of ressource you want to upgrade.",
+              "fullType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
+              "name": "upgradedRessourceType",
               "paramType": "query",
               "required": true
             },
@@ -11094,11 +11078,27 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
-              "description": "The type of ressource you want to upgrade.",
-              "fullType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
-              "name": "upgradedRessourceType",
+              "dataType": "dedicatedCloud.ressources.UpgradeTypeEnum",
+              "description": "The type of upgrade you want to process on the ressource(s)",
+              "fullType": "dedicatedCloud.ressources.UpgradeTypeEnum",
+              "name": "upgradeType",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -11117,20 +11117,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "The id of a particular ressource you want to upgrade in your Private Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
-              "fullType": "long",
-              "name": "upgradedRessourceId",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
               "description": "The type of ressource you want to upgrade.",
               "fullType": "dedicatedCloud.ressources.UpgradeRessourceTypeEnum",
               "name": "upgradedRessourceType",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The id of a particular ressource you want to upgrade in your Private Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
+              "fullType": "long",
+              "name": "upgradedRessourceId",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "dedicatedCloud.ressources.UpgradeTypeEnum",
@@ -11142,17 +11142,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Duration",
+              "description": "",
               "fullType": "string",
-              "name": "duration",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Duration",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "duration",
               "paramType": "path",
               "required": true
             }
@@ -11178,18 +11178,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ip",
               "description": "An avaiable ip from one of your Private Cloud public IP blocks",
               "fullType": "ip",
               "name": "firstPublicIpAddress",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "ip",
+              "description": "Another avaiable ip from one of your Private Cloud public IP blocks",
+              "fullType": "ip",
+              "name": "secondPublicIpAddress",
               "paramType": "query",
               "required": true
             },
@@ -11202,11 +11202,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "ip",
-              "description": "Another avaiable ip from one of your Private Cloud public IP blocks",
-              "fullType": "ip",
-              "name": "secondPublicIpAddress",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -11226,17 +11226,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ip",
-              "description": "Another avaiable ip from one of your Private Cloud public IP blocks",
+              "description": "An avaiable ip from one of your Private Cloud public IP blocks",
               "fullType": "ip",
-              "name": "secondPublicIpAddress",
+              "name": "firstPublicIpAddress",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "ip",
-              "description": "An avaiable ip from one of your Private Cloud public IP blocks",
+              "description": "Another avaiable ip from one of your Private Cloud public IP blocks",
               "fullType": "ip",
-              "name": "firstPublicIpAddress",
+              "name": "secondPublicIpAddress",
               "paramType": "body",
               "required": true
             },
@@ -11250,7 +11250,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11298,20 +11298,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Name of the zone to create",
-              "fullType": "string",
-              "name": "zoneName",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Create only mandatory records",
               "fullType": "boolean",
               "name": "minimized",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Name of the zone to create",
+              "fullType": "string",
+              "name": "zoneName",
+              "paramType": "query",
+              "required": true
             }
           ],
           "responseType": "order.Order"
@@ -11329,20 +11329,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Name of the zone to create",
-              "fullType": "string",
-              "name": "zoneName",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Create only mandatory records",
               "fullType": "boolean",
               "name": "minimized",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Name of the zone to create",
+              "fullType": "string",
+              "name": "zoneName",
+              "paramType": "body",
+              "required": true
             }
           ],
           "responseType": "order.Order"
@@ -11367,7 +11367,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -11396,7 +11396,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -11425,17 +11425,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Duration",
+              "description": "The internal name of your zone",
               "fullType": "string",
-              "name": "duration",
+              "name": "zoneName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "Duration",
               "fullType": "string",
-              "name": "zoneName",
+              "name": "duration",
               "paramType": "path",
               "required": true
             }
@@ -11456,7 +11456,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -11507,7 +11507,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Organization name",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
               "name": "organizationName",
               "paramType": "path",
@@ -11533,7 +11533,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Organization name",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
               "name": "organizationName",
               "paramType": "path",
@@ -11541,7 +11541,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Exchange service",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
               "paramType": "path",
@@ -11566,19 +11566,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Organization name",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Exchange service",
-              "fullType": "string",
-              "name": "exchangeService",
-              "paramType": "path",
+              "dataType": "long",
+              "description": "Number of Accounts to order",
+              "fullType": "long",
+              "name": "number",
+              "paramType": "query",
               "required": true
             },
             {
@@ -11598,11 +11590,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Number of Accounts to order",
-              "fullType": "long",
-              "name": "number",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -11624,27 +11624,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Organization name",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Exchange service",
-              "fullType": "string",
-              "name": "exchangeService",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
+              "dataType": "long",
+              "description": "Number of Accounts to order",
+              "fullType": "long",
+              "name": "number",
+              "paramType": "query",
               "required": true
             },
             {
@@ -11664,11 +11648,27 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Number of Accounts to order",
-              "fullType": "long",
-              "name": "number",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -11684,6 +11684,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Number of Accounts to order",
+              "fullType": "long",
+              "name": "number",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "email.exchange.accountQuotaEnum",
               "description": "The storage quota for the account(s) in GB (default = 50)",
               "fullType": "email.exchange.accountQuotaEnum",
@@ -11700,16 +11708,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Number of Accounts to order",
-              "fullType": "long",
-              "name": "number",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Organization name",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
               "name": "organizationName",
               "paramType": "path",
@@ -11717,7 +11717,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Exchange service",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
               "paramType": "path",
@@ -11750,19 +11750,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Organization name",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Exchange service",
-              "fullType": "string",
-              "name": "exchangeService",
-              "paramType": "path",
+              "dataType": "email.exchange.accountQuotaEnum",
+              "description": "New storage quota for that account",
+              "fullType": "email.exchange.accountQuotaEnum",
+              "name": "newQuota",
+              "paramType": "query",
               "required": true
             },
             {
@@ -11774,11 +11766,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "email.exchange.accountQuotaEnum",
-              "description": "New storage quota for that account",
-              "fullType": "email.exchange.accountQuotaEnum",
-              "name": "newQuota",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -11800,27 +11800,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Organization name",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Exchange service",
-              "fullType": "string",
-              "name": "exchangeService",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
+              "dataType": "email.exchange.accountQuotaEnum",
+              "description": "New storage quota for that account",
+              "fullType": "email.exchange.accountQuotaEnum",
+              "name": "newQuota",
+              "paramType": "query",
               "required": true
             },
             {
@@ -11832,11 +11816,27 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "email.exchange.accountQuotaEnum",
-              "description": "New storage quota for that account",
-              "fullType": "email.exchange.accountQuotaEnum",
-              "name": "newQuota",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -11852,14 +11852,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The account you wish to upgrade",
-              "fullType": "string",
-              "name": "primaryEmailAddress",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "email.exchange.accountQuotaEnum",
               "description": "New storage quota for that account",
               "fullType": "email.exchange.accountQuotaEnum",
@@ -11869,15 +11861,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Duration",
+              "description": "The account you wish to upgrade",
               "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
+              "name": "primaryEmailAddress",
+              "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Organization name",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
               "name": "organizationName",
               "paramType": "path",
@@ -11885,9 +11877,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Exchange service",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
               "paramType": "path",
               "required": true
             }
@@ -11911,7 +11911,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Organization name",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
               "name": "organizationName",
               "paramType": "path",
@@ -11919,7 +11919,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Exchange service",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
               "paramType": "path",
@@ -11939,7 +11939,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Organization name",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
               "name": "organizationName",
               "paramType": "path",
@@ -11947,7 +11947,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Exchange service",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
               "paramType": "path",
@@ -11972,22 +11972,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Organization name",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Exchange service",
-              "fullType": "string",
-              "name": "exchangeService",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "email.exchange.OutlookVersionEnum",
               "description": "Outlook version",
               "fullType": "email.exchange.OutlookVersionEnum",
@@ -12001,6 +11985,22 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "primaryEmailAddress",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -12022,30 +12022,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Organization name",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Exchange service",
-              "fullType": "string",
-              "name": "exchangeService",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "email.exchange.OutlookVersionEnum",
               "description": "Outlook version",
               "fullType": "email.exchange.OutlookVersionEnum",
@@ -12059,6 +12035,30 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "primaryEmailAddress",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -12091,7 +12091,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Organization name",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
               "name": "organizationName",
               "paramType": "path",
@@ -12099,7 +12099,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Exchange service",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
               "paramType": "path",
@@ -12133,7 +12133,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Organization name",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
               "name": "organizationName",
               "paramType": "path",
@@ -12141,7 +12141,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Exchange service",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
               "paramType": "path",
@@ -12161,7 +12161,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Organization name",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
               "name": "organizationName",
               "paramType": "path",
@@ -12169,7 +12169,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Exchange service",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
               "paramType": "path",
@@ -12217,22 +12217,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "hosting.PrivateDatabase.OrderableVersionEnum",
-              "description": "Private database available versions",
-              "fullType": "hosting.PrivateDatabase.OrderableVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.OfferEnum",
-              "description": "Type of offer to deploy this new private database",
-              "fullType": "hosting.PrivateDatabase.OfferEnum",
-              "name": "offer",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
               "description": "Private database ram size",
               "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
@@ -12247,6 +12231,22 @@ export const schema: Schema = {
               "name": "datacenter",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "hosting.PrivateDatabase.OfferEnum",
+              "description": "Type of offer to deploy this new private database",
+              "fullType": "hosting.PrivateDatabase.OfferEnum",
+              "name": "offer",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "hosting.PrivateDatabase.OrderableVersionEnum",
+              "description": "Private database available versions",
+              "fullType": "hosting.PrivateDatabase.OrderableVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -12270,30 +12270,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.OrderableVersionEnum",
-              "description": "Private database available versions",
-              "fullType": "hosting.PrivateDatabase.OrderableVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.OfferEnum",
-              "description": "Type of offer to deploy this new private database",
-              "fullType": "hosting.PrivateDatabase.OfferEnum",
-              "name": "offer",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
               "description": "Private database ram size",
               "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
@@ -12308,6 +12284,30 @@ export const schema: Schema = {
               "name": "datacenter",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "hosting.PrivateDatabase.OfferEnum",
+              "description": "Type of offer to deploy this new private database",
+              "fullType": "hosting.PrivateDatabase.OfferEnum",
+              "name": "offer",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "hosting.PrivateDatabase.OrderableVersionEnum",
+              "description": "Private database available versions",
+              "fullType": "hosting.PrivateDatabase.OrderableVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "order.Order"
@@ -12325,22 +12325,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "hosting.PrivateDatabase.OrderableVersionEnum",
-              "description": "Private database available versions",
-              "fullType": "hosting.PrivateDatabase.OrderableVersionEnum",
-              "name": "version",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.OfferEnum",
-              "description": "Type of offer to deploy this new private database",
-              "fullType": "hosting.PrivateDatabase.OfferEnum",
-              "name": "offer",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
               "description": "Private database ram size",
               "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
@@ -12355,6 +12339,22 @@ export const schema: Schema = {
               "name": "datacenter",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "hosting.PrivateDatabase.OfferEnum",
+              "description": "Type of offer to deploy this new private database",
+              "fullType": "hosting.PrivateDatabase.OfferEnum",
+              "name": "offer",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "hosting.PrivateDatabase.OrderableVersionEnum",
+              "description": "Private database available versions",
+              "fullType": "hosting.PrivateDatabase.OrderableVersionEnum",
+              "name": "version",
+              "paramType": "body",
+              "required": true
             },
             {
               "dataType": "string",
@@ -12387,7 +12387,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your private database",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12415,19 +12415,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
               "description": "Private database ram size",
               "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
               "name": "ram",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -12452,8 +12452,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
+              "description": "Private database ram size",
+              "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
+              "name": "ram",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your private database",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12465,14 +12473,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "description": "Private database ram size",
-              "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "name": "ram",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -12500,7 +12500,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your private database",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12556,26 +12556,26 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Indicates that order will be processed with waiving retractation period",
-              "fullType": "boolean",
-              "name": "waiveRetractationPeriod",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "hosting.web.DnsZoneEnum",
-              "description": "Dns zone modification possibilities ( by default : RESET_ALL )",
-              "fullType": "hosting.web.DnsZoneEnum",
-              "name": "dnsZone",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "hosting.web.module.OrderableNameEnum",
               "description": "Module installation ready to use",
               "fullType": "hosting.web.module.OrderableNameEnum",
               "name": "module",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "hosting.web.OfferEnum",
+              "description": "Offer for your new hosting account",
+              "fullType": "hosting.web.OfferEnum",
+              "name": "offer",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Indicates that order will be processed with waiving retractation period",
+              "fullType": "boolean",
+              "name": "waiveRetractationPeriod",
               "paramType": "query",
               "required": false
             },
@@ -12588,12 +12588,12 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "hosting.web.OfferEnum",
-              "description": "Offer for your new hosting account",
-              "fullType": "hosting.web.OfferEnum",
-              "name": "offer",
+              "dataType": "hosting.web.DnsZoneEnum",
+              "description": "Dns zone modification possibilities ( by default : RESET_ALL )",
+              "fullType": "hosting.web.DnsZoneEnum",
+              "name": "dnsZone",
               "paramType": "query",
-              "required": true
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -12617,11 +12617,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
+              "dataType": "hosting.web.module.OrderableNameEnum",
+              "description": "Module installation ready to use",
+              "fullType": "hosting.web.module.OrderableNameEnum",
+              "name": "module",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "hosting.web.OfferEnum",
+              "description": "Offer for your new hosting account",
+              "fullType": "hosting.web.OfferEnum",
+              "name": "offer",
+              "paramType": "query",
               "required": true
             },
             {
@@ -12629,22 +12637,6 @@ export const schema: Schema = {
               "description": "Indicates that order will be processed with waiving retractation period",
               "fullType": "boolean",
               "name": "waiveRetractationPeriod",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "hosting.web.DnsZoneEnum",
-              "description": "Dns zone modification possibilities ( by default : RESET_ALL )",
-              "fullType": "hosting.web.DnsZoneEnum",
-              "name": "dnsZone",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "hosting.web.module.OrderableNameEnum",
-              "description": "Module installation ready to use",
-              "fullType": "hosting.web.module.OrderableNameEnum",
-              "name": "module",
               "paramType": "query",
               "required": false
             },
@@ -12657,11 +12649,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "hosting.web.OfferEnum",
-              "description": "Offer for your new hosting account",
-              "fullType": "hosting.web.OfferEnum",
-              "name": "offer",
+              "dataType": "hosting.web.DnsZoneEnum",
+              "description": "Dns zone modification possibilities ( by default : RESET_ALL )",
+              "fullType": "hosting.web.DnsZoneEnum",
+              "name": "dnsZone",
               "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -12680,28 +12680,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "hosting.web.DnsZoneEnum",
-              "description": "Dns zone modification possibilities ( by default : RESET_ALL )",
-              "fullType": "hosting.web.DnsZoneEnum",
-              "name": "dnsZone",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "hosting.web.module.OrderableNameEnum",
               "description": "Module installation ready to use",
               "fullType": "hosting.web.module.OrderableNameEnum",
               "name": "module",
               "paramType": "body",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain name which will be linked to this hosting account",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "body",
-              "required": true
             },
             {
               "dataType": "hosting.web.OfferEnum",
@@ -12716,6 +12700,22 @@ export const schema: Schema = {
               "description": "Indicates that order will be processed with waiving retractation period",
               "fullType": "boolean",
               "name": "waiveRetractationPeriod",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Domain name which will be linked to this hosting account",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "hosting.web.DnsZoneEnum",
+              "description": "Dns zone modification possibilities ( by default : RESET_ALL )",
+              "fullType": "hosting.web.DnsZoneEnum",
+              "name": "dnsZone",
               "paramType": "body",
               "required": false
             },
@@ -12750,7 +12750,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12778,19 +12778,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "hosting.web.BandwidthOfferEnum",
               "description": "Available offers to increase bandwidth quota (unit: GB)",
               "fullType": "hosting.web.BandwidthOfferEnum",
               "name": "traffic",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -12815,8 +12815,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "hosting.web.BandwidthOfferEnum",
+              "description": "Available offers to increase bandwidth quota (unit: GB)",
+              "fullType": "hosting.web.BandwidthOfferEnum",
+              "name": "traffic",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12828,14 +12836,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.BandwidthOfferEnum",
-              "description": "Available offers to increase bandwidth quota (unit: GB)",
-              "fullType": "hosting.web.BandwidthOfferEnum",
-              "name": "traffic",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -12863,7 +12863,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12899,19 +12899,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "hosting.web.CdnOfferEnum",
               "description": "Cdn offers you can add to your hosting",
               "fullType": "hosting.web.CdnOfferEnum",
               "name": "offer",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -12936,8 +12936,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "hosting.web.CdnOfferEnum",
+              "description": "Cdn offers you can add to your hosting",
+              "fullType": "hosting.web.CdnOfferEnum",
+              "name": "offer",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12949,14 +12957,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.CdnOfferEnum",
-              "description": "Cdn offers you can add to your hosting",
-              "fullType": "hosting.web.CdnOfferEnum",
-              "name": "offer",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -12984,7 +12984,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13021,14 +13021,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "New domain for change the main domain",
               "fullType": "string",
               "name": "domain",
@@ -13041,6 +13033,14 @@ export const schema: Schema = {
               "fullType": "hosting.web.order.MxPlanEnum",
               "name": "mxplan",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -13066,22 +13066,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "New domain for change the main domain",
               "fullType": "string",
               "name": "domain",
@@ -13094,6 +13078,22 @@ export const schema: Schema = {
               "fullType": "hosting.web.order.MxPlanEnum",
               "name": "mxplan",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -13129,7 +13129,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13165,19 +13165,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "hosting.web.database.SqlPersoOfferEnum",
               "description": "Offers you can add to your hosting",
               "fullType": "hosting.web.database.SqlPersoOfferEnum",
               "name": "offer",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -13202,8 +13202,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "hosting.web.database.SqlPersoOfferEnum",
+              "description": "Offers you can add to your hosting",
+              "fullType": "hosting.web.database.SqlPersoOfferEnum",
+              "name": "offer",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13215,14 +13223,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.database.SqlPersoOfferEnum",
-              "description": "Offers you can add to your hosting",
-              "fullType": "hosting.web.database.SqlPersoOfferEnum",
-              "name": "offer",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -13250,7 +13250,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13287,7 +13287,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13316,7 +13316,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13347,7 +13347,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13383,12 +13383,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "boolean",
+              "description": "Indicates that order will be processed with waiving retractation period",
+              "fullType": "boolean",
+              "name": "waiveRetractationPeriod",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "hosting.web.OfferEnum",
@@ -13407,12 +13407,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "boolean",
-              "description": "Indicates that order will be processed with waiving retractation period",
-              "fullType": "boolean",
-              "name": "waiveRetractationPeriod",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -13436,20 +13436,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
+              "dataType": "boolean",
+              "description": "Indicates that order will be processed with waiving retractation period",
+              "fullType": "boolean",
+              "name": "waiveRetractationPeriod",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "hosting.web.OfferEnum",
@@ -13468,12 +13460,20 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "boolean",
-              "description": "Indicates that order will be processed with waiving retractation period",
-              "fullType": "boolean",
-              "name": "waiveRetractationPeriod",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "order.Order"
@@ -13491,6 +13491,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "boolean",
+              "description": "Indicates that order will be processed with waiving retractation period",
+              "fullType": "boolean",
+              "name": "waiveRetractationPeriod",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "hosting.web.OfferEnum",
               "description": "New offers for your hosting account",
               "fullType": "hosting.web.OfferEnum",
@@ -13507,16 +13515,8 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "boolean",
-              "description": "Indicates that order will be processed with waiving retractation period",
-              "fullType": "boolean",
-              "name": "waiveRetractationPeriod",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13583,14 +13583,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipv4",
               "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
               "fullType": "ipv4",
@@ -13604,6 +13596,14 @@ export const schema: Schema = {
               "fullType": "license.CloudLinuxVersionEnum",
               "name": "version",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -13686,20 +13686,20 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "ipv4",
               "description": "Ip on which this license would be installed",
               "fullType": "ipv4",
               "name": "ip",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -13720,18 +13720,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "license.OrderableCpanelVersionEnum",
               "description": "This license version",
               "fullType": "license.OrderableCpanelVersionEnum",
               "name": "version",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
               "paramType": "query",
               "required": true
             },
@@ -13744,11 +13744,11 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -13764,12 +13764,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
+              "dataType": "license.OrderableCpanelVersionEnum",
+              "description": "This license version",
+              "fullType": "license.OrderableCpanelVersionEnum",
+              "name": "version",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "ipv4",
@@ -13780,12 +13780,12 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "license.OrderableCpanelVersionEnum",
-              "description": "This license version",
-              "fullType": "license.OrderableCpanelVersionEnum",
-              "name": "version",
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "string",
@@ -13815,7 +13815,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your Cpanel license",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13840,19 +13840,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "license.OrderableCpanelVersionEnum",
               "description": "Wanted new version",
               "fullType": "license.OrderableCpanelVersionEnum",
               "name": "version",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Cpanel license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -13874,8 +13874,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "license.OrderableCpanelVersionEnum",
+              "description": "Wanted new version",
+              "fullType": "license.OrderableCpanelVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your Cpanel license",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13887,14 +13895,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderableCpanelVersionEnum",
-              "description": "Wanted new version",
-              "fullType": "license.OrderableCpanelVersionEnum",
-              "name": "version",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -13919,7 +13919,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your Cpanel license",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13952,12 +13952,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
+              "dataType": "license.OrderableDirectAdminVersionEnum",
+              "description": "This license version",
+              "fullType": "license.OrderableDirectAdminVersionEnum",
+              "name": "version",
               "paramType": "query",
-              "required": false
+              "required": true
             },
             {
               "dataType": "ipv4",
@@ -13968,12 +13968,12 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "license.OrderableDirectAdminVersionEnum",
-              "description": "This license version",
-              "fullType": "license.OrderableDirectAdminVersionEnum",
-              "name": "version",
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
               "paramType": "query",
-              "required": true
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -13994,11 +13994,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
+              "dataType": "license.OrderableDirectAdminVersionEnum",
+              "description": "This license version",
+              "fullType": "license.OrderableDirectAdminVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
               "required": true
             },
             {
@@ -14010,19 +14018,11 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderableDirectAdminVersionEnum",
-              "description": "This license version",
-              "fullType": "license.OrderableDirectAdminVersionEnum",
-              "name": "version",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -14038,12 +14038,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
+              "dataType": "license.OrderableDirectAdminVersionEnum",
+              "description": "This license version",
+              "fullType": "license.OrderableDirectAdminVersionEnum",
+              "name": "version",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "ipv4",
@@ -14054,12 +14054,12 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "license.OrderableDirectAdminVersionEnum",
-              "description": "This license version",
-              "fullType": "license.OrderableDirectAdminVersionEnum",
-              "name": "version",
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "string",
@@ -14088,6 +14088,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Gift code for office license",
+              "fullType": "string",
+              "name": "giftCode",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "long",
               "description": "Number of prepaid office business license",
               "fullType": "long",
@@ -14100,14 +14108,6 @@ export const schema: Schema = {
               "description": "Number of prepaid office pro plus license",
               "fullType": "long",
               "name": "officeProPlusQuantity",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Gift code for office license",
-              "fullType": "string",
-              "name": "giftCode",
               "paramType": "query",
               "required": false
             }
@@ -14131,11 +14131,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Duration",
+              "description": "Gift code for office license",
               "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
+              "name": "giftCode",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "long",
@@ -14155,11 +14155,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Gift code for office license",
+              "description": "Duration",
               "fullType": "string",
-              "name": "giftCode",
-              "paramType": "query",
-              "required": false
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "order.Order"
@@ -14174,6 +14174,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Gift code for office license",
+              "fullType": "string",
+              "name": "giftCode",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "long",
               "description": "Number of prepaid office business license",
               "fullType": "long",
@@ -14186,14 +14194,6 @@ export const schema: Schema = {
               "description": "Number of prepaid office pro plus license",
               "fullType": "long",
               "name": "officeProPlusQuantity",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Gift code for office license",
-              "fullType": "string",
-              "name": "giftCode",
               "paramType": "body",
               "required": false
             },
@@ -14241,6 +14241,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "boolean",
               "description": "WordpressToolkit option activation",
               "fullType": "boolean",
@@ -14249,18 +14257,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "license.OrderablePleskLanguagePackEnum",
-              "description": "The amount of language pack numbers to include in this licences",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "name": "languagePackNumber",
+              "dataType": "license.OrderablePleskDomainNumberEnum",
+              "description": "This license domain number",
+              "fullType": "license.OrderablePleskDomainNumberEnum",
+              "name": "domainNumber",
               "paramType": "query",
               "required": false
             },
             {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
               "paramType": "query",
               "required": false
             },
@@ -14281,28 +14289,12 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "boolean",
-              "description": "powerpack current activation state on your license",
-              "fullType": "boolean",
-              "name": "powerpack",
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "license.OrderablePleskDomainNumberEnum",
-              "description": "This license domain number",
-              "fullType": "license.OrderablePleskDomainNumberEnum",
-              "name": "domainNumber",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
             },
             {
               "dataType": "license.OrderableAntivirusEnum",
@@ -14317,6 +14309,14 @@ export const schema: Schema = {
               "description": "Reseller management option activation",
               "fullType": "boolean",
               "name": "resellerManagement",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
+              "name": "powerpack",
               "paramType": "query",
               "required": false
             }
@@ -14339,11 +14339,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
               "required": true
             },
             {
@@ -14355,18 +14355,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "license.OrderablePleskLanguagePackEnum",
-              "description": "The amount of language pack numbers to include in this licences",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "name": "languagePackNumber",
+              "dataType": "license.OrderablePleskDomainNumberEnum",
+              "description": "This license domain number",
+              "fullType": "license.OrderablePleskDomainNumberEnum",
+              "name": "domainNumber",
               "paramType": "query",
               "required": false
             },
             {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
               "paramType": "query",
               "required": false
             },
@@ -14387,28 +14387,12 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "boolean",
-              "description": "powerpack current activation state on your license",
-              "fullType": "boolean",
-              "name": "powerpack",
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "license.OrderablePleskDomainNumberEnum",
-              "description": "This license domain number",
-              "fullType": "license.OrderablePleskDomainNumberEnum",
-              "name": "domainNumber",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
             },
             {
               "dataType": "license.OrderableAntivirusEnum",
@@ -14425,6 +14409,22 @@ export const schema: Schema = {
               "name": "resellerManagement",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
+              "name": "powerpack",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "order.Order"
@@ -14439,58 +14439,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "WordpressToolkit option activation",
-              "fullType": "boolean",
-              "name": "wordpressToolkit",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.PleskVersionEnum",
-              "description": "This license version",
-              "fullType": "license.PleskVersionEnum",
-              "name": "version",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "license.OrderableAntivirusEnum",
-              "description": "The antivirus to enable on this Plesk license",
-              "fullType": "license.OrderableAntivirusEnum",
-              "name": "antivirus",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.OrderablePleskLanguagePackEnum",
-              "description": "The amount of language pack numbers to include in this licences",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "name": "languagePackNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.PleskApplicationSetEnum",
-              "description": "Wanted application set",
-              "fullType": "license.PleskApplicationSetEnum",
-              "name": "applicationSet",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "boolean",
-              "description": "powerpack current activation state on your license",
+              "description": "WordpressToolkit option activation",
               "fullType": "boolean",
-              "name": "powerpack",
+              "name": "wordpressToolkit",
               "paramType": "body",
               "required": false
             },
@@ -14503,18 +14463,58 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskApplicationSetEnum",
+              "description": "Wanted application set",
+              "fullType": "license.PleskApplicationSetEnum",
+              "name": "applicationSet",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskVersionEnum",
+              "description": "This license version",
+              "fullType": "license.PleskVersionEnum",
+              "name": "version",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderableAntivirusEnum",
+              "description": "The antivirus to enable on this Plesk license",
+              "fullType": "license.OrderableAntivirusEnum",
+              "name": "antivirus",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "boolean",
               "description": "Reseller management option activation",
               "fullType": "boolean",
               "name": "resellerManagement",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
+              "name": "powerpack",
               "paramType": "body",
               "required": false
             },
@@ -14546,7 +14546,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your Plesk license",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14571,18 +14571,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderablePleskLanguagePackEnum",
-              "description": "The amount (between 0 and 5) of language pack numbers to include in this licences",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "name": "languagePackNumber",
+              "dataType": "license.OrderablePleskDomainNumberEnum",
+              "description": "This license domain number",
+              "fullType": "license.OrderablePleskDomainNumberEnum",
+              "name": "domainNumber",
               "paramType": "query",
               "required": false
             },
@@ -14595,10 +14587,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "license.PleskVersionEnum",
-              "description": "This license version",
-              "fullType": "license.PleskVersionEnum",
-              "name": "version",
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount (between 0 and 5) of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
               "paramType": "query",
               "required": false
             },
@@ -14611,10 +14603,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "license.OrderableAntivirusEnum",
-              "description": "The antivirus to enable on this Plesk license",
-              "fullType": "license.OrderableAntivirusEnum",
-              "name": "antivirus",
+              "dataType": "license.OrderableAntispamEnum",
+              "description": "The antispam currently enabled on this Plesk License",
+              "fullType": "license.OrderableAntispamEnum",
+              "name": "antispam",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
+              "name": "powerpack",
               "paramType": "query",
               "required": false
             },
@@ -14627,28 +14627,28 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "license.OrderableAntispamEnum",
-              "description": "The antispam currently enabled on this Plesk License",
-              "fullType": "license.OrderableAntispamEnum",
-              "name": "antispam",
+              "dataType": "license.OrderableAntivirusEnum",
+              "description": "The antivirus to enable on this Plesk license",
+              "fullType": "license.OrderableAntivirusEnum",
+              "name": "antivirus",
               "paramType": "query",
               "required": false
             },
             {
-              "dataType": "license.OrderablePleskDomainNumberEnum",
-              "description": "This license domain number",
-              "fullType": "license.OrderablePleskDomainNumberEnum",
-              "name": "domainNumber",
+              "dataType": "license.PleskVersionEnum",
+              "description": "This license version",
+              "fullType": "license.PleskVersionEnum",
+              "name": "version",
               "paramType": "query",
               "required": false
             },
             {
-              "dataType": "boolean",
-              "description": "powerpack current activation state on your license",
-              "fullType": "boolean",
-              "name": "powerpack",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -14669,26 +14669,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderablePleskLanguagePackEnum",
-              "description": "The amount (between 0 and 5) of language pack numbers to include in this licences",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "name": "languagePackNumber",
+              "dataType": "license.OrderablePleskDomainNumberEnum",
+              "description": "This license domain number",
+              "fullType": "license.OrderablePleskDomainNumberEnum",
+              "name": "domainNumber",
               "paramType": "query",
               "required": false
             },
@@ -14701,10 +14685,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "license.PleskVersionEnum",
-              "description": "This license version",
-              "fullType": "license.PleskVersionEnum",
-              "name": "version",
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount (between 0 and 5) of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
               "paramType": "query",
               "required": false
             },
@@ -14717,10 +14701,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "license.OrderableAntivirusEnum",
-              "description": "The antivirus to enable on this Plesk license",
-              "fullType": "license.OrderableAntivirusEnum",
-              "name": "antivirus",
+              "dataType": "license.OrderableAntispamEnum",
+              "description": "The antispam currently enabled on this Plesk License",
+              "fullType": "license.OrderableAntispamEnum",
+              "name": "antispam",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
+              "name": "powerpack",
               "paramType": "query",
               "required": false
             },
@@ -14733,28 +14725,36 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "license.OrderableAntispamEnum",
-              "description": "The antispam currently enabled on this Plesk License",
-              "fullType": "license.OrderableAntispamEnum",
-              "name": "antispam",
+              "dataType": "license.OrderableAntivirusEnum",
+              "description": "The antivirus to enable on this Plesk license",
+              "fullType": "license.OrderableAntivirusEnum",
+              "name": "antivirus",
               "paramType": "query",
               "required": false
             },
             {
-              "dataType": "license.OrderablePleskDomainNumberEnum",
-              "description": "This license domain number",
-              "fullType": "license.OrderablePleskDomainNumberEnum",
-              "name": "domainNumber",
+              "dataType": "license.PleskVersionEnum",
+              "description": "This license version",
+              "fullType": "license.PleskVersionEnum",
+              "name": "version",
               "paramType": "query",
               "required": false
             },
             {
-              "dataType": "boolean",
-              "description": "powerpack current activation state on your license",
-              "fullType": "boolean",
-              "name": "powerpack",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "order.Order"
@@ -14769,50 +14769,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "license.OrderablePleskLanguagePackEnum",
-              "description": "The amount (between 0 and 5) of language pack numbers to include in this licences",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "name": "languagePackNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.PleskVersionEnum",
-              "description": "This license version",
-              "fullType": "license.PleskVersionEnum",
-              "name": "version",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "WordpressToolkit option activation",
-              "fullType": "boolean",
-              "name": "wordpressToolkit",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.OrderableAntivirusEnum",
-              "description": "The antivirus to enable on this Plesk license",
-              "fullType": "license.OrderableAntivirusEnum",
-              "name": "antivirus",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Reseller management option activation",
-              "fullType": "boolean",
-              "name": "resellerManagement",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "powerpack current activation state on your license",
-              "fullType": "boolean",
-              "name": "powerpack",
+              "dataType": "license.OrderablePleskDomainNumberEnum",
+              "description": "This license domain number",
+              "fullType": "license.OrderablePleskDomainNumberEnum",
+              "name": "domainNumber",
               "paramType": "body",
               "required": false
             },
@@ -14825,6 +14785,22 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount (between 0 and 5) of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "WordpressToolkit option activation",
+              "fullType": "boolean",
+              "name": "wordpressToolkit",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "license.OrderableAntispamEnum",
               "description": "The antispam currently enabled on this Plesk License",
               "fullType": "license.OrderableAntispamEnum",
@@ -14833,16 +14809,40 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "license.OrderablePleskDomainNumberEnum",
-              "description": "This license domain number",
-              "fullType": "license.OrderablePleskDomainNumberEnum",
-              "name": "domainNumber",
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
+              "name": "powerpack",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Reseller management option activation",
+              "fullType": "boolean",
+              "name": "resellerManagement",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderableAntivirusEnum",
+              "description": "The antivirus to enable on this Plesk license",
+              "fullType": "license.OrderableAntivirusEnum",
+              "name": "antivirus",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskVersionEnum",
+              "description": "This license version",
+              "fullType": "license.PleskVersionEnum",
+              "name": "version",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your Plesk license",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14926,14 +14926,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipv4",
               "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
               "fullType": "ipv4",
@@ -14947,6 +14939,14 @@ export const schema: Schema = {
               "fullType": "license.SqlServerVersionEnum",
               "name": "version",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -15005,7 +15005,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your SQL Server license",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15030,19 +15030,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "license.SqlServerVersionEnum",
               "description": "This license version",
               "fullType": "license.SqlServerVersionEnum",
               "name": "version",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your SQL Server license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -15064,8 +15064,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "license.SqlServerVersionEnum",
+              "description": "This license version",
+              "fullType": "license.SqlServerVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your SQL Server license",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15077,14 +15085,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.SqlServerVersionEnum",
-              "description": "This license version",
-              "fullType": "license.SqlServerVersionEnum",
-              "name": "version",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -15109,7 +15109,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your SQL Server license",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15159,22 +15159,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
               "description": "How much container is this license able to manage ...",
               "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
@@ -15189,6 +15173,22 @@ export const schema: Schema = {
               "name": "version",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -15209,30 +15209,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
               "description": "How much container is this license able to manage ...",
               "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
@@ -15246,6 +15222,30 @@ export const schema: Schema = {
               "fullType": "license.OrderableVirtuozzoVersionEnum",
               "name": "version",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -15261,22 +15261,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
               "description": "How much container is this license able to manage ...",
               "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
@@ -15291,6 +15275,22 @@ export const schema: Schema = {
               "name": "version",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -15320,7 +15320,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your Virtuozzo license",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15345,19 +15345,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
               "description": "How much container is this license able to manage ...",
               "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
               "name": "containerNumber",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -15379,8 +15379,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "description": "How much container is this license able to manage ...",
+              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "name": "containerNumber",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your Virtuozzo license",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15392,14 +15400,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "description": "How much container is this license able to manage ...",
-              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "name": "containerNumber",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -15424,7 +15424,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your Virtuozzo license",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15474,6 +15474,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "license.WindowsSqlVersionEnum",
               "description": "The SQL Server version to enable on this license Windows license",
               "fullType": "license.WindowsSqlVersionEnum",
@@ -15488,14 +15496,6 @@ export const schema: Schema = {
               "name": "ip",
               "paramType": "query",
               "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
             },
             {
               "dataType": "license.WindowsOsVersionEnum",
@@ -15524,12 +15524,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "license.WindowsSqlVersionEnum",
@@ -15548,19 +15548,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "license.WindowsOsVersionEnum",
               "description": "This license version",
               "fullType": "license.WindowsOsVersionEnum",
               "name": "version",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -15576,6 +15576,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "license.WindowsSqlVersionEnum",
               "description": "The SQL Server version to enable on this license Windows license",
               "fullType": "license.WindowsSqlVersionEnum",
@@ -15590,14 +15598,6 @@ export const schema: Schema = {
               "name": "ip",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "body",
-              "required": false
             },
             {
               "dataType": "license.WindowsOsVersionEnum",
@@ -15635,7 +15635,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your Windows license",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15660,14 +15660,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "license.WindowsOsVersionEnum",
               "description": "The windows version you want to enable on your windows license",
               "fullType": "license.WindowsOsVersionEnum",
@@ -15682,6 +15674,14 @@ export const schema: Schema = {
               "name": "sqlVersion",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -15702,22 +15702,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "license.WindowsOsVersionEnum",
               "description": "The windows version you want to enable on your windows license",
               "fullType": "license.WindowsOsVersionEnum",
@@ -15732,6 +15716,22 @@ export const schema: Schema = {
               "name": "sqlVersion",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "order.Order"
@@ -15763,7 +15763,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your Windows license",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15813,10 +15813,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Does your company have less than 1000 potential users",
-              "fullType": "boolean",
-              "name": "lessThan1000Users",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
               "paramType": "query",
               "required": true
             },
@@ -15829,10 +15829,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
-              "fullType": "ipv4",
-              "name": "ip",
+              "dataType": "boolean",
+              "description": "Does your company have less than 1000 potential users",
+              "fullType": "boolean",
+              "name": "lessThan1000Users",
               "paramType": "query",
               "required": true
             }
@@ -15855,18 +15855,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Does your company have less than 1000 potential users",
-              "fullType": "boolean",
-              "name": "lessThan1000Users",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
               "paramType": "query",
               "required": true
             },
@@ -15879,11 +15871,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
-              "fullType": "ipv4",
-              "name": "ip",
+              "dataType": "boolean",
+              "description": "Does your company have less than 1000 potential users",
+              "fullType": "boolean",
+              "name": "lessThan1000Users",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -15899,10 +15899,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Does your company have less than 1000 potential users",
-              "fullType": "boolean",
-              "name": "lessThan1000Users",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
               "paramType": "body",
               "required": true
             },
@@ -15915,10 +15915,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
-              "fullType": "ipv4",
-              "name": "ip",
+              "dataType": "boolean",
+              "description": "Does your company have less than 1000 potential users",
+              "fullType": "boolean",
+              "name": "lessThan1000Users",
               "paramType": "body",
               "required": true
             },
@@ -15950,7 +15950,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your WorkLight license",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15975,19 +15975,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "license.WorkLightVersionEnum",
               "description": "This license version",
               "fullType": "license.WorkLightVersionEnum",
               "name": "version",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your WorkLight license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -16009,8 +16009,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "license.WorkLightVersionEnum",
+              "description": "This license version",
+              "fullType": "license.WorkLightVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your WorkLight license",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16022,14 +16030,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.WorkLightVersionEnum",
-              "description": "This license version",
-              "fullType": "license.WorkLightVersionEnum",
-              "name": "version",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -16054,7 +16054,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your WorkLight license",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16114,18 +16114,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The name of your vrack",
               "fullType": "string",
               "name": "vrack",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -16193,7 +16193,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The dedicated service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16219,17 +16219,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Plan code",
+              "description": "Plan code of the offer you want to upgrade to",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -16240,9 +16232,17 @@ export const schema: Schema = {
               "name": "quantity",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The dedicated service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
@@ -16253,6 +16253,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
@@ -16271,22 +16279,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Plan code",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The dedicated service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         }
       ],
       "path": "/order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}"
@@ -16322,7 +16322,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The dedicated service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16348,17 +16348,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Plan code",
+              "description": "Plan code of the offer you want to upgrade to",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -16369,9 +16361,17 @@ export const schema: Schema = {
               "name": "quantity",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The dedicated service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
@@ -16383,11 +16383,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Quantity you want to upgrade to",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
               "required": true
             },
             {
@@ -16399,23 +16399,23 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Plan code",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The dedicated service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         }
       ],
       "path": "/order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}"
@@ -16451,7 +16451,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of Ceph service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16477,17 +16477,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Plan code",
+              "description": "Plan code of the offer you want to upgrade to",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -16498,9 +16490,17 @@ export const schema: Schema = {
               "name": "quantity",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal ID of Ceph service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
@@ -16511,6 +16511,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
@@ -16529,22 +16537,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Plan code",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of Ceph service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         }
       ],
       "path": "/order/upgrade/cephaas/{serviceName}/{planCode}"
@@ -16580,7 +16580,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "The internal ID of your cloudDB service",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -16606,15 +16606,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Domain",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Plan code",
+              "description": "Plan code of the offer you want to upgrade to",
               "fullType": "string",
               "name": "planCode",
               "paramType": "path",
@@ -16627,9 +16619,17 @@ export const schema: Schema = {
               "name": "quantity",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal ID of your cloudDB service",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
@@ -16640,6 +16640,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
@@ -16658,22 +16666,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Plan code",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Domain",
+              "description": "The internal ID of your cloudDB service",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         }
       ],
       "path": "/order/upgrade/cloudDB/{domain}/{planCode}"
@@ -16709,7 +16709,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your IPLB service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16735,17 +16735,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Plan code",
+              "description": "Plan code of the offer you want to upgrade to",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -16756,9 +16748,17 @@ export const schema: Schema = {
               "name": "quantity",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal ID of your IPLB service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
@@ -16769,6 +16769,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
@@ -16787,22 +16795,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Plan code",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your IPLB service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         }
       ],
       "path": "/order/upgrade/ipLoadbalancing/{serviceName}/{planCode}"
@@ -16838,7 +16838,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your Plesk license service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16864,17 +16864,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Plan code",
+              "description": "Plan code of the offer you want to upgrade to",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -16885,9 +16877,17 @@ export const schema: Schema = {
               "name": "quantity",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal ID of your Plesk license service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
@@ -16899,11 +16899,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Quantity you want to upgrade to",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
               "required": true
             },
             {
@@ -16915,23 +16915,23 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Plan code",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your Plesk license service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         }
       ],
       "path": "/order/upgrade/licensePlesk/{serviceName}/{planCode}"
@@ -16967,7 +16967,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your cPanel license service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16993,17 +16993,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Plan code",
+              "description": "Plan code of the offer you want to upgrade to",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -17014,9 +17006,17 @@ export const schema: Schema = {
               "name": "quantity",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal ID of your cPanel license service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
@@ -17027,6 +17027,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
@@ -17045,22 +17053,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Plan code",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your cPanel license service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         }
       ],
       "path": "/order/upgrade/licensecPanel/{serviceName}/{planCode}"
@@ -17096,7 +17096,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of DBaaS Logs service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17122,17 +17122,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Plan code",
+              "description": "Plan code of the offer you want to upgrade to",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -17143,9 +17135,17 @@ export const schema: Schema = {
               "name": "quantity",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal ID of DBaaS Logs service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
@@ -17156,6 +17156,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
@@ -17174,22 +17182,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Plan code",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of DBaaS Logs service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         }
       ],
       "path": "/order/upgrade/logs/{serviceName}/{planCode}"
@@ -17225,7 +17225,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The private cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17251,17 +17251,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Plan code",
+              "description": "Plan code of the offer you want to upgrade to",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -17272,9 +17264,17 @@ export const schema: Schema = {
               "name": "quantity",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The private cloud service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
@@ -17285,6 +17285,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
@@ -17303,22 +17311,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Plan code",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The private cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         }
       ],
       "path": "/order/upgrade/privateCloud/{serviceName}/{planCode}"
@@ -17354,7 +17354,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "The internal ID of your private SQL service",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -17380,15 +17380,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Domain",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Plan code",
+              "description": "Plan code of the offer you want to upgrade to",
               "fullType": "string",
               "name": "planCode",
               "paramType": "path",
@@ -17401,9 +17393,17 @@ export const schema: Schema = {
               "name": "quantity",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal ID of your private SQL service",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
@@ -17414,6 +17414,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
@@ -17432,22 +17440,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "The internal ID of your private SQL service",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Plan code",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         }
       ],
       "path": "/order/upgrade/privateSQL/{domain}/{planCode}"
@@ -17483,7 +17483,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your VPS service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17509,15 +17509,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Plan code",
+              "description": "Plan code of the offer you want to upgrade to",
               "fullType": "string",
               "name": "planCode",
               "paramType": "path",
@@ -17530,9 +17522,17 @@ export const schema: Schema = {
               "name": "quantity",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal ID of your VPS service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
@@ -17543,6 +17543,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
@@ -17561,22 +17569,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Plan code",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your VPS service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         }
       ],
       "path": "/order/upgrade/vps/{serviceName}/{planCode}"
@@ -17612,7 +17612,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The VPS service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17638,15 +17638,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Plan code",
+              "description": "Plan code of the offer you want to upgrade to",
               "fullType": "string",
               "name": "planCode",
               "paramType": "path",
@@ -17659,9 +17651,17 @@ export const schema: Schema = {
               "name": "quantity",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The VPS service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
@@ -17672,6 +17672,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
@@ -17690,22 +17698,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Plan code",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The VPS service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         }
       ],
       "path": "/order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}"
@@ -17741,7 +17741,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your webhosting service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17767,15 +17767,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Plan code",
+              "description": "Plan code of the offer you want to upgrade to",
               "fullType": "string",
               "name": "planCode",
               "paramType": "path",
@@ -17788,9 +17780,17 @@ export const schema: Schema = {
               "name": "quantity",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal ID of your webhosting service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         },
         {
           "apiStatus": {
@@ -17801,6 +17801,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
@@ -17819,22 +17827,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Plan code",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your webhosting service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "order.upgrade.order.upgrade.OperationAndOrder"
+          "responseType": "order.upgrade.OperationAndOrder"
         }
       ],
       "path": "/order/upgrade/webHosting/{serviceName}/{planCode}"
@@ -17870,7 +17870,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17895,19 +17895,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "veeamCloudConnect.Offer",
               "description": "The offer on which you want to be upgraded",
               "fullType": "veeamCloudConnect.Offer",
               "name": "offer",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -17929,8 +17929,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "veeamCloudConnect.Offer",
+              "description": "The offer on which you want to be upgraded",
+              "fullType": "veeamCloudConnect.Offer",
+              "name": "offer",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17942,14 +17950,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "veeamCloudConnect.Offer",
-              "description": "The offer on which you want to be upgraded",
-              "fullType": "veeamCloudConnect.Offer",
-              "name": "offer",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -17974,7 +17974,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18025,7 +18025,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18050,19 +18050,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "vps.additionalDisk.AdditionalDiskSizeEnum",
               "description": "Size of the additional disk",
               "fullType": "vps.additionalDisk.AdditionalDiskSizeEnum",
               "name": "additionalDiskSize",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -18084,8 +18084,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "vps.additionalDisk.AdditionalDiskSizeEnum",
+              "description": "Size of the additional disk",
+              "fullType": "vps.additionalDisk.AdditionalDiskSizeEnum",
+              "name": "additionalDiskSize",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18097,14 +18105,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "vps.additionalDisk.AdditionalDiskSizeEnum",
-              "description": "Size of the additional disk",
-              "fullType": "vps.additionalDisk.AdditionalDiskSizeEnum",
-              "name": "additionalDiskSize",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -18129,17 +18129,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Duration",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
-              "name": "duration",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Duration",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "duration",
               "paramType": "path",
               "required": true
             }
@@ -18163,7 +18163,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18189,7 +18189,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18217,7 +18217,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18254,7 +18254,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18283,7 +18283,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18314,7 +18314,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18348,7 +18348,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18374,7 +18374,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18402,7 +18402,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18435,14 +18435,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "vps.ip.GeolocationEnum",
               "description": "Choose a geolocation for your IP Address",
               "fullType": "vps.ip.GeolocationEnum",
@@ -18456,6 +18448,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "number",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -18477,22 +18477,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "vps.ip.GeolocationEnum",
               "description": "Choose a geolocation for your IP Address",
               "fullType": "vps.ip.GeolocationEnum",
@@ -18506,6 +18490,22 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "number",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -18538,7 +18538,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18574,19 +18574,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "vps.PleskLicenseDomainNumberEnum",
               "description": "Domain number you want to order a licence for",
               "fullType": "vps.PleskLicenseDomainNumberEnum",
               "name": "domainNumber",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -18611,8 +18611,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "vps.PleskLicenseDomainNumberEnum",
+              "description": "Domain number you want to order a licence for",
+              "fullType": "vps.PleskLicenseDomainNumberEnum",
+              "name": "domainNumber",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18624,14 +18632,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "vps.PleskLicenseDomainNumberEnum",
-              "description": "Domain number you want to order a licence for",
-              "fullType": "vps.PleskLicenseDomainNumberEnum",
-              "name": "domainNumber",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -18659,7 +18659,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18693,7 +18693,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18719,7 +18719,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18747,17 +18747,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Duration",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
-              "name": "duration",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Duration",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "duration",
               "paramType": "path",
               "required": true
             }
@@ -18781,18 +18781,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Model",
               "fullType": "string",
               "name": "model",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -18815,7 +18815,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Model",
+              "fullType": "string",
+              "name": "model",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18827,14 +18835,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "duration",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Model",
-              "fullType": "string",
-              "name": "model",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -18859,7 +18859,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18896,7 +18896,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18925,7 +18925,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18956,7 +18956,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18990,7 +18990,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19016,17 +19016,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Duration",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
-              "name": "duration",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Duration",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "duration",
               "paramType": "path",
               "required": true
             }
@@ -19044,7 +19044,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19153,7 +19153,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19200,16 +19200,14 @@ export const schema: Schema = {
       "properties": {
         "key": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
@@ -19224,19 +19222,285 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
+    },
+    "coreTypes.CountryEnum": {
+      "description": "ISO country codes",
+      "enum": [
+        "ac",
+        "ad",
+        "ae",
+        "af",
+        "ag",
+        "ai",
+        "al",
+        "am",
+        "an",
+        "ao",
+        "aq",
+        "ar",
+        "as",
+        "at",
+        "au",
+        "aw",
+        "ax",
+        "az",
+        "ba",
+        "bb",
+        "bd",
+        "be",
+        "bf",
+        "bg",
+        "bh",
+        "bi",
+        "bj",
+        "bl",
+        "bm",
+        "bn",
+        "bo",
+        "bq",
+        "br",
+        "bs",
+        "bt",
+        "bv",
+        "bw",
+        "by",
+        "bz",
+        "ca",
+        "cc",
+        "cd",
+        "cf",
+        "cg",
+        "ch",
+        "ci",
+        "ck",
+        "cl",
+        "cm",
+        "cn",
+        "co",
+        "cr",
+        "cs",
+        "cu",
+        "cv",
+        "cw",
+        "cx",
+        "cy",
+        "cz",
+        "de",
+        "dj",
+        "dk",
+        "dm",
+        "do",
+        "dz",
+        "ec",
+        "ee",
+        "eg",
+        "eh",
+        "er",
+        "es",
+        "et",
+        "fc",
+        "fd",
+        "fi",
+        "fj",
+        "fk",
+        "fm",
+        "fo",
+        "fr",
+        "fx",
+        "ga",
+        "gb",
+        "gd",
+        "ge",
+        "gf",
+        "gg",
+        "gh",
+        "gi",
+        "gl",
+        "gm",
+        "gn",
+        "gp",
+        "gq",
+        "gr",
+        "gs",
+        "gt",
+        "gu",
+        "gw",
+        "gy",
+        "hk",
+        "hm",
+        "hn",
+        "hr",
+        "ht",
+        "hu",
+        "id",
+        "ie",
+        "il",
+        "im",
+        "in",
+        "io",
+        "iq",
+        "ir",
+        "is",
+        "it",
+        "je",
+        "jm",
+        "jo",
+        "jp",
+        "ke",
+        "kg",
+        "kh",
+        "ki",
+        "km",
+        "kn",
+        "kp",
+        "kr",
+        "kw",
+        "ky",
+        "kz",
+        "la",
+        "lb",
+        "lc",
+        "li",
+        "lk",
+        "lr",
+        "ls",
+        "lt",
+        "lu",
+        "lv",
+        "ly",
+        "ma",
+        "mc",
+        "md",
+        "me",
+        "mf",
+        "mg",
+        "mh",
+        "mk",
+        "ml",
+        "mm",
+        "mn",
+        "mo",
+        "mp",
+        "mq",
+        "mr",
+        "ms",
+        "mt",
+        "mu",
+        "mv",
+        "mw",
+        "mx",
+        "my",
+        "mz",
+        "na",
+        "nc",
+        "ne",
+        "nf",
+        "ng",
+        "ni",
+        "nl",
+        "no",
+        "np",
+        "nr",
+        "nu",
+        "nz",
+        "om",
+        "pa",
+        "pe",
+        "pf",
+        "pg",
+        "ph",
+        "pk",
+        "pl",
+        "pm",
+        "pn",
+        "pr",
+        "ps",
+        "pt",
+        "pw",
+        "py",
+        "qa",
+        "qc",
+        "re",
+        "ro",
+        "rs",
+        "ru",
+        "rw",
+        "sa",
+        "sb",
+        "sc",
+        "sd",
+        "se",
+        "sg",
+        "sh",
+        "si",
+        "sj",
+        "sk",
+        "sl",
+        "sm",
+        "sn",
+        "so",
+        "sr",
+        "ss",
+        "st",
+        "sv",
+        "sx",
+        "sy",
+        "sz",
+        "tc",
+        "td",
+        "tf",
+        "tg",
+        "th",
+        "tj",
+        "tk",
+        "tl",
+        "tm",
+        "tn",
+        "to",
+        "tp",
+        "tr",
+        "tt",
+        "tv",
+        "tw",
+        "tz",
+        "ua",
+        "ug",
+        "uk",
+        "um",
+        "us",
+        "uy",
+        "uz",
+        "va",
+        "vc",
+        "ve",
+        "vg",
+        "vi",
+        "vn",
+        "vu",
+        "we",
+        "wf",
+        "ws",
+        "ye",
+        "yt",
+        "yu",
+        "za",
+        "zm",
+        "zw"
+      ],
+      "enumType": "string",
+      "id": "CountryEnum",
+      "namespace": "coreTypes"
     },
     "dedicated.NasHAOfferEnum": {
       "description": "ovh Nas HA offer",
@@ -19263,6 +19527,16 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "NasHAZoneEnum",
       "namespace": "dedicated"
+    },
+    "dedicated.housing.HaRoutingOfferEnum": {
+      "description": "Housing bay High Availablility offers",
+      "enum": [
+        "ha2x2",
+        "ha2x4"
+      ],
+      "enumType": "string",
+      "id": "HaRoutingOfferEnum",
+      "namespace": "dedicated.housing"
     },
     "dedicated.server.BackupStorageCapacityEnum": {
       "description": "Different backup storage capacity in gigabytes",
@@ -19400,6 +19674,17 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "OrderableSysFeatureEnum",
+      "namespace": "dedicated.server"
+    },
+    "dedicated.server.SupportLevelOrderableEnum": {
+      "description": "distincts support level",
+      "enum": [
+        "critical",
+        "fastpath",
+        "gs"
+      ],
+      "enumType": "string",
+      "id": "SupportLevelOrderableEnum",
       "namespace": "dedicated.server"
     },
     "dedicated.server.TrafficOrderEnum": {
@@ -19577,6 +19862,7 @@ export const schema: Schema = {
         "mysql_5.5",
         "mysql_5.6",
         "mysql_5.7",
+        "mysql_8.0",
         "postgresql_10",
         "postgresql_11",
         "postgresql_12",
@@ -21134,25 +21420,8 @@ export const schema: Schema = {
         "ASIA",
         "AU",
         "CA",
-        "CZ",
-        "DE",
-        "ES",
-        "EU",
-        "FI",
-        "FR",
-        "GB",
-        "IE",
-        "IT",
-        "LT",
-        "MA",
-        "NL",
-        "PL",
-        "PT",
         "QC",
         "SG",
-        "SN",
-        "TN",
-        "US",
         "WE",
         "WS"
       ],
@@ -21167,28 +21436,32 @@ export const schema: Schema = {
       "properties": {
         "content": {
           "canBeNull": false,
+          "description": "Terms of the contract",
           "fullType": "text",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "text"
         },
         "name": {
           "canBeNull": false,
+          "description": "Name of the contract",
           "fullType": "string",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "url": {
           "canBeNull": false,
+          "description": "URL to download the contract",
           "fullType": "string",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
     },
     "order.CurrencyCodeEnum": {
+      "description": "Currency code",
       "enum": [
         "AUD",
         "CAD",
@@ -21216,36 +21489,41 @@ export const schema: Schema = {
       "properties": {
         "contracts": {
           "canBeNull": false,
+          "description": "List of contracts related to the order",
           "fullType": "order.Contract[]",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "order.Contract[]"
         },
         "details": {
           "canBeNull": false,
+          "description": "Details of the order",
           "fullType": "order.OrderDetail[]",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "order.OrderDetail[]"
         },
         "orderId": {
           "canBeNull": true,
+          "description": "Identifier of the order",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
         "prices": {
           "canBeNull": false,
+          "description": "Prices of the order including with and without taxes",
           "fullType": "order.OrderPrices",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "order.OrderPrices"
         },
         "url": {
           "canBeNull": true,
+          "description": "URL to download the order",
           "fullType": "string",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "string"
         }
@@ -21256,46 +21534,84 @@ export const schema: Schema = {
       "id": "OrderDetail",
       "namespace": "order",
       "properties": {
+        "cartItemID": {
+          "canBeNull": true,
+          "description": "Cart Item ID the details is related to",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "description": {
           "canBeNull": false,
+          "description": "Description of the detail",
           "fullType": "string",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "detailType": {
           "canBeNull": true,
+          "description": "Type of detail",
           "fullType": "order.OrderDetailTypeEnum",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "order.OrderDetailTypeEnum"
         },
         "domain": {
           "canBeNull": false,
+          "description": "Service name",
           "fullType": "string",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "string"
+        },
+        "originalTotalPrice": {
+          "canBeNull": false,
+          "description": "Original price of the detail before reduction application",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
         },
         "quantity": {
           "canBeNull": false,
+          "description": "Quantity of the service",
           "fullType": "long",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "long"
+        },
+        "reductionTotalPrice": {
+          "canBeNull": false,
+          "description": "Total price of the reduction",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "reductions": {
+          "canBeNull": false,
+          "description": "List of reductions applied to the detail",
+          "fullType": "order.Reduction[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Reduction[]"
         },
         "totalPrice": {
           "canBeNull": false,
+          "description": "Price total of the services",
           "fullType": "order.Price",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "unitPrice": {
           "canBeNull": false,
+          "description": "Unitary price of the service",
           "fullType": "order.Price",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -21333,56 +21649,138 @@ export const schema: Schema = {
       "id": "OrderPrices",
       "namespace": "order",
       "properties": {
+        "originalWithoutTax": {
+          "canBeNull": true,
+          "description": "Price before reduction application",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "reduction": {
+          "canBeNull": true,
+          "description": "Price concerning the reduced amount",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
         "tax": {
           "canBeNull": false,
+          "description": "Tax amount",
           "fullType": "order.Price",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "withTax": {
           "canBeNull": false,
+          "description": "Price with tax",
           "fullType": "order.Price",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "withoutTax": {
           "canBeNull": false,
+          "description": "Price without tax",
           "fullType": "order.Price",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "order.Price"
         }
       }
     },
     "order.Price": {
-      "description": "Price with it's currency and textual representation",
+      "description": "Price with its currency and textual representation",
       "id": "Price",
       "namespace": "order",
       "properties": {
         "currencyCode": {
           "canBeNull": false,
+          "description": "Currency code",
           "fullType": "order.CurrencyCodeEnum",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "order.CurrencyCodeEnum"
         },
         "text": {
           "canBeNull": false,
+          "description": "Textual representation",
           "fullType": "string",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
+          "description": "The effective price",
           "fullType": "double",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "double"
         }
       }
+    },
+    "order.Reduction": {
+      "description": "Order detail reduction",
+      "id": "Reduction",
+      "namespace": "order",
+      "properties": {
+        "context": {
+          "canBeNull": false,
+          "description": "In which context the reduction is applied",
+          "fullType": "order.ReductionContextEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.ReductionContextEnum"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Reduction price applied with this promotion",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Reduction effect, price modification",
+          "fullType": "order.ReductionTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.ReductionTypeEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "The reduction value",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
+    },
+    "order.ReductionContextEnum": {
+      "description": "Context of the reduction",
+      "enum": [
+        "promotion",
+        "voucher"
+      ],
+      "enumType": "string",
+      "id": "ReductionContextEnum",
+      "namespace": "order"
+    },
+    "order.ReductionTypeEnum": {
+      "description": "Type of reduction",
+      "enum": [
+        "percentage",
+        "forced_amount",
+        "fixed_amount"
+      ],
+      "enumType": "string",
+      "id": "ReductionTypeEnum",
+      "namespace": "order"
     },
     "order.cart.Cart": {
       "description": "A shopping cart",
@@ -21591,14 +21989,14 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Domain name requested",
           "fullType": "string",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
     },
     "order.cart.DurationUnitEnum": {
-      "description": "Unit that correspond to a duration range",
+      "description": "Unit corresponding to a duration range",
       "enum": [
         "month",
         "day",
@@ -21938,32 +22336,32 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Product offer identifier",
           "fullType": "string",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "prices": {
           "canBeNull": false,
           "description": "Prices of the product offer",
           "fullType": "order.cart.GenericProductPricing[]",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "order.cart.GenericProductPricing[]"
         },
         "productName": {
           "canBeNull": false,
           "description": "Name of the product",
           "fullType": "string",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "productType": {
           "canBeNull": false,
           "description": "Product type",
           "fullType": "order.cart.GenericProductTypeEnum",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "order.cart.GenericProductTypeEnum"
         }
       }
@@ -21977,47 +22375,47 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Capacities of the pricing (type of pricing)",
           "fullType": "order.cart.GenericProductPricingCapacitiesEnum[]",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "order.cart.GenericProductPricingCapacitiesEnum[]"
         },
         "description": {
           "canBeNull": false,
           "description": "Description of the pricing",
           "fullType": "string",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "duration": {
           "canBeNull": false,
           "description": "Duration for ordering the product",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
+          "fullType": "duration",
+          "readOnly": true,
+          "required": false,
+          "type": "duration"
         },
         "interval": {
           "canBeNull": false,
           "description": "Interval of renewal",
           "fullType": "long",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "maximumQuantity": {
           "canBeNull": false,
           "description": "Maximum quantity that can be ordered",
           "fullType": "long",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "maximumRepeat": {
           "canBeNull": true,
           "description": "Maximum repeat for renewal",
           "fullType": "long",
-          "readOnly": false,
+          "readOnly": true,
           "required": false,
           "type": "long"
         },
@@ -22025,48 +22423,48 @@ export const schema: Schema = {
           "canBeNull": false,
           "description": "Minimum quantity that can be ordered",
           "fullType": "long",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "minimumRepeat": {
           "canBeNull": false,
           "description": "Minimum repeat for renewal",
           "fullType": "long",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "price": {
           "canBeNull": false,
           "description": "Price of the product",
           "fullType": "order.Price",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "priceInUcents": {
           "canBeNull": false,
           "description": "Price of the product in micro-centims",
           "fullType": "long",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "pricingMode": {
           "canBeNull": false,
           "description": "Pricing model identifier",
           "fullType": "string",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "pricingType": {
           "canBeNull": false,
           "description": "Pricing type",
           "fullType": "order.cart.GenericProductPricingTypeEnum",
-          "readOnly": false,
-          "required": true,
+          "readOnly": true,
+          "required": false,
           "type": "order.cart.GenericProductPricingTypeEnum"
         }
       }
@@ -22131,7 +22529,7 @@ export const schema: Schema = {
           "description": "Cart identifier",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "configurations": {
@@ -22155,7 +22553,7 @@ export const schema: Schema = {
           "description": "Current product identifier",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "offerId": {
@@ -22163,7 +22561,7 @@ export const schema: Schema = {
           "description": "Offer unique identifier of the product added",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "options": {
@@ -22171,7 +22569,7 @@ export const schema: Schema = {
           "description": "Options item ID attached to this item",
           "fullType": "long[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long[]"
         },
         "parentItemId": {
@@ -22187,7 +22585,7 @@ export const schema: Schema = {
           "description": "Price of the item",
           "fullType": "order.cart.Price[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.cart.Price[]"
         },
         "productId": {
@@ -22195,7 +22593,7 @@ export const schema: Schema = {
           "description": "Type of the product added",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "settings": {
@@ -22203,7 +22601,7 @@ export const schema: Schema = {
           "description": "Domain related settings",
           "fullType": "order.cart.DomainSettings",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.cart.DomainSettings"
         }
       }
@@ -22264,7 +22662,7 @@ export const schema: Schema = {
           "description": "Label corresponding to a price",
           "fullType": "order.cart.PriceLabelEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.cart.PriceLabelEnum"
         },
         "price": {
@@ -22272,7 +22670,7 @@ export const schema: Schema = {
           "description": "Price of the product",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -22426,7 +22824,7 @@ export const schema: Schema = {
           "description": "List of the addons of this family",
           "fullType": "order.catalog.AddonOffer[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.AddonOffer[]"
         },
         "exclusive": {
@@ -22434,7 +22832,7 @@ export const schema: Schema = {
           "description": "Whether you can only have one instance of this addon family (xor)",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "family": {
@@ -22442,7 +22840,7 @@ export const schema: Schema = {
           "description": "Addon family name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "mandatory": {
@@ -22450,7 +22848,7 @@ export const schema: Schema = {
           "description": "Indicated if addon family must be contracted",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -22465,7 +22863,7 @@ export const schema: Schema = {
           "description": "Name that appears on invoice",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "plan": {
@@ -22473,7 +22871,7 @@ export const schema: Schema = {
           "description": "Describes of commercial offer of a product",
           "fullType": "order.catalog.ProductPlan",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.ProductPlan"
         }
       }
@@ -22488,7 +22886,7 @@ export const schema: Schema = {
           "description": "Identifier of the catalog",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "merchantCode": {
@@ -22496,7 +22894,7 @@ export const schema: Schema = {
           "description": "OVH Subsidiary concerned by this catalog",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "plansFamily": {
@@ -22504,7 +22902,7 @@ export const schema: Schema = {
           "description": "List of plans of the catalog",
           "fullType": "order.catalog.PlansItem[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.PlansItem[]"
         }
       }
@@ -22527,7 +22925,7 @@ export const schema: Schema = {
           "description": "Indicates if the configuration is free for writing (true) or have to follow an enum (false - have to follow values field)",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isMandatory": {
@@ -22535,7 +22933,7 @@ export const schema: Schema = {
           "description": "Indicates if configuration is required",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "name": {
@@ -22543,7 +22941,7 @@ export const schema: Schema = {
           "description": "Label of the configuration",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "values": {
@@ -22551,7 +22949,7 @@ export const schema: Schema = {
           "description": "Values allowed if configuration isn't custom",
           "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         }
       }
@@ -22566,7 +22964,7 @@ export const schema: Schema = {
           "description": "Family of the product",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "plans": {
@@ -22574,7 +22972,7 @@ export const schema: Schema = {
           "description": "List of the plans for this catalog",
           "fullType": "order.catalog.ProductPlan[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.ProductPlan[]"
         }
       }
@@ -22589,7 +22987,7 @@ export const schema: Schema = {
           "description": "Install, renew ... What the pricing can be used for",
           "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "commitment": {
@@ -22597,7 +22995,7 @@ export const schema: Schema = {
           "description": "Engagement period",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "description": {
@@ -22605,7 +23003,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "interval": {
@@ -22613,7 +23011,7 @@ export const schema: Schema = {
           "description": "Number length of the interval",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "intervalUnit": {
@@ -22621,7 +23019,7 @@ export const schema: Schema = {
           "description": "Unit interval for duration",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "maximumQuantity": {
@@ -22645,7 +23043,7 @@ export const schema: Schema = {
           "description": "Minimum quantity",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "minimumRepeat": {
@@ -22653,7 +23051,7 @@ export const schema: Schema = {
           "description": "Minimum repeat duration",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "mustBeCompleted": {
@@ -22661,7 +23059,7 @@ export const schema: Schema = {
           "description": "Whether the catalog must reach max repeat before subscription can use another one",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "price": {
@@ -22669,7 +23067,7 @@ export const schema: Schema = {
           "description": "Price of the product",
           "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "priceCapInUcents": {
@@ -22685,7 +23083,7 @@ export const schema: Schema = {
           "description": "Price in microcents",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "pricingStrategy": {
@@ -22693,7 +23091,7 @@ export const schema: Schema = {
           "description": "Strategy on which the pricing can change",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -22708,7 +23106,7 @@ export const schema: Schema = {
           "description": "Information about default pricing",
           "fullType": "order.catalog.Pricing[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.Pricing[]"
         }
       }
@@ -22723,7 +23121,7 @@ export const schema: Schema = {
           "description": "List of the configurations available for the product",
           "fullType": "order.catalog.ConfigurationItem[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.ConfigurationItem[]"
         },
         "description": {
@@ -22731,7 +23129,7 @@ export const schema: Schema = {
           "description": "Designation of the product",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -22739,7 +23137,7 @@ export const schema: Schema = {
           "description": "Plan code identifier of the product",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "technicalDetails": {
@@ -22762,7 +23160,7 @@ export const schema: Schema = {
           "description": "List of the metadatas attached",
           "fullType": "complexType.SafeKeyValue<string>[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.SafeKeyValue<string>[]"
         },
         "pricings": {
@@ -22770,7 +23168,7 @@ export const schema: Schema = {
           "description": "Describe default pricings",
           "fullType": "order.catalog.PricingDefault",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.PricingDefault"
         },
         "product": {
@@ -22778,7 +23176,7 @@ export const schema: Schema = {
           "description": "Information about the product",
           "fullType": "order.catalog.Product",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.Product"
         }
       }
@@ -22793,7 +23191,7 @@ export const schema: Schema = {
           "description": "List of addons",
           "fullType": "order.catalog.AddonItem[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.AddonItem[]"
         },
         "consumptionBillingStrategy": {
@@ -22809,7 +23207,7 @@ export const schema: Schema = {
           "description": "Describe the details of a commercial offer",
           "fullType": "order.catalog.ProductOfferDetails",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.ProductOfferDetails"
         },
         "invoiceName": {
@@ -22817,7 +23215,7 @@ export const schema: Schema = {
           "description": "Name that appears on invoice",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "planCode": {
@@ -22825,7 +23223,7 @@ export const schema: Schema = {
           "description": "Plan code identifier",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "pricingType": {
@@ -22833,7 +23231,7 @@ export const schema: Schema = {
           "description": "Main mode: rental, consumption",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -22848,7 +23246,7 @@ export const schema: Schema = {
           "description": "Catalog ID",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "catalogName": {
@@ -22856,7 +23254,7 @@ export const schema: Schema = {
           "description": "Catalog name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "commercialRanges": {
@@ -22864,7 +23262,7 @@ export const schema: Schema = {
           "description": "Describes Commercial Ranges of a Private Cloud",
           "fullType": "order.catalog.pcc.CommercialRange[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.pcc.CommercialRange[]"
         },
         "merchantCode": {
@@ -22872,7 +23270,7 @@ export const schema: Schema = {
           "description": "OVH Subsidiary of the Catalog",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "plans": {
@@ -22880,7 +23278,7 @@ export const schema: Schema = {
           "description": "Commercial offers",
           "fullType": "order.catalog.ProductPlan[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.ProductPlan[]"
         }
       }
@@ -22895,7 +23293,7 @@ export const schema: Schema = {
           "description": "Describes Private Cloud Datacenters",
           "fullType": "order.catalog.pcc.Datacenter[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.pcc.Datacenter[]"
         },
         "defaultZone": {
@@ -22903,7 +23301,7 @@ export const schema: Schema = {
           "description": "Default datacenter of the commercial range",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -22911,7 +23309,7 @@ export const schema: Schema = {
           "description": "Name of the commercial range",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -22926,7 +23324,7 @@ export const schema: Schema = {
           "description": "City Code of a Datacenter",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "cityName": {
@@ -22934,7 +23332,7 @@ export const schema: Schema = {
           "description": "City Name of a Datacenter",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "countryCode": {
@@ -22942,7 +23340,7 @@ export const schema: Schema = {
           "description": "Country Code of a Datacenter",
           "fullType": "nichandle.CountryEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "nichandle.CountryEnum"
         },
         "defaultHypervisor": {
@@ -22950,7 +23348,7 @@ export const schema: Schema = {
           "description": "Name of the default hypervisor of a Datacenter",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "hypervisors": {
@@ -22958,7 +23356,7 @@ export const schema: Schema = {
           "description": "Describes Private Cloud Hypervisors",
           "fullType": "order.catalog.pcc.Hypervisor[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.pcc.Hypervisor[]"
         },
         "mainPlan": {
@@ -22966,7 +23364,7 @@ export const schema: Schema = {
           "description": "Main plan code to use for a Datacenter",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "orderable": {
@@ -22974,7 +23372,7 @@ export const schema: Schema = {
           "description": "Describes if a Private Cloud can be ordered on a Datacenter",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "orderableOptions": {
@@ -22982,7 +23380,7 @@ export const schema: Schema = {
           "description": "Describes if options can be ordered on a Datacenter",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "orderableResources": {
@@ -22990,7 +23388,7 @@ export const schema: Schema = {
           "description": "Describes if resources can be ordered on a Datacenter",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "storagesNoPack": {
@@ -22998,7 +23396,7 @@ export const schema: Schema = {
           "description": "List of filers add in case of a No Pack order",
           "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "zoneFullName": {
@@ -23006,7 +23404,7 @@ export const schema: Schema = {
           "description": "Zone Code of a datacenter",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "zoneName": {
@@ -23014,7 +23412,7 @@ export const schema: Schema = {
           "description": "Zone Name of a datacenter",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -23029,7 +23427,7 @@ export const schema: Schema = {
           "description": "Name of the host",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "onInitialOrder": {
@@ -23037,7 +23435,7 @@ export const schema: Schema = {
           "description": "Describes if host is orderable on a initial Order",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "onUpgradeOrder": {
@@ -23045,7 +23443,7 @@ export const schema: Schema = {
           "description": "Describes if host is orderable on a upgrade order",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "planCode": {
@@ -23053,7 +23451,7 @@ export const schema: Schema = {
           "description": "Plan Code",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "specifications": {
@@ -23061,7 +23459,7 @@ export const schema: Schema = {
           "description": "Describes Private Cloud Host specifications",
           "fullType": "order.catalog.pcc.HostSpecifications",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.pcc.HostSpecifications"
         },
         "storagesPack": {
@@ -23069,7 +23467,7 @@ export const schema: Schema = {
           "description": "List of filers add in case of a Pack order",
           "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         }
       }
@@ -23084,7 +23482,7 @@ export const schema: Schema = {
           "description": "Number of CPU Cores",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "frequency": {
@@ -23092,7 +23490,7 @@ export const schema: Schema = {
           "description": "CPU Frequency",
           "fullType": "complexType.UnitAndValue<double>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<double>"
         },
         "generation": {
@@ -23100,7 +23498,7 @@ export const schema: Schema = {
           "description": "CPU Generation",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "model": {
@@ -23108,7 +23506,7 @@ export const schema: Schema = {
           "description": "CPU Model",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "socket": {
@@ -23116,7 +23514,7 @@ export const schema: Schema = {
           "description": "Number of CPU",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "threads": {
@@ -23124,7 +23522,7 @@ export const schema: Schema = {
           "description": "Number of CPU Threads",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -23139,7 +23537,7 @@ export const schema: Schema = {
           "description": "Memory Size",
           "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         }
       }
@@ -23154,7 +23552,7 @@ export const schema: Schema = {
           "description": "Number of network interfaces",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "speed": {
@@ -23162,7 +23560,7 @@ export const schema: Schema = {
           "description": "Speed of the network interfaces",
           "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         }
       }
@@ -23177,7 +23575,7 @@ export const schema: Schema = {
           "description": "Describes the CPU specification of a Host",
           "fullType": "order.catalog.pcc.HostCpuSpecifications",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.pcc.HostCpuSpecifications"
         },
         "memory": {
@@ -23185,7 +23583,7 @@ export const schema: Schema = {
           "description": "Describes the memory specification of a Host",
           "fullType": "order.catalog.pcc.HostMemorySpecifications",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.pcc.HostMemorySpecifications"
         },
         "network": {
@@ -23193,7 +23591,7 @@ export const schema: Schema = {
           "description": "Describes the network specification of a Host",
           "fullType": "order.catalog.pcc.HostNetworkSpecifications[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.pcc.HostNetworkSpecifications[]"
         }
       }
@@ -23208,7 +23606,7 @@ export const schema: Schema = {
           "description": "Describes Private Cloud Hosts",
           "fullType": "order.catalog.pcc.Host[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.pcc.Host[]"
         },
         "name": {
@@ -23216,7 +23614,7 @@ export const schema: Schema = {
           "description": "Name of the hypervisor",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "options": {
@@ -23224,7 +23622,7 @@ export const schema: Schema = {
           "description": "Describes Private Cloud Options",
           "fullType": "order.catalog.pcc.Option[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.pcc.Option[]"
         },
         "orderable": {
@@ -23232,7 +23630,7 @@ export const schema: Schema = {
           "description": "Describes if an hypervisor is orderable",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "servicePacks": {
@@ -23240,7 +23638,7 @@ export const schema: Schema = {
           "description": "Describes Private Cloud Service Packs",
           "fullType": "order.catalog.pcc.ServicePack[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.pcc.ServicePack[]"
         },
         "shortName": {
@@ -23248,7 +23646,7 @@ export const schema: Schema = {
           "description": "Short Name of the hypervisor",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "storages": {
@@ -23256,7 +23654,7 @@ export const schema: Schema = {
           "description": "Describes Private Cloud Storages",
           "fullType": "order.catalog.pcc.Storage[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.pcc.Storage[]"
         },
         "type": {
@@ -23264,7 +23662,7 @@ export const schema: Schema = {
           "description": "Type of the hypervisor",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -23279,7 +23677,7 @@ export const schema: Schema = {
           "description": "Describes the maximum quantity on the initial order",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
@@ -23287,7 +23685,7 @@ export const schema: Schema = {
           "description": "Name of the option",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "onInitialOrder": {
@@ -23295,7 +23693,7 @@ export const schema: Schema = {
           "description": "Describes if option is orderable on a initial order",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "onUpgradeOrder": {
@@ -23303,7 +23701,7 @@ export const schema: Schema = {
           "description": "Describes if option is orderable on a upgrade order",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "planCode": {
@@ -23311,7 +23709,7 @@ export const schema: Schema = {
           "description": "Plan Code",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
@@ -23319,7 +23717,7 @@ export const schema: Schema = {
           "description": "Category of the option",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -23334,7 +23732,7 @@ export const schema: Schema = {
           "description": "Name of the service pack",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "options": {
@@ -23342,7 +23740,7 @@ export const schema: Schema = {
           "description": "Describes Option include in the service pack",
           "fullType": "order.catalog.pcc.ServicePackOption[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.pcc.ServicePackOption[]"
         },
         "planCode": {
@@ -23350,7 +23748,7 @@ export const schema: Schema = {
           "description": "Plan Code",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "upgradableTo": {
@@ -23358,7 +23756,7 @@ export const schema: Schema = {
           "description": "List of available service pack upgrades",
           "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         }
       }
@@ -23373,7 +23771,7 @@ export const schema: Schema = {
           "description": "Name of the option",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "planCode": {
@@ -23381,7 +23779,7 @@ export const schema: Schema = {
           "description": "Plan Code",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
@@ -23389,7 +23787,7 @@ export const schema: Schema = {
           "description": "Category of the option",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -23404,7 +23802,7 @@ export const schema: Schema = {
           "description": "Name of the filer",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "onInitialOrder": {
@@ -23412,7 +23810,7 @@ export const schema: Schema = {
           "description": "Describes if filer is orderable on a initial Order",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "onUpgradeOrder": {
@@ -23420,7 +23818,7 @@ export const schema: Schema = {
           "description": "Describes if filer is orderable on a upgrade order",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "planCode": {
@@ -23428,7 +23826,7 @@ export const schema: Schema = {
           "description": "Plan Code",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "specifications": {
@@ -23436,7 +23834,7 @@ export const schema: Schema = {
           "description": "Describes Private Cloud Storage specifications",
           "fullType": "order.catalog.pcc.StorageSpecifications",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.pcc.StorageSpecifications"
         }
       }
@@ -23451,7 +23849,7 @@ export const schema: Schema = {
           "description": "Size of the storage",
           "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         },
         "type": {
@@ -23459,7 +23857,7 @@ export const schema: Schema = {
           "description": "Type of the storage",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -23474,7 +23872,7 @@ export const schema: Schema = {
           "description": "Define if HDS is part of this type of service",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "hipaa": {
@@ -23482,7 +23880,7 @@ export const schema: Schema = {
           "description": "Define if HIPAA is part of this type of service",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "nsx": {
@@ -23490,7 +23888,7 @@ export const schema: Schema = {
           "description": "Define if NSX is part of this type of service",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "pcidss": {
@@ -23498,7 +23896,7 @@ export const schema: Schema = {
           "description": "Define if PCI-DSS is part of this type of service",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "vrops": {
@@ -23506,7 +23904,7 @@ export const schema: Schema = {
           "description": "Define if VROPS is part of this type of service",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -23521,7 +23919,7 @@ export const schema: Schema = {
           "description": "Describe capabilities of 2016v1 type of service",
           "fullType": "order.catalog.privateCloud.Capabilities",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.privateCloud.Capabilities"
         },
         "2016v2": {
@@ -23529,7 +23927,7 @@ export const schema: Schema = {
           "description": "Describe capabilities of 2016v2 type of service",
           "fullType": "order.catalog.privateCloud.Capabilities",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.privateCloud.Capabilities"
         },
         "2016v3": {
@@ -23537,7 +23935,7 @@ export const schema: Schema = {
           "description": "Describe capabilities of 2016v3 type of service",
           "fullType": "order.catalog.privateCloud.Capabilities",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.privateCloud.Capabilities"
         },
         "2016v4": {
@@ -23545,7 +23943,7 @@ export const schema: Schema = {
           "description": "Describe capabilities of 2016v4 type of service",
           "fullType": "order.catalog.privateCloud.Capabilities",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.privateCloud.Capabilities"
         },
         "2016v5": {
@@ -23553,7 +23951,7 @@ export const schema: Schema = {
           "description": "Describe capabilities of 2016v5 type of service",
           "fullType": "order.catalog.privateCloud.Capabilities",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.privateCloud.Capabilities"
         },
         "2016v6": {
@@ -23561,7 +23959,7 @@ export const schema: Schema = {
           "description": "Describe capabilities of 2016v6 type of service",
           "fullType": "order.catalog.privateCloud.Capabilities",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.privateCloud.Capabilities"
         },
         "2016v7": {
@@ -23569,7 +23967,7 @@ export const schema: Schema = {
           "description": "Describe capabilities of 2016v7 type of service",
           "fullType": "order.catalog.privateCloud.Capabilities",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.privateCloud.Capabilities"
         },
         "default": {
@@ -23577,7 +23975,7 @@ export const schema: Schema = {
           "description": "Describe capabilities of default type of service",
           "fullType": "order.catalog.privateCloud.Capabilities",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.privateCloud.Capabilities"
         }
       }
@@ -23592,7 +23990,7 @@ export const schema: Schema = {
           "description": "Catalog ID",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "catalogName": {
@@ -23600,7 +23998,7 @@ export const schema: Schema = {
           "description": "Catalog name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "defaultHypervisor": {
@@ -23608,7 +24006,7 @@ export const schema: Schema = {
           "description": "Default hypervisor for this catalog",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "defaultZone": {
@@ -23616,7 +24014,7 @@ export const schema: Schema = {
           "description": "Default datacenter for this catalog",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "merchantCode": {
@@ -23624,7 +24022,7 @@ export const schema: Schema = {
           "description": "OVH Subsidiary of the Catalog",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "options": {
@@ -23632,7 +24030,7 @@ export const schema: Schema = {
           "description": "Describe all capabilities of different types of service",
           "fullType": "order.catalog.privateCloud.CapabilitiesListing",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.privateCloud.CapabilitiesListing"
         },
         "zones": {
@@ -23640,7 +24038,7 @@ export const schema: Schema = {
           "description": "Zone definitions per datacenters",
           "fullType": "order.catalog.privateCloud.ZonesListing",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.privateCloud.ZonesListing"
         }
       }
@@ -23655,7 +24053,7 @@ export const schema: Schema = {
           "description": "City where Private Cloud instance will be delivered",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "country": {
@@ -23663,7 +24061,7 @@ export const schema: Schema = {
           "description": "Country where Private Cloud instance will be delivered",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "defaultHypervisor": {
@@ -23671,7 +24069,7 @@ export const schema: Schema = {
           "description": "Default hypervisor for this Private Cloud zone",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "defaultVersion": {
@@ -23679,7 +24077,7 @@ export const schema: Schema = {
           "description": "Default version for this Private Cloud zone",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "internalName": {
@@ -23687,7 +24085,7 @@ export const schema: Schema = {
           "description": "Internal name of the zone",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "plans": {
@@ -23695,7 +24093,7 @@ export const schema: Schema = {
           "description": "Commercial offers on this zone",
           "fullType": "order.catalog.ProductPlan[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.ProductPlan[]"
         }
       }
@@ -23710,7 +24108,7 @@ export const schema: Schema = {
           "description": "Zone definition for BHS datacenter",
           "fullType": "order.catalog.privateCloud.Zone",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.privateCloud.Zone"
         },
         "eri": {
@@ -23718,7 +24116,7 @@ export const schema: Schema = {
           "description": "Zone definition for ERI datacenter",
           "fullType": "order.catalog.privateCloud.Zone",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.privateCloud.Zone"
         },
         "lim": {
@@ -23726,7 +24124,7 @@ export const schema: Schema = {
           "description": "Zone definition for LIM datacenter",
           "fullType": "order.catalog.privateCloud.Zone",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.privateCloud.Zone"
         },
         "rbx": {
@@ -23734,7 +24132,7 @@ export const schema: Schema = {
           "description": "Zone definition for RBX datacenter",
           "fullType": "order.catalog.privateCloud.Zone",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.privateCloud.Zone"
         },
         "sbg": {
@@ -23742,7 +24140,7 @@ export const schema: Schema = {
           "description": "Zone definition for SBG datacenter",
           "fullType": "order.catalog.privateCloud.Zone",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.privateCloud.Zone"
         },
         "waw": {
@@ -23750,7 +24148,7 @@ export const schema: Schema = {
           "description": "Zone definition for WAW datacenter",
           "fullType": "order.catalog.privateCloud.Zone",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.catalog.privateCloud.Zone"
         }
       }
@@ -23765,7 +24163,7 @@ export const schema: Schema = {
           "description": "List of Commercial offers that can be ordered as an Addon of the current Commerical offer for the current Family",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "default": {
@@ -23781,7 +24179,7 @@ export const schema: Schema = {
           "description": "Whether this Addon family is exclusive and can be ordered only once for the main Commercial offer",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "mandatory": {
@@ -23789,7 +24187,7 @@ export const schema: Schema = {
           "description": "Whether this Addon family is mandatory",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "name": {
@@ -23797,7 +24195,7 @@ export const schema: Schema = {
           "description": "Family name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -23812,7 +24210,7 @@ export const schema: Schema = {
           "description": "List of addons of the catalog",
           "fullType": "order.catalog.public.Plan[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.catalog.public.Plan[]"
         },
         "catalogId": {
@@ -23820,7 +24218,7 @@ export const schema: Schema = {
           "description": "Identifier of the catalog",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "locale": {
@@ -23828,7 +24226,7 @@ export const schema: Schema = {
           "description": "Subsidiary specific information",
           "fullType": "order.catalog.public.Locale",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.catalog.public.Locale"
         },
         "planFamilies": {
@@ -23836,7 +24234,7 @@ export const schema: Schema = {
           "description": "List of plan families of the catalog",
           "fullType": "order.catalog.public.PlanFamily[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.catalog.public.PlanFamily[]"
         },
         "plans": {
@@ -23844,7 +24242,7 @@ export const schema: Schema = {
           "description": "List of main plans of the catalog",
           "fullType": "order.catalog.public.Plan[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.catalog.public.Plan[]"
         },
         "products": {
@@ -23852,7 +24250,7 @@ export const schema: Schema = {
           "description": "List of products of the catalog",
           "fullType": "order.catalog.public.Product[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.catalog.public.Product[]"
         }
       }
@@ -23867,7 +24265,7 @@ export const schema: Schema = {
           "description": "Whether the value of this Configuration is custom",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isMandatory": {
@@ -23875,7 +24273,7 @@ export const schema: Schema = {
           "description": "Whether this Configuration is mandatory",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "name": {
@@ -23883,7 +24281,7 @@ export const schema: Schema = {
           "description": "Identifier of the Configuration",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "values": {
@@ -23891,8 +24289,452 @@ export const schema: Schema = {
           "description": "Possible values for this Configuration, if not custom",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
+        }
+      }
+    },
+    "order.catalog.public.DedicatedServerCatalog": {
+      "description": "Describes a Dedicated server Catalog inside a Subsidiary",
+      "id": "Catalog",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "addons": {
+          "canBeNull": false,
+          "description": "List of addons of the catalog",
+          "fullType": "order.catalog.public.Plan[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.Plan[]"
+        },
+        "catalogId": {
+          "canBeNull": false,
+          "description": "Identifier of the catalog",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "locale": {
+          "canBeNull": false,
+          "description": "Subsidiary specific information",
+          "fullType": "order.catalog.public.Locale",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.Locale"
+        },
+        "planFamilies": {
+          "canBeNull": false,
+          "description": "List of plan families of the catalog",
+          "fullType": "order.catalog.public.AddonFamily[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.AddonFamily[]"
+        },
+        "plans": {
+          "canBeNull": false,
+          "description": "List of main plans of the catalog",
+          "fullType": "order.catalog.public.Plan[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.Plan[]"
+        },
+        "products": {
+          "canBeNull": false,
+          "description": "List of products of the catalog",
+          "fullType": "order.catalog.public.DedicatedServerProduct[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.DedicatedServerProduct[]"
+        }
+      }
+    },
+    "order.catalog.public.DedicatedServerProduct": {
+      "description": "Describes a Dedicated Server Product",
+      "id": "DedicatedServerProduct",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "blobs": {
+          "canBeNull": true,
+          "description": "Additional information for this Product",
+          "fullType": "order.catalog.public.DedicatedServerProductBlob",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.DedicatedServerProductBlob"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the Product",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Identifier of the Product",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.DedicatedServerProductBlob": {
+      "description": "Describes a Blob for a Dedicated Server",
+      "id": "DedicatedServerProductBlob",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "technical": {
+          "canBeNull": true,
+          "description": "Technical information for Dedicated Server Product",
+          "fullType": "order.catalog.public.DedicatedServerProductBlobTechnical",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.DedicatedServerProductBlobTechnical"
+        }
+      }
+    },
+    "order.catalog.public.DedicatedServerProductBlobTechnical": {
+      "description": "Describes a Technical Blob for a Dedicated Server",
+      "id": "DedicatedServerProductBlobTechnical",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "bandwidth": {
+          "canBeNull": true,
+          "description": "Network informations",
+          "fullType": "order.catalog.public.DedicatedServerProductBlobTechnicalNetwork",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.DedicatedServerProductBlobTechnicalNetwork"
+        },
+        "cpu": {
+          "canBeNull": true,
+          "description": "CPU informations",
+          "fullType": "order.catalog.public.DedicatedServerProductBlobTechnicalCPU",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.DedicatedServerProductBlobTechnicalCPU"
+        },
+        "gpu": {
+          "canBeNull": true,
+          "description": "GPU informations",
+          "fullType": "order.catalog.public.DedicatedServerProductBlobTechnicalGPU",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.DedicatedServerProductBlobTechnicalGPU"
+        },
+        "memory": {
+          "canBeNull": true,
+          "description": "Memory informations",
+          "fullType": "order.catalog.public.DedicatedServerProductBlobTechnicalMemory",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.DedicatedServerProductBlobTechnicalMemory"
+        },
+        "server": {
+          "canBeNull": true,
+          "description": "Hardware informations",
+          "fullType": "order.catalog.public.DedicatedServerProductBlobTechnicalServer",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.DedicatedServerProductBlobTechnicalServer"
+        },
+        "storage": {
+          "canBeNull": true,
+          "description": "Disks informations",
+          "fullType": "order.catalog.public.DedicatedServerProductBlobTechnicalStorage",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.DedicatedServerProductBlobTechnicalStorage"
+        },
+        "vrack": {
+          "canBeNull": true,
+          "description": "vRack informations",
+          "fullType": "order.catalog.public.DedicatedServerProductBlobTechnicalNetwork",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.DedicatedServerProductBlobTechnicalNetwork"
+        }
+      }
+    },
+    "order.catalog.public.DedicatedServerProductBlobTechnicalCPU": {
+      "description": "Describes a CPU for a Dedicated Server",
+      "id": "DedicatedServerProductBlobTechnicalCPU",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "boost": {
+          "canBeNull": false,
+          "description": "CPU Boost",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "brand": {
+          "canBeNull": false,
+          "description": "CPU Brand",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "cores": {
+          "canBeNull": false,
+          "description": "Number of cores",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "frequency": {
+          "canBeNull": false,
+          "description": "Frequency of CPU in GHz",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "model": {
+          "canBeNull": false,
+          "description": "Displayable name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "score": {
+          "canBeNull": false,
+          "description": "CPU score",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "threads": {
+          "canBeNull": false,
+          "description": "Number of threads",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.public.DedicatedServerProductBlobTechnicalDisk": {
+      "description": "Describes a Disk for a Dedicated Server",
+      "id": "DedicatedServerProductBlobTechnicalDisk",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "capacity": {
+          "canBeNull": false,
+          "description": "Disk capacity in Gb",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "interface": {
+          "canBeNull": false,
+          "description": "Disk interface",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "number": {
+          "canBeNull": false,
+          "description": "Number of disks",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "specs": {
+          "canBeNull": false,
+          "description": "Disk specs",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "technology": {
+          "canBeNull": false,
+          "description": "Disk technology",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.DedicatedServerProductBlobTechnicalFrame": {
+      "description": "Describes a Frame for a Dedicated Server",
+      "id": "DedicatedServerProductBlobTechnicalFrame",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "model": {
+          "canBeNull": false,
+          "description": "Frame model",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Frame size",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.DedicatedServerProductBlobTechnicalGPU": {
+      "description": "Describes a GPU for a Dedicated Server",
+      "id": "DedicatedServerProductBlobTechnicalGPU",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "memory": {
+          "canBeNull": false,
+          "description": "GPU memory size",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.public.DedicatedServerProductBlobTechnicalMemory": {
+      "description": "Describes a Memory technical Blob for a Dedicated Server",
+      "id": "DedicatedServerProductBlobTechnicalMemory",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "ecc": {
+          "canBeNull": false,
+          "description": "ECC",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "frequency": {
+          "canBeNull": false,
+          "description": "RAM Frequency",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "ramType": {
+          "canBeNull": false,
+          "description": "RAM Type (DDRx...)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the RAM in Gb",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.public.DedicatedServerProductBlobTechnicalNetwork": {
+      "description": "Describes a Network technical Blob for a Dedicated Server",
+      "id": "DedicatedServerProductBlobTechnicalNetwork",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "burst": {
+          "canBeNull": true,
+          "description": "Network burst",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "guaranteed": {
+          "canBeNull": false,
+          "description": "Guaranteed Network",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "level": {
+          "canBeNull": false,
+          "description": "Network level",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "limit": {
+          "canBeNull": true,
+          "description": "Network limit",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "order.catalog.public.DedicatedServerProductBlobTechnicalServer": {
+      "description": "Describes some technicals informations of a Dedicated Server",
+      "id": "DedicatedServerProductBlobTechnicalServer",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "cpu": {
+          "canBeNull": false,
+          "description": "CPU properties",
+          "fullType": "order.catalog.public.DedicatedServerProductBlobTechnicalCPU",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.DedicatedServerProductBlobTechnicalCPU"
+        },
+        "frame": {
+          "canBeNull": false,
+          "description": "Frame properties",
+          "fullType": "order.catalog.public.DedicatedServerProductBlobTechnicalFrame",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.DedicatedServerProductBlobTechnicalFrame"
+        },
+        "range": {
+          "canBeNull": false,
+          "description": "Dedicated server series",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.catalog.public.DedicatedServerProductBlobTechnicalStorage": {
+      "description": "Describes a Storage technical Blob for a Dedicated Server",
+      "id": "DedicatedServerProductBlobTechnicalStorage",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "disks": {
+          "canBeNull": false,
+          "description": "Disk properties",
+          "fullType": "order.catalog.public.DedicatedServerProductBlobTechnicalDisk[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.DedicatedServerProductBlobTechnicalDisk[]"
+        },
+        "raid": {
+          "canBeNull": false,
+          "description": "Raid",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -23906,7 +24748,7 @@ export const schema: Schema = {
           "description": "Currency used by the Subsidiary",
           "fullType": "order.CurrencyCodeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.CurrencyCodeEnum"
         },
         "subsidiary": {
@@ -23914,7 +24756,7 @@ export const schema: Schema = {
           "description": "Current Subsidiary",
           "fullType": "nichandle.OvhSubsidiaryEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "nichandle.OvhSubsidiaryEnum"
         },
         "taxRate": {
@@ -23922,7 +24764,7 @@ export const schema: Schema = {
           "description": "Default VAT rate used by the Subsidiary",
           "fullType": "double",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "double"
         }
       }
@@ -23937,7 +24779,7 @@ export const schema: Schema = {
           "description": "Addon families for this offer",
           "fullType": "order.catalog.public.AddonFamily[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.catalog.public.AddonFamily[]"
         },
         "configurations": {
@@ -23945,7 +24787,7 @@ export const schema: Schema = {
           "description": "List of possible Configurations for this Commercial offer",
           "fullType": "order.catalog.public.Configuration[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.catalog.public.Configuration[]"
         },
         "family": {
@@ -23961,7 +24803,7 @@ export const schema: Schema = {
           "description": "Commercial offer description",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "planCode": {
@@ -23969,7 +24811,7 @@ export const schema: Schema = {
           "description": "Commercial offer identifier",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "pricingType": {
@@ -23977,7 +24819,7 @@ export const schema: Schema = {
           "description": "Type of Pricing used by this Commercial offer",
           "fullType": "order.cart.GenericProductPricingTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.cart.GenericProductPricingTypeEnum"
         },
         "pricings": {
@@ -23985,7 +24827,7 @@ export const schema: Schema = {
           "description": "List of possible Pricings for this Commercial offer",
           "fullType": "order.catalog.public.Pricing[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.catalog.public.Pricing[]"
         },
         "product": {
@@ -23993,7 +24835,7 @@ export const schema: Schema = {
           "description": "Identifier of the Product linked to this Commercial offer",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -24008,7 +24850,7 @@ export const schema: Schema = {
           "description": "Family name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -24023,7 +24865,7 @@ export const schema: Schema = {
           "description": "Capacities of the Pricing, describes what the Pricing can be used for",
           "fullType": "order.cart.GenericProductPricingCapacitiesEnum[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.cart.GenericProductPricingCapacitiesEnum[]"
         },
         "commitment": {
@@ -24031,7 +24873,7 @@ export const schema: Schema = {
           "description": "Engagement period",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "description": {
@@ -24039,7 +24881,7 @@ export const schema: Schema = {
           "description": "Pricing description",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "interval": {
@@ -24047,7 +24889,7 @@ export const schema: Schema = {
           "description": "Length of the interval",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "intervalUnit": {
@@ -24055,7 +24897,7 @@ export const schema: Schema = {
           "description": "Unit of the interval",
           "fullType": "order.cart.DurationUnitEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.cart.DurationUnitEnum"
         },
         "mode": {
@@ -24063,7 +24905,7 @@ export const schema: Schema = {
           "description": "Pricing mode",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "mustBeCompleted": {
@@ -24071,7 +24913,7 @@ export const schema: Schema = {
           "description": "Pricing must be completed",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "phase": {
@@ -24079,7 +24921,7 @@ export const schema: Schema = {
           "description": "Phase for the Pricing",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "price": {
@@ -24087,7 +24929,7 @@ export const schema: Schema = {
           "description": "Price, in micro-cents",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "quantity": {
@@ -24095,7 +24937,7 @@ export const schema: Schema = {
           "description": "Describes how many times the Commercial offer can be added to the Cart",
           "fullType": "order.catalog.public.PricingMinMax",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.catalog.public.PricingMinMax"
         },
         "repeat": {
@@ -24103,7 +24945,7 @@ export const schema: Schema = {
           "description": "Describes how many times the interval can be repeated",
           "fullType": "order.catalog.public.PricingMinMax",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.catalog.public.PricingMinMax"
         },
         "strategy": {
@@ -24111,7 +24953,7 @@ export const schema: Schema = {
           "description": "Pricing strategy",
           "fullType": "order.cart.GenericProductPricingStrategyEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.cart.GenericProductPricingStrategyEnum"
         },
         "tax": {
@@ -24119,7 +24961,7 @@ export const schema: Schema = {
           "description": "Tax that can be applied, in micro-cents",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "type": {
@@ -24127,7 +24969,7 @@ export const schema: Schema = {
           "description": "Pricing type",
           "fullType": "order.cart.GenericProductPricingTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.cart.GenericProductPricingTypeEnum"
         }
       }
@@ -24150,7 +24992,7 @@ export const schema: Schema = {
           "description": "Minimal value",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -24165,7 +25007,7 @@ export const schema: Schema = {
           "description": "Description of the Product",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -24173,7 +25015,7 @@ export const schema: Schema = {
           "description": "Identifier of the Product",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -24188,7 +25030,7 @@ export const schema: Schema = {
           "description": "Identifier of the operation",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "product": {
@@ -24196,7 +25038,7 @@ export const schema: Schema = {
           "description": "Product concerned by the operation",
           "fullType": "order.upgrade.OperationProduct",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.upgrade.OperationProduct"
         },
         "status": {
@@ -24204,7 +25046,7 @@ export const schema: Schema = {
           "description": "Status of the operation",
           "fullType": "order.upgrade.OperationStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.upgrade.OperationStatusEnum"
         },
         "type": {
@@ -24212,8 +25054,31 @@ export const schema: Schema = {
           "description": "Type of the operation",
           "fullType": "order.upgrade.OperationTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.upgrade.OperationTypeEnum"
+        }
+      }
+    },
+    "order.upgrade.OperationAndOrder": {
+      "description": "Describes an Operation and the associated Order",
+      "id": "order.upgrade.OperationAndOrder",
+      "namespace": "order.upgrade",
+      "properties": {
+        "operation": {
+          "canBeNull": true,
+          "description": "Upgrade operation",
+          "fullType": "order.upgrade.Operation",
+          "readOnly": false,
+          "required": false,
+          "type": "order.upgrade.Operation"
+        },
+        "order": {
+          "canBeNull": true,
+          "description": "Order placed",
+          "fullType": "order.Order",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Order"
         }
       }
     },
@@ -24227,7 +25092,7 @@ export const schema: Schema = {
           "description": "Detailled description of a product",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -24235,7 +25100,7 @@ export const schema: Schema = {
           "description": "Name of the product",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -24263,29 +25128,6 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "OperationTypeEnum",
       "namespace": "order.upgrade"
-    },
-    "order.upgrade.order.upgrade.OperationAndOrder": {
-      "description": "Describes an Operation and the associated Order",
-      "id": "OperationAndOrder",
-      "namespace": "order.upgrade.order.upgrade",
-      "properties": {
-        "operation": {
-          "canBeNull": true,
-          "description": "Upgrade operation",
-          "fullType": "order.upgrade.Operation",
-          "readOnly": false,
-          "required": false,
-          "type": "order.upgrade.Operation"
-        },
-        "order": {
-          "canBeNull": true,
-          "description": "Order placed",
-          "fullType": "order.Order",
-          "readOnly": false,
-          "required": false,
-          "type": "order.Order"
-        }
-      }
     },
     "veeamCloudConnect.Offer": {
       "description": "All orderable Veeam Cloud Connect offers",
@@ -24347,6 +25189,42 @@ export const schema: Schema = {
       "enumType": "coreTypes.CountryEnum",
       "id": "GeolocationEnum",
       "namespace": "vps.ip"
+    },
+    "vrack.BlockCountryEnum": {
+      "description": "Possible localization for block",
+      "enum": [
+        "be",
+        "cz",
+        "de",
+        "es",
+        "fi",
+        "fr",
+        "ie",
+        "it",
+        "lt",
+        "nl",
+        "pl",
+        "pt",
+        "uk"
+      ],
+      "enumType": "coreTypes.CountryEnum",
+      "id": "BlockCountryEnum",
+      "namespace": "vrack"
+    },
+    "vrack.BlockSizeEnum": {
+      "description": "Possible values for block size",
+      "enum": [
+        "128",
+        "16",
+        "256",
+        "32",
+        "4",
+        "64",
+        "8"
+      ],
+      "enumType": "string",
+      "id": "BlockSizeEnum",
+      "namespace": "vrack"
     }
   },
   "resourcePath": "/order"

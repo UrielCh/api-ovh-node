@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://ca.api.ovh.com:443/1.0/auth.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations with credentials",
@@ -127,21 +127,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "credentialId": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "expiration": {
@@ -163,21 +163,21 @@ export const schema: Schema = {
           "description": "States whether this credential has been created by yourself or by the OVH support team",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "rules": {
           "canBeNull": false,
           "fullType": "auth.AccessRule[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "auth.AccessRule[]"
         },
         "status": {
           "canBeNull": false,
           "fullType": "auth.CredentialStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "auth.CredentialStateEnum"
         }
       }
@@ -189,16 +189,14 @@ export const schema: Schema = {
       "properties": {
         "method": {
           "canBeNull": false,
-          "fullType": "http.MethodEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "http.MethodEnum"
         },
         "path": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -210,21 +208,18 @@ export const schema: Schema = {
       "properties": {
         "consumerKey": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "state": {
           "canBeNull": false,
-          "fullType": "auth.CredentialStateEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "auth.CredentialStateEnum"
         },
         "validationUrl": {
           "canBeNull": true,
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -251,7 +246,6 @@ export const schema: Schema = {
         "description": {
           "canBeNull": true,
           "description": "Description",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -259,15 +253,13 @@ export const schema: Schema = {
         "method": {
           "canBeNull": false,
           "description": "Authentication method",
-          "fullType": "auth.MethodEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "auth.MethodEnum"
         },
         "roles": {
           "canBeNull": true,
           "description": "Roles",
-          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
@@ -275,7 +267,6 @@ export const schema: Schema = {
         "user": {
           "canBeNull": true,
           "description": "Username",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -291,6 +282,17 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "MethodEnum",
+      "namespace": "auth"
+    },
+    "auth.ShouldDisplayMFAEnrollmentEnum": {
+      "description": "All ShouldDisplayMFAEnrollment values",
+      "enum": [
+        "false",
+        "forced",
+        "true"
+      ],
+      "enumType": "string",
+      "id": "ShouldDisplayMFAEnrollmentEnum",
       "namespace": "auth"
     },
     "http.MethodEnum": {

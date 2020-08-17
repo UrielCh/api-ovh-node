@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/hosting/reseller.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the HOSTING_RESELLER service",
@@ -36,7 +36,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your reseller service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -63,7 +63,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -71,7 +71,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -79,14 +79,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your reseller service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -112,18 +112,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "New email",
+              "description": "The internal name of your reseller service",
               "fullType": "string",
-              "name": "email",
-              "paramType": "body",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "New email",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "name": "email",
+              "paramType": "body",
               "required": true
             }
           ],
@@ -145,19 +145,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The internal name of your reseller service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "reseller.pleskLanguageTypeEnum",
               "description": "Locale value",
               "fullType": "reseller.pleskLanguageTypeEnum",
               "name": "language",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -180,7 +180,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your reseller service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -214,7 +214,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your reseller service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -240,7 +240,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your reseller service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -266,18 +266,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Domain to set the ip reverse",
+              "description": "The internal name of your reseller service",
               "fullType": "string",
-              "name": "reverse",
-              "paramType": "body",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain to set the ip reverse",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "name": "reverse",
+              "paramType": "body",
               "required": true
             }
           ],
@@ -300,7 +300,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your reseller service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -320,14 +320,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your reseller service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -353,7 +353,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your reseller service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -373,7 +373,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your reseller service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -399,17 +399,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Snapshot ID",
+              "description": "The internal name of your reseller service",
               "fullType": "string",
-              "name": "snapshotId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Snapshot targeted",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "snapshotId",
               "paramType": "path",
               "required": true
             }
@@ -433,7 +433,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your reseller service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -441,7 +441,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Snapshot ID",
+              "description": "Snapshot to restore",
               "fullType": "string",
               "name": "snapshotId",
               "paramType": "path",
@@ -467,7 +467,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your reseller service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -493,7 +493,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your reseller service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -501,7 +501,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Task ID",
+              "description": "Task id to retrieve",
               "fullType": "string",
               "name": "taskId",
               "paramType": "path",
@@ -524,17 +524,15 @@ export const schema: Schema = {
         "email": {
           "canBeNull": false,
           "description": "Customer email",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "region": {
           "canBeNull": false,
           "description": "Region hosting the cloud instance",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -565,7 +563,7 @@ export const schema: Schema = {
           "description": "Additional information about the plesk",
           "fullType": "hosting.reseller.metaType",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.reseller.metaType"
         },
         "progress": {
@@ -581,7 +579,7 @@ export const schema: Schema = {
           "description": "Status of the instance",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
@@ -589,7 +587,7 @@ export const schema: Schema = {
           "description": "Reseller flavor",
           "fullType": "hosting.reseller.resellerTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.reseller.resellerTypeEnum"
         },
         "typeDetail": {
@@ -597,7 +595,7 @@ export const schema: Schema = {
           "description": "Details about the plesk type",
           "fullType": "hosting.reseller.productType",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.reseller.productType"
         },
         "url": {
@@ -618,73 +616,64 @@ export const schema: Schema = {
         "consumers": {
           "canBeNull": false,
           "description": "Number of allowed customers",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "cpu": {
           "canBeNull": false,
           "description": "Instance's cpu",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "databases": {
           "canBeNull": false,
           "description": "Number of allowed databases",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "diskSize": {
           "canBeNull": false,
           "description": "Disk size of the instance (in GB)",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "emailAccounts": {
           "canBeNull": false,
           "description": "Number of allowed email accounts",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "ram": {
           "canBeNull": false,
           "description": "Instance's ram (in GB)",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "type": {
           "canBeNull": false,
           "description": "Type name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "vCores": {
           "canBeNull": false,
           "description": "Number of vCore",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "websites": {
           "canBeNull": false,
           "description": "Number of allowed websites",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -751,7 +740,7 @@ export const schema: Schema = {
           "description": "Snapshot creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -759,7 +748,7 @@ export const schema: Schema = {
           "description": "Snapshot id",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "snashotName": {
@@ -767,7 +756,7 @@ export const schema: Schema = {
           "description": "Snapshot name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
@@ -775,7 +764,7 @@ export const schema: Schema = {
           "description": "Snapshot type",
           "fullType": "reseller.snapshotTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "reseller.snapshotTypeEnum"
         }
       }
@@ -800,7 +789,7 @@ export const schema: Schema = {
           "description": "Task current step",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "expectedDoneDate": {
@@ -816,7 +805,7 @@ export const schema: Schema = {
           "description": "Task id",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "lastUpdateDate": {
@@ -832,7 +821,7 @@ export const schema: Schema = {
           "description": "Linked product",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "progress": {
@@ -840,7 +829,7 @@ export const schema: Schema = {
           "description": "Task percentage progression",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "taskName": {
@@ -848,7 +837,7 @@ export const schema: Schema = {
           "description": "Task name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "taskStatus": {
@@ -856,7 +845,7 @@ export const schema: Schema = {
           "description": "Task status",
           "fullType": "reseller.taskTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "reseller.taskTypeEnum"
         }
       }
@@ -882,31 +871,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -914,7 +899,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -958,42 +942,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -1007,7 +991,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -1030,21 +1014,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/cloudDB.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the CLOUDDB service",
@@ -36,7 +36,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -56,14 +56,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "cloudDB.enterprise.Cluster",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "cloudDB.enterprise.Cluster",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -89,7 +89,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -108,14 +108,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Cluster id",
-              "fullType": "uuid",
-              "name": "clusterId",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Backup name",
               "fullType": "string",
@@ -124,11 +116,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Cluster ID",
-              "fullType": "string",
+              "dataType": "uuid",
+              "description": "Cluster id",
+              "fullType": "uuid",
               "name": "clusterId",
-              "paramType": "path",
+              "paramType": "body",
               "required": true
             }
           ],
@@ -151,7 +143,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -159,7 +151,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Backup ID",
+              "description": "Backup id",
               "fullType": "uuid",
               "name": "backupId",
               "paramType": "path",
@@ -179,7 +171,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -187,7 +179,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Backup ID",
+              "description": "Backup id",
               "fullType": "uuid",
               "name": "backupId",
               "paramType": "path",
@@ -245,7 +237,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -271,7 +263,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -284,7 +276,7 @@ export const schema: Schema = {
       "path": "/cloudDB/enterprise/cluster/{clusterId}/endpoint"
     },
     {
-      "description": "Endpoint",
+      "description": "Endpoints",
       "operations": [
         {
           "apiStatus": {
@@ -297,7 +289,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -305,7 +297,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Endpoint ID",
+              "description": "Endpoint id",
               "fullType": "uuid",
               "name": "endpointId",
               "paramType": "path",
@@ -331,7 +323,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -357,7 +349,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -365,7 +357,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Host ID",
+              "description": "Host id",
               "fullType": "uuid",
               "name": "hostId",
               "paramType": "path",
@@ -391,7 +383,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -411,14 +403,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Note regarding this username",
-              "fullType": "string",
-              "name": "note",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Logs Data Platform username",
               "fullType": "string",
               "name": "username",
@@ -427,7 +411,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Note regarding this username",
+              "fullType": "string",
+              "name": "note",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -453,7 +445,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -461,7 +453,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Logs ID",
+              "description": "User id",
               "fullType": "uuid",
               "name": "logsId",
               "paramType": "path",
@@ -481,7 +473,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -489,7 +481,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Logs ID",
+              "description": "User id",
               "fullType": "uuid",
               "name": "logsId",
               "paramType": "path",
@@ -515,7 +507,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -541,7 +533,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -549,7 +541,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Maintenance ID",
+              "description": "Maintenance id",
               "fullType": "uuid",
               "name": "maintenanceId",
               "paramType": "path",
@@ -569,7 +561,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -577,7 +569,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Maintenance ID",
+              "description": "Maintenance id",
               "fullType": "uuid",
               "name": "maintenanceId",
               "paramType": "path",
@@ -603,7 +595,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -623,7 +615,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -642,18 +634,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Maximum duration of maintenance window in minutes",
-              "fullType": "long",
-              "name": "duration",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "time",
               "description": "Hour and minute the maintenance will start in UTC",
               "fullType": "time",
               "name": "startTime",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Maximum duration of maintenance window in minutes",
+              "fullType": "long",
+              "name": "duration",
               "paramType": "body",
               "required": false
             },
@@ -667,7 +659,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -687,14 +679,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "cloudDB.enterprise.Cluster.MaintenanceWindow",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "cloudDB.enterprise.Cluster.MaintenanceWindow",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -720,7 +712,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -756,7 +748,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -782,7 +774,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -790,7 +782,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Restore ID",
+              "description": "Restore id",
               "fullType": "uuid",
               "name": "restoreId",
               "paramType": "path",
@@ -810,7 +802,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -818,7 +810,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Restore ID",
+              "description": "Restore id",
               "fullType": "uuid",
               "name": "restoreId",
               "paramType": "path",
@@ -843,18 +835,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Restore ID",
-              "fullType": "uuid",
-              "name": "restoreId",
+              "dataType": "string",
+              "description": "Enterprise cluster ID",
+              "fullType": "string",
+              "name": "clusterId",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Cluster ID",
-              "fullType": "string",
-              "name": "clusterId",
+              "dataType": "uuid",
+              "description": "Restore id",
+              "fullType": "uuid",
+              "name": "restoreId",
               "paramType": "path",
               "required": true
             }
@@ -880,7 +872,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -888,7 +880,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Restore ID",
+              "description": "Restore id",
               "fullType": "uuid",
               "name": "restoreId",
               "paramType": "path",
@@ -922,7 +914,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -948,7 +940,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -981,14 +973,6 @@ export const schema: Schema = {
               "name": "name",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cluster ID",
-              "fullType": "string",
-              "name": "clusterId",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "cloudDB.enterprise.Cluster.SecurityGroup"
@@ -1010,7 +994,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -1018,7 +1002,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Security group ID",
+              "description": "Security group id",
               "fullType": "uuid",
               "name": "securityGroupId",
               "paramType": "path",
@@ -1038,7 +1022,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -1046,7 +1030,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Security group ID",
+              "description": "Security group id",
               "fullType": "uuid",
               "name": "securityGroupId",
               "paramType": "path",
@@ -1066,14 +1050,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "cloudDB.enterprise.Cluster.SecurityGroup",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "cloudDB.enterprise.Cluster.SecurityGroup",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -1081,7 +1065,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Security group ID",
+              "description": "Security group id",
               "fullType": "uuid",
               "name": "securityGroupId",
               "paramType": "path",
@@ -1107,7 +1091,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -1115,7 +1099,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Security group ID",
+              "description": "Security group id",
               "fullType": "uuid",
               "name": "securityGroupId",
               "paramType": "path",
@@ -1143,7 +1127,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -1151,7 +1135,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Security group ID",
+              "description": "Security group id",
               "fullType": "uuid",
               "name": "securityGroupId",
               "paramType": "path",
@@ -1176,16 +1160,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Rule ID",
-              "fullType": "uuid",
-              "name": "ruleId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -1193,9 +1169,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Security group ID",
+              "description": "Security group id",
               "fullType": "uuid",
               "name": "securityGroupId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Rule id",
+              "fullType": "uuid",
+              "name": "ruleId",
               "paramType": "path",
               "required": true
             }
@@ -1213,7 +1197,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -1221,7 +1205,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Security group ID",
+              "description": "Security group id",
               "fullType": "uuid",
               "name": "securityGroupId",
               "paramType": "path",
@@ -1229,7 +1213,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Rule ID",
+              "description": "Rule id",
               "fullType": "uuid",
               "name": "ruleId",
               "paramType": "path",
@@ -1255,7 +1239,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -1275,14 +1259,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -1308,11 +1292,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Filter the value of function property (=)",
               "fullType": "string",
-              "name": "clusterId",
-              "paramType": "path",
-              "required": true
+              "name": "function",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "cloudDB.task.Status",
@@ -1324,11 +1308,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of function property (=)",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
-              "name": "function",
-              "paramType": "query",
-              "required": false
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "uuid[]"
@@ -1337,7 +1321,7 @@ export const schema: Schema = {
       "path": "/cloudDB/enterprise/cluster/{clusterId}/task"
     },
     {
-      "description": "Task",
+      "description": "Tasks",
       "operations": [
         {
           "apiStatus": {
@@ -1350,7 +1334,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -1358,7 +1342,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Task ID",
+              "description": "Task id",
               "fullType": "uuid",
               "name": "taskId",
               "paramType": "path",
@@ -1384,7 +1368,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -1410,7 +1394,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -1438,7 +1422,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Enterprise cluster ID",
               "fullType": "string",
               "name": "clusterId",
               "paramType": "path",
@@ -1599,6 +1583,164 @@ export const schema: Schema = {
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
+    "cloudDB.Dump": {
+      "description": "Dumps",
+      "id": "Dump",
+      "namespace": "cloudDB",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date of the dump",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "databaseName": {
+          "canBeNull": false,
+          "description": "Database name associated to this dump",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "expirationDate": {
+          "canBeNull": true,
+          "description": "Deletion date of the dump",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Dump id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "instanceId": {
+          "canBeNull": false,
+          "description": "Instance id associated to this dump",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "instanceType": {
+          "canBeNull": false,
+          "description": "Instance type associated to this dump",
+          "fullType": "cloudDB.instance.Type",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.instance.Type"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Dump name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": true,
+          "description": "Dump size",
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Dump status",
+          "fullType": "cloudDB.dump.Status",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.dump.Status"
+        },
+        "taskId": {
+          "canBeNull": true,
+          "description": "The task id working on this object",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "Dump url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloudDB.Service": {
+      "description": "CloudDB Project",
+      "id": "Service",
+      "namespace": "cloudDB",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Project creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Project id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Project last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Project custom name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "quotas": {
+          "canBeNull": false,
+          "description": "Project quota limitation",
+          "fullType": "cloudDB.project.Quotas",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.project.Quotas"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Project status",
+          "fullType": "cloudDB.project.Status",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.project.Status"
+        },
+        "taskId": {
+          "canBeNull": true,
+          "description": "The task id working on this object",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        }
+      }
+    },
     "cloudDB.Task": {
       "description": "Tasks",
       "id": "Task",
@@ -1617,7 +1759,7 @@ export const schema: Schema = {
           "description": "Task function name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -1625,7 +1767,7 @@ export const schema: Schema = {
           "description": "Task id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "lastUpdate": {
@@ -1641,7 +1783,7 @@ export const schema: Schema = {
           "description": "Task percentage progression (0 = begin / 100 = end)",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "startDate": {
@@ -1649,7 +1791,7 @@ export const schema: Schema = {
           "description": "Task start date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
@@ -1657,10 +1799,21 @@ export const schema: Schema = {
           "description": "Task status",
           "fullType": "cloudDB.task.Status",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloudDB.task.Status"
         }
       }
+    },
+    "cloudDB.dump.Status": {
+      "description": "Dump status",
+      "enum": [
+        "created",
+        "creating",
+        "deleting"
+      ],
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "cloudDB.dump"
     },
     "cloudDB.enterprise.Backup.StatusEnum": {
       "description": "Backup status",
@@ -1677,15 +1830,15 @@ export const schema: Schema = {
     },
     "cloudDB.enterprise.Cluster": {
       "description": "Cluster",
-      "id": "Cluster",
-      "namespace": "cloudDB.enterprise",
+      "id": "enterprise.Cluster",
+      "namespace": "cloudDB",
       "properties": {
         "autoBackup": {
           "canBeNull": false,
           "description": "Automatic managed backup activated",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "backupSize": {
@@ -1701,7 +1854,7 @@ export const schema: Schema = {
           "description": "Creation date of this cluster",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "hostCount": {
@@ -1717,7 +1870,7 @@ export const schema: Schema = {
           "description": "Cluster id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "lastUpdate": {
@@ -1725,7 +1878,7 @@ export const schema: Schema = {
           "description": "The last update date of this cluster",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "name": {
@@ -1733,7 +1886,7 @@ export const schema: Schema = {
           "description": "Cluster name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "offerName": {
@@ -1741,7 +1894,7 @@ export const schema: Schema = {
           "description": "Offer name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "offerType": {
@@ -1749,7 +1902,7 @@ export const schema: Schema = {
           "description": "Offer type",
           "fullType": "cloudDB.enterprise.Offer.TypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloudDB.enterprise.Offer.TypeEnum"
         },
         "regionName": {
@@ -1757,7 +1910,7 @@ export const schema: Schema = {
           "description": "Cluster region name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "restoredVolumeSize": {
@@ -1773,7 +1926,7 @@ export const schema: Schema = {
           "description": "Cluster status",
           "fullType": "cloudDB.enterprise.Cluster.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloudDB.enterprise.Cluster.StatusEnum"
         },
         "taskId": {
@@ -1789,22 +1942,22 @@ export const schema: Schema = {
           "description": "Cluster version",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
     },
     "cloudDB.enterprise.Cluster.Backup": {
       "description": "Backup",
-      "id": "Backup",
-      "namespace": "cloudDB.enterprise.Cluster",
+      "id": "enterprise.Cluster.Backup",
+      "namespace": "cloudDB",
       "properties": {
         "clusterId": {
           "canBeNull": false,
           "description": "Cluster id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "creationDate": {
@@ -1812,7 +1965,7 @@ export const schema: Schema = {
           "description": "Backup task creation date and time",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "effectiveCreationDate": {
@@ -1828,7 +1981,7 @@ export const schema: Schema = {
           "description": "Backup id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "internal": {
@@ -1836,7 +1989,7 @@ export const schema: Schema = {
           "description": "Created by auto backup process",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "lastUpdate": {
@@ -1844,7 +1997,7 @@ export const schema: Schema = {
           "description": "Last time this backup has been updated",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "name": {
@@ -1852,7 +2005,7 @@ export const schema: Schema = {
           "description": "Backup name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "restoreDuration": {
@@ -1876,7 +2029,7 @@ export const schema: Schema = {
           "description": "Backup status",
           "fullType": "cloudDB.enterprise.Backup.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloudDB.enterprise.Backup.StatusEnum"
         },
         "taskId": {
@@ -1899,15 +2052,15 @@ export const schema: Schema = {
     },
     "cloudDB.enterprise.Cluster.Endpoint": {
       "description": "Endpoints",
-      "id": "Endpoint",
-      "namespace": "cloudDB.enterprise.Cluster",
+      "id": "enterprise.Cluster.Endpoint",
+      "namespace": "cloudDB",
       "properties": {
         "clusterId": {
           "canBeNull": false,
           "description": "Cluster id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "creationDate": {
@@ -1915,7 +2068,7 @@ export const schema: Schema = {
           "description": "Endpoint creation date and time",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "fqdn": {
@@ -1923,7 +2076,7 @@ export const schema: Schema = {
           "description": "Endpoint fully qualified domain name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -1931,7 +2084,7 @@ export const schema: Schema = {
           "description": "Endpoint id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "lastUpdate": {
@@ -1939,7 +2092,7 @@ export const schema: Schema = {
           "description": "Last time this endpoint has been updated",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "name": {
@@ -1947,7 +2100,7 @@ export const schema: Schema = {
           "description": "Endpoint name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "port": {
@@ -1955,7 +2108,7 @@ export const schema: Schema = {
           "description": "Endpoint port",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "status": {
@@ -1963,7 +2116,7 @@ export const schema: Schema = {
           "description": "Endpoint status",
           "fullType": "cloudDB.enterprise.Endpoint.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloudDB.enterprise.Endpoint.StatusEnum"
         },
         "taskId": {
@@ -1978,15 +2131,15 @@ export const schema: Schema = {
     },
     "cloudDB.enterprise.Cluster.Host": {
       "description": "Host",
-      "id": "Host",
-      "namespace": "cloudDB.enterprise.Cluster",
+      "id": "enterprise.Cluster.Host",
+      "namespace": "cloudDB",
       "properties": {
         "creationDate": {
           "canBeNull": false,
           "description": "Creation date of this host",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -1994,7 +2147,7 @@ export const schema: Schema = {
           "description": "Host id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "lastUpdate": {
@@ -2002,7 +2155,7 @@ export const schema: Schema = {
           "description": "The last update date of this host",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "name": {
@@ -2010,7 +2163,7 @@ export const schema: Schema = {
           "description": "Host name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -2033,15 +2186,15 @@ export const schema: Schema = {
     },
     "cloudDB.enterprise.Cluster.LdpMember": {
       "description": "Member",
-      "id": "LdpMember",
-      "namespace": "cloudDB.enterprise.Cluster",
+      "id": "enterprise.Cluster.LdpMember",
+      "namespace": "cloudDB",
       "properties": {
         "creationDate": {
           "canBeNull": false,
           "description": "Logs Data Platform access creation date and time",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -2049,7 +2202,7 @@ export const schema: Schema = {
           "description": "User id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "lastUpdate": {
@@ -2057,7 +2210,7 @@ export const schema: Schema = {
           "description": "Last time this ldp access has been updated",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "note": {
@@ -2073,7 +2226,7 @@ export const schema: Schema = {
           "description": "Logs Data Platform access status",
           "fullType": "cloudDB.enterprise.LdpMember.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloudDB.enterprise.LdpMember.StatusEnum"
         },
         "taskId": {
@@ -2089,22 +2242,22 @@ export const schema: Schema = {
           "description": "Logs Data Platform username",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
     },
     "cloudDB.enterprise.Cluster.Maintenance": {
       "description": "Maintenance window",
-      "id": "Maintenance",
-      "namespace": "cloudDB.enterprise.Cluster",
+      "id": "enterprise.Cluster.Maintenance",
+      "namespace": "cloudDB",
       "properties": {
         "clusterId": {
           "canBeNull": false,
           "description": "Cluster id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "creationDate": {
@@ -2112,7 +2265,7 @@ export const schema: Schema = {
           "description": "Maintenance creation date and time",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "duration": {
@@ -2120,7 +2273,7 @@ export const schema: Schema = {
           "description": "Maximum duration of the maintenance in minutes",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "id": {
@@ -2128,7 +2281,7 @@ export const schema: Schema = {
           "description": "Maintenance id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "lastUpdate": {
@@ -2136,7 +2289,7 @@ export const schema: Schema = {
           "description": "Last time this maintenance has been updated",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "scheduledAt": {
@@ -2144,7 +2297,7 @@ export const schema: Schema = {
           "description": "Date and time the maintenance will start in UTC",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
@@ -2152,7 +2305,7 @@ export const schema: Schema = {
           "description": "Maintenance status",
           "fullType": "cloudDB.enterprise.Maintenance.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloudDB.enterprise.Maintenance.StatusEnum"
         },
         "taskId": {
@@ -2167,15 +2320,15 @@ export const schema: Schema = {
     },
     "cloudDB.enterprise.Cluster.MaintenanceWindow": {
       "description": "Maintenance window",
-      "id": "MaintenanceWindow",
-      "namespace": "cloudDB.enterprise.Cluster",
+      "id": "enterprise.Cluster.MaintenanceWindow",
+      "namespace": "cloudDB",
       "properties": {
         "clusterId": {
           "canBeNull": false,
           "description": "Cluster id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "creationDate": {
@@ -2183,7 +2336,7 @@ export const schema: Schema = {
           "description": "Maintenance window creation date and time",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "dayOfWeek": {
@@ -2191,7 +2344,7 @@ export const schema: Schema = {
           "description": "Day of the week the maintenance will start with ISO 8601 numbering",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "duration": {
@@ -2199,7 +2352,7 @@ export const schema: Schema = {
           "description": "Maximum duration of maintenance window in hours",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "id": {
@@ -2207,7 +2360,7 @@ export const schema: Schema = {
           "description": "Maintenance window id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "lastUpdate": {
@@ -2215,7 +2368,7 @@ export const schema: Schema = {
           "description": "Last time this maintenance window has been updated",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "startTime": {
@@ -2223,7 +2376,7 @@ export const schema: Schema = {
           "description": "Hour and minute the maintenance will start in UTC",
           "fullType": "time",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "time"
         },
         "status": {
@@ -2231,7 +2384,7 @@ export const schema: Schema = {
           "description": "Maintenance window status",
           "fullType": "cloudDB.enterprise.MaintenanceWindow.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloudDB.enterprise.MaintenanceWindow.StatusEnum"
         },
         "taskId": {
@@ -2246,15 +2399,15 @@ export const schema: Schema = {
     },
     "cloudDB.enterprise.Cluster.Restore": {
       "description": "Restore",
-      "id": "Restore",
-      "namespace": "cloudDB.enterprise.Cluster",
+      "id": "enterprise.Cluster.Restore",
+      "namespace": "cloudDB",
       "properties": {
         "backupId": {
           "canBeNull": false,
           "description": "Base backup id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "creationDate": {
@@ -2262,7 +2415,7 @@ export const schema: Schema = {
           "description": "Restore creation date and time",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "fqdn": {
@@ -2278,7 +2431,7 @@ export const schema: Schema = {
           "description": "Restore id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "lastUpdate": {
@@ -2286,7 +2439,7 @@ export const schema: Schema = {
           "description": "Last time this restore has been updated",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "port": {
@@ -2302,7 +2455,7 @@ export const schema: Schema = {
           "description": "Restore status",
           "fullType": "cloudDB.enterprise.Restore.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloudDB.enterprise.Restore.StatusEnum"
         },
         "taskId": {
@@ -2333,15 +2486,15 @@ export const schema: Schema = {
     },
     "cloudDB.enterprise.Cluster.Restore.User": {
       "description": "User",
-      "id": "User",
-      "namespace": "cloudDB.enterprise.Cluster.Restore",
+      "id": "enterprise.Cluster.Restore.User",
+      "namespace": "cloudDB",
       "properties": {
         "creationDate": {
           "canBeNull": false,
           "description": "User creation date and time",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -2349,7 +2502,7 @@ export const schema: Schema = {
           "description": "User id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "lastUpdate": {
@@ -2357,7 +2510,7 @@ export const schema: Schema = {
           "description": "Last time this user has been updated",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "name": {
@@ -2365,7 +2518,7 @@ export const schema: Schema = {
           "description": "User name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "restoreId": {
@@ -2373,7 +2526,7 @@ export const schema: Schema = {
           "description": "Restored instance id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "status": {
@@ -2381,7 +2534,7 @@ export const schema: Schema = {
           "description": "User status",
           "fullType": "cloudDB.enterprise.Restore.User.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloudDB.enterprise.Restore.User.StatusEnum"
         },
         "taskId": {
@@ -2396,15 +2549,15 @@ export const schema: Schema = {
     },
     "cloudDB.enterprise.Cluster.SecurityGroup": {
       "description": "Security group",
-      "id": "SecurityGroup",
-      "namespace": "cloudDB.enterprise.Cluster",
+      "id": "enterprise.Cluster.SecurityGroup",
+      "namespace": "cloudDB",
       "properties": {
         "clusterId": {
           "canBeNull": false,
           "description": "Cluster id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "creationDate": {
@@ -2412,7 +2565,7 @@ export const schema: Schema = {
           "description": "Security group creation date and time",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -2420,7 +2573,7 @@ export const schema: Schema = {
           "description": "Security group id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "lastUpdate": {
@@ -2428,7 +2581,7 @@ export const schema: Schema = {
           "description": "Last time this security group has been updated",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "name": {
@@ -2436,7 +2589,7 @@ export const schema: Schema = {
           "description": "Security group name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "rulesCount": {
@@ -2444,7 +2597,7 @@ export const schema: Schema = {
           "description": "Number of rules contained by this security group",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "status": {
@@ -2452,7 +2605,7 @@ export const schema: Schema = {
           "description": "Security group status",
           "fullType": "cloudDB.enterprise.SecurityGroup.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloudDB.enterprise.SecurityGroup.StatusEnum"
         },
         "taskId": {
@@ -2467,15 +2620,15 @@ export const schema: Schema = {
     },
     "cloudDB.enterprise.Cluster.SecurityGroup.Rule": {
       "description": "Security group rule",
-      "id": "Rule",
-      "namespace": "cloudDB.enterprise.Cluster.SecurityGroup",
+      "id": "enterprise.Cluster.SecurityGroup.Rule",
+      "namespace": "cloudDB",
       "properties": {
         "creationDate": {
           "canBeNull": false,
           "description": "Rule creation date and time",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -2483,7 +2636,7 @@ export const schema: Schema = {
           "description": "Rule id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "lastUpdate": {
@@ -2491,7 +2644,7 @@ export const schema: Schema = {
           "description": "Last time this rule has been updated",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "securityGroupId": {
@@ -2499,7 +2652,7 @@ export const schema: Schema = {
           "description": "Security group id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "source": {
@@ -2507,7 +2660,7 @@ export const schema: Schema = {
           "description": "Network range to allow",
           "fullType": "ipBlock",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipBlock"
         },
         "status": {
@@ -2515,7 +2668,7 @@ export const schema: Schema = {
           "description": "Rule status",
           "fullType": "cloudDB.enterprise.SecurityGroupRule.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloudDB.enterprise.SecurityGroupRule.StatusEnum"
         },
         "taskId": {
@@ -2547,15 +2700,15 @@ export const schema: Schema = {
     },
     "cloudDB.enterprise.Cluster.User": {
       "description": "User",
-      "id": "User",
-      "namespace": "cloudDB.enterprise.Cluster",
+      "id": "enterprise.Cluster.User",
+      "namespace": "cloudDB",
       "properties": {
         "clusterId": {
           "canBeNull": false,
           "description": "Cluster id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "creationDate": {
@@ -2563,7 +2716,7 @@ export const schema: Schema = {
           "description": "User creation date and time",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -2571,7 +2724,7 @@ export const schema: Schema = {
           "description": "User id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "lastUpdate": {
@@ -2579,7 +2732,7 @@ export const schema: Schema = {
           "description": "Last time this user has been updated",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "name": {
@@ -2587,7 +2740,7 @@ export const schema: Schema = {
           "description": "User name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -2595,7 +2748,7 @@ export const schema: Schema = {
           "description": "User status",
           "fullType": "cloudDB.enterprise.User.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloudDB.enterprise.User.StatusEnum"
         },
         "taskId": {
@@ -2680,15 +2833,15 @@ export const schema: Schema = {
     },
     "cloudDB.enterprise.Offer": {
       "description": "Offer",
-      "id": "Offer",
-      "namespace": "cloudDB.enterprise",
+      "id": "enterprise.Offer",
+      "namespace": "cloudDB",
       "properties": {
         "creationDate": {
           "canBeNull": false,
           "description": "Offer creation date and time",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "lastUpdate": {
@@ -2696,7 +2849,7 @@ export const schema: Schema = {
           "description": "Last time this offer has been updated",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "maxHostCount": {
@@ -2712,7 +2865,7 @@ export const schema: Schema = {
           "description": "Minimum number of hosts required",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
@@ -2720,7 +2873,7 @@ export const schema: Schema = {
           "description": "Offer name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -2728,15 +2881,15 @@ export const schema: Schema = {
           "description": "Offer status",
           "fullType": "cloudDB.enterprise.Offer.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloudDB.enterprise.Offer.StatusEnum"
         }
       }
     },
     "cloudDB.enterprise.Offer.Region": {
       "description": "Offer capabilities for this region",
-      "id": "Region",
-      "namespace": "cloudDB.enterprise.Offer",
+      "id": "enterprise.Offer.Region",
+      "namespace": "cloudDB",
       "properties": {
         "hostLeft": {
           "canBeNull": true,
@@ -2751,7 +2904,7 @@ export const schema: Schema = {
           "description": "Offer name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "regionName": {
@@ -2759,7 +2912,7 @@ export const schema: Schema = {
           "description": "Region name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -2767,7 +2920,7 @@ export const schema: Schema = {
           "description": "Status of an offer in a region",
           "fullType": "cloudDB.enterprise.Offer.Region.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloudDB.enterprise.Offer.Region.StatusEnum"
         }
       }
@@ -2805,15 +2958,15 @@ export const schema: Schema = {
     },
     "cloudDB.enterprise.Region": {
       "description": "Region",
-      "id": "Region",
-      "namespace": "cloudDB.enterprise",
+      "id": "enterprise.Region",
+      "namespace": "cloudDB",
       "properties": {
         "creationDate": {
           "canBeNull": false,
           "description": "Region creation date and time",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "lastUpdate": {
@@ -2821,7 +2974,7 @@ export const schema: Schema = {
           "description": "Last time this region has been updated",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "maintenanceDayOfWeek": {
@@ -2829,7 +2982,7 @@ export const schema: Schema = {
           "description": "Day of the week the maintenance will start with ISO 8601 numbering",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maintenanceDuration": {
@@ -2837,7 +2990,7 @@ export const schema: Schema = {
           "description": "Maximum duration of maintenance window in hours",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maintenanceStartTime": {
@@ -2845,7 +2998,7 @@ export const schema: Schema = {
           "description": "Hour and minute the maintenance will start in UTC",
           "fullType": "time",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "time"
         },
         "name": {
@@ -2853,7 +3006,7 @@ export const schema: Schema = {
           "description": "Region name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -2861,7 +3014,7 @@ export const schema: Schema = {
           "description": "Region status",
           "fullType": "cloudDB.enterprise.Region.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloudDB.enterprise.Region.StatusEnum"
         }
       }
@@ -2938,6 +3091,1311 @@ export const schema: Schema = {
       "id": "StatusEnum",
       "namespace": "cloudDB.enterprise.User"
     },
+    "cloudDB.instance.Type": {
+      "description": "Instance type accessible",
+      "enum": [
+        "standard"
+      ],
+      "enumType": "string",
+      "id": "Type",
+      "namespace": "cloudDB.instance"
+    },
+    "cloudDB.project.Quotas": {
+      "description": "Quota limitation for a project",
+      "id": "Quotas",
+      "namespace": "cloudDB.project",
+      "properties": {
+        "standard": {
+          "canBeNull": false,
+          "description": "Standard instances quotas",
+          "readOnly": false,
+          "required": false,
+          "type": "cloudDB.project.quotas.Standard"
+        }
+      }
+    },
+    "cloudDB.project.Status": {
+      "description": "CloudDB project status",
+      "enum": [
+        "created",
+        "creating",
+        "deleting",
+        "reopening",
+        "suspended",
+        "suspending"
+      ],
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "cloudDB.project"
+    },
+    "cloudDB.project.quotas.Standard": {
+      "description": "Quota limitation for a standard instance",
+      "id": "Standard",
+      "namespace": "cloudDB.project.quotas",
+      "properties": {
+        "instance": {
+          "canBeNull": false,
+          "description": "Standard instances \"instance\" quotas",
+          "readOnly": false,
+          "required": false,
+          "type": "cloudDB.project.quotas.standard.Quota"
+        }
+      }
+    },
+    "cloudDB.project.quotas.standard.Quota": {
+      "description": "Quota limitation for a standard instance",
+      "id": "Quota",
+      "namespace": "cloudDB.project.quotas.standard",
+      "properties": {
+        "current": {
+          "canBeNull": false,
+          "description": "The current number of this kind of object",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "max": {
+          "canBeNull": false,
+          "description": "The max number of this kind of object",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloudDB.standard.Configuration": {
+      "description": "Configurations",
+      "id": "standard.Configuration",
+      "namespace": "cloudDB",
+      "properties": {
+        "details": {
+          "canBeNull": false,
+          "description": "Configuration full details",
+          "fullType": "cloudDB.standard.configuration.Detail[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.configuration.Detail[]"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Configuration status",
+          "fullType": "cloudDB.standard.configuration.Status",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.configuration.Status"
+        },
+        "taskId": {
+          "canBeNull": true,
+          "description": "Configuration linked task id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloudDB.standard.Database": {
+      "description": "Databases",
+      "id": "standard.Database",
+      "namespace": "cloudDB",
+      "properties": {
+        "backupTime": {
+          "canBeNull": true,
+          "description": "Time of the next backup ( every day )",
+          "fullType": "time",
+          "readOnly": true,
+          "required": false,
+          "type": "time"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date of the database",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "dumpCount": {
+          "canBeNull": false,
+          "description": "The number of available dumps associated to this database",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "extensions": {
+          "canBeNull": false,
+          "description": "List of enabled extensions on this database",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Database name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "quotaUsed": {
+          "canBeNull": false,
+          "description": "Space used by the database",
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Database status",
+          "fullType": "cloudDB.standard.database.Status",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.database.Status"
+        },
+        "taskId": {
+          "canBeNull": true,
+          "description": "The id of the task working on this object",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "users": {
+          "canBeNull": false,
+          "description": "Users granted to this database",
+          "fullType": "cloudDB.standard.database.User[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.database.User[]"
+        }
+      }
+    },
+    "cloudDB.standard.Flavor": {
+      "description": "Standard flavors",
+      "id": "standard.Flavor",
+      "namespace": "cloudDB",
+      "properties": {
+        "cpu": {
+          "canBeNull": true,
+          "description": "Flavor cpu informations",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "disk": {
+          "canBeNull": true,
+          "description": "Flavor disk informations",
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Flavor name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "ram": {
+          "canBeNull": true,
+          "description": "Flavor RAM informations",
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Flavor status",
+          "fullType": "cloudDB.standard.flavor.Status",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.flavor.Status"
+        },
+        "supportedRegionNames": {
+          "canBeNull": false,
+          "description": "Flavor supported regions",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloudDB.standard.Grant": {
+      "description": "Grants",
+      "id": "standard.Grant",
+      "namespace": "cloudDB",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date of the grant",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "databaseName": {
+          "canBeNull": false,
+          "description": "Database's name for this grant",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Grant id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "The last update date of this grant",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Grant status",
+          "fullType": "cloudDB.standard.grant.Status",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.grant.Status"
+        },
+        "taskId": {
+          "canBeNull": true,
+          "description": "The id of the task working on this object",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Grant type",
+          "fullType": "cloudDB.standard.grant.Type",
+          "readOnly": false,
+          "required": false,
+          "type": "cloudDB.standard.grant.Type"
+        },
+        "userName": {
+          "canBeNull": false,
+          "description": "User name to grant",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloudDB.standard.Image": {
+      "description": "Standard images",
+      "id": "standard.Image",
+      "namespace": "cloudDB",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Image name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Image status",
+          "fullType": "cloudDB.standard.image.Status",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.image.Status"
+        },
+        "supportedFlavorNames": {
+          "canBeNull": false,
+          "description": "Image supported flavorss",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Image type",
+          "fullType": "cloudDB.standard.image.Type",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.image.Type"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Image version",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloudDB.standard.Instance": {
+      "description": "Standard instances",
+      "id": "standard.Instance",
+      "namespace": "cloudDB",
+      "properties": {
+        "accessCommand": {
+          "canBeNull": false,
+          "description": "Command to access to your instance",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Instance creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "creationRules": {
+          "canBeNull": false,
+          "description": "Creation rules",
+          "fullType": "cloudDB.standard.instance.CreationRules",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.instance.CreationRules"
+        },
+        "diskOverquota": {
+          "canBeNull": true,
+          "description": "If set to TRUE, the instance is currently in overquota state",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "diskUsed": {
+          "canBeNull": false,
+          "description": "Instance used disk informations",
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
+        },
+        "endpoint": {
+          "canBeNull": true,
+          "description": "Instance endpoint",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "flavor": {
+          "canBeNull": false,
+          "description": "Flavor informations",
+          "fullType": "cloudDB.standard.instance.Flavor",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.instance.Flavor"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Instance uuid",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "image": {
+          "canBeNull": false,
+          "description": "Image informations",
+          "fullType": "cloudDB.standard.instance.Image",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.instance.Image"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Instance last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "metrics": {
+          "canBeNull": true,
+          "description": "Metrics data",
+          "fullType": "cloudDB.standard.instance.MetricsData",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.instance.MetricsData"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Instance name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "port": {
+          "canBeNull": true,
+          "description": "Instance service port",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region informations",
+          "fullType": "cloudDB.standard.instance.Region",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.instance.Region"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Instance status",
+          "fullType": "cloudDB.standard.instance.Status",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.instance.Status"
+        },
+        "taskId": {
+          "canBeNull": true,
+          "description": "The task id working on this object",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloudDB.standard.Oom": {
+      "description": "OOM kill informations",
+      "id": "Oom",
+      "namespace": "cloudDB.standard",
+      "properties": {
+        "date": {
+          "canBeNull": false,
+          "description": "Date of the OOM kill",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "sizeReached": {
+          "canBeNull": false,
+          "description": "Memory size reached",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloudDB.standard.Region": {
+      "description": "Standard regions",
+      "id": "standard.Region",
+      "namespace": "cloudDB",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Region name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Region status",
+          "fullType": "cloudDB.standard.region.Status",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.region.Status"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Region type",
+          "fullType": "cloudDB.standard.region.Type",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.region.Type"
+        }
+      }
+    },
+    "cloudDB.standard.TemporaryLogsLink": {
+      "description": "Temporary url informations",
+      "id": "TemporaryLogsLink",
+      "namespace": "cloudDB.standard",
+      "properties": {
+        "expirationDate": {
+          "canBeNull": false,
+          "description": "Temporary url expiration date",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "Temporary url",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloudDB.standard.User": {
+      "description": "Users",
+      "id": "standard.User",
+      "namespace": "cloudDB",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date of the user",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "databases": {
+          "canBeNull": false,
+          "description": "Databases granted for this user",
+          "fullType": "cloudDB.standard.user.Database[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.user.Database[]"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "The last update date of the user",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "User name used to connect to your databases",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "User status",
+          "fullType": "cloudDB.standard.user.Status",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.user.Status"
+        },
+        "taskId": {
+          "canBeNull": true,
+          "description": "The id of the task working on this object",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloudDB.standard.Whitelist": {
+      "description": "IP whitelisting for your instance",
+      "id": "standard.Whitelist",
+      "namespace": "cloudDB",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date of this whitelist",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "The last update date of this whitelist",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Custom name for your Whitelisted IP",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "network": {
+          "canBeNull": false,
+          "description": "The whitelisted network on your instance",
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": false,
+          "type": "ipBlock"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Whitelist status",
+          "fullType": "cloudDB.standard.whitelist.Status",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.whitelist.Status"
+        },
+        "taskId": {
+          "canBeNull": true,
+          "description": "The id of the task working on this object",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        }
+      }
+    },
+    "cloudDB.standard.configuration.Detail": {
+      "description": "Configuration detail property",
+      "id": "Detail",
+      "namespace": "cloudDB.standard.configuration",
+      "properties": {
+        "availableValues": {
+          "canBeNull": false,
+          "description": "Configuration available values",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "defaultValue": {
+          "canBeNull": false,
+          "description": "Configuration default value",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Configuration description",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "key": {
+          "canBeNull": false,
+          "description": "Configuration key name",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Configuration last update date",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Configuration value type",
+          "readOnly": false,
+          "required": false,
+          "type": "cloudDB.standard.configuration.detail.Type"
+        },
+        "unit": {
+          "canBeNull": true,
+          "description": "Configuration unit type",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Configuration current value",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloudDB.standard.configuration.Status": {
+      "description": "Configuration status",
+      "enum": [
+        "applied",
+        "updating"
+      ],
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "cloudDB.standard.configuration"
+    },
+    "cloudDB.standard.configuration.detail.Type": {
+      "description": "Configuration detail type",
+      "enum": [
+        "boolean",
+        "number",
+        "string"
+      ],
+      "enumType": "string",
+      "id": "Type",
+      "namespace": "cloudDB.standard.configuration.detail"
+    },
+    "cloudDB.standard.database.Dump": {
+      "description": "Databases extension",
+      "id": "standard.database.Dump",
+      "namespace": "cloudDB",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date of the dump",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "expirationDate": {
+          "canBeNull": true,
+          "description": "Deletion date of the dump",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Dump id",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Dump name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": true,
+          "description": "Dump size",
+          "fullType": "complexType.UnitAndValue<long>",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Dump status",
+          "fullType": "cloudDB.dump.Status",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.dump.Status"
+        },
+        "taskId": {
+          "canBeNull": true,
+          "description": "The task id working on this object",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "Dump url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloudDB.standard.database.Extension": {
+      "description": "Databases extension",
+      "id": "standard.database.Extension",
+      "namespace": "cloudDB",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Extension description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Extension name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "requiredExtensions": {
+          "canBeNull": false,
+          "description": "Name of required extensions to enable this one",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Extension status",
+          "fullType": "cloudDB.standard.database.extension.Status",
+          "readOnly": true,
+          "required": false,
+          "type": "cloudDB.standard.database.extension.Status"
+        }
+      }
+    },
+    "cloudDB.standard.database.Status": {
+      "description": "Database status",
+      "enum": [
+        "created",
+        "creating",
+        "deleting",
+        "dumping",
+        "importing",
+        "restoring"
+      ],
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "cloudDB.standard.database"
+    },
+    "cloudDB.standard.database.User": {
+      "description": "User granted to a database",
+      "id": "User",
+      "namespace": "cloudDB.standard.database",
+      "properties": {
+        "grantId": {
+          "canBeNull": false,
+          "description": "The grantId associated for this databaseName and this userName",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "grantType": {
+          "canBeNull": false,
+          "description": "User's rights on this database",
+          "readOnly": false,
+          "required": false,
+          "type": "cloudDB.standard.grant.Type"
+        },
+        "userName": {
+          "canBeNull": false,
+          "description": "User's name granted on this database",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloudDB.standard.database.extension.Status": {
+      "description": "Extension status",
+      "enum": [
+        "disabled",
+        "disabling",
+        "enabled",
+        "enabling"
+      ],
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "cloudDB.standard.database.extension"
+    },
+    "cloudDB.standard.flavor.Status": {
+      "description": "Flavor status",
+      "enum": [
+        "available",
+        "testing",
+        "unavailable"
+      ],
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "cloudDB.standard.flavor"
+    },
+    "cloudDB.standard.grant.Status": {
+      "description": "Grant status",
+      "enum": [
+        "created",
+        "creating",
+        "deleting",
+        "updating"
+      ],
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "cloudDB.standard.grant"
+    },
+    "cloudDB.standard.grant.Type": {
+      "description": "Grant type",
+      "enum": [
+        "admin",
+        "none",
+        "ro",
+        "rw"
+      ],
+      "enumType": "string",
+      "id": "Type",
+      "namespace": "cloudDB.standard.grant"
+    },
+    "cloudDB.standard.image.Capabilities": {
+      "description": "Image capabilities",
+      "id": "Capabilities",
+      "namespace": "cloudDB.standard.image",
+      "properties": {
+        "database": {
+          "canBeNull": false,
+          "description": "Database capbilities",
+          "readOnly": false,
+          "required": false,
+          "type": "cloudDB.standard.image.capabilities.Capability"
+        },
+        "dump": {
+          "canBeNull": false,
+          "description": "Dump capbilities",
+          "readOnly": false,
+          "required": false,
+          "type": "cloudDB.standard.image.capabilities.Capability"
+        },
+        "grant": {
+          "canBeNull": false,
+          "description": "Grant capbilities",
+          "readOnly": false,
+          "required": false,
+          "type": "cloudDB.standard.image.capabilities.Capability"
+        },
+        "user": {
+          "canBeNull": false,
+          "description": "User capbilities",
+          "readOnly": false,
+          "required": false,
+          "type": "cloudDB.standard.image.capabilities.Capability"
+        }
+      }
+    },
+    "cloudDB.standard.image.Status": {
+      "description": "Image status",
+      "enum": [
+        "available",
+        "testing",
+        "unavailable"
+      ],
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "cloudDB.standard.image"
+    },
+    "cloudDB.standard.image.Type": {
+      "description": "Image type",
+      "enum": [
+        "mariadb",
+        "mongodb",
+        "mysql",
+        "postgresql",
+        "redis"
+      ],
+      "enumType": "string",
+      "id": "Type",
+      "namespace": "cloudDB.standard.image"
+    },
+    "cloudDB.standard.image.capabilities.Capability": {
+      "description": "Object capability",
+      "id": "Capability",
+      "namespace": "cloudDB.standard.image.capabilities",
+      "properties": {
+        "create": {
+          "canBeNull": false,
+          "description": "Can the object be created",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "delete": {
+          "canBeNull": false,
+          "description": "Can the object be deleted",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "update": {
+          "canBeNull": false,
+          "description": "Can the object be updated",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "cloudDB.standard.instance.CreationRules": {
+      "description": "Creation rules",
+      "id": "CreationRules",
+      "namespace": "cloudDB.standard.instance",
+      "properties": {
+        "databaseName": {
+          "canBeNull": true,
+          "description": "Database name creation rules",
+          "readOnly": false,
+          "required": false,
+          "type": "cloudDB.standard.instance.creationRules.CreationRule"
+        },
+        "userName": {
+          "canBeNull": true,
+          "description": "User name creation rules",
+          "readOnly": false,
+          "required": false,
+          "type": "cloudDB.standard.instance.creationRules.CreationRule"
+        },
+        "userPassword": {
+          "canBeNull": true,
+          "description": "User password creation rules",
+          "readOnly": false,
+          "required": false,
+          "type": "cloudDB.standard.instance.creationRules.CreationRule"
+        }
+      }
+    },
+    "cloudDB.standard.instance.Flavor": {
+      "description": "Flavor detail property",
+      "id": "Flavor",
+      "namespace": "cloudDB.standard.instance",
+      "properties": {
+        "cpu": {
+          "canBeNull": true,
+          "description": "Flavor cpu informations",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "disk": {
+          "canBeNull": true,
+          "description": "Flavor disk informations",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Flavor name",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "ram": {
+          "canBeNull": true,
+          "description": "Flavor RAM informations",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.UnitAndValue<long>"
+        }
+      }
+    },
+    "cloudDB.standard.instance.Image": {
+      "description": "Image detail property",
+      "id": "Image",
+      "namespace": "cloudDB.standard.instance",
+      "properties": {
+        "capabilities": {
+          "canBeNull": false,
+          "description": "Image instance capabilities",
+          "readOnly": false,
+          "required": false,
+          "type": "cloudDB.standard.image.Capabilities"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Image name",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloudDB.standard.instance.MetricsData": {
+      "description": "Metrics data",
+      "id": "MetricsData",
+      "namespace": "cloudDB.standard.instance",
+      "properties": {
+        "endpoint": {
+          "canBeNull": false,
+          "description": "Metrics endpoint",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "readToken": {
+          "canBeNull": false,
+          "description": "Metrics read token",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
+        }
+      }
+    },
+    "cloudDB.standard.instance.Region": {
+      "description": "Region detail property",
+      "id": "Region",
+      "namespace": "cloudDB.standard.instance",
+      "properties": {
+        "name": {
+          "canBeNull": true,
+          "description": "Region name",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": true,
+          "description": "Region type",
+          "readOnly": false,
+          "required": false,
+          "type": "cloudDB.standard.region.Type"
+        }
+      }
+    },
+    "cloudDB.standard.instance.Status": {
+      "description": "Standard instance status",
+      "enum": [
+        "creating",
+        "deleting",
+        "reopening",
+        "restarting",
+        "running",
+        "starting",
+        "stopped",
+        "stopping",
+        "suspended",
+        "suspending",
+        "updating"
+      ],
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "cloudDB.standard.instance"
+    },
+    "cloudDB.standard.instance.creationRules.CreationRule": {
+      "description": "Creation rule",
+      "id": "CreationRule",
+      "namespace": "cloudDB.standard.instance.creationRules",
+      "properties": {
+        "exclude": {
+          "canBeNull": false,
+          "description": "List of regex that must not match the object",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "max": {
+          "canBeNull": false,
+          "description": "Object max length",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "min": {
+          "canBeNull": false,
+          "description": "Object min length",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "regex": {
+          "canBeNull": false,
+          "description": "Regex to validate the object",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloudDB.standard.region.Status": {
+      "description": "Region status",
+      "enum": [
+        "available",
+        "testing",
+        "unavailable"
+      ],
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "cloudDB.standard.region"
+    },
+    "cloudDB.standard.region.Type": {
+      "description": "Region type",
+      "enum": [
+        "hosting",
+        "internal",
+        "public"
+      ],
+      "enumType": "string",
+      "id": "Type",
+      "namespace": "cloudDB.standard.region"
+    },
+    "cloudDB.standard.user.Database": {
+      "description": "Databases linked to an user",
+      "id": "Database",
+      "namespace": "cloudDB.standard.user",
+      "properties": {
+        "databaseName": {
+          "canBeNull": false,
+          "description": "Database's name linked to this user",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "grantId": {
+          "canBeNull": false,
+          "description": "The grantId associated to this userName for this databaseName",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "grantType": {
+          "canBeNull": false,
+          "description": "Grant of this user for this database",
+          "readOnly": false,
+          "required": false,
+          "type": "cloudDB.standard.grant.Type"
+        }
+      }
+    },
+    "cloudDB.standard.user.Status": {
+      "description": "User status",
+      "enum": [
+        "created",
+        "creating",
+        "deleting",
+        "updating"
+      ],
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "cloudDB.standard.user"
+    },
+    "cloudDB.standard.whitelist.Status": {
+      "description": "Whitelist status",
+      "enum": [
+        "created",
+        "creating",
+        "deleting",
+        "updating"
+      ],
+      "enumType": "string",
+      "id": "Status",
+      "namespace": "cloudDB.standard.whitelist"
+    },
     "cloudDB.task.Status": {
       "description": "Task status",
       "enum": [
@@ -2951,6 +4409,50 @@ export const schema: Schema = {
       "id": "Status",
       "namespace": "cloudDB.task"
     },
+    "complexType.SafeKeyValue<T>": {
+      "description": "Key and value, with proper key strings",
+      "generics": [
+        "T"
+      ],
+      "id": "SafeKeyValue",
+      "namespace": "complexType",
+      "properties": {
+        "key": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
+    "complexType.UnitAndValue<T>": {
+      "description": "A numeric value tagged with its unit",
+      "generics": [
+        "T"
+      ],
+      "id": "UnitAndValue",
+      "namespace": "complexType",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
+        }
+      }
+    },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",
       "id": "RenewType",
@@ -2959,31 +4461,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -2991,7 +4489,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -3070,42 +4567,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -3119,7 +4616,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -3142,21 +4639,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

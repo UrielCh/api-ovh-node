@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/services.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Get list of your service details",
@@ -179,18 +179,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Plan code",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Service ID",
               "fullType": "long",
               "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "path",
               "required": true
             }
@@ -929,6 +929,129 @@ export const schema: Schema = {
       "id": "GenericProductTypeEnum",
       "namespace": "order.cart"
     },
+    "services.billing.Invoice": {
+      "description": "Description of an invoice",
+      "id": "Invoice",
+      "namespace": "services.billing",
+      "properties": {
+        "date": {
+          "canBeNull": false,
+          "description": "Invoice date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Invoice reference",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "lines": {
+          "canBeNull": false,
+          "description": "Invoice details",
+          "fullType": "services.billing.InvoiceLine[]",
+          "readOnly": true,
+          "required": false,
+          "type": "services.billing.InvoiceLine[]"
+        }
+      }
+    },
+    "services.billing.InvoiceLine": {
+      "description": "Description of an invoice line",
+      "id": "InvoiceLine",
+      "namespace": "services.billing",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of item",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "periodEnd": {
+          "canBeNull": true,
+          "description": "End period",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "periodStart": {
+          "canBeNull": true,
+          "description": "Start period",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Price without tax",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Quantity of item",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Associated service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Price with tax",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "type": {
+          "canBeNull": true,
+          "description": "Type of item",
+          "fullType": "services.billing.InvoiceLineTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "services.billing.InvoiceLineTypeEnum"
+        }
+      }
+    },
+    "services.billing.InvoiceLineTypeEnum": {
+      "description": "Type of item",
+      "enum": [
+        "accessory",
+        "consumption",
+        "creation",
+        "deposit",
+        "duration",
+        "gift",
+        "installation",
+        "misc",
+        "other",
+        "outplan",
+        "quantity",
+        "special",
+        "voucher"
+      ],
+      "enumType": "string",
+      "id": "InvoiceLineTypeEnum",
+      "namespace": "services.billing"
+    },
     "services.billing.engagement.EndRule": {
       "description": "Description of the rule applied at the end of the Engagement",
       "id": "EndRule",
@@ -1007,6 +1130,75 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "date"
+        }
+      }
+    },
+    "services.billing.engagement.UpdateEndRuleRequest": {
+      "description": "Update your Engagement end rules",
+      "id": "UpdateEndRuleRequest",
+      "namespace": "services.billing.engagement",
+      "properties": {
+        "strategy": {
+          "canBeNull": false,
+          "description": "Strategy applied at the end of the Engagement",
+          "fullType": "services.billing.engagement.EndStrategyEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "services.billing.engagement.EndStrategyEnum"
+        }
+      }
+    },
+    "services.contacts.ContactChangeRequest": {
+      "description": "Contact change request",
+      "id": "ContactChangeRequest",
+      "namespace": "services.contacts",
+      "properties": {
+        "admin": {
+          "canBeNull": false,
+          "description": "List of accounts you want to be considered as 'admin' of the service",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
+        },
+        "billing": {
+          "canBeNull": false,
+          "description": "List of accounts you want to be considered as 'billing' contact",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
+        },
+        "technical": {
+          "canBeNull": false,
+          "description": "List of accounts you want to be considered as 'technical' contact",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
+        }
+      }
+    },
+    "services.contacts.Task": {
+      "description": "Contact change task",
+      "id": "Task",
+      "namespace": "services.contacts",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier of the Task",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "route": {
+          "canBeNull": false,
+          "description": "Computed API route to fetch and manage the Task created",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -1393,6 +1585,82 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "order.Order"
+        }
+      }
+    },
+    "services.terminate.ConfirmServiceTerminationRequest": {
+      "description": "Confirm service termination request",
+      "id": "ConfirmServiceTerminationRequest",
+      "namespace": "services.terminate",
+      "properties": {
+        "acknowledgePotentialFees": {
+          "canBeNull": false,
+          "description": "Acknowledge potential fees regarding service termination. Fees can be deduced from GET /1.0/services/{serviceId}/terminate/fees",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "token": {
+          "canBeNull": false,
+          "description": "The termination token sent by mail to the admin contact",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        }
+      }
+    },
+    "services.terminate.TerminationAnswer": {
+      "description": "Termination instructions",
+      "id": "TerminationAnswer",
+      "namespace": "services.terminate",
+      "properties": {
+        "message": {
+          "canBeNull": false,
+          "description": "Termination instructions to be followed",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "services.terminate.TerminationFees": {
+      "description": "Termination fees",
+      "id": "TerminationFees",
+      "namespace": "services.terminate",
+      "properties": {
+        "durationLeft": {
+          "canBeNull": false,
+          "description": "Duration (compliant with RFC3339) used to calculate your termination fees",
+          "fullType": "duration",
+          "readOnly": true,
+          "required": false,
+          "type": "duration"
+        },
+        "fees": {
+          "canBeNull": false,
+          "description": "Price computed from the duration left",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
+    },
+    "services.terminate.TerminationRequest": {
+      "description": "Service termination request",
+      "id": "TerminationRequest",
+      "namespace": "services.terminate",
+      "properties": {
+        "acknowledgePotentialFees": {
+          "canBeNull": false,
+          "description": "Acknowledge potential fees regarding service termination. Fees can be deduced from GET /1.0/services/{serviceId}/terminate/fees",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
         }
       }
     }

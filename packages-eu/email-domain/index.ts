@@ -148,6 +148,36 @@ export namespace email {
             accountId: string;
         }
         /**
+         * Email diagnoses
+         * interface fullName: email.domain.Diagnose.Diagnose
+         */
+        export interface Diagnose {
+            date: string;
+            function: email.domain.DomainDiagnoseFunctionEnum;
+            id: number;
+            name?: string;
+            result?: email.domain.DomainDiagnoseResultEnum;
+            trace?: email.domain.DomainDiagnoseTraceStruct<email.domain.DomainDiagnoseResultEnum>[];
+        }
+        /**
+         * Function of diagnose
+         * type fullname: email.domain.DomainDiagnoseFunctionEnum
+         */
+        export type DomainDiagnoseFunctionEnum = "MX"
+        /**
+         * Result of diagnose
+         * type fullname: email.domain.DomainDiagnoseResultEnum
+         */
+        export type DomainDiagnoseResultEnum = "CUSTOM" | "DEPRECATED" | "KO" | "OK"
+        /**
+         * Test and result, with proper test strings
+         * interface fullName: email.domain.DomainDiagnoseTraceStruct.DomainDiagnoseTraceStruct
+         */
+        export interface DomainDiagnoseTraceStruct<T> {
+            result: T;
+            test: string;
+        }
+        /**
          * Domain service
          * interface fullName: email.domain.DomainService.DomainService
          */
@@ -444,7 +474,7 @@ export interface Email {
                  * Alter this object properties
                  * PUT /email/domain/delegatedAccount/{email}
                  */
-                $put(params: { accountName: string, allowedAccountSize?: number[], description: string, domain: string, email: string, isBlocked: boolean, size: number }): Promise<void>;
+                $put(params?: { accountName?: string, allowedAccountSize?: number[], description?: string, domain?: string, email?: string, isBlocked?: boolean, size?: number }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -566,7 +596,7 @@ export interface Email {
                      * Alter this object properties
                      * PUT /email/domain/delegatedAccount/{email}/responder
                      */
-                    $put(params: { account: string, content: string, copy: boolean, copyTo?: string, from?: string, to?: string }): Promise<void>;
+                    $put(params?: { account?: string, content?: string, copy?: boolean, copyTo?: string, from?: string, to?: string }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -647,7 +677,7 @@ export interface Email {
                      * Alter this object properties
                      * PUT /email/domain/{domain}/account/{accountName}
                      */
-                    $put(params: { accountName: string, description: string, domain: string, email: string, isBlocked: boolean, size: number }): Promise<void>;
+                    $put(params?: { accountName?: string, description?: string, domain?: string, email?: string, isBlocked?: boolean, size?: number }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -988,7 +1018,7 @@ export interface Email {
                      * Alter this object properties
                      * PUT /email/domain/{domain}/mailingList/{name}
                      */
-                    $put(params: { id: number, language?: domainDomainMlLanguageEnum, name: string, nbSubscribers?: number, nbSubscribersUpdateDate?: string, options: domainDomainMlOptionsStruct, ownerEmail: string, replyTo: string }): Promise<void>;
+                    $put(params?: { id?: number, language?: domainDomainMlLanguageEnum, name?: string, nbSubscribers?: number, nbSubscribersUpdateDate?: string, options?: domainDomainMlOptionsStruct, ownerEmail?: string, replyTo?: string }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -1187,7 +1217,7 @@ export interface Email {
                      * Alter this object properties
                      * PUT /email/domain/{domain}/responder/{account}
                      */
-                    $put(params: { account: string, content: string, copy: boolean, copyTo?: string, from?: string, to?: string }): Promise<void>;
+                    $put(params?: { account?: string, content?: string, copy?: boolean, copyTo?: string, from?: string, to?: string }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -1204,7 +1234,7 @@ export interface Email {
                  * Alter this object properties
                  * PUT /email/domain/{domain}/serviceInfos
                  */
-                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */

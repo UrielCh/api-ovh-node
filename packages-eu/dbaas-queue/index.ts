@@ -18,6 +18,16 @@ export namespace dbaas {
             status: dbaas.queue.AppStatus;
         }
         /**
+         * AppConfiguration
+         * interface fullName: dbaas.queue.AppConfiguration.AppConfiguration
+         */
+        export interface AppConfiguration {
+            app: dbaas.queue.App;
+            metricsAccount: dbaas.queue.MetricsAccount;
+            roles: dbaas.queue.Role[];
+            users: dbaas.queue.UserWithPassword[];
+        }
+        /**
          * AppStatus
          * type fullname: dbaas.queue.AppStatus
          */
@@ -30,6 +40,16 @@ export namespace dbaas {
             humanAppId: string;
             id: string;
             name: string;
+        }
+        /**
+         * KeyWithSecret
+         * interface fullName: dbaas.queue.KeyWithSecret.KeyWithSecret
+         */
+        export interface KeyWithSecret {
+            humanAppId: string;
+            id: string;
+            name: string;
+            secret: string;
         }
         /**
          * MetricsAccount
@@ -257,7 +277,7 @@ export interface Dbaas {
                  * Alter this object properties
                  * PUT /dbaas/queue/{serviceName}/serviceInfos
                  */
-                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */

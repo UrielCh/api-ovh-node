@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/caas/containers.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the DOCKER service",
@@ -53,7 +53,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Flavor ID",
+              "description": "flavor id",
               "fullType": "string",
               "name": "flavorId",
               "paramType": "path",
@@ -79,7 +79,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -105,7 +105,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -132,7 +132,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -140,7 +140,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -148,14 +148,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your project",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -181,7 +181,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -207,7 +207,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Framework ID",
+              "description": "framework id",
               "fullType": "string",
               "name": "frameworkId",
               "paramType": "path",
@@ -215,7 +215,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -241,7 +241,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Framework ID",
+              "description": "framework id",
               "fullType": "string",
               "name": "frameworkId",
               "paramType": "path",
@@ -249,7 +249,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -274,15 +274,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "docker.framework.password",
-              "description": "Request Body",
-              "fullType": "docker.framework.password",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Framework ID",
+              "description": "framework id",
               "fullType": "string",
               "name": "frameworkId",
               "paramType": "path",
@@ -290,10 +283,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "docker.framework.password",
+              "description": "The new framework password",
+              "fullType": "docker.framework.password",
+              "paramType": "body",
               "required": true
             }
           ],
@@ -316,7 +316,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -336,14 +336,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "docker.stack.inputCustomSsl",
-              "description": "Request Body",
+              "description": "Credentials providing authentication to an external registry",
               "fullType": "docker.stack.inputCustomSsl",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -369,7 +369,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Credentials ID",
+              "description": "credentials id",
               "fullType": "string",
               "name": "credentialsId",
               "paramType": "path",
@@ -377,7 +377,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -397,7 +397,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Credentials ID",
+              "description": "credentials id",
               "fullType": "string",
               "name": "credentialsId",
               "paramType": "path",
@@ -405,7 +405,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -425,14 +425,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "docker.stack.inputCustomSsl",
-              "description": "Request Body",
+              "description": "Credentials providing authentication to an external registry",
               "fullType": "docker.stack.inputCustomSsl",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Credentials ID",
+              "description": "credentials id",
               "fullType": "string",
               "name": "credentialsId",
               "paramType": "path",
@@ -440,7 +440,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -466,7 +466,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your project",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -486,14 +486,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your project",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -519,7 +519,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -545,17 +545,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "slave id",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "slaveId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Slave ID",
+              "description": "service name",
               "fullType": "string",
-              "name": "slaveId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -579,7 +579,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -599,7 +599,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -619,14 +619,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "docker.stack.inputCustomSsl",
-              "description": "Request Body",
+              "description": "A custom SSL certificate associated to a Docker PaaS environment",
               "fullType": "docker.stack.inputCustomSsl",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -651,7 +651,7 @@ export const schema: Schema = {
           "description": "The new framework password",
           "fullType": "password",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "password"
         }
       }
@@ -666,7 +666,7 @@ export const schema: Schema = {
           "description": "Date of the resource creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "flavorId": {
@@ -674,7 +674,7 @@ export const schema: Schema = {
           "description": "The framework UUID",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -682,7 +682,7 @@ export const schema: Schema = {
           "description": "The slave UUID",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "metrics": {
@@ -690,7 +690,7 @@ export const schema: Schema = {
           "description": "Metrics about slave usage",
           "fullType": "docker.slave.metrics",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "docker.slave.metrics"
         },
         "name": {
@@ -698,7 +698,7 @@ export const schema: Schema = {
           "description": "The slave hostname",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "region": {
@@ -706,7 +706,7 @@ export const schema: Schema = {
           "description": "The region where the slave is located",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "stack": {
@@ -714,7 +714,7 @@ export const schema: Schema = {
           "description": "The stack to which the slave belongs",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "state": {
@@ -722,7 +722,7 @@ export const schema: Schema = {
           "description": "The state of the slave",
           "fullType": "docker.slave.status",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "docker.slave.status"
         },
         "updatedAt": {
@@ -730,7 +730,7 @@ export const schema: Schema = {
           "description": "Date of the resource last update",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -745,7 +745,7 @@ export const schema: Schema = {
           "description": "The network bandwidth, in Mbps",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "cpus": {
@@ -753,7 +753,7 @@ export const schema: Schema = {
           "description": "The amount of (v)CPUs",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "disk": {
@@ -761,7 +761,7 @@ export const schema: Schema = {
           "description": "The disk size, in GB",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "diskHa": {
@@ -769,7 +769,7 @@ export const schema: Schema = {
           "description": "Wether the disk is HA (stored in Ceph) or local (SSD)",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "id": {
@@ -777,7 +777,7 @@ export const schema: Schema = {
           "description": "The flavor UUID",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "isVm": {
@@ -785,7 +785,7 @@ export const schema: Schema = {
           "description": "Whether the flavor is an Openstack or dedicated flavor",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "ram": {
@@ -793,7 +793,7 @@ export const schema: Schema = {
           "description": "The amount of RAM, in MB",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -816,7 +816,7 @@ export const schema: Schema = {
           "description": "Application environment",
           "fullType": "docker.slave.framework.app.environment[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "docker.slave.framework.app.environment[]"
         },
         "id": {
@@ -856,7 +856,7 @@ export const schema: Schema = {
           "description": "Application ports",
           "fullType": "docker.slave.framework.app.port[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "docker.slave.framework.app.port[]"
         },
         "status": {
@@ -872,7 +872,7 @@ export const schema: Schema = {
           "description": "Application volumes",
           "fullType": "docker.slave.framework.app.volume[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "docker.slave.framework.app.volume[]"
         }
       }
@@ -972,7 +972,7 @@ export const schema: Schema = {
           "description": "Metrics about available slave resources",
           "fullType": "docker.slave.metrics.resources",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "docker.slave.metrics.resources"
         },
         "usedResources": {
@@ -980,7 +980,7 @@ export const schema: Schema = {
           "description": "Metrics about used slave resources",
           "fullType": "docker.slave.metrics.usedResources",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "docker.slave.metrics.usedResources"
         }
       }
@@ -1060,7 +1060,7 @@ export const schema: Schema = {
           "description": "Date of the resource creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "loadBalancer": {
@@ -1068,7 +1068,7 @@ export const schema: Schema = {
           "description": "The DNS address of the stack load balancer",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "metrics": {
@@ -1076,7 +1076,7 @@ export const schema: Schema = {
           "description": "Metrics about slave usage",
           "fullType": "docker.slave.metrics",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "docker.slave.metrics"
         },
         "name": {
@@ -1084,7 +1084,7 @@ export const schema: Schema = {
           "description": "The stack name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "slaves": {
@@ -1092,7 +1092,7 @@ export const schema: Schema = {
           "description": "A list of slave UUIDs",
           "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "updatedAt": {
@@ -1100,7 +1100,7 @@ export const schema: Schema = {
           "description": "Date of the resource last update",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -1115,7 +1115,7 @@ export const schema: Schema = {
           "description": "The custom SSL public certificate",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "createdAt": {
@@ -1123,7 +1123,7 @@ export const schema: Schema = {
           "description": "Date of the resource creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "updatedAt": {
@@ -1131,7 +1131,7 @@ export const schema: Schema = {
           "description": "Date of the resource last update",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -1146,7 +1146,7 @@ export const schema: Schema = {
           "description": "The action validation message",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1161,7 +1161,7 @@ export const schema: Schema = {
           "description": "The custom SSL public certificate",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "key": {
@@ -1169,7 +1169,7 @@ export const schema: Schema = {
           "description": "The custom SSL certificate private key",
           "fullType": "password",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "password"
         }
       }
@@ -1184,7 +1184,7 @@ export const schema: Schema = {
           "description": "Date of the resource creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "registryUrl": {
@@ -1192,7 +1192,7 @@ export const schema: Schema = {
           "description": "The URL of the registry",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "updatedAt": {
@@ -1200,7 +1200,7 @@ export const schema: Schema = {
           "description": "Date of the resource last update",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "username": {
@@ -1208,7 +1208,7 @@ export const schema: Schema = {
           "description": "The registry account username",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1221,31 +1221,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -1253,7 +1249,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -1297,42 +1292,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -1346,7 +1341,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -1369,21 +1364,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }
@@ -1398,7 +1393,7 @@ export const schema: Schema = {
           "description": "The framework name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "createdAt": {
@@ -1406,7 +1401,7 @@ export const schema: Schema = {
           "description": "Date of the resource creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -1414,7 +1409,7 @@ export const schema: Schema = {
           "description": "The framework UUID",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -1422,7 +1417,7 @@ export const schema: Schema = {
           "description": "The framework name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "updatedAt": {
@@ -1430,7 +1425,7 @@ export const schema: Schema = {
           "description": "Date of the resource last update",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -1445,7 +1440,7 @@ export const schema: Schema = {
           "description": "Application list",
           "fullType": "docker.slave.framework.app[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "docker.slave.framework.app[]"
         }
       }

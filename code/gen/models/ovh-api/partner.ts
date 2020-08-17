@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/partner.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Partner registration",
@@ -14,6 +14,11 @@ export const schema: Schema = {
             "value": "PRODUCTION"
           },
           "description": "Get partner status",
+          "errors": [
+            "Server::NoContent::PartnerError",
+            "Client::NotFound::PartnerNotFound",
+            "Server::InternalServerError::PartnerError"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],

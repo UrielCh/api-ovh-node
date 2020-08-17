@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/overTheBox.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the OVERTHEBOX service",
@@ -70,7 +70,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -90,7 +90,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -110,14 +110,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "overTheBox.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "overTheBox.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -143,7 +143,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -169,7 +169,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -195,7 +195,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -203,7 +203,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Backup ID",
+              "description": "The id of the backup",
               "fullType": "string",
               "name": "backupId",
               "paramType": "path",
@@ -229,7 +229,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -256,7 +256,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -264,7 +264,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -272,14 +272,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -305,7 +305,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -325,7 +325,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -350,12 +350,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "overTheBox.ActionStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "overTheBox.ActionStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "string",
@@ -366,12 +366,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "overTheBox.ActionStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "overTheBox.ActionStatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -395,7 +395,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -421,7 +421,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -429,7 +429,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Action ID",
+              "description": "The id of the action",
               "fullType": "string",
               "name": "actionId",
               "paramType": "path",
@@ -455,7 +455,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -481,7 +481,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -507,7 +507,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -541,7 +541,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -575,7 +575,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -601,7 +601,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -627,7 +627,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -646,18 +646,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipBlock",
-              "description": "IP block from which the remote access will be allowed (the default value is the IP from which the call is made)",
-              "fullType": "ipBlock",
-              "name": "allowedIp",
+              "dataType": "datetime",
+              "description": "The expirationDate of the remote access (default 1 day)",
+              "fullType": "datetime",
+              "name": "expirationDate",
               "paramType": "body",
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "The remote user public key authorized on the device (for SSH purpose)",
-              "fullType": "string",
-              "name": "publicKey",
+              "dataType": "ipBlock",
+              "description": "IP block from which the remote access will be allowed (the default value is the IP from which the call is made)",
+              "fullType": "ipBlock",
+              "name": "allowedIp",
               "paramType": "body",
               "required": false
             },
@@ -670,16 +670,16 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "datetime",
-              "description": "The expirationDate of the remote access (default 1 day)",
-              "fullType": "datetime",
-              "name": "expirationDate",
+              "dataType": "string",
+              "description": "The remote user public key authorized on the device (for SSH purpose)",
+              "fullType": "string",
+              "name": "publicKey",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -705,7 +705,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -713,7 +713,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Remote access ID",
+              "description": "The id of the remote access",
               "fullType": "string",
               "name": "remoteAccessId",
               "paramType": "path",
@@ -733,7 +733,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -741,7 +741,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Remote access ID",
+              "description": "The id of the remote access",
               "fullType": "string",
               "name": "remoteAccessId",
               "paramType": "path",
@@ -767,7 +767,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -775,7 +775,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Remote access ID",
+              "description": "The id of the remote access",
               "fullType": "string",
               "name": "remoteAccessId",
               "paramType": "path",
@@ -801,7 +801,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -821,14 +821,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -854,11 +854,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Filter the value of name property (=)",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "name": "name",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "overTheBox.TaskStatusEnum",
@@ -870,11 +870,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of name property (=)",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
-              "name": "name",
-              "paramType": "query",
-              "required": false
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -896,7 +896,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -904,7 +904,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Task ID",
+              "description": "The id of the task",
               "fullType": "string",
               "name": "taskId",
               "paramType": "path",
@@ -947,23 +947,20 @@ export const schema: Schema = {
       "properties": {
         "currencyCode": {
           "canBeNull": false,
-          "fullType": "order.CurrencyCodeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.CurrencyCodeEnum"
         },
         "text": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "double",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "double"
         }
       }
@@ -988,17 +985,15 @@ export const schema: Schema = {
         "description": {
           "canBeNull": false,
           "description": "Description of the action",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
           "canBeNull": false,
           "description": "Name of the action",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1011,49 +1006,43 @@ export const schema: Schema = {
         "currentOfferPrice": {
           "canBeNull": false,
           "description": "Monthly price of the current offer",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "description": {
           "canBeNull": false,
           "description": "Description of the offer",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagementMonths": {
           "canBeNull": false,
           "description": "Number of months of engagement",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "hardwareAvailable": {
           "canBeNull": false,
           "description": "Specify if a hardware is available",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "offer": {
           "canBeNull": false,
           "description": "Name of the offer",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "price": {
           "canBeNull": false,
           "description": "Monthly price of the new offer",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -1068,7 +1057,7 @@ export const schema: Schema = {
           "description": "The id of the backup",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "createdAt": {
@@ -1076,7 +1065,7 @@ export const schema: Schema = {
           "description": "Date of the creation of the backup",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "deviceActionId": {
@@ -1099,7 +1088,7 @@ export const schema: Schema = {
           "description": "Whether or not this device is associated to a service",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deviceId": {
@@ -1107,7 +1096,7 @@ export const schema: Schema = {
           "description": "The id of the device",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "lastSeen": {
@@ -1115,7 +1104,7 @@ export const schema: Schema = {
           "description": "Last time the device has been seen on the provisionning servers",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "networkInterfaces": {
@@ -1123,7 +1112,7 @@ export const schema: Schema = {
           "description": "Network interfaces of the device",
           "fullType": "overTheBox.DeviceInterface[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "overTheBox.DeviceInterface[]"
         },
         "publicIp": {
@@ -1131,7 +1120,7 @@ export const schema: Schema = {
           "description": "The public IP of the device",
           "fullType": "ip",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "systemVersion": {
@@ -1139,7 +1128,7 @@ export const schema: Schema = {
           "description": "System version of the device",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "version": {
@@ -1147,7 +1136,7 @@ export const schema: Schema = {
           "description": "Version of the device",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1162,7 +1151,7 @@ export const schema: Schema = {
           "description": "The id of the action",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "createdAt": {
@@ -1170,7 +1159,7 @@ export const schema: Schema = {
           "description": "Date of creation of the action",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "details": {
@@ -1178,7 +1167,7 @@ export const schema: Schema = {
           "description": "The details of the action",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -1186,7 +1175,7 @@ export const schema: Schema = {
           "description": "The name of the action",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -1194,7 +1183,7 @@ export const schema: Schema = {
           "description": "The status of the action",
           "fullType": "overTheBox.ActionStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "overTheBox.ActionStatusEnum"
         },
         "todoDate": {
@@ -1202,7 +1191,7 @@ export const schema: Schema = {
           "description": "Date of execution of the action",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "updatedAt": {
@@ -1210,7 +1199,7 @@ export const schema: Schema = {
           "description": "Last time the action was updated",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -1223,24 +1212,21 @@ export const schema: Schema = {
         "activated": {
           "canBeNull": false,
           "description": "Whether or not this device is actived",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deviceId": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "lastSeen": {
           "canBeNull": false,
           "description": "The last time this device was seen on the provisionning servers",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -1253,7 +1239,6 @@ export const schema: Schema = {
         "device": {
           "canBeNull": true,
           "description": "Device of the interface",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -1261,7 +1246,6 @@ export const schema: Schema = {
         "dnsServers": {
           "canBeNull": true,
           "description": "The DNS servers of this interface",
-          "fullType": "ip[]",
           "readOnly": false,
           "required": false,
           "type": "ip[]"
@@ -1269,7 +1253,6 @@ export const schema: Schema = {
         "gateway": {
           "canBeNull": true,
           "description": "Gateway of the interface",
-          "fullType": "ip",
           "readOnly": false,
           "required": false,
           "type": "ip"
@@ -1277,7 +1260,6 @@ export const schema: Schema = {
         "ip": {
           "canBeNull": true,
           "description": "IP of the interface",
-          "fullType": "ip",
           "readOnly": false,
           "required": false,
           "type": "ip"
@@ -1285,23 +1267,20 @@ export const schema: Schema = {
         "multipathStatus": {
           "canBeNull": false,
           "description": "Status of MPTCP on this interface",
-          "fullType": "overTheBox.MultipathStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "overTheBox.MultipathStatusEnum"
         },
         "name": {
           "canBeNull": false,
           "description": "Name of the interface",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "netmask": {
           "canBeNull": true,
           "description": "Netmask of the interface",
-          "fullType": "ip",
           "readOnly": false,
           "required": false,
           "type": "ip"
@@ -1309,7 +1288,6 @@ export const schema: Schema = {
         "publicIp": {
           "canBeNull": true,
           "description": "Public IP of the interface",
-          "fullType": "ip",
           "readOnly": false,
           "required": false,
           "type": "ip"
@@ -1324,25 +1302,22 @@ export const schema: Schema = {
         "host": {
           "canBeNull": false,
           "description": "The OpenTSDB host",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "readToken": {
           "canBeNull": false,
           "description": "A read-only token",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "readTokenID": {
           "canBeNull": false,
           "description": "The read-only token ID",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1370,7 +1345,7 @@ export const schema: Schema = {
           "description": "If the remote access was accepted by the remote user",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "askDate": {
@@ -1378,7 +1353,7 @@ export const schema: Schema = {
           "description": "The date of the remote access demand",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "authorizedBy": {
@@ -1394,7 +1369,7 @@ export const schema: Schema = {
           "description": "All the infos needed to connect yourself to your OTB",
           "fullType": "overTheBox.RemoteAccessConnectionInfos",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "overTheBox.RemoteAccessConnectionInfos"
         },
         "expirationDate": {
@@ -1402,7 +1377,7 @@ export const schema: Schema = {
           "description": "When the remote access will be automatically deleted",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "exposedPort": {
@@ -1410,7 +1385,7 @@ export const schema: Schema = {
           "description": "The device's port which will be exposed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "remoteAccessId": {
@@ -1418,7 +1393,7 @@ export const schema: Schema = {
           "description": "The id of the remote access",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "remoteUserInfos": {
@@ -1426,7 +1401,7 @@ export const schema: Schema = {
           "description": "Infos about the remote user",
           "fullType": "overTheBox.RemoteAccessUserInfos",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "overTheBox.RemoteAccessUserInfos"
         },
         "status": {
@@ -1434,7 +1409,7 @@ export const schema: Schema = {
           "description": "Status of the remote access",
           "fullType": "overTheBox.RemoteAccessStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "overTheBox.RemoteAccessStatusEnum"
         }
       }
@@ -1447,7 +1422,6 @@ export const schema: Schema = {
         "ip": {
           "canBeNull": true,
           "description": "IP to connect to when accessing the device remotely",
-          "fullType": "ip",
           "readOnly": false,
           "required": false,
           "type": "ip"
@@ -1455,7 +1429,6 @@ export const schema: Schema = {
         "port": {
           "canBeNull": true,
           "description": "Port to connect to when accessing the device remotely",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -1484,15 +1457,13 @@ export const schema: Schema = {
         "ip": {
           "canBeNull": false,
           "description": "IP from which the remote access will be allowed",
-          "fullType": "ipBlock",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipBlock"
         },
         "publicKey": {
           "canBeNull": true,
           "description": "The public key authorized on the device (for SSH purpose)",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -1500,9 +1471,8 @@ export const schema: Schema = {
         "user": {
           "canBeNull": false,
           "description": "The user that will access the device remotely",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1517,7 +1487,7 @@ export const schema: Schema = {
           "description": "If the socks proxy is enabled",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "customerDescription": {
@@ -1541,7 +1511,7 @@ export const schema: Schema = {
           "description": "Release channel of the service",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceName": {
@@ -1549,7 +1519,7 @@ export const schema: Schema = {
           "description": "The name of the service",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -1557,7 +1527,7 @@ export const schema: Schema = {
           "description": "The status of the service",
           "fullType": "overTheBox.ServiceStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "overTheBox.ServiceStatusEnum"
         },
         "tunnelMode": {
@@ -1565,7 +1535,7 @@ export const schema: Schema = {
           "description": "The tunnel mode of the service",
           "fullType": "overTheBox.TunnelModeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "overTheBox.TunnelModeEnum"
         }
       }
@@ -1594,7 +1564,7 @@ export const schema: Schema = {
           "description": "The name of the task",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -1602,7 +1572,7 @@ export const schema: Schema = {
           "description": "The status of the task",
           "fullType": "overTheBox.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "overTheBox.TaskStatusEnum"
         },
         "taskId": {
@@ -1610,7 +1580,7 @@ export const schema: Schema = {
           "description": "The id of the task",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1635,17 +1605,15 @@ export const schema: Schema = {
         "expirationDate": {
           "canBeNull": false,
           "description": "Temporary url expiration date",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "url": {
           "canBeNull": false,
           "description": "Temporary url",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1678,31 +1646,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -1710,7 +1674,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -1754,42 +1717,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -1803,7 +1766,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -1826,21 +1789,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/cluster/hadoop.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the HADOOPCLUSTER service",
@@ -70,7 +70,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -96,7 +96,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -122,7 +122,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -158,7 +158,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -183,18 +183,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipBlock",
-              "description": "Block",
-              "fullType": "ipBlock",
-              "name": "block",
+              "dataType": "string",
+              "description": "The internal name of your cluster",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "ipBlock",
+              "description": "IP Block to allow",
+              "fullType": "ipBlock",
+              "name": "block",
               "paramType": "path",
               "required": true
             }
@@ -212,7 +212,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -220,7 +220,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": "Block",
+              "description": "IP Block to allow",
               "fullType": "ipBlock",
               "name": "block",
               "paramType": "path",
@@ -240,14 +240,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "cluster.hadoop.NetworkAcl",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "cluster.hadoop.NetworkAcl",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -255,7 +255,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": "Block",
+              "description": "IP Block to allow",
               "fullType": "ipBlock",
               "name": "block",
               "paramType": "path",
@@ -280,20 +280,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "cluster.hadoop.NodeProfileEnum",
               "description": "Filter the value of softwareProfile property (=)",
               "fullType": "cluster.hadoop.NodeProfileEnum",
               "name": "softwareProfile",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your cluster",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -315,7 +315,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -323,7 +323,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Hostname",
+              "description": "Hostname of the node",
               "fullType": "string",
               "name": "hostname",
               "paramType": "path",
@@ -343,7 +343,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -351,7 +351,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Hostname",
+              "description": "Hostname of the node",
               "fullType": "string",
               "name": "hostname",
               "paramType": "path",
@@ -377,7 +377,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -385,7 +385,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Hostname",
+              "description": "Hostname of the node",
               "fullType": "string",
               "name": "hostname",
               "paramType": "path",
@@ -411,7 +411,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -419,7 +419,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Hostname",
+              "description": "Hostname of the node",
               "fullType": "string",
               "name": "hostname",
               "paramType": "path",
@@ -445,7 +445,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -453,7 +453,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Hostname",
+              "description": "Hostname of the node",
               "fullType": "string",
               "name": "hostname",
               "paramType": "path",
@@ -481,7 +481,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -489,7 +489,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Hostname",
+              "description": "Hostname of the node",
               "fullType": "string",
               "name": "hostname",
               "paramType": "path",
@@ -515,7 +515,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -523,7 +523,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Hostname",
+              "description": "Hostname of the node",
               "fullType": "string",
               "name": "hostname",
               "paramType": "path",
@@ -531,7 +531,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "cluster.hadoop.RoleTypeEnum",
-              "description": "Type",
+              "description": "Role name",
               "fullType": "cluster.hadoop.RoleTypeEnum",
               "name": "type",
               "paramType": "path",
@@ -551,7 +551,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -559,7 +559,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Hostname",
+              "description": "Hostname of the node",
               "fullType": "string",
               "name": "hostname",
               "paramType": "path",
@@ -567,7 +567,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "cluster.hadoop.RoleTypeEnum",
-              "description": "Type",
+              "description": "Role name",
               "fullType": "cluster.hadoop.RoleTypeEnum",
               "name": "type",
               "paramType": "path",
@@ -593,7 +593,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -601,7 +601,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Hostname",
+              "description": "Hostname of the node",
               "fullType": "string",
               "name": "hostname",
               "paramType": "path",
@@ -609,7 +609,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "cluster.hadoop.RoleTypeEnum",
-              "description": "Type",
+              "description": "Role name",
               "fullType": "cluster.hadoop.RoleTypeEnum",
               "name": "type",
               "paramType": "path",
@@ -635,7 +635,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Hostname",
+              "description": "The internal name of your cluster",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Hostname of the node",
               "fullType": "string",
               "name": "hostname",
               "paramType": "path",
@@ -643,17 +651,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "cluster.hadoop.RoleTypeEnum",
-              "description": "Type",
+              "description": "Role name",
               "fullType": "cluster.hadoop.RoleTypeEnum",
               "name": "type",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -677,7 +677,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -685,7 +685,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Hostname",
+              "description": "Hostname of the node",
               "fullType": "string",
               "name": "hostname",
               "paramType": "path",
@@ -693,7 +693,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "cluster.hadoop.RoleTypeEnum",
-              "description": "Type",
+              "description": "Role name",
               "fullType": "cluster.hadoop.RoleTypeEnum",
               "name": "type",
               "paramType": "path",
@@ -719,7 +719,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -745,7 +745,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -779,7 +779,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -805,7 +805,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -831,7 +831,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -865,7 +865,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -899,7 +899,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -933,7 +933,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -959,7 +959,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -979,14 +979,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1012,7 +1012,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1038,7 +1038,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1063,20 +1063,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "cluster.hadoop.OperationStateEnum",
               "description": "Filter the value of status property (=)",
               "fullType": "cluster.hadoop.OperationStateEnum",
               "name": "status",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your cluster",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -1098,7 +1098,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1106,7 +1106,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Task ID",
+              "description": "",
               "fullType": "long",
               "name": "taskId",
               "paramType": "path",
@@ -1132,7 +1132,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1158,7 +1158,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1177,6 +1177,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Username of the User",
+              "fullType": "string",
+              "name": "username",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "boolean",
               "description": "Whether or not the User is allowed to access to the WebUI interfaces",
               "fullType": "boolean",
@@ -1193,10 +1201,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Username of the User",
-              "fullType": "string",
-              "name": "username",
+              "dataType": "boolean",
+              "description": "Whether or not the User is allowed to access to the Hue interface",
+              "fullType": "boolean",
+              "name": "hue",
               "paramType": "body",
               "required": true
             },
@@ -1209,16 +1217,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "boolean",
-              "description": "Whether or not the User is allowed to access to the Hue interface",
-              "fullType": "boolean",
-              "name": "hue",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1244,7 +1244,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1252,7 +1252,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Username",
+              "description": "The username of the User",
               "fullType": "string",
               "name": "username",
               "paramType": "path",
@@ -1272,7 +1272,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1280,7 +1280,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Username",
+              "description": "The username of the User",
               "fullType": "string",
               "name": "username",
               "paramType": "path",
@@ -1300,14 +1300,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "cluster.hadoop.User",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "cluster.hadoop.User",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1315,7 +1315,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Username",
+              "description": "The username of the User",
               "fullType": "string",
               "name": "username",
               "paramType": "path",
@@ -1349,7 +1349,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your cluster",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1357,7 +1357,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Username",
+              "description": "The username of the User",
               "fullType": "string",
               "name": "username",
               "paramType": "path",
@@ -1394,9 +1394,8 @@ export const schema: Schema = {
         "quantity": {
           "canBeNull": false,
           "description": "Number of hours consummed",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         }
       }
@@ -1444,7 +1443,7 @@ export const schema: Schema = {
           "description": "IP Block to allow",
           "fullType": "ipBlock",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipBlock"
         },
         "description": {
@@ -1460,7 +1459,7 @@ export const schema: Schema = {
           "description": "State of the NetworkAcl.",
           "fullType": "cluster.hadoop.NetworkAclStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cluster.hadoop.NetworkAclStateEnum"
         }
       }
@@ -1486,7 +1485,7 @@ export const schema: Schema = {
           "description": "Name of the billing profile attached to the node",
           "fullType": "cluster.hadoop.BillingNameEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cluster.hadoop.BillingNameEnum"
         },
         "hostname": {
@@ -1494,7 +1493,7 @@ export const schema: Schema = {
           "description": "Hostname of the node",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "ip": {
@@ -1502,7 +1501,7 @@ export const schema: Schema = {
           "description": "IP of the Node",
           "fullType": "ip",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "isRemovable": {
@@ -1510,7 +1509,7 @@ export const schema: Schema = {
           "description": "Wether or not the Node is removable",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "softwareProfile": {
@@ -1518,7 +1517,7 @@ export const schema: Schema = {
           "description": "Profile of the Node",
           "fullType": "cluster.hadoop.NodeProfileEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cluster.hadoop.NodeProfileEnum"
         },
         "state": {
@@ -1526,7 +1525,7 @@ export const schema: Schema = {
           "description": "State of the Node",
           "fullType": "cluster.hadoop.NodeStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cluster.hadoop.NodeStateEnum"
         }
       }
@@ -1539,57 +1538,50 @@ export const schema: Schema = {
         "CPUFrequency": {
           "canBeNull": false,
           "description": "Frequency of one CPU core",
-          "fullType": "complexType.UnitAndValue<double>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<double>"
         },
         "diskCapacity": {
           "canBeNull": false,
           "description": "Total capacity available for HDFS",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         },
         "nbCPUCores": {
           "canBeNull": false,
           "description": "Total number of the CPU cores",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "nbCPUThreads": {
           "canBeNull": false,
           "description": "Total number of the CPU threads",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "networkBandwidth": {
           "canBeNull": false,
           "description": "Network speed of the link used for the Hadoop process",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         },
         "nodeProfile": {
           "canBeNull": false,
           "description": "Name of the Node billing profile",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "ramQuantity": {
           "canBeNull": false,
           "description": "Total amount of RAM",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         }
       }
@@ -1602,25 +1594,22 @@ export const schema: Schema = {
         "hostname": {
           "canBeNull": false,
           "description": "Hostname of the consumed resource",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "nodeProfile": {
           "canBeNull": false,
           "description": "Name of the node profile for the consumptions",
-          "fullType": "cluster.hadoop.BillingNameEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cluster.hadoop.BillingNameEnum"
         },
         "quantity": {
           "canBeNull": false,
           "description": "Number of hours consummed",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         }
       }
@@ -1671,17 +1660,15 @@ export const schema: Schema = {
         "maximumOrderableNodes": {
           "canBeNull": false,
           "description": "Maximal number of Node allowed in one order",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "minimumOrderableNodes": {
           "canBeNull": false,
           "description": "Minimum number of Node allowed in one order",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -1696,7 +1683,7 @@ export const schema: Schema = {
           "description": "ID of the Role",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "type": {
@@ -1704,7 +1691,7 @@ export const schema: Schema = {
           "description": "Role name",
           "fullType": "cluster.hadoop.RoleTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cluster.hadoop.RoleTypeEnum"
         }
       }
@@ -1748,7 +1735,7 @@ export const schema: Schema = {
           "description": "Operation name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -1756,14 +1743,14 @@ export const schema: Schema = {
           "description": "Current Task state",
           "fullType": "cluster.hadoop.OperationStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cluster.hadoop.OperationStateEnum"
         },
         "taskId": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -1778,7 +1765,7 @@ export const schema: Schema = {
           "description": "Whether or not the User is allowed to access to the Cloudera Manager interface",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "httpFrontend": {
@@ -1786,7 +1773,7 @@ export const schema: Schema = {
           "description": "Whether or not the User is allowed to access to the WebUI interfaces",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "hue": {
@@ -1794,7 +1781,7 @@ export const schema: Schema = {
           "description": "Whether or not the User is allowed to access to the Hue interface",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "username": {
@@ -1802,7 +1789,7 @@ export const schema: Schema = {
           "description": "The username of the User",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1817,7 +1804,7 @@ export const schema: Schema = {
           "description": "CDH and Cloudera Manager version",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "maxOrderableNodes": {
@@ -1825,7 +1812,7 @@ export const schema: Schema = {
           "description": "Maximum quantity of nodes allowed to be ordered in the cluster",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
@@ -1833,7 +1820,7 @@ export const schema: Schema = {
           "description": "Service name of your Cluster",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "state": {
@@ -1841,7 +1828,7 @@ export const schema: Schema = {
           "description": "State of the Hadoop Cluster",
           "fullType": "cluster.hadoop.ClusterStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cluster.hadoop.ClusterStateEnum"
         }
       }
@@ -1856,16 +1843,14 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
@@ -1878,31 +1863,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -1910,7 +1891,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -1954,42 +1934,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -2003,7 +1983,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -2026,21 +2006,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

@@ -183,7 +183,7 @@ export interface License {
              * Alter this object properties
              * PUT /license/worklight/{serviceName}
              */
-            $put(params: { creation: string, deleteAtExpiration: boolean, domain: string, ip: string, licenseId: string, status: license.StateEnum, version: license.WorkLightVersionEnum }): Promise<void>;
+            $put(params?: { creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.WorkLightVersionEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -242,7 +242,7 @@ export interface License {
                  * Alter this object properties
                  * PUT /license/worklight/{serviceName}/serviceInfos
                  */
-                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */

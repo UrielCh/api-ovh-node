@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/supply/mondialRelay.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Find the 10 nearest MondialRelay points from address or city.",
@@ -19,9 +19,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Address",
+              "description": "Zip Code",
               "fullType": "string",
-              "name": "address",
+              "name": "zipcode",
               "paramType": "body",
               "required": false
             },
@@ -35,17 +35,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "City",
+              "description": "Address",
               "fullType": "string",
-              "name": "city",
+              "name": "address",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Zip Code",
+              "description": "City",
               "fullType": "string",
-              "name": "zipcode",
+              "name": "city",
               "paramType": "body",
               "required": false
             }
@@ -334,23 +334,20 @@ export const schema: Schema = {
         "address": {
           "canBeNull": false,
           "description": "Relay point address",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "city": {
           "canBeNull": false,
           "description": "City",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "closing": {
           "canBeNull": true,
           "description": "Relay point closing dates",
-          "fullType": "supply.MondialRelayClosingPeriod[]",
           "readOnly": false,
           "required": false,
           "type": "supply.MondialRelayClosingPeriod[]"
@@ -358,15 +355,13 @@ export const schema: Schema = {
         "country": {
           "canBeNull": false,
           "description": "Relay country",
-          "fullType": "coreTypes.CountryEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "coreTypes.CountryEnum"
         },
         "distance": {
           "canBeNull": true,
           "description": "Distance between address and relay point",
-          "fullType": "double",
           "readOnly": false,
           "required": false,
           "type": "double"
@@ -374,31 +369,27 @@ export const schema: Schema = {
         "id": {
           "canBeNull": false,
           "description": "Mondial Relay point ID",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "lat": {
           "canBeNull": false,
           "description": "Relay point latitude",
-          "fullType": "double",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "double"
         },
         "lng": {
           "canBeNull": false,
           "description": "Relay point longitude",
-          "fullType": "double",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "double"
         },
         "mapUrl": {
           "canBeNull": true,
           "description": "URL of short map",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -406,23 +397,20 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "Relay point name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "opening": {
           "canBeNull": false,
           "description": "Relay point opening hours",
-          "fullType": "supply.MondialRelayOpening",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "supply.MondialRelayOpening"
         },
         "pictureUrl": {
           "canBeNull": true,
           "description": "Relay point picture\\s URL",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -430,9 +418,8 @@ export const schema: Schema = {
         "zipcode": {
           "canBeNull": false,
           "description": "Zipcode",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -445,17 +432,15 @@ export const schema: Schema = {
         "end": {
           "canBeNull": false,
           "description": "Ending of closing period",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "start": {
           "canBeNull": false,
           "description": "Beginning of closing period",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -468,17 +453,15 @@ export const schema: Schema = {
         "end": {
           "canBeNull": false,
           "description": "Ending time (00:00 format)",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "start": {
           "canBeNull": false,
           "description": "Starting time (00:00 format)",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -491,7 +474,6 @@ export const schema: Schema = {
         "friday": {
           "canBeNull": true,
           "description": "Opening range",
-          "fullType": "supply.MondialRelayDayPeriod[]",
           "readOnly": false,
           "required": false,
           "type": "supply.MondialRelayDayPeriod[]"
@@ -499,7 +481,6 @@ export const schema: Schema = {
         "monday": {
           "canBeNull": true,
           "description": "Opening range",
-          "fullType": "supply.MondialRelayDayPeriod[]",
           "readOnly": false,
           "required": false,
           "type": "supply.MondialRelayDayPeriod[]"
@@ -507,7 +488,6 @@ export const schema: Schema = {
         "saturday": {
           "canBeNull": true,
           "description": "Opening range",
-          "fullType": "supply.MondialRelayDayPeriod[]",
           "readOnly": false,
           "required": false,
           "type": "supply.MondialRelayDayPeriod[]"
@@ -515,7 +495,6 @@ export const schema: Schema = {
         "sunday": {
           "canBeNull": true,
           "description": "Opening range",
-          "fullType": "supply.MondialRelayDayPeriod[]",
           "readOnly": false,
           "required": false,
           "type": "supply.MondialRelayDayPeriod[]"
@@ -523,7 +502,6 @@ export const schema: Schema = {
         "thursday": {
           "canBeNull": true,
           "description": "Opening range",
-          "fullType": "supply.MondialRelayDayPeriod[]",
           "readOnly": false,
           "required": false,
           "type": "supply.MondialRelayDayPeriod[]"
@@ -531,7 +509,6 @@ export const schema: Schema = {
         "tuesday": {
           "canBeNull": true,
           "description": "Opening range",
-          "fullType": "supply.MondialRelayDayPeriod[]",
           "readOnly": false,
           "required": false,
           "type": "supply.MondialRelayDayPeriod[]"
@@ -539,7 +516,6 @@ export const schema: Schema = {
         "wednesday": {
           "canBeNull": true,
           "description": "Opening range",
-          "fullType": "supply.MondialRelayDayPeriod[]",
           "readOnly": false,
           "required": false,
           "type": "supply.MondialRelayDayPeriod[]"
@@ -554,17 +530,15 @@ export const schema: Schema = {
         "referenceAddress": {
           "canBeNull": false,
           "description": "Reference address for finding RelayPoints",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "relayPoints": {
           "canBeNull": false,
           "description": "Array of relay points",
-          "fullType": "supply.MondialRelay[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "supply.MondialRelay[]"
         }
       }
@@ -577,7 +551,6 @@ export const schema: Schema = {
         "error": {
           "canBeNull": true,
           "description": "Error",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -585,7 +558,6 @@ export const schema: Schema = {
         "result": {
           "canBeNull": true,
           "description": "Relay points list and reference address",
-          "fullType": "supply.MondialRelayResult",
           "readOnly": false,
           "required": false,
           "type": "supply.MondialRelayResult"
@@ -593,9 +565,8 @@ export const schema: Schema = {
         "status": {
           "canBeNull": false,
           "description": "Request status",
-          "fullType": "supply.Status",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "supply.Status"
         }
       }

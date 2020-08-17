@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://ca.api.ovh.com:443/1.0/cloud.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Get agreements related to a product",
@@ -47,14 +47,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "password",
-              "description": "Voucher code",
-              "fullType": "password",
-              "name": "voucher",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "Project description",
               "fullType": "string",
@@ -67,6 +59,14 @@ export const schema: Schema = {
               "description": "Amount of cloud credit to purchase. Unit is base currency.",
               "fullType": "long",
               "name": "credit",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "password",
+              "description": "Voucher code",
+              "fullType": "password",
+              "name": "voucher",
               "paramType": "body",
               "required": false
             }
@@ -174,17 +174,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Region",
+              "description": "OVH cloud flavor id",
               "fullType": "string",
-              "name": "region",
+              "name": "flavorId",
               "paramType": "query",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "OVH cloud flavor id",
+              "description": "Region",
               "fullType": "string",
-              "name": "flavorId",
+              "name": "region",
               "paramType": "query",
               "required": false
             }
@@ -277,20 +277,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "cloud.AclTypeEnum",
               "description": "Filter the value of type property (=)",
               "fullType": "cloud.AclTypeEnum",
               "name": "type",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The project id",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -315,14 +315,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "Deleguates rights to",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "accountId",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -348,7 +348,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -356,8 +356,8 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Account ID",
-              "fullType": "string",
+              "description": "OVH customer unique identifier",
+              "fullType": "coreTypes.AccountId:string",
               "name": "accountId",
               "paramType": "path",
               "required": true
@@ -376,7 +376,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -384,8 +384,8 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Account ID",
-              "fullType": "string",
+              "description": "OVH customer unique identifier",
+              "fullType": "coreTypes.AccountId:string",
               "name": "accountId",
               "paramType": "path",
               "required": true
@@ -430,6 +430,32 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/activateMonthlyBilling"
     },
     {
+      "description": "List Serving Engine available backends",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List Serving Engine available backends",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.serving.Backend[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/capabilities/serving/backend"
+    },
+    {
       "description": "List Serving Engine available flavor",
       "operations": [
         {
@@ -454,6 +480,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/flavor"
+    },
+    {
+      "description": "List Serving Engine available frameworks",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List Serving Engine available frameworks",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.serving.Framework[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/capabilities/serving/framework"
     },
     {
       "description": "List Serving Engine Preset Model Images",
@@ -705,17 +757,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Namespace ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "namespaceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "namespaceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -775,6 +827,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Model ID",
+              "fullType": "string",
+              "name": "modelId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
@@ -786,14 +846,6 @@ export const schema: Schema = {
               "description": "Namespace ID",
               "fullType": "string",
               "name": "namespaceId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Model ID",
-              "fullType": "string",
-              "name": "modelId",
               "paramType": "path",
               "required": true
             }
@@ -811,6 +863,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Model ID",
+              "fullType": "string",
+              "name": "modelId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
@@ -822,14 +882,6 @@ export const schema: Schema = {
               "description": "Namespace ID",
               "fullType": "string",
               "name": "namespaceId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Model ID",
-              "fullType": "string",
-              "name": "modelId",
               "paramType": "path",
               "required": true
             }
@@ -881,17 +933,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Namespace ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "namespaceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "namespaceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -985,17 +1037,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Namespace ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "namespaceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "namespaceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1091,6 +1143,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Namespace ID",
               "fullType": "string",
               "name": "namespaceId",
@@ -1102,14 +1162,6 @@ export const schema: Schema = {
               "description": "Token ID",
               "fullType": "uuid",
               "name": "tokenId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1133,7 +1185,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1160,14 +1212,6 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Email to contact",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Monthly threshold for this alerting in currency",
               "fullType": "long",
@@ -1177,7 +1221,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Email to contact",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1203,7 +1255,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1211,7 +1263,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Id",
+              "description": "Alerting unique UUID",
               "fullType": "string",
               "name": "id",
               "paramType": "path",
@@ -1231,7 +1283,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1239,7 +1291,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Id",
+              "description": "Alerting unique UUID",
               "fullType": "string",
               "name": "id",
               "paramType": "path",
@@ -1259,14 +1311,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "cloud.Alerting",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "cloud.Alerting",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1274,7 +1326,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Id",
+              "description": "Alerting unique UUID",
               "fullType": "string",
               "name": "id",
               "paramType": "path",
@@ -1300,7 +1352,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1308,7 +1360,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Id",
+              "description": "Alerting unique UUID",
               "fullType": "string",
               "name": "id",
               "paramType": "path",
@@ -1334,7 +1386,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Id",
+              "description": "The project id",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Alerting unique UUID",
               "fullType": "string",
               "name": "id",
               "paramType": "path",
@@ -1342,17 +1402,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Alert ID",
+              "description": "Alert id",
               "fullType": "long",
               "name": "alertId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1375,11 +1427,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "datetime",
+              "description": "Get bills to",
+              "fullType": "datetime",
+              "name": "to",
+              "paramType": "query",
               "required": true
             },
             {
@@ -1391,11 +1443,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "datetime",
-              "description": "Get bills to",
-              "fullType": "datetime",
-              "name": "to",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The project id",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1418,7 +1470,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1531,7 +1583,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -1539,7 +1591,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -1547,14 +1599,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1612,7 +1664,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1637,11 +1689,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "datetime",
+              "description": "Get usage to",
+              "fullType": "datetime",
+              "name": "to",
+              "paramType": "query",
               "required": true
             },
             {
@@ -1653,11 +1705,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "datetime",
-              "description": "Get usage to",
-              "fullType": "datetime",
-              "name": "to",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The project id",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1830,17 +1882,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "RegistryID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "registryID",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "RegistryID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "registryID",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1864,17 +1916,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "RegistryID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "registryID",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "RegistryID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "registryID",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1899,17 +1951,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "RegistryID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "registryID",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "RegistryID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "registryID",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1933,17 +1985,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "RegistryID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "registryID",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "RegistryID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "registryID",
               "paramType": "path",
               "required": true
             }
@@ -1968,17 +2020,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "RegistryID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "registryID",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "RegistryID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "registryID",
               "paramType": "path",
               "required": true
             }
@@ -2002,6 +2054,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "RegistryID",
               "fullType": "string",
               "name": "registryID",
@@ -2010,9 +2070,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "UserID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "userID",
               "paramType": "path",
               "required": true
             }
@@ -2036,7 +2096,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2064,7 +2124,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2090,7 +2150,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2098,7 +2158,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Credit id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2534,17 +2594,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Image ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "imageId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Image ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "imageId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2751,17 +2811,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Group ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "groupId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Group ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "groupId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -2856,17 +2916,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2890,17 +2950,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             }
@@ -2958,17 +3018,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3063,6 +3123,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Instance ID",
               "fullType": "string",
               "name": "instanceId",
@@ -3074,14 +3142,6 @@ export const schema: Schema = {
               "description": "Interface ID",
               "fullType": "string",
               "name": "interfaceId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3162,17 +3222,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             }
@@ -3244,17 +3304,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             }
@@ -3285,17 +3345,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             }
@@ -3428,17 +3488,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             }
@@ -3462,17 +3522,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3589,17 +3649,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Id",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Id",
+              "description": "Service name",
               "fullType": "string",
-              "name": "id",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3836,17 +3896,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Kube ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "kubeId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Kube ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "kubeId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3904,17 +3964,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Kube ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "kubeId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Kube ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "kubeId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3942,17 +4002,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Kube ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "kubeId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Kube ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "kubeId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3976,17 +4036,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Kube ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "kubeId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Kube ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "kubeId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -4012,17 +4072,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Kube ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "kubeId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Kube ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "kubeId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -4123,14 +4183,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Node pool ID",
-              "fullType": "string",
-              "name": "nodePoolId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
@@ -4142,6 +4194,14 @@ export const schema: Schema = {
               "description": "Kube ID",
               "fullType": "string",
               "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Node pool ID",
+              "fullType": "string",
+              "name": "nodePoolId",
               "paramType": "path",
               "required": true
             }
@@ -4159,14 +4219,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Kube ID",
               "fullType": "string",
               "name": "kubeId",
@@ -4178,6 +4230,14 @@ export const schema: Schema = {
               "description": "Node pool ID",
               "fullType": "string",
               "name": "nodePoolId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4202,6 +4262,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Node pool ID",
+              "fullType": "string",
+              "name": "nodePoolId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
@@ -4213,14 +4281,6 @@ export const schema: Schema = {
               "description": "Kube ID",
               "fullType": "string",
               "name": "kubeId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Node pool ID",
-              "fullType": "string",
-              "name": "nodePoolId",
               "paramType": "path",
               "required": true
             }
@@ -4244,14 +4304,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Node pool ID",
-              "fullType": "string",
-              "name": "nodePoolId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
@@ -4263,6 +4315,14 @@ export const schema: Schema = {
               "description": "Kube ID",
               "fullType": "string",
               "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Node pool ID",
+              "fullType": "string",
+              "name": "nodePoolId",
               "paramType": "path",
               "required": true
             }
@@ -4375,17 +4435,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Kube ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "kubeId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Kube ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "kubeId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4497,17 +4557,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Lab ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "labId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Lab ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "labId",
               "paramType": "path",
               "required": true
             }
@@ -4526,6 +4586,34 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "List all load balancer for a tenant",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "operationId": "listLoadBalancers",
@@ -4547,6 +4635,34 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Create a load balancer",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "operationId": "createLoadBalancer",
@@ -4581,23 +4697,51 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Delete a load balancer",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "operationId": "deleteLoadBalancer",
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Load balancer ID",
-              "fullType": "uuid",
-              "name": "loadBalancerId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Load balancer ID",
+              "fullType": "uuid",
+              "name": "loadBalancerId",
               "paramType": "path",
               "required": true
             }
@@ -4610,6 +4754,34 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Get a load balancer",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "operationId": "getLoadBalancer",
@@ -4639,6 +4811,34 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Update a load balancer",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
           "httpMethod": "PUT",
           "noAuthentication": false,
           "operationId": "updateLoadBalancer",
@@ -4651,18 +4851,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "uuid",
               "description": "Load balancer ID",
               "fullType": "uuid",
               "name": "loadBalancerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4681,6 +4881,34 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "List all versions of the configuration",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "operationId": "listLoadBalancerConfigurations",
@@ -4710,6 +4938,34 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Create a configuration",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "operationId": "createLoadBalancerConfiguration",
@@ -4752,6 +5008,34 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Delete a configuration",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "operationId": "deleteLoadBalancerConfiguration",
@@ -4789,10 +5073,46 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Get a configuration",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
           "httpMethod": "GET",
           "noAuthentication": false,
           "operationId": "getLoadBalancerConfiguration",
           "parameters": [
+            {
+              "dataType": "long",
+              "description": "Version",
+              "fullType": "long",
+              "name": "version",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "string",
               "description": "Service name",
@@ -4806,14 +5126,6 @@ export const schema: Schema = {
               "description": "Load balancer ID",
               "fullType": "uuid",
               "name": "loadBalancerId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Version",
-              "fullType": "long",
-              "name": "version",
               "paramType": "path",
               "required": true
             }
@@ -4832,6 +5144,34 @@ export const schema: Schema = {
             "value": "BETA"
           },
           "description": "Apply a configuration",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
           "httpMethod": "POST",
           "noAuthentication": false,
           "operationId": "applyLoadBalancerConfiguration",
@@ -5091,17 +5431,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Network ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "networkId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Network ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "networkId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -5132,17 +5472,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Network ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "networkId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Network ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "networkId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -5166,17 +5506,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Network ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "networkId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Network ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "networkId",
               "paramType": "path",
               "required": true
             }
@@ -5235,14 +5575,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Network ID",
-              "fullType": "string",
-              "name": "networkId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Subnet ID",
               "fullType": "string",
               "name": "subnetId",
@@ -5254,6 +5586,14 @@ export const schema: Schema = {
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Network ID",
+              "fullType": "string",
+              "name": "networkId",
               "paramType": "path",
               "required": true
             }
@@ -5537,17 +5877,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Region name",
+              "description": "Service name",
               "fullType": "string",
-              "name": "regionName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Region name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "regionName",
               "paramType": "path",
               "required": true
             }
@@ -5778,7 +6118,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5830,7 +6170,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5850,14 +6190,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5925,17 +6265,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Image ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "imageId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Image ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "imageId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -6048,17 +6388,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Key ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "keyId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Key ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "keyId",
               "paramType": "path",
               "required": true
             }
@@ -6170,17 +6510,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Stack ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "stackId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Stack ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "stackId",
               "paramType": "path",
               "required": true
             }
@@ -6411,17 +6751,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Container ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "containerId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Container ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "containerId",
               "paramType": "path",
               "required": true
             },
@@ -6495,17 +6835,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Container ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "containerId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Container ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "containerId",
               "paramType": "path",
               "required": true
             }
@@ -6604,7 +6944,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6630,7 +6970,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6898,18 +7238,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "User ID",
               "fullType": "long",
               "name": "userId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -6948,18 +7288,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "User ID",
               "fullType": "long",
               "name": "userId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -6990,18 +7330,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "User ID",
-              "fullType": "long",
-              "name": "userId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
               "paramType": "path",
               "required": true
             }
@@ -7128,6 +7468,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "long",
               "description": "User ID",
               "fullType": "long",
@@ -7140,14 +7488,6 @@ export const schema: Schema = {
               "description": "Role ID",
               "fullType": "string",
               "name": "roleId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -7164,14 +7504,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "User ID",
               "fullType": "long",
@@ -7184,6 +7516,14 @@ export const schema: Schema = {
               "description": "Role ID",
               "fullType": "string",
               "name": "roleId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -7213,18 +7553,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "User ID",
               "fullType": "long",
               "name": "userId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -7371,17 +7711,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Snapshot ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "snapshotId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Snapshot ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "snapshotId",
               "paramType": "path",
               "required": true
             }
@@ -7468,17 +7808,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Volume ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "volumeId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Volume ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "volumeId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -7712,17 +8052,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "OVH cloud flavor id",
+              "description": "Region",
               "fullType": "string",
-              "name": "flavorId",
+              "name": "region",
               "paramType": "query",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Region",
+              "description": "OVH cloud flavor id",
               "fullType": "string",
-              "name": "region",
+              "name": "flavorId",
               "paramType": "query",
               "required": false
             },
@@ -7763,15 +8103,15 @@ export const schema: Schema = {
           "description": "OVH customer unique identifier",
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "type": {
           "canBeNull": false,
           "description": "ACL type",
           "fullType": "cloud.AclTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloud.AclTypeEnum"
         }
       }
@@ -7796,7 +8136,7 @@ export const schema: Schema = {
           "description": "Alerting creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "delay": {
@@ -7804,7 +8144,7 @@ export const schema: Schema = {
           "description": "Delay between alerts in seconds",
           "fullType": "cloud.AlertingDelayEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.AlertingDelayEnum"
         },
         "email": {
@@ -7812,7 +8152,7 @@ export const schema: Schema = {
           "description": "Email to contact",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "formattedMonthlyThreshold": {
@@ -7820,7 +8160,7 @@ export const schema: Schema = {
           "description": "Formatted monthly threshold for this alerting",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "id": {
@@ -7828,7 +8168,7 @@ export const schema: Schema = {
           "description": "Alerting unique UUID",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "monthlyThreshold": {
@@ -7836,7 +8176,7 @@ export const schema: Schema = {
           "description": "Monthly threshold for this alerting",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -7851,7 +8191,7 @@ export const schema: Schema = {
           "description": "Alert date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "alertId": {
@@ -7859,7 +8199,7 @@ export const schema: Schema = {
           "description": "Alert id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "emails": {
@@ -7867,7 +8207,7 @@ export const schema: Schema = {
           "description": "Alert sent to",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         }
       }
@@ -7896,17 +8236,15 @@ export const schema: Schema = {
         "monthlyPrice": {
           "canBeNull": false,
           "description": "Monthly archive storage price (for 1GB stored per month)",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "region": {
           "canBeNull": false,
           "description": "Archive region",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -8013,17 +8351,15 @@ export const schema: Schema = {
         "price": {
           "canBeNull": false,
           "description": "Bandwidth storage price (for 1GB)",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "region": {
           "canBeNull": false,
           "description": "Bandwidth storage region",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -8069,7 +8405,7 @@ export const schema: Schema = {
           "description": "Available credit",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "bill": {
@@ -8093,7 +8429,7 @@ export const schema: Schema = {
           "description": "Credit id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "products": {
@@ -8109,7 +8445,7 @@ export const schema: Schema = {
           "description": "Total credit",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "used_credit": {
@@ -8117,7 +8453,7 @@ export const schema: Schema = {
           "description": "Used credit",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "validity": {
@@ -8169,6 +8505,19 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.ExecutionState": {
+      "description": "Enum values for State",
+      "enum": [
+        "IDLE",
+        "RUNNING",
+        "SUCCESS",
+        "ERROR",
+        "PAUSED"
+      ],
+      "enumType": "string",
+      "id": "ExecutionState",
+      "namespace": "cloud"
+    },
     "cloud.ExecutionStateEnum": {
       "description": "Enum values for State",
       "enum": [
@@ -8190,23 +8539,20 @@ export const schema: Schema = {
         "flavorId": {
           "canBeNull": false,
           "description": "Flavor id",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "flavorName": {
           "canBeNull": false,
           "description": "Flavor name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "monthlyPrice": {
           "canBeNull": true,
           "description": "Monthly flavor price",
-          "fullType": "order.Price",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
@@ -8214,17 +8560,15 @@ export const schema: Schema = {
         "price": {
           "canBeNull": false,
           "description": "Hourly flavor price",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "region": {
           "canBeNull": false,
           "description": "Flavor region",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -8307,6 +8651,18 @@ export const schema: Schema = {
           "type": "long[]"
         }
       }
+    },
+    "cloud.LabStatus": {
+      "description": "Enum values for Status",
+      "enum": [
+        "open",
+        "activating",
+        "activated",
+        "closed"
+      ],
+      "enumType": "string",
+      "id": "LabStatus",
+      "namespace": "cloud"
     },
     "cloud.LabStatusEnum": {
       "description": "Enum values for Status",
@@ -8391,6 +8747,19 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.OperationStatus": {
+      "description": "Enum values for Status",
+      "enum": [
+        "created",
+        "in-progress",
+        "completed",
+        "in-error",
+        "unknown"
+      ],
+      "enumType": "string",
+      "id": "OperationStatus",
+      "namespace": "cloud"
+    },
     "cloud.OperationStatusEnum": {
       "description": "Enum values for Status",
       "enum": [
@@ -8412,72 +8781,63 @@ export const schema: Schema = {
         "archive": {
           "canBeNull": false,
           "description": "Price for archive storage",
-          "fullType": "cloud.ArchiveStoragePrice[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.ArchiveStoragePrice[]"
         },
         "bandwidthArchiveIn": {
           "canBeNull": false,
           "description": "Price for incoming bandwidth on archive storage",
-          "fullType": "cloud.BandwidthStoragePrice[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.BandwidthStoragePrice[]"
         },
         "bandwidthArchiveOut": {
           "canBeNull": false,
           "description": "Price for outgoing bandwidth on archive storage",
-          "fullType": "cloud.BandwidthStoragePrice[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.BandwidthStoragePrice[]"
         },
         "bandwidthStorage": {
           "canBeNull": false,
           "description": "Price for bandwidth storage",
-          "fullType": "cloud.BandwidthStoragePrice[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.BandwidthStoragePrice[]"
         },
         "instances": {
           "canBeNull": false,
-          "fullType": "cloud.FlavorPrice[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.FlavorPrice[]"
         },
         "projectCreation": {
           "canBeNull": false,
           "description": "Price for project creation",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "snapshots": {
           "canBeNull": false,
           "description": "Prices for snapshots",
-          "fullType": "cloud.SnapshotPrice[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.SnapshotPrice[]"
         },
         "storage": {
           "canBeNull": false,
           "description": "Price for storage",
-          "fullType": "cloud.StoragePrice[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.StoragePrice[]"
         },
         "volumes": {
           "canBeNull": false,
           "description": "Prices for volumes",
-          "fullType": "cloud.VolumePrice[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.VolumePrice[]"
         }
       }
@@ -9397,6 +9757,37 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.ProjectNetworkPrivateSubnetUpdate": {
+      "description": "Missing description",
+      "id": "ProjectNetworkPrivateSubnetUpdate",
+      "namespace": "cloud",
+      "properties": {
+        "dhcp": {
+          "canBeNull": false,
+          "description": "Set to true if you don't want to set a default gateway IP",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "disableGateway": {
+          "canBeNull": false,
+          "description": "Set to true if you want to disable the default gateway",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "gatewayIp": {
+          "canBeNull": true,
+          "description": "Gateway IP (this field is used if noGateway = false)",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "cloud.ProjectNetworkPrivateUpdate": {
       "description": "Missing description",
       "id": "ProjectNetworkPrivateUpdate",
@@ -9912,6 +10303,18 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.RegionContinent": {
+      "description": "Enum values for ContinentCode",
+      "enum": [
+        "EU",
+        "NA",
+        "US",
+        "ASIA"
+      ],
+      "enumType": "string",
+      "id": "RegionContinent",
+      "namespace": "cloud"
+    },
     "cloud.RegionContinentEnum": {
       "description": "Enum values for ContinentCode",
       "enum": [
@@ -9924,6 +10327,17 @@ export const schema: Schema = {
       "id": "RegionContinentEnum",
       "namespace": "cloud"
     },
+    "cloud.RegionStatus": {
+      "description": "Enum values for Status",
+      "enum": [
+        "UP",
+        "DOWN",
+        "MAINTENANCE"
+      ],
+      "enumType": "string",
+      "id": "RegionStatus",
+      "namespace": "cloud"
+    },
     "cloud.RegionStatusEnum": {
       "description": "Enum values for Status",
       "enum": [
@@ -9933,6 +10347,16 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "RegionStatusEnum",
+      "namespace": "cloud"
+    },
+    "cloud.ServiceStatus": {
+      "description": "Enum values for Status",
+      "enum": [
+        "UP",
+        "DOWN"
+      ],
+      "enumType": "string",
+      "id": "ServiceStatus",
       "namespace": "cloud"
     },
     "cloud.ServiceStatusEnum": {
@@ -9953,25 +10377,22 @@ export const schema: Schema = {
         "monthlyPrice": {
           "canBeNull": false,
           "description": "Monthly flavor price (for 1GB per month)",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "price": {
           "canBeNull": false,
           "description": "Hourly snapshot price (for 1GB per hour)",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "region": {
           "canBeNull": false,
           "description": "Snapshot region",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -9984,25 +10405,22 @@ export const schema: Schema = {
         "monthlyPrice": {
           "canBeNull": false,
           "description": "Monthly storage price (for 1GB stored per month)",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "price": {
           "canBeNull": false,
           "description": "Hourly storage price (for 1GB stored per hour)",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "region": {
           "canBeNull": false,
           "description": "Storage region",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -10015,33 +10433,29 @@ export const schema: Schema = {
         "monthlyPrice": {
           "canBeNull": false,
           "description": "Monthly volume price (for 1GB per month)",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "price": {
           "canBeNull": false,
           "description": "Hourly volume price (for 1GB per hour)",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "region": {
           "canBeNull": false,
           "description": "Volume region",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "volumeName": {
           "canBeNull": false,
           "description": "Volume name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -11109,6 +11523,17 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.billingView.UnitQuantity": {
+      "description": "UnitQuantity",
+      "enum": [
+        "GiB",
+        "GiBh",
+        "Hour"
+      ],
+      "enumType": "string",
+      "id": "UnitQuantity",
+      "namespace": "cloud.billingView"
+    },
     "cloud.billingView.UnitQuantityEnum": {
       "description": "UnitQuantity",
       "enum": [
@@ -11200,6 +11625,29 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.capabilities.Capability": {
+      "description": "Capability",
+      "id": "Capability",
+      "namespace": "cloud.capabilities",
+      "properties": {
+        "enabled": {
+          "canBeNull": false,
+          "description": "Capability status",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Capability name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "cloud.common.VoucherValidity": {
       "description": "Voucher validity range",
       "id": "VoucherValidity",
@@ -11208,7 +11656,6 @@ export const schema: Schema = {
         "from": {
           "canBeNull": true,
           "description": "Valid from",
-          "fullType": "datetime",
           "readOnly": false,
           "required": false,
           "type": "datetime"
@@ -11216,7 +11663,6 @@ export const schema: Schema = {
         "to": {
           "canBeNull": true,
           "description": "Valid to",
-          "fullType": "datetime",
           "readOnly": false,
           "required": false,
           "type": "datetime"
@@ -11505,6 +11951,150 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.containerRegistry.registry.RegionEnum": {
+      "description": "Region of the registry",
+      "enum": [
+        "GRA7"
+      ],
+      "enumType": "string",
+      "id": "RegionEnum",
+      "namespace": "cloud.containerRegistry.registry"
+    },
+    "cloud.containerRegistry.registry.Registry": {
+      "description": "Managed docker registry",
+      "id": "Registry",
+      "namespace": "cloud.containerRegistry.registry",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Registry creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Registry ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Registry name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "projectID": {
+          "canBeNull": false,
+          "description": "Project ID of your registry",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region of the registry",
+          "fullType": "cloud.containerRegistry.registry.RegionEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.containerRegistry.registry.RegionEnum"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Registry status",
+          "fullType": "cloud.containerRegistry.registry.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.containerRegistry.registry.StatusEnum"
+        },
+        "updatedAt": {
+          "canBeNull": false,
+          "description": "Registry last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "Access url of the registry",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Version of your registry",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.containerRegistry.registry.StatusEnum": {
+      "description": "Status of the registry",
+      "enum": [
+        "ERROR",
+        "READY",
+        "DELETED",
+        "SUSPENDED",
+        "INSTALLING",
+        "UPDATING",
+        "RESTORING",
+        "SUSPENDING",
+        "DELETING"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloud.containerRegistry.registry"
+    },
+    "cloud.containerRegistry.user.User": {
+      "description": "Docker registry user",
+      "id": "User",
+      "namespace": "cloud.containerRegistry.user",
+      "properties": {
+        "email": {
+          "canBeNull": false,
+          "description": "User email",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "User ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "password": {
+          "canBeNull": true,
+          "description": "User password",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
+        "user": {
+          "canBeNull": false,
+          "description": "User name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "cloud.flavor.Capability": {
       "description": "Flavor capability",
       "id": "Capability",
@@ -11692,7 +12282,7 @@ export const schema: Schema = {
           "description": "Time when we got last metric",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "projectForecast": {
@@ -11700,7 +12290,7 @@ export const schema: Schema = {
           "description": "Forecast for your whole project",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -12285,6 +12875,19 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.instance.MetricsPeriod": {
+      "description": "MetricsPeriod",
+      "enum": [
+        "lastday",
+        "lastmonth",
+        "lastweek",
+        "lastyear",
+        "today"
+      ],
+      "enumType": "string",
+      "id": "MetricsPeriod",
+      "namespace": "cloud.instance"
+    },
     "cloud.instance.MetricsPeriodEnum": {
       "description": "MetricsPeriod",
       "enum": [
@@ -12296,6 +12899,20 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "MetricsPeriodEnum",
+      "namespace": "cloud.instance"
+    },
+    "cloud.instance.MetricsType": {
+      "description": "MetricsType",
+      "enum": [
+        "mem:used",
+        "mem:max",
+        "cpu:used",
+        "cpu:max",
+        "net:tx",
+        "net:rx"
+      ],
+      "enumType": "string",
+      "id": "MetricsType",
       "namespace": "cloud.instance"
     },
     "cloud.instance.MetricsTypeEnum": {
@@ -12827,6 +13444,25 @@ export const schema: Schema = {
       "id": "ClusterCreationRegionEnum",
       "namespace": "cloud.kube"
     },
+    "cloud.kube.ClusterStatus": {
+      "description": "Enum values for Status",
+      "enum": [
+        "INSTALLING",
+        "UPDATING",
+        "RESETTING",
+        "SUSPENDING",
+        "REOPENING",
+        "DELETING",
+        "SUSPENDED",
+        "ERROR",
+        "USER_ERROR",
+        "USER_QUOTA_ERROR",
+        "READY"
+      ],
+      "enumType": "string",
+      "id": "ClusterStatus",
+      "namespace": "cloud.kube"
+    },
     "cloud.kube.ClusterStatusEnum": {
       "description": "Enum values for Status",
       "enum": [
@@ -12879,6 +13515,19 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.kube.FlavorCategory": {
+      "description": "Enum values for category",
+      "enum": [
+        "c",
+        "g",
+        "t",
+        "b",
+        "r"
+      ],
+      "enumType": "string",
+      "id": "FlavorCategory",
+      "namespace": "cloud.kube"
+    },
     "cloud.kube.FlavorCategoryEnum": {
       "description": "Enum values for category",
       "enum": [
@@ -12891,6 +13540,16 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "FlavorCategoryEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.FlavorState": {
+      "description": "Enum values for State",
+      "enum": [
+        "available",
+        "unavailable"
+      ],
+      "enumType": "string",
+      "id": "FlavorState",
       "namespace": "cloud.kube"
     },
     "cloud.kube.FlavorStateEnum": {
@@ -13167,6 +13826,27 @@ export const schema: Schema = {
       "id": "NodePoolStatusEnum",
       "namespace": "cloud.kube"
     },
+    "cloud.kube.NodeStatus": {
+      "description": "Enum values for Status",
+      "enum": [
+        "INSTALLING",
+        "UPDATING",
+        "RESETTING",
+        "SUSPENDING",
+        "REOPENING",
+        "DELETING",
+        "SUSPENDED",
+        "ERROR",
+        "USER_ERROR",
+        "USER_QUOTA_ERROR",
+        "USER_NODE_NOT_FOUND_ERROR",
+        "USER_NODE_SUSPENDED_SERVICE",
+        "READY"
+      ],
+      "enumType": "string",
+      "id": "NodeStatus",
+      "namespace": "cloud.kube"
+    },
     "cloud.kube.NodeStatusEnum": {
       "description": "Enum values for Status",
       "enum": [
@@ -13189,6 +13869,17 @@ export const schema: Schema = {
       "id": "NodeStatusEnum",
       "namespace": "cloud.kube"
     },
+    "cloud.kube.Region": {
+      "description": "Enum values for available regions",
+      "enum": [
+        "GRA5",
+        "GRA7",
+        "BHS5"
+      ],
+      "enumType": "string",
+      "id": "Region",
+      "namespace": "cloud.kube"
+    },
     "cloud.kube.RegionEnum": {
       "description": "Enum values for available regions",
       "enum": [
@@ -13201,6 +13892,16 @@ export const schema: Schema = {
       "id": "RegionEnum",
       "namespace": "cloud.kube"
     },
+    "cloud.kube.ResetWorkerNodesPolicy": {
+      "description": "Enum values for worker nodes reset policy",
+      "enum": [
+        "reinstall",
+        "delete"
+      ],
+      "enumType": "string",
+      "id": "ResetWorkerNodesPolicy",
+      "namespace": "cloud.kube"
+    },
     "cloud.kube.ResetWorkerNodesPolicyEnum": {
       "description": "Enum values for worker nodes reset policy",
       "enum": [
@@ -13209,6 +13910,17 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "ResetWorkerNodesPolicyEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.UpdatePolicy": {
+      "description": "Enum values for UpdatePolicy",
+      "enum": [
+        "ALWAYS_UPDATE",
+        "MINIMAL_DOWNTIME",
+        "NEVER_UPDATE"
+      ],
+      "enumType": "string",
+      "id": "UpdatePolicy",
       "namespace": "cloud.kube"
     },
     "cloud.kube.UpdatePolicyEnum": {
@@ -13222,6 +13934,16 @@ export const schema: Schema = {
       "id": "UpdatePolicyEnum",
       "namespace": "cloud.kube"
     },
+    "cloud.kube.UpdateStrategy": {
+      "description": "Enum values for UpdateStrategy",
+      "enum": [
+        "LATEST_PATCH",
+        "NEXT_MINOR"
+      ],
+      "enumType": "string",
+      "id": "UpdateStrategy",
+      "namespace": "cloud.kube"
+    },
     "cloud.kube.UpdateStrategyEnum": {
       "description": "Enum values for UpdateStrategy",
       "enum": [
@@ -13230,6 +13952,19 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "UpdateStrategyEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.UpgradeVersion": {
+      "description": "List of available versions for upgrade",
+      "enum": [
+        "1.12",
+        "1.13",
+        "1.14",
+        "1.15",
+        "1.16"
+      ],
+      "enumType": "string",
+      "id": "UpgradeVersion",
       "namespace": "cloud.kube"
     },
     "cloud.kube.UpgradeVersionEnum": {
@@ -13243,6 +13978,17 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "UpgradeVersionEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.Version": {
+      "description": "List of available versions for installation",
+      "enum": [
+        "1.13",
+        "1.14",
+        "1.15"
+      ],
+      "enumType": "string",
+      "id": "Version",
       "namespace": "cloud.kube"
     },
     "cloud.kube.VersionEnum": {
@@ -13564,7 +14310,7 @@ export const schema: Schema = {
           "description": "Order creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "orderId": {
@@ -13572,7 +14318,7 @@ export const schema: Schema = {
           "description": "Order id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "planCode": {
@@ -13580,7 +14326,7 @@ export const schema: Schema = {
           "description": "Order plan code",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceName": {
@@ -13595,7 +14341,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "cloud.order.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "cloud.order.StatusEnum"
         }
       }
@@ -13620,25 +14366,22 @@ export const schema: Schema = {
         "downloadedBytes": {
           "canBeNull": false,
           "description": "Downloaded bytes from your containers",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "region": {
           "canBeNull": false,
           "description": "Region",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "total": {
           "canBeNull": false,
           "description": "Cost for your storage bandwidth",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -13651,17 +14394,15 @@ export const schema: Schema = {
         "billId": {
           "canBeNull": false,
           "description": "Bill id",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
           "canBeNull": false,
           "description": "Bill type",
-          "fullType": "cloud.project.BillTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.project.BillTypeEnum"
         }
       }
@@ -13685,49 +14426,43 @@ export const schema: Schema = {
         "instances": {
           "canBeNull": false,
           "description": "Instances usage",
-          "fullType": "cloud.project.InstancesUsage",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.project.InstancesUsage"
         },
         "snapshots": {
           "canBeNull": false,
           "description": "Snapshots usage",
-          "fullType": "cloud.project.SnapshotsUsage",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.project.SnapshotsUsage"
         },
         "storage": {
           "canBeNull": false,
           "description": "Storage usage",
-          "fullType": "cloud.project.StorageUsage",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.project.StorageUsage"
         },
         "total": {
           "canBeNull": false,
           "description": "Total cost for the project",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "volumeSnapshots": {
           "canBeNull": false,
           "description": "Snapshots usage",
-          "fullType": "cloud.project.SnapshotsUsage",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.project.SnapshotsUsage"
         },
         "volumes": {
           "canBeNull": false,
           "description": "Volumes usage",
-          "fullType": "cloud.project.VolumesUsage",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.project.VolumesUsage"
         }
       }
@@ -13752,7 +14487,6 @@ export const schema: Schema = {
         "actionsRequired": {
           "canBeNull": true,
           "description": "Actions to perform to be eligible",
-          "fullType": "cloud.project.EligibilityAction[]",
           "readOnly": false,
           "required": false,
           "type": "cloud.project.EligibilityAction[]"
@@ -13760,7 +14494,6 @@ export const schema: Schema = {
         "minimumCredit": {
           "canBeNull": true,
           "description": "Cloud project order",
-          "fullType": "order.Price",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
@@ -13768,7 +14501,6 @@ export const schema: Schema = {
         "paymentMethodsAuthorized": {
           "canBeNull": true,
           "description": "Payment method accepted to order Public Cloud project",
-          "fullType": "cloud.project.PaymentMethodAuthorized[]",
           "readOnly": false,
           "required": false,
           "type": "cloud.project.PaymentMethodAuthorized[]"
@@ -13776,7 +14508,6 @@ export const schema: Schema = {
         "voucher": {
           "canBeNull": true,
           "description": "Information about voucher code",
-          "fullType": "cloud.project.NewProjectInfoVoucher",
           "readOnly": false,
           "required": false,
           "type": "cloud.project.NewProjectInfoVoucher"
@@ -13791,17 +14522,15 @@ export const schema: Schema = {
         "activatedOn": {
           "canBeNull": false,
           "description": "Monthly billing activation date",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "cost": {
           "canBeNull": false,
           "description": "Cost",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -13814,7 +14543,6 @@ export const schema: Schema = {
         "hourly": {
           "canBeNull": true,
           "description": "Hourly price",
-          "fullType": "order.Price",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
@@ -13822,15 +14550,13 @@ export const schema: Schema = {
         "instanceId": {
           "canBeNull": false,
           "description": "Instance id",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "monthly": {
           "canBeNull": true,
           "description": "Monthly price",
-          "fullType": "cloud.project.InstanceMonthlyBilling",
           "readOnly": false,
           "required": false,
           "type": "cloud.project.InstanceMonthlyBilling"
@@ -13838,17 +14564,15 @@ export const schema: Schema = {
         "monthlyBilling": {
           "canBeNull": false,
           "description": "Is monthly billing enabled",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "reference": {
           "canBeNull": false,
           "description": "Reference",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -13861,17 +14585,15 @@ export const schema: Schema = {
         "detail": {
           "canBeNull": false,
           "description": "Instance usage details",
-          "fullType": "cloud.project.InstanceUsageDetail[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.project.InstanceUsageDetail[]"
         },
         "total": {
           "canBeNull": false,
           "description": "Total cost for the instances",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -13994,7 +14716,6 @@ export const schema: Schema = {
         "agreements": {
           "canBeNull": true,
           "description": "Agreement to valid",
-          "fullType": "long[]",
           "readOnly": false,
           "required": false,
           "type": "long[]"
@@ -14002,7 +14723,6 @@ export const schema: Schema = {
         "credit": {
           "canBeNull": true,
           "description": "Cloud credit",
-          "fullType": "cloud.project.NewProjectCredit",
           "readOnly": false,
           "required": false,
           "type": "cloud.project.NewProjectCredit"
@@ -14010,7 +14730,6 @@ export const schema: Schema = {
         "description": {
           "canBeNull": true,
           "description": "Cloud project description",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -14018,7 +14737,6 @@ export const schema: Schema = {
         "orderId": {
           "canBeNull": true,
           "description": "Cloud project order id",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -14026,7 +14744,6 @@ export const schema: Schema = {
         "project": {
           "canBeNull": true,
           "description": "Cloud project",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -14034,9 +14751,8 @@ export const schema: Schema = {
         "status": {
           "canBeNull": false,
           "description": "Project creation status",
-          "fullType": "cloud.project.NewProjectStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.project.NewProjectStatusEnum"
         }
       }
@@ -14049,7 +14765,6 @@ export const schema: Schema = {
         "description": {
           "canBeNull": true,
           "description": "Credit description",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -14057,15 +14772,13 @@ export const schema: Schema = {
         "id": {
           "canBeNull": false,
           "description": "Credit id",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "products": {
           "canBeNull": true,
           "description": "Use credits on following products",
-          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
@@ -14073,15 +14786,13 @@ export const schema: Schema = {
         "total_credit": {
           "canBeNull": false,
           "description": "Total credit",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "validity": {
           "canBeNull": true,
           "description": "Credit validity",
-          "fullType": "cloud.common.VoucherValidity",
           "readOnly": false,
           "required": false,
           "type": "cloud.common.VoucherValidity"
@@ -14096,7 +14807,6 @@ export const schema: Schema = {
         "agreements": {
           "canBeNull": true,
           "description": "Agreement to valid",
-          "fullType": "long[]",
           "readOnly": false,
           "required": false,
           "type": "long[]"
@@ -14104,7 +14814,6 @@ export const schema: Schema = {
         "error": {
           "canBeNull": true,
           "description": "Error to fix before trying to create a new Public Cloud project",
-          "fullType": "cloud.project.NewProjectInfoError",
           "readOnly": false,
           "required": false,
           "type": "cloud.project.NewProjectInfoError"
@@ -14112,7 +14821,6 @@ export const schema: Schema = {
         "order": {
           "canBeNull": true,
           "description": "Cloud project order",
-          "fullType": "order.Price",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
@@ -14120,7 +14828,6 @@ export const schema: Schema = {
         "voucher": {
           "canBeNull": true,
           "description": "Information about voucher code",
-          "fullType": "cloud.project.NewProjectInfoVoucher",
           "readOnly": false,
           "required": false,
           "type": "cloud.project.NewProjectInfoVoucher"
@@ -14135,17 +14842,15 @@ export const schema: Schema = {
         "code": {
           "canBeNull": false,
           "description": "Error code",
-          "fullType": "cloud.project.NewProjectInfoErrorCodeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.project.NewProjectInfoErrorCodeEnum"
         },
         "message": {
           "canBeNull": false,
           "description": "Error message",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -14172,17 +14877,15 @@ export const schema: Schema = {
         "credit": {
           "canBeNull": false,
           "description": "Credit added thanks to the voucher",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "paymentMethodRequired": {
           "canBeNull": false,
           "description": "A valid registered payment method is required to use the voucher",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -14219,7 +14922,6 @@ export const schema: Schema = {
         "agreementsToValidate": {
           "canBeNull": true,
           "description": "Agreements to validate",
-          "fullType": "long[]",
           "readOnly": false,
           "required": false,
           "type": "long[]"
@@ -14227,7 +14929,6 @@ export const schema: Schema = {
         "agreementsValidated": {
           "canBeNull": true,
           "description": "Agreements already validated",
-          "fullType": "long[]",
           "readOnly": false,
           "required": false,
           "type": "long[]"
@@ -14241,6 +14942,19 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "ProductNameEnum",
+      "namespace": "cloud.project"
+    },
+    "cloud.project.ProjectStatus": {
+      "description": "Possible values for project status",
+      "enum": [
+        "creating",
+        "deleted",
+        "deleting",
+        "ok",
+        "suspended"
+      ],
+      "enumType": "string",
+      "id": "ProjectStatus",
       "namespace": "cloud.project"
     },
     "cloud.project.ProjectStatusEnum": {
@@ -14264,9 +14978,8 @@ export const schema: Schema = {
         "current": {
           "canBeNull": false,
           "description": "Current usage details",
-          "fullType": "cloud.project.CurrentUsage",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.project.CurrentUsage"
         }
       }
@@ -14279,25 +14992,22 @@ export const schema: Schema = {
         "price": {
           "canBeNull": false,
           "description": "Snapshot price",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "region": {
           "canBeNull": false,
           "description": "Snapshot region",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "storedSize": {
           "canBeNull": false,
           "description": "Stored snapshot size in gigabytes",
-          "fullType": "complexType.UnitAndValue<double>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<double>"
         }
       }
@@ -14310,17 +15020,15 @@ export const schema: Schema = {
         "detail": {
           "canBeNull": false,
           "description": "Snapshots usage details",
-          "fullType": "cloud.project.SnapshotUsageDetail[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.project.SnapshotUsageDetail[]"
         },
         "total": {
           "canBeNull": false,
           "description": "Total cost for the snapshots",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -14333,25 +15041,22 @@ export const schema: Schema = {
         "bandwidth": {
           "canBeNull": false,
           "description": "Storage bandwidth usage",
-          "fullType": "cloud.project.BandwidthStorageUsage[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.project.BandwidthStorageUsage[]"
         },
         "total": {
           "canBeNull": false,
           "description": "Cost for your storage in all your containers",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "volume": {
           "canBeNull": false,
           "description": "Storage volume usage",
-          "fullType": "cloud.project.StorageVolumeUsage[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.project.StorageVolumeUsage[]"
         }
       }
@@ -14364,25 +15069,22 @@ export const schema: Schema = {
         "region": {
           "canBeNull": false,
           "description": "Region",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "storedBytes": {
           "canBeNull": false,
           "description": "Bytes stored in your containers",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "total": {
           "canBeNull": false,
           "description": "Cost for your storage bandwidth",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -14405,33 +15107,29 @@ export const schema: Schema = {
         "price": {
           "canBeNull": false,
           "description": "Volume price",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "volumeCapacity": {
           "canBeNull": false,
           "description": "Volume capacity in gigabytes",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         },
         "volumeId": {
           "canBeNull": false,
           "description": "Volume id",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "volumeType": {
           "canBeNull": false,
           "description": "Volume type",
-          "fullType": "cloud.project.VolumeType",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.project.VolumeType"
         }
       }
@@ -14444,17 +15142,15 @@ export const schema: Schema = {
         "detail": {
           "canBeNull": false,
           "description": "Volume usage details",
-          "fullType": "cloud.project.VolumeUsageDetail[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "cloud.project.VolumeUsageDetail[]"
         },
         "total": {
           "canBeNull": false,
           "description": "Total cost for the volumes",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -14512,6 +15208,47 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.ai.serving.Backend": {
+      "description": "Backend serving the model",
+      "id": "Backend",
+      "namespace": "cloud.project.ai.serving",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Backend ID",
+          "fullType": "cloud.project.ai.serving.BackendIdEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.serving.BackendIdEnum"
+        },
+        "link": {
+          "canBeNull": false,
+          "description": "Link to the backend project",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Backend name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.serving.BackendIdEnum": {
+      "description": "Backend serving the model",
+      "enum": [
+        "serving-runtime",
+        "bentoml"
+      ],
+      "enumType": "string",
+      "id": "BackendIdEnum",
+      "namespace": "cloud.project.ai.serving"
+    },
     "cloud.project.ai.serving.Flavor": {
       "description": "Compute Flavor for the Serving Engine",
       "id": "Flavor",
@@ -14534,6 +15271,91 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "cloud.project.ai.serving.Framework": {
+      "description": "Framework of the model",
+      "id": "Framework",
+      "namespace": "cloud.project.ai.serving",
+      "properties": {
+        "backends": {
+          "canBeNull": false,
+          "description": "Backends handling this framework",
+          "fullType": "cloud.project.ai.serving.BackendIdEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.serving.BackendIdEnum[]"
+        },
+        "docPage": {
+          "canBeNull": false,
+          "description": "Documentation page",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Framework ID",
+          "fullType": "cloud.project.ai.serving.FrameworkIdEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.serving.FrameworkIdEnum"
+        },
+        "link": {
+          "canBeNull": false,
+          "description": "Link to the framework project",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "logo": {
+          "canBeNull": false,
+          "description": "Framework logo",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Framework name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "recommendedBackend": {
+          "canBeNull": false,
+          "description": "Recommended backend for this framework",
+          "fullType": "cloud.project.ai.serving.BackendIdEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.serving.BackendIdEnum"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Framework version",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.serving.FrameworkIdEnum": {
+      "description": "Framework of the model",
+      "enum": [
+        "onnx",
+        "tensorflow_1",
+        "torch",
+        "huggingface",
+        "pmml",
+        "flow"
+      ],
+      "enumType": "string",
+      "id": "FrameworkIdEnum",
+      "namespace": "cloud.project.ai.serving"
     },
     "cloud.project.ai.serving.Metrics": {
       "description": "Metrics information",
@@ -14673,6 +15495,14 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.project.ai.serving.AutoscalingSpec"
         },
+        "backend": {
+          "canBeNull": true,
+          "description": "Backend which will serve your model",
+          "fullType": "cloud.project.ai.serving.BackendIdEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.serving.BackendIdEnum"
+        },
         "flavor": {
           "canBeNull": false,
           "description": "Flavor id",
@@ -14680,6 +15510,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "string"
+        },
+        "framework": {
+          "canBeNull": true,
+          "description": "Framework of your model",
+          "fullType": "cloud.project.ai.serving.FrameworkIdEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.serving.FrameworkIdEnum"
         },
         "id": {
           "canBeNull": false,
@@ -14720,6 +15558,22 @@ export const schema: Schema = {
       "id": "ModelWorkflowTemplateParameter",
       "namespace": "cloud.project.ai.serving",
       "properties": {
+        "backend": {
+          "canBeNull": true,
+          "description": "Backend which will serve your model",
+          "fullType": "cloud.project.ai.serving.BackendIdEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.serving.BackendIdEnum"
+        },
+        "framework": {
+          "canBeNull": true,
+          "description": "Framework of your model",
+          "fullType": "cloud.project.ai.serving.FrameworkIdEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.serving.FrameworkIdEnum"
+        },
         "imageId": {
           "canBeNull": true,
           "description": "Preset Model Image used to deploy your model",
@@ -15022,6 +15876,653 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "WorkflowTemplateEnum",
       "namespace": "cloud.project.ai.serving"
+    },
+    "cloud.project.ai.training.AuthorizationStatus": {
+      "description": "Authorization status",
+      "id": "AuthorizationStatus",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "authorized": {
+          "canBeNull": false,
+          "description": "True if project is authorized to use Training Platform service",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "cloud.project.ai.training.Data": {
+      "description": "Training Platform Data Object",
+      "id": "Data",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "account": {
+          "canBeNull": false,
+          "description": "Account ID that own the data",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "container": {
+          "canBeNull": false,
+          "description": "Public Cloud Storage container to attach",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "containerRegion": {
+          "canBeNull": false,
+          "description": "Public Cloud Storage Region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "created": {
+          "canBeNull": false,
+          "description": "Data creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Data id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Public Cloud Storage container Name attached",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "pullDate": {
+          "canBeNull": true,
+          "description": "Date of the last pull sync",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "pullStatus": {
+          "canBeNull": true,
+          "description": "Pull Sync Status",
+          "fullType": "cloud.project.ai.training.DataSyncStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.training.DataSyncStatusEnum"
+        },
+        "pushDate": {
+          "canBeNull": true,
+          "description": "Date of the last push sync",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "pushStatus": {
+          "canBeNull": true,
+          "description": "Push Sync Status",
+          "fullType": "cloud.project.ai.training.DataSyncStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.training.DataSyncStatusEnum"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region of the data",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "user": {
+          "canBeNull": false,
+          "description": "User name that own the data",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.training.DataSpec": {
+      "description": "Training Platform Data Spec Object",
+      "id": "DataSpec",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "container": {
+          "canBeNull": false,
+          "description": "Public Cloud Storage container to attach",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "containerRegion": {
+          "canBeNull": false,
+          "description": "Public Cloud Storage Region",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Data name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region of the data",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "sync": {
+          "canBeNull": false,
+          "description": "Sync the data with Object Storage just after the data is created",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "user": {
+          "canBeNull": false,
+          "description": "User that own the data",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.training.DataSyncDirectionEnum": {
+      "description": "Data Sync Direction",
+      "enum": [
+        "pull",
+        "push"
+      ],
+      "enumType": "string",
+      "id": "DataSyncDirectionEnum",
+      "namespace": "cloud.project.ai.training"
+    },
+    "cloud.project.ai.training.DataSyncRequest": {
+      "description": "Training Platform Data Sync Request Object",
+      "id": "DataSyncRequest",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "direction": {
+          "canBeNull": false,
+          "description": "Direction of the sync",
+          "fullType": "cloud.project.ai.training.DataSyncDirectionEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.ai.training.DataSyncDirectionEnum"
+        }
+      }
+    },
+    "cloud.project.ai.training.DataSyncStatusEnum": {
+      "description": "Data Sync Direction",
+      "enum": [
+        "running",
+        "pending",
+        "error",
+        "done"
+      ],
+      "enumType": "string",
+      "id": "DataSyncStatusEnum",
+      "namespace": "cloud.project.ai.training"
+    },
+    "cloud.project.ai.training.Features": {
+      "description": "Training Platform Data Object",
+      "id": "Features",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "dashboard": {
+          "canBeNull": false,
+          "description": "Capability to display dashboard",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "registry": {
+          "canBeNull": false,
+          "description": "Capability to add registry",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "cloud.project.ai.training.Job": {
+      "description": "Training Platform Job Object",
+      "id": "Job",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "accessUrl": {
+          "canBeNull": true,
+          "description": "Job access url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "command": {
+          "canBeNull": false,
+          "description": "Job command",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "created": {
+          "canBeNull": false,
+          "description": "Job creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "data": {
+          "canBeNull": false,
+          "description": "Job Data linked",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Job Id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "image": {
+          "canBeNull": false,
+          "description": "Job docker image",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Job name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region of the job",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "resourceUsageUrl": {
+          "canBeNull": true,
+          "description": "Job resource usage url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "resources": {
+          "canBeNull": false,
+          "description": "Job resources",
+          "fullType": "cloud.project.ai.training.JobResource",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.training.JobResource"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Job status",
+          "fullType": "cloud.project.ai.training.JobStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.training.JobStatusEnum"
+        },
+        "totalRuntime": {
+          "canBeNull": true,
+          "description": "Job Total runtime in second",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "updatedOn": {
+          "canBeNull": false,
+          "description": "Job update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "user": {
+          "canBeNull": false,
+          "description": "User name that own the Job",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.training.JobLogs": {
+      "description": "Job Logs",
+      "id": "JobLogs",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "lastActivity": {
+          "canBeNull": true,
+          "description": "Last activity date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "logs": {
+          "canBeNull": false,
+          "description": "Logs lines",
+          "fullType": "cloud.project.ai.training.LogLine[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.training.LogLine[]"
+        }
+      }
+    },
+    "cloud.project.ai.training.JobResource": {
+      "description": "Training Platform Job Resource Object",
+      "id": "JobResource",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "gpu": {
+          "canBeNull": true,
+          "description": "GPU resources of the Job",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.ai.training.JobSpec": {
+      "description": "Training Platform Job Spec Object to create a job",
+      "id": "JobSpec",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "command": {
+          "canBeNull": false,
+          "description": "Job command",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "data": {
+          "canBeNull": false,
+          "description": "Job Data linked",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "image": {
+          "canBeNull": false,
+          "description": "Job docker image",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Job name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region of the job",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "resources": {
+          "canBeNull": false,
+          "description": "Job resources",
+          "fullType": "cloud.project.ai.training.JobResource",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.ai.training.JobResource"
+        },
+        "user": {
+          "canBeNull": false,
+          "description": "User that spawn the job",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.training.JobStatusEnum": {
+      "description": "Status of the job",
+      "enum": [
+        "CANCELLED",
+        "CANCELLING",
+        "FAILED",
+        "INTERRUPTED",
+        "SUCCEEDED",
+        "QUEUING",
+        "QUEUED",
+        "RUNNING"
+      ],
+      "enumType": "string",
+      "id": "JobStatusEnum",
+      "namespace": "cloud.project.ai.training"
+    },
+    "cloud.project.ai.training.LogLine": {
+      "description": "Log line",
+      "id": "LogLine",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "content": {
+          "canBeNull": true,
+          "description": "Content of the log",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "timestamp": {
+          "canBeNull": true,
+          "description": "Datetime of the log",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "cloud.project.ai.training.PresetImage": {
+      "description": "A Image of a preset data science image",
+      "id": "PresetImage",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Model Image Description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Image id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "link": {
+          "canBeNull": true,
+          "description": "Link to the Opensource Model",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Model Image Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "ramRequirementMB": {
+          "canBeNull": true,
+          "description": "RAM requirement per model instantiated (in MB)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.ai.training.Region": {
+      "description": "AI Training Region",
+      "id": "Region",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "cliInstallUrl": {
+          "canBeNull": false,
+          "description": "Client Install Url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "consoleUrl": {
+          "canBeNull": false,
+          "description": "Region Console Url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "documentationUrl": {
+          "canBeNull": false,
+          "description": "Documentation Url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Region id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "maxGpu": {
+          "canBeNull": false,
+          "description": "Max GPU Available in the region",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Region version",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.training.Registry": {
+      "description": "Representation of a registry",
+      "id": "Registry",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "custom": {
+          "canBeNull": false,
+          "description": "True if user have a registry attached",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "password": {
+          "canBeNull": true,
+          "description": "Docker registry password",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "Docker registry URL",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "username": {
+          "canBeNull": true,
+          "description": "Docker registry username",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.training.RegistryResponse": {
+      "description": "Registry attachment response",
+      "id": "RegistryResponse",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "message": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
     },
     "cloud.project.dataProcessing.AuthorizationStatus": {
       "description": "Authorization status",
@@ -15696,6 +17197,21 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "ipBlock[]"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.Region": {
+      "description": "Region information",
+      "id": "Region",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "region": {
+          "canBeNull": false,
+          "description": "Region name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -16729,6 +18245,16 @@ export const schema: Schema = {
       "id": "TypeEnum",
       "namespace": "cloud.storage"
     },
+    "cloud.usage.PaymentTypeEnum": {
+      "description": "PaymentTypeEnum",
+      "enum": [
+        "pre",
+        "post"
+      ],
+      "enumType": "string",
+      "id": "PaymentTypeEnum",
+      "namespace": "cloud.usage"
+    },
     "cloud.usage.Period": {
       "description": "Period",
       "id": "Period",
@@ -16749,6 +18275,53 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "datetime"
+        }
+      }
+    },
+    "cloud.usage.UsageBill": {
+      "description": "UsageBill",
+      "id": "UsageBill",
+      "namespace": "cloud.usage",
+      "properties": {
+        "bill_id": {
+          "canBeNull": false,
+          "description": "ID of the bill",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "credit": {
+          "canBeNull": false,
+          "description": "Amount of credits used in this bill (not necessarily on part)",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "part": {
+          "canBeNull": false,
+          "description": "Amount of the bill that accounts for services for the usage period, credits not taken into account",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "payment_type": {
+          "canBeNull": false,
+          "description": "Payment type",
+          "fullType": "cloud.usage.PaymentTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.usage.PaymentTypeEnum"
+        },
+        "total": {
+          "canBeNull": false,
+          "description": "Total amount of the bill, credits not taken into account",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
         }
       }
     },
@@ -16796,6 +18369,21 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "cloud.billingView.TypedResources[]"
+        }
+      }
+    },
+    "cloud.usage.UsageCurrentBills": {
+      "description": "UsageCurrentBills",
+      "id": "UsageCurrentBills",
+      "namespace": "cloud.usage",
+      "properties": {
+        "bills": {
+          "canBeNull": false,
+          "description": "Bills related to the current usage",
+          "fullType": "cloud.usage.UsageBill[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.usage.UsageBill[]"
         }
       }
     },
@@ -16937,6 +18525,21 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "cloud.billingView.TypedResources[]"
+        }
+      }
+    },
+    "cloud.usage.UsageHistoryDetailBills": {
+      "description": "UsageHistoryDetailBills",
+      "id": "UsageHistoryDetailBills",
+      "namespace": "cloud.usage",
+      "properties": {
+        "bills": {
+          "canBeNull": false,
+          "description": "Bills related to the usage",
+          "fullType": "cloud.usage.UsageBill[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.usage.UsageBill[]"
         }
       }
     },
@@ -17337,16 +18940,14 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
@@ -17411,23 +19012,20 @@ export const schema: Schema = {
       "properties": {
         "currencyCode": {
           "canBeNull": false,
-          "fullType": "order.CurrencyCodeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.CurrencyCodeEnum"
         },
         "text": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "double",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "double"
         }
       }
@@ -17440,31 +19038,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -17472,7 +19066,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -17551,42 +19144,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -17600,7 +19193,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -17623,21 +19216,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

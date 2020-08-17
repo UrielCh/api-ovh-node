@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/telephony.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the VOIP service",
@@ -87,7 +87,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Your line number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -114,7 +114,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -122,7 +122,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -130,14 +130,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Your line number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -163,7 +163,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Your line number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -183,14 +183,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Your line number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -292,18 +292,18 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "telephony.NumberCountryEnum",
-              "description": "The country of the city",
-              "fullType": "telephony.NumberCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The zip code of the city",
               "fullType": "string",
               "name": "zipCode",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "telephony.NumberCountryEnum",
+              "description": "The country of the city",
+              "fullType": "telephony.NumberCountryEnum",
+              "name": "country",
               "paramType": "query",
               "required": true
             }
@@ -352,18 +352,18 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "telephony.NumberCountryEnum",
-              "description": "The country",
-              "fullType": "telephony.NumberCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The selected offer",
               "fullType": "string",
               "name": "offer",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "telephony.NumberCountryEnum",
+              "description": "The country",
+              "fullType": "telephony.NumberCountryEnum",
+              "name": "country",
               "paramType": "query",
               "required": true
             }
@@ -430,7 +430,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Your line number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -456,8 +456,16 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "contactAdmin",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -465,22 +473,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "The contact to set as admin contact",
-              "fullType": "string",
-              "name": "contactAdmin",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "Your line number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -506,7 +506,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Your line number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -526,14 +526,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Your line number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -618,10 +618,26 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "telephony.NumberCountryEnum",
+              "description": "The country",
+              "fullType": "telephony.NumberCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
               "description": "The range (special number)",
               "fullType": "string",
               "name": "range",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The zone (geographic number)",
+              "fullType": "string",
+              "name": "zone",
               "paramType": "query",
               "required": false
             },
@@ -632,22 +648,6 @@ export const schema: Schema = {
               "name": "type",
               "paramType": "query",
               "required": true
-            },
-            {
-              "dataType": "telephony.NumberCountryEnum",
-              "description": "The country",
-              "fullType": "telephony.NumberCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The zone (geographic number)",
-              "fullType": "string",
-              "name": "zone",
-              "paramType": "query",
-              "required": false
             }
           ],
           "responseType": "telephony.SpecificNumber[]"
@@ -728,6 +728,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "telephony.SipDomainProductTypeEnum",
+              "description": "Product type",
+              "fullType": "telephony.SipDomainProductTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "telephony.NumberCountryEnum",
               "description": "Country",
               "fullType": "telephony.NumberCountryEnum",
@@ -740,14 +748,6 @@ export const schema: Schema = {
               "description": "SIP domain to set",
               "fullType": "string",
               "name": "domain",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "telephony.SipDomainProductTypeEnum",
-              "description": "Product type",
-              "fullType": "telephony.SipDomainProductTypeEnum",
-              "name": "type",
               "paramType": "body",
               "required": true
             }
@@ -816,7 +816,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Sound ID",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -836,7 +836,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Sound ID",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -856,14 +856,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.Sound",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.Sound",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Sound ID",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -923,7 +923,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Spare",
+              "description": "The internal name of your spare",
               "fullType": "string",
               "name": "spare",
               "paramType": "path",
@@ -943,7 +943,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Spare",
+              "description": "The internal name of your spare",
               "fullType": "string",
               "name": "spare",
               "paramType": "path",
@@ -969,7 +969,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Spare",
+              "description": "The internal name of your spare",
               "fullType": "string",
               "name": "spare",
               "paramType": "path",
@@ -1011,7 +1011,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Spare",
+              "description": "The internal name of your spare",
               "fullType": "string",
               "name": "spare",
               "paramType": "path",
@@ -1037,7 +1037,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Spare",
+              "description": "The internal name of your spare",
               "fullType": "string",
               "name": "spare",
               "paramType": "path",
@@ -1057,14 +1057,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Spare",
+              "description": "The internal name of your spare",
               "fullType": "string",
               "name": "spare",
               "paramType": "path",
@@ -1107,7 +1107,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Your trunk number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1133,8 +1133,16 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "contactAdmin",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -1142,22 +1150,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "The contact to set as admin contact",
-              "fullType": "string",
-              "name": "contactAdmin",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "Your trunk number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1183,7 +1183,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Your trunk number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1203,14 +1203,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Your trunk number",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1236,11 +1236,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "Termination reason details",
               "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
+              "name": "details",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "telephony.TerminationReasonEnum",
@@ -1252,11 +1252,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Termination reason details",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "details",
-              "paramType": "query",
-              "required": false
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "void"
@@ -1272,7 +1272,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1292,14 +1292,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.BillingAccount",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.BillingAccount",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1325,7 +1325,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1347,22 +1347,6 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "surname",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "The destination of the abbreviated number",
-              "fullType": "phoneNumber",
-              "name": "destinationNumber",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
               "name": "name",
               "paramType": "body",
               "required": true
@@ -1377,7 +1361,23 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
+              "fullType": "string",
+              "name": "surname",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "The destination of the abbreviated number",
+              "fullType": "phoneNumber",
+              "name": "destinationNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1403,7 +1403,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1411,7 +1411,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Abbreviated number",
+              "description": "The abbreviated number which must start with \"7\" and must have a length of 3 or 4 digits",
               "fullType": "long",
               "name": "abbreviatedNumber",
               "paramType": "path",
@@ -1431,7 +1431,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1439,7 +1439,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Abbreviated number",
+              "description": "The abbreviated number which must start with \"7\" and must have a length of 3 or 4 digits",
               "fullType": "long",
               "name": "abbreviatedNumber",
               "paramType": "path",
@@ -1459,14 +1459,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.AbbreviatedNumberGroup",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.AbbreviatedNumberGroup",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1474,7 +1474,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Abbreviated number",
+              "description": "The abbreviated number which must start with \"7\" and must have a length of 3 or 4 digits",
               "fullType": "long",
               "name": "abbreviatedNumber",
               "paramType": "path",
@@ -1500,7 +1500,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1526,7 +1526,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1552,7 +1552,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1580,7 +1580,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1614,7 +1614,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1640,7 +1640,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1666,7 +1666,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1692,7 +1692,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1700,7 +1700,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1726,7 +1726,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The month you want to extract (format: YYYY-MM). Current month if not specified.",
+              "fullType": "string",
+              "name": "month",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1734,19 +1742,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The month you want to extract (format: YYYY-MM). Current month if not specified.",
-              "fullType": "string",
-              "name": "month",
-              "paramType": "query",
-              "required": false
             }
           ],
           "responseType": "telephony.Document"
@@ -1768,7 +1768,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1776,7 +1776,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1802,17 +1802,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1836,7 +1836,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1844,7 +1844,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1852,7 +1852,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1878,7 +1878,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1886,7 +1886,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1906,14 +1906,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.CarrierSipDetails",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.CarrierSipDetails",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1921,7 +1921,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1948,7 +1948,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -1956,7 +1956,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -1964,14 +1964,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -1997,7 +1997,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2023,7 +2023,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2031,7 +2031,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2065,17 +2065,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2099,7 +2099,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2107,7 +2107,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2133,7 +2133,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2141,7 +2141,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2149,7 +2149,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2175,17 +2175,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2209,7 +2209,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2217,7 +2217,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2243,7 +2243,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2251,7 +2251,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2277,7 +2277,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2285,7 +2285,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2293,7 +2293,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2319,7 +2319,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2327,7 +2327,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2335,7 +2335,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2369,7 +2369,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2377,7 +2377,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2385,7 +2385,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2411,7 +2411,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2419,7 +2419,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2427,7 +2427,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2453,7 +2453,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2461,7 +2461,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2469,7 +2469,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2495,7 +2495,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2503,7 +2503,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2511,7 +2511,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2537,7 +2537,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2545,7 +2545,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2553,7 +2553,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2579,17 +2579,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2607,14 +2607,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.ConferenceProperties",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.ConferenceProperties",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2622,7 +2622,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2648,7 +2648,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2656,7 +2656,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2682,7 +2682,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2690,7 +2690,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2718,7 +2718,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2726,7 +2726,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2752,7 +2752,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2760,7 +2760,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2768,7 +2768,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2788,7 +2788,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2796,7 +2796,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2804,7 +2804,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2830,7 +2830,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2856,7 +2856,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2864,7 +2864,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2884,14 +2884,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.Ddi",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.Ddi",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2899,7 +2899,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2933,7 +2933,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2941,7 +2941,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2967,7 +2967,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -2993,7 +2993,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3001,7 +3001,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3021,14 +3021,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.EasyHunting",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.EasyHunting",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3036,7 +3036,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3062,7 +3062,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3070,7 +3070,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3090,14 +3090,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabxHunting",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabxHunting",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3105,7 +3105,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3131,7 +3131,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3139,7 +3139,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3159,33 +3159,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "The maximum of simultaneous calls that the agent will receive from the hunting",
+              "description": "The waiting timeout (in seconds) before hangup for an assigned called",
               "fullType": "long",
-              "name": "simultaneousLines",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The wrap up time (in seconds) after the calls",
-              "fullType": "long",
-              "name": "wrapUpTime",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "telephony.OvhPabxHuntingAgentStatusEnum",
-              "description": "The current status of the agent",
-              "fullType": "telephony.OvhPabxHuntingAgentStatusEnum",
-              "name": "status",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "The number of the agent",
-              "fullType": "phoneNumber",
-              "name": "number",
+              "name": "timeout",
               "paramType": "body",
               "required": true
             },
@@ -3198,16 +3174,40 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "phoneNumber",
+              "description": "The number of the agent",
+              "fullType": "phoneNumber",
+              "name": "number",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "telephony.OvhPabxHuntingAgentStatusEnum",
+              "description": "The current status of the agent",
+              "fullType": "telephony.OvhPabxHuntingAgentStatusEnum",
+              "name": "status",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "description": "The waiting timeout (in seconds) before hangup for an assigned called",
+              "description": "The wrap up time (in seconds) after the calls",
               "fullType": "long",
-              "name": "timeout",
+              "name": "wrapUpTime",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The maximum of simultaneous calls that the agent will receive from the hunting",
+              "fullType": "long",
+              "name": "simultaneousLines",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3215,7 +3215,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3241,7 +3241,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3249,7 +3249,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3257,7 +3257,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -3277,7 +3277,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3285,7 +3285,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3293,7 +3293,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -3313,14 +3313,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabxHuntingAgent",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabxHuntingAgent",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3328,7 +3328,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3336,7 +3336,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -3361,16 +3361,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Agent ID",
-              "fullType": "long",
-              "name": "agentId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3378,9 +3370,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "agentId",
               "paramType": "path",
               "required": true
             }
@@ -3398,7 +3398,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3406,7 +3406,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3414,7 +3414,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -3433,16 +3433,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Agent ID",
-              "fullType": "long",
-              "name": "agentId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3450,9 +3442,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "agentId",
               "paramType": "path",
               "required": true
             }
@@ -3476,7 +3476,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3484,7 +3484,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3492,7 +3492,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -3517,24 +3517,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Agent ID",
-              "fullType": "long",
-              "name": "agentId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3542,9 +3526,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "agentId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -3576,7 +3576,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3584,7 +3584,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3592,7 +3592,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -3600,7 +3600,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3626,7 +3626,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3634,7 +3634,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3642,7 +3642,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -3650,7 +3650,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3676,7 +3676,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3684,7 +3684,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3692,7 +3692,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -3700,7 +3700,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3734,7 +3734,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3742,7 +3742,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3750,7 +3750,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -3758,7 +3758,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3791,24 +3791,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Agent ID",
-              "fullType": "long",
-              "name": "agentId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3816,9 +3800,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "agentId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -3858,7 +3858,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3866,7 +3866,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3874,7 +3874,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -3882,7 +3882,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3908,7 +3908,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3916,7 +3916,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3924,7 +3924,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -3944,7 +3944,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3952,7 +3952,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3960,7 +3960,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -3988,7 +3988,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -3996,7 +3996,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4004,7 +4004,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -4030,7 +4030,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4038,7 +4038,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4046,7 +4046,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -4072,7 +4072,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4080,7 +4080,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4088,7 +4088,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -4108,14 +4108,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "The queue where you want to add the agent",
-              "fullType": "long",
-              "name": "queueId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
               "description": "The position of the agent in the queue",
               "fullType": "long",
               "name": "position",
@@ -4123,8 +4115,16 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "long",
+              "description": "The queue where you want to add the agent",
+              "fullType": "long",
+              "name": "queueId",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4132,7 +4132,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4140,7 +4140,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -4166,7 +4166,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4174,7 +4174,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4182,7 +4182,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -4190,7 +4190,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -4210,7 +4210,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4218,7 +4218,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4226,7 +4226,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -4234,7 +4234,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -4254,14 +4254,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabxHuntingAgentQueue",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabxHuntingAgentQueue",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4269,7 +4269,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4277,7 +4277,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -4285,7 +4285,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -4311,7 +4311,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4319,7 +4319,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4327,7 +4327,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -4335,7 +4335,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -4361,7 +4361,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4369,7 +4369,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4389,11 +4389,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The color (in hexadecimal) of the status that will be displayed on agent banner web application",
+              "description": "The name of the status (Pause, Mission, etc...)",
               "fullType": "string",
-              "name": "color",
+              "name": "name",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
@@ -4405,15 +4405,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The name of the status (Pause, Mission, etc...)",
+              "description": "The color (in hexadecimal) of the status that will be displayed on agent banner web application",
               "fullType": "string",
-              "name": "name",
+              "name": "color",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4421,7 +4421,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4447,7 +4447,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4455,7 +4455,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4463,7 +4463,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -4483,7 +4483,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4491,7 +4491,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4499,7 +4499,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -4525,7 +4525,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4533,7 +4533,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4553,7 +4553,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4561,7 +4561,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4589,7 +4589,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4597,7 +4597,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4623,7 +4623,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4631,7 +4631,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4650,10 +4650,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "The id of the OvhPabxSound played to caller when on hold",
-              "fullType": "long",
-              "name": "soundOnHold",
+              "dataType": "boolean",
+              "description": "Allow the caller to disable call record by pressing a key",
+              "fullType": "boolean",
+              "name": "askForRecordDisabling",
               "paramType": "body",
               "required": false
             },
@@ -4662,6 +4662,46 @@ export const schema: Schema = {
               "description": "Language of the sound played to the caller to inform that he can disable record",
               "fullType": "telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum",
               "name": "recordDisablingLanguage",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The additionnal parameter of the overflow action",
+              "fullType": "string",
+              "name": "actionOnOverflowParam",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "telephony.OvhPabxQueueActionEnum",
+              "description": "Action executed when caller enters a full queue",
+              "fullType": "telephony.OvhPabxQueueActionEnum",
+              "name": "actionOnOverflow",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "The maximum of people waiting in the queue",
+              "fullType": "long",
+              "name": "maxMember",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "The maximum waiting time (in seconds) in the queue",
+              "fullType": "long",
+              "name": "maxWaitTime",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The additionnal parameter of the on closure action",
+              "fullType": "string",
+              "name": "actionOnClosureParam",
               "paramType": "body",
               "required": false
             },
@@ -4683,9 +4723,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "The maximum of people waiting in the queue",
+              "description": "The id of the OvhPabxSound played to caller when on hold",
               "fullType": "long",
-              "name": "maxMember",
+              "name": "soundOnHold",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Enable record on calls in queue",
+              "fullType": "boolean",
+              "name": "record",
               "paramType": "body",
               "required": false
             },
@@ -4707,55 +4755,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The additionnal parameter of the overflow action",
-              "fullType": "string",
-              "name": "actionOnOverflowParam",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "telephony.OvhPabxQueueActionEnum",
-              "description": "Action executed when caller enters a full queue",
-              "fullType": "telephony.OvhPabxQueueActionEnum",
-              "name": "actionOnOverflow",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Enable record on calls in queue",
-              "fullType": "boolean",
-              "name": "record",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "The maximum waiting time (in seconds) in the queue",
-              "fullType": "long",
-              "name": "maxWaitTime",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The additionnal parameter of the on closure action",
-              "fullType": "string",
-              "name": "actionOnClosureParam",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Allow the caller to disable call record by pressing a key",
-              "fullType": "boolean",
-              "name": "askForRecordDisabling",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4763,7 +4763,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4789,7 +4789,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4797,7 +4797,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4805,7 +4805,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -4825,7 +4825,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4833,7 +4833,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4841,7 +4841,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -4861,14 +4861,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabxHuntingQueue",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabxHuntingQueue",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4876,7 +4876,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4884,7 +4884,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -4910,7 +4910,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4918,7 +4918,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4926,7 +4926,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -4946,14 +4946,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "The queue where you want to add the agent",
-              "fullType": "long",
-              "name": "queueId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
               "description": "The position of the agent in the queue",
               "fullType": "long",
               "name": "position",
@@ -4961,8 +4953,16 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "long",
+              "description": "The queue where you want to add the agent",
+              "fullType": "long",
+              "name": "queueId",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -4970,17 +4970,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Queue ID",
-              "fullType": "long",
-              "name": "queueId",
               "paramType": "path",
               "required": true
             }
@@ -5003,16 +4995,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Agent ID",
-              "fullType": "long",
-              "name": "agentId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5020,7 +5004,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5028,9 +5012,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "agentId",
               "paramType": "path",
               "required": true
             }
@@ -5048,7 +5040,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5056,7 +5056,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -5064,17 +5064,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
               "paramType": "path",
               "required": true
             }
@@ -5092,14 +5084,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabxHuntingAgentQueue",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabxHuntingAgentQueue",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5107,7 +5099,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5115,7 +5107,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -5123,7 +5115,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -5149,7 +5141,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5157,7 +5149,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5165,7 +5157,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -5173,7 +5165,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -5199,7 +5191,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5207,7 +5199,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5215,7 +5207,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -5240,24 +5232,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Queue ID",
-              "fullType": "long",
-              "name": "queueId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5265,9 +5241,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "queueId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -5298,16 +5290,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5315,7 +5299,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5323,9 +5307,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -5349,7 +5341,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5357,7 +5349,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5365,7 +5357,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -5373,7 +5365,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -5399,7 +5391,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5407,7 +5399,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5415,7 +5407,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -5423,7 +5415,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -5456,16 +5448,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5473,7 +5457,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5481,9 +5465,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -5515,7 +5507,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5523,7 +5523,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -5531,17 +5531,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
               "paramType": "path",
               "required": true
             }
@@ -5580,16 +5572,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5597,7 +5581,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5605,9 +5589,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -5631,7 +5623,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5639,7 +5631,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5647,7 +5639,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -5673,7 +5665,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5681,7 +5673,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5707,7 +5699,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5715,17 +5715,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "",
               "fullType": "long",
               "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
               "paramType": "path",
               "required": true
             }
@@ -5742,16 +5734,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5759,9 +5743,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -5785,7 +5777,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5793,7 +5785,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5813,14 +5805,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.EasyHuntingScreenListsConditionsSettings",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.EasyHuntingScreenListsConditionsSettings",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5828,7 +5820,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5853,28 +5845,28 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum",
               "description": "Filter the value of screenListType property (=)",
               "fullType": "telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum",
               "name": "screenListType",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -5889,20 +5881,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Add a screenlist based on the destination number",
-              "fullType": "string",
-              "name": "destinationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum",
               "description": "Type of screenlist",
               "fullType": "telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum",
               "name": "screenListType",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Add a screenlist based on the destination number",
+              "fullType": "string",
+              "name": "destinationNumber",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -5914,7 +5906,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5922,7 +5914,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5948,7 +5940,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5956,7 +5948,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5964,7 +5956,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Condition ID",
+              "description": "",
               "fullType": "long",
               "name": "conditionId",
               "paramType": "path",
@@ -5984,7 +5976,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -5992,7 +5984,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6000,7 +5992,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Condition ID",
+              "description": "",
               "fullType": "long",
               "name": "conditionId",
               "paramType": "path",
@@ -6020,14 +6012,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.EasyHuntingScreenListsConditions",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.EasyHuntingScreenListsConditions",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6035,7 +6027,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6043,7 +6035,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Condition ID",
+              "description": "",
               "fullType": "long",
               "name": "conditionId",
               "paramType": "path",
@@ -6069,7 +6061,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6077,7 +6069,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6103,7 +6095,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6111,7 +6103,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6119,7 +6111,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Sound ID",
+              "description": "",
               "fullType": "long",
               "name": "soundId",
               "paramType": "path",
@@ -6139,7 +6131,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6147,7 +6139,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6155,7 +6147,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Sound ID",
+              "description": "",
               "fullType": "long",
               "name": "soundId",
               "paramType": "path",
@@ -6181,9 +6173,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "",
+              "description": "URL of the file you want to import (instead of /me/document ID)",
               "fullType": "string",
-              "name": "name",
+              "name": "url",
               "paramType": "body",
               "required": false
             },
@@ -6197,25 +6189,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "URL of the file you want to import (instead of /me/document ID)",
+              "description": "",
               "fullType": "string",
-              "name": "url",
+              "name": "name",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -6239,7 +6231,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6247,7 +6239,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6267,14 +6259,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.EasyHuntingTimeConditionsSettings",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.EasyHuntingTimeConditionsSettings",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6282,7 +6274,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6307,8 +6299,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "telephony.TimeConditionsPolicyEnum",
+              "description": "Filter the value of policy property (=)",
+              "fullType": "telephony.TimeConditionsPolicyEnum",
+              "name": "policy",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6316,19 +6316,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
-            },
-            {
-              "dataType": "telephony.TimeConditionsPolicyEnum",
-              "description": "Filter the value of policy property (=)",
-              "fullType": "telephony.TimeConditionsPolicyEnum",
-              "name": "policy",
-              "paramType": "query",
-              "required": false
             }
           ],
           "responseType": "long[]"
@@ -6351,10 +6343,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "time",
-              "description": "The time of the day when the extension will start to be executed",
-              "fullType": "time",
-              "name": "timeFrom",
+              "dataType": "telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum",
+              "description": "The day of the week when the extension will be executed",
+              "fullType": "telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum",
+              "name": "weekDay",
               "paramType": "body",
               "required": true
             },
@@ -6367,16 +6359,16 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum",
-              "description": "The day of the week when the extension will be executed",
-              "fullType": "telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum",
-              "name": "weekDay",
+              "dataType": "time",
+              "description": "The time of the day when the extension will start to be executed",
+              "fullType": "time",
+              "name": "timeFrom",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6384,7 +6376,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6409,16 +6401,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Condition ID",
-              "fullType": "long",
-              "name": "conditionId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6426,9 +6410,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "conditionId",
               "paramType": "path",
               "required": true
             }
@@ -6446,7 +6438,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6454,7 +6446,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6462,7 +6454,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Condition ID",
+              "description": "",
               "fullType": "long",
               "name": "conditionId",
               "paramType": "path",
@@ -6482,14 +6474,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.EasyHuntingTimeConditions",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.EasyHuntingTimeConditions",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6497,7 +6489,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6505,7 +6497,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Condition ID",
+              "description": "",
               "fullType": "long",
               "name": "conditionId",
               "paramType": "path",
@@ -6531,7 +6523,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6557,7 +6549,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6565,7 +6557,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6585,14 +6577,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.EasyPabx",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.EasyPabx",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6600,7 +6592,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6626,7 +6618,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6634,7 +6626,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6654,14 +6646,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.EasyPabxHunting",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.EasyPabxHunting",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6669,7 +6661,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6695,7 +6687,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6703,7 +6695,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6722,22 +6714,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "phoneNumber",
-              "description": "The phone number of the agent",
-              "fullType": "phoneNumber",
-              "name": "agentNumber",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The position in the hunting",
-              "fullType": "long",
-              "name": "position",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "The maxium ringing time",
               "fullType": "long",
@@ -6754,8 +6730,24 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "phoneNumber",
+              "description": "The phone number of the agent",
+              "fullType": "phoneNumber",
+              "name": "agentNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The position in the hunting",
+              "fullType": "long",
+              "name": "position",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6763,7 +6755,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6789,7 +6781,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6797,7 +6789,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6805,7 +6797,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "phoneNumber",
-              "description": "Agent number",
+              "description": "The phone number of the agent",
               "fullType": "phoneNumber",
               "name": "agentNumber",
               "paramType": "path",
@@ -6824,16 +6816,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "phoneNumber",
-              "description": "Agent number",
-              "fullType": "phoneNumber",
-              "name": "agentNumber",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6841,9 +6825,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "The phone number of the agent",
+              "fullType": "phoneNumber",
+              "name": "agentNumber",
               "paramType": "path",
               "required": true
             }
@@ -6861,14 +6853,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.EasyMiniPabxHuntingAgent",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.EasyMiniPabxHuntingAgent",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6876,7 +6868,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6884,7 +6876,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "phoneNumber",
-              "description": "Agent number",
+              "description": "The phone number of the agent",
               "fullType": "phoneNumber",
               "name": "agentNumber",
               "paramType": "path",
@@ -6910,7 +6902,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6918,7 +6910,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6938,14 +6930,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.Tones",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.Tones",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -6953,7 +6945,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7003,7 +6995,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7011,7 +7003,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7037,7 +7029,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7057,7 +7049,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7085,7 +7077,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7111,7 +7103,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7137,17 +7129,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -7165,14 +7157,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.Fax",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.Fax",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7180,7 +7172,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7206,7 +7198,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7214,7 +7206,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7233,18 +7225,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "telephony.FaxQualityEnum",
-              "description": "The quality of the fax you want to send",
-              "fullType": "telephony.FaxQualityEnum",
-              "name": "faxQuality",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "phoneNumber[]",
-              "description": "If recipientsType is set to list, the list of recipients phone numbers",
-              "fullType": "phoneNumber[]",
-              "name": "recipientsList",
+              "dataType": "datetime",
+              "description": "Sending date of the campaign (when sendType is scheduled)",
+              "fullType": "datetime",
+              "name": "sendDate",
               "paramType": "body",
               "required": false
             },
@@ -7257,18 +7241,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "telephony.FaxCampaignRecipientsTypeEnum",
-              "description": "Method to set the campaign recipient",
-              "fullType": "telephony.FaxCampaignRecipientsTypeEnum",
-              "name": "recipientsType",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "datetime",
-              "description": "Sending date of the campaign (when sendType is scheduled)",
-              "fullType": "datetime",
-              "name": "sendDate",
+              "dataType": "telephony.FaxQualityEnum",
+              "description": "The quality of the fax you want to send",
+              "fullType": "telephony.FaxQualityEnum",
+              "name": "faxQuality",
               "paramType": "body",
               "required": false
             },
@@ -7289,6 +7265,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "telephony.FaxCampaignRecipientsTypeEnum",
+              "description": "Method to set the campaign recipient",
+              "fullType": "telephony.FaxCampaignRecipientsTypeEnum",
+              "name": "recipientsType",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "telephony.FaxCampaignSendTypeEnum",
               "description": "Sending type of the campaign",
               "fullType": "telephony.FaxCampaignSendTypeEnum",
@@ -7297,8 +7281,16 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "phoneNumber[]",
+              "description": "If recipientsType is set to list, the list of recipients phone numbers",
+              "fullType": "phoneNumber[]",
+              "name": "recipientsList",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7306,7 +7298,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7332,7 +7324,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7340,7 +7332,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7348,7 +7340,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -7368,7 +7360,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7376,7 +7368,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7384,7 +7376,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -7410,7 +7402,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7418,7 +7410,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7426,7 +7418,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -7452,7 +7444,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7460,7 +7452,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7468,7 +7460,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -7494,7 +7486,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7502,7 +7494,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7510,7 +7502,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -7536,7 +7528,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7544,7 +7536,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7564,7 +7556,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7572,7 +7564,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7591,6 +7583,30 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string[]",
+              "description": "List of numbers not allowed to send a fax",
+              "fullType": "string[]",
+              "name": "blacklistedNumbers",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string[]",
+              "description": "List of logins (TSI or ID) allowed to send a fax",
+              "fullType": "string[]",
+              "name": "whitelistedTSI",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string[]",
+              "description": "List of logins (TSI or ID) not allowed to send a fax",
+              "fullType": "string[]",
+              "name": "blacklistedTSI",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "telephony.FaxScreenListTypeEnum",
               "description": "Which list is active (blackist, whitelist or none)",
               "fullType": "telephony.FaxScreenListTypeEnum",
@@ -7607,42 +7623,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string[]",
-              "description": "List of logins (TSI or ID) allowed to send a fax",
-              "fullType": "string[]",
-              "name": "whitelistedTSI",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string[]",
-              "description": "List of numbers not allowed to send a fax",
-              "fullType": "string[]",
-              "name": "blacklistedNumbers",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string[]",
-              "description": "List of logins (TSI or ID) not allowed to send a fax",
-              "fullType": "string[]",
-              "name": "blacklistedTSI",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -7660,14 +7652,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.FaxScreen",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.FaxScreen",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7675,7 +7667,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7701,6 +7693,22 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "boolean",
+              "description": "List of white login (TSI or ID)",
+              "fullType": "boolean",
+              "name": "whitelistedTSI",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "List of black login (TSI or ID)",
+              "fullType": "boolean",
+              "name": "blacklistedTSI",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
               "description": "List of white numbers",
               "fullType": "boolean",
               "name": "whitelistedNumbers",
@@ -7716,24 +7724,8 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "boolean",
-              "description": "List of black login (TSI or ID)",
-              "fullType": "boolean",
-              "name": "blacklistedTSI",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "List of white login (TSI or ID)",
-              "fullType": "boolean",
-              "name": "whitelistedTSI",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7741,7 +7733,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7767,17 +7759,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -7795,14 +7787,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.FaxProperties",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.FaxProperties",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7810,7 +7802,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7844,7 +7836,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7852,7 +7844,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7877,6 +7869,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Url of the pdf document you want to send",
+              "fullType": "string",
+              "name": "pdfUrl",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "phoneNumber[]",
               "description": "List of recipients of your fax",
               "fullType": "phoneNumber[]",
@@ -7894,15 +7894,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Url of the pdf document you want to send",
-              "fullType": "string",
-              "name": "pdfUrl",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7910,7 +7902,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7936,7 +7928,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -7961,18 +7953,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "date",
-              "description": "Date",
-              "fullType": "date",
-              "name": "date",
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
+              "dataType": "date",
+              "description": "",
+              "fullType": "date",
+              "name": "date",
               "paramType": "path",
               "required": true
             }
@@ -7995,27 +7987,27 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "date",
-              "description": "Date",
-              "fullType": "date",
-              "name": "date",
-              "paramType": "path",
+              "dataType": "telephony.BillDocument",
+              "description": "Document suffix",
+              "fullType": "telephony.BillDocument",
+              "name": "extension",
+              "paramType": "query",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "telephony.BillDocument",
-              "description": "Document suffix",
-              "fullType": "telephony.BillDocument",
-              "name": "extension",
-              "paramType": "query",
+              "dataType": "date",
+              "description": "",
+              "fullType": "date",
+              "name": "date",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -8038,7 +8030,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8066,7 +8058,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8092,7 +8084,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8100,7 +8092,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "date",
-              "description": "Date",
+              "description": "date of the bill",
               "fullType": "date",
               "name": "date",
               "paramType": "path",
@@ -8126,7 +8118,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8134,7 +8126,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "date",
-              "description": "Date",
+              "description": "date of the bill",
               "fullType": "date",
               "name": "date",
               "paramType": "path",
@@ -8160,7 +8152,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8185,18 +8177,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "date",
-              "description": "Date",
-              "fullType": "date",
-              "name": "date",
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
+              "dataType": "date",
+              "description": "date of the bill",
+              "fullType": "date",
+              "name": "date",
               "paramType": "path",
               "required": true
             }
@@ -8220,7 +8212,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8228,7 +8220,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "date",
-              "description": "Date",
+              "description": "date of the bill",
               "fullType": "date",
               "name": "date",
               "paramType": "path",
@@ -8254,7 +8246,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8280,7 +8272,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8288,7 +8280,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8308,24 +8300,24 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.Line",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.Line",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -8349,7 +8341,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8357,7 +8349,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8376,18 +8368,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "phoneNumber",
               "description": "The destination of the abbreviated number",
               "fullType": "phoneNumber",
               "name": "destinationNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "name",
               "paramType": "body",
               "required": true
             },
@@ -8409,7 +8401,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8417,7 +8409,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8443,7 +8435,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8451,7 +8443,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8459,7 +8451,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Abbreviated number",
+              "description": "The abbreviated number which must start with \"2\" and must have a length of 3 or 4 digits",
               "fullType": "long",
               "name": "abbreviatedNumber",
               "paramType": "path",
@@ -8479,7 +8471,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8487,7 +8479,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8495,7 +8487,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Abbreviated number",
+              "description": "The abbreviated number which must start with \"2\" and must have a length of 3 or 4 digits",
               "fullType": "long",
               "name": "abbreviatedNumber",
               "paramType": "path",
@@ -8515,14 +8507,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.AbbreviatedNumber",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.AbbreviatedNumber",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8530,7 +8522,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8538,7 +8530,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Abbreviated number",
+              "description": "The abbreviated number which must start with \"2\" and must have a length of 3 or 4 digits",
               "fullType": "long",
               "name": "abbreviatedNumber",
               "paramType": "path",
@@ -8564,7 +8556,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8572,7 +8564,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8592,7 +8584,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8600,7 +8592,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8626,7 +8618,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8634,7 +8626,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8653,14 +8645,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Number or short number restricted",
-              "fullType": "string",
-              "name": "restricted",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "telephony.AntihackActionEnum",
               "description": "Type of action",
               "fullType": "telephony.AntihackActionEnum",
@@ -8670,7 +8654,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "Number or short number restricted",
+              "fullType": "string",
+              "name": "restricted",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8678,7 +8670,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8703,6 +8695,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "The slot or line position on the device (from 1 to N. N is the maximum number of lines/slots available on the device)",
+              "fullType": "long",
+              "name": "slot",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
               "description": "The mac address of the device you want to associate to the line (format: AABBCCDDEEFF)",
               "fullType": "string",
@@ -8719,16 +8719,8 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "long",
-              "description": "The slot or line position on the device (from 1 to N. N is the maximum number of lines/slots available on the device)",
-              "fullType": "long",
-              "name": "slot",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8736,7 +8728,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8762,7 +8754,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8770,7 +8762,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8790,9 +8782,33 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of the audioFile (if needed) with extention. This audio file must have been upload previously",
+              "description": "Text to read if TTS on dialplan selected",
               "fullType": "string",
-              "name": "playbackAudioFileDialplan",
+              "name": "ttsTextDialplan",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "Number to call if transfer in dialplan selected",
+              "fullType": "phoneNumber",
+              "name": "bridgeNumberDialplan",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "telephony.CallsGeneratorDialplanEnum",
+              "description": "Dialplan used for the call",
+              "fullType": "telephony.CallsGeneratorDialplanEnum",
+              "name": "dialplan",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Timeout (in seconds). Default is 20 seconds",
+              "fullType": "long",
+              "name": "timeout",
               "paramType": "body",
               "required": false
             },
@@ -8814,22 +8830,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "phoneNumber",
-              "description": "Number to call if transfer in dialplan selected",
-              "fullType": "phoneNumber",
-              "name": "bridgeNumberDialplan",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "telephony.CallsGeneratorDialplanEnum",
-              "description": "Dialplan used for the call",
-              "fullType": "telephony.CallsGeneratorDialplanEnum",
-              "name": "dialplan",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "phoneNumber",
               "description": "Optional, number where the call come from",
               "fullType": "phoneNumber",
               "name": "callingNumber",
@@ -8838,23 +8838,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Text to read if TTS on dialplan selected",
+              "description": "Name of the audioFile (if needed) with extention. This audio file must have been upload previously",
               "fullType": "string",
-              "name": "ttsTextDialplan",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Timeout (in seconds). Default is 20 seconds",
-              "fullType": "long",
-              "name": "timeout",
+              "name": "playbackAudioFileDialplan",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8862,7 +8854,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8888,7 +8880,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8896,7 +8888,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8904,7 +8896,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier",
+              "description": "Generated call identifier",
               "fullType": "string",
               "name": "identifier",
               "paramType": "path",
@@ -8930,7 +8922,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8938,7 +8930,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -8972,7 +8964,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -8980,7 +8972,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9006,7 +8998,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9014,7 +9006,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9040,7 +9032,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9048,17 +9048,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
               "paramType": "path",
               "required": true
             }
@@ -9090,7 +9082,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9098,7 +9090,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9106,7 +9098,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -9132,7 +9124,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9140,7 +9132,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9148,7 +9140,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -9174,7 +9166,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9182,7 +9174,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9190,7 +9182,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -9224,7 +9216,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9232,17 +9232,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
               "paramType": "path",
               "required": true
             }
@@ -9273,16 +9265,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9290,9 +9274,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -9332,7 +9324,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9340,7 +9332,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9348,7 +9340,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -9377,7 +9369,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9385,7 +9377,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9411,7 +9403,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9419,7 +9411,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9453,7 +9445,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9461,7 +9453,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9494,14 +9486,6 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "calledNumber",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Activate the calling number in intercom mode automatically (pick up and speaker automatic activation).",
               "fullType": "boolean",
@@ -9511,7 +9495,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
+              "fullType": "string",
+              "name": "calledNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9519,7 +9511,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9545,7 +9537,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9553,7 +9545,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9572,14 +9564,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Name of the contact",
-              "fullType": "string",
-              "name": "login",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "password",
               "description": "The user password",
               "fullType": "password",
@@ -9589,7 +9573,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "Name of the contact",
+              "fullType": "string",
+              "name": "login",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9597,7 +9589,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9623,7 +9615,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9631,7 +9623,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9639,7 +9631,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -9658,16 +9650,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9675,9 +9659,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -9709,7 +9701,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9717,7 +9709,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9725,7 +9717,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -9767,7 +9759,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9775,7 +9767,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9783,7 +9775,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -9809,17 +9801,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -9842,6 +9834,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The mac address of the device you want to dissociate from the line (format: AABBCCDDEEFF)",
+              "fullType": "string",
+              "name": "macAddress",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "ipv4",
               "description": "The public phone IP address allowed to get phone's configuration",
               "fullType": "ipv4",
@@ -9851,15 +9851,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The mac address of the device you want to dissociate from the line (format: AABBCCDDEEFF)",
-              "fullType": "string",
-              "name": "macAddress",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9867,7 +9859,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9893,7 +9885,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9901,7 +9893,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9927,7 +9919,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9935,7 +9927,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9961,7 +9953,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -9969,7 +9961,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -9995,7 +9987,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10003,7 +9995,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10029,7 +10021,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10037,7 +10029,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10063,7 +10055,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10071,7 +10063,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10091,24 +10083,24 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.LineOptions",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.LineOptions",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -10132,7 +10124,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10140,7 +10132,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10166,7 +10158,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10174,7 +10166,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10200,7 +10192,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10208,7 +10200,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10228,14 +10220,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.Phone",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.Phone",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10243,7 +10235,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10269,7 +10261,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10277,7 +10269,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10319,7 +10311,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10327,7 +10319,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10353,17 +10345,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -10387,7 +10379,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10395,7 +10387,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10403,7 +10395,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Key num",
+              "description": "The number of the function key",
               "fullType": "long",
               "name": "keyNum",
               "paramType": "path",
@@ -10423,14 +10415,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.FunctionKey",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.FunctionKey",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10438,7 +10430,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10446,7 +10438,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Key num",
+              "description": "The number of the function key",
               "fullType": "long",
               "name": "keyNum",
               "paramType": "path",
@@ -10472,7 +10464,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10480,7 +10472,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10488,7 +10480,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Key num",
+              "description": "The number of the function key",
               "fullType": "long",
               "name": "keyNum",
               "paramType": "path",
@@ -10514,17 +10506,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -10548,7 +10540,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10556,7 +10548,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10584,7 +10576,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10592,7 +10584,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10618,7 +10610,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10626,7 +10618,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10634,7 +10626,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
@@ -10654,7 +10646,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10662,7 +10654,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10670,7 +10662,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
@@ -10690,22 +10682,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.Phonebook",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.Phonebook",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Book key",
-              "fullType": "string",
-              "name": "bookKey",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10713,9 +10697,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the phonebook",
+              "fullType": "string",
+              "name": "bookKey",
               "paramType": "path",
               "required": true
             }
@@ -10738,8 +10730,24 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "telephony.ContactsExportFormatsEnum",
+              "description": "Format of the file",
+              "fullType": "telephony.ContactsExportFormatsEnum",
+              "name": "format",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10747,26 +10755,10 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "telephony.ContactsExportFormatsEnum",
-              "description": "Format of the file",
-              "fullType": "telephony.ContactsExportFormatsEnum",
-              "name": "format",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -10797,7 +10789,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10805,7 +10797,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10813,7 +10805,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
@@ -10839,7 +10831,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10847,7 +10839,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10855,7 +10847,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
@@ -10874,28 +10866,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Name of the contact",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "phoneNumber",
               "description": "Home landline phone number of the contact",
               "fullType": "phoneNumber",
               "name": "homePhone",
               "paramType": "body",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Group name of the phonebook",
-              "fullType": "string",
-              "name": "group",
-              "paramType": "body",
-              "required": true
             },
             {
               "dataType": "string",
@@ -10931,7 +10907,23 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "Group name of the phonebook",
+              "fullType": "string",
+              "name": "group",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name of the contact",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10939,7 +10931,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10947,7 +10939,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
@@ -10973,7 +10965,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -10981,7 +10973,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -10989,7 +10981,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
@@ -10997,7 +10989,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Contact identifier",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -11017,7 +11009,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11025,7 +11025,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
@@ -11033,17 +11033,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Contact identifier",
               "fullType": "long",
               "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
               "paramType": "path",
               "required": true
             }
@@ -11061,14 +11053,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.PhonebookContact",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.PhonebookContact",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11076,7 +11068,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11084,7 +11076,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
@@ -11092,7 +11084,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Contact identifier",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -11118,17 +11110,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -11152,7 +11144,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11160,7 +11152,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11194,17 +11186,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -11228,7 +11220,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11236,7 +11228,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11254,14 +11246,6 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "long",
-              "description": "Shipping contact information id from /me entry point",
-              "fullType": "long",
-              "name": "shippingContactId",
-              "paramType": "body",
-              "required": false
-            },
             {
               "dataType": "telephony.RmaPublicTypeEnum",
               "description": "Typology process of merchandise return",
@@ -11287,8 +11271,16 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "long",
+              "description": "Shipping contact information id from /me entry point",
+              "fullType": "long",
+              "name": "shippingContactId",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11296,7 +11288,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11322,7 +11314,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11330,7 +11322,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11338,7 +11330,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Id",
+              "description": "Return merchandise authorisation identifier",
               "fullType": "string",
               "name": "id",
               "paramType": "path",
@@ -11358,7 +11350,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11366,7 +11358,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11374,7 +11366,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Id",
+              "description": "Return merchandise authorisation identifier",
               "fullType": "string",
               "name": "id",
               "paramType": "path",
@@ -11394,14 +11386,22 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.Rma",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.Rma",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11409,17 +11409,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Id",
+              "description": "Return merchandise authorisation identifier",
               "fullType": "string",
               "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
               "paramType": "path",
               "required": true
             }
@@ -11443,7 +11435,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11451,7 +11443,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11480,7 +11472,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11488,7 +11480,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11514,7 +11506,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11522,7 +11514,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11548,7 +11540,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11556,7 +11548,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11564,7 +11556,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -11584,7 +11576,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11592,7 +11584,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11600,7 +11592,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -11634,17 +11626,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -11668,7 +11660,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11676,7 +11668,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11701,22 +11693,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "telephony.LineStatisticsTypeEnum",
               "description": "",
               "fullType": "telephony.LineStatisticsTypeEnum",
@@ -11730,6 +11706,22 @@ export const schema: Schema = {
               "fullType": "telephony.StatisticsTimeframeEnum",
               "name": "timeframe",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -11752,7 +11744,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11760,7 +11752,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11780,14 +11772,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.Tones",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.Tones",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11795,7 +11787,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11845,7 +11837,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11853,7 +11845,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11879,7 +11871,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11887,7 +11879,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11923,7 +11915,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11931,7 +11923,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11957,7 +11949,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -11965,7 +11957,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -11973,7 +11965,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -11993,7 +11985,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12001,7 +11993,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12009,7 +12001,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -12035,7 +12027,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12043,7 +12035,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12069,7 +12061,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12095,7 +12087,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12103,7 +12095,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12123,14 +12115,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.MiniPabx",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.MiniPabx",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12138,7 +12130,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12164,17 +12156,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -12192,14 +12184,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.MiniPabxHunting",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.MiniPabxHunting",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12207,7 +12199,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12233,7 +12225,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12241,7 +12233,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12260,22 +12252,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "phoneNumber",
-              "description": "The phone number of the agent",
-              "fullType": "phoneNumber",
-              "name": "agentNumber",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The position in the hunting",
-              "fullType": "long",
-              "name": "position",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "The maxium ringing time",
               "fullType": "long",
@@ -12292,8 +12268,24 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "phoneNumber",
+              "description": "The phone number of the agent",
+              "fullType": "phoneNumber",
+              "name": "agentNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The position in the hunting",
+              "fullType": "long",
+              "name": "position",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12301,7 +12293,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12327,7 +12319,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12335,7 +12327,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12343,7 +12335,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "phoneNumber",
-              "description": "Agent number",
+              "description": "The phone number of the agent",
               "fullType": "phoneNumber",
               "name": "agentNumber",
               "paramType": "path",
@@ -12363,7 +12355,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12371,7 +12363,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12379,7 +12371,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "phoneNumber",
-              "description": "Agent number",
+              "description": "The phone number of the agent",
               "fullType": "phoneNumber",
               "name": "agentNumber",
               "paramType": "path",
@@ -12399,14 +12391,22 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.EasyMiniPabxHuntingAgent",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.EasyMiniPabxHuntingAgent",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12414,17 +12414,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "phoneNumber",
-              "description": "Agent number",
+              "description": "The phone number of the agent",
               "fullType": "phoneNumber",
               "name": "agentNumber",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
               "paramType": "path",
               "required": true
             }
@@ -12448,7 +12440,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12456,7 +12448,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12476,24 +12468,24 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.Tones",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.Tones",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -12541,7 +12533,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12549,7 +12541,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12575,7 +12567,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12601,7 +12593,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12609,7 +12601,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12629,14 +12621,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.Number",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.Number",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12644,7 +12636,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12670,7 +12662,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12678,7 +12670,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12712,7 +12704,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12720,7 +12712,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12754,7 +12746,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12762,7 +12754,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12788,7 +12780,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12796,7 +12788,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -12821,12 +12813,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
+              "dataType": "telephony.TaskStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "telephony.TaskStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "telephony.OfferTaskActionEnum",
@@ -12845,12 +12837,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "telephony.TaskStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "telephony.TaskStatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -12871,18 +12863,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Task ID",
-              "fullType": "long",
-              "name": "taskId",
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "taskId",
               "paramType": "path",
               "required": true
             }
@@ -12900,14 +12892,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OfferTask",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OfferTask",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12915,7 +12907,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Task ID",
+              "description": "",
               "fullType": "long",
               "name": "taskId",
               "paramType": "path",
@@ -12941,7 +12933,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12967,7 +12959,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -12986,6 +12978,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "telephony.OutplanNotificationBlockEnum",
+              "description": "The blocking type of the associate lines",
+              "fullType": "telephony.OutplanNotificationBlockEnum",
+              "name": "block",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
               "description": "Override the nichandle email for this notification",
               "fullType": "string",
@@ -13002,16 +13002,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "telephony.OutplanNotificationBlockEnum",
-              "description": "The blocking type of the associate lines",
-              "fullType": "telephony.OutplanNotificationBlockEnum",
-              "name": "block",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13036,18 +13028,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -13065,7 +13057,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13073,7 +13065,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -13099,7 +13091,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13125,7 +13117,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13133,7 +13125,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13153,24 +13145,24 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabx",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabx",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -13194,7 +13186,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13202,7 +13194,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13229,10 +13221,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "telephony.OvhPabxDialplanNumberPresentationEnum",
-              "description": "The presented number when bridging calls",
-              "fullType": "telephony.OvhPabxDialplanNumberPresentationEnum",
-              "name": "showCallerNumber",
+              "dataType": "string",
+              "description": "The dialplan name",
+              "fullType": "string",
+              "name": "name",
               "paramType": "body",
               "required": true
             },
@@ -13245,16 +13237,16 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The dialplan name",
-              "fullType": "string",
-              "name": "name",
+              "dataType": "telephony.OvhPabxDialplanNumberPresentationEnum",
+              "description": "The presented number when bridging calls",
+              "fullType": "telephony.OvhPabxDialplanNumberPresentationEnum",
+              "name": "showCallerNumber",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13262,7 +13254,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13288,7 +13280,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13296,7 +13288,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13304,7 +13296,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
               "paramType": "path",
@@ -13324,7 +13316,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13332,7 +13324,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13340,7 +13332,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
               "paramType": "path",
@@ -13360,14 +13352,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabxDialplan",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabxDialplan",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13375,7 +13367,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13383,7 +13375,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
               "paramType": "path",
@@ -13409,7 +13401,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13417,7 +13409,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13425,7 +13417,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
               "paramType": "path",
@@ -13444,10 +13436,26 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "The position of the extension in the dialplan (the extensions are executed following this order)",
+              "fullType": "long",
+              "name": "position",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum",
               "description": "The type of the screenlist",
               "fullType": "telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum",
               "name": "screenListType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "telephony.SchedulerCategoryEnum",
+              "description": "Additionnal conditions will be used from this chosen scheduler category",
+              "fullType": "telephony.SchedulerCategoryEnum",
+              "name": "schedulerCategory",
               "paramType": "body",
               "required": false
             },
@@ -13460,24 +13468,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "The position of the extension in the dialplan (the extensions are executed following this order)",
-              "fullType": "long",
-              "name": "position",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "telephony.SchedulerCategoryEnum",
-              "description": "Additionnal conditions will be used from this chosen scheduler category",
-              "fullType": "telephony.SchedulerCategoryEnum",
-              "name": "schedulerCategory",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13485,7 +13477,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13493,7 +13485,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
               "paramType": "path",
@@ -13519,7 +13511,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13527,7 +13519,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13535,7 +13527,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
               "paramType": "path",
@@ -13543,7 +13535,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Extension ID",
+              "description": "",
               "fullType": "long",
               "name": "extensionId",
               "paramType": "path",
@@ -13563,7 +13555,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13571,7 +13563,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13579,7 +13571,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
               "paramType": "path",
@@ -13587,7 +13579,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Extension ID",
+              "description": "",
               "fullType": "long",
               "name": "extensionId",
               "paramType": "path",
@@ -13607,30 +13599,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabxDialplanExtension",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabxDialplanExtension",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Dialplan ID",
-              "fullType": "long",
-              "name": "dialplanId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Extension ID",
-              "fullType": "long",
-              "name": "extensionId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13638,9 +13614,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "dialplanId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "extensionId",
               "paramType": "path",
               "required": true
             }
@@ -13663,16 +13655,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Extension ID",
-              "fullType": "long",
-              "name": "extensionId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13680,7 +13664,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13688,9 +13672,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "extensionId",
               "paramType": "path",
               "required": true
             }
@@ -13706,14 +13698,6 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "string",
-              "description": "Add a screenlist based on the destination number",
-              "fullType": "string",
-              "name": "destinationNumber",
-              "paramType": "body",
-              "required": false
-            },
             {
               "dataType": "telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum",
               "description": "Type of screenlist",
@@ -13732,7 +13716,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "Add a screenlist based on the destination number",
+              "fullType": "string",
+              "name": "destinationNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13740,7 +13732,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13748,7 +13740,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
               "paramType": "path",
@@ -13756,7 +13748,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Extension ID",
+              "description": "",
               "fullType": "long",
               "name": "extensionId",
               "paramType": "path",
@@ -13781,16 +13773,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Condition ID",
-              "fullType": "long",
-              "name": "conditionId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13798,7 +13782,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13806,7 +13790,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
               "paramType": "path",
@@ -13814,9 +13798,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Extension ID",
+              "description": "",
               "fullType": "long",
               "name": "extensionId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "conditionId",
               "paramType": "path",
               "required": true
             }
@@ -13834,7 +13826,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13842,7 +13834,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13850,7 +13842,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
               "paramType": "path",
@@ -13858,7 +13850,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Extension ID",
+              "description": "",
               "fullType": "long",
               "name": "extensionId",
               "paramType": "path",
@@ -13866,7 +13858,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Condition ID",
+              "description": "",
               "fullType": "long",
               "name": "conditionId",
               "paramType": "path",
@@ -13892,7 +13884,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -13900,7 +13900,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
               "paramType": "path",
@@ -13908,17 +13908,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Extension ID",
+              "description": "",
               "fullType": "long",
               "name": "extensionId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
               "paramType": "path",
               "required": true
             }
@@ -13934,14 +13926,6 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "time",
-              "description": "The time of the day when the extension will start to be executed",
-              "fullType": "time",
-              "name": "timeFrom",
-              "paramType": "body",
-              "required": true
-            },
             {
               "dataType": "telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum",
               "description": "The day of the week when the extension will be executed",
@@ -13959,24 +13943,16 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Dialplan ID",
-              "fullType": "long",
-              "name": "dialplanId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Extension ID",
-              "fullType": "long",
-              "name": "extensionId",
-              "paramType": "path",
+              "dataType": "time",
+              "description": "The time of the day when the extension will start to be executed",
+              "fullType": "time",
+              "name": "timeFrom",
+              "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -13984,9 +13960,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "dialplanId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "extensionId",
               "paramType": "path",
               "required": true
             }
@@ -14010,7 +14002,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14018,7 +14010,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14026,7 +14018,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
               "paramType": "path",
@@ -14034,7 +14026,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Extension ID",
+              "description": "",
               "fullType": "long",
               "name": "extensionId",
               "paramType": "path",
@@ -14042,7 +14034,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Condition ID",
+              "description": "",
               "fullType": "long",
               "name": "conditionId",
               "paramType": "path",
@@ -14061,24 +14053,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Extension ID",
-              "fullType": "long",
-              "name": "extensionId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Condition ID",
-              "fullType": "long",
-              "name": "conditionId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14086,7 +14062,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14094,9 +14070,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "extensionId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "conditionId",
               "paramType": "path",
               "required": true
             }
@@ -14114,14 +14106,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabxDialplanExtensionConditionTime",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabxDialplanExtensionConditionTime",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14129,7 +14121,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14137,7 +14129,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
               "paramType": "path",
@@ -14145,7 +14137,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Extension ID",
+              "description": "",
               "fullType": "long",
               "name": "extensionId",
               "paramType": "path",
@@ -14153,7 +14145,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Condition ID",
+              "description": "",
               "fullType": "long",
               "name": "conditionId",
               "paramType": "path",
@@ -14179,7 +14171,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14187,7 +14187,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
               "paramType": "path",
@@ -14195,17 +14195,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Extension ID",
+              "description": "",
               "fullType": "long",
               "name": "extensionId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
               "paramType": "path",
               "required": true
             }
@@ -14222,12 +14214,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "The position of the rule in the extension (the rules are executed following this order)",
-              "fullType": "long",
-              "name": "position",
+              "dataType": "string",
+              "description": "The parameter of the chosen action",
+              "fullType": "string",
+              "name": "actionParam",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "telephony.OvhPabxDialplanExtensionRuleActionEnum",
@@ -14246,16 +14238,16 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The parameter of the chosen action",
-              "fullType": "string",
-              "name": "actionParam",
+              "dataType": "long",
+              "description": "The position of the rule in the extension (the rules are executed following this order)",
+              "fullType": "long",
+              "name": "position",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14263,7 +14255,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14271,7 +14263,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
               "paramType": "path",
@@ -14279,7 +14271,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Extension ID",
+              "description": "",
               "fullType": "long",
               "name": "extensionId",
               "paramType": "path",
@@ -14305,7 +14297,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14313,7 +14305,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14321,7 +14313,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
               "paramType": "path",
@@ -14329,7 +14321,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Extension ID",
+              "description": "",
               "fullType": "long",
               "name": "extensionId",
               "paramType": "path",
@@ -14337,7 +14329,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Rule ID",
+              "description": "",
               "fullType": "long",
               "name": "ruleId",
               "paramType": "path",
@@ -14357,7 +14349,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14365,7 +14357,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14373,7 +14365,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Dialplan ID",
+              "description": "",
               "fullType": "long",
               "name": "dialplanId",
               "paramType": "path",
@@ -14381,7 +14373,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Extension ID",
+              "description": "",
               "fullType": "long",
               "name": "extensionId",
               "paramType": "path",
@@ -14389,7 +14381,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Rule ID",
+              "description": "",
               "fullType": "long",
               "name": "ruleId",
               "paramType": "path",
@@ -14409,38 +14401,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabxDialplanExtensionRule",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabxDialplanExtensionRule",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Dialplan ID",
-              "fullType": "long",
-              "name": "dialplanId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Extension ID",
-              "fullType": "long",
-              "name": "extensionId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Rule ID",
-              "fullType": "long",
-              "name": "ruleId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14448,9 +14416,33 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "dialplanId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "extensionId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "ruleId",
               "paramType": "path",
               "required": true
             }
@@ -14474,7 +14466,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14482,7 +14474,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14502,14 +14494,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabxHunting",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabxHunting",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14517,7 +14509,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14543,7 +14535,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14551,7 +14543,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14571,25 +14563,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "The wrap up time (in seconds) after the calls",
+              "description": "The waiting timeout (in seconds) before hangup for an assigned called",
               "fullType": "long",
-              "name": "wrapUpTime",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "telephony.OvhPabxHuntingAgentStatusEnum",
-              "description": "The current status of the agent",
-              "fullType": "telephony.OvhPabxHuntingAgentStatusEnum",
-              "name": "status",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "The number of the agent",
-              "fullType": "phoneNumber",
-              "name": "number",
+              "name": "timeout",
               "paramType": "body",
               "required": true
             },
@@ -14602,10 +14578,26 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "phoneNumber",
+              "description": "The number of the agent",
+              "fullType": "phoneNumber",
+              "name": "number",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "telephony.OvhPabxHuntingAgentStatusEnum",
+              "description": "The current status of the agent",
+              "fullType": "telephony.OvhPabxHuntingAgentStatusEnum",
+              "name": "status",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "description": "The waiting timeout (in seconds) before hangup for an assigned called",
+              "description": "The wrap up time (in seconds) after the calls",
               "fullType": "long",
-              "name": "timeout",
+              "name": "wrapUpTime",
               "paramType": "body",
               "required": true
             },
@@ -14619,7 +14611,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14627,7 +14619,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14653,7 +14645,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14661,7 +14653,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14669,7 +14661,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -14689,7 +14681,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14697,7 +14689,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14705,7 +14697,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -14725,14 +14717,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabxHuntingAgent",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabxHuntingAgent",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14740,7 +14732,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14748,7 +14740,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -14774,7 +14766,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14782,7 +14774,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14790,7 +14782,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -14810,7 +14802,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14818,7 +14810,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14826,7 +14818,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -14846,7 +14838,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14854,7 +14846,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14862,7 +14854,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -14887,16 +14879,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Agent ID",
-              "fullType": "long",
-              "name": "agentId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14904,9 +14888,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "agentId",
               "paramType": "path",
               "required": true
             }
@@ -14930,7 +14922,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14938,7 +14930,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -14946,7 +14938,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -14954,7 +14946,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -14988,7 +14980,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -14996,7 +14988,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15004,7 +14996,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -15012,7 +15004,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -15038,7 +15030,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15046,7 +15038,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15054,7 +15046,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -15062,7 +15054,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -15088,7 +15080,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15096,7 +15088,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15104,7 +15096,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -15112,7 +15104,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -15146,7 +15138,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15154,7 +15146,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15162,7 +15154,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -15170,7 +15162,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -15204,7 +15196,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15212,7 +15204,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15220,7 +15212,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -15228,7 +15220,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -15269,24 +15261,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Agent ID",
-              "fullType": "long",
-              "name": "agentId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15294,9 +15270,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "agentId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -15320,7 +15312,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15328,7 +15320,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15336,7 +15328,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -15356,7 +15348,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15364,7 +15356,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15372,7 +15364,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -15400,7 +15392,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15408,7 +15400,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15416,7 +15408,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -15442,7 +15434,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15450,7 +15442,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15458,7 +15450,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -15484,7 +15476,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15492,7 +15484,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15500,7 +15492,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -15520,14 +15512,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "The queue where you want to add the agent",
-              "fullType": "long",
-              "name": "queueId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
               "description": "The position of the agent in the queue",
               "fullType": "long",
               "name": "position",
@@ -15535,8 +15519,16 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "long",
+              "description": "The queue where you want to add the agent",
+              "fullType": "long",
+              "name": "queueId",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15544,7 +15536,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15552,7 +15544,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -15578,7 +15570,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15586,7 +15578,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15594,7 +15586,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -15602,7 +15594,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -15622,7 +15614,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15630,7 +15622,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15638,7 +15630,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -15646,7 +15638,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -15666,14 +15658,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabxHuntingAgentQueue",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabxHuntingAgentQueue",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15681,7 +15673,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15689,7 +15681,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -15697,7 +15689,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -15723,7 +15715,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15731,7 +15723,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15739,7 +15731,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -15747,7 +15739,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -15773,7 +15765,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15781,7 +15773,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15809,14 +15801,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The color (in hexadecimal) of the status that will be displayed on agent banner web application",
-              "fullType": "string",
-              "name": "color",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "A short description of the status",
               "fullType": "string",
               "name": "description",
@@ -15825,17 +15809,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The color (in hexadecimal) of the status that will be displayed on agent banner web application",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "color",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -15858,16 +15850,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15875,9 +15859,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -15895,7 +15887,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15903,7 +15895,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -15911,7 +15903,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -15937,17 +15929,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -15965,7 +15957,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -15973,7 +15965,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16001,7 +15993,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -16009,7 +16001,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16035,17 +16027,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -16062,18 +16054,26 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "telephony.OvhPabxHuntingQueueStrategyEnum",
-              "description": "The calls dispatching strategy",
-              "fullType": "telephony.OvhPabxHuntingQueueStrategyEnum",
-              "name": "strategy",
+              "dataType": "boolean",
+              "description": "Allow the caller to disable call record by pressing a key",
+              "fullType": "boolean",
+              "name": "askForRecordDisabling",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
-              "dataType": "long",
-              "description": "The maximum of people waiting in the queue",
-              "fullType": "long",
-              "name": "maxMember",
+              "dataType": "telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum",
+              "description": "Language of the sound played to the caller to inform that he can disable record",
+              "fullType": "telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum",
+              "name": "recordDisablingLanguage",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The additionnal parameter of the overflow action",
+              "fullType": "string",
+              "name": "actionOnOverflowParam",
               "paramType": "body",
               "required": false
             },
@@ -16087,65 +16087,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "The id of the OvhPabxSound played to caller when on hold",
+              "description": "The maximum of people waiting in the queue",
               "fullType": "long",
-              "name": "soundOnHold",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Enable record on calls in queue",
-              "fullType": "boolean",
-              "name": "record",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "telephony.OvhPabxQueueActionEnum",
-              "description": "Action executed when there is no member in queue",
-              "fullType": "telephony.OvhPabxQueueActionEnum",
-              "name": "actionOnClosure",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum",
-              "description": "Language of the sound played to the caller to inform that he can disable record",
-              "fullType": "telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum",
-              "name": "recordDisablingLanguage",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Allow the caller to disable call record by pressing a key",
-              "fullType": "boolean",
-              "name": "askForRecordDisabling",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The name of the queue",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum",
-              "description": "Key to press to disable record",
-              "fullType": "telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum",
-              "name": "recordDisablingDigit",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The additionnal parameter of the overflow action",
-              "fullType": "string",
-              "name": "actionOnOverflowParam",
+              "name": "maxMember",
               "paramType": "body",
               "required": false
             },
@@ -16166,8 +16110,56 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "telephony.OvhPabxQueueActionEnum",
+              "description": "Action executed when there is no member in queue",
+              "fullType": "telephony.OvhPabxQueueActionEnum",
+              "name": "actionOnClosure",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of the queue",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "The id of the OvhPabxSound played to caller when on hold",
+              "fullType": "long",
+              "name": "soundOnHold",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Enable record on calls in queue",
+              "fullType": "boolean",
+              "name": "record",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "telephony.OvhPabxHuntingQueueStrategyEnum",
+              "description": "The calls dispatching strategy",
+              "fullType": "telephony.OvhPabxHuntingQueueStrategyEnum",
+              "name": "strategy",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum",
+              "description": "Key to press to disable record",
+              "fullType": "telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum",
+              "name": "recordDisablingDigit",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -16175,7 +16167,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16201,7 +16193,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -16209,7 +16201,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16217,7 +16209,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -16237,7 +16229,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -16245,7 +16237,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16253,7 +16245,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -16273,14 +16265,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabxHuntingQueue",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabxHuntingQueue",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -16288,7 +16280,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16296,7 +16288,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -16322,7 +16314,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -16330,7 +16322,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16338,7 +16330,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -16358,14 +16350,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "The queue where you want to add the agent",
-              "fullType": "long",
-              "name": "queueId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
               "description": "The position of the agent in the queue",
               "fullType": "long",
               "name": "position",
@@ -16373,8 +16357,16 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "long",
+              "description": "The queue where you want to add the agent",
+              "fullType": "long",
+              "name": "queueId",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -16382,17 +16374,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Queue ID",
-              "fullType": "long",
-              "name": "queueId",
               "paramType": "path",
               "required": true
             }
@@ -16415,24 +16399,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Queue ID",
-              "fullType": "long",
-              "name": "queueId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Agent ID",
-              "fullType": "long",
-              "name": "agentId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -16440,9 +16408,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "queueId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "agentId",
               "paramType": "path",
               "required": true
             }
@@ -16459,16 +16443,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Agent ID",
-              "fullType": "long",
-              "name": "agentId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -16476,7 +16452,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16484,9 +16460,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "agentId",
               "paramType": "path",
               "required": true
             }
@@ -16504,14 +16488,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabxHuntingAgentQueue",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabxHuntingAgentQueue",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -16519,7 +16503,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16527,7 +16511,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -16535,7 +16519,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -16561,7 +16545,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -16569,7 +16553,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16577,7 +16561,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -16585,7 +16569,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Agent ID",
+              "description": "",
               "fullType": "long",
               "name": "agentId",
               "paramType": "path",
@@ -16611,7 +16595,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16619,17 +16611,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
               "paramType": "path",
               "required": true
             }
@@ -16653,7 +16637,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -16661,7 +16645,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16669,7 +16653,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -16677,7 +16661,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -16710,16 +16694,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -16727,7 +16703,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16735,9 +16711,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -16760,24 +16744,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Queue ID",
-              "fullType": "long",
-              "name": "queueId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -16785,9 +16753,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "queueId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -16811,7 +16795,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -16819,7 +16803,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16827,7 +16811,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -16835,7 +16819,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -16869,7 +16853,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -16877,7 +16861,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16885,7 +16869,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -16893,7 +16877,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -16927,7 +16911,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -16935,7 +16919,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -16943,7 +16927,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -16951,7 +16935,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -16993,7 +16977,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17001,7 +16985,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17009,7 +16993,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -17017,7 +17001,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -17043,7 +17027,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17051,7 +17035,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17059,7 +17043,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Queue ID",
+              "description": "",
               "fullType": "long",
               "name": "queueId",
               "paramType": "path",
@@ -17085,17 +17069,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -17118,14 +17102,6 @@ export const schema: Schema = {
               "name": "invalidSoundTts",
               "paramType": "body",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The name of the menu",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
             },
             {
               "dataType": "long",
@@ -17153,7 +17129,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of the menu",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17161,7 +17145,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17187,7 +17171,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17195,7 +17179,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17203,7 +17187,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Menu ID",
+              "description": "",
               "fullType": "long",
               "name": "menuId",
               "paramType": "path",
@@ -17222,16 +17206,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Menu ID",
-              "fullType": "long",
-              "name": "menuId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17239,9 +17215,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "menuId",
               "paramType": "path",
               "required": true
             }
@@ -17259,14 +17243,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabxMenu",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabxMenu",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17274,7 +17258,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17282,7 +17266,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Menu ID",
+              "description": "",
               "fullType": "long",
               "name": "menuId",
               "paramType": "path",
@@ -17308,7 +17292,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17316,7 +17300,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17324,7 +17308,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Menu ID",
+              "description": "",
               "fullType": "long",
               "name": "menuId",
               "paramType": "path",
@@ -17352,11 +17336,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The additionnal parameter of the action",
+              "description": "The DTMF that triggers the action",
               "fullType": "string",
-              "name": "actionParam",
+              "name": "dtmf",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "telephony.OvhPabxIvrMenuEntryActionEnum",
@@ -17368,15 +17352,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The DTMF that triggers the action",
+              "description": "The additionnal parameter of the action",
               "fullType": "string",
-              "name": "dtmf",
+              "name": "actionParam",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17384,7 +17368,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17392,7 +17376,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Menu ID",
+              "description": "",
               "fullType": "long",
               "name": "menuId",
               "paramType": "path",
@@ -17418,7 +17402,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17426,7 +17418,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Menu ID",
+              "description": "",
               "fullType": "long",
               "name": "menuId",
               "paramType": "path",
@@ -17434,17 +17426,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Entry ID",
+              "description": "",
               "fullType": "long",
               "name": "entryId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
               "paramType": "path",
               "required": true
             }
@@ -17462,7 +17446,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17470,7 +17454,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17478,7 +17462,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Menu ID",
+              "description": "",
               "fullType": "long",
               "name": "menuId",
               "paramType": "path",
@@ -17486,7 +17470,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Entry ID",
+              "description": "",
               "fullType": "long",
               "name": "entryId",
               "paramType": "path",
@@ -17506,14 +17490,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabxMenuEntry",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabxMenuEntry",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17521,7 +17505,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17529,7 +17513,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Menu ID",
+              "description": "",
               "fullType": "long",
               "name": "menuId",
               "paramType": "path",
@@ -17537,7 +17521,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Entry ID",
+              "description": "",
               "fullType": "long",
               "name": "entryId",
               "paramType": "path",
@@ -17563,7 +17547,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17571,7 +17555,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17597,7 +17581,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17605,7 +17589,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17613,7 +17597,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -17632,16 +17616,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17649,9 +17625,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -17675,7 +17659,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17683,7 +17667,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17709,7 +17693,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17717,7 +17701,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17725,7 +17709,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Sound ID",
+              "description": "",
               "fullType": "long",
               "name": "soundId",
               "paramType": "path",
@@ -17745,7 +17729,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17753,7 +17737,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17761,7 +17745,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Sound ID",
+              "description": "",
               "fullType": "long",
               "name": "soundId",
               "paramType": "path",
@@ -17787,17 +17771,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of the /me/document file you want to import",
+              "description": "URL of the file you want to import (instead of /me/document ID)",
               "fullType": "string",
-              "name": "documentId",
+              "name": "url",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "URL of the file you want to import (instead of /me/document ID)",
+              "description": "ID of the /me/document file you want to import",
               "fullType": "string",
-              "name": "url",
+              "name": "documentId",
               "paramType": "body",
               "required": false
             },
@@ -17811,7 +17795,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17819,7 +17803,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17845,7 +17829,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17853,7 +17837,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17889,7 +17873,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17897,7 +17881,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17923,7 +17907,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -17931,7 +17915,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17939,7 +17923,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -17959,7 +17943,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17967,17 +17959,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "",
               "fullType": "long",
               "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
               "paramType": "path",
               "required": true
             }
@@ -17995,14 +17979,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OvhPabxTts",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OvhPabxTts",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18010,7 +17994,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -18018,7 +18002,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -18044,7 +18028,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18072,7 +18056,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18098,7 +18082,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18106,7 +18090,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
@@ -18126,7 +18110,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18134,7 +18118,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
@@ -18154,14 +18138,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.PhonebookMaster",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.PhonebookMaster",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18169,7 +18153,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
@@ -18194,8 +18178,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "telephony.ContactsExportFormatsEnum",
+              "description": "Format of the file",
+              "fullType": "telephony.ContactsExportFormatsEnum",
+              "name": "format",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18203,18 +18195,10 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "telephony.ContactsExportFormatsEnum",
-              "description": "Format of the file",
-              "fullType": "telephony.ContactsExportFormatsEnum",
-              "name": "format",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -18245,7 +18229,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18253,7 +18237,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
@@ -18279,7 +18263,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18287,7 +18271,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
@@ -18306,12 +18290,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Group name of the phonebook",
-              "fullType": "string",
-              "name": "group",
+              "dataType": "phoneNumber",
+              "description": "Home landline phone number of the contact",
+              "fullType": "phoneNumber",
+              "name": "homePhone",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "string",
@@ -18347,6 +18331,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Group name of the phonebook",
+              "fullType": "string",
+              "name": "group",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Name of the contact",
               "fullType": "string",
               "name": "name",
@@ -18354,16 +18346,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "phoneNumber",
-              "description": "Home landline phone number of the contact",
-              "fullType": "phoneNumber",
-              "name": "homePhone",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18371,7 +18355,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
@@ -18397,7 +18381,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18405,7 +18389,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
@@ -18413,7 +18397,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Contact identifier",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -18433,7 +18417,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18441,7 +18425,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
@@ -18449,7 +18433,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Contact identifier",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -18469,14 +18453,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.PhonebookContact",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.PhonebookContact",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18484,7 +18468,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Book key",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
               "paramType": "path",
@@ -18492,7 +18476,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Contact identifier",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -18518,7 +18502,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18544,7 +18528,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18552,7 +18536,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The ID of the portability",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -18578,7 +18562,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18586,7 +18570,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The ID of the portability",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -18612,7 +18596,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18620,7 +18604,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The ID of the portability",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -18654,7 +18638,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18662,7 +18646,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The ID of the portability",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -18696,7 +18680,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18704,7 +18688,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The ID of the portability",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -18730,7 +18714,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18738,7 +18722,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The ID of the portability",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -18764,7 +18748,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18772,7 +18756,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The ID of the portability",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -18808,7 +18792,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18816,7 +18800,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The ID of the portability",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -18842,7 +18826,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18850,7 +18834,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The ID of the portability",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -18858,7 +18842,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Document ID",
+              "description": "Identifier of the document",
               "fullType": "long",
               "name": "documentId",
               "paramType": "path",
@@ -18877,16 +18861,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Document ID",
-              "fullType": "long",
-              "name": "documentId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18894,9 +18870,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The ID of the portability",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Identifier of the document",
+              "fullType": "long",
+              "name": "documentId",
               "paramType": "path",
               "required": true
             }
@@ -18914,14 +18898,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.PortabilityDocument",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.PortabilityDocument",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18929,7 +18913,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The ID of the portability",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -18937,7 +18921,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Document ID",
+              "description": "Identifier of the document",
               "fullType": "long",
               "name": "documentId",
               "paramType": "path",
@@ -18963,7 +18947,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -18971,7 +18955,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The ID of the portability",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -18997,7 +18981,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19005,7 +18989,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The ID of the portability",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -19033,7 +19017,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19041,7 +19025,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The ID of the portability",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -19067,7 +19051,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19075,7 +19059,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The ID of the portability",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -19101,7 +19085,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19127,7 +19111,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19135,7 +19119,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19155,24 +19139,24 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.Redirect",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.Redirect",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -19204,7 +19188,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19212,7 +19196,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19238,7 +19222,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19264,7 +19248,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19272,7 +19256,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19292,14 +19276,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.Rsva",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.Rsva",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19307,7 +19291,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19333,17 +19317,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -19367,7 +19351,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19375,7 +19359,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19401,7 +19385,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19409,7 +19393,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19443,7 +19427,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19451,7 +19435,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19477,7 +19461,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19485,7 +19469,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19511,7 +19495,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19537,7 +19521,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19545,7 +19529,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19565,14 +19549,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.Scheduler",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.Scheduler",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19580,7 +19564,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19605,26 +19589,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "telephony.SchedulerCategoryEnum",
-              "description": "Filter the value of categories property (=)",
-              "fullType": "telephony.SchedulerCategoryEnum",
-              "name": "categories",
+              "dataType": "datetime",
+              "description": "Filter the value of dateEnd property (>=)",
+              "fullType": "datetime",
+              "name": "dateEnd.from",
               "paramType": "query",
               "required": false
             },
@@ -19638,9 +19606,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "datetime",
-              "description": "Filter the value of dateEnd property (>=)",
+              "description": "Filter the value of dateStart property (>=)",
               "fullType": "datetime",
-              "name": "dateEnd.from",
+              "name": "dateStart.from",
               "paramType": "query",
               "required": false
             },
@@ -19653,12 +19621,28 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "datetime",
-              "description": "Filter the value of dateStart property (>=)",
-              "fullType": "datetime",
-              "name": "dateStart.from",
+              "dataType": "telephony.SchedulerCategoryEnum",
+              "description": "Filter the value of categories property (=)",
+              "fullType": "telephony.SchedulerCategoryEnum",
+              "name": "categories",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -19673,26 +19657,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The descritpion of the event",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The unique ICS event identifier",
-              "fullType": "string",
-              "name": "uid",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The title of the event",
-              "fullType": "string",
-              "name": "title",
+              "dataType": "datetime",
+              "description": "The beginning date of the event",
+              "fullType": "datetime",
+              "name": "dateStart",
               "paramType": "body",
               "required": true
             },
@@ -19705,10 +19673,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "datetime",
-              "description": "The beginning date of the event",
-              "fullType": "datetime",
-              "name": "dateStart",
+              "dataType": "string",
+              "description": "The descritpion of the event",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The title of the event",
+              "fullType": "string",
+              "name": "title",
               "paramType": "body",
               "required": true
             },
@@ -19722,7 +19698,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The unique ICS event identifier",
+              "fullType": "string",
+              "name": "uid",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19730,7 +19714,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19756,7 +19740,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19764,7 +19748,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19772,7 +19756,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Uid",
+              "description": "The unique ICS event identifier",
               "fullType": "string",
               "name": "uid",
               "paramType": "path",
@@ -19792,7 +19776,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19800,7 +19784,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19808,7 +19792,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Uid",
+              "description": "The unique ICS event identifier",
               "fullType": "string",
               "name": "uid",
               "paramType": "path",
@@ -19828,14 +19812,22 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.SchedulerEvent",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.SchedulerEvent",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19843,17 +19835,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Uid",
+              "description": "The unique ICS event identifier",
               "fullType": "string",
               "name": "uid",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
               "paramType": "path",
               "required": true
             }
@@ -19885,7 +19869,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19893,7 +19877,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19919,7 +19903,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19945,7 +19929,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19953,7 +19937,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -19973,14 +19957,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.Screen",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.Screen",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -19988,7 +19972,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20014,7 +19998,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20022,7 +20006,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20066,7 +20050,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20074,7 +20058,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20100,7 +20084,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20108,7 +20092,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20116,7 +20100,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -20136,7 +20120,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20144,7 +20128,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20152,7 +20136,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -20178,7 +20162,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20204,22 +20188,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Termination reason details",
               "fullType": "string",
               "name": "details",
@@ -20232,6 +20200,22 @@ export const schema: Schema = {
               "fullType": "telephony.TerminationReasonEnum",
               "name": "reason",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -20248,7 +20232,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20256,7 +20240,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20276,24 +20260,24 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.TelephonyService",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.TelephonyService",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -20317,7 +20301,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20325,7 +20309,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20359,7 +20343,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20367,7 +20351,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20392,8 +20376,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "telephony.DiagnosticReportIndexEnum",
+              "description": "The date index interval",
+              "fullType": "telephony.DiagnosticReportIndexEnum",
+              "name": "dayInterval",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20401,18 +20393,10 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "telephony.DiagnosticReportIndexEnum",
-              "description": "The date index interval",
-              "fullType": "telephony.DiagnosticReportIndexEnum",
-              "name": "dayInterval",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -20435,7 +20419,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20443,7 +20427,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20463,14 +20447,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.DirectoryInfo",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.DirectoryInfo",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20478,7 +20462,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20512,7 +20496,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20520,7 +20504,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20546,7 +20530,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
+              "fullType": "string",
+              "name": "apeCode",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20554,18 +20546,10 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "apeCode",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -20588,7 +20572,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20596,7 +20580,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20622,7 +20606,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20630,7 +20614,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20650,7 +20634,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20658,7 +20642,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20686,7 +20670,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20694,7 +20678,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20719,20 +20703,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (>=)",
+              "fullType": "datetime",
+              "name": "creationDatetime.from",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "telephony.FaxConsumptionWayTypeEnum",
@@ -20744,19 +20720,27 @@ export const schema: Schema = {
             },
             {
               "dataType": "datetime",
-              "description": "Filter the value of creationDatetime property (>=)",
-              "fullType": "datetime",
-              "name": "creationDatetime.from",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
               "description": "Filter the value of creationDatetime property (<=)",
               "fullType": "datetime",
               "name": "creationDatetime.to",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -20778,7 +20762,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20786,7 +20770,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20794,7 +20778,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Consumption ID",
+              "description": "",
               "fullType": "long",
               "name": "consumptionId",
               "paramType": "path",
@@ -20820,7 +20804,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20828,7 +20812,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20848,7 +20832,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20856,7 +20840,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20884,7 +20868,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20892,7 +20876,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20918,7 +20902,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -20926,7 +20910,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -20951,26 +20935,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "telephony.OfferTaskActionEnum",
               "description": "Filter the value of action property (=)",
               "fullType": "telephony.OfferTaskActionEnum",
               "name": "action",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "telephony.OfferTaskTypeEnum",
+              "description": "Filter the value of type property (=)",
+              "fullType": "telephony.OfferTaskTypeEnum",
+              "name": "type",
               "paramType": "query",
               "required": false
             },
@@ -20983,12 +20959,20 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "telephony.OfferTaskTypeEnum",
-              "description": "Filter the value of type property (=)",
-              "fullType": "telephony.OfferTaskTypeEnum",
-              "name": "type",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -21010,7 +20994,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -21018,7 +21002,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -21026,7 +21010,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Task ID",
+              "description": "",
               "fullType": "long",
               "name": "taskId",
               "paramType": "path",
@@ -21046,14 +21030,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.OfferTask",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.OfferTask",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -21061,7 +21045,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -21069,7 +21053,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Task ID",
+              "description": "",
               "fullType": "long",
               "name": "taskId",
               "paramType": "path",
@@ -21094,34 +21078,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "telephony.VoiceConsumptionWayTypeEnum",
               "description": "Filter the value of wayType property (=)",
               "fullType": "telephony.VoiceConsumptionWayTypeEnum",
               "name": "wayType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "telephony.VoiceConsumptionDestinationTypeEnum",
-              "description": "Filter the value of destinationType property (=)",
-              "fullType": "telephony.VoiceConsumptionDestinationTypeEnum",
-              "name": "destinationType",
               "paramType": "query",
               "required": false
             },
@@ -21135,6 +21095,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (<=)",
+              "fullType": "datetime",
+              "name": "creationDatetime.to",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
               "description": "Filter the value of creationDatetime property (>=)",
               "fullType": "datetime",
               "name": "creationDatetime.from",
@@ -21142,12 +21110,28 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "datetime",
-              "description": "Filter the value of creationDatetime property (<=)",
-              "fullType": "datetime",
-              "name": "creationDatetime.to",
+              "dataType": "telephony.VoiceConsumptionDestinationTypeEnum",
+              "description": "Filter the value of destinationType property (=)",
+              "fullType": "telephony.VoiceConsumptionDestinationTypeEnum",
+              "name": "destinationType",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -21169,7 +21153,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -21177,7 +21161,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -21185,7 +21169,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Consumption ID",
+              "description": "",
               "fullType": "long",
               "name": "consumptionId",
               "paramType": "path",
@@ -21210,20 +21194,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (<=)",
+              "fullType": "datetime",
+              "name": "creationDatetime.to",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "datetime",
@@ -21234,12 +21210,20 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "datetime",
-              "description": "Filter the value of creationDatetime property (<=)",
-              "fullType": "datetime",
-              "name": "creationDatetime.to",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -21261,7 +21245,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -21269,7 +21253,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -21277,7 +21261,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Consumption ID",
+              "description": "",
               "fullType": "long",
               "name": "consumptionId",
               "paramType": "path",
@@ -21303,19 +21287,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "Filter the value of serviceType property (=)",
               "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "telephony.TaskStatusEnum",
@@ -21335,11 +21311,19 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of serviceType property (=)",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -21361,7 +21345,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -21369,7 +21353,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -21377,7 +21361,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Task ID",
+              "description": "",
               "fullType": "long",
               "name": "taskId",
               "paramType": "path",
@@ -21402,20 +21386,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
+              "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (>=)",
+              "fullType": "datetime",
+              "name": "creationDatetime.from",
+              "paramType": "query",
+              "required": false
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "telephony.VoiceConsumptionDestinationTypeEnum",
+              "description": "Filter the value of destinationType property (=)",
+              "fullType": "telephony.VoiceConsumptionDestinationTypeEnum",
+              "name": "destinationType",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "datetime",
@@ -21434,28 +21418,28 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "datetime",
-              "description": "Filter the value of creationDatetime property (>=)",
-              "fullType": "datetime",
-              "name": "creationDatetime.from",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "telephony.VoiceConsumptionDestinationTypeEnum",
-              "description": "Filter the value of destinationType property (=)",
-              "fullType": "telephony.VoiceConsumptionDestinationTypeEnum",
-              "name": "destinationType",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "telephony.VoiceConsumptionWayTypeEnum",
               "description": "Filter the value of wayType property (=)",
               "fullType": "telephony.VoiceConsumptionWayTypeEnum",
               "name": "wayType",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -21477,7 +21461,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -21485,7 +21469,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -21493,7 +21477,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Consumption ID",
+              "description": "",
               "fullType": "long",
               "name": "consumptionId",
               "paramType": "path",
@@ -21519,7 +21503,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -21527,7 +21511,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -21535,7 +21519,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Consumption ID",
+              "description": "",
               "fullType": "long",
               "name": "consumptionId",
               "paramType": "path",
@@ -21561,7 +21545,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -21581,14 +21565,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -21614,22 +21598,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "telephony.TaskStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "telephony.TaskStatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of action property (=)",
               "fullType": "string",
               "name": "action",
@@ -21643,6 +21611,22 @@ export const schema: Schema = {
               "name": "serviceType",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "telephony.TaskStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "telephony.TaskStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -21664,7 +21648,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -21672,7 +21656,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Task ID",
+              "description": "",
               "fullType": "long",
               "name": "taskId",
               "paramType": "path",
@@ -21698,7 +21682,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -21724,17 +21708,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -21758,7 +21742,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -21766,7 +21750,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -21784,14 +21768,6 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "string",
-              "description": "The hour where the time condition ends (format : hhmm)",
-              "fullType": "string",
-              "name": "hourEnd",
-              "paramType": "body",
-              "required": true
-            },
             {
               "dataType": "telephony.TimeConditionsDayEnum",
               "description": "The day of the time condition",
@@ -21818,7 +21794,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The hour where the time condition ends (format : hhmm)",
+              "fullType": "string",
+              "name": "hourEnd",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -21826,7 +21810,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -21852,7 +21836,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -21860,7 +21844,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -21868,7 +21852,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -21887,16 +21871,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -21904,9 +21880,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -21924,22 +21908,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.TimeCondition",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.TimeCondition",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -21947,9 +21923,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -21973,17 +21957,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -22001,14 +21985,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.TimeConditionOptions",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.TimeConditionOptions",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22016,7 +22000,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -22058,7 +22042,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22084,7 +22068,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22110,7 +22094,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22118,7 +22102,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -22143,8 +22127,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Channels quantity to get the best repartition on",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22152,18 +22144,10 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Channels quantity to get the best repartition on",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -22186,7 +22170,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22194,7 +22178,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -22213,14 +22197,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "phoneNumber",
-              "description": "External displayed number to create, in international format",
-              "fullType": "phoneNumber",
-              "name": "number",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "External displayed number auto-validation. Only available for partner. Must be owner of the number.",
               "fullType": "boolean",
@@ -22229,8 +22205,16 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "phoneNumber",
+              "description": "External displayed number to create, in international format",
+              "fullType": "phoneNumber",
+              "name": "number",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22238,7 +22222,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -22264,7 +22248,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22272,7 +22256,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -22280,7 +22264,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "phoneNumber",
-              "description": "Number",
+              "description": "External displayed number linked to a trunk",
               "fullType": "phoneNumber",
               "name": "number",
               "paramType": "path",
@@ -22300,7 +22284,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22308,7 +22292,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -22316,7 +22300,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "phoneNumber",
-              "description": "Number",
+              "description": "External displayed number linked to a trunk",
               "fullType": "phoneNumber",
               "name": "number",
               "paramType": "path",
@@ -22342,7 +22326,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22350,7 +22334,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -22358,7 +22342,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "phoneNumber",
-              "description": "Number",
+              "description": "External displayed number linked to a trunk",
               "fullType": "phoneNumber",
               "name": "number",
               "paramType": "path",
@@ -22384,7 +22368,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22410,7 +22394,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22418,7 +22402,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -22438,14 +22422,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.Voicemail",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.Voicemail",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22453,7 +22437,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -22478,8 +22462,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "telephony.VoicemailMessageFolderDirectoryEnum",
+              "description": "Filter the value of dir property (=)",
+              "fullType": "telephony.VoicemailMessageFolderDirectoryEnum",
+              "name": "dir",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22487,19 +22479,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
-            },
-            {
-              "dataType": "telephony.VoicemailMessageFolderDirectoryEnum",
-              "description": "Filter the value of dir property (=)",
-              "fullType": "telephony.VoicemailMessageFolderDirectoryEnum",
-              "name": "dir",
-              "paramType": "query",
-              "required": false
             }
           ],
           "responseType": "long[]"
@@ -22521,7 +22505,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22529,7 +22513,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -22537,7 +22521,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -22556,16 +22540,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22573,9 +22549,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -22598,8 +22582,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "telephony.ServiceVoicemailAudioFormatEnum",
+              "description": "File format wanted",
+              "fullType": "telephony.ServiceVoicemailAudioFormatEnum",
+              "name": "format",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22607,7 +22599,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -22615,19 +22607,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
-            },
-            {
-              "dataType": "telephony.ServiceVoicemailAudioFormatEnum",
-              "description": "File format wanted",
-              "fullType": "telephony.ServiceVoicemailAudioFormatEnum",
-              "name": "format",
-              "paramType": "query",
-              "required": false
             }
           ],
           "responseType": "telephony.PcsFile"
@@ -22656,16 +22640,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22673,9 +22649,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -22698,8 +22682,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "telephony.VoicemailMessageFolderGreetingEnum",
+              "description": "Filter the value of dir property (=)",
+              "fullType": "telephony.VoicemailMessageFolderGreetingEnum",
+              "name": "dir",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22707,19 +22699,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
-            },
-            {
-              "dataType": "telephony.VoicemailMessageFolderGreetingEnum",
-              "description": "Filter the value of dir property (=)",
-              "fullType": "telephony.VoicemailMessageFolderGreetingEnum",
-              "name": "dir",
-              "paramType": "query",
-              "required": false
             }
           ],
           "responseType": "long[]"
@@ -22734,14 +22718,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Get the /me/document uuid generated",
-              "fullType": "string",
-              "name": "documentId",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "telephony.VoicemailMessageFolderGreetingEnum",
               "description": "Greeting voicemail directory",
               "fullType": "telephony.VoicemailMessageFolderGreetingEnum",
@@ -22751,7 +22727,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "Get the /me/document uuid generated",
+              "fullType": "string",
+              "name": "documentId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22759,7 +22743,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -22785,7 +22769,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22793,7 +22777,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -22801,7 +22785,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -22820,16 +22804,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22837,9 +22813,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -22862,8 +22846,24 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "telephony.ServiceVoicemailAudioFormatEnum",
+              "description": "File format wanted",
+              "fullType": "telephony.ServiceVoicemailAudioFormatEnum",
+              "name": "format",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -22871,27 +22871,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "telephony.ServiceVoicemailAudioFormatEnum",
-              "description": "File format wanted",
-              "fullType": "telephony.ServiceVoicemailAudioFormatEnum",
-              "name": "format",
-              "paramType": "query",
-              "required": false
             }
           ],
           "responseType": "telephony.PcsFile"
@@ -22921,7 +22905,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -22929,17 +22921,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Billing account",
-              "fullType": "string",
-              "name": "billingAccount",
               "paramType": "path",
               "required": true
             }
@@ -22963,7 +22947,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -22971,7 +22955,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -22997,7 +22981,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -23005,7 +22989,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -23025,24 +23009,24 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.VoicemailProperties",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.VoicemailProperties",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -23074,7 +23058,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -23082,7 +23066,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -23116,7 +23100,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -23124,7 +23108,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -23150,17 +23134,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -23184,7 +23168,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -23192,7 +23176,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -23218,7 +23202,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -23244,7 +23228,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -23252,7 +23236,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -23278,17 +23262,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -23306,14 +23290,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "telephony.VxmlProperties",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "telephony.VxmlProperties",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "The name of your billingAccount",
               "fullType": "string",
               "name": "billingAccount",
               "paramType": "path",
@@ -23321,7 +23305,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -23347,17 +23331,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The name of your billingAccount",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "billingAccount",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Billing account",
+              "description": "",
               "fullType": "string",
-              "name": "billingAccount",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -23381,17 +23365,15 @@ export const schema: Schema = {
         "from": {
           "canBeNull": false,
           "description": "Start point of the range",
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         },
         "to": {
           "canBeNull": false,
           "description": "End point of the range",
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
@@ -23406,16 +23388,14 @@ export const schema: Schema = {
       "properties": {
         "key": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
@@ -23430,16 +23410,14 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "values": {
           "canBeNull": false,
-          "fullType": "T[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T[]"
         }
       }
@@ -23712,6 +23690,430 @@ export const schema: Schema = {
       "id": "CountryEnum",
       "namespace": "coreTypes"
     },
+    "coreTypes.TimeZoneEnum": {
+      "description": "IANA TimeZone names",
+      "enum": [
+        "Africa/Abidjan",
+        "Africa/Accra",
+        "Africa/Addis_Ababa",
+        "Africa/Algiers",
+        "Africa/Asmara",
+        "Africa/Bamako",
+        "Africa/Bangui",
+        "Africa/Banjul",
+        "Africa/Bissau",
+        "Africa/Blantyre",
+        "Africa/Brazzaville",
+        "Africa/Bujumbura",
+        "Africa/Cairo",
+        "Africa/Casablanca",
+        "Africa/Ceuta",
+        "Africa/Conakry",
+        "Africa/Dakar",
+        "Africa/Dar_es_Salaam",
+        "Africa/Djibouti",
+        "Africa/Douala",
+        "Africa/El_Aaiun",
+        "Africa/Freetown",
+        "Africa/Gaborone",
+        "Africa/Harare",
+        "Africa/Johannesburg",
+        "Africa/Juba",
+        "Africa/Kampala",
+        "Africa/Khartoum",
+        "Africa/Kigali",
+        "Africa/Kinshasa",
+        "Africa/Lagos",
+        "Africa/Libreville",
+        "Africa/Lome",
+        "Africa/Luanda",
+        "Africa/Lubumbashi",
+        "Africa/Lusaka",
+        "Africa/Malabo",
+        "Africa/Maputo",
+        "Africa/Maseru",
+        "Africa/Mbabane",
+        "Africa/Mogadishu",
+        "Africa/Monrovia",
+        "Africa/Nairobi",
+        "Africa/Ndjamena",
+        "Africa/Niamey",
+        "Africa/Nouakchott",
+        "Africa/Ouagadougou",
+        "Africa/Porto-Novo",
+        "Africa/Sao_Tome",
+        "Africa/Tripoli",
+        "Africa/Tunis",
+        "Africa/Windhoek",
+        "America/Adak",
+        "America/Anchorage",
+        "America/Anguilla",
+        "America/Antigua",
+        "America/Araguaina",
+        "America/Argentina/Buenos_Aires",
+        "America/Argentina/Catamarca",
+        "America/Argentina/Cordoba",
+        "America/Argentina/Jujuy",
+        "America/Argentina/La_Rioja",
+        "America/Argentina/Mendoza",
+        "America/Argentina/Rio_Gallegos",
+        "America/Argentina/Salta",
+        "America/Argentina/San_Juan",
+        "America/Argentina/San_Luis",
+        "America/Argentina/Tucuman",
+        "America/Argentina/Ushuaia",
+        "America/Aruba",
+        "America/Asuncion",
+        "America/Atikokan",
+        "America/Bahia",
+        "America/Bahia_Banderas",
+        "America/Barbados",
+        "America/Belem",
+        "America/Belize",
+        "America/Blanc-Sablon",
+        "America/Boa_Vista",
+        "America/Bogota",
+        "America/Boise",
+        "America/Cambridge_Bay",
+        "America/Campo_Grande",
+        "America/Cancun",
+        "America/Caracas",
+        "America/Cayenne",
+        "America/Cayman",
+        "America/Chicago",
+        "America/Chihuahua",
+        "America/Costa_Rica",
+        "America/Creston",
+        "America/Cuiaba",
+        "America/Curacao",
+        "America/Danmarkshavn",
+        "America/Dawson",
+        "America/Dawson_Creek",
+        "America/Denver",
+        "America/Detroit",
+        "America/Dominica",
+        "America/Edmonton",
+        "America/Eirunepe",
+        "America/El_Salvador",
+        "America/Fortaleza",
+        "America/Glace_Bay",
+        "America/Godthab",
+        "America/Goose_Bay",
+        "America/Grand_Turk",
+        "America/Grenada",
+        "America/Guadeloupe",
+        "America/Guatemala",
+        "America/Guayaquil",
+        "America/Guyana",
+        "America/Halifax",
+        "America/Havana",
+        "America/Hermosillo",
+        "America/Indiana/Indianapolis",
+        "America/Indiana/Knox",
+        "America/Indiana/Marengo",
+        "America/Indiana/Petersburg",
+        "America/Indiana/Tell_City",
+        "America/Indiana/Vevay",
+        "America/Indiana/Vincennes",
+        "America/Indiana/Winamac",
+        "America/Inuvik",
+        "America/Iqaluit",
+        "America/Jamaica",
+        "America/Juneau",
+        "America/Kentucky/Louisville",
+        "America/Kentucky/Monticello",
+        "America/Kralendijk",
+        "America/La_Paz",
+        "America/Lima",
+        "America/Los_Angeles",
+        "America/Lower_Princes",
+        "America/Maceio",
+        "America/Managua",
+        "America/Manaus",
+        "America/Marigot",
+        "America/Martinique",
+        "America/Matamoros",
+        "America/Mazatlan",
+        "America/Menominee",
+        "America/Merida",
+        "America/Metlakatla",
+        "America/Mexico_City",
+        "America/Miquelon",
+        "America/Moncton",
+        "America/Monterrey",
+        "America/Montevideo",
+        "America/Montserrat",
+        "America/Nassau",
+        "America/New_York",
+        "America/Nipigon",
+        "America/Nome",
+        "America/Noronha",
+        "America/North_Dakota/Beulah",
+        "America/North_Dakota/Center",
+        "America/North_Dakota/New_Salem",
+        "America/Ojinaga",
+        "America/Panama",
+        "America/Pangnirtung",
+        "America/Paramaribo",
+        "America/Phoenix",
+        "America/Port-au-Prince",
+        "America/Port_of_Spain",
+        "America/Porto_Velho",
+        "America/Puerto_Rico",
+        "America/Rainy_River",
+        "America/Rankin_Inlet",
+        "America/Recife",
+        "America/Regina",
+        "America/Resolute",
+        "America/Rio_Branco",
+        "America/Santa_Isabel",
+        "America/Santarem",
+        "America/Santiago",
+        "America/Santo_Domingo",
+        "America/Sao_Paulo",
+        "America/Scoresbysund",
+        "America/Sitka",
+        "America/St_Barthelemy",
+        "America/St_Johns",
+        "America/St_Kitts",
+        "America/St_Lucia",
+        "America/St_Thomas",
+        "America/St_Vincent",
+        "America/Swift_Current",
+        "America/Tegucigalpa",
+        "America/Thule",
+        "America/Thunder_Bay",
+        "America/Tijuana",
+        "America/Toronto",
+        "America/Tortola",
+        "America/Vancouver",
+        "America/Whitehorse",
+        "America/Winnipeg",
+        "America/Yakutat",
+        "America/Yellowknife",
+        "Antarctica/Casey",
+        "Antarctica/Davis",
+        "Antarctica/DumontDUrville",
+        "Antarctica/Macquarie",
+        "Antarctica/Mawson",
+        "Antarctica/McMurdo",
+        "Antarctica/Palmer",
+        "Antarctica/Rothera",
+        "Antarctica/Syowa",
+        "Antarctica/Troll",
+        "Antarctica/Vostok",
+        "Arctic/Longyearbyen",
+        "Asia/Aden",
+        "Asia/Almaty",
+        "Asia/Amman",
+        "Asia/Anadyr",
+        "Asia/Aqtau",
+        "Asia/Aqtobe",
+        "Asia/Ashgabat",
+        "Asia/Baghdad",
+        "Asia/Bahrain",
+        "Asia/Baku",
+        "Asia/Bangkok",
+        "Asia/Beirut",
+        "Asia/Bishkek",
+        "Asia/Brunei",
+        "Asia/Chita",
+        "Asia/Choibalsan",
+        "Asia/Colombo",
+        "Asia/Damascus",
+        "Asia/Dhaka",
+        "Asia/Dili",
+        "Asia/Dubai",
+        "Asia/Dushanbe",
+        "Asia/Gaza",
+        "Asia/Hebron",
+        "Asia/Ho_Chi_Minh",
+        "Asia/Hong_Kong",
+        "Asia/Hovd",
+        "Asia/Irkutsk",
+        "Asia/Jakarta",
+        "Asia/Jayapura",
+        "Asia/Jerusalem",
+        "Asia/Kabul",
+        "Asia/Kamchatka",
+        "Asia/Karachi",
+        "Asia/Kathmandu",
+        "Asia/Khandyga",
+        "Asia/Kolkata",
+        "Asia/Krasnoyarsk",
+        "Asia/Kuala_Lumpur",
+        "Asia/Kuching",
+        "Asia/Kuwait",
+        "Asia/Macau",
+        "Asia/Magadan",
+        "Asia/Makassar",
+        "Asia/Manila",
+        "Asia/Muscat",
+        "Asia/Nicosia",
+        "Asia/Novokuznetsk",
+        "Asia/Novosibirsk",
+        "Asia/Omsk",
+        "Asia/Oral",
+        "Asia/Phnom_Penh",
+        "Asia/Pontianak",
+        "Asia/Pyongyang",
+        "Asia/Qatar",
+        "Asia/Qyzylorda",
+        "Asia/Rangoon",
+        "Asia/Riyadh",
+        "Asia/Sakhalin",
+        "Asia/Samarkand",
+        "Asia/Seoul",
+        "Asia/Shanghai",
+        "Asia/Singapore",
+        "Asia/Srednekolymsk",
+        "Asia/Taipei",
+        "Asia/Tashkent",
+        "Asia/Tbilisi",
+        "Asia/Tehran",
+        "Asia/Thimphu",
+        "Asia/Tokyo",
+        "Asia/Ulaanbaatar",
+        "Asia/Urumqi",
+        "Asia/Ust-Nera",
+        "Asia/Vientiane",
+        "Asia/Vladivostok",
+        "Asia/Yakutsk",
+        "Asia/Yekaterinburg",
+        "Asia/Yerevan",
+        "Atlantic/Azores",
+        "Atlantic/Bermuda",
+        "Atlantic/Canary",
+        "Atlantic/Cape_Verde",
+        "Atlantic/Faroe",
+        "Atlantic/Madeira",
+        "Atlantic/Reykjavik",
+        "Atlantic/South_Georgia",
+        "Atlantic/St_Helena",
+        "Atlantic/Stanley",
+        "Australia/Adelaide",
+        "Australia/Brisbane",
+        "Australia/Broken_Hill",
+        "Australia/Currie",
+        "Australia/Darwin",
+        "Australia/Eucla",
+        "Australia/Hobart",
+        "Australia/Lindeman",
+        "Australia/Lord_Howe",
+        "Australia/Melbourne",
+        "Australia/Perth",
+        "Australia/Sydney",
+        "Europe/Amsterdam",
+        "Europe/Andorra",
+        "Europe/Athens",
+        "Europe/Belgrade",
+        "Europe/Berlin",
+        "Europe/Bratislava",
+        "Europe/Brussels",
+        "Europe/Bucharest",
+        "Europe/Budapest",
+        "Europe/Busingen",
+        "Europe/Chisinau",
+        "Europe/Copenhagen",
+        "Europe/Dublin",
+        "Europe/Gibraltar",
+        "Europe/Guernsey",
+        "Europe/Helsinki",
+        "Europe/Isle_of_Man",
+        "Europe/Istanbul",
+        "Europe/Jersey",
+        "Europe/Kaliningrad",
+        "Europe/Kiev",
+        "Europe/Lisbon",
+        "Europe/Ljubljana",
+        "Europe/London",
+        "Europe/Luxembourg",
+        "Europe/Madrid",
+        "Europe/Malta",
+        "Europe/Mariehamn",
+        "Europe/Minsk",
+        "Europe/Monaco",
+        "Europe/Moscow",
+        "Europe/Oslo",
+        "Europe/Paris",
+        "Europe/Podgorica",
+        "Europe/Prague",
+        "Europe/Riga",
+        "Europe/Rome",
+        "Europe/Samara",
+        "Europe/San_Marino",
+        "Europe/Sarajevo",
+        "Europe/Simferopol",
+        "Europe/Skopje",
+        "Europe/Sofia",
+        "Europe/Stockholm",
+        "Europe/Tallinn",
+        "Europe/Tirane",
+        "Europe/Uzhgorod",
+        "Europe/Vaduz",
+        "Europe/Vatican",
+        "Europe/Vienna",
+        "Europe/Vilnius",
+        "Europe/Volgograd",
+        "Europe/Warsaw",
+        "Europe/Zagreb",
+        "Europe/Zaporozhye",
+        "Europe/Zurich",
+        "Indian/Antananarivo",
+        "Indian/Chagos",
+        "Indian/Christmas",
+        "Indian/Cocos",
+        "Indian/Comoro",
+        "Indian/Kerguelen",
+        "Indian/Mahe",
+        "Indian/Maldives",
+        "Indian/Mauritius",
+        "Indian/Mayotte",
+        "Indian/Reunion",
+        "Pacific/Apia",
+        "Pacific/Auckland",
+        "Pacific/Bougainville",
+        "Pacific/Chatham",
+        "Pacific/Chuuk",
+        "Pacific/Easter",
+        "Pacific/Efate",
+        "Pacific/Enderbury",
+        "Pacific/Fakaofo",
+        "Pacific/Fiji",
+        "Pacific/Funafuti",
+        "Pacific/Galapagos",
+        "Pacific/Gambier",
+        "Pacific/Guadalcanal",
+        "Pacific/Guam",
+        "Pacific/Honolulu",
+        "Pacific/Johnston",
+        "Pacific/Kiritimati",
+        "Pacific/Kosrae",
+        "Pacific/Kwajalein",
+        "Pacific/Majuro",
+        "Pacific/Marquesas",
+        "Pacific/Midway",
+        "Pacific/Nauru",
+        "Pacific/Niue",
+        "Pacific/Norfolk",
+        "Pacific/Noumea",
+        "Pacific/Pago_Pago",
+        "Pacific/Palau",
+        "Pacific/Pitcairn",
+        "Pacific/Pohnpei",
+        "Pacific/Port_Moresby",
+        "Pacific/Rarotonga",
+        "Pacific/Saipan",
+        "Pacific/Tahiti",
+        "Pacific/Tarawa",
+        "Pacific/Tongatapu",
+        "Pacific/Wake",
+        "Pacific/Wallis"
+      ],
+      "enumType": "string",
+      "id": "TimeZoneEnum",
+      "namespace": "coreTypes"
+    },
     "nichandle.GenderEnum": {
       "description": "All genders a person can choose",
       "enum": [
@@ -23729,23 +24131,20 @@ export const schema: Schema = {
       "properties": {
         "content": {
           "canBeNull": false,
-          "fullType": "text",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "text"
         },
         "name": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "url": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -23778,23 +24177,20 @@ export const schema: Schema = {
       "properties": {
         "currencyCode": {
           "canBeNull": false,
-          "fullType": "order.CurrencyCodeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.CurrencyCodeEnum"
         },
         "text": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "double",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "double"
         }
       }
@@ -23807,31 +24203,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -23839,7 +24231,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -23883,42 +24274,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -23932,7 +24323,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -23955,21 +24346,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }
@@ -23984,7 +24375,7 @@ export const schema: Schema = {
           "description": "Phone brand model",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "macAddress": {
@@ -23992,7 +24383,7 @@ export const schema: Schema = {
           "description": "Mac address",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "protocol": {
@@ -24000,7 +24391,7 @@ export const schema: Schema = {
           "description": "Phone protocol",
           "fullType": "telephony.ProtocolEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.ProtocolEnum"
         }
       }
@@ -24015,7 +24406,7 @@ export const schema: Schema = {
           "description": "The abbreviated number which must start with \"2\" and must have a length of 3 or 4 digits",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "destinationNumber": {
@@ -24023,21 +24414,21 @@ export const schema: Schema = {
           "description": "The destination of the abbreviated number",
           "fullType": "phoneNumber",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "name": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "surname": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -24052,7 +24443,7 @@ export const schema: Schema = {
           "description": "The abbreviated number which must start with \"7\" and must have a length of 3 or 4 digits",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "destinationNumber": {
@@ -24060,21 +24451,21 @@ export const schema: Schema = {
           "description": "The destination of the abbreviated number",
           "fullType": "phoneNumber",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "name": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "surname": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -24087,7 +24478,6 @@ export const schema: Schema = {
         "description": {
           "canBeNull": true,
           "description": "The accessory description",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -24095,23 +24485,20 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "The accessory name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "price": {
           "canBeNull": false,
           "description": "Accessory price",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "url": {
           "canBeNull": true,
           "description": "An URL to accessory details",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -24140,14 +24527,14 @@ export const schema: Schema = {
           "description": "The creation date of this access",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "url": {
@@ -24155,7 +24542,7 @@ export const schema: Schema = {
           "description": "The url of the web access",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -24194,7 +24581,7 @@ export const schema: Schema = {
           "description": "Allowed outplan",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "billingAccount": {
@@ -24202,7 +24589,7 @@ export const schema: Schema = {
           "description": "Name of the billing account",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "creditThreshold": {
@@ -24210,7 +24597,7 @@ export const schema: Schema = {
           "description": "Allowed threshold credit",
           "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "currentOutplan": {
@@ -24218,7 +24605,7 @@ export const schema: Schema = {
           "description": "Current outplan",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "description": {
@@ -24226,7 +24613,7 @@ export const schema: Schema = {
           "description": "Description of the billing account",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "hiddenExternalNumber": {
@@ -24234,7 +24621,7 @@ export const schema: Schema = {
           "description": "Hide called numbers in end-of-month call details CSV",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "overrideDisplayedNumber": {
@@ -24242,7 +24629,7 @@ export const schema: Schema = {
           "description": "Override number display for calls between services of your billing account",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "securityDeposit": {
@@ -24250,7 +24637,7 @@ export const schema: Schema = {
           "description": "Security deposit amount",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "status": {
@@ -24258,7 +24645,7 @@ export const schema: Schema = {
           "description": "Current status of billing account",
           "fullType": "telephony.BillingAccountStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.BillingAccountStatusEnum"
         },
         "trusted": {
@@ -24266,7 +24653,7 @@ export const schema: Schema = {
           "description": "Is the billing account trusted",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -24291,105 +24678,92 @@ export const schema: Schema = {
         "callId": {
           "canBeNull": false,
           "description": "Call identifier of the sip signal leg",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "codec": {
           "canBeNull": false,
           "description": "Codec used in this direction flow",
-          "fullType": "telephony.CallDiagnosticCodecEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.CallDiagnosticCodecEnum"
         },
         "flowId": {
           "canBeNull": false,
           "description": "Identifier of the metric performance value",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "ipDst": {
           "canBeNull": false,
           "description": "The ip address destination",
-          "fullType": "ip",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "ipSrc": {
           "canBeNull": false,
           "description": "The ip address source",
-          "fullType": "ip",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "maxDelay": {
           "canBeNull": false,
           "description": "The max delay between two packet in the given direction flow",
-          "fullType": "double",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "double"
         },
         "maxJitter": {
           "canBeNull": false,
           "description": "Variation in the delay of received packets. Smaller is better and less is more",
-          "fullType": "double",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "double"
         },
         "mos": {
           "canBeNull": false,
           "description": "Mean Opinion Score expressed in one number, from 1 to 5, 1 being the worst and 5 the best.",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "packets": {
           "canBeNull": false,
           "description": "The number of packet sent in the given direction flow",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "portDst": {
           "canBeNull": false,
           "description": "Destination port",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "portSrc": {
           "canBeNull": false,
           "description": "The port source",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "rtpLost": {
           "canBeNull": false,
           "description": "Number of packet RTP lost in the direction flow",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "timestamp": {
           "canBeNull": false,
           "description": "The creation timestamp of the given direction flow",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -24480,17 +24854,15 @@ export const schema: Schema = {
         "basic": {
           "canBeNull": false,
           "description": "Basic information about call details record",
-          "fullType": "telephony.CallDiagnosticCdrsBasic",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.CallDiagnosticCdrsBasic"
         },
         "timestamp": {
           "canBeNull": false,
           "description": "The timestamp of the call details record capture",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -24503,25 +24875,22 @@ export const schema: Schema = {
         "cause": {
           "canBeNull": false,
           "description": "Hexadecimal SIP-to-SS7 ISUP cause codes",
-          "fullType": "telephony.CallDiagnosticCauseEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.CallDiagnosticCauseEnum"
         },
         "causeDescription": {
           "canBeNull": false,
           "description": "SS7 ISUP cause codes",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "releaseLocation": {
           "canBeNull": false,
           "description": "Release location type : forward if the calling hangup, backward if the caller hangup, else local",
-          "fullType": "telephony.ReleaseLocationEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.ReleaseLocationEnum"
         }
       }
@@ -24546,9 +24915,8 @@ export const schema: Schema = {
         "message": {
           "canBeNull": false,
           "description": "The relevant informations in anormal behaviors",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -24561,30 +24929,26 @@ export const schema: Schema = {
         "headers": {
           "canBeNull": false,
           "description": "Encoded json headers",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "requestMethod": {
           "canBeNull": true,
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
         },
         "response": {
           "canBeNull": true,
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
         },
         "timestamp": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -24611,7 +24975,7 @@ export const schema: Schema = {
           "description": "The MOS call quality report",
           "fullType": "telephony.CallDiagnosticCallQuality[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.CallDiagnosticCallQuality[]"
         },
         "cdrs": {
@@ -24619,7 +24983,7 @@ export const schema: Schema = {
           "description": "The Call details records information",
           "fullType": "telephony.CallDiagnosticCdrs[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.CallDiagnosticCdrs[]"
         },
         "reporting": {
@@ -24627,7 +24991,7 @@ export const schema: Schema = {
           "description": "The relevant informations in anormal behaviors",
           "fullType": "telephony.CallDiagnosticReporting[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.CallDiagnosticReporting[]"
         },
         "sip": {
@@ -24635,7 +24999,7 @@ export const schema: Schema = {
           "description": "Sip signal packets during the call and last registers",
           "fullType": "telephony.CallDiagnosticSip[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.CallDiagnosticSip[]"
         },
         "status": {
@@ -24643,7 +25007,7 @@ export const schema: Schema = {
           "description": "Todo if datas are being to be loaded in cache. done when datas are available",
           "fullType": "telephony.CallDiagnosticStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.CallDiagnosticStatusEnum"
         }
       }
@@ -24682,7 +25046,7 @@ export const schema: Schema = {
           "description": "billingNumber (service used)",
           "fullType": "phoneNumber",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "callCreatedDatetime": {
@@ -24746,7 +25110,7 @@ export const schema: Schema = {
           "description": "Generated call identifier",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "transferFrom": {
@@ -24762,7 +25126,7 @@ export const schema: Schema = {
           "description": "unique call id",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -24770,8 +25134,6 @@ export const schema: Schema = {
     "telephony.CallsGeneratorDialplanEnum": {
       "description": "Types of dialplan available for callsGenerator.",
       "enum": [
-        "PlayAudioFile",
-        "PlayAudioFileAndTransferCall",
         "ReadText",
         "RequestAppointmentConfirmation",
         "RequestAppointmentConfirmationWithTransfer"
@@ -24862,21 +25224,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceType": {
           "canBeNull": false,
           "fullType": "telephony.TypeServiceEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeServiceEnum"
         }
       }
@@ -24889,17 +25251,15 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "The name of the cluster",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "zones": {
           "canBeNull": false,
           "description": "The availability zones of the cluster",
-          "fullType": "telephony.CarrierSipClusterZone[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.CarrierSipClusterZone[]"
         }
       }
@@ -24912,17 +25272,15 @@ export const schema: Schema = {
         "mediaIps": {
           "canBeNull": false,
           "description": "The list of media (RTP) ips of this zone",
-          "fullType": "ipv4[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipv4[]"
         },
         "region": {
           "canBeNull": false,
           "description": "The region of the cluster (rbx, sbg,...)",
-          "fullType": "telephony.CarrierSipClusterZoneRegionEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.CarrierSipClusterZoneRegionEnum"
         }
       }
@@ -24947,7 +25305,7 @@ export const schema: Schema = {
           "description": "Should we send incoming calls to this endpoint",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "id": {
@@ -24955,7 +25313,7 @@ export const schema: Schema = {
           "description": "SIP Endpoint id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "ip": {
@@ -24963,7 +25321,7 @@ export const schema: Schema = {
           "description": "SIP Endpoint IP",
           "fullType": "ipv4",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipv4"
         },
         "port": {
@@ -24971,7 +25329,7 @@ export const schema: Schema = {
           "description": "SIP Endpoint port",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "priority": {
@@ -24979,7 +25337,7 @@ export const schema: Schema = {
           "description": "SIP Endpoint priority (DNS SRV)",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "protocol": {
@@ -24987,7 +25345,7 @@ export const schema: Schema = {
           "description": "The protocol of the endpoint (udp/tcp/tls)",
           "fullType": "telephony.CarrierSipEndpointProtocolEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.CarrierSipEndpointProtocolEnum"
         },
         "weight": {
@@ -24995,7 +25353,7 @@ export const schema: Schema = {
           "description": "SIP Endpoint weight (DNS SRV)",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -25010,7 +25368,7 @@ export const schema: Schema = {
           "description": "The carrier SIP trunk description",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "maxCallsPerSecond": {
@@ -25018,7 +25376,7 @@ export const schema: Schema = {
           "description": "The maximum call establishments per second on your carrier sip service",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxConcurrentCalls": {
@@ -25026,7 +25384,7 @@ export const schema: Schema = {
           "description": "The maximum concurrent calls on your carrier sip service",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -25050,7 +25408,6 @@ export const schema: Schema = {
         "administrationCode": {
           "canBeNull": true,
           "description": "The identifier of the city",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -25058,17 +25415,15 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "The name of the city",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "zipCode": {
           "canBeNull": false,
           "description": "The zip code of the city",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -25083,7 +25438,7 @@ export const schema: Schema = {
           "description": "Date when user was created",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -25091,7 +25446,7 @@ export const schema: Schema = {
           "description": "Contact identifier",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "login": {
@@ -25099,7 +25454,7 @@ export const schema: Schema = {
           "description": "login of the click 2 call user",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -25113,28 +25468,28 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "offers": {
           "canBeNull": false,
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "serviceName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceType": {
           "canBeNull": false,
           "fullType": "telephony.TypeServiceEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeServiceEnum"
         }
       }
@@ -25149,7 +25504,7 @@ export const schema: Schema = {
           "description": "The count of connections to the conference",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "countParticipants": {
@@ -25157,7 +25512,7 @@ export const schema: Schema = {
           "description": "The count of unique participants of the conference",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "dateBegin": {
@@ -25165,7 +25520,7 @@ export const schema: Schema = {
           "description": "The date the conference began",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "dateEnd": {
@@ -25173,7 +25528,7 @@ export const schema: Schema = {
           "description": "The date the conference end",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "duration": {
@@ -25181,7 +25536,7 @@ export const schema: Schema = {
           "description": "The duration of the conference in seconds",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "events": {
@@ -25189,7 +25544,7 @@ export const schema: Schema = {
           "description": "The events of the conference (participants joining/left)",
           "fullType": "telephony.ConferenceHistoryEvent[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.ConferenceHistoryEvent[]"
         },
         "id": {
@@ -25197,7 +25552,7 @@ export const schema: Schema = {
           "description": "The id of the conference history",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "recordUrl": {
@@ -25218,25 +25573,22 @@ export const schema: Schema = {
         "callerid": {
           "canBeNull": false,
           "description": "The caller id of the participant",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "date": {
           "canBeNull": false,
           "description": "The date of the conference event",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "type": {
           "canBeNull": false,
           "description": "The nature of the event : left/join",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -25249,25 +25601,22 @@ export const schema: Schema = {
         "dateStart": {
           "canBeNull": false,
           "description": "The date when the conference began",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "locked": {
           "canBeNull": false,
           "description": "Whether or not the conference room is locked",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "membersCount": {
           "canBeNull": false,
           "description": "The current participants count in your conference room",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -25295,7 +25644,7 @@ export const schema: Schema = {
           "description": "The arrival datetime of the participant in the conference.",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "callerName": {
@@ -25303,7 +25652,7 @@ export const schema: Schema = {
           "description": "The caller name of the participant",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "callerNumber": {
@@ -25311,7 +25660,7 @@ export const schema: Schema = {
           "description": "The caller number of the participant",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "energy": {
@@ -25319,7 +25668,7 @@ export const schema: Schema = {
           "description": "The current level of the participant audio transmission",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "floor": {
@@ -25327,7 +25676,7 @@ export const schema: Schema = {
           "description": "Whether or not the participant is active in the room",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "hear": {
@@ -25335,7 +25684,7 @@ export const schema: Schema = {
           "description": "Whether or not the participant can hear the conference",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "id": {
@@ -25343,7 +25692,7 @@ export const schema: Schema = {
           "description": "The id of the participant",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "speak": {
@@ -25351,7 +25700,7 @@ export const schema: Schema = {
           "description": "Whether or not the participant can talk in the conference",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "talking": {
@@ -25359,7 +25708,7 @@ export const schema: Schema = {
           "description": "Whether or not the participant is talking",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -25374,7 +25723,7 @@ export const schema: Schema = {
           "description": "Whether or not announce file is played before entrance",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "announceFilename": {
@@ -25398,7 +25747,7 @@ export const schema: Schema = {
           "description": "Whether or not anonmyous participants are allowed",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "enterMuted": {
@@ -25406,7 +25755,7 @@ export const schema: Schema = {
           "description": "Whether or not participants enter conference room muted",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "eventsChannel": {
@@ -25414,7 +25763,7 @@ export const schema: Schema = {
           "description": "The events channel hash",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "language": {
@@ -25422,7 +25771,7 @@ export const schema: Schema = {
           "description": "The conference sounds language",
           "fullType": "telephony.ConferenceLanguageEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.ConferenceLanguageEnum"
         },
         "pin": {
@@ -25430,7 +25779,7 @@ export const schema: Schema = {
           "description": "The conference pin number",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "recordStatus": {
@@ -25438,7 +25787,7 @@ export const schema: Schema = {
           "description": "Whether or not conference is recorded",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "reportEmail": {
@@ -25454,7 +25803,7 @@ export const schema: Schema = {
           "description": "The status of the reporting",
           "fullType": "telephony.ConferenceReportStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.ConferenceReportStatusEnum"
         },
         "whiteLabelReport": {
@@ -25462,7 +25811,7 @@ export const schema: Schema = {
           "description": "True if you want to receive a white-labelled mail report of your conference",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -25488,7 +25837,7 @@ export const schema: Schema = {
           "description": "The id of the conference web access",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "type": {
@@ -25496,7 +25845,7 @@ export const schema: Schema = {
           "description": "The type of the conference web access : read or write",
           "fullType": "telephony.ConferenceWebAccessTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.ConferenceWebAccessTypeEnum"
         },
         "url": {
@@ -25504,7 +25853,7 @@ export const schema: Schema = {
           "description": "The URL of the conference web access",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -25529,7 +25878,7 @@ export const schema: Schema = {
           "description": "The blocking type of the associate lines",
           "fullType": "telephony.OutplanNotificationBlockEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.OutplanNotificationBlockEnum"
         },
         "id": {
@@ -25537,7 +25886,7 @@ export const schema: Schema = {
           "description": "The id of the notification",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "notifyEmail": {
@@ -25545,7 +25894,7 @@ export const schema: Schema = {
           "description": "Override the nichandle email for this notification",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "percentage": {
@@ -25553,7 +25902,7 @@ export const schema: Schema = {
           "description": "The notification percentage of maximum outplan",
           "fullType": "double",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "double"
         }
       }
@@ -25566,7 +25915,6 @@ export const schema: Schema = {
         "address": {
           "canBeNull": true,
           "description": "Contact address",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -25574,7 +25922,6 @@ export const schema: Schema = {
         "city": {
           "canBeNull": true,
           "description": "Contact city",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -25582,14 +25929,12 @@ export const schema: Schema = {
         "country": {
           "canBeNull": true,
           "description": "Contact country",
-          "fullType": "coreTypes.CountryEnum",
           "readOnly": false,
           "required": false,
           "type": "coreTypes.CountryEnum"
         },
         "email": {
           "canBeNull": true,
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -25597,7 +25942,6 @@ export const schema: Schema = {
         "firstname": {
           "canBeNull": true,
           "description": "Contact firstname",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -25605,7 +25949,6 @@ export const schema: Schema = {
         "name": {
           "canBeNull": true,
           "description": "Contact name",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -25613,7 +25956,6 @@ export const schema: Schema = {
         "organisation": {
           "canBeNull": true,
           "description": "Contact organisation",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -25621,7 +25963,6 @@ export const schema: Schema = {
         "phone": {
           "canBeNull": true,
           "description": "Contact phone",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -25629,7 +25970,6 @@ export const schema: Schema = {
         "zip": {
           "canBeNull": true,
           "description": "Contact zip",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -25652,14 +25992,12 @@ export const schema: Schema = {
       "properties": {
         "datetime": {
           "canBeNull": false,
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "ip": {
           "canBeNull": true,
-          "fullType": "ip",
           "readOnly": false,
           "required": false,
           "type": "ip"
@@ -25675,7 +26013,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "destination": {
@@ -25689,21 +26027,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "telephony.TypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeEnum"
         },
         "serviceName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceType": {
           "canBeNull": false,
           "fullType": "telephony.TypeServiceEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeServiceEnum"
         }
       }
@@ -25715,33 +26053,29 @@ export const schema: Schema = {
         "country": {
           "canBeNull": false,
           "description": "Country",
-          "fullType": "telephony.NumberCountryEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.NumberCountryEnum"
         },
         "currentDomain": {
           "canBeNull": false,
           "description": "Current SIP domain",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "list": {
           "canBeNull": false,
           "description": "List of available SIP domains",
-          "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "productType": {
           "canBeNull": false,
           "description": "Type of the VoIP product concerned",
-          "fullType": "telephony.SipDomainProductTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.SipDomainProductTypeEnum"
         }
       }
@@ -25754,7 +26088,6 @@ export const schema: Schema = {
         "cancelLimitDatetime": {
           "canBeNull": true,
           "description": "Cancelable datetime deadline for the new scheduled rateCode",
-          "fullType": "datetime",
           "readOnly": false,
           "required": false,
           "type": "datetime"
@@ -25762,7 +26095,6 @@ export const schema: Schema = {
         "effectiveDatetime": {
           "canBeNull": true,
           "description": "Effective datetime",
-          "fullType": "datetime",
           "readOnly": false,
           "required": false,
           "type": "datetime"
@@ -25770,47 +26102,41 @@ export const schema: Schema = {
         "pricePerCallWithoutTax": {
           "canBeNull": false,
           "description": "Price per call",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "pricePerMinuteWithoutTax": {
           "canBeNull": false,
           "description": "Price in minute",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "rateCode": {
           "canBeNull": false,
           "description": "Scheduled rate code",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "repaymentPricePerCallWithoutTax": {
           "canBeNull": false,
           "description": "Repayment per call",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "repaymentPricePerMinuteWithoutTax": {
           "canBeNull": false,
           "description": "Repayment per minute",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "updateRateCodePriceWithoutTax": {
           "canBeNull": true,
           "description": "Fees concerning rateCode update",
-          "fullType": "order.Price",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
@@ -25825,57 +26151,50 @@ export const schema: Schema = {
         "callId": {
           "canBeNull": false,
           "description": "Identifier of the concerned leg",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "category": {
           "canBeNull": false,
           "description": "Typology where the diagnostic arriving from",
-          "fullType": "telephony.DiagnosticReportCategoryEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.DiagnosticReportCategoryEnum"
         },
         "datetime": {
           "canBeNull": false,
           "description": "Datetime of the diagnostic",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
           "canBeNull": false,
           "description": "Explanation of the diagnostic",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "level": {
           "canBeNull": false,
           "description": "The level of the diagnostic",
-          "fullType": "telephony.DiagnosticReportLevelEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.DiagnosticReportLevelEnum"
         },
         "name": {
           "canBeNull": false,
           "description": "Name of the rule detected",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "report": {
           "canBeNull": false,
           "description": "Report of the diagnostic",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -25923,35 +26242,35 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "apeDescription": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "directoryServiceCode": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "directoryServiceDescription": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "notification": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -25965,35 +26284,35 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "address": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "addressExtra": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "ape": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "areaCode": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "birthDate": {
@@ -26007,77 +26326,77 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "city": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "country": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "directoryServiceCode": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "displayFirstName": {
           "canBeNull": false,
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "displayMarketingDirectory": {
           "canBeNull": false,
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "displayOnlyCity": {
           "canBeNull": false,
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "displaySearchReverse": {
           "canBeNull": false,
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "displayUniversalDirectory": {
           "canBeNull": false,
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "email": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "firstName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "gender": {
@@ -26091,140 +26410,140 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "legalForm": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "lineDescription": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "modificationDate": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "modificationType": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "number": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "occupation": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "postBox": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "postCode": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "receivePJDirectory": {
           "canBeNull": false,
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "siret": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "socialNomination": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "socialNominationExtra": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "urbanDistrict": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "wayName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "wayNumber": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "wayNumberExtra": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "wayType": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -26238,14 +26557,14 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "wayName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -26268,7 +26587,7 @@ export const schema: Schema = {
           "description": "Identifier of the document",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "name": {
@@ -26276,7 +26595,7 @@ export const schema: Schema = {
           "description": "Name of the document",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "size": {
@@ -26284,7 +26603,7 @@ export const schema: Schema = {
           "description": "Document size (in bytes)",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "url": {
@@ -26292,7 +26611,7 @@ export const schema: Schema = {
           "description": "URL to get document",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "validationDate": {
@@ -26315,7 +26634,7 @@ export const schema: Schema = {
           "description": "Reject (hangup) anonymous calls",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "description": {
@@ -26323,7 +26642,7 @@ export const schema: Schema = {
           "description": "Description of the service",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "featureType": {
@@ -26331,7 +26650,7 @@ export const schema: Schema = {
           "description": "Feature of the service",
           "fullType": "telephony.TypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeEnum"
         },
         "isCCS": {
@@ -26339,7 +26658,7 @@ export const schema: Schema = {
           "description": "Does the service have extended CCS options enabled?",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "maxWaitTime": {
@@ -26347,7 +26666,7 @@ export const schema: Schema = {
           "description": "Max wait time when caller is in queue (in seconds)",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "queueSize": {
@@ -26355,14 +26674,14 @@ export const schema: Schema = {
           "description": "Max number of callers in queue",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "serviceName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceType": {
@@ -26370,7 +26689,7 @@ export const schema: Schema = {
           "description": "General type of the service",
           "fullType": "telephony.TypeServiceEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeServiceEnum"
         },
         "showCallerNumber": {
@@ -26378,7 +26697,7 @@ export const schema: Schema = {
           "description": "The presented number when bridging calls",
           "fullType": "telephony.OvhPabxDialplanNumberPresentationEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.OvhPabxDialplanNumberPresentationEnum"
         },
         "statusIvrEnabled": {
@@ -26386,7 +26705,7 @@ export const schema: Schema = {
           "description": "Enable/Disable the status change IVR on your callcenter. The IVR is enabled by default.",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "strategy": {
@@ -26394,7 +26713,7 @@ export const schema: Schema = {
           "description": "The calls dispatching strategy",
           "fullType": "telephony.OvhPabxHuntingQueueStrategyEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.OvhPabxHuntingQueueStrategyEnum"
         },
         "toneOnClosing": {
@@ -26448,7 +26767,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "destinationNumber": {
@@ -26464,7 +26783,7 @@ export const schema: Schema = {
           "description": "Type of screenlist",
           "fullType": "telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum"
         }
       }
@@ -26478,7 +26797,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "telephony.EasyHuntingScreenListsConditionsStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.EasyHuntingScreenListsConditionsStatusEnum"
         }
       }
@@ -26503,7 +26822,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "policy": {
@@ -26511,7 +26830,7 @@ export const schema: Schema = {
           "description": "The policy of time condition",
           "fullType": "telephony.TimeConditionsPolicyEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.TimeConditionsPolicyEnum"
         },
         "timeFrom": {
@@ -26519,7 +26838,7 @@ export const schema: Schema = {
           "description": "The time of the day when the extension will start to be executed",
           "fullType": "time",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "time"
         },
         "timeTo": {
@@ -26527,7 +26846,7 @@ export const schema: Schema = {
           "description": "The time of the day when the extension will stop to be executed",
           "fullType": "time",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "time"
         },
         "weekDay": {
@@ -26535,7 +26854,7 @@ export const schema: Schema = {
           "description": "The day of the week when the extension will be executed",
           "fullType": "telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum"
         }
       }
@@ -26550,7 +26869,7 @@ export const schema: Schema = {
           "description": "Status of time conditions",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "slot1Number": {
@@ -26629,7 +26948,7 @@ export const schema: Schema = {
           "description": "The phone number of the agent",
           "fullType": "phoneNumber",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "logged": {
@@ -26637,7 +26956,7 @@ export const schema: Schema = {
           "description": "True if the agent is logged",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "noReplyTimer": {
@@ -26645,7 +26964,7 @@ export const schema: Schema = {
           "description": "The maxium ringing time",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "position": {
@@ -26653,7 +26972,7 @@ export const schema: Schema = {
           "description": "The position in the hunting",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -26693,28 +27012,28 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "featureType": {
           "canBeNull": false,
           "fullType": "telephony.TypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeEnum"
         },
         "serviceName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceType": {
           "canBeNull": false,
           "fullType": "telephony.TypeServiceEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeServiceEnum"
         }
       }
@@ -26729,14 +27048,14 @@ export const schema: Schema = {
           "description": "Reject anonymous calls",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "name": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "noReplyTimer": {
@@ -26744,7 +27063,7 @@ export const schema: Schema = {
           "description": "The maximum no-reply time before forwarding the call to the voicemail",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "numberOfCalls": {
@@ -26752,21 +27071,21 @@ export const schema: Schema = {
           "description": "Number of simultaneous calls",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "pattern": {
           "canBeNull": false,
           "fullType": "telephony.EasyMiniPabxHuntingPatternEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.EasyMiniPabxHuntingPatternEnum"
         },
         "strategy": {
           "canBeNull": false,
           "fullType": "telephony.EasyMiniPabxHuntingStrategyEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.EasyMiniPabxHuntingStrategyEnum"
         },
         "toneOnClosure": {
@@ -26774,7 +27093,7 @@ export const schema: Schema = {
           "description": "True if the tone on closure is enabled",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "toneOnClosureSoundId": {
@@ -26790,7 +27109,7 @@ export const schema: Schema = {
           "description": "True if the tone on hold is enabled",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "toneOnHoldSoundId": {
@@ -26806,7 +27125,7 @@ export const schema: Schema = {
           "description": "True if the ring back tone is enabled",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "toneRingbackSoundId": {
@@ -26835,7 +27154,6 @@ export const schema: Schema = {
         "address": {
           "canBeNull": true,
           "description": "Address of the entreprise",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -26843,7 +27161,6 @@ export const schema: Schema = {
         "ape": {
           "canBeNull": true,
           "description": "Entreprise's category code for directory services",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -26851,7 +27168,6 @@ export const schema: Schema = {
         "brand": {
           "canBeNull": true,
           "description": "Brand of the entreprise",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -26859,31 +27175,27 @@ export const schema: Schema = {
         "entrepriseNumber": {
           "canBeNull": false,
           "description": "Entreprise number",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "isValid": {
           "canBeNull": false,
           "description": "Is this a valid entreprise number?",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "name": {
           "canBeNull": false,
           "description": "Name of the entreprise",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "siren": {
           "canBeNull": true,
           "description": "Short version of the entreprise number (FR only)",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -26898,18 +27210,110 @@ export const schema: Schema = {
         "informations": {
           "canBeNull": false,
           "description": "Informations about the enterprise",
-          "fullType": "telephony.EntrepriseNumberInformations",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.EntrepriseNumberInformations"
         },
         "status": {
           "canBeNull": false,
           "description": "Task status",
-          "fullType": "telephony.TaskStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.TaskStatusEnum"
+        }
+      }
+    },
+    "telephony.Event": {
+      "description": "Events triggered by the line",
+      "id": "Event",
+      "namespace": "telephony",
+      "properties": {
+        "calledIdentifier": {
+          "canBeNull": false,
+          "description": "Called referer, could be the msisdn or the label name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "callingIdentifier": {
+          "canBeNull": false,
+          "description": "Calling referer, could be the msisdn or the label name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "dateTime": {
+          "canBeNull": false,
+          "description": "Datetime call establishment",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "direction": {
+          "canBeNull": false,
+          "description": "Incoming or outgoing call",
+          "fullType": "telephony.RealtimeEventDirection",
+          "readOnly": true,
+          "required": false,
+          "type": "telephony.RealtimeEventDirection"
+        },
+        "duration": {
+          "canBeNull": false,
+          "description": "Duration of the call",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "eventType": {
+          "canBeNull": false,
+          "description": "Type of event",
+          "fullType": "telephony.RealtimeEventType",
+          "readOnly": true,
+          "required": false,
+          "type": "telephony.RealtimeEventType"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Uniq identifier of the call",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "protocol": {
+          "canBeNull": false,
+          "description": "Protocol (mgcp or sip)",
+          "fullType": "telephony.RealtimeEventProtocol",
+          "readOnly": true,
+          "required": false,
+          "type": "telephony.RealtimeEventProtocol"
+        }
+      }
+    },
+    "telephony.EventCallback": {
+      "description": "Callback url for each event",
+      "id": "EventCallback",
+      "namespace": "telephony",
+      "properties": {
+        "emailError": {
+          "canBeNull": true,
+          "description": "Email notification address in case of url calling failure",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "Url called for each event",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -26922,7 +27326,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -26936,7 +27340,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "notifications": {
@@ -26951,21 +27355,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "serviceName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceType": {
           "canBeNull": false,
           "fullType": "telephony.TypeServiceEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeServiceEnum"
         }
       }
@@ -26980,7 +27384,7 @@ export const schema: Schema = {
           "description": "The count of failed faxes in the campaign",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "countSuccess": {
@@ -26988,7 +27392,7 @@ export const schema: Schema = {
           "description": "The count of success faxes in the campaign",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "countTotal": {
@@ -26996,7 +27400,7 @@ export const schema: Schema = {
           "description": "The total count of faxes in the campaign",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "dateEnd": {
@@ -27020,7 +27424,7 @@ export const schema: Schema = {
           "description": "The id of the fax campaign",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
@@ -27028,7 +27432,7 @@ export const schema: Schema = {
           "description": "The name of the fax campaign",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "reference": {
@@ -27036,7 +27440,7 @@ export const schema: Schema = {
           "description": "The reference of the fax campaign",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -27044,7 +27448,7 @@ export const schema: Schema = {
           "description": "The status of the fax campaign",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -27056,23 +27460,20 @@ export const schema: Schema = {
       "properties": {
         "failed": {
           "canBeNull": false,
-          "fullType": "phoneNumber[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "phoneNumber[]"
         },
         "success": {
           "canBeNull": false,
-          "fullType": "phoneNumber[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "phoneNumber[]"
         },
         "todo": {
           "canBeNull": false,
-          "fullType": "phoneNumber[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "phoneNumber[]"
         }
       }
@@ -27121,35 +27522,35 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "creationDatetime": {
           "canBeNull": false,
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "pages": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "priceWithoutTax": {
           "canBeNull": false,
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "wayType": {
           "canBeNull": false,
           "fullType": "telephony.FaxConsumptionWayTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.FaxConsumptionWayTypeEnum"
         }
       }
@@ -27183,84 +27584,84 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "countryCode": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "faxMaxCall": {
           "canBeNull": false,
           "fullType": "telephony.FaxSendingTries",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.FaxSendingTries"
         },
         "faxQuality": {
           "canBeNull": false,
           "fullType": "telephony.FaxQualityEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.FaxQualityEnum"
         },
         "faxTagLine": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "fromEmail": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "fromName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "mailFormat": {
           "canBeNull": false,
           "fullType": "telephony.FaxMailFormatEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.FaxMailFormatEnum"
         },
         "receiver": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "redirectionEmail": {
           "canBeNull": false,
           "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "rejectAnonymous": {
           "canBeNull": false,
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "sender": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -27302,7 +27703,7 @@ export const schema: Schema = {
           "description": "Number of the fax service",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "countryCode": {
@@ -27310,7 +27711,7 @@ export const schema: Schema = {
           "description": "Country code of the fax service",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "filteringList": {
@@ -27325,7 +27726,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "whitelistedNumbers": {
@@ -27401,7 +27802,7 @@ export const schema: Schema = {
           "description": "The number of the function key",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "label": {
@@ -27409,7 +27810,7 @@ export const schema: Schema = {
           "description": "The key label",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "parameter": {
@@ -27425,7 +27826,7 @@ export const schema: Schema = {
           "description": "The key type",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -27439,7 +27840,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -27452,7 +27853,6 @@ export const schema: Schema = {
         "description": {
           "canBeNull": true,
           "description": "The telephony description",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -27460,23 +27860,20 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "The telephony name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "price": {
           "canBeNull": false,
           "description": "Telephony price",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "url": {
           "canBeNull": true,
           "description": "An URL to telephony details",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -27492,28 +27889,28 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "price": {
           "canBeNull": false,
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "priceOutplan": {
           "canBeNull": false,
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "status": {
           "canBeNull": false,
           "fullType": "telephony.BillStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.BillStatusEnum"
         }
       }
@@ -27528,7 +27925,7 @@ export const schema: Schema = {
           "description": "the number of the bill",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "date": {
@@ -27536,7 +27933,7 @@ export const schema: Schema = {
           "description": "date of the bill",
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "price": {
@@ -27544,7 +27941,7 @@ export const schema: Schema = {
           "description": "the amout which is repayed",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "status": {
@@ -27552,7 +27949,7 @@ export const schema: Schema = {
           "description": "status of the bill",
           "fullType": "telephony.BillStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.BillStatusEnum"
         }
       }
@@ -27567,7 +27964,7 @@ export const schema: Schema = {
           "description": "date of the bill",
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "price": {
@@ -27575,7 +27972,7 @@ export const schema: Schema = {
           "description": "the amount which is paid by the called number",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "status": {
@@ -27583,7 +27980,7 @@ export const schema: Schema = {
           "description": "status of the bill",
           "fullType": "telephony.BillStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.BillStatusEnum"
         }
       }
@@ -27598,14 +27995,14 @@ export const schema: Schema = {
           "description": "Ability to manage SIP password on this service",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "description": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "deviceSlot": {
@@ -27613,7 +28010,7 @@ export const schema: Schema = {
           "description": "The position of the line when attached to a device (0 if the line is not attached to a device)",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "getPublicOffer": {
@@ -27621,7 +28018,7 @@ export const schema: Schema = {
           "description": "The line offers",
           "fullType": "telephony.LineOffer",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.LineOffer"
         },
         "infrastructure": {
@@ -27629,7 +28026,7 @@ export const schema: Schema = {
           "description": "The infrastructure where is configured the line",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "isAttachedToOtherLinesPhone": {
@@ -27637,7 +28034,7 @@ export const schema: Schema = {
           "description": "Is this line attached to a phone that belongs to another line?",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "notifications": {
@@ -27653,28 +28050,28 @@ export const schema: Schema = {
           "description": "The line offers (Deprecated, prefer \"name\" in getPublicOffer)",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "serviceName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceType": {
           "canBeNull": false,
           "fullType": "telephony.TypeServiceEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeServiceEnum"
         },
         "simultaneousLines": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -27709,7 +28106,6 @@ export const schema: Schema = {
         "email": {
           "canBeNull": true,
           "description": "Email address where to send notifications",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -27717,7 +28113,6 @@ export const schema: Schema = {
         "frequency": {
           "canBeNull": true,
           "description": "Frequency at which the notifications will be send",
-          "fullType": "telephony.LineNotificationsLogsFrequencyEnum",
           "readOnly": false,
           "required": false,
           "type": "telephony.LineNotificationsLogsFrequencyEnum"
@@ -27725,7 +28120,6 @@ export const schema: Schema = {
         "sendIfNull": {
           "canBeNull": true,
           "description": "Send a blank notification if there is no diagnosticReports entries for the period",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -27739,7 +28133,6 @@ export const schema: Schema = {
         "logs": {
           "canBeNull": true,
           "description": "Error logging notifications options",
-          "fullType": "telephony.LineNotificationsLogsOptions",
           "readOnly": false,
           "required": false,
           "type": "telephony.LineNotificationsLogsOptions"
@@ -27754,23 +28147,20 @@ export const schema: Schema = {
         "description": {
           "canBeNull": false,
           "description": "The offer description",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
           "canBeNull": false,
           "description": "The offer name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "price": {
           "canBeNull": true,
           "description": "Offer price per month",
-          "fullType": "order.Price",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
@@ -27785,17 +28175,15 @@ export const schema: Schema = {
         "contracts": {
           "canBeNull": false,
           "description": "Informations related to a line contracts",
-          "fullType": "order.Contract[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Contract[]"
         },
         "offers": {
           "canBeNull": false,
           "description": "Informations related to a line offer",
-          "fullType": "telephony.LineOffer[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.LineOffer[]"
         }
       }
@@ -27846,7 +28234,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "anonymousCallRejection": {
@@ -27854,7 +28242,7 @@ export const schema: Schema = {
           "description": "Reject anonymous calls",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "callRestrictionIncoming": {
@@ -27862,7 +28250,7 @@ export const schema: Schema = {
           "description": "Whether or not the line has restriction on incoming calls",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "callRestrictionOutgoing": {
@@ -27870,7 +28258,7 @@ export const schema: Schema = {
           "description": "Whether or not the line has restriction on outgoing calls",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "callWaiting": {
@@ -27878,7 +28266,7 @@ export const schema: Schema = {
           "description": "If the line receives a new call and the line is already in communication, this new call is dispatched once the current call is completed",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "codecs": {
@@ -27886,7 +28274,7 @@ export const schema: Schema = {
           "description": "Codecs preferences",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "defaultVoicemail": {
@@ -27894,21 +28282,21 @@ export const schema: Schema = {
           "description": "The default voicemail of the line. It can be the voicemail of any line of your account.",
           "fullType": "phoneNumber",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "displayNumber": {
           "canBeNull": false,
           "fullType": "phoneNumber",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "doNotDisturb": {
           "canBeNull": false,
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "domain": {
@@ -27916,7 +28304,7 @@ export const schema: Schema = {
           "description": "The SIP domain of the line",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "forwardBackup": {
@@ -27924,7 +28312,7 @@ export const schema: Schema = {
           "description": "Enable calls forward when the line is unavailable",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forwardBackupNature": {
@@ -27932,7 +28320,7 @@ export const schema: Schema = {
           "description": "Nature of the forward when the line is unavailable",
           "fullType": "telephony.LineOptionForwardNatureTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.LineOptionForwardNatureTypeEnum"
         },
         "forwardBackupNumber": {
@@ -27940,7 +28328,7 @@ export const schema: Schema = {
           "description": "Destination of the forward when the line is unavailable",
           "fullType": "phoneNumber",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "forwardBusy": {
@@ -27948,7 +28336,7 @@ export const schema: Schema = {
           "description": "Enable calls forward when the line is busy",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forwardBusyNature": {
@@ -27956,7 +28344,7 @@ export const schema: Schema = {
           "description": "Nature of the forward when the line is busy",
           "fullType": "telephony.LineOptionForwardNatureTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.LineOptionForwardNatureTypeEnum"
         },
         "forwardBusyNumber": {
@@ -27964,7 +28352,7 @@ export const schema: Schema = {
           "description": "Destination of the forward when the line is busy",
           "fullType": "phoneNumber",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "forwardNoReply": {
@@ -27972,7 +28360,7 @@ export const schema: Schema = {
           "description": "Enable calls forward on no-reply",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forwardNoReplyDelay": {
@@ -27980,7 +28368,7 @@ export const schema: Schema = {
           "description": "Delay before forward on no-reply",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "forwardNoReplyNature": {
@@ -27988,7 +28376,7 @@ export const schema: Schema = {
           "description": "Nature of the forward on no-reply",
           "fullType": "telephony.LineOptionForwardNatureTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.LineOptionForwardNatureTypeEnum"
         },
         "forwardNoReplyNumber": {
@@ -27996,7 +28384,7 @@ export const schema: Schema = {
           "description": "Destination of the forward on no-reply",
           "fullType": "phoneNumber",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "forwardUnconditional": {
@@ -28004,7 +28392,7 @@ export const schema: Schema = {
           "description": "Enable unconditional calls forward",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forwardUnconditionalNature": {
@@ -28012,7 +28400,7 @@ export const schema: Schema = {
           "description": "Nature of the unconditional forward",
           "fullType": "telephony.LineOptionForwardNatureTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.LineOptionForwardNatureTypeEnum"
         },
         "forwardUnconditionalNumber": {
@@ -28020,7 +28408,7 @@ export const schema: Schema = {
           "description": "Destination of the unconditional forward",
           "fullType": "phoneNumber",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "identificationRestriction": {
@@ -28028,7 +28416,7 @@ export const schema: Schema = {
           "description": "Do not display your number",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "intercom": {
@@ -28036,7 +28424,7 @@ export const schema: Schema = {
           "description": "Intercom mode: takes automatically the call with the loudspeaker",
           "fullType": "telephony.LineOptionIntercomEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.LineOptionIntercomEnum"
         },
         "ipRestrictions": {
@@ -28044,7 +28432,7 @@ export const schema: Schema = {
           "description": "The ip restrictions of your line",
           "fullType": "ipBlock[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipBlock[]"
         },
         "language": {
@@ -28052,7 +28440,7 @@ export const schema: Schema = {
           "description": "Language of the line",
           "fullType": "telephony.LineOptionLanguageEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.LineOptionLanguageEnum"
         },
         "lockOutCall": {
@@ -28060,7 +28448,7 @@ export const schema: Schema = {
           "description": "Disallow outgoing calls",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "lockOutCallPassword": {
@@ -28076,7 +28464,7 @@ export const schema: Schema = {
           "description": "Enable or disable record of outgoing calls",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "toneOnCallWaitingSoundId": {
@@ -28108,7 +28496,7 @@ export const schema: Schema = {
           "description": "Voicemail number to dial from any other line",
           "fullType": "phoneNumber",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "voicemailInternalNumber": {
@@ -28116,7 +28504,7 @@ export const schema: Schema = {
           "description": "Voicemail short number to dial from the line",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -28129,23 +28517,20 @@ export const schema: Schema = {
         "brand": {
           "canBeNull": false,
           "description": "Brand name of the phone",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "description": {
           "canBeNull": false,
           "description": "The phone description",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "fees": {
           "canBeNull": true,
           "description": "Setup fees",
-          "fullType": "order.Price",
           "readOnly": false,
           "required": false,
           "type": "order.Price"
@@ -28153,33 +28538,29 @@ export const schema: Schema = {
         "maxline": {
           "canBeNull": false,
           "description": "Maximum number of lines managed by a phone",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "offerType": {
           "canBeNull": false,
           "description": "Type of purchase",
-          "fullType": "telephony.RmaOfferTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.RmaOfferTypeEnum"
         },
         "price": {
           "canBeNull": false,
           "description": "Telephony price",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "protocol": {
           "canBeNull": false,
           "description": "Phone protocol",
-          "fullType": "telephony.ProtocolEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.ProtocolEnum"
         }
       }
@@ -28192,33 +28573,29 @@ export const schema: Schema = {
         "associatedLines": {
           "canBeNull": false,
           "description": "Current lines configured on the phone",
-          "fullType": "telephony.LinePhoneAssociableConfiguredLines[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.LinePhoneAssociableConfiguredLines[]"
         },
         "brand": {
           "canBeNull": false,
           "description": "Brand name of the phone",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "maxLines": {
           "canBeNull": false,
           "description": "Maximum quantity of lines managed by the phone",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "protocol": {
           "canBeNull": false,
           "description": "Phone protocol",
-          "fullType": "telephony.ProtocolEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.ProtocolEnum"
         }
       }
@@ -28231,17 +28608,15 @@ export const schema: Schema = {
         "description": {
           "canBeNull": false,
           "description": "The line description",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceName": {
           "canBeNull": false,
           "description": "Service name of the line",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -28267,28 +28642,28 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "featureType": {
           "canBeNull": false,
           "fullType": "telephony.TypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeEnum"
         },
         "serviceName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceType": {
           "canBeNull": false,
           "fullType": "telephony.TypeServiceEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeServiceEnum"
         }
       }
@@ -28303,14 +28678,14 @@ export const schema: Schema = {
           "description": "Reject anonymous calls",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "name": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "numberOfCalls": {
@@ -28318,7 +28693,7 @@ export const schema: Schema = {
           "description": "Number of simultaneous calls",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "onHoldTimer": {
@@ -28326,14 +28701,14 @@ export const schema: Schema = {
           "description": "The maximum waiting time in the calls queue",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "pattern": {
           "canBeNull": false,
           "fullType": "telephony.EasyMiniPabxHuntingPatternEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.EasyMiniPabxHuntingPatternEnum"
         },
         "queueSize": {
@@ -28341,14 +28716,14 @@ export const schema: Schema = {
           "description": "Maximum numbers of callers in the queue",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "strategy": {
           "canBeNull": false,
           "fullType": "telephony.EasyMiniPabxHuntingStrategyEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.EasyMiniPabxHuntingStrategyEnum"
         },
         "toneOnClosure": {
@@ -28356,7 +28731,7 @@ export const schema: Schema = {
           "description": "True if the tone on closure is enabled",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "toneOnClosureSoundId": {
@@ -28372,7 +28747,7 @@ export const schema: Schema = {
           "description": "True if the tone on hold is enabled",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "toneOnHoldSoundId": {
@@ -28388,7 +28763,7 @@ export const schema: Schema = {
           "description": "True if the ring back tone is enabled",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "toneRingbackSoundId": {
@@ -28411,7 +28786,7 @@ export const schema: Schema = {
           "description": "Description of the service",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "featureType": {
@@ -28419,7 +28794,7 @@ export const schema: Schema = {
           "description": "Feature enabled on the number",
           "fullType": "telephony.TypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeEnum"
         },
         "partOfPool": {
@@ -28435,14 +28810,14 @@ export const schema: Schema = {
           "description": "Name of the service",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceType": {
           "canBeNull": false,
           "fullType": "telephony.TypeServiceEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeServiceEnum"
         }
       }
@@ -28486,7 +28861,6 @@ export const schema: Schema = {
         "askedCity": {
           "canBeNull": true,
           "description": "The searched value",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -28494,31 +28868,27 @@ export const schema: Schema = {
         "city": {
           "canBeNull": false,
           "description": "The city of the zone",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "country": {
           "canBeNull": false,
           "description": "The country of the zone",
-          "fullType": "telephony.NumberCountryEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.NumberCountryEnum"
         },
         "internationalNumber": {
           "canBeNull": false,
           "description": "The number's range of this zone, in international format",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "matchingCriteria": {
           "canBeNull": true,
           "description": "The criteria that matched the searched value",
-          "fullType": "telephony.NumberDetailedZoneMatchingCriteriaEnum",
           "readOnly": false,
           "required": false,
           "type": "telephony.NumberDetailedZoneMatchingCriteriaEnum"
@@ -28526,31 +28896,27 @@ export const schema: Schema = {
         "number": {
           "canBeNull": false,
           "description": "The number's range of this zone",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "prefix": {
           "canBeNull": false,
           "description": "The country code of the number's range",
-          "fullType": "telephony.NumberCountryCodeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.NumberCountryCodeEnum"
         },
         "type": {
           "canBeNull": false,
           "description": "The type of number's range of this zone",
-          "fullType": "telephony.NumberDetailedZoneTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.NumberDetailedZoneTypeEnum"
         },
         "zipCode": {
           "canBeNull": true,
           "description": "The zip code of the zone",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -28558,9 +28924,8 @@ export const schema: Schema = {
         "zneList": {
           "canBeNull": false,
           "description": "The list of ZNE of this zone",
-          "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         }
       }
@@ -28609,7 +28974,7 @@ export const schema: Schema = {
           "description": "The current offer will be replace by this one on the next renew.",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -28624,7 +28989,7 @@ export const schema: Schema = {
           "description": "Actual action that will be executed",
           "fullType": "telephony.OfferTaskActionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.OfferTaskActionEnum"
         },
         "executionDate": {
@@ -28632,7 +28997,7 @@ export const schema: Schema = {
           "description": "Planned execution date",
           "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
@@ -28640,14 +29005,14 @@ export const schema: Schema = {
           "description": "Current status of the task",
           "fullType": "telephony.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TaskStatusEnum"
         },
         "taskId": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "type": {
@@ -28655,7 +29020,7 @@ export const schema: Schema = {
           "description": "Type of operation that will be executed",
           "fullType": "telephony.OfferTaskTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.OfferTaskTypeEnum"
         }
       }
@@ -28696,17 +29061,15 @@ export const schema: Schema = {
         "mac": {
           "canBeNull": false,
           "description": "Mac address of the phone",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "model": {
           "canBeNull": false,
           "description": "Model of the phone",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -28733,7 +29096,7 @@ export const schema: Schema = {
           "description": "Description of the service",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "featureType": {
@@ -28741,7 +29104,7 @@ export const schema: Schema = {
           "description": "Feature of the service",
           "fullType": "telephony.TypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeEnum"
         },
         "isCCS": {
@@ -28749,14 +29112,14 @@ export const schema: Schema = {
           "description": "Does the service have extended CCS options enabled?",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "serviceName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceType": {
@@ -28764,7 +29127,7 @@ export const schema: Schema = {
           "description": "General type of the service",
           "fullType": "telephony.TypeServiceEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeServiceEnum"
         }
       }
@@ -28794,7 +29157,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
@@ -28802,7 +29165,7 @@ export const schema: Schema = {
           "description": "The name of the status (Pause, Mission, etc...)",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -28817,21 +29180,21 @@ export const schema: Schema = {
           "description": "Reject (hangup) anonymous calls",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "dialplanId": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lastUpdate": {
           "canBeNull": false,
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "name": {
@@ -28839,7 +29202,7 @@ export const schema: Schema = {
           "description": "The dialplan name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "showCallerNumber": {
@@ -28847,7 +29210,7 @@ export const schema: Schema = {
           "description": "The presented number when bridging calls",
           "fullType": "telephony.OvhPabxDialplanNumberPresentationEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.OvhPabxDialplanNumberPresentationEnum"
         },
         "transferTimeout": {
@@ -28855,7 +29218,7 @@ export const schema: Schema = {
           "description": "The timeout (in seconds) when bridging calls",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -28870,14 +29233,14 @@ export const schema: Schema = {
           "description": "True if the extension is enabled",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "extensionId": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "position": {
@@ -28885,7 +29248,7 @@ export const schema: Schema = {
           "description": "The position of the extension in the dialplan (the extensions are executed following this order)",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "schedulerCategory": {
@@ -28923,7 +29286,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "destinationNumber": {
@@ -28965,7 +29328,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "timeFrom": {
@@ -28973,7 +29336,7 @@ export const schema: Schema = {
           "description": "The time of the day when the extension will start to be executed",
           "fullType": "time",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "time"
         },
         "timeTo": {
@@ -28981,7 +29344,7 @@ export const schema: Schema = {
           "description": "The time of the day when the extension will stop to be executed",
           "fullType": "time",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "time"
         },
         "weekDay": {
@@ -28989,7 +29352,7 @@ export const schema: Schema = {
           "description": "The day of the week when the extension will be executed",
           "fullType": "telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum"
         }
       }
@@ -29019,7 +29382,7 @@ export const schema: Schema = {
           "description": "The action made by the rule",
           "fullType": "telephony.OvhPabxDialplanExtensionRuleActionEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.OvhPabxDialplanExtensionRuleActionEnum"
         },
         "actionParam": {
@@ -29035,7 +29398,7 @@ export const schema: Schema = {
           "description": "If true, the rule will be executed only when the result of the conditions is false",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "position": {
@@ -29043,14 +29406,14 @@ export const schema: Schema = {
           "description": "The position of the rule in the extension (the rules are executed following this order)",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "ruleId": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -29111,7 +29474,7 @@ export const schema: Schema = {
           "description": "The name of your callcenter offer",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "statusIvrEnabled": {
@@ -29119,7 +29482,7 @@ export const schema: Schema = {
           "description": "Enable/Disable the status change IVR on your callcenter. The IVR is enabled by default.",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -29133,7 +29496,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "breakStatus": {
@@ -29157,7 +29520,7 @@ export const schema: Schema = {
           "description": "The number of the agent",
           "fullType": "phoneNumber",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "simultaneousLines": {
@@ -29165,7 +29528,7 @@ export const schema: Schema = {
           "description": "The maximum of simultaneous calls that the agent will receive from the hunting",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "status": {
@@ -29173,7 +29536,7 @@ export const schema: Schema = {
           "description": "The current status of the agent",
           "fullType": "telephony.OvhPabxHuntingAgentStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.OvhPabxHuntingAgentStatusEnum"
         },
         "timeout": {
@@ -29181,7 +29544,7 @@ export const schema: Schema = {
           "description": "The waiting timeout (in seconds) before hangup an assigned called",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "type": {
@@ -29189,7 +29552,7 @@ export const schema: Schema = {
           "description": "The agent's type",
           "fullType": "telephony.OvhPabxHuntingAgentTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.OvhPabxHuntingAgentTypeEnum"
         },
         "wrapUpTime": {
@@ -29197,7 +29560,7 @@ export const schema: Schema = {
           "description": "The wrap up time (in seconds) after the calls",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -29212,7 +29575,7 @@ export const schema: Schema = {
           "description": "The number of calls this agent took on the current day",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lastStatusChange": {
@@ -29220,7 +29583,7 @@ export const schema: Schema = {
           "description": "Last status change date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
@@ -29228,7 +29591,7 @@ export const schema: Schema = {
           "description": "Current status of the agent",
           "fullType": "telephony.OvhPabxHuntingLiveAgentStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.OvhPabxHuntingLiveAgentStatusEnum"
         },
         "totalCallDuration": {
@@ -29236,7 +29599,7 @@ export const schema: Schema = {
           "description": "The total duration in seconds of the calls this agent took on the current day",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -29250,7 +29613,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "position": {
@@ -29258,14 +29621,14 @@ export const schema: Schema = {
           "description": "The position in the queue",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "queueId": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -29380,7 +29743,7 @@ export const schema: Schema = {
           "description": "The maximum of people waiting in the queue",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxWaitTime": {
@@ -29388,14 +29751,14 @@ export const schema: Schema = {
           "description": "The maximum waiting time (in seconds) in the queue",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "queueId": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "record": {
@@ -29435,7 +29798,7 @@ export const schema: Schema = {
           "description": "The calls dispatching strategy",
           "fullType": "telephony.OvhPabxHuntingQueueStrategyEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.OvhPabxHuntingQueueStrategyEnum"
         }
       }
@@ -29450,7 +29813,7 @@ export const schema: Schema = {
           "description": "Name or number of the agent who answered the call",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "answered": {
@@ -29466,7 +29829,7 @@ export const schema: Schema = {
           "description": "Begin date of the call",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "callerIdName": {
@@ -29474,7 +29837,7 @@ export const schema: Schema = {
           "description": "Name of the caller (or anonymous if unknown)",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "callerIdNumber": {
@@ -29482,7 +29845,7 @@ export const schema: Schema = {
           "description": "Phone number of the caller (or anonymous if unknown)",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "destinationNumber": {
@@ -29490,7 +29853,7 @@ export const schema: Schema = {
           "description": "Phone number called (in case of an outgoing call)",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "end": {
@@ -29505,7 +29868,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "onHold": {
@@ -29521,7 +29884,7 @@ export const schema: Schema = {
           "description": "Name of the queue of the call",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "state": {
@@ -29529,7 +29892,7 @@ export const schema: Schema = {
           "description": "Current state of the call",
           "fullType": "telephony.OvhPabxHuntingLiveCallsStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.OvhPabxHuntingLiveCallsStateEnum"
         }
       }
@@ -29544,7 +29907,7 @@ export const schema: Schema = {
           "description": "Total of calls answered",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "callsLost": {
@@ -29552,7 +29915,7 @@ export const schema: Schema = {
           "description": "Total of calls lost",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "callsTotal": {
@@ -29560,7 +29923,7 @@ export const schema: Schema = {
           "description": "Total of calls",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lastReset": {
@@ -29568,7 +29931,7 @@ export const schema: Schema = {
           "description": "Last reset datetime of queue's statistics",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "totalCallDuration": {
@@ -29576,7 +29939,7 @@ export const schema: Schema = {
           "description": "Total call duration in seconds",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "totalWaitingDuration": {
@@ -29584,7 +29947,7 @@ export const schema: Schema = {
           "description": "Total waiting duration in seconds",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -29690,7 +30053,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
@@ -29698,7 +30061,7 @@ export const schema: Schema = {
           "description": "The name of the menu",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -29713,7 +30076,7 @@ export const schema: Schema = {
           "description": "The action triggered by the DTMF",
           "fullType": "telephony.OvhPabxIvrMenuEntryActionEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.OvhPabxIvrMenuEntryActionEnum"
         },
         "actionParam": {
@@ -29721,7 +30084,7 @@ export const schema: Schema = {
           "description": "The additionnal parameter of the action",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "dtmf": {
@@ -29729,14 +30092,14 @@ export const schema: Schema = {
           "description": "The DTMF that triggers the action",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "entryId": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "position": {
@@ -29744,7 +30107,7 @@ export const schema: Schema = {
           "description": "The position of the entry in the menu",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -29785,7 +30148,7 @@ export const schema: Schema = {
           "description": "The begin date of the recorded call",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "callerIdName": {
@@ -29793,7 +30156,7 @@ export const schema: Schema = {
           "description": "The caller name of the recorded call",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "callerIdNumber": {
@@ -29801,7 +30164,7 @@ export const schema: Schema = {
           "description": "The caller number of the recorded call",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "destinationNumber": {
@@ -29817,7 +30180,7 @@ export const schema: Schema = {
           "description": "The duration in seconds of the recorded call",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "fileUrl": {
@@ -29825,14 +30188,14 @@ export const schema: Schema = {
           "description": "The record sound url",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -29847,14 +30210,14 @@ export const schema: Schema = {
           "description": "The sound filename",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "soundId": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -29868,7 +30231,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "text": {
@@ -29876,7 +30239,7 @@ export const schema: Schema = {
           "description": "The text that will be played",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "voice": {
@@ -29884,7 +30247,7 @@ export const schema: Schema = {
           "description": "The voice used to say text",
           "fullType": "telephony.OvhPabxTtsVoiceEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.OvhPabxTtsVoiceEnum"
         }
       }
@@ -29920,28 +30283,28 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
           "canBeNull": false,
           "fullType": "telephony.PcsFileStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.PcsFileStatusEnum"
         },
         "url": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "urlExpirationDatetime": {
           "canBeNull": false,
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -29968,7 +30331,7 @@ export const schema: Schema = {
           "description": "Brand name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "description": {
@@ -29976,7 +30339,7 @@ export const schema: Schema = {
           "description": "The phone description",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "macAddress": {
@@ -29984,7 +30347,7 @@ export const schema: Schema = {
           "description": "Mac Address",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "maxline": {
@@ -29992,7 +30355,7 @@ export const schema: Schema = {
           "description": "Maximum number of lines managed by a phone",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "mgcpIpRestriction": {
@@ -30008,7 +30371,7 @@ export const schema: Schema = {
           "description": "Current phone properties",
           "fullType": "telephony.PhoneConfigurationProperty[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.PhoneConfigurationProperty[]"
         },
         "protocol": {
@@ -30016,7 +30379,7 @@ export const schema: Schema = {
           "description": "Phone protocol",
           "fullType": "telephony.ProtocolEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.ProtocolEnum"
         },
         "userPassword": {
@@ -30047,7 +30410,6 @@ export const schema: Schema = {
         "default": {
           "canBeNull": true,
           "description": "Default property value",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -30055,7 +30417,6 @@ export const schema: Schema = {
         "description": {
           "canBeNull": true,
           "description": "Property description",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -30063,7 +30424,6 @@ export const schema: Schema = {
         "enum": {
           "canBeNull": true,
           "description": "Property value possibilities",
-          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
@@ -30071,7 +30431,6 @@ export const schema: Schema = {
         "group": {
           "canBeNull": true,
           "description": "The property group",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -30079,7 +30438,6 @@ export const schema: Schema = {
         "level": {
           "canBeNull": true,
           "description": "Provisioning level",
-          "fullType": "telephony.PhoneConfigurationLevelEnum",
           "readOnly": false,
           "required": false,
           "type": "telephony.PhoneConfigurationLevelEnum"
@@ -30087,7 +30445,6 @@ export const schema: Schema = {
         "maxlength": {
           "canBeNull": true,
           "description": "Max string chars",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -30095,7 +30452,6 @@ export const schema: Schema = {
         "name": {
           "canBeNull": true,
           "description": "The property name",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -30103,7 +30459,6 @@ export const schema: Schema = {
         "rangeValue": {
           "canBeNull": true,
           "description": "Range property value",
-          "fullType": "complexType.Range<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.Range<long>"
@@ -30111,7 +30466,6 @@ export const schema: Schema = {
         "type": {
           "canBeNull": true,
           "description": "Provisioning type",
-          "fullType": "telephony.PhoneConfigurationTypeEnum",
           "readOnly": false,
           "required": false,
           "type": "telephony.PhoneConfigurationTypeEnum"
@@ -30119,7 +30473,6 @@ export const schema: Schema = {
         "value": {
           "canBeNull": true,
           "description": "Current property value",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -30148,7 +30501,6 @@ export const schema: Schema = {
         "login": {
           "canBeNull": true,
           "description": "Username to access the web interface of the phone",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -30156,9 +30508,8 @@ export const schema: Schema = {
         "password": {
           "canBeNull": false,
           "description": "Password to access the web interface of the phone",
-          "fullType": "password",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "password"
         }
       }
@@ -30173,7 +30524,7 @@ export const schema: Schema = {
           "description": "Identifier of the phonebook",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "isReadonly": {
@@ -30181,7 +30532,7 @@ export const schema: Schema = {
           "description": "Set if phonebook is readonly",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "name": {
@@ -30189,7 +30540,7 @@ export const schema: Schema = {
           "description": "Phonebook name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "phoneKey": {
@@ -30197,7 +30548,7 @@ export const schema: Schema = {
           "description": "Phone key identifier between the phone and phonebooks",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -30212,7 +30563,7 @@ export const schema: Schema = {
           "description": "Group name of the phonebook",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "homeMobile": {
@@ -30236,7 +30587,7 @@ export const schema: Schema = {
           "description": "Contact identifier",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
@@ -30244,7 +30595,7 @@ export const schema: Schema = {
           "description": "Contact name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "surname": {
@@ -30252,7 +30603,7 @@ export const schema: Schema = {
           "description": "Contact surname",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "workMobile": {
@@ -30283,7 +30634,7 @@ export const schema: Schema = {
           "description": "Identifier of the phonebook",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -30291,7 +30642,7 @@ export const schema: Schema = {
           "description": "Phone book name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -30306,7 +30657,7 @@ export const schema: Schema = {
           "description": "The billing account where the numbers will be inserted",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "creationDate": {
@@ -30314,7 +30665,7 @@ export const schema: Schema = {
           "description": "The portability's creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "customerInfos": {
@@ -30322,7 +30673,7 @@ export const schema: Schema = {
           "description": "Customer informations about this portability",
           "fullType": "telephony.PortabilityCustomerInfos",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.PortabilityCustomerInfos"
         },
         "desiredExecutionDate": {
@@ -30338,7 +30689,7 @@ export const schema: Schema = {
           "description": "Indicates that portability is in error",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "errorCodes": {
@@ -30346,7 +30697,7 @@ export const schema: Schema = {
           "description": "Codes representing the error in current portability",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "id": {
@@ -30354,7 +30705,7 @@ export const schema: Schema = {
           "description": "The ID of the portability",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lineToRedirectTo": {
@@ -30370,7 +30721,7 @@ export const schema: Schema = {
           "description": "The list of numbers that is going to be ported",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "operator": {
@@ -30378,7 +30729,7 @@ export const schema: Schema = {
           "description": "The operator that currently holds the numbers",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "orderId": {
@@ -30386,7 +30737,7 @@ export const schema: Schema = {
           "description": "The ID of the portability order",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "portabilityCountry": {
@@ -30394,7 +30745,7 @@ export const schema: Schema = {
           "description": "Country that defines the portability kind",
           "fullType": "telephony.PortabilityCountryEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.PortabilityCountryEnum"
         },
         "rio": {
@@ -30426,7 +30777,6 @@ export const schema: Schema = {
         "building": {
           "canBeNull": true,
           "description": "Building of the customer's address",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -30434,15 +30784,13 @@ export const schema: Schema = {
         "city": {
           "canBeNull": false,
           "description": "City of the customer's address",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "door": {
           "canBeNull": true,
           "description": "Door of the customer's address",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -30450,7 +30798,6 @@ export const schema: Schema = {
         "floor": {
           "canBeNull": true,
           "description": "Floor of the customer's address",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -30458,15 +30805,13 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "Name of the customer",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "siret": {
           "canBeNull": true,
           "description": "SIRET of the customer",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -30474,7 +30819,6 @@ export const schema: Schema = {
         "stair": {
           "canBeNull": true,
           "description": "Stair of the customer's address",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -30482,25 +30826,22 @@ export const schema: Schema = {
         "streetName": {
           "canBeNull": false,
           "description": "Street name of the customer's address",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "streetNumber": {
           "canBeNull": false,
           "description": "Street number of the customer's address",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "zip": {
           "canBeNull": false,
           "description": "ZIP code of the customer's address",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -30523,7 +30864,7 @@ export const schema: Schema = {
           "description": "Identifier of the document",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "getUrl": {
@@ -30531,7 +30872,7 @@ export const schema: Schema = {
           "description": "URL to get document",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -30539,7 +30880,7 @@ export const schema: Schema = {
           "description": "Name of the document",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "putUrl": {
@@ -30555,7 +30896,7 @@ export const schema: Schema = {
           "description": "Document size (in bytes)",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -30568,17 +30909,15 @@ export const schema: Schema = {
         "mandatoryParameters": {
           "canBeNull": false,
           "description": "Mandatory parameter list",
-          "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "optionalParameters": {
           "canBeNull": false,
           "description": "Optional parameter list",
-          "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         }
       }
@@ -30591,7 +30930,6 @@ export const schema: Schema = {
         "description": {
           "canBeNull": true,
           "description": "A brief description of the step",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -30599,7 +30937,6 @@ export const schema: Schema = {
         "doneDate": {
           "canBeNull": true,
           "description": "The date when this step was done",
-          "fullType": "datetime",
           "readOnly": false,
           "required": false,
           "type": "datetime"
@@ -30607,15 +30944,13 @@ export const schema: Schema = {
         "duration": {
           "canBeNull": false,
           "description": "The theoric delay between the previous step's done date and this step's done date",
-          "fullType": "telephony.PortabilityStepDuration",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.PortabilityStepDuration"
         },
         "infos": {
           "canBeNull": true,
           "description": "Additional informations about the step",
-          "fullType": "telephony.PortabilityStepInfos",
           "readOnly": false,
           "required": false,
           "type": "telephony.PortabilityStepInfos"
@@ -30623,17 +30958,15 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "The name of the portability step",
-          "fullType": "telephony.PortabilityStepNameEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.PortabilityStepNameEnum"
         },
         "status": {
           "canBeNull": false,
           "description": "Indicates if the step is to do, currently doing or done",
-          "fullType": "telephony.PortabilityStepStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.PortabilityStepStatusEnum"
         }
       }
@@ -30646,17 +30979,15 @@ export const schema: Schema = {
         "quantity": {
           "canBeNull": false,
           "description": "The quantity of delay",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "unit": {
           "canBeNull": false,
           "description": "The delay's unit",
-          "fullType": "telephony.PortabilityStepDurationUnitEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.PortabilityStepDurationUnitEnum"
         }
       }
@@ -30681,7 +31012,6 @@ export const schema: Schema = {
         "lastProposedDate": {
           "canBeNull": true,
           "description": "The last portability due date that has been proposed",
-          "fullType": "datetime",
           "readOnly": false,
           "required": false,
           "type": "datetime"
@@ -30689,7 +31019,6 @@ export const schema: Schema = {
         "reason": {
           "canBeNull": true,
           "description": "If the step status is \"error\", it is the reason",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -30697,7 +31026,6 @@ export const schema: Schema = {
         "reasonType": {
           "canBeNull": true,
           "description": "A code representing the reason",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -30764,7 +31092,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "countrySuffix": {
@@ -30772,14 +31100,14 @@ export const schema: Schema = {
           "description": "Country suffix destination",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "creationDatetime": {
           "canBeNull": false,
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "designation": {
@@ -30787,21 +31115,21 @@ export const schema: Schema = {
           "description": "Description of the destination",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "destinationType": {
           "canBeNull": false,
           "fullType": "telephony.VoiceConsumptionDestinationTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.VoiceConsumptionDestinationTypeEnum"
         },
         "duration": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "hangupNature": {
@@ -30816,21 +31144,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "telephony.VoiceConsumptionPlanTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.VoiceConsumptionPlanTypeEnum"
         },
         "priceWithoutTax": {
           "canBeNull": false,
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "wayType": {
           "canBeNull": false,
           "fullType": "telephony.VoiceConsumptionWayTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.VoiceConsumptionWayTypeEnum"
         }
       }
@@ -30862,28 +31190,59 @@ export const schema: Schema = {
         "code": {
           "canBeNull": false,
           "description": "The Rsva rate code",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "pricePerCallWithoutTax": {
           "canBeNull": false,
           "description": "Price per call",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "pricePerMinuteWithoutTax": {
           "canBeNull": false,
           "description": "Price per minute",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         }
       }
+    },
+    "telephony.RealtimeEventDirection": {
+      "description": "The call direction for a given event",
+      "enum": [
+        "incoming",
+        "outgoing"
+      ],
+      "enumType": "string",
+      "id": "RealtimeEventDirection",
+      "namespace": "telephony"
+    },
+    "telephony.RealtimeEventProtocol": {
+      "description": "The event protocol",
+      "enum": [
+        "mgcp",
+        "sip"
+      ],
+      "enumType": "string",
+      "id": "RealtimeEventProtocol",
+      "namespace": "telephony"
+    },
+    "telephony.RealtimeEventType": {
+      "description": "The event type",
+      "enum": [
+        "end_calling",
+        "end_hold",
+        "end_ringing",
+        "start_calling",
+        "start_hold",
+        "start_ringing"
+      ],
+      "enumType": "string",
+      "id": "RealtimeEventType",
+      "namespace": "telephony"
     },
     "telephony.Redirect": {
       "description": "Redirect service",
@@ -30894,7 +31253,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "destination": {
@@ -30908,21 +31267,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "telephony.TypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeEnum"
         },
         "serviceName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceType": {
           "canBeNull": false,
           "fullType": "telephony.TypeServiceEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeServiceEnum"
         }
       }
@@ -30935,15 +31294,13 @@ export const schema: Schema = {
         "datetime": {
           "canBeNull": false,
           "description": "SIP registration's date",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "domain": {
           "canBeNull": true,
           "description": "SIP registration's domain",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -30951,15 +31308,13 @@ export const schema: Schema = {
         "ip": {
           "canBeNull": false,
           "description": "SIP registration's IP",
-          "fullType": "ip",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "localIp": {
           "canBeNull": true,
           "description": "SIP registration's local device IP",
-          "fullType": "ip",
           "readOnly": false,
           "required": false,
           "type": "ip"
@@ -30967,7 +31322,6 @@ export const schema: Schema = {
         "localPort": {
           "canBeNull": true,
           "description": "SIP registration's local device port",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -30975,7 +31329,6 @@ export const schema: Schema = {
         "port": {
           "canBeNull": true,
           "description": "SIP registration's port",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -30983,7 +31336,6 @@ export const schema: Schema = {
         "userAgent": {
           "canBeNull": true,
           "description": "SIP registration's User-Agent",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -31026,7 +31378,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "creationDatetime": {
@@ -31086,7 +31438,6 @@ export const schema: Schema = {
         "activationCode": {
           "canBeNull": true,
           "description": "Activation code",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -31094,7 +31445,6 @@ export const schema: Schema = {
         "keyBook": {
           "canBeNull": true,
           "description": "Key book url",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -31102,7 +31452,6 @@ export const schema: Schema = {
         "serverURL": {
           "canBeNull": true,
           "description": "Server url",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -31117,7 +31466,6 @@ export const schema: Schema = {
         "resetCodeInfo": {
           "canBeNull": true,
           "description": "Reset code informations",
-          "fullType": "telephony.ResetPhoneCodeInfo",
           "readOnly": false,
           "required": false,
           "type": "telephony.ResetPhoneCodeInfo"
@@ -31125,9 +31473,8 @@ export const schema: Schema = {
         "resetPhoneMethod": {
           "canBeNull": false,
           "description": "Which way had been used to reset the phone",
-          "fullType": "telephony.ResetPhoneMethodEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.ResetPhoneMethodEnum"
         }
       }
@@ -31152,7 +31499,7 @@ export const schema: Schema = {
           "description": "Is the RMA cancellable?",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "creationDatetime": {
@@ -31160,7 +31507,7 @@ export const schema: Schema = {
           "description": "Creation datetime of the return merchandise authorisation ticket",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "equipmentReference": {
@@ -31168,7 +31515,7 @@ export const schema: Schema = {
           "description": "Merchandise reference",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -31176,7 +31523,7 @@ export const schema: Schema = {
           "description": "Return merchandise authorisation identifier",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "newMerchandise": {
@@ -31200,7 +31547,7 @@ export const schema: Schema = {
           "description": "Offer type of the return merchandise",
           "fullType": "telephony.RmaOfferTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.RmaOfferTypeEnum"
         },
         "process": {
@@ -31208,7 +31555,7 @@ export const schema: Schema = {
           "description": "Process determined for merchandise returned",
           "fullType": "telephony.RmaReplaceTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.RmaReplaceTypeEnum"
         },
         "receptionDatetime": {
@@ -31224,7 +31571,7 @@ export const schema: Schema = {
           "description": "Contact information related to the delivery shipping in case of exchange",
           "fullType": "telephony.Contact",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.Contact"
         },
         "status": {
@@ -31232,7 +31579,7 @@ export const schema: Schema = {
           "description": "Return merchandise authorisation step",
           "fullType": "telephony.RmaStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.RmaStatusEnum"
         },
         "steps": {
@@ -31240,7 +31587,7 @@ export const schema: Schema = {
           "description": "Indicates the current status of the RMA with a list of steps",
           "fullType": "telephony.RmaStep[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.RmaStep[]"
         },
         "terminationDatetime": {
@@ -31256,7 +31603,7 @@ export const schema: Schema = {
           "description": "Typology process of merchandise return",
           "fullType": "telephony.RmaTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.RmaTypeEnum"
         }
       }
@@ -31301,9 +31648,8 @@ export const schema: Schema = {
         "id": {
           "canBeNull": false,
           "description": "Voucher reference identifier of the return merchandise authorisation",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -31327,15 +31673,13 @@ export const schema: Schema = {
         "description": {
           "canBeNull": false,
           "description": "A brief description of the step",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "doneDate": {
           "canBeNull": true,
           "description": "The date when this step was done",
-          "fullType": "datetime",
           "readOnly": false,
           "required": false,
           "type": "datetime"
@@ -31343,7 +31687,6 @@ export const schema: Schema = {
         "infos": {
           "canBeNull": true,
           "description": "Additional informations about the step",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -31351,17 +31694,15 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "The name of the RMA step",
-          "fullType": "telephony.RmaStepNameEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.RmaStepNameEnum"
         },
         "status": {
           "canBeNull": false,
           "description": "Status of the step",
-          "fullType": "telephony.RmaStepStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.RmaStepStatusEnum"
         }
       }
@@ -31419,7 +31760,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "typology": {
@@ -31440,14 +31781,14 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "timeZone": {
           "canBeNull": false,
           "fullType": "telephony.timeZone",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.timeZone"
         }
       }
@@ -31474,7 +31815,7 @@ export const schema: Schema = {
           "description": "The category of the event",
           "fullType": "telephony.SchedulerCategoryEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.SchedulerCategoryEnum"
         },
         "dateEnd": {
@@ -31482,7 +31823,7 @@ export const schema: Schema = {
           "description": "The ending date of the event",
           "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "dateStart": {
@@ -31490,7 +31831,7 @@ export const schema: Schema = {
           "description": "The beginning date of the event",
           "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
@@ -31504,7 +31845,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "uid": {
@@ -31512,7 +31853,7 @@ export const schema: Schema = {
           "description": "The unique ICS event identifier",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -31526,21 +31867,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "telephony.ScreenListChoosingEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.ScreenListChoosingEnum"
         },
         "outgoingScreenList": {
           "canBeNull": false,
           "fullType": "telephony.ScreenListChoosingEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.ScreenListChoosingEnum"
         },
         "serviceName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -31554,35 +31895,35 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "nature": {
           "canBeNull": false,
           "fullType": "telephony.ScreenListNatureEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.ScreenListNatureEnum"
         },
         "status": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
           "canBeNull": false,
           "fullType": "telephony.ScreenListTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.ScreenListTypeEnum"
         }
       }
@@ -31654,16 +31995,14 @@ export const schema: Schema = {
       "properties": {
         "email": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
           "canBeNull": false,
-          "fullType": "telephony.ServiceVoicemailMailOptionEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.ServiceVoicemailMailOptionEnum"
         }
       }
@@ -31676,41 +32015,36 @@ export const schema: Schema = {
         "basic": {
           "canBeNull": false,
           "description": "Basic quantity of simultaneous channels included in the line.",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "current": {
           "canBeNull": false,
           "description": "Current quantity of simultaneous channels.",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "extra": {
           "canBeNull": false,
           "description": "Extra quantity of simultaneous channels added to the line.",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maximum": {
           "canBeNull": false,
           "description": "Maximum quantity of simultaneous channels the line can have.",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "toBeDeleted": {
           "canBeNull": false,
           "description": "Quantity of simultaneous channels going to be deleted at the end of the billing cycle.",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -31735,7 +32069,7 @@ export const schema: Schema = {
           "description": "Sound creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
@@ -31751,7 +32085,7 @@ export const schema: Schema = {
           "description": "Sound filename",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "getUrl": {
@@ -31759,7 +32093,7 @@ export const schema: Schema = {
           "description": "URL to get sound file",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -31767,7 +32101,7 @@ export const schema: Schema = {
           "description": "Sound ID",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "putUrl": {
@@ -31783,7 +32117,7 @@ export const schema: Schema = {
           "description": "Sound file size (in bytes)",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -31796,17 +32130,15 @@ export const schema: Schema = {
         "isPremium": {
           "canBeNull": false,
           "description": "Set if number is premium",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "number": {
           "canBeNull": false,
           "description": "The number",
-          "fullType": "phoneNumber",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         }
       }
@@ -31834,7 +32166,7 @@ export const schema: Schema = {
           "description": "Action associated with the task",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "message": {
@@ -31857,7 +32189,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -31865,14 +32197,14 @@ export const schema: Schema = {
           "description": "Status of the task",
           "fullType": "telephony.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TaskStatusEnum"
         },
         "taskId": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -31899,7 +32231,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -31912,7 +32244,6 @@ export const schema: Schema = {
         "billingAccount": {
           "canBeNull": true,
           "description": "The billing account of the service",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -31920,17 +32251,15 @@ export const schema: Schema = {
         "domain": {
           "canBeNull": false,
           "description": "The service domain",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
           "canBeNull": false,
           "description": "The offer description",
-          "fullType": "telephony.TelephonySearchServiceTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.TelephonySearchServiceTypeEnum"
         }
       }
@@ -31956,7 +32285,7 @@ export const schema: Schema = {
           "description": "The country of the number",
           "fullType": "telephony.NumberCountryEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.NumberCountryEnum"
         },
         "countryCode": {
@@ -31964,7 +32293,7 @@ export const schema: Schema = {
           "description": "The country code of the number",
           "fullType": "telephony.NumberCountryCodeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.NumberCountryCodeEnum"
         },
         "currentOutplan": {
@@ -31972,21 +32301,21 @@ export const schema: Schema = {
           "description": "Current outplan",
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "description": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "featureType": {
           "canBeNull": false,
           "fullType": "telephony.TypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeEnum"
         },
         "getPublicOffer": {
@@ -31994,7 +32323,7 @@ export const schema: Schema = {
           "description": "The service offers",
           "fullType": "telephony.LineOffer",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.LineOffer"
         },
         "hasFaxCapabilities": {
@@ -32002,21 +32331,21 @@ export const schema: Schema = {
           "description": "Does this service have fax capabilities?",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "offers": {
           "canBeNull": false,
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "properties": {
           "canBeNull": false,
           "fullType": "telephony.PropertyEnum[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.PropertyEnum[]"
         },
         "rio": {
@@ -32024,28 +32353,28 @@ export const schema: Schema = {
           "description": "The identifier to use to port the number",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceType": {
           "canBeNull": false,
           "fullType": "telephony.TypeServiceEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeServiceEnum"
         },
         "simultaneousLines": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -32058,17 +32387,15 @@ export const schema: Schema = {
         "expirationDate": {
           "canBeNull": false,
           "description": "Temporary url expiration date",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "url": {
           "canBeNull": false,
           "description": "Temporary url",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -32098,42 +32425,42 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "telephony.TimeConditionsDayEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.TimeConditionsDayEnum"
         },
         "hourBegin": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "hourEnd": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "policy": {
           "canBeNull": false,
           "fullType": "telephony.TimeConditionsPolicyEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.TimeConditionsPolicyEnum"
         },
         "status": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -32148,7 +32475,7 @@ export const schema: Schema = {
           "description": "Number associated to the first slot action",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "slot1Type": {
@@ -32156,7 +32483,7 @@ export const schema: Schema = {
           "description": "Action type executed when the first slot is used",
           "fullType": "telephony.TimeConditionsSlotTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.TimeConditionsSlotTypeEnum"
         },
         "slot2Number": {
@@ -32164,7 +32491,7 @@ export const schema: Schema = {
           "description": "Number associated to the second slot action",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "slot2Type": {
@@ -32172,7 +32499,7 @@ export const schema: Schema = {
           "description": "Action type executed when the second slot is used",
           "fullType": "telephony.TimeConditionsSlotTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.TimeConditionsSlotTypeEnum"
         },
         "slot3Number": {
@@ -32180,7 +32507,7 @@ export const schema: Schema = {
           "description": "Number associated to the third slot action",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "slot3Type": {
@@ -32188,7 +32515,7 @@ export const schema: Schema = {
           "description": "Action type executed when the third slot is used",
           "fullType": "telephony.TimeConditionsSlotTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.TimeConditionsSlotTypeEnum"
         },
         "status": {
@@ -32196,7 +32523,7 @@ export const schema: Schema = {
           "description": "Status of time conditions",
           "fullType": "telephony.TimeConditionsGlobalStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.TimeConditionsGlobalStatusEnum"
         },
         "timeout": {
@@ -32212,7 +32539,7 @@ export const schema: Schema = {
           "description": "Number associated to the unavailable slot action",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "unavailableType": {
@@ -32220,7 +32547,7 @@ export const schema: Schema = {
           "description": "Action type executed when the unavailable slot is used",
           "fullType": "telephony.TimeConditionsSlotTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.TimeConditionsSlotTypeEnum"
         }
       }
@@ -32317,14 +32644,12 @@ export const schema: Schema = {
       "properties": {
         "timestamp": {
           "canBeNull": false,
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "value": {
           "canBeNull": true,
-          "fullType": "double",
           "readOnly": false,
           "required": false,
           "type": "double"
@@ -32354,7 +32679,7 @@ export const schema: Schema = {
           "description": "Tone played when caller is waiting in queue",
           "fullType": "telephony.TonesEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.TonesEnum"
         },
         "endCall": {
@@ -32362,7 +32687,7 @@ export const schema: Schema = {
           "description": "Tone played when callee is ending call",
           "fullType": "telephony.TonesEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.TonesEnum"
         },
         "onHold": {
@@ -32370,7 +32695,7 @@ export const schema: Schema = {
           "description": "Tone played when caller is put on hold",
           "fullType": "telephony.TonesOnHoldEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.TonesOnHoldEnum"
         },
         "ringback": {
@@ -32378,7 +32703,7 @@ export const schema: Schema = {
           "description": "Ringback tone",
           "fullType": "telephony.TonesEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.TonesEnum"
         }
       }
@@ -32427,7 +32752,7 @@ export const schema: Schema = {
           "description": "Description of the service",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceName": {
@@ -32435,7 +32760,7 @@ export const schema: Schema = {
           "description": "Name of the service",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceType": {
@@ -32443,7 +32768,7 @@ export const schema: Schema = {
           "description": "Type of the service",
           "fullType": "telephony.TypeServiceEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeServiceEnum"
         }
       }
@@ -32458,7 +32783,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "number": {
@@ -32466,7 +32791,7 @@ export const schema: Schema = {
           "description": "External displayed number linked to a trunk",
           "fullType": "phoneNumber",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "status": {
@@ -32474,7 +32799,7 @@ export const schema: Schema = {
           "description": "Validation status",
           "fullType": "telephony.TrunkExternalDisplayedNumberStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TrunkExternalDisplayedNumberStatusEnum"
         },
         "validatedAt": {
@@ -32507,17 +32832,15 @@ export const schema: Schema = {
         "phoneCallTaskId": {
           "canBeNull": false,
           "description": "telephony.Task id of the validation phone call",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "validationCode": {
           "canBeNull": false,
           "description": "Validation code to type during phone call",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -32530,25 +32853,22 @@ export const schema: Schema = {
         "channels": {
           "canBeNull": false,
           "description": "The number of channels included in the pack",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "quantity": {
           "canBeNull": false,
           "description": "The quantity of packs present in the combination",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "unitPrice": {
           "canBeNull": false,
           "description": "The unit price of the channels pack",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -32561,25 +32881,22 @@ export const schema: Schema = {
         "optimizedChannelsQuantity": {
           "canBeNull": false,
           "description": "The optimized quantity of channels to order",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "packsRepartition": {
           "canBeNull": false,
           "description": "The repartition of the packs",
-          "fullType": "telephony.TrunkSimultaneousPack[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.TrunkSimultaneousPack[]"
         },
         "totalPrice": {
           "canBeNull": false,
           "description": "The total price of the channels packs combination",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -32647,7 +32964,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "countrySuffix": {
@@ -32655,14 +32972,14 @@ export const schema: Schema = {
           "description": "Country suffix destination",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "creationDatetime": {
           "canBeNull": false,
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "designation": {
@@ -32670,14 +32987,14 @@ export const schema: Schema = {
           "description": "Description of the destination",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "destinationType": {
           "canBeNull": false,
           "fullType": "telephony.VoiceConsumptionDestinationTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.VoiceConsumptionDestinationTypeEnum"
         },
         "dialed": {
@@ -32691,7 +33008,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "hangupNature": {
@@ -32706,21 +33023,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "telephony.VoiceConsumptionPlanTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.VoiceConsumptionPlanTypeEnum"
         },
         "priceWithoutTax": {
           "canBeNull": false,
           "fullType": "order.Price",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         },
         "wayType": {
           "canBeNull": false,
           "fullType": "telephony.VoiceConsumptionWayTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.VoiceConsumptionWayTypeEnum"
         }
       }
@@ -32776,28 +33093,28 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "offers": {
           "canBeNull": false,
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "serviceName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceType": {
           "canBeNull": false,
           "fullType": "telephony.TypeServiceEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeServiceEnum"
         }
       }
@@ -32823,7 +33140,7 @@ export const schema: Schema = {
           "description": "Callee number in international format",
           "fullType": "phoneNumber",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "dir": {
@@ -32831,7 +33148,7 @@ export const schema: Schema = {
           "description": "Customized greeting voicemail directory",
           "fullType": "telephony.VoicemailMessageFolderGreetingEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.VoicemailMessageFolderGreetingEnum"
         },
         "id": {
@@ -32839,7 +33156,7 @@ export const schema: Schema = {
           "description": "Uniq customized greeting identifier",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -32880,7 +33197,7 @@ export const schema: Schema = {
           "description": "Callee number in international format",
           "fullType": "phoneNumber",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "caller": {
@@ -32888,7 +33205,7 @@ export const schema: Schema = {
           "description": "Caller number in international format",
           "fullType": "phoneNumber",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "creationDatetime": {
@@ -32896,7 +33213,7 @@ export const schema: Schema = {
           "description": "Message datetime creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "dir": {
@@ -32904,7 +33221,7 @@ export const schema: Schema = {
           "description": "Voicemessage directory",
           "fullType": "telephony.VoicemailMessageFolderDirectoryEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.VoicemailMessageFolderDirectoryEnum"
         },
         "duration": {
@@ -32912,7 +33229,7 @@ export const schema: Schema = {
           "description": "Message duration (in seconds)",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "id": {
@@ -32920,7 +33237,7 @@ export const schema: Schema = {
           "description": "Uniq voicemail message identifier",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -32933,17 +33250,15 @@ export const schema: Schema = {
         "external": {
           "canBeNull": false,
           "description": "The external voicemail number",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "internal": {
           "canBeNull": false,
           "description": "The internal voicemail number",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -32958,7 +33273,7 @@ export const schema: Schema = {
           "description": "Name of the voicemail panel announce file",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "audioFormat": {
@@ -32966,7 +33281,7 @@ export const schema: Schema = {
           "description": "Format of the voicemail audio file attached to emails",
           "fullType": "telephony.ServiceVoicemailAudioFormatEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.ServiceVoicemailAudioFormatEnum"
         },
         "doNotRecord": {
@@ -32974,7 +33289,7 @@ export const schema: Schema = {
           "description": "Don't allow callers to leave voicemails",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forcePassword": {
@@ -32982,7 +33297,7 @@ export const schema: Schema = {
           "description": "Force password request to access the voicemail panel",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "fromEmail": {
@@ -32990,7 +33305,7 @@ export const schema: Schema = {
           "description": "Email address from which emails will be sent",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "fromName": {
@@ -32998,7 +33313,7 @@ export const schema: Schema = {
           "description": "Name from which emails will be sent",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "fullGreetingSoundId": {
@@ -33014,7 +33329,7 @@ export const schema: Schema = {
           "description": "Type of the greeting to play",
           "fullType": "telephony.VoicemailGreetingEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.VoicemailGreetingEnum"
         },
         "isNewVersion": {
@@ -33022,7 +33337,7 @@ export const schema: Schema = {
           "description": "Current voicemail version",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "keepMessage": {
@@ -33030,7 +33345,7 @@ export const schema: Schema = {
           "description": "Don't delete voicemails after they've been sent by email",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "redirectionEmails": {
@@ -33038,7 +33353,7 @@ export const schema: Schema = {
           "description": "Email addresses to notify when a new voicemail is left",
           "fullType": "telephony.ServiceVoicemailNotifications[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "telephony.ServiceVoicemailNotifications[]"
         },
         "shortGreetingSoundId": {
@@ -33054,7 +33369,7 @@ export const schema: Schema = {
           "description": "Play the temporary greeting instead of the regular one",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "temporaryGreetingSoundId": {
@@ -33070,7 +33385,7 @@ export const schema: Schema = {
           "description": "Quantity of unread voicemails",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -33084,28 +33399,28 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "offers": {
           "canBeNull": false,
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "serviceName": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceType": {
           "canBeNull": false,
           "fullType": "telephony.TypeServiceEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TypeServiceEnum"
         }
       }
@@ -33119,14 +33434,14 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "urlRecord": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -33179,7 +33494,7 @@ export const schema: Schema = {
           "description": "The start date of the traffic extract",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "dateStart": {
@@ -33187,7 +33502,7 @@ export const schema: Schema = {
           "description": "The start date of the traffic extract",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "fileSize": {
@@ -33195,7 +33510,7 @@ export const schema: Schema = {
           "description": "The PCAP file size of the traffic extract",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "fileUrl": {
@@ -33203,7 +33518,7 @@ export const schema: Schema = {
           "description": "The PCAP URL of the traffic extract",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -33211,7 +33526,7 @@ export const schema: Schema = {
           "description": "The id of the traffic extract",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "status": {
@@ -33219,7 +33534,7 @@ export const schema: Schema = {
           "description": "The status of the extract",
           "fullType": "telephony.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "telephony.TaskStatusEnum"
         }
       }

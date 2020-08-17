@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://ca.api.ovh.com:443/1.0/price.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Get the price of Nas HA offers",
@@ -19,7 +19,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Dedicated.Nasha.ModelEnum",
-              "description": "Model name",
+              "description": "capacity in gigabit of Nas Ha",
               "fullType": "price.Dedicated.Nasha.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -45,7 +45,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Dedicated.Server.AntiDDoSProEnum",
-              "description": "Commercial range",
+              "description": "commercial range of your dedicated server",
               "fullType": "price.Dedicated.Server.AntiDDoSProEnum",
               "name": "commercialRange",
               "paramType": "path",
@@ -71,7 +71,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Dedicated.Server.BackupStorageEnum",
-              "description": "Capacity",
+              "description": "Capacity in gigabytes of backup storage offer",
               "fullType": "price.Dedicated.Server.BackupStorageEnum",
               "name": "capacity",
               "paramType": "path",
@@ -97,7 +97,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Dedicated.Server.FirewallEnum",
-              "description": "Firewall model",
+              "description": "Model of firewall",
               "fullType": "price.Dedicated.Server.FirewallEnum",
               "name": "firewallModel",
               "paramType": "path",
@@ -123,7 +123,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Dedicated.Server.IpEnum",
-              "description": "Routed to",
+              "description": "Ip",
               "fullType": "price.Dedicated.Server.IpEnum",
               "name": "routedTo",
               "paramType": "path",
@@ -149,7 +149,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2013v1.Bhs1a.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2013v1.Bhs1a.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -175,7 +175,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2013v1.Bhs1a.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2013v1.Bhs1a.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -201,7 +201,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2013v1.Bhs1a.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2013v1.Bhs1a.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -227,7 +227,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2013v1.Bhs1a.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2013v1.Bhs1a.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -253,7 +253,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2013v1.Rbx2a.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2013v1.Rbx2a.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -279,7 +279,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2013v1.Rbx2a.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2013v1.Rbx2a.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -305,7 +305,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2013v1.Rbx2a.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2013v1.Rbx2a.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -331,7 +331,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2013v1.Rbx2a.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2013v1.Rbx2a.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -357,7 +357,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2013v1.Sbg1a.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2013v1.Sbg1a.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -383,7 +383,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2013v1.Sbg1a.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2013v1.Sbg1a.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -409,7 +409,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2013v1.Sbg1a.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2013v1.Sbg1a.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -435,7 +435,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2013v1.Sbg1a.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2013v1.Sbg1a.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -461,7 +461,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Bhs1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Bhs1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -487,7 +487,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Bhs1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Bhs1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -513,7 +513,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Bhs1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Bhs1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -539,7 +539,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Bhs1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Bhs1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -565,7 +565,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Bhs1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Bhs1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -591,7 +591,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Bhs1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Bhs1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -617,7 +617,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Bhs1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Bhs1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -643,7 +643,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Bhs1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Bhs1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -669,7 +669,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Rbx2a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Rbx2a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -695,7 +695,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Rbx2a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Rbx2a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -721,7 +721,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Rbx2a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Rbx2a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -747,7 +747,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Rbx2a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Rbx2a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -773,7 +773,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Rbx2a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Rbx2a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -799,7 +799,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Rbx2a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Rbx2a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -825,7 +825,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Rbx2a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Rbx2a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -851,7 +851,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Rbx2a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Rbx2a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -877,7 +877,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Rbx2b.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Rbx2b.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -903,7 +903,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Rbx2b.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Rbx2b.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -929,7 +929,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Rbx2b.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Rbx2b.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -955,7 +955,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Rbx2b.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Rbx2b.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -981,7 +981,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Rbx2b.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Rbx2b.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1007,7 +1007,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Rbx2b.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Rbx2b.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1033,7 +1033,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Rbx2b.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Rbx2b.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1059,7 +1059,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Rbx2b.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Rbx2b.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1085,7 +1085,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Sbg1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Sbg1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1111,7 +1111,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Sbg1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Sbg1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1137,7 +1137,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Sbg1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Sbg1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1163,7 +1163,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Sbg1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Sbg1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1189,7 +1189,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Sbg1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1215,7 +1215,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Sbg1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Sbg1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1241,7 +1241,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Sbg1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Sbg1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1267,7 +1267,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v1.Sbg1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v1.Sbg1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1293,7 +1293,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Bhs1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Bhs1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1319,7 +1319,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Bhs1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Bhs1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1345,7 +1345,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Bhs1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Bhs1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1371,7 +1371,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Bhs1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Bhs1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1397,7 +1397,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Bhs1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Bhs1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1423,7 +1423,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Bhs1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Bhs1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1449,7 +1449,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Bhs1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Bhs1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1475,7 +1475,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Bhs1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Bhs1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1501,7 +1501,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Rbx2a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Rbx2a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1527,7 +1527,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Rbx2a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Rbx2a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1553,7 +1553,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Rbx2a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Rbx2a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1579,7 +1579,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Rbx2a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Rbx2a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1605,7 +1605,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Rbx2a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Rbx2a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1631,7 +1631,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Rbx2a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Rbx2a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1657,7 +1657,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Rbx2a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Rbx2a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1683,7 +1683,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Rbx2a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Rbx2a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1709,7 +1709,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Rbx2b.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Rbx2b.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1735,7 +1735,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Rbx2b.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Rbx2b.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1761,7 +1761,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Rbx2b.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Rbx2b.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1787,7 +1787,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Rbx2b.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Rbx2b.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1813,7 +1813,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Rbx2b.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Rbx2b.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1839,7 +1839,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Rbx2b.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Rbx2b.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1865,7 +1865,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Rbx2b.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Rbx2b.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1891,7 +1891,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Rbx2b.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Rbx2b.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1917,7 +1917,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Sbg1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Sbg1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1943,7 +1943,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Sbg1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Sbg1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -1969,7 +1969,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Sbg1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Sbg1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -1995,7 +1995,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Sbg1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Sbg1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2021,7 +2021,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Sbg1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2047,7 +2047,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Sbg1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Sbg1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2073,7 +2073,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Sbg1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Sbg1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2099,7 +2099,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2014v2.Sbg1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2014v2.Sbg1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2125,7 +2125,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Bhs1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Bhs1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2151,7 +2151,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Bhs1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Bhs1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2177,7 +2177,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Bhs1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Bhs1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2203,7 +2203,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Bhs1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Bhs1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2229,7 +2229,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Bhs1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Bhs1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2255,7 +2255,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Bhs1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Bhs1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2281,7 +2281,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Bhs1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Bhs1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2307,7 +2307,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Bhs1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Bhs1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2333,7 +2333,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Rbx2a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Rbx2a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2359,7 +2359,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Rbx2a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Rbx2a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2385,7 +2385,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Rbx2a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Rbx2a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2411,7 +2411,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Rbx2a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Rbx2a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2437,7 +2437,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Rbx2a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Rbx2a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2463,7 +2463,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Rbx2a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Rbx2a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2489,7 +2489,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Rbx2a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Rbx2a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2515,7 +2515,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Rbx2a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Rbx2a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2541,7 +2541,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Rbx2b.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Rbx2b.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2567,7 +2567,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Rbx2b.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Rbx2b.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2593,7 +2593,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Rbx2b.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Rbx2b.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2619,7 +2619,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Rbx2b.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Rbx2b.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2645,7 +2645,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Rbx2b.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Rbx2b.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2671,7 +2671,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Rbx2b.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Rbx2b.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2697,7 +2697,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Rbx2b.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Rbx2b.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2723,7 +2723,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Rbx2b.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Rbx2b.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2749,7 +2749,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Sbg1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Sbg1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2775,7 +2775,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Sbg1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Sbg1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2801,7 +2801,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Sbg1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Sbg1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2827,7 +2827,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Sbg1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Sbg1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2853,7 +2853,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Sbg1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2879,7 +2879,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Sbg1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Sbg1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2905,7 +2905,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Sbg1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Sbg1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2931,7 +2931,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v1.Sbg1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v1.Sbg1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -2957,7 +2957,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Bhs1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Bhs1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -2983,7 +2983,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Bhs1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Bhs1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3009,7 +3009,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Bhs1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Bhs1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3035,7 +3035,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Bhs1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Bhs1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3061,7 +3061,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Bhs1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Bhs1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3087,7 +3087,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Bhs1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Bhs1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3113,7 +3113,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Bhs1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Bhs1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3139,7 +3139,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Bhs1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Bhs1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3165,7 +3165,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Rbx2a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Rbx2a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3191,7 +3191,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Rbx2a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Rbx2a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3217,7 +3217,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Rbx2a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Rbx2a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3243,7 +3243,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Rbx2a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Rbx2a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3269,7 +3269,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Rbx2a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Rbx2a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3295,7 +3295,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Rbx2a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Rbx2a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3321,7 +3321,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Rbx2a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Rbx2a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3347,7 +3347,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Rbx2a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Rbx2a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3373,7 +3373,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Rbx2b.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Rbx2b.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3399,7 +3399,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Rbx2b.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Rbx2b.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3425,7 +3425,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Rbx2b.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Rbx2b.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3451,7 +3451,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Rbx2b.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Rbx2b.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3477,7 +3477,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Rbx2b.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Rbx2b.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3503,7 +3503,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Rbx2b.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Rbx2b.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3529,7 +3529,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Rbx2b.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Rbx2b.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3555,7 +3555,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Rbx2b.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Rbx2b.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3581,7 +3581,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Sbg1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Sbg1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3607,7 +3607,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Sbg1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Sbg1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3633,7 +3633,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Sbg1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Sbg1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3659,7 +3659,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Sbg1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Sbg1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3685,7 +3685,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Sbg1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3711,7 +3711,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Sbg1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Sbg1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3737,7 +3737,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Sbg1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Sbg1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3763,7 +3763,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v2.Sbg1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v2.Sbg1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3789,7 +3789,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Bhs1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Bhs1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3815,7 +3815,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Bhs1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Bhs1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3841,7 +3841,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Bhs1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Bhs1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3867,7 +3867,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Bhs1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Bhs1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3893,7 +3893,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Bhs1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Bhs1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3919,7 +3919,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Bhs1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Bhs1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -3945,7 +3945,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Bhs1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Bhs1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3971,7 +3971,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Bhs1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Bhs1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -3997,7 +3997,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Rbx2a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Rbx2a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4023,7 +4023,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Rbx2a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Rbx2a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4049,7 +4049,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Rbx2a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Rbx2a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4075,7 +4075,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Rbx2a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Rbx2a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4101,7 +4101,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Rbx2a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Rbx2a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4127,7 +4127,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Rbx2a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Rbx2a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4153,7 +4153,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Rbx2a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Rbx2a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4179,7 +4179,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Rbx2a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Rbx2a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4205,7 +4205,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Rbx2b.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Rbx2b.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4231,7 +4231,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Rbx2b.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Rbx2b.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4257,7 +4257,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Rbx2b.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Rbx2b.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4283,7 +4283,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Rbx2b.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Rbx2b.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4309,7 +4309,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Rbx2b.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Rbx2b.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4335,7 +4335,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Rbx2b.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Rbx2b.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4361,7 +4361,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Rbx2b.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Rbx2b.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4387,7 +4387,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Rbx2b.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Rbx2b.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4413,7 +4413,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Sbg1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Sbg1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4439,7 +4439,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Sbg1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Sbg1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4465,7 +4465,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Sbg1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Sbg1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4491,7 +4491,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Sbg1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Sbg1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4517,7 +4517,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Sbg1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4543,7 +4543,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Sbg1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Sbg1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4569,7 +4569,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Sbg1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Sbg1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4595,7 +4595,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v3.Sbg1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v3.Sbg1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4621,7 +4621,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Bhs1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Bhs1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4647,7 +4647,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Bhs1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Bhs1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4673,7 +4673,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Bhs1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Bhs1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4699,7 +4699,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Bhs1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Bhs1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4725,7 +4725,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Bhs1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Bhs1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4751,7 +4751,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Bhs1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Bhs1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4777,7 +4777,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Bhs1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Bhs1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4803,7 +4803,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Bhs1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Bhs1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4829,7 +4829,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Rbx2a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Rbx2a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4855,7 +4855,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Rbx2a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Rbx2a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4881,7 +4881,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Rbx2a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Rbx2a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4907,7 +4907,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Rbx2a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Rbx2a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -4933,7 +4933,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Rbx2a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Rbx2a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4959,7 +4959,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Rbx2a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Rbx2a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -4985,7 +4985,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Rbx2a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Rbx2a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5011,7 +5011,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Rbx2a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Rbx2a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5037,7 +5037,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Rbx2b.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Rbx2b.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5063,7 +5063,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Rbx2b.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Rbx2b.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5089,7 +5089,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Rbx2b.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Rbx2b.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5115,7 +5115,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Rbx2b.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Rbx2b.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5141,7 +5141,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Rbx2b.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Rbx2b.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5167,7 +5167,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Rbx2b.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Rbx2b.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5193,7 +5193,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Rbx2b.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Rbx2b.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5219,7 +5219,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Rbx2b.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Rbx2b.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5245,7 +5245,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Sbg1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Sbg1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5271,7 +5271,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Sbg1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Sbg1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5297,7 +5297,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Sbg1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Sbg1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5323,7 +5323,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Sbg1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Sbg1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5349,7 +5349,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Sbg1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5375,7 +5375,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Sbg1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Sbg1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5401,7 +5401,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Sbg1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Sbg1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5427,7 +5427,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v4.Sbg1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v4.Sbg1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5453,7 +5453,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Bhs1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Bhs1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5479,7 +5479,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Bhs1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Bhs1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5505,7 +5505,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Bhs1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Bhs1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5531,7 +5531,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Bhs1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Bhs1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5557,7 +5557,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Bhs1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Bhs1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5583,7 +5583,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Bhs1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Bhs1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5609,7 +5609,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Bhs1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Bhs1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5635,7 +5635,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Bhs1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Bhs1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5661,7 +5661,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Rbx2a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Rbx2a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5687,7 +5687,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Rbx2a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Rbx2a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5713,7 +5713,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Rbx2a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Rbx2a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5739,7 +5739,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Rbx2a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Rbx2a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5765,7 +5765,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Rbx2a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Rbx2a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5791,7 +5791,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Rbx2a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Rbx2a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5817,7 +5817,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Rbx2a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Rbx2a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5843,7 +5843,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Rbx2a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Rbx2a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5869,7 +5869,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Rbx2b.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Rbx2b.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5895,7 +5895,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Rbx2b.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Rbx2b.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5921,7 +5921,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Rbx2b.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Rbx2b.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5947,7 +5947,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Rbx2b.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Rbx2b.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -5973,7 +5973,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Rbx2b.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Rbx2b.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -5999,7 +5999,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Rbx2b.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Rbx2b.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6025,7 +6025,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Rbx2b.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Rbx2b.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6051,7 +6051,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Rbx2b.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Rbx2b.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6077,7 +6077,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Sbg1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Sbg1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6103,7 +6103,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Sbg1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Sbg1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6129,7 +6129,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Sbg1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Sbg1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6155,7 +6155,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Sbg1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Sbg1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6181,7 +6181,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Sbg1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6207,7 +6207,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Sbg1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Sbg1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6233,7 +6233,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Sbg1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Sbg1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6259,7 +6259,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v5.Sbg1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v5.Sbg1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6285,7 +6285,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Bhs1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Bhs1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6311,7 +6311,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Bhs1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Bhs1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6337,7 +6337,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Bhs1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Bhs1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6363,7 +6363,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Bhs1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Bhs1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6389,7 +6389,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Bhs1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Bhs1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6415,7 +6415,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Bhs1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Bhs1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6441,7 +6441,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Bhs1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Bhs1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6467,7 +6467,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Bhs1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Bhs1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6493,7 +6493,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Rbx2a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Rbx2a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6519,7 +6519,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Rbx2a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Rbx2a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6545,7 +6545,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Rbx2a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Rbx2a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6571,7 +6571,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Rbx2a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Rbx2a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6597,7 +6597,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Rbx2a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Rbx2a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6623,7 +6623,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Rbx2a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Rbx2a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6649,7 +6649,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Rbx2a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Rbx2a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6675,7 +6675,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Rbx2a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Rbx2a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6701,7 +6701,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Rbx2b.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Rbx2b.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6727,7 +6727,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Rbx2b.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Rbx2b.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6753,7 +6753,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Rbx2b.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Rbx2b.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6779,7 +6779,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Rbx2b.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Rbx2b.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6805,7 +6805,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Rbx2b.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Rbx2b.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6831,7 +6831,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Rbx2b.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Rbx2b.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6857,7 +6857,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Rbx2b.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Rbx2b.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6883,7 +6883,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Rbx2b.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Rbx2b.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6909,7 +6909,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Sbg1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Sbg1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6935,7 +6935,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Sbg1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Sbg1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -6961,7 +6961,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Sbg1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Sbg1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -6987,7 +6987,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Sbg1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Sbg1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7013,7 +7013,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Sbg1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7039,7 +7039,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Sbg1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Sbg1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7065,7 +7065,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Sbg1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Sbg1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7091,7 +7091,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v6.Sbg1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v6.Sbg1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7117,7 +7117,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Bhs1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Bhs1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7143,7 +7143,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Bhs1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Bhs1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7169,7 +7169,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Bhs1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Bhs1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7195,7 +7195,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Bhs1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Bhs1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7221,7 +7221,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Bhs1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Bhs1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7247,7 +7247,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Bhs1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Bhs1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7273,7 +7273,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Bhs1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Bhs1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7299,7 +7299,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Bhs1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Bhs1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7325,7 +7325,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Rbx2a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Rbx2a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7351,7 +7351,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Rbx2a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Rbx2a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7377,7 +7377,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Rbx2a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Rbx2a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7403,7 +7403,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Rbx2a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Rbx2a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7429,7 +7429,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Rbx2a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Rbx2a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7455,7 +7455,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Rbx2a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Rbx2a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7481,7 +7481,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Rbx2a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Rbx2a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7507,7 +7507,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Rbx2a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Rbx2a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7533,7 +7533,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Rbx2b.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Rbx2b.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7559,7 +7559,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Rbx2b.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Rbx2b.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7585,7 +7585,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Rbx2b.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Rbx2b.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7611,7 +7611,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Rbx2b.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Rbx2b.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7637,7 +7637,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Rbx2b.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Rbx2b.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7663,7 +7663,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Rbx2b.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Rbx2b.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7689,7 +7689,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Rbx2b.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Rbx2b.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7715,7 +7715,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Rbx2b.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Rbx2b.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7741,7 +7741,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Sbg1a.Enterprise.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Sbg1a.Enterprise.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7767,7 +7767,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Sbg1a.Enterprise.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Sbg1a.Enterprise.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7793,7 +7793,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Sbg1a.Enterprise.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Sbg1a.Enterprise.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7819,7 +7819,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Sbg1a.Enterprise.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Sbg1a.Enterprise.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7845,7 +7845,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Sbg1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7871,7 +7871,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Sbg1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Sbg1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7897,7 +7897,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Sbg1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Sbg1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7923,7 +7923,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2016v7.Sbg1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2016v7.Sbg1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -7949,7 +7949,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Bhs1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Bhs1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -7975,7 +7975,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Bhs1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Bhs1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8001,7 +8001,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Bhs1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Bhs1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8027,7 +8027,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Bhs1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Bhs1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8053,7 +8053,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Eri1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Eri1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8079,7 +8079,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Eri1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Eri1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8105,7 +8105,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Eri1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Eri1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8131,7 +8131,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Eri1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Eri1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8157,7 +8157,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Lim1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Lim1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8183,7 +8183,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Lim1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Lim1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8209,7 +8209,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Lim1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Lim1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8235,7 +8235,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Lim1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Lim1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8261,7 +8261,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Rbx2a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Rbx2a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8287,7 +8287,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Rbx2a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Rbx2a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8313,7 +8313,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Rbx2a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Rbx2a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8339,7 +8339,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Rbx2a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Rbx2a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8365,7 +8365,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Rbx2b.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Rbx2b.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8391,7 +8391,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Rbx2b.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Rbx2b.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8417,7 +8417,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Rbx2b.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Rbx2b.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8443,7 +8443,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Rbx2b.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Rbx2b.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8469,7 +8469,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8495,7 +8495,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8521,7 +8521,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8547,7 +8547,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8573,7 +8573,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Waw1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Waw1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8599,7 +8599,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Waw1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Waw1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8625,7 +8625,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Waw1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Waw1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8651,7 +8651,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v1.Waw1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Waw1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8677,7 +8677,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Bhs1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Bhs1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8703,7 +8703,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Bhs1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Bhs1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8729,7 +8729,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Bhs1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Bhs1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8755,7 +8755,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Bhs1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Bhs1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8781,7 +8781,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Eri1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Eri1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8807,7 +8807,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Eri1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Eri1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8833,7 +8833,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Eri1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Eri1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8859,7 +8859,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Eri1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Eri1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8885,7 +8885,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Lim1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Lim1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8911,7 +8911,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Lim1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Lim1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -8937,7 +8937,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Lim1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Lim1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8963,7 +8963,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Lim1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Lim1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -8989,7 +8989,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Rbx2a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Rbx2a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9015,7 +9015,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Rbx2a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Rbx2a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9041,7 +9041,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Rbx2a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Rbx2a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9067,7 +9067,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Rbx2a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Rbx2a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9093,7 +9093,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Rbx2b.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Rbx2b.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9119,7 +9119,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Rbx2b.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Rbx2b.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9145,7 +9145,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Rbx2b.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Rbx2b.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9171,7 +9171,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Rbx2b.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Rbx2b.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9197,7 +9197,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Sbg1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9223,7 +9223,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Sbg1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Sbg1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9249,7 +9249,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Sbg1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Sbg1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9275,7 +9275,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Sbg1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Sbg1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9301,7 +9301,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Waw1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Waw1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9327,7 +9327,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Waw1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Waw1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9353,7 +9353,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Waw1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Waw1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9379,7 +9379,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v2.Waw1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v2.Waw1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9405,7 +9405,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Bhs1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Bhs1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9431,7 +9431,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Bhs1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Bhs1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9457,7 +9457,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Bhs1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Bhs1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9483,7 +9483,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Bhs1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Bhs1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9509,7 +9509,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Eri1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Eri1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9535,7 +9535,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Eri1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Eri1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9561,7 +9561,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Eri1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Eri1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9587,7 +9587,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Eri1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Eri1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9613,7 +9613,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Lim1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Lim1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9639,7 +9639,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Lim1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Lim1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9665,7 +9665,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Lim1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Lim1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9691,7 +9691,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Lim1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Lim1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9717,7 +9717,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Rbx2a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Rbx2a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9743,7 +9743,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Rbx2a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Rbx2a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9769,7 +9769,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Rbx2a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Rbx2a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9795,7 +9795,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Rbx2a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Rbx2a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9821,7 +9821,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Rbx2b.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Rbx2b.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9847,7 +9847,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Rbx2b.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Rbx2b.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9873,7 +9873,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Rbx2b.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Rbx2b.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9899,7 +9899,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Rbx2b.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Rbx2b.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -9925,7 +9925,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9951,7 +9951,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -9977,7 +9977,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10003,7 +10003,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10029,7 +10029,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Waw1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Waw1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10055,7 +10055,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Waw1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Waw1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10081,7 +10081,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Waw1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Waw1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10107,7 +10107,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v3.Waw1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Waw1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10133,7 +10133,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Bhs1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Bhs1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10159,7 +10159,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Bhs1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Bhs1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10185,7 +10185,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Bhs1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Bhs1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10211,7 +10211,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Bhs1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Bhs1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10237,7 +10237,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Eri1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Eri1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10263,7 +10263,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Eri1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Eri1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10289,7 +10289,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Eri1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Eri1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10315,7 +10315,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Eri1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Eri1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10341,7 +10341,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Lim1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Lim1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10367,7 +10367,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Lim1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Lim1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10393,7 +10393,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Lim1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Lim1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10419,7 +10419,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Lim1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Lim1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10445,7 +10445,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Rbx2a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Rbx2a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10471,7 +10471,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Rbx2a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Rbx2a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10497,7 +10497,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Rbx2a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Rbx2a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10523,7 +10523,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Rbx2a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Rbx2a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10549,7 +10549,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Rbx2b.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Rbx2b.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10575,7 +10575,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Rbx2b.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Rbx2b.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10601,7 +10601,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Rbx2b.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Rbx2b.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10627,7 +10627,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Rbx2b.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Rbx2b.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10653,7 +10653,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Sbg1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10679,7 +10679,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Sbg1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Sbg1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10705,7 +10705,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Sbg1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Sbg1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10731,7 +10731,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Sbg1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Sbg1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10757,7 +10757,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Waw1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Waw1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10783,7 +10783,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Waw1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Waw1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10809,7 +10809,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Waw1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Waw1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10835,7 +10835,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v4.Waw1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v4.Waw1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10861,7 +10861,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Bhs1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Bhs1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10887,7 +10887,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Bhs1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Bhs1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10913,7 +10913,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Bhs1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Bhs1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10939,7 +10939,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Bhs1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Bhs1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -10965,7 +10965,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Eri1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Eri1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -10991,7 +10991,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Eri1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Eri1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11017,7 +11017,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Eri1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Eri1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11043,7 +11043,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Eri1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Eri1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11069,7 +11069,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Lim1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Lim1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11095,7 +11095,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Lim1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Lim1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11121,7 +11121,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Lim1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Lim1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11147,7 +11147,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Lim1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Lim1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11173,7 +11173,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Rbx2a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Rbx2a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11199,7 +11199,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Rbx2a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Rbx2a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11225,7 +11225,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Rbx2a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Rbx2a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11251,7 +11251,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Rbx2a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Rbx2a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11277,7 +11277,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Rbx2b.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Rbx2b.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11303,7 +11303,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Rbx2b.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Rbx2b.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11329,7 +11329,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Rbx2b.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Rbx2b.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11355,7 +11355,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Rbx2b.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Rbx2b.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11381,7 +11381,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11407,7 +11407,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11433,7 +11433,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11459,7 +11459,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11485,7 +11485,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Waw1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Waw1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11511,7 +11511,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Waw1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Waw1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11537,7 +11537,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Waw1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Waw1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11563,7 +11563,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v5.Waw1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Waw1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11589,7 +11589,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Bhs1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Bhs1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11615,7 +11615,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Bhs1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Bhs1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11641,7 +11641,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Bhs1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Bhs1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11667,7 +11667,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Bhs1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Bhs1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11693,7 +11693,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Eri1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Eri1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11719,7 +11719,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Eri1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Eri1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11745,7 +11745,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Eri1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Eri1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11771,7 +11771,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Eri1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Eri1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11797,7 +11797,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Lim1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Lim1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11823,7 +11823,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Lim1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Lim1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11849,7 +11849,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Lim1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Lim1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11875,7 +11875,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Lim1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Lim1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11901,7 +11901,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Rbx2a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Rbx2a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11927,7 +11927,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Rbx2a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Rbx2a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -11953,7 +11953,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Rbx2a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Rbx2a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -11979,7 +11979,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Rbx2a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Rbx2a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12005,7 +12005,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Rbx2b.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Rbx2b.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12031,7 +12031,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Rbx2b.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Rbx2b.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12057,7 +12057,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Rbx2b.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Rbx2b.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12083,7 +12083,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Rbx2b.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Rbx2b.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12109,7 +12109,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12135,7 +12135,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12161,7 +12161,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12187,7 +12187,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12213,7 +12213,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Waw1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Waw1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12239,7 +12239,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Waw1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Waw1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12265,7 +12265,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Waw1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Waw1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12291,7 +12291,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v6.Waw1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Waw1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12317,7 +12317,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Bhs1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Bhs1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12343,7 +12343,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Bhs1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Bhs1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12369,7 +12369,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Bhs1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Bhs1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12395,7 +12395,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Bhs1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Bhs1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12421,7 +12421,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Eri1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Eri1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12447,7 +12447,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Eri1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Eri1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12473,7 +12473,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Eri1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Eri1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12499,7 +12499,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Eri1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Eri1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12525,7 +12525,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Lim1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Lim1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12551,7 +12551,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Lim1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Lim1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12577,7 +12577,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Lim1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Lim1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12603,7 +12603,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Lim1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Lim1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12629,7 +12629,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Rbx2a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Rbx2a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12655,7 +12655,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Rbx2a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Rbx2a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12681,7 +12681,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Rbx2a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Rbx2a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12707,7 +12707,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Rbx2a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Rbx2a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12733,7 +12733,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Rbx2b.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Rbx2b.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12759,7 +12759,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Rbx2b.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Rbx2b.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12785,7 +12785,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Rbx2b.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Rbx2b.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12811,7 +12811,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Rbx2b.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Rbx2b.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12837,7 +12837,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Sbg1a.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12863,7 +12863,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Sbg1a.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Sbg1a.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12889,7 +12889,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Sbg1a.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Sbg1a.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12915,7 +12915,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Sbg1a.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Sbg1a.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -12941,7 +12941,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Waw1c.Infrastructure.Filer.HourlyEnum",
-              "description": "Filer profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Waw1c.Infrastructure.Filer.HourlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12967,7 +12967,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Waw1c.Infrastructure.Filer.MonthlyEnum",
-              "description": "Filer profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Waw1c.Infrastructure.Filer.MonthlyEnum",
               "name": "filerProfile",
               "paramType": "path",
@@ -12993,7 +12993,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Waw1c.Infrastructure.Host.HourlyEnum",
-              "description": "Host profile",
+              "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Waw1c.Infrastructure.Host.HourlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -13019,7 +13019,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.DedicatedCloud.2018v7.Waw1c.Infrastructure.Host.MonthlyEnum",
-              "description": "Host profile",
+              "description": "type of the monthly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v7.Waw1c.Infrastructure.Host.MonthlyEnum",
               "name": "hostProfile",
               "paramType": "path",
@@ -13045,7 +13045,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Domain.Zone.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Domain.Zone.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -13071,7 +13071,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Hosting.PrivateDatabaseEnum",
-              "description": "Private database name",
+              "description": "PrivateDatabase",
               "fullType": "price.Hosting.PrivateDatabaseEnum",
               "name": "privateDatabaseName",
               "paramType": "path",
@@ -13097,7 +13097,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Hosting.Web.CdnEnum",
-              "description": "Cdn name",
+              "description": "Cdn",
               "fullType": "price.Hosting.Web.CdnEnum",
               "name": "cdnName",
               "paramType": "path",
@@ -13123,7 +13123,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Hosting.Web.ExtraSqlPersoEnum",
-              "description": "Extra sql perso name",
+              "description": "ExtraSqlPerso",
               "fullType": "price.Hosting.Web.ExtraSqlPersoEnum",
               "name": "extraSqlPersoName",
               "paramType": "path",
@@ -13149,7 +13149,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Hosting.Web.SslEnum",
-              "description": "Ssl name",
+              "description": "Ssl",
               "fullType": "price.Hosting.Web.SslEnum",
               "name": "sslName",
               "paramType": "path",
@@ -13175,7 +13175,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.License.OfficeEnum",
-              "description": "Office name",
+              "description": "Office",
               "fullType": "price.License.OfficeEnum",
               "name": "officeName",
               "paramType": "path",
@@ -13201,7 +13201,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2013v1.Classic.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2013v1.Classic.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -13227,7 +13227,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2013v1.Cloud.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2013v1.Cloud.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -13253,7 +13253,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2013v1.Cloud.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Vps.2013v1.Cloud.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -13279,7 +13279,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2013v1.Lowlat.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2013v1.Lowlat.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -13305,7 +13305,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2014v1.Classic.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2014v1.Classic.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -13331,7 +13331,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2014v1.Cloud.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2014v1.Cloud.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -13357,7 +13357,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2014v1.Cloud.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Vps.2014v1.Cloud.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -13383,7 +13383,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2015v1.Cloud.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2015v1.Cloud.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -13409,7 +13409,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2015v1.Cloud.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Vps.2015v1.Cloud.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -13435,7 +13435,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2015v1.Cloudram.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2015v1.Cloudram.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -13461,7 +13461,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2015v1.Cloudram.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Vps.2015v1.Cloudram.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -13487,7 +13487,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2015v1.Ssd.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2015v1.Ssd.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -13513,7 +13513,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2015v1.Ssd.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Vps.2015v1.Ssd.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -13539,7 +13539,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2017v1.Ssd.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2017v1.Ssd.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -13565,7 +13565,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2017v1.Ssd.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Vps.2017v1.Ssd.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -13591,7 +13591,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2017v2.Cloud.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2017v2.Cloud.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -13617,7 +13617,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2017v2.Cloud.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Vps.2017v2.Cloud.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -13643,7 +13643,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2017v2.Cloudram.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2017v2.Cloudram.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -13669,7 +13669,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2017v2.Cloudram.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Vps.2017v2.Cloudram.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -13695,7 +13695,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2017v2.Ssd.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2017v2.Ssd.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -13721,7 +13721,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2017v2.Ssd.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Vps.2017v2.Ssd.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -13747,7 +13747,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2017v3.Cloud.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2017v3.Cloud.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -13773,7 +13773,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2017v3.Cloud.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Vps.2017v3.Cloud.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -13799,7 +13799,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2017v3.Cloudram.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2017v3.Cloudram.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -13825,7 +13825,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2017v3.Cloudram.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Vps.2017v3.Cloudram.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -13851,7 +13851,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2017v3.Ssd.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2017v3.Ssd.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -13877,7 +13877,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2017v3.Ssd.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Vps.2017v3.Ssd.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -13903,7 +13903,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2018v1.Cloud.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2018v1.Cloud.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -13929,7 +13929,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2018v1.Cloud.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Vps.2018v1.Cloud.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -13955,7 +13955,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2018v1.Cloudram.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2018v1.Cloudram.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -13981,7 +13981,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2018v1.Cloudram.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Vps.2018v1.Cloudram.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -14007,7 +14007,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2018v1.Ssd.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2018v1.Ssd.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -14033,7 +14033,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2018v1.Ssd.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Vps.2018v1.Ssd.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -14059,7 +14059,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2018v2.Ssd.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.2018v2.Ssd.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -14085,7 +14085,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.2018v2.Ssd.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Vps.2018v2.Ssd.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -14114,7 +14114,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.Classic.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.Classic.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -14143,7 +14143,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.Cloud.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.Cloud.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -14172,7 +14172,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.Cloud.OptionEnum",
-              "description": "Option name",
+              "description": "Option",
               "fullType": "price.Vps.Cloud.OptionEnum",
               "name": "optionName",
               "paramType": "path",
@@ -14201,7 +14201,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "price.Vps.Lowlat.ModelEnum",
-              "description": "Model name",
+              "description": "Model",
               "fullType": "price.Vps.Lowlat.ModelEnum",
               "name": "modelName",
               "paramType": "path",
@@ -14244,26 +14244,10219 @@ export const schema: Schema = {
       "properties": {
         "currencyCode": {
           "canBeNull": false,
-          "fullType": "order.CurrencyCodeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.CurrencyCodeEnum"
         },
         "text": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "double",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "double"
         }
       }
+    },
+    "price.Dedicated.Nasha.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "1200g",
+        "13200g",
+        "19200g",
+        "2400g",
+        "26400g",
+        "3600g",
+        "7200g"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Dedicated.Nasha"
+    },
+    "price.Dedicated.Server.AntiDDoSProEnum": {
+      "description": "Enum of AntiDDoSPros",
+      "enum": [
+        "sk"
+      ],
+      "enumType": "string",
+      "id": "AntiDDoSProEnum",
+      "namespace": "price.Dedicated.Server"
+    },
+    "price.Dedicated.Server.BackupStorageEnum": {
+      "description": "Enum of BackupStorages",
+      "enum": [
+        "1000",
+        "10000",
+        "500",
+        "5000"
+      ],
+      "enumType": "string",
+      "id": "BackupStorageEnum",
+      "namespace": "price.Dedicated.Server"
+    },
+    "price.Dedicated.Server.FirewallEnum": {
+      "description": "Enum of Firewalls",
+      "enum": [
+        "asa5505",
+        "asa5510",
+        "asa5520"
+      ],
+      "enumType": "string",
+      "id": "FirewallEnum",
+      "namespace": "price.Dedicated.Server"
+    },
+    "price.Dedicated.Server.IpEnum": {
+      "description": "Enum of Ips",
+      "enum": [
+        "kimsufi",
+        "parking"
+      ],
+      "enumType": "string",
+      "id": "IpEnum",
+      "namespace": "price.Dedicated.Server"
+    },
+    "price.Dedicated.Server.ProfessionalUseEnum": {
+      "description": "Enum of ProfessionalUses",
+      "enum": [
+        "bhg",
+        "eg",
+        "hg",
+        "mg",
+        "sp"
+      ],
+      "enumType": "string",
+      "id": "ProfessionalUseEnum",
+      "namespace": "price.Dedicated.Server"
+    },
+    "price.DedicatedCloud.2013v1.Bhs1a.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200g-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-3600-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2013v1.Bhs1a.Filer"
+    },
+    "price.DedicatedCloud.2013v1.Bhs1a.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-3600-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2013v1.Bhs1a.Filer"
+    },
+    "price.DedicatedCloud.2013v1.Bhs1a.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "L++",
+        "L2",
+        "L2+",
+        "M",
+        "S",
+        "S++",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2013v1.Bhs1a.Host"
+    },
+    "price.DedicatedCloud.2013v1.Bhs1a.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "L++",
+        "L2",
+        "L2+",
+        "M",
+        "S",
+        "S++",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2013v1.Bhs1a.Host"
+    },
+    "price.DedicatedCloud.2013v1.Rbx2a.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200g-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-3600-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2013v1.Rbx2a.Filer"
+    },
+    "price.DedicatedCloud.2013v1.Rbx2a.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-3600-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2013v1.Rbx2a.Filer"
+    },
+    "price.DedicatedCloud.2013v1.Rbx2a.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "L++",
+        "L2",
+        "L2+",
+        "M",
+        "S",
+        "S++",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2013v1.Rbx2a.Host"
+    },
+    "price.DedicatedCloud.2013v1.Rbx2a.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "L++",
+        "L2",
+        "L2+",
+        "M",
+        "S",
+        "S++",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2013v1.Rbx2a.Host"
+    },
+    "price.DedicatedCloud.2013v1.Sbg1a.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200g-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-3600-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2013v1.Sbg1a.Filer"
+    },
+    "price.DedicatedCloud.2013v1.Sbg1a.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-3600-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2013v1.Sbg1a.Filer"
+    },
+    "price.DedicatedCloud.2013v1.Sbg1a.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "L++",
+        "L2",
+        "L2+",
+        "M",
+        "S",
+        "S++",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2013v1.Sbg1a.Host"
+    },
+    "price.DedicatedCloud.2013v1.Sbg1a.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "L++",
+        "L2",
+        "L2+",
+        "M",
+        "S",
+        "S++",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2013v1.Sbg1a.Host"
+    },
+    "price.DedicatedCloud.2014v1.Bhs1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2014v1.Bhs1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2014v1.Bhs1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2014v1.Bhs1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2014v1.Bhs1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2014v1.Bhs1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2014v1.Bhs1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2014v1.Bhs1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2014v1.Rbx2a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2014v1.Rbx2a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2014v1.Rbx2a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2014v1.Rbx2a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2014v1.Rbx2a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2014v1.Rbx2a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2014v1.Rbx2a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2014v1.Rbx2a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2014v1.Rbx2b.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2014v1.Rbx2b.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2014v1.Rbx2b.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2014v1.Rbx2b.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2014v1.Rbx2b.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2014v1.Rbx2b.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2014v1.Rbx2b.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2014v1.Rbx2b.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2014v1.Sbg1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2014v1.Sbg1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2014v1.Sbg1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2014v1.Sbg1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2014v1.Sbg1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2014v1.Sbg1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2014v1.Sbg1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2014v1.Sbg1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v1.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2014v2.Bhs1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2014v2.Bhs1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2014v2.Bhs1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2014v2.Bhs1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2014v2.Bhs1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2014v2.Bhs1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2014v2.Bhs1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2014v2.Bhs1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2014v2.Rbx2a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2014v2.Rbx2a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2014v2.Rbx2a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2014v2.Rbx2a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2014v2.Rbx2a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2014v2.Rbx2a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2014v2.Rbx2a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2014v2.Rbx2a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2014v2.Rbx2b.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2014v2.Rbx2b.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2014v2.Rbx2b.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2014v2.Rbx2b.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2014v2.Rbx2b.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2014v2.Rbx2b.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2014v2.Rbx2b.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2014v2.Rbx2b.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2014v2.Sbg1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2014v2.Sbg1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2014v2.Sbg1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2014v2.Sbg1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2014v2.Sbg1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2014v2.Sbg1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2014v2.Sbg1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2014v2.Sbg1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2014v2.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v1.Bhs1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v1.Bhs1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v1.Bhs1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v1.Bhs1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v1.Bhs1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v1.Bhs1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v1.Bhs1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v1.Bhs1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v1.Rbx2a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v1.Rbx2a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v1.Rbx2a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v1.Rbx2a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v1.Rbx2a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v1.Rbx2a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v1.Rbx2a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v1.Rbx2a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v1.Rbx2b.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v1.Rbx2b.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v1.Rbx2b.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v1.Rbx2b.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v1.Rbx2b.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v1.Rbx2b.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v1.Rbx2b.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v1.Rbx2b.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v1.Sbg1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v1.Sbg1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v1.Sbg1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v1.Sbg1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v1.Sbg1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v1.Sbg1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v1.Sbg1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v1.Sbg1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v1.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v2.Bhs1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v2.Bhs1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v2.Bhs1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v2.Bhs1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v2.Bhs1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v2.Bhs1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v2.Bhs1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v2.Bhs1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v2.Rbx2a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v2.Rbx2a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v2.Rbx2a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v2.Rbx2a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v2.Rbx2a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v2.Rbx2a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v2.Rbx2a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v2.Rbx2a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v2.Rbx2b.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v2.Rbx2b.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v2.Rbx2b.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v2.Rbx2b.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v2.Rbx2b.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v2.Rbx2b.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v2.Rbx2b.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v2.Rbx2b.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v2.Sbg1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v2.Sbg1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v2.Sbg1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v2.Sbg1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v2.Sbg1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v2.Sbg1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v2.Sbg1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v2.Sbg1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v2.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v3.Bhs1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v3.Bhs1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v3.Bhs1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v3.Bhs1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v3.Bhs1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v3.Bhs1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v3.Bhs1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v3.Bhs1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v3.Rbx2a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v3.Rbx2a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v3.Rbx2a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v3.Rbx2a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v3.Rbx2a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v3.Rbx2a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v3.Rbx2a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v3.Rbx2a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v3.Rbx2b.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v3.Rbx2b.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v3.Rbx2b.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v3.Rbx2b.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v3.Rbx2b.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v3.Rbx2b.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v3.Rbx2b.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v3.Rbx2b.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v3.Sbg1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v3.Sbg1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v3.Sbg1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v3.Sbg1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v3.Sbg1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v3.Sbg1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v3.Sbg1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v3.Sbg1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v3.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v4.Bhs1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v4.Bhs1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v4.Bhs1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v4.Bhs1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v4.Bhs1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v4.Bhs1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v4.Bhs1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v4.Bhs1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v4.Rbx2a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v4.Rbx2a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v4.Rbx2a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v4.Rbx2a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v4.Rbx2a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v4.Rbx2a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v4.Rbx2a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v4.Rbx2a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v4.Rbx2b.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v4.Rbx2b.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v4.Rbx2b.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v4.Rbx2b.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v4.Rbx2b.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v4.Rbx2b.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v4.Rbx2b.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v4.Rbx2b.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v4.Sbg1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v4.Sbg1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v4.Sbg1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v4.Sbg1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v4.Sbg1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v4.Sbg1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v4.Sbg1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v4.Sbg1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v4.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v5.Bhs1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v5.Bhs1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v5.Bhs1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v5.Bhs1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v5.Bhs1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v5.Bhs1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v5.Bhs1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v5.Bhs1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v5.Rbx2a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v5.Rbx2a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v5.Rbx2a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v5.Rbx2a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v5.Rbx2a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v5.Rbx2a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v5.Rbx2a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v5.Rbx2a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v5.Rbx2b.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v5.Rbx2b.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v5.Rbx2b.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v5.Rbx2b.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v5.Rbx2b.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v5.Rbx2b.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v5.Rbx2b.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v5.Rbx2b.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v5.Sbg1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v5.Sbg1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v5.Sbg1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v5.Sbg1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v5.Sbg1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v5.Sbg1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v5.Sbg1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v5.Sbg1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v5.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v6.Bhs1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v6.Bhs1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v6.Bhs1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v6.Bhs1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v6.Bhs1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v6.Bhs1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v6.Bhs1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v6.Bhs1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v6.Rbx2a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v6.Rbx2a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v6.Rbx2a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v6.Rbx2a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v6.Rbx2a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v6.Rbx2a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v6.Rbx2a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v6.Rbx2a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v6.Rbx2b.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v6.Rbx2b.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v6.Rbx2b.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v6.Rbx2b.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v6.Rbx2b.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v6.Rbx2b.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v6.Rbx2b.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v6.Rbx2b.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v6.Sbg1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v6.Sbg1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v6.Sbg1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v6.Sbg1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v6.Sbg1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v6.Sbg1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v6.Sbg1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v6.Sbg1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v6.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v7.Bhs1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v7.Bhs1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Bhs1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v7.Bhs1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v7.Bhs1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Bhs1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v7.Bhs1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v7.Bhs1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v7.Bhs1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v7.Bhs1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v7.Rbx2a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v7.Rbx2a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Rbx2a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v7.Rbx2a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v7.Rbx2a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Rbx2a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v7.Rbx2a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v7.Rbx2a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v7.Rbx2a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v7.Rbx2a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v7.Rbx2b.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v7.Rbx2b.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Rbx2b.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v7.Rbx2b.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v7.Rbx2b.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Rbx2b.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v7.Rbx2b.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v7.Rbx2b.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v7.Rbx2b.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v7.Rbx2b.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v7.Sbg1a.Enterprise.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v7.Sbg1a.Enterprise.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Sbg1a.Enterprise.Filer"
+    },
+    "price.DedicatedCloud.2016v7.Sbg1a.Enterprise.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v7.Sbg1a.Enterprise.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Sbg1a.Enterprise.Host"
+    },
+    "price.DedicatedCloud.2016v7.Sbg1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200g-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v7.Sbg1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "iscsi-1200-GB",
+        "iscsi-13200-GB",
+        "iscsi-3300-GB",
+        "iscsi-6600-GB",
+        "iscsi-800-GB",
+        "nfs-100-GB",
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2016v7.Sbg1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2016v7.Sbg1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "L",
+        "L+",
+        "M",
+        "XL",
+        "XL+"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2016v7.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v1.Bhs1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v1.Bhs1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v1.Bhs1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v1.Bhs1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v1.Eri1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Eri1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v1.Eri1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Eri1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v1.Eri1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Eri1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v1.Eri1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Eri1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v1.Lim1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Lim1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v1.Lim1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Lim1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v1.Lim1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Lim1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v1.Lim1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Lim1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v1.Rbx2a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v1.Rbx2a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v1.Rbx2a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v1.Rbx2a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v1.Rbx2b.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v1.Rbx2b.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v1.Rbx2b.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v1.Rbx2b.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v1.Waw1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Waw1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v1.Waw1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Waw1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v1.Waw1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Waw1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v1.Waw1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Waw1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v2.Bhs1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v2.Bhs1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v2.Bhs1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v2.Bhs1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v2.Eri1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Eri1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v2.Eri1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Eri1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v2.Eri1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Eri1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v2.Eri1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Eri1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v2.Lim1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Lim1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v2.Lim1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Lim1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v2.Lim1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Lim1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v2.Lim1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Lim1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v2.Rbx2a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v2.Rbx2a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v2.Rbx2a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v2.Rbx2a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v2.Rbx2b.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v2.Rbx2b.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v2.Rbx2b.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v2.Rbx2b.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v2.Sbg1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v2.Sbg1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v2.Sbg1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v2.Sbg1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v2.Waw1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Waw1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v2.Waw1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Waw1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v2.Waw1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Waw1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v2.Waw1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Waw1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v3.Bhs1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v3.Bhs1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v3.Bhs1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v3.Bhs1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v3.Eri1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Eri1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v3.Eri1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Eri1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v3.Eri1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Eri1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v3.Eri1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Eri1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v3.Lim1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Lim1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v3.Lim1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Lim1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v3.Lim1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Lim1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v3.Lim1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Lim1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v3.Rbx2a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v3.Rbx2a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v3.Rbx2a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v3.Rbx2a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v3.Rbx2b.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v3.Rbx2b.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v3.Rbx2b.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v3.Rbx2b.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v3.Waw1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Waw1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v3.Waw1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Waw1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v3.Waw1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Waw1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v3.Waw1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Waw1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v4.Bhs1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v4.Bhs1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v4.Bhs1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v4.Bhs1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v4.Eri1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Eri1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v4.Eri1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Eri1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v4.Eri1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Eri1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v4.Eri1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Eri1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v4.Lim1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Lim1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v4.Lim1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Lim1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v4.Lim1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Lim1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v4.Lim1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Lim1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v4.Rbx2a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v4.Rbx2a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v4.Rbx2a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v4.Rbx2a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v4.Rbx2b.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v4.Rbx2b.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v4.Rbx2b.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v4.Rbx2b.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v4.Sbg1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v4.Sbg1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v4.Sbg1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v4.Sbg1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v4.Waw1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Waw1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v4.Waw1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Waw1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v4.Waw1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Waw1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v4.Waw1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Waw1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v5.Bhs1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v5.Bhs1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v5.Bhs1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v5.Bhs1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v5.Eri1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Eri1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v5.Eri1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Eri1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v5.Eri1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Eri1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v5.Eri1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Eri1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v5.Lim1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Lim1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v5.Lim1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Lim1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v5.Lim1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Lim1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v5.Lim1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Lim1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v5.Rbx2a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v5.Rbx2a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v5.Rbx2a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v5.Rbx2a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v5.Rbx2b.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v5.Rbx2b.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v5.Rbx2b.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v5.Rbx2b.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v5.Waw1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Waw1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v5.Waw1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Waw1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v5.Waw1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Waw1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v5.Waw1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Waw1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v6.Bhs1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v6.Bhs1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v6.Bhs1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v6.Bhs1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v6.Eri1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Eri1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v6.Eri1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Eri1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v6.Eri1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Eri1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v6.Eri1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Eri1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v6.Lim1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Lim1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v6.Lim1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Lim1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v6.Lim1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Lim1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v6.Lim1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Lim1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v6.Rbx2a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v6.Rbx2a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v6.Rbx2a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v6.Rbx2a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v6.Rbx2b.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v6.Rbx2b.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v6.Rbx2b.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v6.Rbx2b.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v6.Waw1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Waw1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v6.Waw1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Waw1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v6.Waw1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Waw1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v6.Waw1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Waw1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v7.Bhs1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v7.Bhs1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Bhs1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v7.Bhs1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v7.Bhs1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Bhs1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v7.Eri1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Eri1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v7.Eri1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Eri1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v7.Eri1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Eri1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v7.Eri1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Eri1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v7.Lim1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Lim1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v7.Lim1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Lim1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v7.Lim1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Lim1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v7.Lim1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Lim1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v7.Rbx2a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v7.Rbx2a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Rbx2a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v7.Rbx2a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v7.Rbx2a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Rbx2a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v7.Rbx2b.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v7.Rbx2b.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Rbx2b.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v7.Rbx2b.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v7.Rbx2b.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v7.Sbg1a.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v7.Sbg1a.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Sbg1a.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v7.Sbg1a.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v7.Sbg1a.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Sbg1a.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v7.Waw1c.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Waw1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v7.Waw1c.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Waw1c.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v7.Waw1c.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Waw1c.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v7.Waw1c.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Waw1c.Infrastructure.Host"
+    },
+    "price.Domain.Zone.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "dnsAnycast"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Domain.Zone"
+    },
+    "price.Email.Exchange.OfferEnum": {
+      "description": "Enum of Offers",
+      "enum": [
+        "hosted"
+      ],
+      "enumType": "string",
+      "id": "OfferEnum",
+      "namespace": "price.Email.Exchange"
+    },
+    "price.Hosting.PrivateDatabaseEnum": {
+      "description": "Enum of PrivateDatabases",
+      "enum": [
+        "mysql_4.1_1024",
+        "mysql_4.1_128",
+        "mysql_4.1_256",
+        "mysql_4.1_512",
+        "mysql_5.0_1024",
+        "mysql_5.0_128",
+        "mysql_5.0_256",
+        "mysql_5.0_512",
+        "mysql_5.1_1024",
+        "mysql_5.1_128",
+        "mysql_5.1_256",
+        "mysql_5.1_512",
+        "mysql_5.5_1024",
+        "mysql_5.5_128",
+        "mysql_5.5_256",
+        "mysql_5.5_512"
+      ],
+      "enumType": "string",
+      "id": "PrivateDatabaseEnum",
+      "namespace": "price.Hosting"
+    },
+    "price.Hosting.Web.CdnEnum": {
+      "description": "Enum of Cdns",
+      "enum": [
+        "CDN_BUSINESS"
+      ],
+      "enumType": "string",
+      "id": "CdnEnum",
+      "namespace": "price.Hosting.Web"
+    },
+    "price.Hosting.Web.ExtraSqlPersoEnum": {
+      "description": "Enum of ExtraSqlPersos",
+      "enum": [
+        "SQLPERSO_1_BASES_400_MB",
+        "SQLPERSO_1_BASES_800_MB",
+        "SQLPERSO_20_BASES_100_MB",
+        "SQLPERSO_20_BASES_200_MB",
+        "SQLPERSO_2_BASES_400_MB",
+        "SQLPERSO_2_BASES_800_MB",
+        "SQLPERSO_50_BASES_100_MB",
+        "SQLPERSO_50_BASES_200_MB",
+        "SQLPERSO_5_BASES_100_MB",
+        "SQLPERSO_5_BASES_200_MB",
+        "SQLPERSO_5_BASES_400_MB",
+        "SQLPERSO_5_BASES_800_MB"
+      ],
+      "enumType": "string",
+      "id": "ExtraSqlPersoEnum",
+      "namespace": "price.Hosting.Web"
+    },
+    "price.Hosting.Web.SslEnum": {
+      "description": "Enum of Ssls",
+      "enum": [
+        "HOSTEDSSL"
+      ],
+      "enumType": "string",
+      "id": "SslEnum",
+      "namespace": "price.Hosting.Web"
+    },
+    "price.License.OfficeEnum": {
+      "description": "Enum of Offices",
+      "enum": [
+        "officeBusiness",
+        "officeProPlus"
+      ],
+      "enumType": "string",
+      "id": "OfficeEnum",
+      "namespace": "price.License"
+    },
+    "price.Vps.2013v1.Classic.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3",
+        "model4",
+        "model5",
+        "model6"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2013v1.Classic"
+    },
+    "price.Vps.2013v1.Cloud.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3",
+        "model4",
+        "model5",
+        "model6"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2013v1.Cloud"
+    },
+    "price.Vps.2013v1.Cloud.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "ftpbackup",
+        "ip",
+        "snapshot",
+        "veeam"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Vps.2013v1.Cloud"
+    },
+    "price.Vps.2013v1.Lowlat.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2013v1.Lowlat"
+    },
+    "price.Vps.2014v1.Classic.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3",
+        "model4"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2014v1.Classic"
+    },
+    "price.Vps.2014v1.Cloud.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3",
+        "model4"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2014v1.Cloud"
+    },
+    "price.Vps.2014v1.Cloud.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "ftpbackup",
+        "ip",
+        "snapshot",
+        "veeam"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Vps.2014v1.Cloud"
+    },
+    "price.Vps.2015v1.Cloud.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2015v1.Cloud"
+    },
+    "price.Vps.2015v1.Cloud.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "additionalDisk100",
+        "additionalDisk200",
+        "additionalDisk50",
+        "additionalDisk500",
+        "automatedBackup",
+        "ftpbackup",
+        "ip",
+        "snapshot"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Vps.2015v1.Cloud"
+    },
+    "price.Vps.2015v1.Cloudram.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2015v1.Cloudram"
+    },
+    "price.Vps.2015v1.Cloudram.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "additionalDisk100",
+        "additionalDisk200",
+        "additionalDisk50",
+        "additionalDisk500",
+        "automatedBackup",
+        "ftpbackup",
+        "ip",
+        "snapshot"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Vps.2015v1.Cloudram"
+    },
+    "price.Vps.2015v1.Ssd.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2015v1.Ssd"
+    },
+    "price.Vps.2015v1.Ssd.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "additionalDisk100",
+        "additionalDisk200",
+        "additionalDisk50",
+        "additionalDisk500",
+        "ip",
+        "snapshot"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Vps.2015v1.Ssd"
+    },
+    "price.Vps.2017v1.Ssd.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3",
+        "model4"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2017v1.Ssd"
+    },
+    "price.Vps.2017v1.Ssd.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "ip"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Vps.2017v1.Ssd"
+    },
+    "price.Vps.2017v2.Cloud.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2017v2.Cloud"
+    },
+    "price.Vps.2017v2.Cloud.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "additionalDisk100",
+        "additionalDisk200",
+        "additionalDisk50",
+        "additionalDisk500",
+        "automatedBackup",
+        "ftpbackup",
+        "ip",
+        "snapshot"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Vps.2017v2.Cloud"
+    },
+    "price.Vps.2017v2.Cloudram.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2017v2.Cloudram"
+    },
+    "price.Vps.2017v2.Cloudram.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "additionalDisk100",
+        "additionalDisk200",
+        "additionalDisk50",
+        "additionalDisk500",
+        "automatedBackup",
+        "ftpbackup",
+        "ip",
+        "snapshot"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Vps.2017v2.Cloudram"
+    },
+    "price.Vps.2017v2.Ssd.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2017v2.Ssd"
+    },
+    "price.Vps.2017v2.Ssd.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "additionalDisk100",
+        "additionalDisk200",
+        "additionalDisk50",
+        "additionalDisk500",
+        "ip",
+        "snapshot"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Vps.2017v2.Ssd"
+    },
+    "price.Vps.2017v3.Cloud.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2017v3.Cloud"
+    },
+    "price.Vps.2017v3.Cloud.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "additionalDisk100",
+        "additionalDisk200",
+        "additionalDisk50",
+        "additionalDisk500",
+        "automatedBackup",
+        "ftpbackup",
+        "ip",
+        "snapshot"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Vps.2017v3.Cloud"
+    },
+    "price.Vps.2017v3.Cloudram.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2017v3.Cloudram"
+    },
+    "price.Vps.2017v3.Cloudram.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "additionalDisk100",
+        "additionalDisk200",
+        "additionalDisk50",
+        "additionalDisk500",
+        "automatedBackup",
+        "ftpbackup",
+        "ip",
+        "snapshot"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Vps.2017v3.Cloudram"
+    },
+    "price.Vps.2017v3.Ssd.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2017v3.Ssd"
+    },
+    "price.Vps.2017v3.Ssd.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "additionalDisk100",
+        "additionalDisk200",
+        "additionalDisk50",
+        "additionalDisk500",
+        "ip",
+        "snapshot"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Vps.2017v3.Ssd"
+    },
+    "price.Vps.2018v1.Cloud.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2018v1.Cloud"
+    },
+    "price.Vps.2018v1.Cloud.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "additionalDisk100",
+        "additionalDisk200",
+        "additionalDisk50",
+        "additionalDisk500",
+        "automatedBackup",
+        "ftpbackup",
+        "ip",
+        "snapshot"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Vps.2018v1.Cloud"
+    },
+    "price.Vps.2018v1.Cloudram.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2018v1.Cloudram"
+    },
+    "price.Vps.2018v1.Cloudram.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "additionalDisk100",
+        "additionalDisk200",
+        "additionalDisk50",
+        "additionalDisk500",
+        "automatedBackup",
+        "ftpbackup",
+        "ip",
+        "snapshot"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Vps.2018v1.Cloudram"
+    },
+    "price.Vps.2018v1.Ssd.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2018v1.Ssd"
+    },
+    "price.Vps.2018v1.Ssd.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "additionalDisk100",
+        "additionalDisk200",
+        "additionalDisk50",
+        "additionalDisk500",
+        "ip",
+        "snapshot"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Vps.2018v1.Ssd"
+    },
+    "price.Vps.2018v2.Ssd.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3",
+        "model4"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.2018v2.Ssd"
+    },
+    "price.Vps.2018v2.Ssd.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "ip"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Vps.2018v2.Ssd"
+    },
+    "price.Vps.Classic.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3",
+        "model4",
+        "model5",
+        "model6"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.Classic"
+    },
+    "price.Vps.Cloud.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3",
+        "model4",
+        "model5",
+        "model6"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.Cloud"
+    },
+    "price.Vps.Cloud.OptionEnum": {
+      "description": "Enum of Options",
+      "enum": [
+        "ftpbackup",
+        "ip",
+        "snapshot",
+        "veeam"
+      ],
+      "enumType": "string",
+      "id": "OptionEnum",
+      "namespace": "price.Vps.Cloud"
+    },
+    "price.Vps.Lowlat.ModelEnum": {
+      "description": "Enum of Models",
+      "enum": [
+        "model1",
+        "model2",
+        "model3"
+      ],
+      "enumType": "string",
+      "id": "ModelEnum",
+      "namespace": "price.Vps.Lowlat"
     }
   },
   "resourcePath": "/price"

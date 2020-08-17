@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/vrack.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the VRACK service",
@@ -36,7 +36,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -56,14 +56,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "vrack.vrack",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "vrack.vrack",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -89,7 +89,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -115,7 +115,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -143,7 +143,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -169,7 +169,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -177,7 +177,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Project",
+              "description": "publicCloud project",
               "fullType": "string",
               "name": "project",
               "paramType": "path",
@@ -197,7 +197,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -205,7 +205,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Project",
+              "description": "publicCloud project",
               "fullType": "string",
               "name": "project",
               "paramType": "path",
@@ -231,7 +231,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -259,7 +259,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -285,7 +285,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -293,7 +293,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Dedicated cloud",
+              "description": "your dedicated cloud service",
               "fullType": "string",
               "name": "dedicatedCloud",
               "paramType": "path",
@@ -313,7 +313,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -321,7 +321,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Dedicated cloud",
+              "description": "your dedicated cloud service",
               "fullType": "string",
               "name": "dedicatedCloud",
               "paramType": "path",
@@ -347,7 +347,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -373,7 +373,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -381,7 +381,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Datacenter",
+              "description": "Your dedicatedCloud datacenter name",
               "fullType": "string",
               "name": "datacenter",
               "paramType": "path",
@@ -407,7 +407,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -415,7 +415,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Datacenter",
+              "description": "Your dedicatedCloud datacenter name",
               "fullType": "string",
               "name": "datacenter",
               "paramType": "path",
@@ -449,7 +449,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -457,7 +457,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Datacenter",
+              "description": "Your dedicatedCloud datacenter name",
               "fullType": "string",
               "name": "datacenter",
               "paramType": "path",
@@ -483,7 +483,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -509,7 +509,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -517,7 +517,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "A name for your dedicatedConnect link",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -537,14 +537,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "vrack.dedicatedConnect",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "vrack.dedicatedConnect",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -552,7 +552,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "A name for your dedicatedConnect link",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -578,7 +578,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -606,7 +606,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -632,17 +632,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Dedicated server",
+              "description": "The internal name of your vrack",
               "fullType": "string",
-              "name": "dedicatedServer",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Dedicated Server",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "dedicatedServer",
               "paramType": "path",
               "required": true
             }
@@ -660,7 +660,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -668,7 +668,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Dedicated server",
+              "description": "Dedicated Server",
               "fullType": "string",
               "name": "dedicatedServer",
               "paramType": "path",
@@ -696,19 +696,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Dedicated server",
-              "fullType": "string",
-              "name": "dedicatedServer",
-              "paramType": "path",
+              "dataType": "dedicated.server.MrtgTypeEnum",
+              "description": "mrtg type",
+              "fullType": "dedicated.server.MrtgTypeEnum",
+              "name": "type",
+              "paramType": "query",
               "required": true
             },
             {
@@ -720,11 +712,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.server.MrtgTypeEnum",
-              "description": "mrtg type",
-              "fullType": "dedicated.server.MrtgTypeEnum",
-              "name": "type",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Dedicated Server",
+              "fullType": "string",
+              "name": "dedicatedServer",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -747,7 +747,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -775,7 +775,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -801,7 +801,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -809,7 +809,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Dedicated server interface",
+              "description": "Dedicated Server Interface",
               "fullType": "string",
               "name": "dedicatedServerInterface",
               "paramType": "path",
@@ -829,7 +829,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -837,7 +837,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Dedicated server interface",
+              "description": "Dedicated Server Interface",
               "fullType": "string",
               "name": "dedicatedServerInterface",
               "paramType": "path",
@@ -863,7 +863,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -889,7 +889,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -917,7 +917,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -943,7 +943,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -951,7 +951,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": "Ip",
+              "description": "Your IP block",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -971,7 +971,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -979,7 +979,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": "Ip",
+              "description": "Your IP block",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -1013,7 +1013,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1021,7 +1021,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": "Ip",
+              "description": "Your IP block",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -1047,7 +1047,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1055,7 +1055,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": "Ip",
+              "description": "Your IP block",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -1081,7 +1081,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1109,7 +1109,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1135,7 +1135,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1143,7 +1143,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Ip loadbalancing",
+              "description": "Your ipLoadbalancing",
               "fullType": "string",
               "name": "ipLoadbalancing",
               "paramType": "path",
@@ -1163,7 +1163,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1171,7 +1171,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Ip loadbalancing",
+              "description": "Your ipLoadbalancing",
               "fullType": "string",
               "name": "ipLoadbalancing",
               "paramType": "path",
@@ -1197,7 +1197,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1225,7 +1225,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1251,7 +1251,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1259,7 +1259,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Legacy vrack",
+              "description": "your legacy vrack service",
               "fullType": "string",
               "name": "legacyVrack",
               "paramType": "path",
@@ -1279,7 +1279,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1287,7 +1287,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Legacy vrack",
+              "description": "your legacy vrack service",
               "fullType": "string",
               "name": "legacyVrack",
               "paramType": "path",
@@ -1313,7 +1313,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1341,7 +1341,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1367,7 +1367,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1375,7 +1375,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Ovh cloud connect",
+              "description": "ovhCloudConnect service name",
               "fullType": "uuid",
               "name": "ovhCloudConnect",
               "paramType": "path",
@@ -1395,7 +1395,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1403,7 +1403,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Ovh cloud connect",
+              "description": "ovhCloudConnect service name",
               "fullType": "uuid",
               "name": "ovhCloudConnect",
               "paramType": "path",
@@ -1429,7 +1429,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1455,7 +1455,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1481,7 +1481,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your vrack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1489,7 +1489,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Task ID",
+              "description": "",
               "fullType": "long",
               "name": "taskId",
               "paramType": "path",
@@ -1514,16 +1514,14 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
@@ -1548,14 +1546,12 @@ export const schema: Schema = {
       "properties": {
         "timestamp": {
           "canBeNull": false,
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "value": {
           "canBeNull": true,
-          "fullType": "complexType.UnitAndValue<double>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<double>"
@@ -1597,49 +1593,49 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }
@@ -1652,25 +1648,22 @@ export const schema: Schema = {
         "dedicatedServer": {
           "canBeNull": false,
           "description": "the name of dedicatedServer",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "dedicatedServerInterface": {
           "canBeNull": false,
           "description": "the unique identifier of dedicatedServerInterface",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
           "canBeNull": false,
           "description": "the name of dedicatedServerInterface",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1683,7 +1676,6 @@ export const schema: Schema = {
         "cloudProject": {
           "canBeNull": true,
           "description": "list of publicCloud projects allowed to be connected to vrack",
-          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
@@ -1691,7 +1683,6 @@ export const schema: Schema = {
         "dedicatedCloud": {
           "canBeNull": true,
           "description": "list of dedicated cloud allowed to be connected to vrack",
-          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
@@ -1699,7 +1690,6 @@ export const schema: Schema = {
         "dedicatedCloudDatacenter": {
           "canBeNull": true,
           "description": "list of dedicated cloud datacenters allowed to be connected to vrack",
-          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
@@ -1707,7 +1697,6 @@ export const schema: Schema = {
         "dedicatedConnect": {
           "canBeNull": true,
           "description": "list of dedicated connect links allowed to be connected to vrack",
-          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
@@ -1715,7 +1704,6 @@ export const schema: Schema = {
         "dedicatedServer": {
           "canBeNull": true,
           "description": "list of dedicated servers allowed to be connected to vrack",
-          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
@@ -1723,7 +1711,6 @@ export const schema: Schema = {
         "dedicatedServerInterface": {
           "canBeNull": true,
           "description": "list of dedicated server interfaces allowed to be connected to vrack",
-          "fullType": "vrack.AllowedDedicatedServerInterfaces[]",
           "readOnly": false,
           "required": false,
           "type": "vrack.AllowedDedicatedServerInterfaces[]"
@@ -1731,7 +1718,6 @@ export const schema: Schema = {
         "ip": {
           "canBeNull": true,
           "description": "list of blocks allowed to be connected to vrack",
-          "fullType": "ipBlock[]",
           "readOnly": false,
           "required": false,
           "type": "ipBlock[]"
@@ -1739,7 +1725,6 @@ export const schema: Schema = {
         "ipLoadbalancing": {
           "canBeNull": true,
           "description": "list of ipLoadbalancing allowed to be connected to vrack",
-          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
@@ -1747,7 +1732,6 @@ export const schema: Schema = {
         "legacyVrack": {
           "canBeNull": true,
           "description": "list of legacy vrack (1.0) allowed to be connected to vrack",
-          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
@@ -1755,7 +1739,6 @@ export const schema: Schema = {
         "ovhCloudConnect": {
           "canBeNull": true,
           "description": "List of the ovhCloudConnect services allowed to be connected to vrack",
-          "fullType": "uuid[]",
           "readOnly": false,
           "required": false,
           "type": "uuid[]"
@@ -1771,14 +1754,14 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lastUpdate": {
@@ -1807,7 +1790,7 @@ export const schema: Schema = {
           "description": "Task status",
           "fullType": "vrack.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "vrack.TaskStatusEnum"
         },
         "targetDomain": {
@@ -1868,7 +1851,7 @@ export const schema: Schema = {
           "description": "publicCloud project",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "vrack": {
@@ -1876,7 +1859,7 @@ export const schema: Schema = {
           "description": "vrack name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1891,7 +1874,7 @@ export const schema: Schema = {
           "description": "your dedicated cloud service",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "vlanId": {
@@ -1907,7 +1890,7 @@ export const schema: Schema = {
           "description": "vrack name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1922,7 +1905,7 @@ export const schema: Schema = {
           "description": "A name for your dedicatedConnect link",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1937,7 +1920,7 @@ export const schema: Schema = {
           "description": "Dedicated Server",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "vrack": {
@@ -1945,7 +1928,7 @@ export const schema: Schema = {
           "description": "vrack name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1960,7 +1943,7 @@ export const schema: Schema = {
           "description": "Dedicated Server Interface",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "vrack": {
@@ -1968,7 +1951,7 @@ export const schema: Schema = {
           "description": "vrack name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1991,7 +1974,7 @@ export const schema: Schema = {
           "description": "Your IP block",
           "fullType": "ipBlock",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipBlock"
         },
         "zone": {
@@ -2014,7 +1997,7 @@ export const schema: Schema = {
           "description": "Your ipLoadbalancing",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "vrack": {
@@ -2022,7 +2005,7 @@ export const schema: Schema = {
           "description": "vrack name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -2037,7 +2020,7 @@ export const schema: Schema = {
           "description": "your legacy vrack service",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "vlanId": {
@@ -2045,8 +2028,31 @@ export const schema: Schema = {
           "description": "vlan to set on legacy vrack equipments",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
+        }
+      }
+    },
+    "vrack.nasha": {
+      "description": "vrack (1.5) nasha server interfaces",
+      "id": "nasha",
+      "namespace": "vrack",
+      "properties": {
+        "serviceIp": {
+          "canBeNull": false,
+          "description": "service ip",
+          "fullType": "ipBlock",
+          "readOnly": true,
+          "required": false,
+          "type": "ipBlock"
+        },
+        "zpool": {
+          "canBeNull": false,
+          "description": "Name of Nasha zpool",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -2060,7 +2066,7 @@ export const schema: Schema = {
           "description": "ovhCloudConnect service name",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "vrack": {
@@ -2068,7 +2074,7 @@ export const schema: Schema = {
           "description": "vrack name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -2083,7 +2089,7 @@ export const schema: Schema = {
           "description": "Your dedicatedCloud datacenter name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "dedicatedCloud": {
@@ -2091,7 +2097,7 @@ export const schema: Schema = {
           "description": "Your dedicatedCloud name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "vrack": {
@@ -2099,8 +2105,22 @@ export const schema: Schema = {
           "description": "vrack name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
+        }
+      }
+    },
+    "vrack.publicRoutingOption": {
+      "description": "A structure describing the public routing option",
+      "id": "publicRoutingOption",
+      "namespace": "vrack",
+      "properties": {
+        "bandwidth": {
+          "canBeNull": true,
+          "description": "Global bandwidth for blocks in your vrack (in Mbps)",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
@@ -2114,7 +2134,7 @@ export const schema: Schema = {
           "description": "yourvrackdescription",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -2122,7 +2142,7 @@ export const schema: Schema = {
           "description": "yourvrackname",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }

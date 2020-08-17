@@ -191,6 +191,22 @@ export namespace tsaas {
      * type fullname: tsaas.QuotaTypeEnum
      */
     export type QuotaTypeEnum = "ddp" | "mads"
+    /**
+     * Token to use Warp10 functions
+     * interface fullName: tsaas.Warp10Token.Warp10Token
+     */
+    export interface Warp10Token {
+        description: string;
+        expiryTimestamp: string;
+        id: string;
+        maxFetch: number;
+        maxGts: number;
+        maxOps: number;
+        permissions: string;
+        protocol: string;
+        queryToken: string;
+        secret: string;
+    }
 }
 
 /**
@@ -235,7 +251,7 @@ export interface Dbaas {
              * Alter this object properties
              * PUT /dbaas/timeseries/{serviceName}
              */
-            $put(params: { description?: string, displayName?: string, offerId?: string, regionId?: string, serviceName: string, status?: timeseries.StatusTypeEnum }): Promise<void>;
+            $put(params?: { description?: string, displayName?: string, offerId?: string, regionId?: string, serviceName?: string, status?: timeseries.StatusTypeEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -320,7 +336,7 @@ export interface Dbaas {
                  * Alter this object properties
                  * PUT /dbaas/timeseries/{serviceName}/serviceInfos
                  */
-                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */

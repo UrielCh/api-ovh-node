@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/contact.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Get form characteristics",
@@ -69,16 +69,14 @@ export const schema: Schema = {
       "properties": {
         "key": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
@@ -91,17 +89,15 @@ export const schema: Schema = {
         "keys": {
           "canBeNull": false,
           "description": "Form keys to send",
-          "fullType": "contact.KeyFormCharacteristic[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "contact.KeyFormCharacteristic[]"
         },
         "type": {
           "canBeNull": false,
           "description": "Form type",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -114,17 +110,15 @@ export const schema: Schema = {
         "key": {
           "canBeNull": false,
           "description": "Key name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "required": {
           "canBeNull": false,
           "description": "Key required or not",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }

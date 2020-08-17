@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://api.us.ovhcloud.com:443/1.0/license/office.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the OFFICE service",
@@ -36,7 +36,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The unique identifier of your Office service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -56,14 +56,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "license.office.OfficeTenant",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "license.office.OfficeTenant",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The unique identifier of your Office service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -89,7 +89,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The unique identifier of your Office service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -115,7 +115,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The unique identifier of your Office service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -149,7 +149,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The unique identifier of your Office service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -174,18 +174,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The unique identifier of your Office service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Task's unique identifier",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -209,7 +209,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The unique identifier of your Office service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -229,14 +229,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The unique identifier of your Office service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -261,11 +261,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "date",
+              "description": "Period's end point.",
+              "fullType": "date",
+              "name": "to",
+              "paramType": "query",
               "required": true
             },
             {
@@ -277,11 +277,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "date",
-              "description": "Period's end point.",
-              "fullType": "date",
-              "name": "to",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The unique identifier of your Office service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -304,30 +304,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of lastName property (like)",
-              "fullType": "string",
-              "name": "lastName",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of activationEmail property (like)",
-              "fullType": "string",
-              "name": "activationEmail",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of firstName property (like)",
               "fullType": "string",
               "name": "firstName",
@@ -341,6 +317,30 @@ export const schema: Schema = {
               "name": "licences",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of activationEmail property (like)",
+              "fullType": "string",
+              "name": "activationEmail",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of lastName property (like)",
+              "fullType": "string",
+              "name": "lastName",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The unique identifier of your Office service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -356,19 +356,27 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Account first name",
+              "description": "Office domain",
               "fullType": "string",
-              "name": "firstName",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "coreTypes.CountryEnum",
+              "description": "ISO 3166-1 alpha-2 country code where the user is using Office365 services",
+              "fullType": "coreTypes.CountryEnum",
+              "name": "usageLocation",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Account login",
+              "description": "Account first name",
               "fullType": "string",
-              "name": "login",
+              "name": "firstName",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "license.office.LicenceEnum",
@@ -380,9 +388,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Office domain",
+              "description": "Account login",
               "fullType": "string",
-              "name": "domain",
+              "name": "login",
               "paramType": "body",
               "required": true
             },
@@ -395,16 +403,8 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "coreTypes.CountryEnum",
-              "description": "ISO 3166-1 alpha-2 country code where the user is using Office365 services",
-              "fullType": "coreTypes.CountryEnum",
-              "name": "usageLocation",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The unique identifier of your Office service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -430,7 +430,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The unique identifier of your Office service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -438,7 +438,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Activation email",
+              "description": "Email used to activate Microsoft Office",
               "fullType": "string",
               "name": "activationEmail",
               "paramType": "path",
@@ -458,7 +458,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The unique identifier of your Office service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -466,7 +466,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Activation email",
+              "description": "Email used to activate Microsoft Office",
               "fullType": "string",
               "name": "activationEmail",
               "paramType": "path",
@@ -486,14 +486,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "license.office.OfficeUser",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "license.office.OfficeUser",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The unique identifier of your Office service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -501,7 +501,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Activation email",
+              "description": "Email used to activate Microsoft Office",
               "fullType": "string",
               "name": "activationEmail",
               "paramType": "path",
@@ -534,6 +534,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "string",
+              "description": "Email to send the new password to. Default is nicAdmin's email.",
+              "fullType": "string",
+              "name": "notifyEmail",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "boolean",
               "description": "Specify if the new password should be send via email or not.",
               "fullType": "boolean",
@@ -543,25 +551,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email to send the new password to. Default is nicAdmin's email.",
+              "description": "The unique identifier of your Office service",
               "fullType": "string",
-              "name": "notifyEmail",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Activation email",
-              "fullType": "string",
-              "name": "activationEmail",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Email used to activate Microsoft Office",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "activationEmail",
               "paramType": "path",
               "required": true
             }
@@ -872,7 +872,7 @@ export const schema: Schema = {
           "description": "Domain name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -880,7 +880,7 @@ export const schema: Schema = {
           "description": "Domain state",
           "fullType": "license.office.DomainStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "license.office.DomainStateEnum"
         },
         "txtEntry": {
@@ -888,8 +888,71 @@ export const schema: Schema = {
           "description": "TXT entry required for domain validation",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
+        }
+      }
+    },
+    "license.office.OfficeSubscription": {
+      "description": "Office subscription",
+      "id": "OfficeSubscription",
+      "namespace": "license.office",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Subscription's unique identifier",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "lastUpdate": {
+          "canBeNull": true,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "licenseId": {
+          "canBeNull": false,
+          "description": "License's type id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Number of available licenses",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current state of the subscription",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "taskPendingId": {
+          "canBeNull": false,
+          "description": "Pending task's unique identifier",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
@@ -911,7 +974,7 @@ export const schema: Schema = {
           "description": "Function name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -919,7 +982,7 @@ export const schema: Schema = {
           "description": "Task's unique identifier",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "status": {
@@ -927,7 +990,7 @@ export const schema: Schema = {
           "description": "Task state",
           "fullType": "license.office.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "license.office.TaskStatusEnum"
         },
         "todoDate": {
@@ -935,7 +998,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -950,7 +1013,7 @@ export const schema: Schema = {
           "description": "Contact's address line",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "city": {
@@ -958,7 +1021,7 @@ export const schema: Schema = {
           "description": "Contact's city",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "creationDate": {
@@ -966,7 +1029,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "displayName": {
@@ -974,7 +1037,7 @@ export const schema: Schema = {
           "description": "Tenant's display name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "firstName": {
@@ -982,7 +1045,7 @@ export const schema: Schema = {
           "description": "Contact's fisrt name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "lastName": {
@@ -990,7 +1053,7 @@ export const schema: Schema = {
           "description": "Contact's fisrt name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "phone": {
@@ -998,7 +1061,7 @@ export const schema: Schema = {
           "description": "Primary phone number",
           "fullType": "phoneNumber",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "phoneNumber"
         },
         "serviceType": {
@@ -1006,14 +1069,14 @@ export const schema: Schema = {
           "description": "Tenant's service type",
           "fullType": "license.office.ServiceTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "license.office.ServiceTypeEnum"
         },
         "status": {
           "canBeNull": false,
           "fullType": "license.office.ServiceStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "license.office.ServiceStateEnum"
         },
         "zipCode": {
@@ -1021,7 +1084,7 @@ export const schema: Schema = {
           "description": "Contact's zip code",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1036,7 +1099,7 @@ export const schema: Schema = {
           "description": "Email used to activate Microsoft Office",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "deleteAtExpiration": {
@@ -1044,7 +1107,7 @@ export const schema: Schema = {
           "description": "Whether or not this user slot will be resigned at the next renew period",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "firstName": {
@@ -1052,7 +1115,7 @@ export const schema: Schema = {
           "description": "User's first name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "isVirtual": {
@@ -1060,7 +1123,7 @@ export const schema: Schema = {
           "description": "Specify if the user is actually a user slot (configureme) or a real user",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "lastName": {
@@ -1068,7 +1131,7 @@ export const schema: Schema = {
           "description": "User's last name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "licences": {
@@ -1076,7 +1139,7 @@ export const schema: Schema = {
           "description": "Licenses attributed to the user",
           "fullType": "license.office.LicenceEnum[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "license.office.LicenceEnum[]"
         },
         "status": {
@@ -1084,7 +1147,7 @@ export const schema: Schema = {
           "description": "User state",
           "fullType": "license.office.UserStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "license.office.UserStateEnum"
         },
         "taskPendingId": {
@@ -1092,7 +1155,7 @@ export const schema: Schema = {
           "description": "Pending task id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "usageLocation": {
@@ -1100,7 +1163,7 @@ export const schema: Schema = {
           "description": "ISO 3166-1 alpha-2 country code where the user is using Office365 services",
           "fullType": "coreTypes.CountryEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "coreTypes.CountryEnum"
         }
       }
@@ -1127,6 +1190,34 @@ export const schema: Schema = {
       "id": "ServiceTypeEnum",
       "namespace": "license.office"
     },
+    "license.office.Statistic": {
+      "description": "License usage statistic.",
+      "id": "Statistic",
+      "namespace": "license.office",
+      "properties": {
+        "available": {
+          "canBeNull": false,
+          "description": "Number of available seats in the subscription",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "licenseId": {
+          "canBeNull": false,
+          "description": "License type's unique identifier",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "used": {
+          "canBeNull": false,
+          "description": "Number of used seats in the subscription",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "license.office.Statistics": {
       "description": "License usage statistics.",
       "id": "Statistics",
@@ -1135,17 +1226,15 @@ export const schema: Schema = {
         "date": {
           "canBeNull": false,
           "description": "Date of the statistics.",
-          "fullType": "date",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "lines": {
           "canBeNull": false,
           "description": "List of lines associated to this statistics entity.",
-          "fullType": "license.office.StatisticsLine[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "license.office.StatisticsLine[]"
         }
       }
@@ -1158,25 +1247,22 @@ export const schema: Schema = {
         "endOfDayCount": {
           "canBeNull": false,
           "description": "Count of activated licenses at the end of the day.",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "licenceType": {
           "canBeNull": false,
           "description": "Type of the Office license.",
-          "fullType": "license.office.LicenceEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "license.office.LicenceEnum"
         },
         "peakCount": {
           "canBeNull": false,
           "description": "Maximum count of simultaneous activated licences.",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -1213,31 +1299,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -1245,7 +1327,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -1289,42 +1370,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -1338,7 +1419,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -1361,21 +1442,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/caas/registry.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the DOCKER service",
@@ -63,7 +63,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -71,7 +71,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -79,14 +79,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your project",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -132,7 +132,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "registry.inputNamespace",
-              "description": "Request Body",
+              "description": "A namespace in which a user can either read, write or delete images",
               "fullType": "registry.inputNamespace",
               "paramType": "body",
               "required": true
@@ -165,7 +165,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Namespace id",
               "fullType": "string",
               "name": "namespaceId",
               "paramType": "path",
@@ -193,7 +193,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Namespace id",
               "fullType": "string",
               "name": "namespaceId",
               "paramType": "path",
@@ -227,7 +227,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Namespace id",
               "fullType": "string",
               "name": "namespaceId",
               "paramType": "path",
@@ -261,7 +261,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Image ID",
+              "description": "Image id",
               "fullType": "string",
               "name": "imageId",
               "paramType": "path",
@@ -269,7 +269,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Namespace id",
               "fullType": "string",
               "name": "namespaceId",
               "paramType": "path",
@@ -297,15 +297,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Image ID",
+              "description": "Image id",
               "fullType": "string",
               "name": "imageId",
               "paramType": "path",
@@ -313,9 +305,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Namespace id",
               "fullType": "string",
               "name": "namespaceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -333,14 +333,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "registry.inputImage",
-              "description": "Request Body",
+              "description": "A container image",
               "fullType": "registry.inputImage",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Image ID",
+              "description": "Image id",
               "fullType": "string",
               "name": "imageId",
               "paramType": "path",
@@ -348,7 +348,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Namespace id",
               "fullType": "string",
               "name": "namespaceId",
               "paramType": "path",
@@ -382,7 +382,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Image ID",
+              "description": "Image id",
               "fullType": "string",
               "name": "imageId",
               "paramType": "path",
@@ -390,7 +390,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Namespace id",
               "fullType": "string",
               "name": "namespaceId",
               "paramType": "path",
@@ -417,8 +417,24 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Image id",
+              "fullType": "string",
+              "name": "imageId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Namespace id",
+              "fullType": "string",
+              "name": "namespaceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "registry.inputPermissions",
-              "description": "Request Body",
+              "description": "Permissions of a user over a namespace",
               "fullType": "registry.inputPermissions",
               "paramType": "body",
               "required": true
@@ -428,22 +444,6 @@ export const schema: Schema = {
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Image ID",
-              "fullType": "string",
-              "name": "imageId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Namespace ID",
-              "fullType": "string",
-              "name": "namespaceId",
               "paramType": "path",
               "required": true
             }
@@ -467,7 +467,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Image id",
+              "fullType": "string",
+              "name": "imageId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Namespace id",
               "fullType": "string",
               "name": "namespaceId",
               "paramType": "path",
@@ -475,7 +483,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Permission ID",
+              "description": "Permission id",
               "fullType": "string",
               "name": "permissionId",
               "paramType": "path",
@@ -486,14 +494,6 @@ export const schema: Schema = {
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Image ID",
-              "fullType": "string",
-              "name": "imageId",
               "paramType": "path",
               "required": true
             }
@@ -511,7 +511,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Image ID",
+              "description": "Image id",
               "fullType": "string",
               "name": "imageId",
               "paramType": "path",
@@ -519,7 +519,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Namespace id",
               "fullType": "string",
               "name": "namespaceId",
               "paramType": "path",
@@ -527,7 +527,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Permission ID",
+              "description": "Permission id",
               "fullType": "string",
               "name": "permissionId",
               "paramType": "path",
@@ -561,7 +561,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Image id",
+              "fullType": "string",
+              "name": "imageId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Namespace id",
               "fullType": "string",
               "name": "namespaceId",
               "paramType": "path",
@@ -572,14 +580,6 @@ export const schema: Schema = {
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Image ID",
-              "fullType": "string",
-              "name": "imageId",
               "paramType": "path",
               "required": true
             }
@@ -603,7 +603,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Image ID",
+              "description": "Image id",
               "fullType": "string",
               "name": "imageId",
               "paramType": "path",
@@ -611,7 +611,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Namespace id",
               "fullType": "string",
               "name": "namespaceId",
               "paramType": "path",
@@ -627,7 +627,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Tag ID",
+              "description": "Tag id",
               "fullType": "string",
               "name": "tagId",
               "paramType": "path",
@@ -653,7 +653,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Namespace id",
               "fullType": "string",
               "name": "namespaceId",
               "paramType": "path",
@@ -680,18 +680,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "registry.inputPermissions",
-              "description": "Request Body",
-              "fullType": "registry.inputPermissions",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Namespace id",
               "fullType": "string",
               "name": "namespaceId",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "registry.inputPermissions",
+              "description": "Permissions of a user over a namespace",
+              "fullType": "registry.inputPermissions",
+              "paramType": "body",
               "required": true
             },
             {
@@ -722,7 +722,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Namespace id",
               "fullType": "string",
               "name": "namespaceId",
               "paramType": "path",
@@ -730,7 +730,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Permission ID",
+              "description": "Permission id",
               "fullType": "string",
               "name": "permissionId",
               "paramType": "path",
@@ -758,7 +758,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Namespace ID",
+              "description": "Namespace id",
               "fullType": "string",
               "name": "namespaceId",
               "paramType": "path",
@@ -766,7 +766,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Permission ID",
+              "description": "Permission id",
               "fullType": "string",
               "name": "permissionId",
               "paramType": "path",
@@ -800,7 +800,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your project",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -820,14 +820,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your project",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -873,7 +873,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "registry.inputUser",
-              "description": "Request Body",
+              "description": "A registry user account",
               "fullType": "registry.inputUser",
               "paramType": "body",
               "required": true
@@ -906,17 +906,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "User ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "userId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "User id",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "userId",
               "paramType": "path",
               "required": true
             }
@@ -942,7 +942,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User ID",
+              "description": "User id",
               "fullType": "string",
               "name": "userId",
               "paramType": "path",
@@ -976,7 +976,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User ID",
+              "description": "User id",
               "fullType": "string",
               "name": "userId",
               "paramType": "path",
@@ -1001,7 +1001,7 @@ export const schema: Schema = {
           "description": "Date of the resource creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -1009,7 +1009,7 @@ export const schema: Schema = {
           "description": "The image id",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -1017,7 +1017,7 @@ export const schema: Schema = {
           "description": "The image name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "public": {
@@ -1025,7 +1025,7 @@ export const schema: Schema = {
           "description": "Whether is image is public or private",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "status": {
@@ -1033,7 +1033,7 @@ export const schema: Schema = {
           "description": "The status of the image",
           "fullType": "registry.image.status",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "registry.image.status"
         },
         "updatedAt": {
@@ -1041,7 +1041,7 @@ export const schema: Schema = {
           "description": "Date of the resource last update",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -1068,7 +1068,7 @@ export const schema: Schema = {
           "description": "image is public",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -1083,7 +1083,7 @@ export const schema: Schema = {
           "description": "The namespace name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1098,7 +1098,7 @@ export const schema: Schema = {
           "description": "Whether a user can read images on the namespace",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "canWrite": {
@@ -1106,7 +1106,7 @@ export const schema: Schema = {
           "description": "Whether a user can create images on the namespace",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isAdmin": {
@@ -1114,7 +1114,7 @@ export const schema: Schema = {
           "description": "Whether a user can delete images on the namespace",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "status": {
@@ -1122,7 +1122,7 @@ export const schema: Schema = {
           "description": "The status of the permission",
           "fullType": "registry.permission.status",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "registry.permission.status"
         },
         "userId": {
@@ -1130,7 +1130,7 @@ export const schema: Schema = {
           "description": "User Id ",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1145,7 +1145,7 @@ export const schema: Schema = {
           "description": "A general description of the user account",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1160,7 +1160,7 @@ export const schema: Schema = {
           "description": "Date of the resource creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -1168,7 +1168,7 @@ export const schema: Schema = {
           "description": "The namespace id",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -1176,7 +1176,7 @@ export const schema: Schema = {
           "description": "The namespace name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -1184,7 +1184,7 @@ export const schema: Schema = {
           "description": "The status of the namespace",
           "fullType": "registry.namespace.status",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "registry.namespace.status"
         },
         "updatedAt": {
@@ -1192,7 +1192,7 @@ export const schema: Schema = {
           "description": "Date of the resource last update",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -1231,7 +1231,7 @@ export const schema: Schema = {
           "description": "Whether a user can read images on the namespace",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "canWrite": {
@@ -1239,7 +1239,7 @@ export const schema: Schema = {
           "description": "Whether a user can create images on the namespace",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "createdAt": {
@@ -1247,7 +1247,7 @@ export const schema: Schema = {
           "description": "Date of the resource creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -1255,7 +1255,7 @@ export const schema: Schema = {
           "description": "Permission Id ",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "isAdmin": {
@@ -1263,7 +1263,7 @@ export const schema: Schema = {
           "description": "Whether a user can delete images on the namespace",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "status": {
@@ -1271,7 +1271,7 @@ export const schema: Schema = {
           "description": "The status of the permission",
           "fullType": "registry.permission.status",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "registry.permission.status"
         },
         "updatedAt": {
@@ -1279,7 +1279,7 @@ export const schema: Schema = {
           "description": "Date of the resource last update",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "userId": {
@@ -1287,7 +1287,7 @@ export const schema: Schema = {
           "description": "User Id ",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1302,7 +1302,7 @@ export const schema: Schema = {
           "description": "Date of the resource creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "endpoint": {
@@ -1310,7 +1310,7 @@ export const schema: Schema = {
           "description": "The endpoint used for docker login",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -1318,7 +1318,7 @@ export const schema: Schema = {
           "description": "The service id",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "maxNamespaces": {
@@ -1326,7 +1326,7 @@ export const schema: Schema = {
           "description": "Maximal number of registered namespaces in the service",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxUsers": {
@@ -1334,7 +1334,7 @@ export const schema: Schema = {
           "description": "Maximal number of registered users in the service",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "updatedAt": {
@@ -1342,7 +1342,7 @@ export const schema: Schema = {
           "description": "Date of the resource last update",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "zone": {
@@ -1350,7 +1350,7 @@ export const schema: Schema = {
           "description": "The name of the geographical zone the service is located in",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1365,7 +1365,7 @@ export const schema: Schema = {
           "description": "Date of the resource creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -1373,7 +1373,7 @@ export const schema: Schema = {
           "description": "The tag id",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -1381,7 +1381,7 @@ export const schema: Schema = {
           "description": "The tag name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "updatedAt": {
@@ -1389,7 +1389,7 @@ export const schema: Schema = {
           "description": "Date of the resource last update",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -1404,7 +1404,7 @@ export const schema: Schema = {
           "description": "Date of the resource creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
@@ -1412,7 +1412,7 @@ export const schema: Schema = {
           "description": "A general description of the user account",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "id": {
@@ -1420,7 +1420,7 @@ export const schema: Schema = {
           "description": "The user id",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -1428,7 +1428,7 @@ export const schema: Schema = {
           "description": "The status of the user",
           "fullType": "registry.user.status",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "registry.user.status"
         },
         "updatedAt": {
@@ -1436,7 +1436,7 @@ export const schema: Schema = {
           "description": "Date of the resource last update",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "username": {
@@ -1444,7 +1444,7 @@ export const schema: Schema = {
           "description": "The user name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1469,31 +1469,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -1501,7 +1497,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -1545,42 +1540,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -1594,7 +1589,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -1617,21 +1612,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

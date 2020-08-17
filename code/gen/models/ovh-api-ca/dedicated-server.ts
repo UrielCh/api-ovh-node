@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://ca.api.ovh.com:443/1.0/dedicated/server.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the DEDICATED service",
@@ -179,7 +179,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "uuid",
-              "description": "Uuid",
+              "description": "VirtualNetworkInterface uuid",
               "fullType": "uuid",
               "name": "uuid",
               "paramType": "path",
@@ -205,7 +205,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -225,14 +225,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "dedicated.server.Dedicated",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "dedicated.server.Dedicated",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -258,7 +258,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -284,7 +284,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -310,7 +310,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -336,7 +336,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -361,14 +361,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.server.BiosSettingsSgxStatusEnum",
-              "description": "Desired SGX status",
-              "fullType": "dedicated.server.BiosSettingsSgxStatusEnum",
-              "name": "status",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "dedicated.server.BiosSettingsSgxPrmrrEnum",
               "description": "Size of the Processor Reserved Memory",
               "fullType": "dedicated.server.BiosSettingsSgxPrmrrEnum",
@@ -377,8 +369,16 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "dedicated.server.BiosSettingsSgxStatusEnum",
+              "description": "Desired SGX status",
+              "fullType": "dedicated.server.BiosSettingsSgxStatusEnum",
+              "name": "status",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -403,20 +403,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.server.BootTypeEnum",
               "description": "Filter the value of bootType property (=)",
               "fullType": "dedicated.server.BootTypeEnum",
               "name": "bootType",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -438,7 +438,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -446,7 +446,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Boot ID",
+              "description": "boot id",
               "fullType": "long",
               "name": "bootId",
               "paramType": "path",
@@ -472,7 +472,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -480,7 +480,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Boot ID",
+              "description": "boot id",
               "fullType": "long",
               "name": "bootId",
               "paramType": "path",
@@ -506,7 +506,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -514,7 +514,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Boot ID",
+              "description": "boot id",
               "fullType": "long",
               "name": "bootId",
               "paramType": "path",
@@ -522,7 +522,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "dedicated.server.BootOptionEnum",
-              "description": "Option",
+              "description": "The option of this boot",
               "fullType": "dedicated.server.BootOptionEnum",
               "name": "option",
               "paramType": "path",
@@ -548,7 +548,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -568,7 +568,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -587,42 +587,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.CheckSumTypesEnum",
-              "description": "Checksum type",
-              "fullType": "dedicated.CheckSumTypesEnum",
-              "name": "checkSumType",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Disk group id to process install on (only available for some templates)",
-              "fullType": "long",
-              "name": "diskGroupId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "complexType.SafeKeyValue<password>[]",
-              "description": "HTTP Headers",
-              "fullType": "complexType.SafeKeyValue<password>[]",
-              "name": "httpHeader",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Image URL",
+              "description": "Image checksum",
               "fullType": "string",
-              "name": "URL",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "SshKey",
-              "fullType": "string",
-              "name": "sshKey",
+              "name": "checkSum",
               "paramType": "body",
               "required": true
             },
@@ -635,26 +603,34 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "complexType.SafeKeyValue<string>[]",
-              "description": "Metadas",
-              "fullType": "complexType.SafeKeyValue<string>[]",
-              "name": "userMetadatas",
+              "dataType": "long",
+              "description": "Disk group id to process install on (only available for some templates)",
+              "fullType": "long",
+              "name": "diskGroupId",
               "paramType": "body",
               "required": false
             },
             {
-              "dataType": "text",
-              "description": "Configuration script",
-              "fullType": "text",
-              "name": "userData",
+              "dataType": "complexType.SafeKeyValueCanBeNull<password>[]",
+              "description": "HTTP Headers",
+              "fullType": "complexType.SafeKeyValueCanBeNull<password>[]",
+              "name": "httpHeader",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "dedicated.CheckSumTypesEnum",
+              "description": "Checksum type",
+              "fullType": "dedicated.CheckSumTypesEnum",
+              "name": "checkSumType",
+              "paramType": "body",
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "Hostname",
+              "description": "Image URL",
               "fullType": "string",
-              "name": "hostname",
+              "name": "URL",
               "paramType": "body",
               "required": true
             },
@@ -667,16 +643,16 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Image checksum",
-              "fullType": "string",
-              "name": "checkSum",
+              "dataType": "dedicated.server.ConfigDrive",
+              "description": "enable and set ConfigDrive",
+              "fullType": "dedicated.server.ConfigDrive",
+              "name": "configdrive",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -702,7 +678,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -722,14 +698,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "dedicated.server.ServerBurst",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "dedicated.server.ServerBurst",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -756,7 +732,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -764,7 +740,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -772,14 +748,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -837,7 +813,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -863,7 +839,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -883,7 +859,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -919,7 +895,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -945,7 +921,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -971,7 +947,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -991,7 +967,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1011,7 +987,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1037,7 +1013,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1056,6 +1032,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "ipBlock",
+              "description": "The IP Block specific to this ACL. It musts belong to your server.",
+              "fullType": "ipBlock",
+              "name": "ipBlock",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "boolean",
               "description": "Wether to allow the FTP protocol for this ACL",
               "fullType": "boolean",
@@ -1064,10 +1048,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "ipBlock",
-              "description": "The IP Block specific to this ACL. It musts belong to your server.",
-              "fullType": "ipBlock",
-              "name": "ipBlock",
+              "dataType": "boolean",
+              "description": "Wether to allow the NFS protocol for this ACL",
+              "fullType": "boolean",
+              "name": "nfs",
               "paramType": "body",
               "required": true
             },
@@ -1080,16 +1064,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "boolean",
-              "description": "Wether to allow the NFS protocol for this ACL",
-              "fullType": "boolean",
-              "name": "nfs",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1115,7 +1091,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1123,7 +1099,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": "Ip block",
+              "description": "The IP Block specific to this ACL",
               "fullType": "ipBlock",
               "name": "ipBlock",
               "paramType": "path",
@@ -1143,7 +1119,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1151,7 +1127,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": "Ip block",
+              "description": "The IP Block specific to this ACL",
               "fullType": "ipBlock",
               "name": "ipBlock",
               "paramType": "path",
@@ -1171,14 +1147,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "dedicated.server.BackupFtpAcl",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "dedicated.server.BackupFtpAcl",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1186,7 +1162,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": "Ip block",
+              "description": "The IP Block specific to this ACL",
               "fullType": "ipBlock",
               "name": "ipBlock",
               "paramType": "path",
@@ -1212,7 +1188,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1238,7 +1214,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1264,7 +1240,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1284,14 +1260,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "dedicated.server.Firewall",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "dedicated.server.Firewall",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1317,7 +1293,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1342,19 +1318,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.server.IpmiAccessTypeEnum",
               "description": "IPMI console access",
               "fullType": "dedicated.server.IpmiAccessTypeEnum",
               "name": "type",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1370,26 +1346,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.server.IpmiAccessTypeEnum",
-              "description": "IPMI console access",
-              "fullType": "dedicated.server.IpmiAccessTypeEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "ipv4",
               "description": "IP to allow connection from for this IPMI session",
               "fullType": "ipv4",
               "name": "ipToAllow",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "SSH key name to allow access on KVM/IP interface with (name from /me/sshKey)",
-              "fullType": "string",
-              "name": "sshKey",
               "paramType": "body",
               "required": false
             },
@@ -1402,8 +1362,24 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "dedicated.server.IpmiAccessTypeEnum",
+              "description": "IPMI console access",
+              "fullType": "dedicated.server.IpmiAccessTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "SSH key name to allow access on KVM/IP interface with (name from /me/sshKey)",
+              "fullType": "string",
+              "name": "sshKey",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1429,7 +1405,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1455,7 +1431,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1480,19 +1456,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.server.IpmiTestTypeEnum",
               "description": "Test type result on KVM IPMI interface",
               "fullType": "dedicated.server.IpmiTestTypeEnum",
               "name": "type",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1525,7 +1501,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1551,7 +1527,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1577,7 +1553,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1603,18 +1579,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Binary name",
               "fullType": "string",
               "name": "binaryName",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1637,18 +1613,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "",
               "fullType": "string",
               "name": "templateName",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1671,7 +1647,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1697,7 +1673,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1723,14 +1699,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Partition scheme name",
               "fullType": "string",
               "name": "partitionSchemeName",
@@ -1743,6 +1711,14 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "templateName",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1764,14 +1740,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.server.InstallCustom",
-              "description": "parameters for default install",
-              "fullType": "dedicated.server.InstallCustom",
-              "name": "details",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "Template name",
               "fullType": "string",
@@ -1788,8 +1756,16 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "dedicated.server.InstallCustom",
+              "description": "parameters for default install",
+              "fullType": "dedicated.server.InstallCustom",
+              "name": "details",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1815,7 +1791,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1841,18 +1817,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "",
               "fullType": "string",
               "name": "templateName",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1875,7 +1851,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1901,7 +1877,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1909,7 +1885,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Intervention ID",
+              "description": "The intervention id",
               "fullType": "long",
               "name": "interventionId",
               "paramType": "path",
@@ -1943,7 +1919,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1968,19 +1944,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipBlock",
               "description": "The ip to move to this server",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2003,7 +1979,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2037,7 +2013,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2063,7 +2039,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2089,7 +2065,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2115,7 +2091,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2157,7 +2133,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2185,14 +2161,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.server.MrtgTypeEnum",
               "description": "mrtg type",
               "fullType": "dedicated.server.MrtgTypeEnum",
@@ -2206,6 +2174,14 @@ export const schema: Schema = {
               "fullType": "dedicated.server.MrtgPeriodEnum",
               "name": "period",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2227,20 +2203,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum",
               "description": "Filter the value of linkType property (=)",
               "fullType": "dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum",
               "name": "linkType",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "macAddress[]"
@@ -2262,7 +2238,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2270,7 +2246,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "macAddress",
-              "description": "Mac",
+              "description": "NetworkInterfaceController mac",
               "fullType": "macAddress",
               "name": "mac",
               "paramType": "path",
@@ -2295,19 +2271,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "macAddress",
-              "description": "Mac",
-              "fullType": "macAddress",
-              "name": "mac",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "dedicated.server.MrtgPeriodEnum",
+              "description": "mrtg period",
+              "fullType": "dedicated.server.MrtgPeriodEnum",
+              "name": "period",
+              "paramType": "query",
               "required": true
             },
             {
@@ -2319,11 +2287,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.server.MrtgPeriodEnum",
-              "description": "mrtg period",
-              "fullType": "dedicated.server.MrtgPeriodEnum",
-              "name": "period",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "macAddress",
+              "description": "NetworkInterfaceController mac",
+              "fullType": "macAddress",
+              "name": "mac",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2362,7 +2338,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2396,7 +2372,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2422,7 +2398,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2448,7 +2424,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2456,7 +2432,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "dedicated.server.OptionEnum",
-              "description": "Option",
+              "description": "The option name",
               "fullType": "dedicated.server.OptionEnum",
               "name": "option",
               "paramType": "path",
@@ -2476,7 +2452,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2484,7 +2460,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "dedicated.server.OptionEnum",
-              "description": "Option",
+              "description": "The option name",
               "fullType": "dedicated.server.OptionEnum",
               "name": "option",
               "paramType": "path",
@@ -2510,7 +2486,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2536,7 +2512,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2562,7 +2538,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2587,19 +2563,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.server.OrderableSysFeatureEnum",
               "description": "the feature",
               "fullType": "dedicated.server.OrderableSysFeatureEnum",
               "name": "feature",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2622,7 +2598,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2648,7 +2624,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2674,7 +2650,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2700,7 +2676,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2726,7 +2702,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2752,7 +2728,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2778,7 +2754,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2804,7 +2780,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2840,7 +2816,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2866,7 +2842,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2874,7 +2850,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "domain on slave server",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -2894,7 +2870,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2902,7 +2878,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "domain on slave server",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -2922,14 +2898,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "secondaryDns.SecondaryDNS",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "secondaryDns.SecondaryDNS",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2937,7 +2913,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "domain on slave server",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -2963,7 +2939,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2971,7 +2947,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "domain on slave server",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -2997,18 +2973,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The domain to check",
               "fullType": "string",
               "name": "domain",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -3031,7 +3007,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3057,7 +3033,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3077,14 +3053,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3110,7 +3086,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3129,22 +3105,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.server.MonitoringProtocolEnum",
-              "description": "The protocol to use",
-              "fullType": "dedicated.server.MonitoringProtocolEnum",
-              "name": "protocol",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "The IP to monitor",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "The service port to monitor",
               "fullType": "long",
@@ -3153,18 +3113,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.server.MonitoringIntervalEnum",
-              "description": "The test interval",
-              "fullType": "dedicated.server.MonitoringIntervalEnum",
-              "name": "interval",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Is this service monitoring is enabled",
               "fullType": "boolean",
               "name": "enabled",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.MonitoringIntervalEnum",
+              "description": "The test interval",
+              "fullType": "dedicated.server.MonitoringIntervalEnum",
+              "name": "interval",
               "paramType": "body",
               "required": true
             },
@@ -3185,8 +3145,24 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "ipv4",
+              "description": "The IP to monitor",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.MonitoringProtocolEnum",
+              "description": "The protocol to use",
+              "fullType": "dedicated.server.MonitoringProtocolEnum",
+              "name": "protocol",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3212,7 +3188,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3220,7 +3196,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Monitoring ID",
+              "description": "This monitoring id",
               "fullType": "long",
               "name": "monitoringId",
               "paramType": "path",
@@ -3240,7 +3216,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3248,7 +3224,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Monitoring ID",
+              "description": "This monitoring id",
               "fullType": "long",
               "name": "monitoringId",
               "paramType": "path",
@@ -3268,14 +3244,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "dedicated.server.serviceMonitoring",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "dedicated.server.serviceMonitoring",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3283,7 +3259,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Monitoring ID",
+              "description": "This monitoring id",
               "fullType": "long",
               "name": "monitoringId",
               "paramType": "path",
@@ -3309,7 +3285,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3317,7 +3293,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Monitoring ID",
+              "description": "This monitoring id",
               "fullType": "long",
               "name": "monitoringId",
               "paramType": "path",
@@ -3353,7 +3329,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3361,7 +3337,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Monitoring ID",
+              "description": "This monitoring id",
               "fullType": "long",
               "name": "monitoringId",
               "paramType": "path",
@@ -3386,8 +3362,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "description": "Monitoring ID",
+              "description": "This monitoring id",
               "fullType": "long",
               "name": "monitoringId",
               "paramType": "path",
@@ -3395,17 +3379,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Alert ID",
+              "description": "This monitoring id",
               "fullType": "long",
               "name": "alertId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3422,8 +3398,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "long",
-              "description": "Monitoring ID",
+              "description": "This monitoring id",
               "fullType": "long",
               "name": "monitoringId",
               "paramType": "path",
@@ -3431,17 +3415,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Alert ID",
+              "description": "This monitoring id",
               "fullType": "long",
               "name": "alertId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3459,14 +3435,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "dedicated.server.emailAlert",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "dedicated.server.emailAlert",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3474,7 +3450,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Monitoring ID",
+              "description": "This monitoring id",
               "fullType": "long",
               "name": "monitoringId",
               "paramType": "path",
@@ -3482,7 +3458,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Alert ID",
+              "description": "This monitoring id",
               "fullType": "long",
               "name": "alertId",
               "paramType": "path",
@@ -3508,7 +3484,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3516,7 +3492,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Monitoring ID",
+              "description": "This monitoring id",
               "fullType": "long",
               "name": "monitoringId",
               "paramType": "path",
@@ -3535,14 +3511,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Daily hour start time for SMS notification",
-              "fullType": "long",
-              "name": "fromHour",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "Your SMS account",
               "fullType": "string",
@@ -3552,9 +3520,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Daily hour end time for SMS notification",
+              "description": "Daily hour start time for SMS notification",
               "fullType": "long",
-              "name": "toHour",
+              "name": "fromHour",
               "paramType": "body",
               "required": false
             },
@@ -3575,8 +3543,16 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "long",
+              "description": "Daily hour end time for SMS notification",
+              "fullType": "long",
+              "name": "toHour",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3584,7 +3560,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Monitoring ID",
+              "description": "This monitoring id",
               "fullType": "long",
               "name": "monitoringId",
               "paramType": "path",
@@ -3610,7 +3586,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3618,7 +3594,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Monitoring ID",
+              "description": "This monitoring id",
               "fullType": "long",
               "name": "monitoringId",
               "paramType": "path",
@@ -3626,7 +3602,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Alert ID",
+              "description": "Id of this alert",
               "fullType": "long",
               "name": "alertId",
               "paramType": "path",
@@ -3646,7 +3622,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3654,7 +3630,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Monitoring ID",
+              "description": "This monitoring id",
               "fullType": "long",
               "name": "monitoringId",
               "paramType": "path",
@@ -3662,7 +3638,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Alert ID",
+              "description": "Id of this alert",
               "fullType": "long",
               "name": "alertId",
               "paramType": "path",
@@ -3682,14 +3658,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "dedicated.server.smsAlert",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "dedicated.server.smsAlert",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3697,7 +3673,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Monitoring ID",
+              "description": "This monitoring id",
               "fullType": "long",
               "name": "monitoringId",
               "paramType": "path",
@@ -3705,7 +3681,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Alert ID",
+              "description": "Id of this alert",
               "fullType": "long",
               "name": "alertId",
               "paramType": "path",
@@ -3731,7 +3707,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3757,7 +3733,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3783,7 +3759,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3808,14 +3784,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.server.SplaStatusEnum",
               "description": "Filter the value of status property (=)",
               "fullType": "dedicated.server.SplaStatusEnum",
@@ -3830,6 +3798,14 @@ export const schema: Schema = {
               "name": "type",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -3844,6 +3820,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "License serial number",
+              "fullType": "string",
+              "name": "serialNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "dedicated.server.SplaTypeEnum",
               "description": "License type",
               "fullType": "dedicated.server.SplaTypeEnum",
@@ -3853,15 +3837,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "License serial number",
-              "fullType": "string",
-              "name": "serialNumber",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3887,7 +3863,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3895,7 +3871,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "License id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3915,24 +3891,24 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "dedicated.server.spla",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "dedicated.server.spla",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "License id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -3955,18 +3931,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "License id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -3990,7 +3966,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4015,11 +3991,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "dedicated.server.RtmChartPeriodEnum",
+              "description": "chart period",
+              "fullType": "dedicated.server.RtmChartPeriodEnum",
+              "name": "period",
+              "paramType": "query",
               "required": true
             },
             {
@@ -4031,11 +4007,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.server.RtmChartPeriodEnum",
-              "description": "chart period",
-              "fullType": "dedicated.server.RtmChartPeriodEnum",
-              "name": "period",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -4058,7 +4034,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4084,7 +4060,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4110,7 +4086,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4136,17 +4112,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Disk",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
-              "name": "disk",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Disk",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "disk",
               "paramType": "path",
               "required": true
             }
@@ -4170,7 +4146,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4204,7 +4180,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4230,7 +4206,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4256,7 +4232,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4282,7 +4258,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4308,7 +4284,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4334,17 +4310,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Partition",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
-              "name": "partition",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Partition",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "partition",
               "paramType": "path",
               "required": true
             }
@@ -4367,8 +4343,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "dedicated.server.RtmChartPeriodEnum",
+              "description": "chart period",
+              "fullType": "dedicated.server.RtmChartPeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4380,14 +4364,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "partition",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.RtmChartPeriodEnum",
-              "description": "chart period",
-              "fullType": "dedicated.server.RtmChartPeriodEnum",
-              "name": "period",
-              "paramType": "query",
               "required": true
             }
           ],
@@ -4410,7 +4386,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4436,7 +4412,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4462,7 +4438,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4488,7 +4464,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4496,7 +4472,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Unit",
+              "description": "Raid unit",
               "fullType": "string",
               "name": "unit",
               "paramType": "path",
@@ -4522,7 +4498,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4530,7 +4506,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Unit",
+              "description": "Raid unit",
               "fullType": "string",
               "name": "unit",
               "paramType": "path",
@@ -4556,15 +4532,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Volume",
-              "fullType": "string",
-              "name": "volume",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4572,9 +4540,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Unit",
+              "description": "Raid unit",
               "fullType": "string",
               "name": "unit",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Raid volume name",
+              "fullType": "string",
+              "name": "volume",
               "paramType": "path",
               "required": true
             }
@@ -4598,7 +4574,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4606,7 +4582,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Unit",
+              "description": "Raid unit",
               "fullType": "string",
               "name": "unit",
               "paramType": "path",
@@ -4614,7 +4590,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Volume",
+              "description": "Raid volume name",
               "fullType": "string",
               "name": "volume",
               "paramType": "path",
@@ -4640,7 +4616,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4648,7 +4624,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Unit",
+              "description": "Raid unit",
               "fullType": "string",
               "name": "unit",
               "paramType": "path",
@@ -4656,7 +4632,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Volume",
+              "description": "Raid volume name",
               "fullType": "string",
               "name": "volume",
               "paramType": "path",
@@ -4664,7 +4640,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Port",
+              "description": "Raid volume port",
               "fullType": "string",
               "name": "port",
               "paramType": "path",
@@ -4706,7 +4682,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4731,6 +4707,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "text",
+              "description": "User comment",
+              "fullType": "text",
+              "name": "comment",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "dedicated.server.SupportReplaceHddInfo[]",
               "description": "If 'inverse' is set as 'false', the list of HDD TO REPLACE. If 'inverse' is set as 'true', the list of HDD TO NOT REPLACE.",
               "fullType": "dedicated.server.SupportReplaceHddInfo[]",
@@ -4747,16 +4731,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "text",
-              "description": "User comment",
-              "fullType": "text",
-              "name": "comment",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4806,7 +4782,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4831,12 +4807,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "dedicated.TaskStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "dedicated.TaskStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "dedicated.TaskFunctionEnum",
@@ -4847,12 +4823,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "dedicated.TaskStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "dedicated.TaskStatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -4874,7 +4850,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4882,7 +4858,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Task ID",
+              "description": "the id of the task",
               "fullType": "long",
               "name": "taskId",
               "paramType": "path",
@@ -4908,7 +4884,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4916,7 +4892,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Task ID",
+              "description": "the id of the task",
               "fullType": "long",
               "name": "taskId",
               "paramType": "path",
@@ -4942,7 +4918,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4968,7 +4944,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4987,10 +4963,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.server.VmacTypeEnum",
-              "description": "vmac address type",
-              "fullType": "dedicated.server.VmacTypeEnum",
-              "name": "type",
+              "dataType": "ipv4",
+              "description": "Ip address to link with this virtualMac",
+              "fullType": "ipv4",
+              "name": "ipAddress",
               "paramType": "body",
               "required": true
             },
@@ -5003,16 +4979,16 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "ipv4",
-              "description": "Ip address to link with this virtualMac",
-              "fullType": "ipv4",
-              "name": "ipAddress",
+              "dataType": "dedicated.server.VmacTypeEnum",
+              "description": "vmac address type",
+              "fullType": "dedicated.server.VmacTypeEnum",
+              "name": "type",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5038,7 +5014,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5046,7 +5022,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Mac address",
+              "description": "Virtual MAC address in 00:00:00:00:00:00 format",
               "fullType": "string",
               "name": "macAddress",
               "paramType": "path",
@@ -5072,17 +5048,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Mac address",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
-              "name": "macAddress",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Virtual MAC address in 00:00:00:00:00:00 format",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "macAddress",
               "paramType": "path",
               "required": true
             }
@@ -5116,7 +5092,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5124,7 +5100,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Mac address",
+              "description": "Virtual MAC address in 00:00:00:00:00:00 format",
               "fullType": "string",
               "name": "macAddress",
               "paramType": "path",
@@ -5150,7 +5126,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Mac address",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Virtual MAC address in 00:00:00:00:00:00 format",
               "fullType": "string",
               "name": "macAddress",
               "paramType": "path",
@@ -5158,17 +5142,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipv4",
-              "description": "Ip address",
+              "description": "IP address",
               "fullType": "ipv4",
               "name": "ipAddress",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -5186,7 +5162,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5194,7 +5170,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Mac address",
+              "description": "Virtual MAC address in 00:00:00:00:00:00 format",
               "fullType": "string",
               "name": "macAddress",
               "paramType": "path",
@@ -5202,7 +5178,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipv4",
-              "description": "Ip address",
+              "description": "IP address",
               "fullType": "ipv4",
               "name": "ipAddress",
               "paramType": "path",
@@ -5227,26 +5203,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum",
+              "description": "Filter the value of mode property (=)",
+              "fullType": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum",
+              "name": "mode",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "boolean",
               "description": "Filter the value of enabled property (=)",
               "fullType": "boolean",
               "name": "enabled",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum",
-              "description": "Filter the value of mode property (=)",
-              "fullType": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum",
-              "name": "mode",
               "paramType": "query",
               "required": false
             },
@@ -5265,6 +5233,14 @@ export const schema: Schema = {
               "name": "name",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "uuid[]"
@@ -5286,7 +5262,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5294,7 +5270,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Uuid",
+              "description": "VirtualNetworkInterface unique id",
               "fullType": "uuid",
               "name": "uuid",
               "paramType": "path",
@@ -5314,14 +5290,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "dedicated.virtualNetworkInterface.VirtualNetworkInterface",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "dedicated.virtualNetworkInterface.VirtualNetworkInterface",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5329,7 +5305,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Uuid",
+              "description": "VirtualNetworkInterface unique id",
               "fullType": "uuid",
               "name": "uuid",
               "paramType": "path",
@@ -5355,7 +5331,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5363,7 +5339,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Uuid",
+              "description": "VirtualNetworkInterface unique id",
               "fullType": "uuid",
               "name": "uuid",
               "paramType": "path",
@@ -5389,7 +5365,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5397,7 +5373,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Uuid",
+              "description": "VirtualNetworkInterface unique id",
               "fullType": "uuid",
               "name": "uuid",
               "paramType": "path",
@@ -5423,7 +5399,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5449,7 +5425,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5457,7 +5433,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Vrack",
+              "description": "vrack name",
               "fullType": "string",
               "name": "vrack",
               "paramType": "path",
@@ -5477,7 +5453,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5485,7 +5461,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Vrack",
+              "description": "vrack name",
               "fullType": "string",
               "name": "vrack",
               "paramType": "path",
@@ -5513,22 +5489,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Vrack",
-              "fullType": "string",
-              "name": "vrack",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.server.MrtgTypeEnum",
               "description": "mrtg type",
               "fullType": "dedicated.server.MrtgTypeEnum",
@@ -5542,6 +5502,22 @@ export const schema: Schema = {
               "fullType": "dedicated.server.MrtgPeriodEnum",
               "name": "period",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "vrack name",
+              "fullType": "string",
+              "name": "vrack",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -5560,14 +5536,12 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": true,
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
         },
         "values": {
           "canBeNull": true,
-          "fullType": "complexType.ChartTimestampValue[]",
           "readOnly": false,
           "required": false,
           "type": "complexType.ChartTimestampValue[]"
@@ -5581,40 +5555,36 @@ export const schema: Schema = {
       "properties": {
         "timestamp": {
           "canBeNull": false,
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "value": {
           "canBeNull": true,
-          "fullType": "double",
           "readOnly": false,
           "required": false,
           "type": "double"
         }
       }
     },
-    "complexType.SafeKeyValue<T>": {
+    "complexType.SafeKeyValueCanBeNull<T>": {
       "description": "Key and value, with proper key strings",
       "generics": [
         "T"
       ],
-      "id": "SafeKeyValue",
+      "id": "SafeKeyValueCanBeNull",
       "namespace": "complexType",
       "properties": {
         "key": {
-          "canBeNull": false,
-          "fullType": "string",
+          "canBeNull": true,
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
-          "canBeNull": false,
-          "fullType": "T",
+          "canBeNull": true,
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
@@ -5629,19 +5599,285 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
+    },
+    "coreTypes.CountryEnum": {
+      "description": "ISO country codes",
+      "enum": [
+        "ac",
+        "ad",
+        "ae",
+        "af",
+        "ag",
+        "ai",
+        "al",
+        "am",
+        "an",
+        "ao",
+        "aq",
+        "ar",
+        "as",
+        "at",
+        "au",
+        "aw",
+        "ax",
+        "az",
+        "ba",
+        "bb",
+        "bd",
+        "be",
+        "bf",
+        "bg",
+        "bh",
+        "bi",
+        "bj",
+        "bl",
+        "bm",
+        "bn",
+        "bo",
+        "bq",
+        "br",
+        "bs",
+        "bt",
+        "bv",
+        "bw",
+        "by",
+        "bz",
+        "ca",
+        "cc",
+        "cd",
+        "cf",
+        "cg",
+        "ch",
+        "ci",
+        "ck",
+        "cl",
+        "cm",
+        "cn",
+        "co",
+        "cr",
+        "cs",
+        "cu",
+        "cv",
+        "cw",
+        "cx",
+        "cy",
+        "cz",
+        "de",
+        "dj",
+        "dk",
+        "dm",
+        "do",
+        "dz",
+        "ec",
+        "ee",
+        "eg",
+        "eh",
+        "er",
+        "es",
+        "et",
+        "fc",
+        "fd",
+        "fi",
+        "fj",
+        "fk",
+        "fm",
+        "fo",
+        "fr",
+        "fx",
+        "ga",
+        "gb",
+        "gd",
+        "ge",
+        "gf",
+        "gg",
+        "gh",
+        "gi",
+        "gl",
+        "gm",
+        "gn",
+        "gp",
+        "gq",
+        "gr",
+        "gs",
+        "gt",
+        "gu",
+        "gw",
+        "gy",
+        "hk",
+        "hm",
+        "hn",
+        "hr",
+        "ht",
+        "hu",
+        "id",
+        "ie",
+        "il",
+        "im",
+        "in",
+        "io",
+        "iq",
+        "ir",
+        "is",
+        "it",
+        "je",
+        "jm",
+        "jo",
+        "jp",
+        "ke",
+        "kg",
+        "kh",
+        "ki",
+        "km",
+        "kn",
+        "kp",
+        "kr",
+        "kw",
+        "ky",
+        "kz",
+        "la",
+        "lb",
+        "lc",
+        "li",
+        "lk",
+        "lr",
+        "ls",
+        "lt",
+        "lu",
+        "lv",
+        "ly",
+        "ma",
+        "mc",
+        "md",
+        "me",
+        "mf",
+        "mg",
+        "mh",
+        "mk",
+        "ml",
+        "mm",
+        "mn",
+        "mo",
+        "mp",
+        "mq",
+        "mr",
+        "ms",
+        "mt",
+        "mu",
+        "mv",
+        "mw",
+        "mx",
+        "my",
+        "mz",
+        "na",
+        "nc",
+        "ne",
+        "nf",
+        "ng",
+        "ni",
+        "nl",
+        "no",
+        "np",
+        "nr",
+        "nu",
+        "nz",
+        "om",
+        "pa",
+        "pe",
+        "pf",
+        "pg",
+        "ph",
+        "pk",
+        "pl",
+        "pm",
+        "pn",
+        "pr",
+        "ps",
+        "pt",
+        "pw",
+        "py",
+        "qa",
+        "qc",
+        "re",
+        "ro",
+        "rs",
+        "ru",
+        "rw",
+        "sa",
+        "sb",
+        "sc",
+        "sd",
+        "se",
+        "sg",
+        "sh",
+        "si",
+        "sj",
+        "sk",
+        "sl",
+        "sm",
+        "sn",
+        "so",
+        "sr",
+        "ss",
+        "st",
+        "sv",
+        "sx",
+        "sy",
+        "sz",
+        "tc",
+        "td",
+        "tf",
+        "tg",
+        "th",
+        "tj",
+        "tk",
+        "tl",
+        "tm",
+        "tn",
+        "to",
+        "tp",
+        "tr",
+        "tt",
+        "tv",
+        "tw",
+        "tz",
+        "ua",
+        "ug",
+        "uk",
+        "um",
+        "us",
+        "uy",
+        "uz",
+        "va",
+        "vc",
+        "ve",
+        "vg",
+        "vi",
+        "vn",
+        "vu",
+        "we",
+        "wf",
+        "ws",
+        "ye",
+        "yt",
+        "yu",
+        "za",
+        "zm",
+        "zw"
+      ],
+      "enumType": "string",
+      "id": "CountryEnum",
+      "namespace": "coreTypes"
     },
     "dedicated.Availabilities": {
       "description": "A structure describing the availabilities of dedicated server",
@@ -5651,15 +5887,13 @@ export const schema: Schema = {
         "datacenters": {
           "canBeNull": false,
           "description": "The hardware availability for each datacenter which composed a region",
-          "fullType": "dedicated.AvailabilityDatacenter[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.AvailabilityDatacenter[]"
         },
         "hardware": {
           "canBeNull": true,
           "description": "Name of the hardware",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5667,7 +5901,6 @@ export const schema: Schema = {
         "region": {
           "canBeNull": true,
           "description": "Region where is located the hardware",
-          "fullType": "dedicated.AvailabilityRegionEnum",
           "readOnly": false,
           "required": false,
           "type": "dedicated.AvailabilityRegionEnum"
@@ -5682,31 +5915,27 @@ export const schema: Schema = {
         "availability": {
           "canBeNull": false,
           "description": "The availability",
-          "fullType": "dedicated.AvailabilityEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.AvailabilityEnum"
         },
         "available": {
           "canBeNull": false,
           "description": "Real stock in database",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "incomingDatacenter": {
           "canBeNull": false,
           "description": "Stock in datacenter",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lastRule": {
           "canBeNull": true,
           "description": "Last availability rule applied",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5714,65 +5943,57 @@ export const schema: Schema = {
         "ordered": {
           "canBeNull": false,
           "description": "Ordered count",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "orderedCheck": {
           "canBeNull": false,
           "description": "Validating order count",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "parentAvailable": {
           "canBeNull": false,
           "description": "Blockbuster stock count",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "reference": {
           "canBeNull": false,
           "description": "Product reference",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "trueAvailable": {
           "canBeNull": false,
           "description": "Real stock (considering order in validating)",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "trueAvailable24H": {
           "canBeNull": false,
           "description": "24H count",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "trueAvailable4H": {
           "canBeNull": false,
           "description": "4H count",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "zone": {
           "canBeNull": false,
           "description": "Region where is located the product",
-          "fullType": "dedicated.AvailabilityRegionEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.AvailabilityRegionEnum"
         }
       }
@@ -5785,17 +6006,15 @@ export const schema: Schema = {
         "availability": {
           "canBeNull": false,
           "description": "Availability status",
-          "fullType": "dedicated.AvailabilityEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.AvailabilityEnum"
         },
         "datacenter": {
           "canBeNull": false,
           "description": "Datacenter code",
-          "fullType": "dedicated.AvailabilityDatacenterEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.AvailabilityDatacenterEnum"
         }
       }
@@ -5854,24 +6073,21 @@ export const schema: Schema = {
         "asa": {
           "canBeNull": false,
           "description": "List of compatible asa binaries names",
-          "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "asdm": {
           "canBeNull": false,
           "description": "List of compatible asdm binaries names",
-          "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "type": {
           "canBeNull": false,
-          "fullType": "dedicated.ProfileFirewallEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.ProfileFirewallEnum"
         }
       }
@@ -5884,9 +6100,8 @@ export const schema: Schema = {
         "url": {
           "canBeNull": false,
           "description": "Temporary URL to download binary",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5911,23 +6126,20 @@ export const schema: Schema = {
         "datacenters": {
           "canBeNull": false,
           "description": "The hardware availability for each datacenter",
-          "fullType": "dedicated.AvailabilityDatacenter[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.AvailabilityDatacenter[]"
         },
         "fqn": {
           "canBeNull": false,
           "description": "Fully qualified and unique name of the hardware",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "memory": {
           "canBeNull": true,
           "description": "Name of the memory hardware part",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5935,23 +6147,20 @@ export const schema: Schema = {
         "planCode": {
           "canBeNull": false,
           "description": "Plan code in which the hardware is involved",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "server": {
           "canBeNull": false,
           "description": "Name of the base hardware",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "storage": {
           "canBeNull": true,
           "description": "Name of the storage hardware part",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -6122,6 +6331,16 @@ export const schema: Schema = {
       "id": "ProfileFirewallEnum",
       "namespace": "dedicated"
     },
+    "dedicated.StatusEnum": {
+      "description": "enable or disable",
+      "enum": [
+        "disable",
+        "enable"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "dedicated"
+    },
     "dedicated.TaskFunctionEnum": {
       "description": "different task operation",
       "enum": [
@@ -6190,7 +6409,7 @@ export const schema: Schema = {
           "description": "List supported setting",
           "fullType": "dedicated.server.BiosSettingsSupport",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.BiosSettingsSupport"
         }
       }
@@ -6205,7 +6424,7 @@ export const schema: Schema = {
           "description": "Settings sections",
           "fullType": "dedicated.server.BiosSettingsSgxPrmrrEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.BiosSettingsSgxPrmrrEnum"
         },
         "status": {
@@ -6213,7 +6432,7 @@ export const schema: Schema = {
           "description": "Settings sections",
           "fullType": "dedicated.server.BiosSettingsSgxStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.BiosSettingsSgxStatusEnum"
         }
       }
@@ -6228,7 +6447,7 @@ export const schema: Schema = {
           "description": "NetworkInterfaceController linkType",
           "fullType": "dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum"
         },
         "mac": {
@@ -6236,7 +6455,7 @@ export const schema: Schema = {
           "description": "NetworkInterfaceController mac",
           "fullType": "macAddress",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "macAddress"
         },
         "virtualNetworkInterface": {
@@ -6270,23 +6489,20 @@ export const schema: Schema = {
         "password": {
           "canBeNull": false,
           "description": "Password",
-          "fullType": "password",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "password"
         },
         "type": {
           "canBeNull": false,
           "description": "Application access type",
-          "fullType": "dedicated.server.AccessTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.AccessTypeEnum"
         },
         "url": {
           "canBeNull": true,
           "description": "Url",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -6294,7 +6510,6 @@ export const schema: Schema = {
         "user": {
           "canBeNull": true,
           "description": "Login",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -6361,7 +6576,7 @@ export const schema: Schema = {
           "description": "Status of the container.",
           "fullType": "dedicated.server.backup.BackupStatus",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.backup.BackupStatus"
         },
         "storage": {
@@ -6384,7 +6599,7 @@ export const schema: Schema = {
           "description": "The backup FTP server name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "quota": {
@@ -6408,7 +6623,7 @@ export const schema: Schema = {
           "description": "The backup FTP type",
           "fullType": "dedicated.server.BackupStorageTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.BackupStorageTypeEnum"
         },
         "usage": {
@@ -6431,7 +6646,7 @@ export const schema: Schema = {
           "description": "Wether to allow the CIFS (SMB) protocol for this ACL",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "ftp": {
@@ -6439,7 +6654,7 @@ export const schema: Schema = {
           "description": "Wether to allow the FTP protocol for this ACL",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "ipBlock": {
@@ -6447,7 +6662,7 @@ export const schema: Schema = {
           "description": "The IP Block specific to this ACL",
           "fullType": "ipBlock",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipBlock"
         },
         "isApplied": {
@@ -6455,7 +6670,7 @@ export const schema: Schema = {
           "description": "Whether the rule has been applied on the Backup Ftp",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "lastUpdate": {
@@ -6463,7 +6678,7 @@ export const schema: Schema = {
           "description": "Date of the last object modification",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "nfs": {
@@ -6471,7 +6686,7 @@ export const schema: Schema = {
           "description": "Wether to allow the NFS protocol for this ACL",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -6496,7 +6711,6 @@ export const schema: Schema = {
         "capacities": {
           "canBeNull": true,
           "description": "Backup storage orderable capacities in gigabytes",
-          "fullType": "dedicated.server.BackupStorageCapacityEnum[]",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.BackupStorageCapacityEnum[]"
@@ -6504,9 +6718,8 @@ export const schema: Schema = {
         "orderable": {
           "canBeNull": false,
           "description": "Is a backup storage is orderable for this server",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -6529,7 +6742,6 @@ export const schema: Schema = {
         "InternetToOvh": {
           "canBeNull": true,
           "description": "bandwidth limitation Internet to OVH",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -6537,7 +6749,6 @@ export const schema: Schema = {
         "OvhToInternet": {
           "canBeNull": true,
           "description": "bandwidth limitation OVH to Internet",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -6545,7 +6756,6 @@ export const schema: Schema = {
         "OvhToOvh": {
           "canBeNull": true,
           "description": "bandwidth limitation OVH to OVH",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -6553,7 +6763,6 @@ export const schema: Schema = {
         "type": {
           "canBeNull": true,
           "description": "bandwidth offer type",
-          "fullType": "dedicated.server.BandwidthTypeEnum",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.BandwidthTypeEnum"
@@ -6579,15 +6788,13 @@ export const schema: Schema = {
         "orderable": {
           "canBeNull": false,
           "description": "Is bandwidth orderable for this server",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "platinum": {
           "canBeNull": true,
           "description": "Bandwidth \"platinum\" orderable in mbps",
-          "fullType": "dedicated.server.BandwidthOrderEnum[]",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.BandwidthOrderEnum[]"
@@ -6595,7 +6802,6 @@ export const schema: Schema = {
         "premium": {
           "canBeNull": true,
           "description": "Bandwidth \"premium\" orderable in mbps",
-          "fullType": "dedicated.server.BandwidthOrderEnum[]",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.BandwidthOrderEnum[]"
@@ -6603,7 +6809,6 @@ export const schema: Schema = {
         "ultimate": {
           "canBeNull": true,
           "description": "Bandwidth \"ultimate\" orderable in mbps",
-          "fullType": "dedicated.server.BandwidthOrderEnum[]",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.BandwidthOrderEnum[]"
@@ -6631,7 +6836,6 @@ export const schema: Schema = {
         "bandwidth": {
           "canBeNull": true,
           "description": "vrack bandwidth limitation",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -6639,7 +6843,6 @@ export const schema: Schema = {
         "type": {
           "canBeNull": true,
           "description": "bandwidth offer type",
-          "fullType": "dedicated.server.BandwidthvRackTypeEnum",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.BandwidthvRackTypeEnum"
@@ -6664,15 +6867,13 @@ export const schema: Schema = {
         "orderable": {
           "canBeNull": false,
           "description": "Is bandwidth orderable for this server",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "vrack": {
           "canBeNull": true,
           "description": "vRack Bandwidth orderable in mbps",
-          "fullType": "dedicated.server.BandwidthvRackOrderEnum[]",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.BandwidthvRackOrderEnum[]"
@@ -6720,17 +6921,15 @@ export const schema: Schema = {
         "sgx": {
           "canBeNull": false,
           "description": "SGX feature support",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "sgxOptions": {
           "canBeNull": false,
           "description": "Supported SGX options",
-          "fullType": "dedicated.server.BiosSettingsSupportSgxOptions",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.BiosSettingsSupportSgxOptions"
         }
       }
@@ -6743,17 +6942,15 @@ export const schema: Schema = {
         "prmrr": {
           "canBeNull": false,
           "description": "Supported SGX prmrr values",
-          "fullType": "dedicated.server.BiosSettingsSgxPrmrrEnum[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.BiosSettingsSgxPrmrrEnum[]"
         },
         "status": {
           "canBeNull": false,
           "description": "Supported SGX statuses",
-          "fullType": "dedicated.server.BiosSettingsSgxStatusEnum[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.BiosSettingsSgxStatusEnum[]"
         }
       }
@@ -6868,6 +7065,48 @@ export const schema: Schema = {
       "id": "CacheTTLEnum",
       "namespace": "dedicated.server"
     },
+    "dedicated.server.ConfigDrive": {
+      "description": "Configurations used by cloud-init or cloudbase-init",
+      "id": "ConfigDrive",
+      "namespace": "dedicated.server",
+      "properties": {
+        "enable": {
+          "canBeNull": true,
+          "description": "enable ConfigDrive",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "hostname": {
+          "canBeNull": true,
+          "description": "Hostname",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "sshKey": {
+          "canBeNull": true,
+          "description": "SshKey",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "userData": {
+          "canBeNull": true,
+          "description": "Configuration script",
+          "readOnly": false,
+          "required": false,
+          "type": "text"
+        },
+        "userMetadatas": {
+          "canBeNull": true,
+          "description": "Metadas",
+          "readOnly": false,
+          "required": false,
+          "type": "complexType.SafeKeyValueCanBeNull<string>[]"
+        }
+      }
+    },
     "dedicated.server.CpuFamilyEnum": {
       "description": "cpu family ",
       "enum": [
@@ -6907,7 +7146,7 @@ export const schema: Schema = {
           "description": "dedicated datacenter localisation",
           "fullType": "dedicated.DatacenterEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.DatacenterEnum"
         },
         "ip": {
@@ -6915,7 +7154,7 @@ export const schema: Schema = {
           "description": "dedicated server ip",
           "fullType": "ipv4",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipv4"
         },
         "linkSpeed": {
@@ -6930,7 +7169,7 @@ export const schema: Schema = {
           "description": "Icmp monitoring state",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "name": {
@@ -6938,7 +7177,7 @@ export const schema: Schema = {
           "description": "dedicated server name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "os": {
@@ -6946,7 +7185,7 @@ export const schema: Schema = {
           "description": "Operating system",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "professionalUse": {
@@ -6954,14 +7193,14 @@ export const schema: Schema = {
           "description": "Does this server have professional use option",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "rack": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "rescueMail": {
@@ -6991,14 +7230,14 @@ export const schema: Schema = {
           "description": "your server id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "state": {
           "canBeNull": false,
           "fullType": "dedicated.server.StateEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.StateEnum"
         },
         "supportLevel": {
@@ -7006,7 +7245,7 @@ export const schema: Schema = {
           "description": "Dedicated server support level",
           "fullType": "dedicated.server.SupportLevelEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.SupportLevelEnum"
         }
       }
@@ -7033,14 +7272,14 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "firewall": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "ip": {
@@ -7048,7 +7287,7 @@ export const schema: Schema = {
           "description": "Firewall management IP",
           "fullType": "ipv4",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipv4"
         },
         "mode": {
@@ -7056,7 +7295,7 @@ export const schema: Schema = {
           "description": "transparent mode : device is invisible on the network; routed mode : the security appliance is considered to be a router hop in the network",
           "fullType": "dedicated.server.FirewallModeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.FirewallModeEnum"
         },
         "model": {
@@ -7112,57 +7351,50 @@ export const schema: Schema = {
         "capacity": {
           "canBeNull": false,
           "description": "RAID total capacity",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         },
         "diskCount": {
           "canBeNull": false,
           "description": "Disk count",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "diskSize": {
           "canBeNull": false,
           "description": "Disk capacity",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         },
         "diskSpanSize": {
           "canBeNull": false,
           "description": "Size of disk spans on RAID",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "mode": {
           "canBeNull": false,
           "description": "RAID mode",
-          "fullType": "dedicated.server.HardwareSpecificationsRaidHardEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.HardwareSpecificationsRaidHardEnum"
         },
         "name": {
           "canBeNull": false,
           "description": "RAID configuration name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
           "canBeNull": false,
           "description": "RAID controller type",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -7175,25 +7407,22 @@ export const schema: Schema = {
         "disks": {
           "canBeNull": false,
           "description": "Connected disk type",
-          "fullType": "dedicated.server.HardwareRaidDiskGroup[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.HardwareRaidDiskGroup[]"
         },
         "model": {
           "canBeNull": false,
           "description": "Raid controler model",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
           "canBeNull": false,
           "description": "Raid controler type",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -7206,33 +7435,29 @@ export const schema: Schema = {
         "capacity": {
           "canBeNull": false,
           "description": "Disk capacity",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         },
         "names": {
           "canBeNull": false,
           "description": "Disk names",
-          "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "speed": {
           "canBeNull": false,
           "description": "Disk insterface speed",
-          "fullType": "complexType.UnitAndValue<string>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<string>"
         },
         "type": {
           "canBeNull": false,
           "description": "Disk type",
-          "fullType": "dedicated.server.DiskTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.DiskTypeEnum"
         }
       }
@@ -7245,9 +7470,8 @@ export const schema: Schema = {
         "controllers": {
           "canBeNull": false,
           "description": "Hardware RAID controller list",
-          "fullType": "dedicated.server.HardwareRaidController[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.HardwareRaidController[]"
         }
       }
@@ -7260,9 +7484,8 @@ export const schema: Schema = {
         "configurations": {
           "canBeNull": false,
           "description": "Hardware RAID configuration list",
-          "fullType": "dedicated.server.HardwareRaidConfiguration[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.HardwareRaidConfiguration[]"
         }
       }
@@ -7275,15 +7498,13 @@ export const schema: Schema = {
         "bootMode": {
           "canBeNull": false,
           "description": "Server boot mode",
-          "fullType": "dedicated.server.BootModeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.BootModeEnum"
         },
         "coresPerProcessor": {
           "canBeNull": true,
           "description": "number of cores per processor",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -7291,7 +7512,6 @@ export const schema: Schema = {
         "defaultHardwareRaidSize": {
           "canBeNull": true,
           "description": "Default hardware raid size for this server",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -7299,7 +7519,6 @@ export const schema: Schema = {
         "defaultHardwareRaidType": {
           "canBeNull": true,
           "description": "Default hardware raid type configured on this server",
-          "fullType": "dedicated.server.HardwareSpecificationsRaidHardEnum",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.HardwareSpecificationsRaidHardEnum"
@@ -7307,7 +7526,6 @@ export const schema: Schema = {
         "description": {
           "canBeNull": true,
           "description": "commercial name of this server",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -7315,7 +7533,6 @@ export const schema: Schema = {
         "diskGroups": {
           "canBeNull": true,
           "description": "details about the groups of disks in the server",
-          "fullType": "dedicated.server.HardwareSpecificationsDisk[]",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.HardwareSpecificationsDisk[]"
@@ -7323,7 +7540,6 @@ export const schema: Schema = {
         "expansionCards": {
           "canBeNull": true,
           "description": "details about the server's expansion cards",
-          "fullType": "dedicated.server.HardwareSpecificationsExpansionCard[]",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.HardwareSpecificationsExpansionCard[]"
@@ -7331,7 +7547,6 @@ export const schema: Schema = {
         "formFactor": {
           "canBeNull": true,
           "description": "Server form factor",
-          "fullType": "dedicated.server.FormFactorEnum",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.FormFactorEnum"
@@ -7339,7 +7554,6 @@ export const schema: Schema = {
         "memorySize": {
           "canBeNull": true,
           "description": "ram capacity",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -7347,7 +7561,6 @@ export const schema: Schema = {
         "motherboard": {
           "canBeNull": true,
           "description": "server motherboard",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -7355,7 +7568,6 @@ export const schema: Schema = {
         "numberOfProcessors": {
           "canBeNull": true,
           "description": "number of processors in this dedicated server",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -7363,7 +7575,6 @@ export const schema: Schema = {
         "processorArchitecture": {
           "canBeNull": true,
           "description": "processor architecture bit",
-          "fullType": "dedicated.server.CpuFamilyEnum",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.CpuFamilyEnum"
@@ -7371,7 +7582,6 @@ export const schema: Schema = {
         "processorName": {
           "canBeNull": true,
           "description": "processor name",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -7379,7 +7589,6 @@ export const schema: Schema = {
         "threadsPerProcessor": {
           "canBeNull": true,
           "description": "number of threads per processor",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -7387,7 +7596,6 @@ export const schema: Schema = {
         "usbKeys": {
           "canBeNull": true,
           "description": "Capacity of the USB keys installed on your server, if any",
-          "fullType": "complexType.UnitAndValue<long>[]",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>[]"
@@ -7402,7 +7610,6 @@ export const schema: Schema = {
         "defaultHardwareRaidSize": {
           "canBeNull": true,
           "description": "default hardware raid size for this disk group",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -7410,7 +7617,6 @@ export const schema: Schema = {
         "defaultHardwareRaidType": {
           "canBeNull": true,
           "description": "default hardware raid type for this disk group",
-          "fullType": "dedicated.server.HardwareSpecificationsRaidHardEnum",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.HardwareSpecificationsRaidHardEnum"
@@ -7418,7 +7624,6 @@ export const schema: Schema = {
         "description": {
           "canBeNull": true,
           "description": "human readable description of this disk group",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -7426,7 +7631,6 @@ export const schema: Schema = {
         "diskGroupId": {
           "canBeNull": true,
           "description": "identifier of this disk group",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -7434,7 +7638,6 @@ export const schema: Schema = {
         "diskSize": {
           "canBeNull": true,
           "description": "disk capacity",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -7442,7 +7645,6 @@ export const schema: Schema = {
         "diskType": {
           "canBeNull": true,
           "description": "type of the disk (SSD, SATA, SAS, ...)",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -7450,7 +7652,6 @@ export const schema: Schema = {
         "numberOfDisks": {
           "canBeNull": true,
           "description": "number of disks in this group",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -7458,7 +7659,6 @@ export const schema: Schema = {
         "raidController": {
           "canBeNull": true,
           "description": "raid controller, if any, managing this group of disks",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -7473,17 +7673,15 @@ export const schema: Schema = {
         "description": {
           "canBeNull": false,
           "description": "expansion card description",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
           "canBeNull": false,
           "description": "expansion card type",
-          "fullType": "dedicated.server.HardwareSpecificationsExpansionCardTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.HardwareSpecificationsExpansionCardTypeEnum"
         }
       }
@@ -7522,7 +7720,6 @@ export const schema: Schema = {
         "customHostname": {
           "canBeNull": true,
           "description": "Personnal hostname to use in server reinstallation",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -7530,7 +7727,6 @@ export const schema: Schema = {
         "diskGroupId": {
           "canBeNull": true,
           "description": "Disk group id to process install on (only available for some templates)",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -7538,7 +7734,6 @@ export const schema: Schema = {
         "installRTM": {
           "canBeNull": true,
           "description": "true if you want to install RTM",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -7546,7 +7741,6 @@ export const schema: Schema = {
         "installSqlServer": {
           "canBeNull": true,
           "description": "true if you want to install windows with sql feature",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -7554,7 +7748,6 @@ export const schema: Schema = {
         "language": {
           "canBeNull": true,
           "description": "install language for ovh install choice",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -7562,7 +7755,6 @@ export const schema: Schema = {
         "noRaid": {
           "canBeNull": true,
           "description": "true if you want to install only on the first disk",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -7570,7 +7762,6 @@ export const schema: Schema = {
         "postInstallationScriptLink": {
           "canBeNull": true,
           "description": "the url to your custom install script",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -7578,7 +7769,6 @@ export const schema: Schema = {
         "postInstallationScriptReturn": {
           "canBeNull": true,
           "description": " the return of your script if everythings ok. Advice: your script should return a unique validation string in case of succes. A good example is \"loh1Xee7eo OK OK OK UGh8Ang1Gu",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -7586,7 +7776,6 @@ export const schema: Schema = {
         "resetHwRaid": {
           "canBeNull": true,
           "description": "Specify if we should attempt to reset hw raid on install.",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -7594,7 +7783,6 @@ export const schema: Schema = {
         "softRaidDevices": {
           "canBeNull": true,
           "description": "Number of devices to use for system's software RAID",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -7602,7 +7790,6 @@ export const schema: Schema = {
         "sshKeyName": {
           "canBeNull": true,
           "description": "The name of ssh key to install",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -7610,7 +7797,6 @@ export const schema: Schema = {
         "useDistribKernel": {
           "canBeNull": true,
           "description": "true if you want to install with distrib kernel",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -7618,7 +7804,6 @@ export const schema: Schema = {
         "useSpla": {
           "canBeNull": true,
           "description": "true if you want to install windows with your spla license",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -7633,7 +7818,6 @@ export const schema: Schema = {
         "ovh": {
           "canBeNull": true,
           "description": "Names list of ovh installationtemplates compatibles with this server",
-          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
@@ -7641,7 +7825,6 @@ export const schema: Schema = {
         "personal": {
           "canBeNull": true,
           "description": "Names list of yours installation templates compatibles with this server",
-          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
@@ -7656,15 +7839,13 @@ export const schema: Schema = {
         "elapsedTime": {
           "canBeNull": false,
           "description": "Elapsed time in seconds since installation beggining",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "progress": {
           "canBeNull": true,
           "description": "Installation steps",
-          "fullType": "dedicated.server.InstallationProgressSteps[]",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.InstallationProgressSteps[]"
@@ -7695,15 +7876,13 @@ export const schema: Schema = {
         "comment": {
           "canBeNull": false,
           "description": "Informations about this installation step",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "error": {
           "canBeNull": true,
           "description": "Error details if state is error",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -7711,9 +7890,8 @@ export const schema: Schema = {
         "status": {
           "canBeNull": false,
           "description": "Status of this installation step",
-          "fullType": "dedicated.server.InstallationProgressStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.InstallationProgressStatusEnum"
         }
       }
@@ -7736,7 +7914,7 @@ export const schema: Schema = {
           "description": "The intervention id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "type": {
@@ -7798,7 +7976,6 @@ export const schema: Schema = {
         "ipv4": {
           "canBeNull": true,
           "description": "Orderable IP v4 details",
-          "fullType": "dedicated.server.IpOrderableDetails[]",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.IpOrderableDetails[]"
@@ -7806,7 +7983,6 @@ export const schema: Schema = {
         "ipv6": {
           "canBeNull": true,
           "description": "Orderable IP v6 details",
-          "fullType": "dedicated.server.IpOrderableDetails[]",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.IpOrderableDetails[]"
@@ -7821,23 +7997,20 @@ export const schema: Schema = {
         "blockSizes": {
           "canBeNull": false,
           "description": "Orderable IP blocks sizes",
-          "fullType": "dedicated.server.IpBlockSizeEnum[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.IpBlockSizeEnum[]"
         },
         "included": {
           "canBeNull": false,
           "description": "Are those IP included with your offer",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "ipNumber": {
           "canBeNull": true,
           "description": "Total number of IP that can be routed to this server",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -7845,15 +8018,13 @@ export const schema: Schema = {
         "number": {
           "canBeNull": false,
           "description": "Total number of prefixes that can be routed to this server",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "optionRequired": {
           "canBeNull": true,
           "description": "Which option is required to order this type of IP",
-          "fullType": "dedicated.server.OptionRequiredEnum",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.OptionRequiredEnum"
@@ -7861,9 +8032,8 @@ export const schema: Schema = {
         "type": {
           "canBeNull": false,
           "description": "this IP type",
-          "fullType": "dedicated.server.IpTypeOrderableEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.IpTypeOrderableEnum"
         }
       }
@@ -7889,7 +8059,7 @@ export const schema: Schema = {
           "description": "true, if IPMI is available on this server",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "supportedFeatures": {
@@ -7897,7 +8067,7 @@ export const schema: Schema = {
           "description": "A structure describing the IPMI supported features",
           "fullType": "dedicated.server.IpmiSupportedFeatures",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.IpmiSupportedFeatures"
         }
       }
@@ -7922,7 +8092,6 @@ export const schema: Schema = {
         "expiration": {
           "canBeNull": true,
           "description": "Session expiration date",
-          "fullType": "datetime",
           "readOnly": false,
           "required": false,
           "type": "datetime"
@@ -7930,7 +8099,6 @@ export const schema: Schema = {
         "value": {
           "canBeNull": true,
           "description": "value",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -7945,33 +8113,29 @@ export const schema: Schema = {
         "kvmipHtml5URL": {
           "canBeNull": false,
           "description": "Access to the KVM through an HTML web interface",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "kvmipJnlp": {
           "canBeNull": false,
           "description": "Access to the KVM through a Java web launch application",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "serialOverLanSshKey": {
           "canBeNull": false,
           "description": "Access to the virtual serial port of your server through an SSH client",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "serialOverLanURL": {
           "canBeNull": false,
           "description": "Access to the virtual serial port of your server through an HTML command line interface",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -7984,7 +8148,6 @@ export const schema: Schema = {
         "date": {
           "canBeNull": true,
           "description": "Test running date",
-          "fullType": "datetime",
           "readOnly": false,
           "required": false,
           "type": "datetime"
@@ -7992,7 +8155,6 @@ export const schema: Schema = {
         "status": {
           "canBeNull": true,
           "description": "Test result",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8058,14 +8220,12 @@ export const schema: Schema = {
       "properties": {
         "timestamp": {
           "canBeNull": false,
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "value": {
           "canBeNull": true,
-          "fullType": "complexType.UnitAndValue<double>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<double>"
@@ -8096,7 +8256,7 @@ export const schema: Schema = {
           "description": "boot id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "bootType": {
@@ -8104,7 +8264,7 @@ export const schema: Schema = {
           "description": "the boot system",
           "fullType": "dedicated.server.BootTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.BootTypeEnum"
         },
         "description": {
@@ -8112,7 +8272,7 @@ export const schema: Schema = {
           "description": "the boot description",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "kernel": {
@@ -8120,7 +8280,7 @@ export const schema: Schema = {
           "description": "The boot kernel",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -8133,7 +8293,6 @@ export const schema: Schema = {
         "bandwidth": {
           "canBeNull": true,
           "description": "Bandwidth details",
-          "fullType": "dedicated.server.BandwidthDetails",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.BandwidthDetails"
@@ -8141,7 +8300,6 @@ export const schema: Schema = {
         "connection": {
           "canBeNull": true,
           "description": "Network connection flow rate",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -8149,7 +8307,6 @@ export const schema: Schema = {
         "ola": {
           "canBeNull": true,
           "description": "OLA details",
-          "fullType": "dedicated.server.OlaDetails",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.OlaDetails"
@@ -8157,7 +8314,6 @@ export const schema: Schema = {
         "routing": {
           "canBeNull": true,
           "description": "Routing details",
-          "fullType": "dedicated.server.RoutingDetails",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.RoutingDetails"
@@ -8165,7 +8321,6 @@ export const schema: Schema = {
         "switching": {
           "canBeNull": true,
           "description": "Switching details",
-          "fullType": "dedicated.server.SwitchingDetails",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.SwitchingDetails"
@@ -8173,7 +8328,6 @@ export const schema: Schema = {
         "traffic": {
           "canBeNull": true,
           "description": "Traffic details",
-          "fullType": "dedicated.server.TrafficDetails",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.TrafficDetails"
@@ -8181,7 +8335,6 @@ export const schema: Schema = {
         "vrack": {
           "canBeNull": true,
           "description": "vRack details",
-          "fullType": "dedicated.server.BandwidthvRackDetails",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.BandwidthvRackDetails"
@@ -8196,15 +8349,13 @@ export const schema: Schema = {
         "available": {
           "canBeNull": false,
           "description": "Is the OLA feature available",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "supportedModes": {
           "canBeNull": true,
           "description": "What modes are supported",
-          "fullType": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum[]",
           "readOnly": false,
           "required": false,
           "type": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum[]"
@@ -8221,7 +8372,7 @@ export const schema: Schema = {
           "description": "The option name",
           "fullType": "dedicated.server.OptionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.OptionEnum"
         },
         "state": {
@@ -8229,7 +8380,7 @@ export const schema: Schema = {
           "description": "The state of the option",
           "fullType": "dedicated.server.OptionStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.OptionStateEnum"
         }
       }
@@ -8290,7 +8441,6 @@ export const schema: Schema = {
         "ipv4": {
           "canBeNull": true,
           "description": "Ipv4 routing details",
-          "fullType": "dedicated.server.RoutingDetailsIpv4",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.RoutingDetailsIpv4"
@@ -8298,7 +8448,6 @@ export const schema: Schema = {
         "ipv6": {
           "canBeNull": true,
           "description": "Ipv6 routing details",
-          "fullType": "dedicated.server.RoutingDetailsIpv6",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.RoutingDetailsIpv6"
@@ -8313,7 +8462,6 @@ export const schema: Schema = {
         "gateway": {
           "canBeNull": true,
           "description": "Server gateway",
-          "fullType": "ipv4",
           "readOnly": false,
           "required": false,
           "type": "ipv4"
@@ -8321,7 +8469,6 @@ export const schema: Schema = {
         "ip": {
           "canBeNull": true,
           "description": "Server main IP",
-          "fullType": "ipv4",
           "readOnly": false,
           "required": false,
           "type": "ipv4"
@@ -8329,7 +8476,6 @@ export const schema: Schema = {
         "network": {
           "canBeNull": true,
           "description": "Server network",
-          "fullType": "ipv4Block",
           "readOnly": false,
           "required": false,
           "type": "ipv4Block"
@@ -8344,7 +8490,6 @@ export const schema: Schema = {
         "gateway": {
           "canBeNull": true,
           "description": "Server gateway",
-          "fullType": "ipv6",
           "readOnly": false,
           "required": false,
           "type": "ipv6"
@@ -8352,7 +8497,6 @@ export const schema: Schema = {
         "ip": {
           "canBeNull": true,
           "description": "Server main IP",
-          "fullType": "ipv6Block",
           "readOnly": false,
           "required": false,
           "type": "ipv6Block"
@@ -8360,7 +8504,6 @@ export const schema: Schema = {
         "network": {
           "canBeNull": true,
           "description": "Server network",
-          "fullType": "ipv6Block",
           "readOnly": false,
           "required": false,
           "type": "ipv6Block"
@@ -8393,7 +8536,7 @@ export const schema: Schema = {
           "description": "You need to update RTM script on your server",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -8434,7 +8577,6 @@ export const schema: Schema = {
         "command": {
           "canBeNull": true,
           "description": "Complete command line used for starting this process",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8442,7 +8584,6 @@ export const schema: Schema = {
         "memory": {
           "canBeNull": true,
           "description": "Memory used by this process",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -8457,7 +8598,6 @@ export const schema: Schema = {
         "cmdline": {
           "canBeNull": true,
           "description": "Complete command line used for starting this process",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8465,7 +8605,6 @@ export const schema: Schema = {
         "domain": {
           "canBeNull": true,
           "description": "Domain used by the process",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8473,7 +8612,6 @@ export const schema: Schema = {
         "exe": {
           "canBeNull": true,
           "description": "Path to the program",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8481,7 +8619,6 @@ export const schema: Schema = {
         "ip": {
           "canBeNull": true,
           "description": "The IP address connected",
-          "fullType": "ip",
           "readOnly": false,
           "required": false,
           "type": "ip"
@@ -8489,7 +8626,6 @@ export const schema: Schema = {
         "pid": {
           "canBeNull": true,
           "description": "Process ID",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8497,7 +8633,6 @@ export const schema: Schema = {
         "port": {
           "canBeNull": true,
           "description": "Port opened",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8505,7 +8640,6 @@ export const schema: Schema = {
         "procname": {
           "canBeNull": true,
           "description": "Name of the process",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8513,7 +8647,6 @@ export const schema: Schema = {
         "uid": {
           "canBeNull": true,
           "description": "System user ID",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8521,7 +8654,6 @@ export const schema: Schema = {
         "username": {
           "canBeNull": true,
           "description": "Username used to start the process",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8536,7 +8668,6 @@ export const schema: Schema = {
         "cache": {
           "canBeNull": true,
           "description": "CPU cache size",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -8544,7 +8675,6 @@ export const schema: Schema = {
         "core": {
           "canBeNull": true,
           "description": "CPU core number",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8552,7 +8682,6 @@ export const schema: Schema = {
         "freq": {
           "canBeNull": true,
           "description": "CPU frequency",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -8560,7 +8689,6 @@ export const schema: Schema = {
         "name": {
           "canBeNull": true,
           "description": "CPU  name",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8585,7 +8713,7 @@ export const schema: Schema = {
           "description": "Disk",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "model": {
@@ -8614,7 +8742,6 @@ export const schema: Schema = {
         "current_pending_sector": {
           "canBeNull": true,
           "description": "Current pending sectors",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8622,7 +8749,6 @@ export const schema: Schema = {
         "multizone_error_rate": {
           "canBeNull": true,
           "description": "Multizone error rate",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8630,7 +8756,6 @@ export const schema: Schema = {
         "offline_seek_performance": {
           "canBeNull": true,
           "description": "Offline seek rate",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8638,7 +8763,6 @@ export const schema: Schema = {
         "offline_uncorrectable": {
           "canBeNull": true,
           "description": "Offline uncorrectable",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8646,7 +8770,6 @@ export const schema: Schema = {
         "other_errors": {
           "canBeNull": true,
           "description": "Other errors",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8654,7 +8777,6 @@ export const schema: Schema = {
         "realocated_event_count": {
           "canBeNull": true,
           "description": "Realocated event count",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8662,7 +8784,6 @@ export const schema: Schema = {
         "temperature_celsius": {
           "canBeNull": true,
           "description": "temperature",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8670,7 +8791,6 @@ export const schema: Schema = {
         "udma_crc_error": {
           "canBeNull": true,
           "description": "UDMA crc error",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8678,7 +8798,6 @@ export const schema: Schema = {
         "uncorrected_read_errors": {
           "canBeNull": true,
           "description": "Uncorrected read errors",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8686,7 +8805,6 @@ export const schema: Schema = {
         "uncorrected_write_errors": {
           "canBeNull": true,
           "description": "Uncorrected write errors",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8701,7 +8819,6 @@ export const schema: Schema = {
         "cpu": {
           "canBeNull": true,
           "description": "CPU usage",
-          "fullType": "complexType.UnitAndValue<double>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<double>"
@@ -8709,7 +8826,6 @@ export const schema: Schema = {
         "loadavg1": {
           "canBeNull": true,
           "description": "Load average in the last 1 minute",
-          "fullType": "double",
           "readOnly": false,
           "required": false,
           "type": "double"
@@ -8717,7 +8833,6 @@ export const schema: Schema = {
         "loadavg15": {
           "canBeNull": true,
           "description": "Load average in the last 15 minutes",
-          "fullType": "double",
           "readOnly": false,
           "required": false,
           "type": "double"
@@ -8725,7 +8840,6 @@ export const schema: Schema = {
         "loadavg5": {
           "canBeNull": true,
           "description": "Load average in the last 5 minutes",
-          "fullType": "double",
           "readOnly": false,
           "required": false,
           "type": "double"
@@ -8733,7 +8847,6 @@ export const schema: Schema = {
         "memory": {
           "canBeNull": true,
           "description": "Memory usage",
-          "fullType": "complexType.UnitAndValue<double>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<double>"
@@ -8741,7 +8854,6 @@ export const schema: Schema = {
         "processCount": {
           "canBeNull": true,
           "description": "Number of processes using or waiting for CPU time",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8749,7 +8861,6 @@ export const schema: Schema = {
         "processRunning": {
           "canBeNull": true,
           "description": "Number of process running",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8757,7 +8868,6 @@ export const schema: Schema = {
         "swap": {
           "canBeNull": true,
           "description": "Swap usage",
-          "fullType": "complexType.UnitAndValue<double>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<double>"
@@ -8765,7 +8875,6 @@ export const schema: Schema = {
         "uptime": {
           "canBeNull": true,
           "description": "Server uptime",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8780,7 +8889,6 @@ export const schema: Schema = {
         "capacity": {
           "canBeNull": true,
           "description": "Memory capacity ",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -8788,7 +8896,6 @@ export const schema: Schema = {
         "slot": {
           "canBeNull": true,
           "description": "Memory slot",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8803,7 +8910,6 @@ export const schema: Schema = {
         "manufacturer": {
           "canBeNull": true,
           "description": "Motherboard manufacturer",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8811,7 +8917,6 @@ export const schema: Schema = {
         "name": {
           "canBeNull": true,
           "description": "Motherboard name",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8826,7 +8931,6 @@ export const schema: Schema = {
         "kernelRelease": {
           "canBeNull": true,
           "description": "OS kernel release",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8834,7 +8938,6 @@ export const schema: Schema = {
         "kernelVersion": {
           "canBeNull": true,
           "description": "OS kernel version",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8842,7 +8945,6 @@ export const schema: Schema = {
         "release": {
           "canBeNull": true,
           "description": "OS release",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8875,7 +8977,7 @@ export const schema: Schema = {
           "description": "Partition",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "usage": {
@@ -8896,7 +8998,6 @@ export const schema: Schema = {
         "bus": {
           "canBeNull": true,
           "description": "PCI bus device",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8904,7 +9005,6 @@ export const schema: Schema = {
         "device": {
           "canBeNull": true,
           "description": "PCI device information",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8921,7 +9021,7 @@ export const schema: Schema = {
           "description": "Raid unit",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -9106,7 +9206,7 @@ export const schema: Schema = {
           "description": "indicates wether burstable bandwidth is currently active, allowing it to temporarily exceed the normally included bandwidth.OvhToInternet amount, within the limits indicated by the burst.capacity item. It can also be inactiveLocked when temporarily disabled due to overuse, capping it to the included non-burstable bandwidth capacity of bandwidth.OvhToInternet",
           "fullType": "dedicated.server.BurstStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.BurstStatusEnum"
         }
       }
@@ -9157,6 +9257,38 @@ export const schema: Schema = {
       "id": "SupportLevelEnum",
       "namespace": "dedicated.server"
     },
+    "dedicated.server.SupportLevelOrderable": {
+      "description": "A structure describing informations support level orderable for this dedicated server",
+      "id": "SupportLevelOrderable",
+      "namespace": "dedicated.server",
+      "properties": {
+        "levels": {
+          "canBeNull": true,
+          "description": "Support level  orderable",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.SupportLevelOrderableEnum[]"
+        },
+        "orderable": {
+          "canBeNull": false,
+          "description": "Is a support level is orderable for this server",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "dedicated.server.SupportLevelOrderableEnum": {
+      "description": "distincts support level",
+      "enum": [
+        "critical",
+        "fastpath",
+        "gs"
+      ],
+      "enumType": "string",
+      "id": "SupportLevelOrderableEnum",
+      "namespace": "dedicated.server"
+    },
     "dedicated.server.SupportReplaceHddInfo": {
       "description": "Hdd replace support request details. ",
       "id": "SupportReplaceHddInfo",
@@ -9165,15 +9297,13 @@ export const schema: Schema = {
         "disk_serial": {
           "canBeNull": false,
           "description": "Disk serial number",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "slot_id": {
           "canBeNull": true,
           "description": "Disk slotId (if any)",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -9188,7 +9318,6 @@ export const schema: Schema = {
         "name": {
           "canBeNull": true,
           "description": "Switch name",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -9221,7 +9350,7 @@ export const schema: Schema = {
           "description": "Function name",
           "fullType": "dedicated.TaskFunctionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.TaskFunctionEnum"
         },
         "lastUpdate": {
@@ -9237,7 +9366,7 @@ export const schema: Schema = {
           "description": "Task Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
@@ -9245,7 +9374,7 @@ export const schema: Schema = {
           "description": "Task status",
           "fullType": "dedicated.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.TaskStatusEnum"
         },
         "taskId": {
@@ -9253,7 +9382,7 @@ export const schema: Schema = {
           "description": "the id of the task",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -9266,9 +9395,8 @@ export const schema: Schema = {
         "hybridSupport": {
           "canBeNull": false,
           "description": "This boolean tells if the template supports hybrid install for the considered server.",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -9281,7 +9409,6 @@ export const schema: Schema = {
         "inputQuotaSize": {
           "canBeNull": true,
           "description": "Monthly input traffic quota allowed",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -9289,7 +9416,6 @@ export const schema: Schema = {
         "inputQuotaUsed": {
           "canBeNull": true,
           "description": "Monthly input traffic consumed this month",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -9297,7 +9423,6 @@ export const schema: Schema = {
         "isThrottled": {
           "canBeNull": true,
           "description": "Is bandwidth throttleted for being over quota",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -9305,7 +9430,6 @@ export const schema: Schema = {
         "outputQuotaSize": {
           "canBeNull": true,
           "description": "Monthly output traffic quota allowed",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -9313,7 +9437,6 @@ export const schema: Schema = {
         "outputQuotaUsed": {
           "canBeNull": true,
           "description": "Monthly output traffic consumed this month",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -9321,7 +9444,6 @@ export const schema: Schema = {
         "resetQuotaDate": {
           "canBeNull": true,
           "description": "Next reset quota date for traffic counter",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -9347,15 +9469,13 @@ export const schema: Schema = {
         "orderable": {
           "canBeNull": false,
           "description": "Is traffic orderable for this server",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "traffic": {
           "canBeNull": true,
           "description": "traffic orderable",
-          "fullType": "dedicated.server.TrafficOrderEnum[]",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.TrafficOrderEnum[]"
@@ -9383,23 +9503,20 @@ export const schema: Schema = {
         "capacity": {
           "canBeNull": false,
           "description": "Orderable USB keys capacity in gigabytes",
-          "fullType": "dedicated.server.UsbKeyCapacityEnum[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.UsbKeyCapacityEnum[]"
         },
         "number": {
           "canBeNull": false,
           "description": "Number of USB keys that can be ordered for this server",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "optionRequired": {
           "canBeNull": true,
           "description": "Which option is required to order an USB key",
-          "fullType": "dedicated.server.OptionRequiredEnum",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.OptionRequiredEnum"
@@ -9407,9 +9524,8 @@ export const schema: Schema = {
         "orderable": {
           "canBeNull": false,
           "description": "Is USB keys orderable for this server",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -9424,7 +9540,7 @@ export const schema: Schema = {
           "description": "Virtual MAC address in 00:00:00:00:00:00 format",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
@@ -9432,7 +9548,7 @@ export const schema: Schema = {
           "description": "Virtual MAC address type",
           "fullType": "dedicated.server.VmacTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.VmacTypeEnum"
         }
       }
@@ -9447,7 +9563,7 @@ export const schema: Schema = {
           "description": "IP address",
           "fullType": "ipv4",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipv4"
         },
         "virtualMachineName": {
@@ -9455,7 +9571,7 @@ export const schema: Schema = {
           "description": "Friendly name of your Virtual Machine behind this IP/MAC",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -9478,7 +9594,6 @@ export const schema: Schema = {
         "cloudProject": {
           "canBeNull": true,
           "description": "/cloud project which the container belongs to.",
-          "fullType": "dedicated.server.backup.BackupProject",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.backup.BackupProject"
@@ -9486,7 +9601,6 @@ export const schema: Schema = {
         "id": {
           "canBeNull": true,
           "description": "Container id (can also be used to retrieve the resource in the /cloud api).",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -9494,7 +9608,6 @@ export const schema: Schema = {
         "name": {
           "canBeNull": true,
           "description": "Container name.",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -9502,7 +9615,6 @@ export const schema: Schema = {
         "quota": {
           "canBeNull": true,
           "description": "Quota on the current container",
-          "fullType": "dedicated.server.backup.BackupQuota",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.backup.BackupQuota"
@@ -9510,7 +9622,6 @@ export const schema: Schema = {
         "region": {
           "canBeNull": true,
           "description": "The cloud region which the container belongs to.",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -9518,7 +9629,6 @@ export const schema: Schema = {
         "sftp": {
           "canBeNull": true,
           "description": "Sftp connection info",
-          "fullType": "dedicated.server.backup.BackupSftp",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.backup.BackupSftp"
@@ -9526,7 +9636,6 @@ export const schema: Schema = {
         "swift": {
           "canBeNull": true,
           "description": "Swift related information to reach the container",
-          "fullType": "dedicated.server.backup.BackupSwift",
           "readOnly": false,
           "required": false,
           "type": "dedicated.server.backup.BackupSwift"
@@ -9541,7 +9650,6 @@ export const schema: Schema = {
         "maxArchive": {
           "canBeNull": true,
           "description": "Archive container max size.",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -9549,7 +9657,6 @@ export const schema: Schema = {
         "maxBandwidthArchive": {
           "canBeNull": true,
           "description": "Archive volume r/w bandwidth limit: read/write volume offered per month on the container.",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -9557,7 +9664,6 @@ export const schema: Schema = {
         "maxBandwidthStorage": {
           "canBeNull": true,
           "description": "Storage volume r/w bandwidth limit: read/write volume offered per month on the container.",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -9565,7 +9671,6 @@ export const schema: Schema = {
         "maxStorage": {
           "canBeNull": true,
           "description": "Storage container max size.",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -9580,7 +9685,6 @@ export const schema: Schema = {
         "sftpArchive": {
           "canBeNull": true,
           "description": "Password to reach the archive container through the sftp gw.",
-          "fullType": "password",
           "readOnly": false,
           "required": false,
           "type": "password"
@@ -9588,7 +9692,6 @@ export const schema: Schema = {
         "sftpStorage": {
           "canBeNull": true,
           "description": "Password to reach the storage container through the sftp gw.",
-          "fullType": "password",
           "readOnly": false,
           "required": false,
           "type": "password"
@@ -9596,7 +9699,6 @@ export const schema: Schema = {
         "swiftArchive": {
           "canBeNull": true,
           "description": "Password to reach the archive container through swift.",
-          "fullType": "password",
           "readOnly": false,
           "required": false,
           "type": "password"
@@ -9604,7 +9706,6 @@ export const schema: Schema = {
         "swiftStorage": {
           "canBeNull": true,
           "description": "Password to reach the storage container through swift.",
-          "fullType": "password",
           "readOnly": false,
           "required": false,
           "type": "password"
@@ -9619,7 +9720,6 @@ export const schema: Schema = {
         "description": {
           "canBeNull": true,
           "description": "Project description.",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -9627,7 +9727,6 @@ export const schema: Schema = {
         "projectId": {
           "canBeNull": true,
           "description": "Project id.",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -9642,7 +9741,6 @@ export const schema: Schema = {
         "maxBandwidth": {
           "canBeNull": true,
           "description": "Volume r/w bandwidth limit: read/write volume offered per month on the container.",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -9650,7 +9748,6 @@ export const schema: Schema = {
         "maxStorage": {
           "canBeNull": true,
           "description": "Container max size.",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -9658,7 +9755,6 @@ export const schema: Schema = {
         "storageUsed": {
           "canBeNull": true,
           "description": "Volume usage.",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
@@ -9666,7 +9762,6 @@ export const schema: Schema = {
         "usagePercent": {
           "canBeNull": true,
           "description": "Volume usage in percent",
-          "fullType": "double",
           "readOnly": false,
           "required": false,
           "type": "double"
@@ -9681,7 +9776,6 @@ export const schema: Schema = {
         "password": {
           "canBeNull": true,
           "description": "Sftp password.",
-          "fullType": "password",
           "readOnly": false,
           "required": false,
           "type": "password"
@@ -9689,7 +9783,6 @@ export const schema: Schema = {
         "url": {
           "canBeNull": true,
           "description": "Url",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -9697,7 +9790,6 @@ export const schema: Schema = {
         "username": {
           "canBeNull": true,
           "description": "Username",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -9712,15 +9804,13 @@ export const schema: Schema = {
         "code": {
           "canBeNull": false,
           "description": "Status code",
-          "fullType": "dedicated.server.backup.BackupStatusCodeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.backup.BackupStatusCodeEnum"
         },
         "reason": {
           "canBeNull": true,
           "description": "Status code reason (when not ok)",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -9750,7 +9840,6 @@ export const schema: Schema = {
         "authUrl": {
           "canBeNull": true,
           "description": "Auth url.",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -9758,7 +9847,6 @@ export const schema: Schema = {
         "password": {
           "canBeNull": true,
           "description": "Openstack password.",
-          "fullType": "password",
           "readOnly": false,
           "required": false,
           "type": "password"
@@ -9766,7 +9854,6 @@ export const schema: Schema = {
         "username": {
           "canBeNull": true,
           "description": "Openstack username to use swift.",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -9783,7 +9870,7 @@ export const schema: Schema = {
           "description": "This monitoring id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "email": {
@@ -9791,7 +9878,7 @@ export const schema: Schema = {
           "description": "Alert destination",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "enabled": {
@@ -9799,7 +9886,7 @@ export const schema: Schema = {
           "description": "Is this monitor enabled",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "language": {
@@ -9807,7 +9894,7 @@ export const schema: Schema = {
           "description": "Alert language",
           "fullType": "dedicated.server.AlertLanguageEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.AlertLanguageEnum"
         }
       }
@@ -9822,7 +9909,7 @@ export const schema: Schema = {
           "description": "KVM expiration date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "ip": {
@@ -9838,7 +9925,7 @@ export const schema: Schema = {
           "description": "KVM hostname",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -9853,7 +9940,7 @@ export const schema: Schema = {
           "description": "The option of this boot",
           "fullType": "dedicated.server.BootOptionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.BootOptionEnum"
         },
         "value": {
@@ -9861,7 +9948,7 @@ export const schema: Schema = {
           "description": "the value of this option",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -9884,7 +9971,7 @@ export const schema: Schema = {
           "description": "Is this service monitoring is enabled",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "interval": {
@@ -9892,7 +9979,7 @@ export const schema: Schema = {
           "description": "The test interval in seconds",
           "fullType": "dedicated.server.MonitoringIntervalEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.MonitoringIntervalEnum"
         },
         "ip": {
@@ -9900,7 +9987,7 @@ export const schema: Schema = {
           "description": "The ip to monitor",
           "fullType": "ipv4",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipv4"
         },
         "monitoringId": {
@@ -9908,7 +9995,7 @@ export const schema: Schema = {
           "description": "This monitoring id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "port": {
@@ -9916,7 +10003,7 @@ export const schema: Schema = {
           "description": "The service port to monitor",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "protocol": {
@@ -9924,7 +10011,7 @@ export const schema: Schema = {
           "description": "The protocol to use",
           "fullType": "dedicated.server.MonitoringProtocolEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.MonitoringProtocolEnum"
         },
         "url": {
@@ -9947,7 +10034,7 @@ export const schema: Schema = {
           "description": "Id of this alert",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "enabled": {
@@ -9955,7 +10042,7 @@ export const schema: Schema = {
           "description": "Is this alert enabled",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "fromHour": {
@@ -9971,7 +10058,7 @@ export const schema: Schema = {
           "description": "Alert language",
           "fullType": "dedicated.server.AlertLanguageEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.AlertLanguageEnum"
         },
         "phoneNumberTo": {
@@ -9979,7 +10066,7 @@ export const schema: Schema = {
           "description": "Alert destination",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "smsAccount": {
@@ -9987,7 +10074,7 @@ export const schema: Schema = {
           "description": "Your SMS account",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "toHour": {
@@ -10010,7 +10097,7 @@ export const schema: Schema = {
           "description": "License id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lastUpdate": {
@@ -10018,7 +10105,7 @@ export const schema: Schema = {
           "description": "Last update timestamp",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "serialNumber": {
@@ -10026,7 +10113,7 @@ export const schema: Schema = {
           "description": "License serial number",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -10034,7 +10121,7 @@ export const schema: Schema = {
           "description": "Status of license",
           "fullType": "dedicated.server.SplaStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.SplaStatusEnum"
         },
         "type": {
@@ -10042,7 +10129,7 @@ export const schema: Schema = {
           "description": "License type",
           "fullType": "dedicated.server.SplaTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dedicated.server.SplaTypeEnum"
         }
       }
@@ -10057,7 +10144,7 @@ export const schema: Schema = {
           "description": "VirtualNetworkInterface activation state",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "mode": {
@@ -10065,7 +10152,7 @@ export const schema: Schema = {
           "description": "VirtualNetworkInterface mode",
           "fullType": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum"
         },
         "name": {
@@ -10073,7 +10160,7 @@ export const schema: Schema = {
           "description": "User defined VirtualNetworkInterface name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "networkInterfaceController": {
@@ -10081,7 +10168,7 @@ export const schema: Schema = {
           "description": "NetworkInterfaceControllers bound to this VirtualNetworkInterface",
           "fullType": "macAddress[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "macAddress[]"
         },
         "serverName": {
@@ -10089,7 +10176,7 @@ export const schema: Schema = {
           "description": "Server bound to this VirtualNetworkInterface",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "uuid": {
@@ -10097,7 +10184,7 @@ export const schema: Schema = {
           "description": "VirtualNetworkInterface unique id",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "vrack": {
@@ -10474,7 +10561,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "dns": {
@@ -10482,7 +10569,7 @@ export const schema: Schema = {
           "description": "secondary dns server",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "domain": {
@@ -10490,7 +10577,7 @@ export const schema: Schema = {
           "description": "domain on slave server",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "ipMaster": {
@@ -10498,7 +10585,7 @@ export const schema: Schema = {
           "description": "master ip",
           "fullType": "ipv4",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipv4"
         }
       }
@@ -10511,25 +10598,22 @@ export const schema: Schema = {
         "fieldType": {
           "canBeNull": false,
           "description": "The field type to add on your DNS zone for this subDomain",
-          "fullType": "zone.NamedResolutionFieldTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "zone.NamedResolutionFieldTypeEnum"
         },
         "fieldValue": {
           "canBeNull": false,
           "description": "The field value to add on your DNS zone for this subDomain",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "subDomain": {
           "canBeNull": false,
           "description": "The subdomain to add on your DNS zone for the domain",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -10542,21 +10626,18 @@ export const schema: Schema = {
         "hostname": {
           "canBeNull": false,
           "description": "the name server",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "ip": {
           "canBeNull": false,
-          "fullType": "ipv4",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipv4"
         },
         "ipv6": {
           "canBeNull": true,
-          "fullType": "ipv6",
           "readOnly": false,
           "required": false,
           "type": "ipv6"
@@ -10571,31 +10652,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -10603,7 +10680,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -10682,42 +10758,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -10731,7 +10807,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -10754,21 +10830,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }
@@ -10781,25 +10857,22 @@ export const schema: Schema = {
         "messageId": {
           "canBeNull": false,
           "description": "Message identifier",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "ticketId": {
           "canBeNull": false,
           "description": "Ticket identifier",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "ticketNumber": {
           "canBeNull": false,
           "description": "Ticket external number",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -10813,14 +10886,14 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lastUpdate": {
@@ -10849,7 +10922,7 @@ export const schema: Schema = {
           "description": "Task status",
           "fullType": "vrack.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "vrack.TaskStatusEnum"
         },
         "targetDomain": {
@@ -10891,7 +10964,7 @@ export const schema: Schema = {
           "description": "Dedicated Server",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "vrack": {
@@ -10899,7 +10972,7 @@ export const schema: Schema = {
           "description": "vrack name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }

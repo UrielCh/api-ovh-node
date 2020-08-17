@@ -199,7 +199,7 @@ export interface Saas {
              * Alter this object properties
              * PUT /saas/csp2/{serviceName}
              */
-            $put(params: { address: string, city: string, creationDate: string, displayName: string, email: string, firstName: string, lastName: string, phone: string, serviceName: string, status: saas.csp2.ServiceStateEnum, zipCode: string }): Promise<void>;
+            $put(params?: { address?: string, city?: string, creationDate?: string, displayName?: string, email?: string, firstName?: string, lastName?: string, phone?: string, serviceName?: string, status?: saas.csp2.ServiceStateEnum, zipCode?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -269,7 +269,7 @@ export interface Saas {
                  * Alter this object properties
                  * PUT /saas/csp2/{serviceName}/serviceInfos
                  */
-                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */

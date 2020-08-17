@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://ca.api.ovh.com:443/1.0/ipLoadbalancing.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the IPLB service",
@@ -55,7 +55,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -75,14 +75,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipLoadbalancing.Ip",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "ipLoadbalancing.Ip",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -108,7 +108,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -134,7 +134,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -160,7 +160,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -186,7 +186,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -212,7 +212,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -239,7 +239,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -247,7 +247,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -255,14 +255,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -320,7 +320,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -345,20 +345,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "The vrack network id you want to filter on",
               "fullType": "long",
               "name": "vrackNetworkId",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "ipLoadbalancing.DefinedFarm[]"
@@ -380,7 +380,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -406,7 +406,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -432,7 +432,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -466,7 +466,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -492,14 +492,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of zone property (=)",
               "fullType": "string",
               "name": "zone",
@@ -513,6 +505,14 @@ export const schema: Schema = {
               "name": "vrackNetworkId",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -527,10 +527,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipLoadbalancing.BalanceHTTPEnum",
-              "description": "Load balancing algorithm. 'roundrobin' if null",
-              "fullType": "ipLoadbalancing.BalanceHTTPEnum",
-              "name": "balance",
+              "dataType": "ipLoadbalancing.BackendProbe",
+              "description": "Probe used to determine if a backend is alive and can handle requests",
+              "fullType": "ipLoadbalancing.BackendProbe",
+              "name": "probe",
               "paramType": "body",
               "required": false
             },
@@ -543,14 +543,6 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "long",
-              "description": "Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack",
-              "fullType": "long",
-              "name": "vrackNetworkId",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "ipLoadbalancing.StickinessHTTPEnum",
               "description": "Stickiness type. No stickiness if null",
               "fullType": "ipLoadbalancing.StickinessHTTPEnum",
@@ -559,10 +551,26 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "ipLoadbalancing.BackendProbe",
-              "description": "Probe used to determine if a backend is alive and can handle requests",
-              "fullType": "ipLoadbalancing.BackendProbe",
-              "name": "probe",
+              "dataType": "ipLoadbalancing.BalanceHTTPEnum",
+              "description": "Load balancing algorithm. 'roundrobin' if null",
+              "fullType": "ipLoadbalancing.BalanceHTTPEnum",
+              "name": "balance",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack",
+              "fullType": "long",
+              "name": "vrackNetworkId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Human readable name for your backend, this field is for you",
+              "fullType": "string",
+              "name": "displayName",
               "paramType": "body",
               "required": false
             },
@@ -576,15 +584,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Human readable name for your backend, this field is for you",
-              "fullType": "string",
-              "name": "displayName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -610,7 +610,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -618,7 +618,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
               "paramType": "path",
@@ -637,18 +637,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Farm ID",
-              "fullType": "long",
-              "name": "farmId",
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of your farm",
+              "fullType": "long",
+              "name": "farmId",
               "paramType": "path",
               "required": true
             }
@@ -666,14 +666,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipLoadbalancing.backendHttp.BackendHttp",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "ipLoadbalancing.backendHttp.BackendHttp",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -681,7 +681,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
               "paramType": "path",
@@ -706,30 +706,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Farm ID",
-              "fullType": "long",
-              "name": "farmId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of cookie property (like)",
-              "fullType": "string",
-              "name": "cookie",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "ipv4",
               "description": "Filter the value of address property (=)",
               "fullType": "ipv4",
@@ -744,6 +720,30 @@ export const schema: Schema = {
               "name": "status",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of cookie property (like)",
+              "fullType": "string",
+              "name": "cookie",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of your farm",
+              "fullType": "long",
+              "name": "farmId",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -758,10 +758,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "text",
-              "description": "Certificate chain. Allow server certificate verification (Avoid man-in-the-middle attacks)",
-              "fullType": "text",
-              "name": "chain",
+              "dataType": "boolean",
+              "description": "Enable/disable probe. Default: 'false'",
+              "fullType": "boolean",
+              "name": "probe",
               "paramType": "body",
               "required": false
             },
@@ -770,6 +770,70 @@ export const schema: Schema = {
               "description": "Disabled if null. Send PROXY protocol header. Requires a compatible server.",
               "fullType": "ipLoadbalancing.ProxyProtocolVersionEnum",
               "name": "proxyProtocolVersion",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Set weight on that server [1..256]. 0 if not used in load balancing. 1 if left null. Servers with higher weight get more requests.",
+              "fullType": "long",
+              "name": "weight",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Set the cookie value used when 'cookie' stickiness is set in the farm. Auto generate the cookie if none provided and required.",
+              "fullType": "string",
+              "name": "cookie",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
+              "description": "Enable or disable your server",
+              "fullType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
+              "name": "status",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Address of your server",
+              "fullType": "ipv4",
+              "name": "address",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Human readable name for your server, this field is for you",
+              "fullType": "string",
+              "name": "displayName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Port attached to your server ([1..49151]). Inherited from farm if null",
+              "fullType": "long",
+              "name": "port",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "text",
+              "description": "Certificate chain. Allow server certificate verification (Avoid man-in-the-middle attacks)",
+              "fullType": "text",
+              "name": "chain",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "SSL ciphering. Probes will also be sent ciphered. Default: 'false'",
+              "fullType": "boolean",
+              "name": "ssl",
               "paramType": "body",
               "required": false
             },
@@ -783,71 +847,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Set the cookie value used when 'cookie' stickiness is set in the farm. Auto generate the cookie if none provided and required.",
-              "fullType": "string",
-              "name": "cookie",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Address of your server",
-              "fullType": "ipv4",
-              "name": "address",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Set weight on that server [1..256]. 0 if not used in load balancing. 1 if left null. Servers with higher weight get more requests.",
-              "fullType": "long",
-              "name": "weight",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "SSL ciphering. Probes will also be sent ciphered. Default: 'false'",
-              "fullType": "boolean",
-              "name": "ssl",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Human readable name for your server, this field is for you",
-              "fullType": "string",
-              "name": "displayName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Enable/disable probe. Default: 'false'",
-              "fullType": "boolean",
-              "name": "probe",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Port attached to your server ([1..49151]). Inherited from farm if null",
-              "fullType": "long",
-              "name": "port",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
-              "description": "Enable or disable your server",
-              "fullType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
-              "name": "status",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -855,7 +855,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
               "paramType": "path",
@@ -880,16 +880,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Server ID",
-              "fullType": "long",
-              "name": "serverId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -897,9 +889,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of your server",
+              "fullType": "long",
+              "name": "serverId",
               "paramType": "path",
               "required": true
             }
@@ -917,7 +917,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -925,7 +925,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
               "paramType": "path",
@@ -933,7 +933,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Server ID",
+              "description": "Id of your server",
               "fullType": "long",
               "name": "serverId",
               "paramType": "path",
@@ -953,14 +953,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -968,7 +968,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
               "paramType": "path",
@@ -976,7 +976,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Server ID",
+              "description": "Id of your server",
               "fullType": "long",
               "name": "serverId",
               "paramType": "path",
@@ -1002,14 +1002,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of port property (like)",
               "fullType": "string",
               "name": "port",
@@ -1031,6 +1023,14 @@ export const schema: Schema = {
               "name": "zone",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -1046,17 +1046,33 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock[]",
-              "description": "Only attach frontend on these ip. No restriction if null",
+              "description": "Restrict IP Load Balancing access to these ip block. No restriction if null",
               "fullType": "ipBlock[]",
-              "name": "dedicatedIpfo",
+              "name": "allowedSource",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Zone of your frontend. Use \"all\" for all owned zone.",
+              "fullType": "string",
+              "name": "zone",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Human readable name for your frontend, this field is for you",
+              "fullType": "string",
+              "name": "displayName",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "ipBlock[]",
-              "description": "Restrict IP Load Balancing access to these ip block. No restriction if null",
+              "description": "Only attach frontend on these ip. No restriction if null",
               "fullType": "ipBlock[]",
-              "name": "allowedSource",
+              "name": "dedicatedIpfo",
               "paramType": "body",
               "required": false
             },
@@ -1069,10 +1085,34 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string[]",
-              "description": "Add header to your frontend. Useful variables admitted : %ci <=> client_ip, %cp <=> client_port",
-              "fullType": "string[]",
-              "name": "httpHeader",
+              "dataType": "boolean",
+              "description": "HTTP Strict Transport Security. Default: 'false'",
+              "fullType": "boolean",
+              "name": "hsts",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Default HTTP Farm of your frontend",
+              "fullType": "long",
+              "name": "defaultFarmId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "SSL deciphering. Default: 'false'",
+              "fullType": "boolean",
+              "name": "ssl",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Disable your frontend. Default: 'false'",
+              "fullType": "boolean",
+              "name": "disabled",
               "paramType": "body",
               "required": false
             },
@@ -1093,56 +1133,16 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Human readable name for your frontend, this field is for you",
-              "fullType": "string",
-              "name": "displayName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "HTTP Strict Transport Security. Default: 'false'",
-              "fullType": "boolean",
-              "name": "hsts",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Disable your frontend. Default: 'false'",
-              "fullType": "boolean",
-              "name": "disabled",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Default HTTP Farm of your frontend",
-              "fullType": "long",
-              "name": "defaultFarmId",
+              "dataType": "string[]",
+              "description": "Add header to your frontend. Useful variables admitted : %ci <=> client_ip, %cp <=> client_port",
+              "fullType": "string[]",
+              "name": "httpHeader",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Zone of your frontend. Use \"all\" for all owned zone.",
-              "fullType": "string",
-              "name": "zone",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "SSL deciphering. Default: 'false'",
-              "fullType": "boolean",
-              "name": "ssl",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1168,7 +1168,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1176,7 +1176,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Frontend ID",
+              "description": "Id of your frontend",
               "fullType": "long",
               "name": "frontendId",
               "paramType": "path",
@@ -1196,7 +1196,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1204,7 +1204,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Frontend ID",
+              "description": "Id of your frontend",
               "fullType": "long",
               "name": "frontendId",
               "paramType": "path",
@@ -1224,14 +1224,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipLoadbalancing.frontendHttp.FrontendHttp",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "ipLoadbalancing.frontendHttp.FrontendHttp",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1239,7 +1239,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Frontend ID",
+              "description": "Id of your frontend",
               "fullType": "long",
               "name": "frontendId",
               "paramType": "path",
@@ -1264,20 +1264,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Filter the value of frontendId property (=)",
               "fullType": "long",
               "name": "frontendId",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -1308,14 +1308,6 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "ipLoadbalancing.RouteHttpAction",
-              "description": "Action triggered when all rules match",
-              "fullType": "ipLoadbalancing.RouteHttpAction",
-              "name": "action",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Route traffic for this frontend",
               "fullType": "long",
@@ -1324,8 +1316,16 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "ipLoadbalancing.RouteHttpAction",
+              "description": "Action triggered when all rules match",
+              "fullType": "ipLoadbalancing.RouteHttpAction",
+              "name": "action",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1351,7 +1351,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1359,7 +1359,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Route ID",
+              "description": "Id of your route",
               "fullType": "long",
               "name": "routeId",
               "paramType": "path",
@@ -1379,7 +1379,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1387,7 +1387,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Route ID",
+              "description": "Id of your route",
               "fullType": "long",
               "name": "routeId",
               "paramType": "path",
@@ -1407,14 +1407,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipLoadbalancing.RouteHttp.RouteHttp",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "ipLoadbalancing.RouteHttp.RouteHttp",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1422,7 +1422,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Route ID",
+              "description": "Id of your route",
               "fullType": "long",
               "name": "routeId",
               "paramType": "path",
@@ -1448,7 +1448,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1456,7 +1456,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Route ID",
+              "description": "Id of your route",
               "fullType": "long",
               "name": "routeId",
               "paramType": "path",
@@ -1474,22 +1474,6 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "string",
-              "description": "Value to match against this match. Interpretation if this field depends on the match and field",
-              "fullType": "string",
-              "name": "pattern",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "ipLoadbalancing.RouteRuleMatchesEnum",
-              "description": "Matching operator. Not all operators are available for all fields. See \"/ipLoadbalancing/{serviceName}/availableRouteRules\"",
-              "fullType": "ipLoadbalancing.RouteRuleMatchesEnum",
-              "name": "match",
-              "paramType": "body",
-              "required": true
-            },
             {
               "dataType": "string",
               "description": "Human readable name for your rule",
@@ -1523,18 +1507,34 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Route ID",
-              "fullType": "long",
-              "name": "routeId",
-              "paramType": "path",
+              "dataType": "string",
+              "description": "Value to match against this match. Interpretation if this field depends on the match and field",
+              "fullType": "string",
+              "name": "pattern",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "ipLoadbalancing.RouteRuleMatchesEnum",
+              "description": "Matching operator. Not all operators are available for all fields. See \"/ipLoadbalancing/{serviceName}/availableRouteRules\"",
+              "fullType": "ipLoadbalancing.RouteRuleMatchesEnum",
+              "name": "match",
+              "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of your route",
+              "fullType": "long",
+              "name": "routeId",
               "paramType": "path",
               "required": true
             }
@@ -1558,7 +1558,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1566,7 +1566,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Route ID",
+              "description": "Id of your route",
               "fullType": "long",
               "name": "routeId",
               "paramType": "path",
@@ -1574,7 +1574,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Rule ID",
+              "description": "Id of your rule",
               "fullType": "long",
               "name": "ruleId",
               "paramType": "path",
@@ -1594,7 +1594,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1602,7 +1602,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Route ID",
+              "description": "Id of your route",
               "fullType": "long",
               "name": "routeId",
               "paramType": "path",
@@ -1610,7 +1610,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Rule ID",
+              "description": "Id of your rule",
               "fullType": "long",
               "name": "ruleId",
               "paramType": "path",
@@ -1630,14 +1630,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipLoadbalancing.RouteRule.RouteRule",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "ipLoadbalancing.RouteRule.RouteRule",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1645,7 +1645,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Route ID",
+              "description": "Id of your route",
               "fullType": "long",
               "name": "routeId",
               "paramType": "path",
@@ -1653,7 +1653,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Rule ID",
+              "description": "Id of your rule",
               "fullType": "long",
               "name": "ruleId",
               "paramType": "path",
@@ -1681,7 +1681,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1707,7 +1707,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1733,7 +1733,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1759,7 +1759,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1785,7 +1785,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1793,7 +1793,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Zone",
+              "description": "Zone of your quota",
               "fullType": "string",
               "name": "zone",
               "paramType": "path",
@@ -1813,14 +1813,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipLoadbalancing.Quota.Quota",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "ipLoadbalancing.Quota.Quota",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1828,7 +1828,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Zone",
+              "description": "Zone of your quota",
               "fullType": "string",
               "name": "zone",
               "paramType": "path",
@@ -1853,18 +1853,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "date",
               "description": "Filter the value of historizedDate property (<=)",
               "fullType": "date",
               "name": "historizedDate.to",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of zone property (=)",
+              "fullType": "string",
+              "name": "zone",
               "paramType": "query",
               "required": false
             },
@@ -1878,11 +1878,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of zone property (=)",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
-              "name": "zone",
-              "paramType": "query",
-              "required": false
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -1904,7 +1904,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1912,7 +1912,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of your quota",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1946,7 +1946,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1972,7 +1972,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1992,14 +1992,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2025,11 +2025,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Filter the value of fingerprint property (like)",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "name": "fingerprint",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "string",
@@ -2049,11 +2049,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of fingerprint property (like)",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
-              "name": "fingerprint",
-              "paramType": "query",
-              "required": false
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -2069,19 +2069,27 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "text",
-              "description": "Certificate key",
-              "fullType": "text",
-              "name": "key",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "text",
               "description": "Certificate chain",
               "fullType": "text",
               "name": "chain",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Human readable name for your ssl certificate, this field is for you",
+              "fullType": "string",
+              "name": "displayName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "text",
+              "description": "Certificate key",
+              "fullType": "text",
+              "name": "key",
+              "paramType": "body",
+              "required": true
             },
             {
               "dataType": "text",
@@ -2093,15 +2101,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Human readable name for your ssl certificate, this field is for you",
-              "fullType": "string",
-              "name": "displayName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2127,7 +2127,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2135,7 +2135,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of your SSL certificate",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2155,7 +2155,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2163,7 +2163,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of your SSL certificate",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2183,14 +2183,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipLoadbalancing.Ssl.Ssl",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "ipLoadbalancing.Ssl.Ssl",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2198,7 +2198,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of your SSL certificate",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2224,7 +2224,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2249,18 +2249,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "datetime",
-              "description": "Filter the value of creationDate property (<=)",
+              "description": "Filter the value of doneDate property (<=)",
               "fullType": "datetime",
-              "name": "creationDate.to",
+              "name": "doneDate.to",
               "paramType": "query",
               "required": false
             },
@@ -2269,6 +2261,22 @@ export const schema: Schema = {
               "description": "Filter the value of action property (=)",
               "fullType": "ipLoadbalancing.TaskActionEnum",
               "name": "action",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "ipLoadbalancing.TaskStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "ipLoadbalancing.TaskStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDate property (<=)",
+              "fullType": "datetime",
+              "name": "creationDate.to",
               "paramType": "query",
               "required": false
             },
@@ -2289,20 +2297,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "ipLoadbalancing.TaskStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "ipLoadbalancing.TaskStatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of doneDate property (<=)",
-              "fullType": "datetime",
-              "name": "doneDate.to",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -2323,18 +2323,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of the operation",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -2358,11 +2358,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Filter the value of zone property (=)",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "name": "zone",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "long",
@@ -2374,11 +2374,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of zone property (=)",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
-              "name": "zone",
-              "paramType": "query",
-              "required": false
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -2393,42 +2393,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipLoadbalancing.BackendProbe",
-              "description": "Probe used to determine if a backend is alive and can handle requests",
-              "fullType": "ipLoadbalancing.BackendProbe",
-              "name": "probe",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack",
-              "fullType": "long",
-              "name": "vrackNetworkId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Port attached to your farm ([1..49151]). Inherited from frontend if null",
-              "fullType": "long",
-              "name": "port",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "ipLoadbalancing.BalanceTCPEnum",
-              "description": "Load balancing algorithm. 'roundrobin' if null",
-              "fullType": "ipLoadbalancing.BalanceTCPEnum",
-              "name": "balance",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Human readable name for your backend, this field is for you",
-              "fullType": "string",
-              "name": "displayName",
+              "dataType": "ipLoadbalancing.StickinessTCPEnum",
+              "description": "Stickiness type. No stickiness if null",
+              "fullType": "ipLoadbalancing.StickinessTCPEnum",
+              "name": "stickiness",
               "paramType": "body",
               "required": false
             },
@@ -2441,16 +2409,48 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "ipLoadbalancing.StickinessTCPEnum",
-              "description": "Stickiness type. No stickiness if null",
-              "fullType": "ipLoadbalancing.StickinessTCPEnum",
-              "name": "stickiness",
+              "dataType": "string",
+              "description": "Human readable name for your backend, this field is for you",
+              "fullType": "string",
+              "name": "displayName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Internal Load Balancer identifier of the vRack private network to attach to your farm, mandatory when your Load Balancer is attached to a vRack",
+              "fullType": "long",
+              "name": "vrackNetworkId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "ipLoadbalancing.BalanceTCPEnum",
+              "description": "Load balancing algorithm. 'roundrobin' if null",
+              "fullType": "ipLoadbalancing.BalanceTCPEnum",
+              "name": "balance",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Port attached to your farm ([1..49151]). Inherited from frontend if null",
+              "fullType": "long",
+              "name": "port",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "ipLoadbalancing.BackendProbe",
+              "description": "Probe used to determine if a backend is alive and can handle requests",
+              "fullType": "ipLoadbalancing.BackendProbe",
+              "name": "probe",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2476,7 +2476,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2484,7 +2484,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
               "paramType": "path",
@@ -2503,18 +2503,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Farm ID",
-              "fullType": "long",
-              "name": "farmId",
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of your farm",
+              "fullType": "long",
+              "name": "farmId",
               "paramType": "path",
               "required": true
             }
@@ -2532,14 +2532,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipLoadbalancing.backendTcp.BackendTcp",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "ipLoadbalancing.backendTcp.BackendTcp",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2547,7 +2547,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
               "paramType": "path",
@@ -2572,22 +2572,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Farm ID",
-              "fullType": "long",
-              "name": "farmId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipv4",
               "description": "Filter the value of address property (=)",
               "fullType": "ipv4",
@@ -2602,6 +2586,22 @@ export const schema: Schema = {
               "name": "status",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of your farm",
+              "fullType": "long",
+              "name": "farmId",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -2616,6 +2616,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "text",
+              "description": "Certificate chain. Allow server certificate verification (Avoid man-in-the-middle attacks)",
+              "fullType": "text",
+              "name": "chain",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "long",
               "description": "Port attached to your server ([1..49151]). Inherited from farm if null",
               "fullType": "long",
@@ -2625,9 +2633,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "boolean",
-              "description": "Enable/disable probe. Default: 'false'",
+              "description": "SSL ciphering. Probes will also be sent ciphered. Default: 'false'",
               "fullType": "boolean",
-              "name": "probe",
+              "name": "ssl",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Set server as backup. Default: 'false'",
+              "fullType": "boolean",
+              "name": "backup",
               "paramType": "body",
               "required": false
             },
@@ -2636,30 +2652,6 @@ export const schema: Schema = {
               "description": "Disabled if null. Send PROXY protocol header. Requires a compatible server.",
               "fullType": "ipLoadbalancing.ProxyProtocolVersionEnum",
               "name": "proxyProtocolVersion",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
-              "description": "Enable or disable your server",
-              "fullType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
-              "name": "status",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Address of your server",
-              "fullType": "ipv4",
-              "name": "address",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Set server as backup. Default: 'false'",
-              "fullType": "boolean",
-              "name": "backup",
               "paramType": "body",
               "required": false
             },
@@ -2673,11 +2665,19 @@ export const schema: Schema = {
             },
             {
               "dataType": "boolean",
-              "description": "SSL ciphering. Probes will also be sent ciphered. Default: 'false'",
+              "description": "Enable/disable probe. Default: 'false'",
               "fullType": "boolean",
-              "name": "ssl",
+              "name": "probe",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Address of your server",
+              "fullType": "ipv4",
+              "name": "address",
+              "paramType": "body",
+              "required": true
             },
             {
               "dataType": "string",
@@ -2688,16 +2688,16 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "text",
-              "description": "Certificate chain. Allow server certificate verification (Avoid man-in-the-middle attacks)",
-              "fullType": "text",
-              "name": "chain",
+              "dataType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
+              "description": "Enable or disable your server",
+              "fullType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
+              "name": "status",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2705,7 +2705,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
               "paramType": "path",
@@ -2731,7 +2731,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2739,7 +2739,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
               "paramType": "path",
@@ -2747,7 +2747,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Server ID",
+              "description": "Id of your server",
               "fullType": "long",
               "name": "serverId",
               "paramType": "path",
@@ -2767,7 +2767,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2775,7 +2775,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
               "paramType": "path",
@@ -2783,7 +2783,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Server ID",
+              "description": "Id of your server",
               "fullType": "long",
               "name": "serverId",
               "paramType": "path",
@@ -2803,14 +2803,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2818,7 +2818,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
               "paramType": "path",
@@ -2826,7 +2826,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Server ID",
+              "description": "Id of your server",
               "fullType": "long",
               "name": "serverId",
               "paramType": "path",
@@ -2852,11 +2852,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Filter the value of port property (like)",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "name": "port",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "string",
@@ -2876,11 +2876,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of port property (like)",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
-              "name": "port",
-              "paramType": "query",
-              "required": false
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -2894,14 +2894,6 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "string",
-              "description": "Human readable name for your frontend, this field is for you",
-              "fullType": "string",
-              "name": "displayName",
-              "paramType": "body",
-              "required": false
-            },
             {
               "dataType": "long",
               "description": "Default TCP Farm of your frontend",
@@ -2919,10 +2911,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "ipBlock[]",
-              "description": "Restrict IP Load Balancing access to these ip block. No restriction if null",
-              "fullType": "ipBlock[]",
-              "name": "allowedSource",
+              "dataType": "boolean",
+              "description": "SSL deciphering. Default: 'false'",
+              "fullType": "boolean",
+              "name": "ssl",
               "paramType": "body",
               "required": false
             },
@@ -2933,6 +2925,22 @@ export const schema: Schema = {
               "name": "port",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Human readable name for your frontend, this field is for you",
+              "fullType": "string",
+              "name": "displayName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "ipBlock[]",
+              "description": "Restrict IP Load Balancing access to these ip block. No restriction if null",
+              "fullType": "ipBlock[]",
+              "name": "allowedSource",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -2959,16 +2967,8 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "boolean",
-              "description": "SSL deciphering. Default: 'false'",
-              "fullType": "boolean",
-              "name": "ssl",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2994,7 +2994,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3002,7 +3002,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Frontend ID",
+              "description": "Id of your frontend",
               "fullType": "long",
               "name": "frontendId",
               "paramType": "path",
@@ -3022,7 +3022,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3030,7 +3030,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Frontend ID",
+              "description": "Id of your frontend",
               "fullType": "long",
               "name": "frontendId",
               "paramType": "path",
@@ -3050,14 +3050,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipLoadbalancing.frontendTcp.FrontendTcp",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "ipLoadbalancing.frontendTcp.FrontendTcp",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3065,7 +3065,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Frontend ID",
+              "description": "Id of your frontend",
               "fullType": "long",
               "name": "frontendId",
               "paramType": "path",
@@ -3090,20 +3090,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Filter the value of frontendId property (=)",
               "fullType": "long",
               "name": "frontendId",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -3118,20 +3118,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "Route traffic for this frontend",
+              "fullType": "long",
+              "name": "frontendId",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "ipLoadbalancing.RouteTcpAction",
               "description": "Action triggered when all rules match",
               "fullType": "ipLoadbalancing.RouteTcpAction",
               "name": "action",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action",
-              "fullType": "long",
-              "name": "weight",
-              "paramType": "body",
-              "required": false
             },
             {
               "dataType": "string",
@@ -3143,15 +3143,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Route traffic for this frontend",
+              "description": "Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action",
               "fullType": "long",
-              "name": "frontendId",
+              "name": "weight",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3177,7 +3177,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3185,7 +3185,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Route ID",
+              "description": "Id of your route",
               "fullType": "long",
               "name": "routeId",
               "paramType": "path",
@@ -3205,7 +3205,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3213,7 +3213,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Route ID",
+              "description": "Id of your route",
               "fullType": "long",
               "name": "routeId",
               "paramType": "path",
@@ -3233,24 +3233,24 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipLoadbalancing.RouteTcp.RouteTcp",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "ipLoadbalancing.RouteTcp.RouteTcp",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Route ID",
-              "fullType": "long",
-              "name": "routeId",
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of your route",
+              "fullType": "long",
+              "name": "routeId",
               "paramType": "path",
               "required": true
             }
@@ -3273,18 +3273,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Route ID",
-              "fullType": "long",
-              "name": "routeId",
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of your route",
+              "fullType": "long",
+              "name": "routeId",
               "paramType": "path",
               "required": true
             }
@@ -3350,7 +3350,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3358,7 +3358,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Route ID",
+              "description": "Id of your route",
               "fullType": "long",
               "name": "routeId",
               "paramType": "path",
@@ -3384,7 +3384,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3392,7 +3392,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Route ID",
+              "description": "Id of your route",
               "fullType": "long",
               "name": "routeId",
               "paramType": "path",
@@ -3400,7 +3400,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Rule ID",
+              "description": "Id of your rule",
               "fullType": "long",
               "name": "ruleId",
               "paramType": "path",
@@ -3420,7 +3420,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3428,7 +3428,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Route ID",
+              "description": "Id of your route",
               "fullType": "long",
               "name": "routeId",
               "paramType": "path",
@@ -3436,7 +3436,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Rule ID",
+              "description": "Id of your rule",
               "fullType": "long",
               "name": "ruleId",
               "paramType": "path",
@@ -3456,14 +3456,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipLoadbalancing.RouteRule.RouteRule",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "ipLoadbalancing.RouteRule.RouteRule",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3471,7 +3471,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Route ID",
+              "description": "Id of your route",
               "fullType": "long",
               "name": "routeId",
               "paramType": "path",
@@ -3479,7 +3479,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Rule ID",
+              "description": "Id of your rule",
               "fullType": "long",
               "name": "ruleId",
               "paramType": "path",
@@ -3505,7 +3505,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3531,14 +3531,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of zone property (=)",
               "fullType": "string",
               "name": "zone",
@@ -3552,6 +3544,14 @@ export const schema: Schema = {
               "name": "vrackNetworkId",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -3566,26 +3566,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Human readable name for your backend, this field is for you",
-              "fullType": "string",
-              "name": "displayName",
+              "dataType": "long",
+              "description": "Port attached to your farm ([1..49151]). Inherited from frontend if null",
+              "fullType": "long",
+              "name": "port",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
               "description": "Zone of your farm",
               "fullType": "string",
               "name": "zone",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Port attached to your farm ([1..49151]). Inherited from frontend if null",
-              "fullType": "long",
-              "name": "port",
               "paramType": "body",
               "required": true
             },
@@ -3599,7 +3591,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Human readable name for your backend, this field is for you",
+              "fullType": "string",
+              "name": "displayName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3625,7 +3625,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3633,7 +3633,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
               "paramType": "path",
@@ -3653,7 +3653,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3661,7 +3661,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
               "paramType": "path",
@@ -3681,14 +3681,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipLoadbalancing.backendUdp.BackendUdp",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "ipLoadbalancing.backendUdp.BackendUdp",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3696,7 +3696,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
               "paramType": "path",
@@ -3721,20 +3721,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Farm ID",
-              "fullType": "long",
-              "name": "farmId",
-              "paramType": "path",
-              "required": true
+              "dataType": "ipv4",
+              "description": "Filter the value of address property (=)",
+              "fullType": "ipv4",
+              "name": "address",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
@@ -3745,12 +3737,20 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "ipv4",
-              "description": "Filter the value of address property (=)",
-              "fullType": "ipv4",
-              "name": "address",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of your farm",
+              "fullType": "long",
+              "name": "farmId",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -3764,22 +3764,6 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "long",
-              "description": "Port attached to your server ([1..49151]). Inherited from farm if null",
-              "fullType": "long",
-              "name": "port",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
-              "description": "Enable or disable your server",
-              "fullType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
-              "name": "status",
-              "paramType": "body",
-              "required": true
-            },
             {
               "dataType": "ipv4",
               "description": "Address of your server",
@@ -3797,8 +3781,24 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
+              "description": "Enable or disable your server",
+              "fullType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
+              "name": "status",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Port attached to your server ([1..49151]). Inherited from farm if null",
+              "fullType": "long",
+              "name": "port",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3806,7 +3806,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
               "paramType": "path",
@@ -3832,7 +3832,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3840,7 +3840,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
               "paramType": "path",
@@ -3848,7 +3848,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Server ID",
+              "description": "Id of your server",
               "fullType": "long",
               "name": "serverId",
               "paramType": "path",
@@ -3868,7 +3868,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3876,7 +3876,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
               "paramType": "path",
@@ -3884,7 +3884,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Server ID",
+              "description": "Id of your server",
               "fullType": "long",
               "name": "serverId",
               "paramType": "path",
@@ -3904,22 +3904,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Server ID",
-              "fullType": "long",
-              "name": "serverId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3927,9 +3919,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Farm ID",
+              "description": "Id of your farm",
               "fullType": "long",
               "name": "farmId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of your server",
+              "fullType": "long",
+              "name": "serverId",
               "paramType": "path",
               "required": true
             }
@@ -3952,12 +3952,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "long",
+              "description": "Filter the value of defaultFarmId property (=)",
+              "fullType": "long",
+              "name": "defaultFarmId",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "string",
@@ -3976,12 +3976,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "long",
-              "description": "Filter the value of defaultFarmId property (=)",
-              "fullType": "long",
-              "name": "defaultFarmId",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -3995,6 +3995,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "ipBlock[]",
+              "description": "Only attach frontend on these ip. No restriction if null",
+              "fullType": "ipBlock[]",
+              "name": "dedicatedIpfo",
+              "paramType": "body",
+              "required": false
+            },
             {
               "dataType": "boolean",
               "description": "Disable your frontend. Default: 'false'",
@@ -4013,27 +4021,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range.",
-              "fullType": "string",
-              "name": "port",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Zone of your frontend. Use \"all\" for all owned zone.",
               "fullType": "string",
               "name": "zone",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "ipBlock[]",
-              "description": "Only attach frontend on these ip. No restriction if null",
-              "fullType": "ipBlock[]",
-              "name": "dedicatedIpfo",
-              "paramType": "body",
-              "required": false
             },
             {
               "dataType": "string",
@@ -4045,7 +4037,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Port(s) attached to your frontend. Supports single port (numerical value), range (2 dash-delimited increasing ports) and comma-separated list of 'single port' and/or 'range'. Each port must be in the [1;49151] range.",
+              "fullType": "string",
+              "name": "port",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4071,7 +4071,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4079,7 +4079,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Frontend ID",
+              "description": "Id of your frontend",
               "fullType": "long",
               "name": "frontendId",
               "paramType": "path",
@@ -4099,7 +4099,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4107,7 +4107,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Frontend ID",
+              "description": "Id of your frontend",
               "fullType": "long",
               "name": "frontendId",
               "paramType": "path",
@@ -4127,14 +4127,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipLoadbalancing.frontendUdp.FrontendUdp",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "ipLoadbalancing.frontendUdp.FrontendUdp",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4142,7 +4142,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Frontend ID",
+              "description": "Id of your frontend",
               "fullType": "long",
               "name": "frontendId",
               "paramType": "path",
@@ -4167,14 +4167,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Filter the value of vlan property (=)",
               "fullType": "long",
@@ -4189,6 +4181,14 @@ export const schema: Schema = {
               "name": "subnet",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -4204,19 +4204,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": "An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The block must be in the private network and reserved for the Load Balancer",
+              "description": "IP Block of the private network in the vRack",
               "fullType": "ipBlock",
-              "name": "natIp",
+              "name": "subnet",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "long[]",
-              "description": "Farm Id you want to attach to that vrack network",
-              "fullType": "long[]",
-              "name": "farmId",
-              "paramType": "body",
-              "required": false
             },
             {
               "dataType": "long",
@@ -4227,12 +4219,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "ipBlock",
-              "description": "IP Block of the private network in the vRack",
-              "fullType": "ipBlock",
-              "name": "subnet",
+              "dataType": "long[]",
+              "description": "Farm Id you want to attach to that vrack network",
+              "fullType": "long[]",
+              "name": "farmId",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "string",
@@ -4243,8 +4235,16 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "ipBlock",
+              "description": "An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The block must be in the private network and reserved for the Load Balancer",
+              "fullType": "ipBlock",
+              "name": "natIp",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4270,7 +4270,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4278,7 +4278,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Vrack network ID",
+              "description": "Internal Load Balancer identifier of the vRack private network description",
               "fullType": "long",
               "name": "vrackNetworkId",
               "paramType": "path",
@@ -4298,7 +4298,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4306,7 +4306,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Vrack network ID",
+              "description": "Internal Load Balancer identifier of the vRack private network description",
               "fullType": "long",
               "name": "vrackNetworkId",
               "paramType": "path",
@@ -4326,14 +4326,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipLoadbalancing.VrackNetwork.VrackNetwork",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "ipLoadbalancing.VrackNetwork.VrackNetwork",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4341,7 +4341,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Vrack network ID",
+              "description": "Internal Load Balancer identifier of the vRack private network description",
               "fullType": "long",
               "name": "vrackNetworkId",
               "paramType": "path",
@@ -4375,7 +4375,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4383,7 +4383,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Vrack network ID",
+              "description": "Internal Load Balancer identifier of the vRack private network description",
               "fullType": "long",
               "name": "vrackNetworkId",
               "paramType": "path",
@@ -4409,7 +4409,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4435,7 +4435,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4461,7 +4461,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4487,7 +4487,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4495,7 +4495,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "Name of your zone",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -4521,7 +4521,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4529,7 +4529,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "Name of your zone",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -4555,7 +4555,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4563,7 +4563,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "Name of your zone",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -4596,7 +4596,6 @@ export const schema: Schema = {
         "forceSsl": {
           "canBeNull": true,
           "description": "Force probe to run over a SSL layer. Defaults to false",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -4604,7 +4603,6 @@ export const schema: Schema = {
         "interval": {
           "canBeNull": true,
           "description": "Seconds between each probe check. Must be > 30sec. Defaults to 30",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -4612,7 +4610,6 @@ export const schema: Schema = {
         "match": {
           "canBeNull": true,
           "description": "Matcher to use to valide \"expect\". \"default\" uses HAProxy's default behavior for this type of check. \"status\" is only supported for HTTP probes",
-          "fullType": "ipLoadbalancing.ProbeExpectMatchEnum",
           "readOnly": false,
           "required": false,
           "type": "ipLoadbalancing.ProbeExpectMatchEnum"
@@ -4620,7 +4617,6 @@ export const schema: Schema = {
         "method": {
           "canBeNull": true,
           "description": "HTTP method to use with \"http\" probe. Consider using HEAD to save bandwidth when possible. Defaults to \"GET\"",
-          "fullType": "ipLoadbalancing.ProbeMethodEnum",
           "readOnly": false,
           "required": false,
           "type": "ipLoadbalancing.ProbeMethodEnum"
@@ -4628,7 +4624,6 @@ export const schema: Schema = {
         "negate": {
           "canBeNull": true,
           "description": "Invert the matching operator effect",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -4636,7 +4631,6 @@ export const schema: Schema = {
         "pattern": {
           "canBeNull": true,
           "description": "Server response expected when UP. Empty for \"default\", comma delimited list of statuses for \"status\", string for \"contains\", regex for \"matches\"",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -4644,7 +4638,6 @@ export const schema: Schema = {
         "port": {
           "canBeNull": true,
           "description": "Port used to probe your backend. Equal to farm port if null. Ignored for oco probe type",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -4652,7 +4645,6 @@ export const schema: Schema = {
         "type": {
           "canBeNull": true,
           "description": "Probe type. \"tcp\" if null",
-          "fullType": "ipLoadbalancing.ProbeTypeEnum",
           "readOnly": false,
           "required": false,
           "type": "ipLoadbalancing.ProbeTypeEnum"
@@ -4660,7 +4652,6 @@ export const schema: Schema = {
         "url": {
           "canBeNull": true,
           "description": "URL to use for HTTP probes of the form [www.example.com]/path/to/check. Protocol will be ignored. Defaults to \"/\"",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -4699,16 +4690,14 @@ export const schema: Schema = {
       "properties": {
         "id": {
           "canBeNull": false,
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "type": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4720,16 +4709,14 @@ export const schema: Schema = {
       "properties": {
         "id": {
           "canBeNull": false,
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "type": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4742,7 +4729,6 @@ export const schema: Schema = {
         "displayName": {
           "canBeNull": true,
           "description": "Human readable name for your route",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -4750,17 +4736,15 @@ export const schema: Schema = {
         "routeId": {
           "canBeNull": false,
           "description": "Id of your route",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "type": {
           "canBeNull": false,
           "description": "Protocol supported by this route",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4773,15 +4757,13 @@ export const schema: Schema = {
         "matches": {
           "canBeNull": false,
           "description": "List of possible probe result checkers for this type of probe",
-          "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "method": {
           "canBeNull": true,
           "description": "List of available HTTP method, if available",
-          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
@@ -4789,33 +4771,29 @@ export const schema: Schema = {
         "negatableMatches": {
           "canBeNull": false,
           "description": "List of matches operators that accept the negate option for this type of probe",
-          "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "port": {
           "canBeNull": false,
           "description": "True is this probe type supports a custom port",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "type": {
           "canBeNull": false,
           "description": "Probe protocol name. See probe \"type\" field in the farm probe",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "url": {
           "canBeNull": false,
           "description": "True is this probe type supports a URL",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -4828,33 +4806,29 @@ export const schema: Schema = {
         "internalId": {
           "canBeNull": false,
           "description": "Internal ID of this IPLB instance",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lastUpdateDate": {
           "canBeNull": false,
           "description": "Last update date",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "state": {
           "canBeNull": false,
           "description": "Current state of this IPLB instance",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "zone": {
           "canBeNull": false,
           "description": "zone of this IPLB instance",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4877,7 +4851,7 @@ export const schema: Schema = {
           "description": "Your IP load balancing",
           "fullType": "ip",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "ipv4": {
@@ -4909,7 +4883,7 @@ export const schema: Schema = {
           "description": "The offer of your IP load balancing",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "orderableZone": {
@@ -4917,7 +4891,7 @@ export const schema: Schema = {
           "description": "Available additional zone for your Load Balancer",
           "fullType": "ipLoadbalancing.OrderableZone[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.OrderableZone[]"
         },
         "serviceName": {
@@ -4925,7 +4899,7 @@ export const schema: Schema = {
           "description": "The internal name of your IP load balancing",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "sslConfiguration": {
@@ -4941,7 +4915,7 @@ export const schema: Schema = {
           "description": "Current state of your IP",
           "fullType": "ipLoadbalancing.IpStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.IpStateEnum"
         },
         "vrackEligibility": {
@@ -4949,7 +4923,7 @@ export const schema: Schema = {
           "description": "Vrack eligibility",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "vrackName": {
@@ -4965,7 +4939,7 @@ export const schema: Schema = {
           "description": "Location where your service is",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         }
       }
@@ -4991,16 +4965,14 @@ export const schema: Schema = {
       "properties": {
         "ip": {
           "canBeNull": false,
-          "fullType": "ipBlock[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipBlock[]"
         },
         "zone": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5013,17 +4985,15 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "The zone three letter code",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "planCode": {
           "canBeNull": false,
           "description": "The billing planCode for this zone",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5036,17 +5006,15 @@ export const schema: Schema = {
         "number": {
           "canBeNull": false,
           "description": "The number of changes waiting to be applied",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "zone": {
           "canBeNull": false,
           "description": "The Load Balancer zone with pending changes",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5153,7 +5121,7 @@ export const schema: Schema = {
           "description": "Zone of your quota",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5168,7 +5136,7 @@ export const schema: Schema = {
           "description": "Historized date for this quota entry",
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "id": {
@@ -5176,7 +5144,7 @@ export const schema: Schema = {
           "description": "Id of your quota",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lastUpdateDate": {
@@ -5184,7 +5152,7 @@ export const schema: Schema = {
           "description": "The last time your quota was updated from your Load Balancer instance",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "resetDate": {
@@ -5192,7 +5160,7 @@ export const schema: Schema = {
           "description": "The last time your quota was resetted (billed)",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "total": {
@@ -5200,7 +5168,7 @@ export const schema: Schema = {
           "description": "Total used quota value in bytes",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "zone": {
@@ -5208,7 +5176,7 @@ export const schema: Schema = {
           "description": "Zone of your quota",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5221,7 +5189,6 @@ export const schema: Schema = {
         "destination": {
           "canBeNull": true,
           "description": "Type of the destination for this action",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5229,15 +5196,13 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "Action name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
           "canBeNull": true,
           "description": "List of available HTTP status code if applicable",
-          "fullType": "long[]",
           "readOnly": false,
           "required": false,
           "type": "long[]"
@@ -5245,9 +5210,8 @@ export const schema: Schema = {
         "type": {
           "canBeNull": false,
           "description": "Protocol supported by this action",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5260,7 +5224,6 @@ export const schema: Schema = {
         "enum": {
           "canBeNull": true,
           "description": "If pattern is \"enum\", list of available options",
-          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
@@ -5268,41 +5231,36 @@ export const schema: Schema = {
         "hasSubField": {
           "canBeNull": false,
           "description": "If true, this rule needs a subfield. Typically a cookie or header name",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "matches": {
           "canBeNull": false,
           "description": "List of match operators compatible with this rule",
-          "fullType": "string[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "name": {
           "canBeNull": false,
           "description": "Rule name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "pattern": {
           "canBeNull": false,
           "description": "Expected type for the pattern. Like \"enum\", \"backend\", \"cidr\", ...",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
           "canBeNull": false,
           "description": "Protocol supported by this action",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5317,7 +5275,7 @@ export const schema: Schema = {
           "description": "Action triggered when all rules match",
           "fullType": "ipLoadbalancing.RouteHttpAction",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.RouteHttpAction"
         },
         "displayName": {
@@ -5341,7 +5299,7 @@ export const schema: Schema = {
           "description": "Id of your route",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "rules": {
@@ -5349,7 +5307,7 @@ export const schema: Schema = {
           "description": "List of rules to match to trigger action",
           "fullType": "ipLoadbalancing.RouteRule[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.RouteRule[]"
         },
         "status": {
@@ -5357,7 +5315,7 @@ export const schema: Schema = {
           "description": "Route status. Routes in \"ok\" state are ready to operate",
           "fullType": "ipLoadbalancing.RouteStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.RouteStatusEnum"
         },
         "weight": {
@@ -5365,7 +5323,7 @@ export const schema: Schema = {
           "description": "Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -5378,7 +5336,6 @@ export const schema: Schema = {
         "status": {
           "canBeNull": true,
           "description": "HTTP status code for \"redirect\" and \"reject\" actions",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -5386,7 +5343,6 @@ export const schema: Schema = {
         "target": {
           "canBeNull": true,
           "description": "Farm ID for \"farm\" action type or URL template for \"redirect\" action. You may use ${uri}, ${protocol}, ${host}, ${port} and ${path} variables in redirect target",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5394,9 +5350,8 @@ export const schema: Schema = {
         "type": {
           "canBeNull": false,
           "description": "Action to trigger if all the rules of this route matches",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5409,31 +5364,27 @@ export const schema: Schema = {
         "field": {
           "canBeNull": false,
           "description": "Name of the field to match like \"protocol\" or \"host\". See \"/ipLoadbalancing/{serviceName}/route/availableRules\" for a list of available rules",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "match": {
           "canBeNull": false,
           "description": "Matching operator. Not all operators are available for all fields. See \"/availableRules\"",
-          "fullType": "ipLoadbalancing.RouteRuleMatchesEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.RouteRuleMatchesEnum"
         },
         "negate": {
           "canBeNull": false,
           "description": "Invert the matching operator effect",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "pattern": {
           "canBeNull": true,
           "description": "Value to match against this match. Interpretation if this field depends on the match and field",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5441,15 +5392,13 @@ export const schema: Schema = {
         "ruleId": {
           "canBeNull": false,
           "description": "Id of your rule",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "subField": {
           "canBeNull": true,
           "description": "Name of sub-field, if applicable. This may be a Cookie or Header name for instance",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5474,7 +5423,7 @@ export const schema: Schema = {
           "description": "Name of the field to match like \"protocol\" or \"host\". See \"/ipLoadbalancing/{serviceName}/availableRouteRules\" for a list of available rules",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "match": {
@@ -5482,7 +5431,7 @@ export const schema: Schema = {
           "description": "Matching operator. Not all operators are available for all fields. See \"/ipLoadbalancing/{serviceName}/availableRouteRules\"",
           "fullType": "ipLoadbalancing.RouteRuleMatchesEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.RouteRuleMatchesEnum"
         },
         "negate": {
@@ -5490,7 +5439,7 @@ export const schema: Schema = {
           "description": "Invert the matching operator effect",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "pattern": {
@@ -5506,7 +5455,7 @@ export const schema: Schema = {
           "description": "Id of your rule",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "subField": {
@@ -5558,7 +5507,7 @@ export const schema: Schema = {
           "description": "Action triggered when all rules match",
           "fullType": "ipLoadbalancing.RouteTcpAction",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.RouteTcpAction"
         },
         "displayName": {
@@ -5582,7 +5531,7 @@ export const schema: Schema = {
           "description": "Id of your route",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "rules": {
@@ -5590,7 +5539,7 @@ export const schema: Schema = {
           "description": "List of rules to match to trigger action",
           "fullType": "ipLoadbalancing.RouteRule[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.RouteRule[]"
         },
         "status": {
@@ -5598,7 +5547,7 @@ export const schema: Schema = {
           "description": "Route status. Routes in \"ok\" state are ready to operate",
           "fullType": "ipLoadbalancing.RouteStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.RouteStatusEnum"
         },
         "weight": {
@@ -5606,7 +5555,7 @@ export const schema: Schema = {
           "description": "Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -5619,7 +5568,6 @@ export const schema: Schema = {
         "target": {
           "canBeNull": true,
           "description": "Farm ID for \"farm\" action type, empty for others",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5627,9 +5575,8 @@ export const schema: Schema = {
         "type": {
           "canBeNull": false,
           "description": "Action to trigger if all the rules of this route matches",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5642,7 +5589,6 @@ export const schema: Schema = {
         "checkCode": {
           "canBeNull": true,
           "description": "Layer5-7 code, if available",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5650,7 +5596,6 @@ export const schema: Schema = {
         "checkStatus": {
           "canBeNull": true,
           "description": "Status of last health check",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5658,7 +5603,6 @@ export const schema: Schema = {
         "checkTime": {
           "canBeNull": true,
           "description": "Time of last health check",
-          "fullType": "datetime",
           "readOnly": false,
           "required": false,
           "type": "datetime"
@@ -5666,15 +5610,13 @@ export const schema: Schema = {
         "instanceId": {
           "canBeNull": false,
           "description": "Id of your instance",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lastCheckContent": {
           "canBeNull": true,
           "description": "Last health check contents or textual error",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5682,7 +5624,6 @@ export const schema: Schema = {
         "status": {
           "canBeNull": true,
           "description": "Status",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5707,7 +5648,7 @@ export const schema: Schema = {
           "description": "Expire date of your SSL certificate",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "fingerprint": {
@@ -5715,7 +5656,7 @@ export const schema: Schema = {
           "description": "Fingerprint of your SSL certificate",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -5723,7 +5664,7 @@ export const schema: Schema = {
           "description": "Id of your SSL certificate",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "san": {
@@ -5731,7 +5672,7 @@ export const schema: Schema = {
           "description": "Subject Alternative Name of your SSL certificate",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "serial": {
@@ -5739,7 +5680,7 @@ export const schema: Schema = {
           "description": "Serial of your SSL certificate (Deprecated, use fingerprint instead !)",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "subject": {
@@ -5747,7 +5688,7 @@ export const schema: Schema = {
           "description": "Subject of your SSL certificate",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
@@ -5789,33 +5730,29 @@ export const schema: Schema = {
         "farms": {
           "canBeNull": false,
           "description": "The Load Balancer farms status informations",
-          "fullType": "ipLoadbalancing.status.Component",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.status.Component"
         },
         "frontends": {
           "canBeNull": false,
           "description": "The Load Balancer frontends status informations",
-          "fullType": "ipLoadbalancing.status.Component",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.status.Component"
         },
         "servers": {
           "canBeNull": false,
           "description": "The Load Balancer servers status informations",
-          "fullType": "ipLoadbalancing.status.Component",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.status.Component"
         },
         "service": {
           "canBeNull": false,
           "description": "The Load Balancer service status informations",
-          "fullType": "ipLoadbalancing.status.Service",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.status.Service"
         }
       }
@@ -5849,7 +5786,7 @@ export const schema: Schema = {
           "description": "Operation type",
           "fullType": "ipLoadbalancing.TaskActionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.TaskActionEnum"
         },
         "creationDate": {
@@ -5857,7 +5794,7 @@ export const schema: Schema = {
           "description": "Creation date of your operation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "doneDate": {
@@ -5873,7 +5810,7 @@ export const schema: Schema = {
           "description": "Id of the operation",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "progress": {
@@ -5881,7 +5818,7 @@ export const schema: Schema = {
           "description": "Operation progress percentage",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "status": {
@@ -5889,7 +5826,7 @@ export const schema: Schema = {
           "description": "Current status of your operation",
           "fullType": "ipLoadbalancing.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.TaskStatusEnum"
         },
         "zones": {
@@ -5897,7 +5834,7 @@ export const schema: Schema = {
           "description": "Zone of your Load Balancer which are updated by current Task",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         }
       }
@@ -5949,23 +5886,20 @@ export const schema: Schema = {
         "state": {
           "canBeNull": false,
           "description": "State of the vRack link to your Load Balancer",
-          "fullType": "ipLoadbalancing.VrackStateEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.VrackStateEnum"
         },
         "task": {
           "canBeNull": false,
           "description": "Ongoing task related to vRack installation or uninstallation on your Load Balancer",
-          "fullType": "long[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long[]"
         },
         "vrackName": {
           "canBeNull": true,
           "description": "Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -5990,7 +5924,7 @@ export const schema: Schema = {
           "description": "Farm Id your vrack network is attached to and their type",
           "fullType": "ipLoadbalancing.DefinedFarm[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.DefinedFarm[]"
         },
         "natIp": {
@@ -5998,7 +5932,7 @@ export const schema: Schema = {
           "description": "An IP block used as a pool of IPs by this Load Balancer to connect to the servers in this private network. The block must be in the private network and reserved for the Load Balancer",
           "fullType": "ipBlock",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipBlock"
         },
         "subnet": {
@@ -6006,7 +5940,7 @@ export const schema: Schema = {
           "description": "IP block of the private network in the vRack",
           "fullType": "ipBlock",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipBlock"
         },
         "vlan": {
@@ -6014,7 +5948,7 @@ export const schema: Schema = {
           "description": "VLAN of the private network in the vRack. 0 if the private network is not in a VLAN",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "vrackNetworkId": {
@@ -6022,7 +5956,7 @@ export const schema: Schema = {
           "description": "Internal Load Balancer identifier of the vRack private network description",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -6035,25 +5969,22 @@ export const schema: Schema = {
         "minNatIps": {
           "canBeNull": false,
           "description": "Minimum number of IPs needed to forward requests to your servers using NAT in your private network behind the current Load Balancer. Ip Block given on Load Balancer vRack network must contain at least this number of IP.",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "remainingNetworks": {
           "canBeNull": false,
           "description": "Number of remaining private network descriptions available for creation for this Load Balancer",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "vrackName": {
           "canBeNull": false,
           "description": "Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6070,6 +6001,76 @@ export const schema: Schema = {
       "id": "VrackStateEnum",
       "namespace": "ipLoadbalancing"
     },
+    "ipLoadbalancing.VrackTransparentGateways": {
+      "description": "Aims to help you configure needed transparent interfaces",
+      "id": "VrackTransparentGateways",
+      "namespace": "ipLoadbalancing",
+      "properties": {
+        "address": {
+          "canBeNull": false,
+          "description": "address",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
+        },
+        "gateway": {
+          "canBeNull": false,
+          "description": "gateway",
+          "readOnly": false,
+          "required": false,
+          "type": "ip"
+        },
+        "vlan": {
+          "canBeNull": false,
+          "description": "vlan",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "ipLoadbalancing.VrackTransparentIp.VrackTransparentIp": {
+      "description": "Server's vrack transparent ip",
+      "id": "VrackTransparentIp",
+      "namespace": "ipLoadbalancing.VrackTransparentIp",
+      "properties": {
+        "address": {
+          "canBeNull": false,
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
+        "farmId": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "id": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "serverId": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "slotId": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "ipLoadbalancing.Zone.Zone": {
       "description": "IP Load Balancing Zone",
       "id": "Zone",
@@ -6080,7 +6081,7 @@ export const schema: Schema = {
           "description": "Name of your zone",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "state": {
@@ -6088,7 +6089,7 @@ export const schema: Schema = {
           "description": "State of your zone",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6119,7 +6120,7 @@ export const schema: Schema = {
           "description": "Id of your farm",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "port": {
@@ -6159,7 +6160,7 @@ export const schema: Schema = {
           "description": "Zone of you farm",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6174,7 +6175,7 @@ export const schema: Schema = {
           "description": "Address of your server",
           "fullType": "ipv4",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipv4"
         },
         "backendId": {
@@ -6182,7 +6183,7 @@ export const schema: Schema = {
           "description": "farm id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "backup": {
@@ -6190,7 +6191,7 @@ export const schema: Schema = {
           "description": "Backup state. Default: 'false'",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "chain": {
@@ -6230,7 +6231,7 @@ export const schema: Schema = {
           "description": "Probe state. Default: 'false'",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "proxyProtocolVersion": {
@@ -6246,7 +6247,7 @@ export const schema: Schema = {
           "description": "Id of your server",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "serverState": {
@@ -6254,7 +6255,7 @@ export const schema: Schema = {
           "description": "Server state",
           "fullType": "ipLoadbalancing.ServerState[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.ServerState[]"
         },
         "ssl": {
@@ -6262,7 +6263,7 @@ export const schema: Schema = {
           "description": "SSL ciphering. Probes will also be sent ciphered. Default: 'false'",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "status": {
@@ -6270,7 +6271,7 @@ export const schema: Schema = {
           "description": "Status attached to your server",
           "fullType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.BackendCustomerServerStatusEnum"
         },
         "weight": {
@@ -6309,7 +6310,7 @@ export const schema: Schema = {
           "description": "Id of your farm",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "port": {
@@ -6349,7 +6350,7 @@ export const schema: Schema = {
           "description": "Zone of you farm",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6364,7 +6365,7 @@ export const schema: Schema = {
           "description": "Address of your server",
           "fullType": "ipv4",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipv4"
         },
         "backendId": {
@@ -6372,7 +6373,7 @@ export const schema: Schema = {
           "description": "Farm id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "backup": {
@@ -6380,7 +6381,7 @@ export const schema: Schema = {
           "description": "Backup state. Default: 'false'",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "chain": {
@@ -6412,7 +6413,7 @@ export const schema: Schema = {
           "description": "Probe state. Default: 'false'",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "proxyProtocolVersion": {
@@ -6428,7 +6429,7 @@ export const schema: Schema = {
           "description": "Id of your server",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "serverState": {
@@ -6436,7 +6437,7 @@ export const schema: Schema = {
           "description": "Server state",
           "fullType": "ipLoadbalancing.ServerState[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.ServerState[]"
         },
         "ssl": {
@@ -6444,7 +6445,7 @@ export const schema: Schema = {
           "description": "SSL ciphering. Probes will also be sent ciphered",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "status": {
@@ -6452,7 +6453,7 @@ export const schema: Schema = {
           "description": "Status attached to your server",
           "fullType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.BackendCustomerServerStatusEnum"
         },
         "weight": {
@@ -6483,7 +6484,7 @@ export const schema: Schema = {
           "description": "Id of your farm",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "port": {
@@ -6491,7 +6492,7 @@ export const schema: Schema = {
           "description": "Port attached to your farm. Inherited from frontend if null",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "vrackNetworkId": {
@@ -6507,7 +6508,7 @@ export const schema: Schema = {
           "description": "Zone of you farm",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6522,7 +6523,7 @@ export const schema: Schema = {
           "description": "Address of your server",
           "fullType": "ipv4",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipv4"
         },
         "backendId": {
@@ -6530,7 +6531,7 @@ export const schema: Schema = {
           "description": "farm id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "displayName": {
@@ -6554,7 +6555,7 @@ export const schema: Schema = {
           "description": "Id of your server",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "status": {
@@ -6562,7 +6563,7 @@ export const schema: Schema = {
           "description": "Status attached to your server",
           "fullType": "ipLoadbalancing.BackendCustomerServerStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.BackendCustomerServerStatusEnum"
         }
       }
@@ -6609,7 +6610,7 @@ export const schema: Schema = {
           "description": "Disable frontend. Default: 'false'",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "displayName": {
@@ -6625,7 +6626,7 @@ export const schema: Schema = {
           "description": "Id of your frontend",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "hsts": {
@@ -6633,7 +6634,7 @@ export const schema: Schema = {
           "description": "HTTP Strict Transport Security. Default: 'false'",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "httpHeader": {
@@ -6649,7 +6650,7 @@ export const schema: Schema = {
           "description": "Listening port(s) on the server",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "redirectLocation": {
@@ -6665,7 +6666,7 @@ export const schema: Schema = {
           "description": "SSL deciphering. Default: 'false'",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "zone": {
@@ -6673,7 +6674,7 @@ export const schema: Schema = {
           "description": "Zone of you frontend",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6720,7 +6721,7 @@ export const schema: Schema = {
           "description": "Disable frontend. Default: 'false'",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "displayName": {
@@ -6736,7 +6737,7 @@ export const schema: Schema = {
           "description": "Id of your frontend",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "port": {
@@ -6744,7 +6745,7 @@ export const schema: Schema = {
           "description": "Listening port(s) on the server",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "ssl": {
@@ -6752,7 +6753,7 @@ export const schema: Schema = {
           "description": "SSL deciphering. Default: 'false'",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "zone": {
@@ -6760,7 +6761,7 @@ export const schema: Schema = {
           "description": "Zone of you frontend",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6791,7 +6792,7 @@ export const schema: Schema = {
           "description": "Disable frontend. Default: 'false'",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "displayName": {
@@ -6807,7 +6808,7 @@ export const schema: Schema = {
           "description": "Id of your frontend",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "port": {
@@ -6815,7 +6816,7 @@ export const schema: Schema = {
           "description": "Listening port(s) on the server",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "zone": {
@@ -6823,7 +6824,7 @@ export const schema: Schema = {
           "description": "Zone of you frontend",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6836,17 +6837,15 @@ export const schema: Schema = {
         "status": {
           "canBeNull": false,
           "description": "The global status of your Load Balancer component",
-          "fullType": "ipLoadbalancing.status.ComponentStatus",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.status.ComponentStatus"
         },
         "total": {
           "canBeNull": false,
           "description": "The Load Balancer total component count",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -6859,33 +6858,29 @@ export const schema: Schema = {
         "error": {
           "canBeNull": false,
           "description": "The number of component with status error",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "ok": {
           "canBeNull": false,
           "description": "The number of component with status ok",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "unknown": {
           "canBeNull": false,
           "description": "The number of component with status unknown",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "warn": {
           "canBeNull": false,
           "description": "The number of component with status warn",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -6910,9 +6905,8 @@ export const schema: Schema = {
         "status": {
           "canBeNull": false,
           "description": "The status of your Load Balancer billing domain",
-          "fullType": "ipLoadbalancing.status.Enum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipLoadbalancing.status.Enum"
         }
       }
@@ -6925,31 +6919,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -6957,7 +6947,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -7036,42 +7025,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -7085,7 +7074,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -7108,21 +7097,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

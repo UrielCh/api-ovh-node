@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/horizonView.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the HORIZONVIEW service",
@@ -36,7 +36,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -62,7 +62,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -81,14 +81,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ip",
-              "description": "You need to use a public Ip if you want to deploy a public pool. ",
-              "fullType": "ip",
-              "name": "vrouterPoolPublicIp",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "long",
               "description": "You can customize your pool by choosing its private Vlan ID. (smaller than 4095) ",
               "fullType": "long",
@@ -105,6 +97,14 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "ip",
+              "description": "You need to use a public Ip if you want to deploy a public pool. ",
+              "fullType": "ip",
+              "name": "vrouterPoolPublicIp",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "ipBlock",
               "description": "You can customize your pool by choosing the private network (Ex : 10.0.0.0/16)",
               "fullType": "ipBlock",
@@ -114,7 +114,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -140,7 +140,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -148,7 +148,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Access point ID",
+              "description": "Pool id",
               "fullType": "long",
               "name": "accessPointId",
               "paramType": "path",
@@ -168,7 +168,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -176,7 +176,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Access point ID",
+              "description": "Pool id",
               "fullType": "long",
               "name": "accessPointId",
               "paramType": "path",
@@ -201,14 +201,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "horizonView.AccessPointTypeEnum",
-              "description": "Update timeout session on a single Unified Access Gateway (only for hybrid Pool)",
-              "fullType": "horizonView.AccessPointTypeEnum",
-              "name": "onSingleAP",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "long",
               "description": "Timeout (in hour)",
               "fullType": "long",
@@ -217,8 +209,16 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "horizonView.AccessPointTypeEnum",
+              "description": "Update timeout session on a single Unified Access Gateway (only for hybrid Pool)",
+              "fullType": "horizonView.AccessPointTypeEnum",
+              "name": "onSingleAP",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -226,7 +226,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Access point ID",
+              "description": "Pool id",
               "fullType": "long",
               "name": "accessPointId",
               "paramType": "path",
@@ -252,7 +252,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -260,7 +260,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Access point ID",
+              "description": "Pool id",
               "fullType": "long",
               "name": "accessPointId",
               "paramType": "path",
@@ -288,7 +288,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -296,7 +296,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Access point ID",
+              "description": "Pool id",
               "fullType": "long",
               "name": "accessPointId",
               "paramType": "path",
@@ -322,7 +322,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -330,7 +330,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Access point ID",
+              "description": "Pool id",
               "fullType": "long",
               "name": "accessPointId",
               "paramType": "path",
@@ -338,7 +338,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Customer network ID",
+              "description": "Customer Network id",
               "fullType": "long",
               "name": "customerNetworkId",
               "paramType": "path",
@@ -358,7 +358,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -366,7 +366,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Access point ID",
+              "description": "Pool id",
               "fullType": "long",
               "name": "accessPointId",
               "paramType": "path",
@@ -374,7 +374,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Customer network ID",
+              "description": "Customer Network id",
               "fullType": "long",
               "name": "customerNetworkId",
               "paramType": "path",
@@ -400,7 +400,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -408,7 +408,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Access point ID",
+              "description": "Pool id",
               "fullType": "long",
               "name": "accessPointId",
               "paramType": "path",
@@ -442,7 +442,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -450,7 +450,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Access point ID",
+              "description": "Pool id",
               "fullType": "long",
               "name": "accessPointId",
               "paramType": "path",
@@ -483,14 +483,6 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "password",
-              "description": "The secret password for the two factor authentication",
-              "fullType": "password",
-              "name": "secret",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "horizonView.AccessPointTypeEnum",
               "description": "Enable the 2FA on a single Access Point (only for hybrid Pool)",
               "fullType": "horizonView.AccessPointTypeEnum",
@@ -499,8 +491,16 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "password",
+              "description": "The secret password for the two factor authentication",
+              "fullType": "password",
+              "name": "secret",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -508,7 +508,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Access point ID",
+              "description": "Pool id",
               "fullType": "long",
               "name": "accessPointId",
               "paramType": "path",
@@ -542,7 +542,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -550,7 +550,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Access point ID",
+              "description": "Pool id",
               "fullType": "long",
               "name": "accessPointId",
               "paramType": "path",
@@ -608,7 +608,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -634,7 +634,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -653,14 +653,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Name your network",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "ipBlock",
               "description": "The private network you want to reach.",
               "fullType": "ipBlock",
@@ -670,7 +662,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name your network",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -696,7 +696,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -704,7 +704,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Customer network ID",
+              "description": "Customer Network id",
               "fullType": "long",
               "name": "customerNetworkId",
               "paramType": "path",
@@ -724,7 +724,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -732,7 +732,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Customer network ID",
+              "description": "Customer Network id",
               "fullType": "long",
               "name": "customerNetworkId",
               "paramType": "path",
@@ -758,7 +758,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -784,7 +784,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -811,6 +811,14 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "string",
+              "description": "Email for your new user in Active diRectory.",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "password",
               "description": "New password for this Horizon View user. It must fits your HaaS password policy. If this field is empty, a random password will be generated and sent to your  email.",
               "fullType": "password",
@@ -820,15 +828,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email for your new user in Active diRectory.",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -854,17 +854,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Username",
+              "description": "Domain of the service",
               "fullType": "string",
-              "name": "username",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Customer username of your HaaS User",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "username",
               "paramType": "path",
               "required": true
             }
@@ -882,7 +882,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -890,7 +890,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Username",
+              "description": "Customer username of your HaaS User",
               "fullType": "string",
               "name": "username",
               "paramType": "path",
@@ -924,17 +924,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Username",
+              "description": "Domain of the service",
               "fullType": "string",
-              "name": "username",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Customer username of your HaaS User",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "username",
               "paramType": "path",
               "required": true
             }
@@ -958,7 +958,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -984,7 +984,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1009,20 +1009,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "horizonView.TaskStateEnum",
               "description": "Filter the value of state property (=)",
               "fullType": "horizonView.TaskStateEnum",
               "name": "state",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -1044,7 +1044,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1052,7 +1052,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Task ID",
+              "description": "Task id",
               "fullType": "long",
               "name": "taskId",
               "paramType": "path",
@@ -1078,7 +1078,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1112,7 +1112,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1146,7 +1146,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1172,7 +1172,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1191,6 +1191,22 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Domain of your active directory (for example domain.local)",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ip",
+              "description": "IP of your Active Directory",
+              "fullType": "ip",
+              "name": "activeDirectoryIP",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "ip",
               "description": "IP of your first DNS",
               "fullType": "ip",
@@ -1207,24 +1223,8 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "ip",
-              "description": "IP of your Active Directory",
-              "fullType": "ip",
-              "name": "activeDirectoryIP",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Domain of your active directory (for example domain.local)",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1250,7 +1250,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1258,7 +1258,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Domain trust ID",
+              "description": "Domain trust id",
               "fullType": "long",
               "name": "domainTrustId",
               "paramType": "path",
@@ -1283,22 +1283,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipv4",
-              "description": "IP of your Active Directory",
-              "fullType": "ipv4",
-              "name": "activeDirectoryIP",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Name of your private domain",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "password",
               "description": "Password of the horizonUI service account",
               "fullType": "password",
@@ -1315,8 +1299,24 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "ipv4",
+              "description": "IP of your Active Directory",
+              "fullType": "ipv4",
+              "name": "activeDirectoryIP",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Name of your private domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1324,7 +1324,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Domain trust ID",
+              "description": "Domain trust id",
               "fullType": "long",
               "name": "domainTrustId",
               "paramType": "path",
@@ -1366,7 +1366,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1374,7 +1374,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Domain trust ID",
+              "description": "Domain trust id",
               "fullType": "long",
               "name": "domainTrustId",
               "paramType": "path",
@@ -1424,7 +1424,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1432,7 +1432,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Domain trust ID",
+              "description": "Domain trust id",
               "fullType": "long",
               "name": "domainTrustId",
               "paramType": "path",
@@ -1474,7 +1474,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1482,7 +1482,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Domain trust ID",
+              "description": "Domain trust id",
               "fullType": "long",
               "name": "domainTrustId",
               "paramType": "path",
@@ -1508,7 +1508,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1528,14 +1528,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1561,7 +1561,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1596,7 +1596,7 @@ export const schema: Schema = {
           "description": "Customer Network id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
@@ -1604,7 +1604,7 @@ export const schema: Schema = {
           "description": "Name of your network",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "network": {
@@ -1612,7 +1612,7 @@ export const schema: Schema = {
           "description": "Customer network",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1627,7 +1627,7 @@ export const schema: Schema = {
           "description": "Customer Network id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
@@ -1635,7 +1635,7 @@ export const schema: Schema = {
           "description": "Name of your network",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "network": {
@@ -1643,7 +1643,7 @@ export const schema: Schema = {
           "description": "Customer network",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1666,7 +1666,7 @@ export const schema: Schema = {
           "description": "Customer id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "username": {
@@ -1674,7 +1674,7 @@ export const schema: Schema = {
           "description": "Customer username of your HaaS User",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1689,7 +1689,7 @@ export const schema: Schema = {
           "description": "IP of the VDI Active Directory",
           "fullType": "ip",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "adminDomain": {
@@ -1697,7 +1697,7 @@ export const schema: Schema = {
           "description": "Domain of the admin infrastructure",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "adminNetworkNextHop": {
@@ -1705,7 +1705,7 @@ export const schema: Schema = {
           "description": "Next hop to contact the private admin network",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "adminPrivateNetwork": {
@@ -1713,7 +1713,7 @@ export const schema: Schema = {
           "description": "Private network of the admin infrastructure",
           "fullType": "ipBlock",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipBlock"
         },
         "customerIntercoIP": {
@@ -1721,7 +1721,7 @@ export const schema: Schema = {
           "description": "Customer interco IP allows you to communicate between your private infrastructure and your CDI infrastructure throw the vrack.",
           "fullType": "ip",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "customerIntercoMask": {
@@ -1729,7 +1729,7 @@ export const schema: Schema = {
           "description": "Customer interco netmask allows you to communicate between your private infrastructure and your CDI infrastructure throw the vrack.",
           "fullType": "ip",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "customerIntercoVlanId": {
@@ -1737,7 +1737,7 @@ export const schema: Schema = {
           "description": "Customer interco vlan allows you to communicate between your private infrastructure and your CDI infrastructure throw the vrack.",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "datacenterId": {
@@ -1745,7 +1745,7 @@ export const schema: Schema = {
           "description": "Datacenter ids",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
@@ -1753,7 +1753,7 @@ export const schema: Schema = {
           "description": "Name of the datacenter",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceName": {
@@ -1761,7 +1761,7 @@ export const schema: Schema = {
           "description": "Domain of your Horizon",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1776,7 +1776,7 @@ export const schema: Schema = {
           "description": "The location of your administration servers in our datacenter",
           "fullType": "horizonView.Zone",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "horizonView.Zone"
         },
         "privateCloudName": {
@@ -1784,7 +1784,7 @@ export const schema: Schema = {
           "description": "Your Horizon Private Cloud ",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "privateCloudZone": {
@@ -1792,7 +1792,7 @@ export const schema: Schema = {
           "description": "The location of your datacenter",
           "fullType": "horizonView.Zone",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "horizonView.Zone"
         },
         "publicUrl": {
@@ -1800,7 +1800,7 @@ export const schema: Schema = {
           "description": "Url of your Dedicated Horizon",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "state": {
@@ -1808,7 +1808,7 @@ export const schema: Schema = {
           "description": "Current state of your Dedicated Horizon",
           "fullType": "horizonView.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "horizonView.StateEnum"
         },
         "storageAccelerator": {
@@ -1816,7 +1816,7 @@ export const schema: Schema = {
           "description": "View Storage Accelerator for Vcenter",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "version": {
@@ -1824,7 +1824,7 @@ export const schema: Schema = {
           "description": "Version of your Dedicated Horizon",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -1839,7 +1839,7 @@ export const schema: Schema = {
           "description": "IP of your Active Directory",
           "fullType": "ip",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "dns1": {
@@ -1863,7 +1863,7 @@ export const schema: Schema = {
           "description": "Name of your private domain",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "domainTrustId": {
@@ -1871,7 +1871,7 @@ export const schema: Schema = {
           "description": "Domain trust id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -1886,7 +1886,7 @@ export const schema: Schema = {
           "description": "Pool id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "dhcpNetmask": {
@@ -1894,7 +1894,7 @@ export const schema: Schema = {
           "description": "DHCP netmask in this port group",
           "fullType": "ip",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "dhcpNetwork": {
@@ -1902,7 +1902,7 @@ export const schema: Schema = {
           "description": "DHCP network in this port group",
           "fullType": "ip",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "externalUrl": {
@@ -1910,7 +1910,7 @@ export const schema: Schema = {
           "description": "External url of your access point",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "intercoNextHop": {
@@ -1934,7 +1934,7 @@ export const schema: Schema = {
           "description": "Port group id",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "state": {
@@ -1942,7 +1942,7 @@ export const schema: Schema = {
           "description": "Network state",
           "fullType": "horizonView.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "horizonView.StateEnum"
         },
         "twoFA": {
@@ -1950,7 +1950,7 @@ export const schema: Schema = {
           "description": "Two factor authentication",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "type": {
@@ -1958,7 +1958,7 @@ export const schema: Schema = {
           "description": "Pool type",
           "fullType": "horizonView.PoolType",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "horizonView.PoolType"
         }
       }
@@ -2014,7 +2014,7 @@ export const schema: Schema = {
           "description": "Task name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "progress": {
@@ -2022,7 +2022,7 @@ export const schema: Schema = {
           "description": "Current progress",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "state": {
@@ -2030,7 +2030,7 @@ export const schema: Schema = {
           "description": "Current Task state",
           "fullType": "horizonView.TaskStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "horizonView.TaskStateEnum"
         },
         "taskId": {
@@ -2038,7 +2038,7 @@ export const schema: Schema = {
           "description": "Task id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2072,7 +2072,7 @@ export const schema: Schema = {
           "description": "Username of your HaaS User",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -2096,31 +2096,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -2128,7 +2124,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -2207,42 +2202,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -2256,7 +2251,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -2279,21 +2274,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

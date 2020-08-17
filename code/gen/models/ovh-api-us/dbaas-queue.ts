@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://api.us.ovhcloud.com:443/1.0/dbaas/queue.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the PAAS_QUEUE service",
@@ -36,7 +36,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Application ID",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -56,18 +56,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Application name",
+              "description": "Application ID",
               "fullType": "string",
-              "name": "name",
-              "paramType": "body",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Application name",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "name": "name",
+              "paramType": "body",
               "required": true
             }
           ],
@@ -90,7 +90,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Application ID",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -116,17 +116,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Key ID",
+              "description": "Application ID",
               "fullType": "string",
-              "name": "keyId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Key ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "keyId",
               "paramType": "path",
               "required": true
             }
@@ -150,7 +150,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Application ID",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -176,7 +176,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Application ID",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -202,7 +202,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Application ID",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -236,7 +236,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Application ID",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -262,7 +262,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Application ID",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -296,7 +296,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your Queue app",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -316,14 +316,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your Queue app",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -349,7 +349,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Application ID",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -375,7 +375,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Application ID",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -403,7 +403,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Application ID",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -437,7 +437,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Application ID",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -463,7 +463,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Application ID",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -497,7 +497,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Application ID",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -531,17 +531,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "User ID",
+              "description": "Application ID",
               "fullType": "string",
-              "name": "userId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "User ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "userId",
               "paramType": "path",
               "required": true
             }
@@ -564,7 +564,7 @@ export const schema: Schema = {
           "description": "Human ID of the application",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -572,7 +572,7 @@ export const schema: Schema = {
           "description": "Application ID",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -580,7 +580,7 @@ export const schema: Schema = {
           "description": "Application name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "regionId": {
@@ -588,7 +588,7 @@ export const schema: Schema = {
           "description": "Region ID of the application",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -596,8 +596,47 @@ export const schema: Schema = {
           "description": "Application status",
           "fullType": "dbaas.queue.AppStatus",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dbaas.queue.AppStatus"
+        }
+      }
+    },
+    "dbaas.queue.AppConfiguration": {
+      "description": "AppConfiguration",
+      "id": "AppConfiguration",
+      "namespace": "dbaas.queue",
+      "properties": {
+        "app": {
+          "canBeNull": false,
+          "description": "Application",
+          "fullType": "dbaas.queue.App",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.queue.App"
+        },
+        "metricsAccount": {
+          "canBeNull": false,
+          "description": "Metrics account",
+          "fullType": "dbaas.queue.MetricsAccount",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.queue.MetricsAccount"
+        },
+        "roles": {
+          "canBeNull": false,
+          "description": "List of created roles",
+          "fullType": "dbaas.queue.Role[]",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.queue.Role[]"
+        },
+        "users": {
+          "canBeNull": false,
+          "description": "List of created users",
+          "fullType": "dbaas.queue.UserWithPassword[]",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.queue.UserWithPassword[]"
         }
       }
     },
@@ -622,7 +661,7 @@ export const schema: Schema = {
           "description": "Human ID of the key's application",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -630,7 +669,7 @@ export const schema: Schema = {
           "description": "Key ID",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -638,8 +677,47 @@ export const schema: Schema = {
           "description": "Key name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
+        }
+      }
+    },
+    "dbaas.queue.KeyWithSecret": {
+      "description": "KeyWithSecret",
+      "id": "KeyWithSecret",
+      "namespace": "dbaas.queue",
+      "properties": {
+        "humanAppId": {
+          "canBeNull": false,
+          "description": "Human ID of the key's application",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Key ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Key name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "secret": {
+          "canBeNull": false,
+          "description": "Key secret",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
         }
       }
     },
@@ -653,7 +731,7 @@ export const schema: Schema = {
           "description": "OpenTSDB host url",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "token": {
@@ -661,7 +739,7 @@ export const schema: Schema = {
           "description": "Token for OpenTSDB metrics access",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -676,7 +754,7 @@ export const schema: Schema = {
           "description": "Region ID",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -684,7 +762,7 @@ export const schema: Schema = {
           "description": "Region name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "url": {
@@ -692,7 +770,7 @@ export const schema: Schema = {
           "description": "Region URL",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -707,7 +785,7 @@ export const schema: Schema = {
           "description": "Automatically create non-existing topics on read & write operations",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "name": {
@@ -715,7 +793,7 @@ export const schema: Schema = {
           "description": "Role name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "readAcl": {
@@ -723,7 +801,7 @@ export const schema: Schema = {
           "description": "List of topics with read access",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "writeAcl": {
@@ -731,7 +809,7 @@ export const schema: Schema = {
           "description": "List of topics with write access",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         }
       }
@@ -746,7 +824,7 @@ export const schema: Schema = {
           "description": "Topic ID",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "partitions": {
@@ -754,7 +832,7 @@ export const schema: Schema = {
           "description": "Number of partitions",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "replicationFactor": {
@@ -762,7 +840,7 @@ export const schema: Schema = {
           "description": "Replication factor",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -777,7 +855,7 @@ export const schema: Schema = {
           "description": "User ID",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -785,7 +863,7 @@ export const schema: Schema = {
           "description": "User name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "roles": {
@@ -793,7 +871,7 @@ export const schema: Schema = {
           "description": "List of roles this user belongs to",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         }
       }
@@ -808,7 +886,7 @@ export const schema: Schema = {
           "description": "User ID",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -816,7 +894,7 @@ export const schema: Schema = {
           "description": "User name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "password": {
@@ -824,7 +902,7 @@ export const schema: Schema = {
           "description": "User password",
           "fullType": "password",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "password"
         },
         "roles": {
@@ -832,7 +910,7 @@ export const schema: Schema = {
           "description": "List of roles this user belongs to",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         }
       }
@@ -845,31 +923,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -877,7 +951,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -921,42 +994,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -970,7 +1043,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -993,21 +1066,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

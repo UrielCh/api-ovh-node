@@ -436,6 +436,19 @@ export namespace sms {
         sender: string;
     }
     /**
+     * SMS senders' document
+     * interface fullName: sms.SenderDocument.SenderDocument
+     */
+    export interface SenderDocument {
+        createdAt: string;
+        description?: string;
+        documentID: string;
+        getUrl: string;
+        name: string;
+        putUrl?: string;
+        size: number;
+    }
+    /**
      * The referer of the available sender
      * type fullname: sms.SenderRefererEnum
      */
@@ -707,7 +720,7 @@ export interface Sms {
                  * Alter this object properties
                  * PUT /sms/virtualNumbers/{number}/serviceInfos
                  */
-                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -725,7 +738,7 @@ export interface Sms {
          * Alter this object properties
          * PUT /sms/{serviceName}
          */
-        $put(params: { automaticRecreditAmount?: sms.PackQuantityAutomaticRecreditEnum, callBack?: string, creditThresholdForAutomaticRecredit: number, creditsHoldByQuota: number, creditsLeft: number, description: string, name: string, smsResponse: sms.Response, status: sms.StatusAccountEnum, stopCallBack?: string, templates: sms.Templates, userQuantityWithQuota: number }): Promise<void>;
+        $put(params?: { automaticRecreditAmount?: sms.PackQuantityAutomaticRecreditEnum, callBack?: string, creditThresholdForAutomaticRecredit?: number, creditsHoldByQuota?: number, creditsLeft?: number, description?: string, name?: string, smsResponse?: sms.Response, status?: sms.StatusAccountEnum, stopCallBack?: string, templates?: sms.Templates, userQuantityWithQuota?: number }): Promise<void>;
         /**
          * Controle cache
          */
@@ -944,7 +957,7 @@ export interface Sms {
                  * Alter this object properties
                  * PUT /sms/{serviceName}/phonebooks/{bookKey}
                  */
-                $put(params: { bookKey: string, name: string, phoneKey: string }): Promise<void>;
+                $put(params?: { bookKey?: string, name?: string, phoneKey?: string }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1001,7 +1014,7 @@ export interface Sms {
                          * Alter this object properties
                          * PUT /sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}
                          */
-                        $put(params: { group: string, homeMobile?: string, homePhone?: string, id: number, name: string, surname: string, workMobile?: string, workPhone?: string }): Promise<void>;
+                        $put(params?: { group?: string, homeMobile?: string, homePhone?: string, id?: number, name?: string, surname?: string, workMobile?: string, workPhone?: string }): Promise<void>;
                         /**
                          * Controle cache
                          */
@@ -1040,7 +1053,7 @@ export interface Sms {
                  * Alter this object properties
                  * PUT /sms/{serviceName}/receivers/{slotId}
                  */
-                $put(params: { autoUpdate: boolean, canAutoUpdate: boolean, datetime: string, description: string, records: number, slotId: number }): Promise<void>;
+                $put(params?: { autoUpdate?: boolean, canAutoUpdate?: boolean, datetime?: string, description?: string, records?: number, slotId?: number }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1110,11 +1123,43 @@ export interface Sms {
                  * Alter this object properties
                  * PUT /sms/{serviceName}/senders/{sender}
                  */
-                $put(params: { comment?: string, description: string, referer: sms.RefererSenderEnum, sender: string, status: sms.StatusSenderEnum, type?: sms.TypeSenderEnum, validationMedia?: string }): Promise<void>;
+                $put(params?: { comment?: string, description?: string, referer?: sms.RefererSenderEnum, sender?: string, status?: sms.StatusSenderEnum, type?: sms.TypeSenderEnum, validationMedia?: string }): Promise<void>;
                 /**
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                documents: {
+                    /**
+                     * Documents linked to SMS sender for validation purpose
+                     * GET /sms/{serviceName}/senders/{sender}/documents
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Create a new empty document
+                     * POST /sms/{serviceName}/senders/{sender}/documents
+                     */
+                    $post(params: { description?: string, name: string }): Promise<sms.SenderDocument>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(documentID: string): {
+                        /**
+                         * Get this object properties
+                         * GET /sms/{serviceName}/senders/{sender}/documents/{documentID}
+                         */
+                        $get(): Promise<sms.SenderDocument>;
+                        /**
+                         * Alter this object properties
+                         * PUT /sms/{serviceName}/senders/{sender}/documents/{documentID}
+                         */
+                        $put(params?: { createdAt?: string, description?: string, documentID?: string, getUrl?: string, name?: string, putUrl?: string, size?: number }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    };
+                }
                 validate: {
                     /**
                      * Validate a given sender with an activation code.
@@ -1149,7 +1194,7 @@ export interface Sms {
              * Alter this object properties
              * PUT /sms/{serviceName}/serviceInfos
              */
-            $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
+            $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -1207,7 +1252,7 @@ export interface Sms {
                  * Alter this object properties
                  * PUT /sms/{serviceName}/templatesControl/{name}
                  */
-                $put(params: { activity: sms.TypeTemplateEnum, comment: string, datetime: string, description: string, message: string, name: string, status: sms.StatusSenderEnum }): Promise<void>;
+                $put(params?: { activity?: sms.TypeTemplateEnum, comment?: string, datetime?: string, description?: string, message?: string, name?: string, status?: sms.StatusSenderEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1266,7 +1311,7 @@ export interface Sms {
                  * Alter this object properties
                  * PUT /sms/{serviceName}/users/{login}
                  */
-                $put(params: { alertThresholdInformations: sms.AlertThreshold, callBack?: string, ipRestrictions: string[], login: string, password: string, quotaInformations: sms.Quota, stopCallBack?: string }): Promise<void>;
+                $put(params?: { alertThresholdInformations?: sms.AlertThreshold, callBack?: string, ipRestrictions?: string[], login?: string, password?: string, quotaInformations?: sms.Quota, stopCallBack?: string }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1409,7 +1454,7 @@ export interface Sms {
                          * Alter this object properties
                          * PUT /sms/{serviceName}/users/{login}/receivers/{slotId}
                          */
-                        $put(params: { autoUpdate: boolean, canAutoUpdate: boolean, datetime: string, description: string, records: number, slotId: number }): Promise<void>;
+                        $put(params?: { autoUpdate?: boolean, canAutoUpdate?: boolean, datetime?: string, description?: string, records?: number, slotId?: number }): Promise<void>;
                         /**
                          * Controle cache
                          */

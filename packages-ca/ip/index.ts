@@ -308,6 +308,16 @@ export namespace ip {
      */
     export type LoadBalancingZoneEnum = "bhs" | "gra" | "rbx" | "sbg"
     /**
+     * Mitigation attack on your ip
+     * interface fullName: ip.MitigationAttack.MitigationAttack
+     */
+    export interface MitigationAttack {
+        endDate?: string;
+        idAttack: number;
+        ipAttack: string;
+        startDate: string;
+    }
+    /**
      * Detailed statistics about your traffic
      * interface fullName: ip.MitigationDetailedStats.MitigationDetailedStats
      */
@@ -643,7 +653,7 @@ export interface Ip {
                      * Alter this object properties
                      * PUT /ip/loadBalancing/{serviceName}/backend/{backend}
                      */
-                    $put(params: { backend: string, mainBackendIp?: string, probe: ip.LoadBalancingBackendProbeEnum, weight: number, zone: ip.LoadBalancingZoneEnum }): Promise<void>;
+                    $put(params?: { backend?: string, mainBackendIp?: string, probe?: ip.LoadBalancingBackendProbeEnum, weight?: number, zone?: ip.LoadBalancingZoneEnum }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -704,7 +714,7 @@ export interface Ip {
                  * Add a new port redirection
                  * POST /ip/loadBalancing/{serviceName}/portsRedirection
                  */
-                $post(params: { dstPort: number, srcPort: ip.LoadBalancingAdditionalPortEnum }): Promise<ip.LoadBalancingTask>;
+                $post(params?: { dstPort?: number, srcPort?: ip.LoadBalancingAdditionalPortEnum }): Promise<ip.LoadBalancingTask>;
                 /**
                  * Controle cache
                  */
@@ -758,7 +768,7 @@ export interface Ip {
                  * Alter this object properties
                  * PUT /ip/loadBalancing/{serviceName}/serviceInfos
                  */
-                $put(params: { canDeleteAtExpiration: boolean, contactAdmin: string, contactBilling: string, contactTech: string, creation: string, domain: string, engagedUpTo?: string, expiration: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType: service.RenewalTypeEnum, serviceId: number, status: service.StateEnum }): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -830,7 +840,7 @@ export interface Ip {
              * Alter this object properties
              * PUT /ip/service/{serviceName}
              */
-            $put(params: { canBeTerminated: boolean, country?: coreTypes.CountryEnum, description?: string, ip: string, organisationId?: string, routedTo?: ip.RoutedTo, type: ip.IpTypeEnum }): Promise<void>;
+            $put(params?: { canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -891,7 +901,7 @@ export interface Ip {
          * Alter this object properties
          * PUT /ip/{ip}
          */
-        $put(params: { canBeTerminated: boolean, country?: coreTypes.CountryEnum, description?: string, ip: string, organisationId?: string, routedTo?: ip.RoutedTo, type: ip.IpTypeEnum }): Promise<void>;
+        $put(params?: { canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum }): Promise<void>;
         /**
          * Controle cache
          */
@@ -1035,7 +1045,7 @@ export interface Ip {
                  * Alter this object properties
                  * PUT /ip/{ip}/firewall/{ipOnFirewall}
                  */
-                $put(params: { enabled: boolean, ipOnFirewall: string, state: ip.FirewallStateEnum }): Promise<void>;
+                $put(params?: { enabled?: boolean, ipOnFirewall?: string, state?: ip.FirewallStateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1094,7 +1104,7 @@ export interface Ip {
                  * Alter this object properties
                  * PUT /ip/{ip}/game/{ipOnGame}
                  */
-                $put(params: { firewallModeEnabled: boolean, ipOnGame: string, state: ip.GameMitigationStateEnum }): Promise<void>;
+                $put(params?: { firewallModeEnabled?: boolean, ipOnGame?: string, state?: ip.GameMitigationStateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1269,7 +1279,7 @@ export interface Ip {
                  * Alter this object properties
                  * PUT /ip/{ip}/mitigation/{ipOnMitigation}
                  */
-                $put(params: { auto: boolean, ipOnMitigation: string, permanent: boolean, state: ip.MitigationStateEnum }): Promise<void>;
+                $put(params?: { auto?: boolean, ipOnMitigation?: string, permanent?: boolean, state?: ip.MitigationStateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1328,7 +1338,7 @@ export interface Ip {
                  * Alter this object properties
                  * PUT /ip/{ip}/mitigationProfiles/{ipMitigationProfile}
                  */
-                $put(params: { autoMitigationTimeOut: ip.MitigationProfileAutoMitigationTimeOutEnum, ipMitigationProfile: string, state: ip.MitigationProfileStateEnum }): Promise<void>;
+                $put(params?: { autoMitigationTimeOut?: ip.MitigationProfileAutoMitigationTimeOutEnum, ipMitigationProfile?: string, state?: ip.MitigationProfileStateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */

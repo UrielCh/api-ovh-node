@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/store.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "MarketPlaceContact",
@@ -17,7 +17,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "MarketPlaceContact.Contact[]"
+          "responseType": "MarketPlace.Contact[]"
         },
         {
           "apiStatus": {
@@ -46,6 +46,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Last name",
+              "fullType": "string",
+              "name": "lastname",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Email address",
               "fullType": "string",
               "name": "email",
@@ -62,25 +70,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Zipcode",
+              "description": "Country",
               "fullType": "string",
-              "name": "zip",
+              "name": "country",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Last name",
+              "description": "Zipcode",
               "fullType": "string",
-              "name": "lastname",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Country",
-              "fullType": "string",
-              "name": "country",
+              "name": "zip",
               "paramType": "body",
               "required": false
             },
@@ -109,7 +109,7 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "MarketPlaceContact.Contact"
+          "responseType": "MarketPlace.Contact"
         }
       ],
       "path": "/store/contact"
@@ -128,7 +128,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Contact ID",
+              "description": "Id of the contact to remove",
               "fullType": "string",
               "name": "contactId",
               "paramType": "path",
@@ -148,14 +148,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Contact ID",
+              "description": "Id of the contact to fetch",
               "fullType": "string",
               "name": "contactId",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "MarketPlaceContact.Contact"
+          "responseType": "MarketPlace.Contact"
         },
         {
           "apiStatus": {
@@ -168,65 +168,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "City",
+              "description": "Id of the contact to fetch",
               "fullType": "string",
-              "name": "city",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Phone number",
-              "fullType": "string",
-              "name": "phone",
-              "paramType": "body",
-              "required": false
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
               "description": "Title",
               "fullType": "string",
               "name": "title",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Email address",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Street address",
-              "fullType": "string",
-              "name": "street",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Country",
-              "fullType": "string",
-              "name": "country",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Zipcode",
-              "fullType": "string",
-              "name": "zip",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Province name",
-              "fullType": "string",
-              "name": "province",
               "paramType": "body",
               "required": false
             },
@@ -248,14 +200,62 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Contact ID",
+              "description": "Email address",
               "fullType": "string",
-              "name": "contactId",
-              "paramType": "path",
-              "required": true
+              "name": "email",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Street address",
+              "fullType": "string",
+              "name": "street",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Country",
+              "fullType": "string",
+              "name": "country",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Zipcode",
+              "fullType": "string",
+              "name": "zip",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Province name",
+              "fullType": "string",
+              "name": "province",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "City",
+              "fullType": "string",
+              "name": "city",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Phone number",
+              "fullType": "string",
+              "name": "phone",
+              "paramType": "body",
+              "required": false
             }
           ],
-          "responseType": "MarketPlaceContact.Contact"
+          "responseType": "MarketPlace.Contact"
         }
       ],
       "path": "/store/contact/{contactId}"
@@ -274,7 +274,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Contact ID",
+              "description": "Id of the contact to fetch",
               "fullType": "string",
               "name": "contactId",
               "paramType": "path",
@@ -302,7 +302,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Contact ID",
+              "description": "Id of the contact to fetch",
               "fullType": "string",
               "name": "contactId",
               "paramType": "path",
@@ -328,17 +328,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Document ID",
+              "description": "Id of the contact to fetch",
               "fullType": "string",
-              "name": "documentId",
+              "name": "contactId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Contact ID",
+              "description": "Id of the document",
               "fullType": "string",
-              "name": "contactId",
+              "name": "documentId",
               "paramType": "path",
               "required": true
             }
@@ -433,7 +433,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Document ID",
+              "description": "Id of the object to delete",
               "fullType": "string",
               "name": "documentId",
               "paramType": "path",
@@ -453,7 +453,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Document ID",
+              "description": "Id of the document to fetch",
               "fullType": "string",
               "name": "documentId",
               "paramType": "path",
@@ -490,43 +490,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Complete description",
+              "description": "Legal form",
               "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Organisation display name",
-              "fullType": "string",
-              "name": "organisationDisplayName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Complementary information",
-              "fullType": "string",
-              "name": "otherDetails",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Province name",
-              "fullType": "string",
-              "name": "province",
+              "name": "legalForm",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Linked contact id",
+              "description": "Organisation name",
               "fullType": "string",
-              "name": "contact",
+              "name": "organisationName",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
@@ -538,17 +514,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Company national identification number",
+              "description": "City",
               "fullType": "string",
-              "name": "companyNationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Organisation name",
-              "fullType": "string",
-              "name": "organisationName",
+              "name": "city",
               "paramType": "body",
               "required": true
             },
@@ -578,25 +546,33 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Category",
+              "description": "Complete description",
               "fullType": "string",
-              "name": "category",
+              "name": "description",
               "paramType": "body",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Legal form",
-              "fullType": "string",
-              "name": "legalForm",
-              "paramType": "body",
-              "required": true
             },
             {
               "dataType": "string",
               "description": "VAT number",
               "fullType": "string",
               "name": "vat",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Organisation display name",
+              "fullType": "string",
+              "name": "organisationDisplayName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Company national identification number",
+              "fullType": "string",
+              "name": "companyNationalIdentificationNumber",
               "paramType": "body",
               "required": false
             },
@@ -610,11 +586,35 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "City",
+              "description": "Complementary information",
               "fullType": "string",
-              "name": "city",
+              "name": "otherDetails",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Category",
+              "fullType": "string",
+              "name": "category",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Province name",
+              "fullType": "string",
+              "name": "province",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Linked contact id",
+              "fullType": "string",
+              "name": "contact",
+              "paramType": "body",
+              "required": false
             }
           ],
           "responseType": "MarketPlace.Partner"
@@ -636,7 +636,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Partner ID",
+              "description": "Id of the object to fetch",
               "fullType": "string",
               "name": "partnerId",
               "paramType": "path",
@@ -656,7 +656,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Partner ID",
+              "description": "Id of the partner",
               "fullType": "string",
               "name": "partnerId",
               "paramType": "path",
@@ -676,17 +676,25 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Complementary information",
+              "description": "Id of the partner",
               "fullType": "string",
-              "name": "otherDetails",
-              "paramType": "body",
-              "required": false
+              "name": "partnerId",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
               "description": "Legal form",
               "fullType": "string",
               "name": "legalForm",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Organisation name",
+              "fullType": "string",
+              "name": "organisationName",
               "paramType": "body",
               "required": false
             },
@@ -708,25 +716,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Province name",
+              "description": "Street address",
               "fullType": "string",
-              "name": "province",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Linked contact id",
-              "fullType": "string",
-              "name": "contact",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Organisation name",
-              "fullType": "string",
-              "name": "organisationName",
+              "name": "street",
               "paramType": "body",
               "required": false
             },
@@ -740,41 +732,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Complete description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Category",
-              "fullType": "string",
-              "name": "category",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Company national identification number",
-              "fullType": "string",
-              "name": "companyNationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Street address",
-              "fullType": "string",
-              "name": "street",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Language",
               "fullType": "string",
               "name": "language",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Complete description",
+              "fullType": "string",
+              "name": "description",
               "paramType": "body",
               "required": false
             },
@@ -788,9 +756,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Category",
+              "fullType": "string",
+              "name": "category",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Organisation display name",
               "fullType": "string",
               "name": "organisationDisplayName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Company national identification number",
+              "fullType": "string",
+              "name": "companyNationalIdentificationNumber",
               "paramType": "body",
               "required": false
             },
@@ -804,11 +788,27 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partner ID",
+              "description": "Complementary information",
               "fullType": "string",
-              "name": "partnerId",
-              "paramType": "path",
-              "required": true
+              "name": "otherDetails",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Province name",
+              "fullType": "string",
+              "name": "province",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Linked contact id",
+              "fullType": "string",
+              "name": "contact",
+              "paramType": "body",
+              "required": false
             }
           ],
           "responseType": "MarketPlace.Partner"
@@ -830,7 +830,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Partner ID",
+              "description": "Id of the partner",
               "fullType": "string",
               "name": "partnerId",
               "paramType": "path",
@@ -858,7 +858,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partner ID",
+              "description": "Id of the partner",
               "fullType": "string",
               "name": "partnerId",
               "paramType": "path",
@@ -884,7 +884,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Partner ID",
+              "description": "Id of the partner",
               "fullType": "string",
               "name": "partnerId",
               "paramType": "path",
@@ -892,7 +892,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Document ID",
+              "description": "Id of the document",
               "fullType": "string",
               "name": "documentId",
               "paramType": "path",
@@ -918,14 +918,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Partner ID",
+              "description": "Id of the partner",
               "fullType": "string",
               "name": "partnerId",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "MarketPlacePartnerProduct.edit.response[]"
+          "responseType": "MarketPlace.Partner.Product[]"
         },
         {
           "apiStatus": {
@@ -936,6 +936,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Id of the partner",
+              "fullType": "string",
+              "name": "partnerId",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "string",
               "description": "Description of product",
@@ -967,17 +975,9 @@ export const schema: Schema = {
               "name": "category",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Partner ID",
-              "fullType": "string",
-              "name": "partnerId",
-              "paramType": "path",
-              "required": true
             }
           ],
-          "responseType": "MarketPlacePartnerProduct.edit.response"
+          "responseType": "MarketPlace.Partner.Product"
         }
       ],
       "path": "/store/partner/{partnerId}/product"
@@ -996,7 +996,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Partner ID",
+              "description": "Id of the partner",
               "fullType": "string",
               "name": "partnerId",
               "paramType": "path",
@@ -1004,7 +1004,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Product ID",
+              "description": "Id of the product",
               "fullType": "string",
               "name": "productId",
               "paramType": "path",
@@ -1024,7 +1024,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Partner ID",
+              "description": "Id of the partner",
               "fullType": "string",
               "name": "partnerId",
               "paramType": "path",
@@ -1032,14 +1032,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Product ID",
+              "description": "Id of the product",
               "fullType": "string",
               "name": "productId",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "MarketPlacePartnerProduct.edit.response"
+          "responseType": "MarketPlace.Partner.Product"
         },
         {
           "apiStatus": {
@@ -1050,6 +1050,22 @@ export const schema: Schema = {
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Id of the partner",
+              "fullType": "string",
+              "name": "partnerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Id of the product",
+              "fullType": "string",
+              "name": "productId",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "string",
               "description": "Description of product",
@@ -1081,25 +1097,9 @@ export const schema: Schema = {
               "name": "otherDetails",
               "paramType": "body",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Partner ID",
-              "fullType": "string",
-              "name": "partnerId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Product ID",
-              "fullType": "string",
-              "name": "productId",
-              "paramType": "path",
-              "required": true
             }
           ],
-          "responseType": "MarketPlacePartnerProduct.edit.response"
+          "responseType": "MarketPlace.Partner.Product"
         }
       ],
       "path": "/store/partner/{partnerId}/product/{productId}"
@@ -1118,17 +1118,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Product ID",
+              "description": "Id of the partner",
               "fullType": "string",
-              "name": "productId",
+              "name": "partnerId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Partner ID",
+              "description": "Id of the product",
               "fullType": "string",
-              "name": "partnerId",
+              "name": "productId",
               "paramType": "path",
               "required": true
             }
@@ -1154,7 +1154,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Partner ID",
+              "description": "Id of the partner",
               "fullType": "string",
               "name": "partnerId",
               "paramType": "path",
@@ -1162,7 +1162,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Product ID",
+              "description": "Id of the product",
               "fullType": "string",
               "name": "productId",
               "paramType": "path",
@@ -1188,15 +1188,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Document ID",
-              "fullType": "string",
-              "name": "documentId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Partner ID",
+              "description": "Id of the partner",
               "fullType": "string",
               "name": "partnerId",
               "paramType": "path",
@@ -1204,9 +1196,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Product ID",
+              "description": "Id of the product",
               "fullType": "string",
               "name": "productId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Id of the document",
+              "fullType": "string",
+              "name": "documentId",
               "paramType": "path",
               "required": true
             }
@@ -1219,6 +1219,101 @@ export const schema: Schema = {
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
+    "MarketPlace.Contact": {
+      "description": "Contact information",
+      "id": "Contact",
+      "namespace": "MarketPlaceContact",
+      "properties": {
+        "city": {
+          "canBeNull": true,
+          "description": "City",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "country": {
+          "canBeNull": true,
+          "description": "Country",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "email": {
+          "canBeNull": false,
+          "description": "Email address",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "firstname": {
+          "canBeNull": false,
+          "description": "First name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique identifier",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "lastname": {
+          "canBeNull": false,
+          "description": "Last name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "phone": {
+          "canBeNull": true,
+          "description": "Phone number",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "province": {
+          "canBeNull": true,
+          "description": "Province name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "street": {
+          "canBeNull": true,
+          "description": "Street address",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "title": {
+          "canBeNull": false,
+          "description": "Title",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "zip": {
+          "canBeNull": true,
+          "description": "Zipcode",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "MarketPlace.Document": {
       "description": "Document",
       "id": "Document",
@@ -1245,7 +1340,7 @@ export const schema: Schema = {
           "description": "Unique identifier",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -1417,112 +1512,17 @@ export const schema: Schema = {
         }
       }
     },
-    "MarketPlaceContact.Contact": {
-      "description": "Contact information",
-      "id": "Contact",
-      "namespace": "MarketPlaceContact",
-      "properties": {
-        "city": {
-          "canBeNull": true,
-          "description": "City",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "country": {
-          "canBeNull": true,
-          "description": "Country",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "email": {
-          "canBeNull": false,
-          "description": "Email address",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "firstname": {
-          "canBeNull": false,
-          "description": "First name",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Unique identifier",
-          "fullType": "string",
-          "readOnly": true,
-          "required": true,
-          "type": "string"
-        },
-        "lastname": {
-          "canBeNull": false,
-          "description": "Last name",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "phone": {
-          "canBeNull": true,
-          "description": "Phone number",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "province": {
-          "canBeNull": true,
-          "description": "Province name",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "street": {
-          "canBeNull": true,
-          "description": "Street address",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "title": {
-          "canBeNull": false,
-          "description": "Title",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "zip": {
-          "canBeNull": true,
-          "description": "Zipcode",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "MarketPlacePartnerProduct.edit.response": {
+    "MarketPlace.Partner.Product": {
       "description": "product",
-      "id": "response",
-      "namespace": "MarketPlacePartnerProduct.edit",
+      "id": "edit.response",
+      "namespace": "MarketPlacePartnerProduct",
       "properties": {
         "category": {
           "canBeNull": false,
           "description": "Name of product category",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "description": {
@@ -1530,7 +1530,7 @@ export const schema: Schema = {
           "description": "Description of product",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -1538,7 +1538,7 @@ export const schema: Schema = {
           "description": "Name of product",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "otherDetails": {
@@ -1561,16 +1561,14 @@ export const schema: Schema = {
       "properties": {
         "key": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }

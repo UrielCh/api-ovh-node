@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://ca.api.ovh.com:443/1.0/domain.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the DOMAIN service",
@@ -278,7 +278,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Association information ID",
+              "description": "Association Information ID",
               "fullType": "long",
               "name": "associationInformationId",
               "paramType": "path",
@@ -315,6 +315,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Number of the Inpi declaration",
+              "fullType": "string",
+              "name": "inpiNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Owner of the trademark",
               "fullType": "string",
               "name": "inpiTrademarkOwner",
@@ -326,14 +334,6 @@ export const schema: Schema = {
               "description": "Contact ID related to the Inpi additional information",
               "fullType": "long",
               "name": "contactId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Number of the Inpi declaration",
-              "fullType": "string",
-              "name": "inpiNumber",
               "paramType": "body",
               "required": true
             }
@@ -357,7 +357,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Afnic corporation trademark ID",
+              "description": "Corporation Inpi Information ID",
               "fullType": "long",
               "name": "afnicCorporationTrademarkId",
               "paramType": "path",
@@ -504,7 +504,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Pro contact ID",
+              "description": "ProContact ID",
               "fullType": "long",
               "name": "proContactId",
               "paramType": "path",
@@ -576,7 +576,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Smd ID",
+              "description": "SMD ID",
               "fullType": "long",
               "name": "smdId",
               "paramType": "path",
@@ -596,7 +596,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Smd ID",
+              "description": "SMD ID",
               "fullType": "long",
               "name": "smdId",
               "paramType": "path",
@@ -615,19 +615,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "SMD ID",
+              "fullType": "long",
+              "name": "smdId",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "text",
               "description": "SMD content file",
               "fullType": "text",
               "name": "data",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Smd ID",
-              "fullType": "long",
-              "name": "smdId",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -701,7 +701,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -727,7 +727,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -754,7 +754,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -762,7 +762,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -770,14 +770,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -835,7 +835,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -861,7 +861,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -881,7 +881,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -901,7 +901,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -927,7 +927,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -952,14 +952,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Zone name",
-              "fullType": "string",
-              "name": "zoneName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "datetime",
               "description": "Filter the value of creationDate property (<=)",
               "fullType": "datetime",
@@ -974,6 +966,14 @@ export const schema: Schema = {
               "name": "creationDate.from",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your zone",
+              "fullType": "string",
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "datetime[]"
@@ -995,7 +995,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1003,7 +1003,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "datetime",
-              "description": "Creation date",
+              "description": "Date of backup creation",
               "fullType": "datetime",
               "name": "creationDate",
               "paramType": "path",
@@ -1029,7 +1029,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1037,7 +1037,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "datetime",
-              "description": "Creation date",
+              "description": "Date of backup creation",
               "fullType": "datetime",
               "name": "creationDate",
               "paramType": "path",
@@ -1071,7 +1071,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1097,11 +1097,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "Filter the value of subDomain property (like)",
               "fullType": "string",
-              "name": "zoneName",
-              "paramType": "path",
-              "required": true
+              "name": "subDomain",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "zone.NamedResolutionFieldTypeEnum",
@@ -1113,11 +1113,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of subDomain property (like)",
+              "description": "The internal name of your zone",
               "fullType": "string",
-              "name": "subDomain",
-              "paramType": "query",
-              "required": false
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -1132,20 +1132,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Resource record ttl",
-              "fullType": "long",
-              "name": "ttl",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "zone.NamedResolutionFieldTypeEnum",
               "description": "Resource record Name",
               "fullType": "zone.NamedResolutionFieldTypeEnum",
               "name": "fieldType",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Resource record ttl",
+              "fullType": "long",
+              "name": "ttl",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -1165,7 +1165,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1191,7 +1191,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1199,7 +1199,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1219,7 +1219,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1227,7 +1227,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1247,14 +1247,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "domain.zone.Record",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "domain.zone.Record",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1262,7 +1262,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1288,19 +1288,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
-              "fullType": "string",
-              "name": "zoneName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of subDomain property (like)",
               "fullType": "string",
               "name": "subDomain",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your zone",
+              "fullType": "string",
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -1315,18 +1315,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "zone.RedirectionTypeEnum",
-              "description": "Redirection type",
-              "fullType": "zone.RedirectionTypeEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "subdomain to redirect",
+              "description": "Desciption for invisible redirection",
               "fullType": "string",
-              "name": "subDomain",
+              "name": "description",
               "paramType": "body",
               "required": false
             },
@@ -1340,19 +1332,19 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Desciption for invisible redirection",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Target of the redirection",
               "fullType": "string",
               "name": "target",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "subdomain to redirect",
+              "fullType": "string",
+              "name": "subDomain",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -1363,8 +1355,16 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "zone.RedirectionTypeEnum",
+              "description": "Redirection type",
+              "fullType": "zone.RedirectionTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1390,7 +1390,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1398,7 +1398,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1418,7 +1418,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1426,7 +1426,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1446,14 +1446,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "domain.zone.Redirection",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "domain.zone.Redirection",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1461,7 +1461,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1487,7 +1487,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1529,7 +1529,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1555,7 +1555,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1575,14 +1575,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1608,7 +1608,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1628,14 +1628,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "domain.zone.Soa",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "domain.zone.Soa",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1661,7 +1661,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1686,12 +1686,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Zone name",
-              "fullType": "string",
-              "name": "zoneName",
-              "paramType": "path",
-              "required": true
+              "dataType": "domain.OperationStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "domain.OperationStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "string",
@@ -1702,12 +1702,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "domain.OperationStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "domain.OperationStatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your zone",
+              "fullType": "string",
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -1729,7 +1729,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1737,7 +1737,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1763,7 +1763,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1771,7 +1771,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1797,7 +1797,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1805,7 +1805,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1830,18 +1830,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your zone",
+              "fullType": "string",
+              "name": "zoneName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Zone name",
-              "fullType": "string",
-              "name": "zoneName",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -1865,7 +1865,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zone name",
+              "description": "The internal name of your zone",
               "fullType": "string",
               "name": "zoneName",
               "paramType": "path",
@@ -1891,7 +1891,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1911,14 +1911,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "domain.Domain",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "domain.Domain",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1955,7 +1955,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1981,7 +1981,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2008,7 +2008,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -2016,7 +2016,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -2024,14 +2024,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2057,14 +2057,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "domain.configurations.ObfuscatedEmails[]"
+          "responseType": "domain.configurations.ObfuscatedEmail[]"
         },
         {
           "apiStatus": {
@@ -2085,14 +2085,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "domain.configurations.ObfuscatedEmails[]"
+          "responseType": "domain.configurations.ObfuscatedEmail[]"
         }
       ],
       "path": "/domain/{serviceName}/configurations/obfuscatedEmails"
@@ -2119,7 +2119,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2145,7 +2145,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2173,7 +2173,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2198,14 +2198,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dnssec.KeyFlagEnum",
               "description": "Filter the value of flags property (=)",
               "fullType": "dnssec.KeyFlagEnum",
@@ -2220,6 +2212,14 @@ export const schema: Schema = {
               "name": "status",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your domain",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -2243,7 +2243,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2269,7 +2269,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2277,7 +2277,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2314,7 +2314,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2340,19 +2340,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of host property (like)",
               "fullType": "string",
               "name": "host",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your domain",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -2384,7 +2384,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2410,7 +2410,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2418,7 +2418,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Host",
+              "description": "Host of the glue record",
               "fullType": "string",
               "name": "host",
               "paramType": "path",
@@ -2438,7 +2438,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2446,7 +2446,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Host",
+              "description": "Host of the glue record",
               "fullType": "string",
               "name": "host",
               "paramType": "path",
@@ -2480,7 +2480,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2488,7 +2488,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Host",
+              "description": "Host of the glue record",
               "fullType": "string",
               "name": "host",
               "paramType": "path",
@@ -2514,7 +2514,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2542,7 +2542,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2568,7 +2568,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2576,7 +2576,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2596,7 +2596,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2604,7 +2604,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2630,7 +2630,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2638,7 +2638,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2672,7 +2672,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2698,7 +2698,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2724,7 +2724,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2732,7 +2732,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "domain.DomainOptionEnum",
-              "description": "Option",
+              "description": "The option name",
               "fullType": "domain.DomainOptionEnum",
               "name": "option",
               "paramType": "path",
@@ -2752,7 +2752,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2760,7 +2760,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "domain.DomainOptionEnum",
-              "description": "Option",
+              "description": "The option name",
               "fullType": "domain.DomainOptionEnum",
               "name": "option",
               "paramType": "path",
@@ -2786,14 +2786,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "domain.services.options.Options"
+          "responseType": "domain.ServiceOptions"
         }
       ],
       "path": "/domain/{serviceName}/options"
@@ -2811,20 +2811,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "domain.WhoisObfuscatorFieldsEnum",
               "description": "Filter the value of field property (=)",
               "fullType": "domain.WhoisObfuscatorFieldsEnum",
               "name": "field",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your domain",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "domain.WhoisObfuscatorFieldsEnum[]"
@@ -2848,7 +2848,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2874,7 +2874,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2882,7 +2882,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "domain.WhoisObfuscatorFieldsEnum",
-              "description": "Field",
+              "description": "Obfuscated field",
               "fullType": "domain.WhoisObfuscatorFieldsEnum",
               "name": "field",
               "paramType": "path",
@@ -2902,7 +2902,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2910,7 +2910,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "domain.WhoisObfuscatorFieldsEnum",
-              "description": "Field",
+              "description": "Obfuscated field",
               "fullType": "domain.WhoisObfuscatorFieldsEnum",
               "name": "field",
               "paramType": "path",
@@ -2936,7 +2936,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2962,7 +2962,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2988,7 +2988,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3008,14 +3008,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3040,14 +3040,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "domain.OperationStatusEnum",
               "description": "Filter the value of status property (=)",
               "fullType": "domain.OperationStatusEnum",
@@ -3062,6 +3054,14 @@ export const schema: Schema = {
               "name": "function",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your domain",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -3083,7 +3083,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3091,7 +3091,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3117,7 +3117,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3125,7 +3125,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3151,7 +3151,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3159,7 +3159,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3184,18 +3184,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your domain",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -3227,7 +3227,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3253,7 +3253,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your domain",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3288,33 +3288,29 @@ export const schema: Schema = {
         "algorithm": {
           "canBeNull": false,
           "description": "Algorithm",
-          "fullType": "dnssec.KeyAlgorithmEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dnssec.KeyAlgorithmEnum"
         },
         "flags": {
           "canBeNull": false,
           "description": "Flag of the dnssec key",
-          "fullType": "dnssec.KeyFlagEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dnssec.KeyFlagEnum"
         },
         "publicKey": {
           "canBeNull": false,
           "description": "Public key",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "tag": {
           "canBeNull": false,
           "description": "Key tag",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -3789,7 +3785,7 @@ export const schema: Schema = {
           "description": "Host of the name server",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -3797,7 +3793,7 @@ export const schema: Schema = {
           "description": "Id of the name server",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "ip": {
@@ -3813,7 +3809,7 @@ export const schema: Schema = {
           "description": "isUsed flag of the name server",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "toDelete": {
@@ -3821,7 +3817,7 @@ export const schema: Schema = {
           "description": "toDelete flag of the name server",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -3891,7 +3887,7 @@ export const schema: Schema = {
           "description": "Algorithm number of the DNSSEC key",
           "fullType": "dnssec.KeyAlgorithmEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dnssec.KeyAlgorithmEnum"
         },
         "flags": {
@@ -3899,7 +3895,7 @@ export const schema: Schema = {
           "description": "Flag of the DNSSEC key",
           "fullType": "dnssec.KeyFlagEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dnssec.KeyFlagEnum"
         },
         "id": {
@@ -3907,7 +3903,7 @@ export const schema: Schema = {
           "description": "Id of the DNSSEC key",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "publicKey": {
@@ -3915,7 +3911,7 @@ export const schema: Schema = {
           "description": "Public key",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -3923,7 +3919,7 @@ export const schema: Schema = {
           "description": "Key status of the DNSSEC key",
           "fullType": "dnssec.KeyStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dnssec.KeyStatusEnum"
         },
         "tag": {
@@ -3931,7 +3927,7 @@ export const schema: Schema = {
           "description": "Tag of the DNSSEC key",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -3946,7 +3942,7 @@ export const schema: Schema = {
           "description": "Is DNSSEC implemented for this domain name's tld",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "domain": {
@@ -3954,7 +3950,7 @@ export const schema: Schema = {
           "description": "Domain name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "glueRecordIpv6Supported": {
@@ -3962,7 +3958,7 @@ export const schema: Schema = {
           "description": "Does the registry support ipv6 glue record",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "glueRecordMultiIpSupported": {
@@ -3970,7 +3966,7 @@ export const schema: Schema = {
           "description": "Does the registry support multi ip glue record",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "lastUpdate": {
@@ -3978,7 +3974,7 @@ export const schema: Schema = {
           "description": "Last update date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "nameServerType": {
@@ -3986,7 +3982,7 @@ export const schema: Schema = {
           "description": "Name servers type",
           "fullType": "domain.DomainNsTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "domain.DomainNsTypeEnum"
         },
         "offer": {
@@ -3994,7 +3990,7 @@ export const schema: Schema = {
           "description": "Domain's offer",
           "fullType": "domain.OfferEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "domain.OfferEnum"
         },
         "owoSupported": {
@@ -4002,7 +3998,7 @@ export const schema: Schema = {
           "description": "Is whois obfuscation supported by this domain name's registry",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "parentService": {
@@ -4018,7 +4014,7 @@ export const schema: Schema = {
           "description": "Transfer lock status",
           "fullType": "domain.DomainLockStatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "domain.DomainLockStatusEnum"
         },
         "whoisOwner": {
@@ -4026,7 +4022,7 @@ export const schema: Schema = {
           "description": "Contact Owner (you can edit it via /me/contact/<ID>)",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4064,15 +4060,13 @@ export const schema: Schema = {
         "host": {
           "canBeNull": false,
           "description": "Host",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "ip": {
           "canBeNull": true,
           "description": "Ip",
-          "fullType": "ip",
           "readOnly": false,
           "required": false,
           "type": "ip"
@@ -4097,23 +4091,20 @@ export const schema: Schema = {
         "state": {
           "canBeNull": false,
           "description": "Whether or not the DNS server is working",
-          "fullType": "domain.DomainNsStateEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "domain.DomainNsStateEnum"
         },
         "type": {
           "canBeNull": false,
           "description": "Whether or not the DNS server is managed by OVH",
-          "fullType": "domain.DomainNsTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "domain.DomainNsTypeEnum"
         },
         "usedSince": {
           "canBeNull": true,
           "description": "Date from which the DNS server is used by the domain",
-          "fullType": "datetime",
           "readOnly": false,
           "required": false,
           "type": "datetime"
@@ -4159,7 +4150,7 @@ export const schema: Schema = {
           "description": "Host of the glue record",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "ips": {
@@ -4167,7 +4158,7 @@ export const schema: Schema = {
           "description": "Ips of the glue record",
           "fullType": "ip[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ip[]"
         }
       }
@@ -4239,7 +4230,7 @@ export const schema: Schema = {
           "description": "Expiration date of the option",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "option": {
@@ -4247,7 +4238,7 @@ export const schema: Schema = {
           "description": "The option name",
           "fullType": "domain.DomainOptionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "domain.DomainOptionEnum"
         },
         "state": {
@@ -4255,7 +4246,7 @@ export const schema: Schema = {
           "description": "The state of the option",
           "fullType": "domain.DomainOptionStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "domain.DomainOptionStateEnum"
         }
       }
@@ -4270,7 +4261,7 @@ export const schema: Schema = {
           "description": "Obfuscated field",
           "fullType": "domain.WhoisObfuscatorFieldsEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "domain.WhoisObfuscatorFieldsEnum"
         }
       }
@@ -4283,17 +4274,15 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "Name of the parent service",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
           "canBeNull": false,
           "description": "Type of the parent service",
-          "fullType": "domain.ParentServiceTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "domain.ParentServiceTypeEnum"
         }
       }
@@ -4323,7 +4312,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "fields": {
@@ -4358,8 +4347,54 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
+        }
+      }
+    },
+    "domain.ServiceOption": {
+      "description": "Data of a domain option",
+      "id": "Option",
+      "namespace": "domain.services.options",
+      "properties": {
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Service name of the option",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "domain.ServiceOptions": {
+      "description": "Representation of the domain options",
+      "id": "Options",
+      "namespace": "domain.services.options",
+      "properties": {
+        "hosting": {
+          "canBeNull": true,
+          "description": "Hosting option",
+          "fullType": "domain.ServiceOption",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.ServiceOption"
+        },
+        "offer": {
+          "canBeNull": true,
+          "description": "Offer option (Diamond, Platinum)",
+          "fullType": "domain.ServiceOption",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.ServiceOption"
+        },
+        "zone": {
+          "canBeNull": true,
+          "description": "DNS zone option",
+          "fullType": "domain.ServiceOption",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.ServiceOption"
         }
       }
     },
@@ -4373,7 +4408,7 @@ export const schema: Schema = {
           "description": "Can accelerate the task",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "canCancel": {
@@ -4381,7 +4416,7 @@ export const schema: Schema = {
           "description": "Can cancel the task",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "canRelaunch": {
@@ -4389,7 +4424,7 @@ export const schema: Schema = {
           "description": "Can relaunch the task",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "comment": {
@@ -4405,7 +4440,7 @@ export const schema: Schema = {
           "description": "Creation date of the task",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "doneDate": {
@@ -4421,7 +4456,7 @@ export const schema: Schema = {
           "description": "Function of the task",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -4429,7 +4464,7 @@ export const schema: Schema = {
           "description": "Id of the task",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lastUpdate": {
@@ -4437,7 +4472,7 @@ export const schema: Schema = {
           "description": "Last update date of the task",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
@@ -4445,7 +4480,7 @@ export const schema: Schema = {
           "description": "Status of the task",
           "fullType": "domain.OperationStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "domain.OperationStatusEnum"
         },
         "todoDate": {
@@ -4453,7 +4488,7 @@ export const schema: Schema = {
           "description": "Todo date of the task",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -4466,17 +4501,15 @@ export const schema: Schema = {
         "name": {
           "canBeNull": false,
           "description": "Registrar name",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "tag": {
           "canBeNull": false,
           "description": "Registrar tag",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4755,7 +4788,62 @@ export const schema: Schema = {
       "id": "TypeEnum",
       "namespace": "domain.configuration.rules"
     },
-    "domain.configurations.ObfuscatedEmails": {
+    "domain.configurations.CustomFields": {
+      "description": "Representation of the domain custom fields",
+      "id": "CustomFields",
+      "namespace": "domain.configurations",
+      "properties": {
+        "audience": {
+          "canBeNull": true,
+          "description": "Domain name audience",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "authInfo": {
+          "canBeNull": true,
+          "description": "Auth Info",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
+        "isFor": {
+          "canBeNull": true,
+          "description": "Purposes of the domain",
+          "fullType": "domain.IsForEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "domain.IsForEnum[]"
+        },
+        "otherPurpose": {
+          "canBeNull": true,
+          "description": "Domain name other purpose",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "reason": {
+          "canBeNull": true,
+          "description": "Why you want to buy this domain",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "represent": {
+          "canBeNull": true,
+          "description": "Represented company",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "domain.configurations.ObfuscatedEmail": {
       "description": "Representation of the obfuscated emails configuration",
       "id": "ObfuscatedEmails",
       "namespace": "domain.configurations",
@@ -4765,7 +4853,7 @@ export const schema: Schema = {
           "description": "Contact's type associated to the obfuscated email",
           "fullType": "domain.ContactAllTypesEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "domain.ContactAllTypesEnum"
         },
         "value": {
@@ -4773,7 +4861,7 @@ export const schema: Schema = {
           "description": "Obfuscated email value",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4788,7 +4876,7 @@ export const schema: Schema = {
           "description": "Displayed fields",
           "fullType": "domain.OptinFieldsEnum[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "domain.OptinFieldsEnum[]"
         },
         "type": {
@@ -4796,7 +4884,7 @@ export const schema: Schema = {
           "description": "Contact's type associated to the optin configuration",
           "fullType": "domain.ContactAllTypesEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "domain.ContactAllTypesEnum"
         }
       }
@@ -4811,7 +4899,7 @@ export const schema: Schema = {
           "description": "Contact ID related to the Inpi additional information",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "id": {
@@ -4819,7 +4907,7 @@ export const schema: Schema = {
           "description": "Corporation Inpi additional information ID",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "inpiNumber": {
@@ -4827,7 +4915,7 @@ export const schema: Schema = {
           "description": "Number of the Inpi declaration",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "inpiTrademarkOwner": {
@@ -4835,7 +4923,7 @@ export const schema: Schema = {
           "description": "Owner of the trademark",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4850,7 +4938,7 @@ export const schema: Schema = {
           "description": "Contact ID related to the association contact information",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "declarationDate": {
@@ -4858,7 +4946,7 @@ export const schema: Schema = {
           "description": "Date of the declaration of the association",
           "fullType": "date",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "id": {
@@ -4866,7 +4954,7 @@ export const schema: Schema = {
           "description": "Association additional information ID",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "publicationDate": {
@@ -4874,7 +4962,7 @@ export const schema: Schema = {
           "description": "Date of the publication of the declaration of the association",
           "fullType": "date",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "publicationNumber": {
@@ -4882,7 +4970,7 @@ export const schema: Schema = {
           "description": "Number of the publication of the declaration of the association",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "publicationPageNumber": {
@@ -4890,7 +4978,7 @@ export const schema: Schema = {
           "description": "Page number of the publication of the declaration of the association",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4905,7 +4993,7 @@ export const schema: Schema = {
           "description": "Authority that certify your profesional status",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "authorityWebsite": {
@@ -4913,7 +5001,7 @@ export const schema: Schema = {
           "description": "Website of the authority that certify your profesional status",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -4921,7 +5009,7 @@ export const schema: Schema = {
           "description": ".pro Contact ID",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "jobDescription": {
@@ -4929,7 +5017,7 @@ export const schema: Schema = {
           "description": "Description of your job",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "licenseNumber": {
@@ -4937,7 +5025,7 @@ export const schema: Schema = {
           "description": "License number given by the authority",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4952,7 +5040,7 @@ export const schema: Schema = {
           "description": "SMD file content",
           "fullType": "text",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "text"
         },
         "id": {
@@ -4960,7 +5048,7 @@ export const schema: Schema = {
           "description": "SMD file ID",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "notAfter": {
@@ -4984,7 +5072,7 @@ export const schema: Schema = {
           "description": "List of the labels that are protected with that SMD file",
           "fullType": "domain.data.SmdLabel[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "domain.data.SmdLabel[]"
         },
         "smdId": {
@@ -5007,7 +5095,7 @@ export const schema: Schema = {
           "description": "Label that is protected",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "trademark": {
@@ -5015,7 +5103,7 @@ export const schema: Schema = {
           "description": "Trademark associated to the protected label",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5393,7 +5481,7 @@ export const schema: Schema = {
           "description": "Displayed fields",
           "fullType": "domain.OptinFieldsEnum[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "domain.OptinFieldsEnum[]"
         },
         "type": {
@@ -5401,54 +5489,23 @@ export const schema: Schema = {
           "description": "Contact's type associated to the optin rule",
           "fullType": "domain.ContactAllTypesEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "domain.ContactAllTypesEnum"
         }
       }
     },
-    "domain.services.options.Option": {
-      "description": "Data of a domain option",
-      "id": "Option",
-      "namespace": "domain.services.options",
+    "domain.zone.Anycast": {
+      "description": "DNS Anycast service",
+      "id": "Anycast",
+      "namespace": "domain.zone",
       "properties": {
-        "serviceName": {
+        "name": {
           "canBeNull": false,
-          "description": "Service name of the option",
+          "description": "Zone name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
-        }
-      }
-    },
-    "domain.services.options.Options": {
-      "description": "Representation of the domain options",
-      "id": "Options",
-      "namespace": "domain.services.options",
-      "properties": {
-        "hosting": {
-          "canBeNull": true,
-          "description": "Hosting option",
-          "fullType": "domain.services.options.Option",
-          "readOnly": true,
-          "required": false,
-          "type": "domain.services.options.Option"
-        },
-        "offer": {
-          "canBeNull": true,
-          "description": "Offer option (Diamond, Platinum)",
-          "fullType": "domain.services.options.Option",
-          "readOnly": true,
-          "required": false,
-          "type": "domain.services.options.Option"
-        },
-        "zone": {
-          "canBeNull": true,
-          "description": "DNS zone option",
-          "fullType": "domain.services.options.Option",
-          "readOnly": true,
-          "required": false,
-          "type": "domain.services.options.Option"
         }
       }
     },
@@ -5461,7 +5518,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "dnssec.DnssecStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dnssec.DnssecStatusEnum"
         }
       }
@@ -5476,7 +5533,7 @@ export const schema: Schema = {
           "description": "Resource record Name",
           "fullType": "zone.NamedResolutionFieldTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "zone.NamedResolutionFieldTypeEnum"
         },
         "id": {
@@ -5484,7 +5541,7 @@ export const schema: Schema = {
           "description": "Id of the zone resource record",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "subDomain": {
@@ -5500,7 +5557,7 @@ export const schema: Schema = {
           "description": "Resource record target",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "ttl": {
@@ -5516,7 +5573,7 @@ export const schema: Schema = {
           "description": "Resource record zone",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5539,7 +5596,7 @@ export const schema: Schema = {
           "description": "Id of the redirection",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "keywords": {
@@ -5563,7 +5620,7 @@ export const schema: Schema = {
           "description": "Target of the redirection",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "title": {
@@ -5579,7 +5636,7 @@ export const schema: Schema = {
           "description": "Redirection type",
           "fullType": "zone.RedirectionTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "zone.RedirectionTypeEnum"
         },
         "zone": {
@@ -5587,7 +5644,7 @@ export const schema: Schema = {
           "description": "Redirection zone",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5602,7 +5659,7 @@ export const schema: Schema = {
           "description": "Email address of the DNS Administrator",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "expire": {
@@ -5610,7 +5667,7 @@ export const schema: Schema = {
           "description": "When a zone transfer fails, a countdown clock begins. When the number of seconds set in the expire field elapses, the nameserver stops answering for that zone file",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "nxDomainTtl": {
@@ -5618,7 +5675,7 @@ export const schema: Schema = {
           "description": "Non-Existent Domain TTL, if the name server returns a negative response, the remote server should wait the number of seconds set in the nxDomainTtl field before trying again",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "refresh": {
@@ -5626,7 +5683,7 @@ export const schema: Schema = {
           "description": "The refresh value determines the interval in seconds between successful zone transfers of the entire zone file from a nameserver to another.",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "serial": {
@@ -5634,7 +5691,7 @@ export const schema: Schema = {
           "description": "The serial number is used to indicate which copy of the zone file is the most current. When editing zone files, you must increment the serial number",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "server": {
@@ -5642,7 +5699,7 @@ export const schema: Schema = {
           "description": "Primary authoritative server",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "ttl": {
@@ -5650,7 +5707,7 @@ export const schema: Schema = {
           "description": "Time To Live in seconds",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -5665,7 +5722,7 @@ export const schema: Schema = {
           "description": "Can accelerate the task",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "canCancel": {
@@ -5673,7 +5730,7 @@ export const schema: Schema = {
           "description": "Can cancel the task",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "canRelaunch": {
@@ -5681,7 +5738,7 @@ export const schema: Schema = {
           "description": "Can relaunch the task",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "comment": {
@@ -5697,7 +5754,7 @@ export const schema: Schema = {
           "description": "Creation date of the task",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "doneDate": {
@@ -5713,7 +5770,7 @@ export const schema: Schema = {
           "description": "Function of the task",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -5721,7 +5778,7 @@ export const schema: Schema = {
           "description": "Id of the task",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lastUpdate": {
@@ -5729,7 +5786,7 @@ export const schema: Schema = {
           "description": "Last update date of the task",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
@@ -5737,7 +5794,7 @@ export const schema: Schema = {
           "description": "Status of the task",
           "fullType": "domain.OperationStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "domain.OperationStatusEnum"
         },
         "todoDate": {
@@ -5745,7 +5802,7 @@ export const schema: Schema = {
           "description": "Todo date of the task",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -5760,7 +5817,7 @@ export const schema: Schema = {
           "description": "Is DNSSEC supported by this zone",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "hasDnsAnycast": {
@@ -5768,7 +5825,7 @@ export const schema: Schema = {
           "description": "hasDnsAnycast flag of the DNS zone",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "lastUpdate": {
@@ -5776,7 +5833,7 @@ export const schema: Schema = {
           "description": "Last update date of the DNS zone",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "name": {
@@ -5784,7 +5841,7 @@ export const schema: Schema = {
           "description": "Zone name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "nameServers": {
@@ -5792,7 +5849,7 @@ export const schema: Schema = {
           "description": "Name servers that host the DNS zone",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         }
       }
@@ -5807,7 +5864,7 @@ export const schema: Schema = {
           "description": "Date of backup creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "zoneFileUrl": {
@@ -5815,7 +5872,7 @@ export const schema: Schema = {
           "description": "URL to get backup content",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6438,31 +6495,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -6470,7 +6523,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -6549,42 +6601,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -6598,7 +6650,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -6621,21 +6673,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }
@@ -6648,9 +6700,8 @@ export const schema: Schema = {
         "dynHost": {
           "canBeNull": false,
           "description": "True if dynHost available for this zone",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -6697,17 +6748,15 @@ export const schema: Schema = {
       "properties": {
         "fieldType": {
           "canBeNull": false,
-          "fullType": "zone.ResettableNamedResolutionFieldTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "zone.ResettableNamedResolutionFieldTypeEnum"
         },
         "target": {
           "canBeNull": false,
           "description": "Resource record target",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6730,7 +6779,6 @@ export const schema: Schema = {
         "errors": {
           "canBeNull": true,
           "description": "Error list",
-          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
@@ -6738,15 +6786,13 @@ export const schema: Schema = {
         "isDeployed": {
           "canBeNull": false,
           "description": "True if the zone has successfully been deployed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "warnings": {
           "canBeNull": true,
           "description": "Warning list",
-          "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"

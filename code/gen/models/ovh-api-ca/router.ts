@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://ca.api.ovh.com:443/1.0/router.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the ROUTER service",
@@ -36,7 +36,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -60,6 +60,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "service.TerminationFutureUseEnum",
+              "description": "What next after your termination request",
+              "fullType": "service.TerminationFutureUseEnum",
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
+            },
             {
               "dataType": "service.TerminationReasonEnum",
               "description": "Reason of your termination request",
@@ -85,16 +93,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "service.TerminationFutureUseEnum",
-              "description": "What next after your termination request",
-              "fullType": "service.TerminationFutureUseEnum",
-              "name": "futureUse",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -120,14 +120,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "ip[]"
+          "responseType": "ipInterface[]"
         },
         {
           "apiStatus": {
@@ -155,16 +155,16 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "ip",
+              "dataType": "ipInterface",
               "description": "Gateway IP / CIDR Netmask, (e.g. 192.168.1.254/24)",
-              "fullType": "ip",
+              "fullType": "ipInterface",
               "name": "ipNet",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -190,7 +190,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -198,7 +198,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipInterface",
-              "description": "Ip net",
+              "description": "Gateway IP / CIDR Netmask",
               "fullType": "ipInterface",
               "name": "ipNet",
               "paramType": "path",
@@ -218,7 +218,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -226,7 +226,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipInterface",
-              "description": "Ip net",
+              "description": "Gateway IP / CIDR Netmask",
               "fullType": "ipInterface",
               "name": "ipNet",
               "paramType": "path",
@@ -246,14 +246,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "router.Network",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "router.Network",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -261,7 +261,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipInterface",
-              "description": "Ip net",
+              "description": "Gateway IP / CIDR Netmask",
               "fullType": "ipInterface",
               "name": "ipNet",
               "paramType": "path",
@@ -287,7 +287,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -323,7 +323,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -349,7 +349,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -357,7 +357,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Peer service name",
+              "description": "Service name of the other side of this link",
               "fullType": "string",
               "name": "peerServiceName",
               "paramType": "path",
@@ -377,7 +377,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -385,7 +385,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Peer service name",
+              "description": "Service name of the other side of this link",
               "fullType": "string",
               "name": "peerServiceName",
               "paramType": "path",
@@ -405,24 +405,24 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "router.PrivateLink",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "router.PrivateLink",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Peer service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
-              "name": "peerServiceName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Service name of the other side of this link",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "peerServiceName",
               "paramType": "path",
               "required": true
             }
@@ -446,7 +446,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -454,7 +454,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Peer service name",
+              "description": "Service name of the other side of this link",
               "fullType": "string",
               "name": "peerServiceName",
               "paramType": "path",
@@ -488,7 +488,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -496,7 +496,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Peer service name",
+              "description": "Service name of the other side of this link",
               "fullType": "string",
               "name": "peerServiceName",
               "paramType": "path",
@@ -522,7 +522,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -530,7 +530,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Peer service name",
+              "description": "Service name of the other side of this link",
               "fullType": "string",
               "name": "peerServiceName",
               "paramType": "path",
@@ -558,7 +558,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -566,7 +566,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Peer service name",
+              "description": "Service name of the other side of this link",
               "fullType": "string",
               "name": "peerServiceName",
               "paramType": "path",
@@ -592,7 +592,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Peer service name",
+              "description": "The internal name of your Router offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name of the other side of this link",
               "fullType": "string",
               "name": "peerServiceName",
               "paramType": "path",
@@ -600,17 +608,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": "Network",
+              "description": "Network allowed to be routed outside",
               "fullType": "ipBlock",
               "name": "network",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -628,7 +628,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -636,7 +636,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Peer service name",
+              "description": "Service name of the other side of this link",
               "fullType": "string",
               "name": "peerServiceName",
               "paramType": "path",
@@ -644,7 +644,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": "Network",
+              "description": "Network allowed to be routed outside",
               "fullType": "ipBlock",
               "name": "network",
               "paramType": "path",
@@ -670,7 +670,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -690,14 +690,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -722,14 +722,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "router.TaskStatusEnum",
               "description": "Filter the value of status property (=)",
               "fullType": "router.TaskStatusEnum",
@@ -744,6 +736,14 @@ export const schema: Schema = {
               "name": "function",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your Router offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -765,7 +765,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -773,7 +773,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -799,7 +799,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -825,7 +825,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -844,18 +844,26 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ip",
+              "dataType": "ipInterface",
               "description": "Client's private network",
-              "fullType": "ip",
+              "fullType": "ipInterface",
               "name": "clientPrivNet",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "ip",
+              "dataType": "ipInterface",
               "description": "Server's private network",
-              "fullType": "ip",
+              "fullType": "ipInterface",
               "name": "serverPrivNet",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "password",
+              "description": "Your PSK key",
+              "fullType": "password",
+              "name": "psk",
               "paramType": "body",
               "required": true
             },
@@ -868,16 +876,8 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "password",
-              "description": "Your PSK key",
-              "fullType": "password",
-              "name": "psk",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -902,18 +902,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your Router offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -931,7 +931,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -939,7 +939,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -959,14 +959,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "router.Vpn",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "router.Vpn",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your Router offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -974,7 +974,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1007,18 +1007,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your Router offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -1031,6 +1031,67 @@ export const schema: Schema = {
   ],
   "basePath": "https://ca.api.ovh.com/1.0",
   "models": {
+    "router.Dnat": {
+      "description": "Network Dnat",
+      "id": "Dnat",
+      "namespace": "router",
+      "properties": {
+        "destinationPort": {
+          "canBeNull": true,
+          "description": "Destination port number",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "id": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "newDestinationNet": {
+          "canBeNull": false,
+          "description": "New destination IP",
+          "fullType": "ipInterface",
+          "readOnly": true,
+          "required": false,
+          "type": "ipInterface"
+        },
+        "newDestinationPort": {
+          "canBeNull": true,
+          "description": "New destination port number",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "protocol": {
+          "canBeNull": false,
+          "description": "Protocol (TCP, UDP)",
+          "fullType": "router.ProtocolEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "router.ProtocolEnum"
+        },
+        "sourceNet": {
+          "canBeNull": true,
+          "description": "Source IP or network",
+          "fullType": "ipInterface",
+          "readOnly": true,
+          "required": false,
+          "type": "ipInterface"
+        },
+        "status": {
+          "canBeNull": false,
+          "fullType": "router.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "router.StatusEnum"
+        }
+      }
+    },
     "router.IpStatusEnum": {
       "description": "All states this object can be in",
       "enum": [
@@ -1056,7 +1117,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
@@ -1070,22 +1131,22 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "ipNet": {
           "canBeNull": false,
           "description": "Gateway IP / CIDR Netmask",
-          "fullType": "ip",
+          "fullType": "ipInterface",
           "readOnly": true,
-          "required": true,
-          "type": "ip"
+          "required": false,
+          "type": "ipInterface"
         },
         "status": {
           "canBeNull": false,
           "fullType": "router.IpStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "router.IpStatusEnum"
         },
         "vlanTag": {
@@ -1130,14 +1191,14 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
@@ -1145,7 +1206,7 @@ export const schema: Schema = {
           "description": "Your memory-friendly name of this private link",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "peerServiceName": {
@@ -1153,14 +1214,14 @@ export const schema: Schema = {
           "description": "Service name of the other side of this link",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
           "canBeNull": false,
           "fullType": "router.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "router.StatusEnum"
         }
       }
@@ -1174,14 +1235,14 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
           "canBeNull": false,
           "fullType": "router.PrivLinkReqStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "router.PrivLinkReqStatusEnum"
         }
       }
@@ -1195,14 +1256,14 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "network": {
@@ -1210,17 +1271,28 @@ export const schema: Schema = {
           "description": "Network allowed to be routed outside",
           "fullType": "ipBlock",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipBlock"
         },
         "status": {
           "canBeNull": false,
           "fullType": "router.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "router.StatusEnum"
         }
       }
+    },
+    "router.ProtocolEnum": {
+      "description": "Allowed protocols",
+      "enum": [
+        "any",
+        "tcp",
+        "udp"
+      ],
+      "enumType": "string",
+      "id": "ProtocolEnum",
+      "namespace": "router"
     },
     "router.Router": {
       "description": "Router",
@@ -1231,7 +1303,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "service": {
@@ -1239,14 +1311,75 @@ export const schema: Schema = {
           "description": "The internal name of your Router offer",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
           "canBeNull": false,
           "fullType": "router.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
+          "type": "router.StatusEnum"
+        }
+      }
+    },
+    "router.Snat": {
+      "description": "Network Snat",
+      "id": "Snat",
+      "namespace": "router",
+      "properties": {
+        "destinationNet": {
+          "canBeNull": true,
+          "description": "Destination IP or network",
+          "fullType": "ipInterface",
+          "readOnly": true,
+          "required": false,
+          "type": "ipInterface"
+        },
+        "destinationPort": {
+          "canBeNull": true,
+          "description": "Destination port number",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "id": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "newSourceNet": {
+          "canBeNull": false,
+          "description": "New source IP",
+          "fullType": "ipInterface",
+          "readOnly": true,
+          "required": false,
+          "type": "ipInterface"
+        },
+        "newSourcePort": {
+          "canBeNull": true,
+          "description": "New destination port number",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "protocol": {
+          "canBeNull": false,
+          "description": "Protocol (TCP, UDP)",
+          "fullType": "router.ProtocolEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "router.ProtocolEnum"
+        },
+        "status": {
+          "canBeNull": false,
+          "fullType": "router.StatusEnum",
+          "readOnly": true,
+          "required": false,
           "type": "router.StatusEnum"
         }
       }
@@ -1274,7 +1407,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "finishDate": {
@@ -1288,21 +1421,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "router.TaskFunctionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "router.TaskFunctionEnum"
         },
         "id": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "router.TaskStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "router.TaskStatusEnum"
         }
       }
@@ -1370,16 +1503,16 @@ export const schema: Schema = {
         "clientPrivNet": {
           "canBeNull": false,
           "description": "Client's private network",
-          "fullType": "ip",
+          "fullType": "ipInterface",
           "readOnly": false,
-          "required": true,
-          "type": "ip"
+          "required": false,
+          "type": "ipInterface"
         },
         "id": {
           "canBeNull": false,
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "serverIp": {
@@ -1387,16 +1520,16 @@ export const schema: Schema = {
           "description": "Your VPN server IP",
           "fullType": "ip",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "serverPrivNet": {
           "canBeNull": false,
           "description": "Server's private network",
-          "fullType": "ip",
+          "fullType": "ipInterface",
           "readOnly": false,
-          "required": true,
-          "type": "ip"
+          "required": false,
+          "type": "ipInterface"
         }
       }
     },
@@ -1408,31 +1541,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -1440,7 +1569,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -1519,42 +1647,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -1568,7 +1696,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -1591,21 +1719,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

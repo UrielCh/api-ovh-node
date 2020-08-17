@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://eu.api.ovh.com:443/1.0/hosting/web.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the HOSTING service",
@@ -172,10 +172,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "hosting.web.localSeo.location.CountryEnum",
-              "description": "Country of the location",
-              "fullType": "hosting.web.localSeo.location.CountryEnum",
-              "name": "country",
+              "dataType": "string",
+              "description": "Zipcode of the location",
+              "fullType": "string",
+              "name": "zip",
               "paramType": "body",
               "required": true
             },
@@ -188,10 +188,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Zipcode of the location",
-              "fullType": "string",
-              "name": "zip",
+              "dataType": "hosting.web.localSeo.location.CountryEnum",
+              "description": "Country of the location",
+              "fullType": "hosting.web.localSeo.location.CountryEnum",
+              "name": "country",
               "paramType": "body",
               "required": true
             }
@@ -214,14 +214,6 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Get the result only for one directory",
-              "fullType": "string",
-              "name": "directory",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the check",
               "fullType": "long",
@@ -234,6 +226,14 @@ export const schema: Schema = {
               "description": "Token received when requesting the check",
               "fullType": "string",
               "name": "token",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Get the result only for one directory",
+              "fullType": "string",
+              "name": "directory",
               "paramType": "query",
               "required": true
             }
@@ -256,6 +256,14 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "hosting.web.module.BranchEnum",
+              "description": "Filter the value of branch property (=)",
+              "fullType": "hosting.web.module.BranchEnum",
+              "name": "branch",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "boolean",
               "description": "Filter the value of latest property (=)",
               "fullType": "boolean",
@@ -268,14 +276,6 @@ export const schema: Schema = {
               "description": "Filter the value of active property (=)",
               "fullType": "boolean",
               "name": "active",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "hosting.web.module.BranchEnum",
-              "description": "Filter the value of branch property (=)",
-              "fullType": "hosting.web.module.BranchEnum",
-              "name": "branch",
               "paramType": "query",
               "required": false
             }
@@ -299,7 +299,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The ID of the module",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -351,7 +351,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -371,14 +371,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "hosting.web.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "hosting.web.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -423,7 +423,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -449,14 +449,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of path property (like)",
               "fullType": "string",
               "name": "path",
@@ -470,6 +462,14 @@ export const schema: Schema = {
               "name": "domain",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -484,22 +484,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "The runtime configuration ID linked to this attached domain",
-              "fullType": "long",
-              "name": "runtimeId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Put domain for separate the logs on logs.ovh.net",
-              "fullType": "string",
-              "name": "ownLog",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "Domain to link",
               "fullType": "string",
@@ -508,12 +492,12 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain's path, relative to your home directory",
-              "fullType": "string",
-              "name": "path",
+              "dataType": "long",
+              "description": "The runtime configuration ID linked to this attached domain",
+              "fullType": "long",
+              "name": "runtimeId",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "hosting.web.attachedDomain.FirewallEnum",
@@ -524,10 +508,26 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "string",
+              "description": "Domain's path, relative to your home directory",
+              "fullType": "string",
+              "name": "path",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "hosting.web.attachedDomain.CdnEnum",
               "description": "Is linked to the hosting cdn",
               "fullType": "hosting.web.attachedDomain.CdnEnum",
               "name": "cdn",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Put domain for separate the logs on logs.ovh.net",
+              "fullType": "string",
+              "name": "ownLog",
               "paramType": "body",
               "required": false
             },
@@ -541,7 +541,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -567,7 +567,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -575,7 +575,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "Domain linked (fqdn)",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -595,7 +595,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -603,7 +603,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "Domain linked (fqdn)",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -623,24 +623,24 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "hosting.web.attachedDomain",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "hosting.web.attachedDomain",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "The internal name of your hosting",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Domain linked (fqdn)",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             }
@@ -664,7 +664,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -672,7 +672,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "Domain linked (fqdn)",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -698,7 +698,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -706,7 +706,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "Domain linked (fqdn)",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -731,20 +731,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "datetime",
               "description": "Filter the value of date property (=)",
               "fullType": "datetime",
               "name": "date",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "datetime[]"
@@ -766,7 +766,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -774,7 +774,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "datetime",
-              "description": "Date",
+              "description": "The date when the change has been requested",
               "fullType": "datetime",
               "name": "date",
               "paramType": "path",
@@ -800,7 +800,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -826,7 +826,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -860,7 +860,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -886,7 +886,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -913,7 +913,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -921,7 +921,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -929,14 +929,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -994,7 +994,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1020,17 +1020,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Filter the value of email property (like)",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.cron.LanguageEnum",
-              "description": "Filter the value of language property (=)",
-              "fullType": "hosting.web.cron.LanguageEnum",
-              "name": "language",
+              "name": "email",
               "paramType": "query",
               "required": false
             },
@@ -1051,12 +1043,20 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Filter the value of email property (like)",
-              "fullType": "string",
-              "name": "email",
+              "dataType": "hosting.web.cron.LanguageEnum",
+              "description": "Filter the value of language property (=)",
+              "fullType": "hosting.web.cron.LanguageEnum",
+              "name": "language",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -1072,25 +1072,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Description field for you",
+              "description": "Email used to receive error log ( stderr )",
               "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "hosting.web.cron.LanguageEnum",
-              "description": "Cron language",
-              "fullType": "hosting.web.cron.LanguageEnum",
-              "name": "language",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.cron.StatusEnum",
-              "description": "Cron status",
-              "fullType": "hosting.web.cron.StatusEnum",
-              "name": "status",
+              "name": "email",
               "paramType": "body",
               "required": false
             },
@@ -1104,9 +1088,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email used to receive error log ( stderr )",
+              "description": "Description field for you",
               "fullType": "string",
-              "name": "email",
+              "name": "description",
               "paramType": "body",
               "required": false
             },
@@ -1119,8 +1103,24 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "hosting.web.cron.StatusEnum",
+              "description": "Cron status",
+              "fullType": "hosting.web.cron.StatusEnum",
+              "name": "status",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "hosting.web.cron.LanguageEnum",
+              "description": "Cron language",
+              "fullType": "hosting.web.cron.LanguageEnum",
+              "name": "language",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1146,7 +1146,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1154,7 +1154,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Cron's id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1173,18 +1173,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Cron's id",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -1202,14 +1202,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "hosting.web.cron",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "hosting.web.cron",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1217,7 +1217,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Cron's id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1243,7 +1243,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1267,14 +1267,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
             {
               "dataType": "hosting.web.database.ModeEnum",
               "description": "Filter the value of mode property (=)",
@@ -1301,6 +1293,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Filter the value of server property (like)",
+              "fullType": "string",
+              "name": "server",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
               "name": "name",
@@ -1309,11 +1309,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of server property (like)",
+              "description": "The internal name of your hosting",
               "fullType": "string",
-              "name": "server",
-              "paramType": "query",
-              "required": false
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -1328,10 +1328,34 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "hosting.web.database.DatabaseCapabilitiesTypeEnum",
+              "description": "Type of your database",
+              "fullType": "hosting.web.database.DatabaseCapabilitiesTypeEnum",
+              "name": "capabilitie",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "hosting.web.database.VersionEnum",
               "description": "Version you want for your database following the type",
               "fullType": "hosting.web.database.VersionEnum",
               "name": "version",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "password",
+              "description": "Database password",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "hosting.web.database.ExtraSqlQuotaEnum",
+              "description": "Quota assign to your database. Only for extraSql",
+              "fullType": "hosting.web.database.ExtraSqlQuotaEnum",
+              "name": "quota",
               "paramType": "body",
               "required": false
             },
@@ -1352,32 +1376,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "hosting.web.database.DatabaseCapabilitiesTypeEnum",
-              "description": "Type of your database",
-              "fullType": "hosting.web.database.DatabaseCapabilitiesTypeEnum",
-              "name": "capabilitie",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.database.ExtraSqlQuotaEnum",
-              "description": "Quota assign to your database. Only for extraSql",
-              "fullType": "hosting.web.database.ExtraSqlQuotaEnum",
-              "name": "quota",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "password",
-              "description": "Database password",
-              "fullType": "password",
-              "name": "password",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1403,7 +1403,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1411,7 +1411,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -1431,7 +1431,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1439,7 +1439,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -1465,7 +1465,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1473,7 +1473,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -1507,7 +1507,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1515,7 +1515,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -1540,20 +1540,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
+              "dataType": "hosting.web.database.dump.DateEnum",
+              "description": "Filter the value of type property (=)",
+              "fullType": "hosting.web.database.dump.DateEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "datetime",
@@ -1564,20 +1556,28 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "hosting.web.database.dump.DateEnum",
-              "description": "Filter the value of type property (=)",
-              "fullType": "hosting.web.database.dump.DateEnum",
-              "name": "type",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "datetime",
               "description": "Filter the value of deletionDate property (like)",
               "fullType": "datetime",
               "name": "deletionDate",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -1609,7 +1609,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1617,7 +1617,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -1643,7 +1643,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -1651,17 +1659,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Dump id",
               "fullType": "long",
               "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1679,7 +1679,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1687,7 +1687,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -1695,7 +1695,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Dump id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1721,7 +1721,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1729,7 +1729,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -1737,7 +1737,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Dump id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1763,14 +1763,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "boolean",
-              "description": "If database will be flushed before importing the dump. Default: false",
-              "fullType": "boolean",
-              "name": "flushDatabase",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
               "description": "Send an email when the import will be done? Default: false",
               "fullType": "boolean",
               "name": "sendEmail",
@@ -1786,8 +1778,16 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "boolean",
+              "description": "If database will be flushed before importing the dump. Default: false",
+              "fullType": "boolean",
+              "name": "flushDatabase",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1795,7 +1795,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -1829,7 +1829,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1837,7 +1837,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -1879,7 +1879,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1887,7 +1887,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -1912,19 +1912,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
+              "dataType": "hosting.web.database.StatisticsTypeEnum",
+              "description": "Types of statistics available for the database",
+              "fullType": "hosting.web.database.StatisticsTypeEnum",
+              "name": "type",
+              "paramType": "query",
               "required": true
             },
             {
@@ -1936,11 +1928,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "hosting.web.database.StatisticsTypeEnum",
-              "description": "Types of statistics available for the database",
-              "fullType": "hosting.web.database.StatisticsTypeEnum",
-              "name": "type",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1963,7 +1963,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1988,19 +1988,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "hosting.web.database.DatabaseTypeEnum",
               "description": "Type of the database",
               "fullType": "hosting.web.database.DatabaseTypeEnum",
               "name": "type",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2023,7 +2023,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2048,26 +2048,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Filter the value of orphan property (like)",
               "fullType": "boolean",
               "name": "orphan",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of creationDate property (like)",
-              "fullType": "datetime",
-              "name": "creationDate",
               "paramType": "query",
               "required": false
             },
@@ -2081,11 +2065,27 @@ export const schema: Schema = {
             },
             {
               "dataType": "datetime",
+              "description": "Filter the value of creationDate property (like)",
+              "fullType": "datetime",
+              "name": "creationDate",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
               "description": "Filter the value of deletionDate property (like)",
               "fullType": "datetime",
               "name": "deletionDate",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -2107,7 +2107,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2115,7 +2115,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Dump id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2135,7 +2135,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2143,7 +2143,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Dump id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2169,7 +2169,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2189,14 +2189,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "hosting.web.email",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "hosting.web.email",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2221,19 +2221,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Maximum bounces limit ( default : 20 / max : 100 )",
               "fullType": "long",
               "name": "limit",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2264,7 +2264,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2290,7 +2290,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2316,7 +2316,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2342,7 +2342,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2350,7 +2350,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2376,7 +2376,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2384,7 +2384,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2410,7 +2410,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2418,7 +2418,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -2443,20 +2443,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "hosting.web.envVar.TypeEnum",
               "description": "Filter the value of type property (=)",
               "fullType": "hosting.web.envVar.TypeEnum",
               "name": "type",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -2496,7 +2496,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2522,7 +2522,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2530,7 +2530,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Key",
+              "description": "Name of the variable",
               "fullType": "string",
               "name": "key",
               "paramType": "path",
@@ -2550,7 +2550,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2558,7 +2558,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Key",
+              "description": "Name of the variable",
               "fullType": "string",
               "name": "key",
               "paramType": "path",
@@ -2578,14 +2578,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "hosting.web.envVar",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "hosting.web.envVar",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2593,7 +2593,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Key",
+              "description": "Name of the variable",
               "fullType": "string",
               "name": "key",
               "paramType": "path",
@@ -2619,7 +2619,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2645,7 +2645,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2653,7 +2653,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "The extraSqlPerso option name",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -2679,7 +2679,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2687,7 +2687,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "The extraSqlPerso option name",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -2713,7 +2713,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2721,7 +2721,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "The extraSqlPerso option name",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -2755,7 +2755,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2763,7 +2763,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "The extraSqlPerso option name",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -2789,7 +2789,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2797,7 +2797,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name",
+              "description": "The extraSqlPerso option name",
               "fullType": "string",
               "name": "name",
               "paramType": "path",
@@ -2822,20 +2822,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "hosting.web.freedom.StatusEnum",
               "description": "Filter the value of status property (=)",
               "fullType": "hosting.web.freedom.StatusEnum",
               "name": "status",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -2857,7 +2857,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2865,7 +2865,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "Freedom domain",
               "fullType": "string",
               "name": "domain",
               "paramType": "path",
@@ -2885,17 +2885,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Domain",
+              "description": "The internal name of your hosting",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Freedom domain",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             }
@@ -2919,19 +2919,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of login property (like)",
               "fullType": "string",
               "name": "login",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -2953,7 +2953,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -2961,7 +2961,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Login",
+              "description": "Login of the multidomain independent user",
               "fullType": "string",
               "name": "login",
               "paramType": "path",
@@ -2987,19 +2987,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of email property (like)",
               "fullType": "string",
               "name": "email",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -3021,7 +3021,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3029,7 +3029,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Account id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3055,7 +3055,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3063,7 +3063,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Account id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3089,18 +3089,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The email address to check",
               "fullType": "string",
               "name": "email",
               "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -3123,7 +3123,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3149,7 +3149,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3157,7 +3157,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Location id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3183,7 +3183,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3191,7 +3191,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Location id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3225,7 +3225,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3233,7 +3233,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Location id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3259,7 +3259,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3267,7 +3267,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Location id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3293,7 +3293,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3320,10 +3320,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "hosting.web.module.DependencyType[]",
-              "description": "The dependencies that we have to configure on your module. A dependency can be a standard database (like MySQL or PostgreSQL) or a key-value store (like Redis or Memcached) for example",
-              "fullType": "hosting.web.module.DependencyType[]",
-              "name": "dependencies",
+              "dataType": "password",
+              "description": "The password for the admin account (at least 8 characters)",
+              "fullType": "password",
+              "name": "adminPassword",
               "paramType": "body",
               "required": false
             },
@@ -3332,6 +3332,22 @@ export const schema: Schema = {
               "description": "The login for the admin account (may be a standard string or your email)",
               "fullType": "string",
               "name": "adminName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Where to install the module, relative to your home directory",
+              "fullType": "string",
+              "name": "path",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "hosting.web.module.DependencyType[]",
+              "description": "The dependencies that we have to configure on your module. A dependency can be a standard database (like MySQL or PostgreSQL) or a key-value store (like Redis or Memcached) for example",
+              "fullType": "hosting.web.module.DependencyType[]",
+              "name": "dependencies",
               "paramType": "body",
               "required": false
             },
@@ -3352,24 +3368,8 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "password",
-              "description": "The password for the admin account (at least 8 characters)",
-              "fullType": "password",
-              "name": "adminPassword",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Where to install the module, relative to your home directory",
-              "fullType": "string",
-              "name": "path",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3394,18 +3394,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Installation ID",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -3423,7 +3423,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3431,7 +3431,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Installation ID",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3457,7 +3457,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3465,7 +3465,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Installation ID",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3491,14 +3491,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of path property (like)",
               "fullType": "string",
               "name": "path",
@@ -3512,6 +3504,14 @@ export const schema: Schema = {
               "name": "historical",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -3533,7 +3533,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3541,7 +3541,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Configuration's id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3565,6 +3565,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "hosting.web.ovhConfig.HttpFirewallEnum",
+              "description": "Configuration you want for http firewall",
+              "fullType": "hosting.web.ovhConfig.HttpFirewallEnum",
+              "name": "httpFirewall",
+              "paramType": "body",
+              "required": false
+            },
             {
               "dataType": "hosting.web.ovhConfig.EnvironmentEnum",
               "description": "Environment configuration you want",
@@ -3598,16 +3606,8 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "hosting.web.ovhConfig.HttpFirewallEnum",
-              "description": "Configuration you want for http firewall",
-              "fullType": "hosting.web.ovhConfig.HttpFirewallEnum",
-              "name": "httpFirewall",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3615,7 +3615,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Configuration's id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3649,7 +3649,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3657,7 +3657,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Configuration's id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3683,7 +3683,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3709,19 +3709,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of fqdn property (like)",
               "fullType": "string",
               "name": "fqdn",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -3743,7 +3743,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3751,7 +3751,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3777,7 +3777,15 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Filter the value of login property (like)",
+              "fullType": "string",
+              "name": "login",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3785,19 +3793,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of login property (like)",
-              "fullType": "string",
-              "name": "login",
-              "paramType": "query",
-              "required": false
             }
           ],
           "responseType": "string[]"
@@ -3812,10 +3812,26 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "OwnLogs where this userLogs will be enable. Default : main domain ownlogs",
+              "fullType": "long",
+              "name": "ownLogsId",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "password",
               "description": "The new userLogs password",
               "fullType": "password",
               "name": "password",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The userLogs login used to connect to logs.ovh.net",
+              "fullType": "string",
+              "name": "login",
               "paramType": "body",
               "required": true
             },
@@ -3828,24 +3844,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "OwnLogs where this userLogs will be enable. Default : main domain ownlogs",
-              "fullType": "long",
-              "name": "ownLogsId",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "The userLogs login used to connect to logs.ovh.net",
-              "fullType": "string",
-              "name": "login",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3853,7 +3853,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3879,15 +3879,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Login",
-              "fullType": "string",
-              "name": "login",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3895,9 +3887,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The userLogs login used to connect to logs.ovh.net",
+              "fullType": "string",
+              "name": "login",
               "paramType": "path",
               "required": true
             }
@@ -3915,7 +3915,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3923,7 +3923,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3931,7 +3931,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Login",
+              "description": "The userLogs login used to connect to logs.ovh.net",
               "fullType": "string",
               "name": "login",
               "paramType": "path",
@@ -3951,14 +3951,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "hosting.web.userLogs",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "hosting.web.userLogs",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3966,7 +3966,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -3974,7 +3974,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Login",
+              "description": "The userLogs login used to connect to logs.ovh.net",
               "fullType": "string",
               "name": "login",
               "paramType": "path",
@@ -4008,7 +4008,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4016,7 +4016,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "Id of the object",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -4024,7 +4024,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Login",
+              "description": "The userLogs login used to connect to logs.ovh.net",
               "fullType": "string",
               "name": "login",
               "paramType": "path",
@@ -4050,7 +4050,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4076,7 +4076,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4110,7 +4110,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4144,7 +4144,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4178,7 +4178,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4203,14 +4203,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "hosting.web.runtime.TypeEnum",
               "description": "Filter the value of type property (=)",
               "fullType": "hosting.web.runtime.TypeEnum",
@@ -4225,6 +4217,14 @@ export const schema: Schema = {
               "name": "name",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -4238,46 +4238,6 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "string",
-              "description": "The custom display name of the runtime configuration",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "hosting.web.runtime.EnvEnum",
-              "description": "The client application environment",
-              "fullType": "hosting.web.runtime.EnvEnum",
-              "name": "appEnv",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The client application bootstrap script",
-              "fullType": "string",
-              "name": "appBootstrap",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The client application public directory",
-              "fullType": "string",
-              "name": "publicDir",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string[]",
-              "description": "The attached domains fqdn to link to this runtime configuration",
-              "fullType": "string[]",
-              "name": "attachedDomains",
-              "paramType": "body",
-              "required": false
-            },
             {
               "dataType": "hosting.web.runtime.TypeEnum",
               "description": "The backend type of a runtime configuration",
@@ -4295,8 +4255,48 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "string[]",
+              "description": "The attached domains fqdn to link to this runtime configuration",
+              "fullType": "string[]",
+              "name": "attachedDomains",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The client application bootstrap script",
+              "fullType": "string",
+              "name": "appBootstrap",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "hosting.web.runtime.EnvEnum",
+              "description": "The client application environment",
+              "fullType": "hosting.web.runtime.EnvEnum",
+              "name": "appEnv",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The custom display name of the runtime configuration",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The client application public directory",
+              "fullType": "string",
+              "name": "publicDir",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4322,7 +4322,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4330,7 +4330,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The runtime configuration ID",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -4350,7 +4350,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4358,7 +4358,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The runtime configuration ID",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -4378,14 +4378,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "hosting.web.runtime",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "hosting.web.runtime",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4393,7 +4393,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The runtime configuration ID",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -4419,7 +4419,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4427,7 +4427,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "The runtime configuration ID",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -4453,19 +4453,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Specific programming language to filter",
               "fullType": "string",
               "name": "language",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "hosting.web.runtime.TypeEnum[]"
@@ -4487,7 +4487,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4507,14 +4507,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4540,7 +4540,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4560,7 +4560,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4580,14 +4580,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "text",
-              "description": "If you want import your proper SSL, give the chain linked to the associated certificate (optional)",
-              "fullType": "text",
-              "name": "chain",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "text",
               "description": "If you want import your proper SSL, give the certificate here and the associated key after (optional)",
               "fullType": "text",
               "name": "certificate",
@@ -4603,8 +4595,16 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "text",
+              "description": "If you want import your proper SSL, give the chain linked to the associated certificate (optional)",
+              "fullType": "text",
+              "name": "chain",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4630,7 +4630,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4656,7 +4656,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4682,7 +4682,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4707,11 +4707,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "hosting.web.StatisticsTypeEnum",
+              "description": "",
+              "fullType": "hosting.web.StatisticsTypeEnum",
+              "name": "type",
+              "paramType": "query",
               "required": true
             },
             {
@@ -4723,11 +4723,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "hosting.web.StatisticsTypeEnum",
-              "description": "",
-              "fullType": "hosting.web.StatisticsTypeEnum",
-              "name": "type",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -4749,12 +4749,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "hosting.web.task.StatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "hosting.web.task.StatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "string",
@@ -4765,12 +4765,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "hosting.web.task.StatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "hosting.web.task.StatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "long[]"
@@ -4779,7 +4779,7 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/tasks"
     },
     {
-      "description": "Task",
+      "description": "Tasks",
       "operations": [
         {
           "apiStatus": {
@@ -4792,7 +4792,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4800,7 +4800,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id",
+              "description": "the id of the task",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -4826,7 +4826,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4852,7 +4852,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4878,14 +4878,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of login property (like)",
               "fullType": "string",
               "name": "login",
@@ -4899,6 +4891,14 @@ export const schema: Schema = {
               "name": "home",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -4922,14 +4922,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Login use for your new user",
-              "fullType": "string",
-              "name": "login",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Home directory",
               "fullType": "string",
               "name": "home",
@@ -4946,7 +4938,15 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Login use for your new user",
+              "fullType": "string",
+              "name": "login",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4972,7 +4972,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -4980,7 +4980,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Login",
+              "description": "Login used to connect on FTP and SSH",
               "fullType": "string",
               "name": "login",
               "paramType": "path",
@@ -5000,7 +5000,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5008,7 +5008,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Login",
+              "description": "Login used to connect on FTP and SSH",
               "fullType": "string",
               "name": "login",
               "paramType": "path",
@@ -5028,14 +5028,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "hosting.web.user",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "hosting.web.user",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5043,7 +5043,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Login",
+              "description": "Login used to connect on FTP and SSH",
               "fullType": "string",
               "name": "login",
               "paramType": "path",
@@ -5077,7 +5077,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5085,7 +5085,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Login",
+              "description": "Login used to connect on FTP and SSH",
               "fullType": "string",
               "name": "login",
               "paramType": "path",
@@ -5111,19 +5111,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of login property (like)",
               "fullType": "string",
               "name": "login",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string[]"
@@ -5138,10 +5138,26 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "OwnLogs where this userLogs will be enable. Default : main domain ownlogs",
+              "fullType": "long",
+              "name": "ownLogsId",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "password",
               "description": "The new userLogs password",
               "fullType": "password",
               "name": "password",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The userLogs login used to connect to logs.ovh.net",
+              "fullType": "string",
+              "name": "login",
               "paramType": "body",
               "required": true
             },
@@ -5154,24 +5170,8 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "OwnLogs where this userLogs will be enable. Default : main domain ownlogs",
-              "fullType": "long",
-              "name": "ownLogsId",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "The userLogs login used to connect to logs.ovh.net",
-              "fullType": "string",
-              "name": "login",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5197,7 +5197,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5205,7 +5205,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Login",
+              "description": "The userLogs login used to connect to logs.ovh.net",
               "fullType": "string",
               "name": "login",
               "paramType": "path",
@@ -5225,7 +5225,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5233,7 +5233,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Login",
+              "description": "The userLogs login used to connect to logs.ovh.net",
               "fullType": "string",
               "name": "login",
               "paramType": "path",
@@ -5253,14 +5253,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "hosting.web.userLogs",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "hosting.web.userLogs",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal name of your hosting",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -5268,7 +5268,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Login",
+              "description": "The userLogs login used to connect to logs.ovh.net",
               "fullType": "string",
               "name": "login",
               "paramType": "path",
@@ -5302,17 +5302,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Login",
+              "description": "The internal name of your hosting",
               "fullType": "string",
-              "name": "login",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The userLogs login used to connect to logs.ovh.net",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "login",
               "paramType": "path",
               "required": true
             }
@@ -5335,22 +5335,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Specific attached domain to be included in the scope of your token",
-              "fullType": "string",
-              "name": "attachedDomain",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "long",
               "description": "Expiration of your token (in seconds)",
               "fullType": "long",
@@ -5365,6 +5349,22 @@ export const schema: Schema = {
               "name": "remoteCheck",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Specific attached domain to be included in the scope of your token",
+              "fullType": "string",
+              "name": "attachedDomain",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "password"
@@ -5385,23 +5385,20 @@ export const schema: Schema = {
       "properties": {
         "serieName": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "unit": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "values": {
           "canBeNull": false,
-          "fullType": "T[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T[]"
         }
       }
@@ -5413,14 +5410,12 @@ export const schema: Schema = {
       "properties": {
         "timestamp": {
           "canBeNull": false,
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "value": {
           "canBeNull": true,
-          "fullType": "double",
           "readOnly": false,
           "required": false,
           "type": "double"
@@ -5437,16 +5432,14 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "T",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "T"
         }
       }
@@ -5476,6 +5469,7 @@ export const schema: Schema = {
         "mysql_5.5",
         "mysql_5.6",
         "mysql_5.7",
+        "mysql_8.0",
         "postgresql_10",
         "postgresql_11",
         "postgresql_12",
@@ -5497,17 +5491,15 @@ export const schema: Schema = {
         "port": {
           "canBeNull": false,
           "description": "Port to use to access to the service",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "url": {
           "canBeNull": false,
           "description": "Url to contact the service",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5520,17 +5512,15 @@ export const schema: Schema = {
         "offer": {
           "canBeNull": false,
           "description": "Available boost offer",
-          "fullType": "hosting.web.OfferEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.OfferEnum"
         },
         "price": {
           "canBeNull": false,
           "description": "The price in month for this boost offer",
-          "fullType": "order.Price",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -5543,39 +5533,34 @@ export const schema: Schema = {
         "attachedDomains": {
           "canBeNull": false,
           "description": "Number of domains you can attach to your hosting",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "crontab": {
           "canBeNull": false,
           "description": "Does the offer allow crontab",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "databaseEngines": {
           "canBeNull": false,
           "description": "Number of database engines allowed for your hosting",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "databases": {
           "canBeNull": false,
           "description": "Describe all databases type you can have",
-          "fullType": "hosting.web.database.CreationDatabaseCapabilities[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.database.CreationDatabaseCapabilities[]"
         },
         "disk": {
           "canBeNull": true,
           "description": "Disk capacity and type available for your hosting ( null for unlimited )",
-          "fullType": "hosting.web.DiskType",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.DiskType"
@@ -5583,39 +5568,34 @@ export const schema: Schema = {
         "emails": {
           "canBeNull": false,
           "description": "Describe all email offer you can have",
-          "fullType": "hosting.web.CreationEmailCapabilities",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.CreationEmailCapabilities"
         },
         "envVars": {
           "canBeNull": false,
           "description": "Number of environment variables allowed for your hosting",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "extraUsers": {
           "canBeNull": false,
           "description": "Number of ftp user you can create",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "filesBrowser": {
           "canBeNull": false,
           "description": "Does the offer allow access to web files browser?",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "highlight": {
           "canBeNull": true,
           "description": "Marketing information about the current offer",
-          "fullType": "hosting.web.HighLightEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.HighLightEnum"
@@ -5623,39 +5603,34 @@ export const schema: Schema = {
         "languages": {
           "canBeNull": false,
           "description": "Language available for cron script",
-          "fullType": "hosting.web.CronLanguageAvailable",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.CronLanguageAvailable"
         },
         "moduleOneClick": {
           "canBeNull": false,
           "description": "Does the offer allow 1-click modules?",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "privateDatabases": {
           "canBeNull": false,
           "description": "Describe all privateDatabases type you can have",
-          "fullType": "hosting.web.database.CreationDatabaseCapabilities[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.database.CreationDatabaseCapabilities[]"
         },
         "runtimes": {
           "canBeNull": false,
           "description": "Number of runtimes allowed for your hosting",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "sitesRecommended": {
           "canBeNull": true,
           "description": "Number of sites recommended for your hosting ( -1 for unlimited )",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -5663,15 +5638,13 @@ export const schema: Schema = {
         "ssh": {
           "canBeNull": false,
           "description": "Does the offer allow SSH access",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "traffic": {
           "canBeNull": true,
           "description": "Traffic quota size for your hosting ( null for unlimited )",
-          "fullType": "complexType.UnitAndValue<double>",
           "readOnly": false,
           "required": false,
           "type": "complexType.UnitAndValue<double>"
@@ -5686,23 +5659,20 @@ export const schema: Schema = {
         "country": {
           "canBeNull": false,
           "description": "The whois country of the ip",
-          "fullType": "hosting.web.CountryEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.CountryEnum"
         },
         "ip": {
           "canBeNull": false,
           "description": "The cluster ip",
-          "fullType": "ip",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ip"
         },
         "ipv6": {
           "canBeNull": true,
           "description": "The cluster ipv6",
-          "fullType": "ip",
           "readOnly": false,
           "required": false,
           "type": "ip"
@@ -5739,17 +5709,15 @@ export const schema: Schema = {
         "available": {
           "canBeNull": false,
           "description": "Number of email available for creation",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "quota": {
           "canBeNull": false,
           "description": "Email account capacity",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         }
       }
@@ -5762,33 +5730,29 @@ export const schema: Schema = {
         "nodejs": {
           "canBeNull": false,
           "description": "NodeJS versions",
-          "fullType": "hosting.web.NodejsVersionAvailableEnum[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.NodejsVersionAvailableEnum[]"
         },
         "php": {
           "canBeNull": false,
           "description": "Php versions",
-          "fullType": "hosting.web.PhpVersionAvailableEnum[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.PhpVersionAvailableEnum[]"
         },
         "python": {
           "canBeNull": false,
           "description": "Python versions",
-          "fullType": "hosting.web.PythonVersionAvailableEnum[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.PythonVersionAvailableEnum[]"
         },
         "ruby": {
           "canBeNull": false,
           "description": "Ruby versions",
-          "fullType": "hosting.web.RubyVersionAvailableEnum[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.RubyVersionAvailableEnum[]"
         }
       }
@@ -5813,25 +5777,22 @@ export const schema: Schema = {
         "type": {
           "canBeNull": false,
           "description": "Type of the disk",
-          "fullType": "hosting.web.DiskTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.DiskTypeEnum"
         },
         "unit": {
           "canBeNull": false,
           "description": "Unit for disk size",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
           "description": "Size of the disk",
-          "fullType": "double",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "double"
         }
       }
@@ -5866,7 +5827,7 @@ export const schema: Schema = {
           "description": "Is the module available?",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "adminNameType": {
@@ -5874,7 +5835,7 @@ export const schema: Schema = {
           "description": "The type of the admin name",
           "fullType": "hosting.web.module.AdminNameTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.module.AdminNameTypeEnum"
         },
         "author": {
@@ -5882,7 +5843,7 @@ export const schema: Schema = {
           "description": "The packager of this module for OVH",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "branch": {
@@ -5890,7 +5851,7 @@ export const schema: Schema = {
           "description": "The branch of the module",
           "fullType": "hosting.web.module.BranchEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.module.BranchEnum"
         },
         "id": {
@@ -5898,7 +5859,7 @@ export const schema: Schema = {
           "description": "The ID of the module",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "keywords": {
@@ -5906,7 +5867,7 @@ export const schema: Schema = {
           "description": "The keywords for this module",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "language": {
@@ -5914,7 +5875,7 @@ export const schema: Schema = {
           "description": "All available languages for this module",
           "fullType": "hosting.web.module.LanguageEnum[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.module.LanguageEnum[]"
         },
         "languageRequirement": {
@@ -5922,7 +5883,7 @@ export const schema: Schema = {
           "description": "Minimal language version required to run this module",
           "fullType": "complexType.UnitAndValue<string>",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<string>"
         },
         "latest": {
@@ -5930,7 +5891,7 @@ export const schema: Schema = {
           "description": "Is this the latest version available?",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "name": {
@@ -5938,7 +5899,7 @@ export const schema: Schema = {
           "description": "The name of the module",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "size": {
@@ -5946,7 +5907,7 @@ export const schema: Schema = {
           "description": "Size of the module",
           "fullType": "complexType.UnitAndValue<double>",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<double>"
         },
         "upgradeFrom": {
@@ -5954,7 +5915,7 @@ export const schema: Schema = {
           "description": "The IDs of the module you can upgrade to",
           "fullType": "long[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long[]"
         },
         "version": {
@@ -5962,7 +5923,7 @@ export const schema: Schema = {
           "description": "The version of the module",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6089,17 +6050,15 @@ export const schema: Schema = {
         "support": {
           "canBeNull": false,
           "description": "Current support of this php version",
-          "fullType": "hosting.web.PhpVersionStateEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.PhpVersionStateEnum"
         },
         "version": {
           "canBeNull": false,
           "description": "PHP version",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6184,7 +6143,7 @@ export const schema: Schema = {
           "description": "Available offers for boost option",
           "fullType": "hosting.web.AvailableOfferStruct[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.AvailableOfferStruct[]"
         },
         "boostOffer": {
@@ -6200,7 +6159,7 @@ export const schema: Schema = {
           "description": "Cluster name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "clusterIp": {
@@ -6232,7 +6191,7 @@ export const schema: Schema = {
           "description": "Datacenter where this account is located",
           "fullType": "hosting.web.DatacenterEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.DatacenterEnum"
         },
         "displayName": {
@@ -6272,7 +6231,7 @@ export const schema: Schema = {
           "description": "Path of your home",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "hostingIp": {
@@ -6304,7 +6263,7 @@ export const schema: Schema = {
           "description": "Hosting offer",
           "fullType": "hosting.web.OfferCapabilitiesEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.OfferCapabilitiesEnum"
         },
         "operatingSystem": {
@@ -6312,7 +6271,7 @@ export const schema: Schema = {
           "description": "Hosting's OS",
           "fullType": "hosting.web.OperatingSystemEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.OperatingSystemEnum"
         },
         "phpVersions": {
@@ -6320,7 +6279,7 @@ export const schema: Schema = {
           "description": "State of available php versions for this account",
           "fullType": "hosting.web.PhpVersion[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.PhpVersion[]"
         },
         "primaryLogin": {
@@ -6328,7 +6287,7 @@ export const schema: Schema = {
           "description": "Hosting's main login",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "quotaSize": {
@@ -6336,7 +6295,7 @@ export const schema: Schema = {
           "description": "Space allowed",
           "fullType": "complexType.UnitAndValue<double>",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<double>"
         },
         "quotaUsed": {
@@ -6360,7 +6319,7 @@ export const schema: Schema = {
           "description": "Hosting resource type",
           "fullType": "hosting.web.ResourceEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.ResourceEnum"
         },
         "serviceManagementAccess": {
@@ -6368,7 +6327,7 @@ export const schema: Schema = {
           "description": "URLs to use to manage your webhosting",
           "fullType": "hosting.web.ServiceAccess",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.ServiceAccess"
         },
         "serviceName": {
@@ -6376,7 +6335,7 @@ export const schema: Schema = {
           "description": "Service name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "state": {
@@ -6384,7 +6343,7 @@ export const schema: Schema = {
           "description": "State of your hosting",
           "fullType": "hosting.web.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.StateEnum"
         },
         "token": {
@@ -6416,7 +6375,7 @@ export const schema: Schema = {
           "description": "List of updates on your hosting",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         }
       }
@@ -6429,25 +6388,22 @@ export const schema: Schema = {
         "ftp": {
           "canBeNull": false,
           "description": "Address with url and port to manage files by ftp",
-          "fullType": "hosting.web.Address",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.Address"
         },
         "http": {
           "canBeNull": false,
           "description": "Address to see your webhosting without domain",
-          "fullType": "hosting.web.Address",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.Address"
         },
         "ssh": {
           "canBeNull": false,
           "description": "Address with url and port to manage webhosting by ssh",
-          "fullType": "hosting.web.Address",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.Address"
         }
       }
@@ -6499,7 +6455,7 @@ export const schema: Schema = {
           "description": "Is linked to the hosting cdn",
           "fullType": "hosting.web.attachedDomain.CdnEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.attachedDomain.CdnEnum"
         },
         "domain": {
@@ -6507,7 +6463,7 @@ export const schema: Schema = {
           "description": "Domain linked (fqdn)",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "firewall": {
@@ -6515,7 +6471,7 @@ export const schema: Schema = {
           "description": "Firewall state for this path",
           "fullType": "hosting.web.attachedDomain.FirewallEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.attachedDomain.FirewallEnum"
         },
         "ipLocation": {
@@ -6539,7 +6495,7 @@ export const schema: Schema = {
           "description": "Domain path, relative to your home directory",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "runtimeId": {
@@ -6563,7 +6519,7 @@ export const schema: Schema = {
           "description": "The domain status",
           "fullType": "hosting.web.attachedDomain.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.attachedDomain.StatusEnum"
         },
         "taskId": {
@@ -6631,8 +6587,8 @@ export const schema: Schema = {
           "description": "Account who requested the change",
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "boostOffer": {
           "canBeNull": true,
@@ -6647,7 +6603,7 @@ export const schema: Schema = {
           "description": "The date when the change has been requested",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "offer": {
@@ -6655,7 +6611,7 @@ export const schema: Schema = {
           "description": "Offer when the change was made",
           "fullType": "hosting.web.OfferCapabilitiesEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.OfferCapabilitiesEnum"
         }
       }
@@ -6670,7 +6626,7 @@ export const schema: Schema = {
           "description": "Domain of this CDN",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "free": {
@@ -6678,7 +6634,7 @@ export const schema: Schema = {
           "description": "Option CDN free with the hosting ?",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "status": {
@@ -6686,7 +6642,7 @@ export const schema: Schema = {
           "description": "Status of the CDN option",
           "fullType": "hosting.web.cdn.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.cdn.StatusEnum"
         },
         "taskId": {
@@ -6702,7 +6658,7 @@ export const schema: Schema = {
           "description": "Type of the CDN",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "version": {
@@ -6710,7 +6666,7 @@ export const schema: Schema = {
           "description": "Version of the CDN",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6737,7 +6693,7 @@ export const schema: Schema = {
           "description": "Command to execute",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "description": {
@@ -6761,7 +6717,7 @@ export const schema: Schema = {
           "description": "Frequency ( crontab format ) defined for the script ( minutes are ignored )",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -6769,7 +6725,7 @@ export const schema: Schema = {
           "description": "Cron's id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "language": {
@@ -6777,7 +6733,7 @@ export const schema: Schema = {
           "description": "Cron language",
           "fullType": "hosting.web.cron.LanguageEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.cron.LanguageEnum"
         },
         "state": {
@@ -6785,7 +6741,7 @@ export const schema: Schema = {
           "description": "Cron state",
           "fullType": "hosting.web.cron.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.cron.StateEnum"
         },
         "status": {
@@ -6793,7 +6749,7 @@ export const schema: Schema = {
           "description": "Cron status",
           "fullType": "hosting.web.cron.StatusEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.cron.StatusEnum"
         }
       }
@@ -6861,7 +6817,7 @@ export const schema: Schema = {
           "description": "The number of available dumps associated to this database",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "guiURL": {
@@ -6885,7 +6841,7 @@ export const schema: Schema = {
           "description": "Mode of your database",
           "fullType": "hosting.web.database.ModeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.database.ModeEnum"
         },
         "name": {
@@ -6893,7 +6849,7 @@ export const schema: Schema = {
           "description": "Database name (like mydb.mysql.db or mydb.postgres.db)",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "port": {
@@ -6901,7 +6857,7 @@ export const schema: Schema = {
           "description": "The port on where to contact this database",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "quotaSize": {
@@ -6909,7 +6865,7 @@ export const schema: Schema = {
           "description": "Space allowed",
           "fullType": "complexType.UnitAndValue<double>",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<double>"
         },
         "quotaUsed": {
@@ -6917,7 +6873,7 @@ export const schema: Schema = {
           "description": "Space used",
           "fullType": "complexType.UnitAndValue<double>",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<double>"
         },
         "server": {
@@ -6933,7 +6889,7 @@ export const schema: Schema = {
           "description": "Database state",
           "fullType": "hosting.web.database.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.database.StateEnum"
         },
         "status": {
@@ -6941,7 +6897,7 @@ export const schema: Schema = {
           "description": "The database status",
           "fullType": "hosting.web.database.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.database.StatusEnum"
         },
         "taskId": {
@@ -6957,7 +6913,7 @@ export const schema: Schema = {
           "description": "Type of your database",
           "fullType": "hosting.web.database.DatabaseTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.database.DatabaseTypeEnum"
         },
         "user": {
@@ -6965,7 +6921,7 @@ export const schema: Schema = {
           "description": "Database user name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "version": {
@@ -6973,7 +6929,7 @@ export const schema: Schema = {
           "description": "Database version following the database type",
           "fullType": "hosting.web.database.VersionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.database.VersionEnum"
         },
         "versionSupport": {
@@ -6981,7 +6937,7 @@ export const schema: Schema = {
           "description": "Indicates the current support state of your database version",
           "fullType": "hosting.web.database.SupportedVersionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.database.SupportedVersionEnum"
         }
       }
@@ -6994,17 +6950,15 @@ export const schema: Schema = {
         "default": {
           "canBeNull": false,
           "description": "Database default version",
-          "fullType": "hosting.web.database.VersionEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.database.VersionEnum"
         },
         "list": {
           "canBeNull": false,
           "description": "Database available version",
-          "fullType": "hosting.web.database.VersionEnum[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.database.VersionEnum[]"
         }
       }
@@ -7017,41 +6971,36 @@ export const schema: Schema = {
         "available": {
           "canBeNull": false,
           "description": "Number of database left for creation",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "engines": {
           "canBeNull": false,
           "description": "Database software available on this platform",
-          "fullType": "hosting.web.database.DatabaseTypeEnum[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.database.DatabaseTypeEnum[]"
         },
         "isolation": {
           "canBeNull": false,
           "description": "Technology use to isolate differents webhosting accounts",
-          "fullType": "hosting.web.database.DatabaseIsolationEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.database.DatabaseIsolationEnum"
         },
         "quota": {
           "canBeNull": false,
           "description": "Size of data can be used",
-          "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         },
         "type": {
           "canBeNull": false,
           "description": "Database offer name",
-          "fullType": "hosting.web.database.DatabaseCapabilitiesTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.database.DatabaseCapabilitiesTypeEnum"
         }
       }
@@ -7064,73 +7013,64 @@ export const schema: Schema = {
         "changePassword": {
           "canBeNull": false,
           "description": "Availability of the changePassword function",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "changeRight": {
           "canBeNull": false,
           "description": "Availability of the changeRight function",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "delete": {
           "canBeNull": false,
           "description": "Availability of the delete function",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "dump": {
           "canBeNull": false,
           "description": "Availability of the dump function",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "getQuota": {
           "canBeNull": false,
           "description": "Availability of the getQuota function",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "getRight": {
           "canBeNull": false,
           "description": "Availability of the getQuota function",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "guiURL": {
           "canBeNull": false,
           "description": "URL of the database management tool",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "optimize": {
           "canBeNull": false,
           "description": "Availability of the optimize function",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "restore": {
           "canBeNull": false,
           "description": "Availability of the restore function",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -7284,15 +7224,15 @@ export const schema: Schema = {
     },
     "hosting.web.database.dump": {
       "description": "Dump",
-      "id": "dump",
-      "namespace": "hosting.web.database",
+      "id": "database.dump",
+      "namespace": "hosting.web",
       "properties": {
         "creationDate": {
           "canBeNull": false,
           "description": "Creation date of the dump",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "deletionDate": {
@@ -7300,7 +7240,7 @@ export const schema: Schema = {
           "description": "Automatic deletion date of the dump",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -7308,7 +7248,7 @@ export const schema: Schema = {
           "description": "Dump id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "status": {
@@ -7316,7 +7256,7 @@ export const schema: Schema = {
           "description": "The dump status",
           "fullType": "hosting.web.database.dump.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.database.dump.StatusEnum"
         },
         "taskId": {
@@ -7332,7 +7272,7 @@ export const schema: Schema = {
           "description": "Dump type",
           "fullType": "hosting.web.database.dump.DateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.database.dump.DateEnum"
         },
         "url": {
@@ -7377,7 +7317,7 @@ export const schema: Schema = {
           "description": "Creation date of the dump",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "databaseName": {
@@ -7385,7 +7325,7 @@ export const schema: Schema = {
           "description": "Source database name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "deletionDate": {
@@ -7393,7 +7333,7 @@ export const schema: Schema = {
           "description": "Automatic deletion date of the dump",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -7401,7 +7341,7 @@ export const schema: Schema = {
           "description": "Dump id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "orphan": {
@@ -7409,7 +7349,7 @@ export const schema: Schema = {
           "description": "If source database was deleted",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "status": {
@@ -7417,7 +7357,7 @@ export const schema: Schema = {
           "description": "The dump status",
           "fullType": "hosting.web.database.dump.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.database.dump.StatusEnum"
         },
         "taskId": {
@@ -7433,7 +7373,7 @@ export const schema: Schema = {
           "description": "Dump type",
           "fullType": "hosting.web.database.dump.DateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.database.dump.DateEnum"
         },
         "url": {
@@ -7456,7 +7396,7 @@ export const schema: Schema = {
           "description": "Bounce",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "email": {
@@ -7472,7 +7412,7 @@ export const schema: Schema = {
           "description": "Max email to sent per day",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "sent": {
@@ -7480,7 +7420,7 @@ export const schema: Schema = {
           "description": "Email sent since hosting creation",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "sentToday": {
@@ -7488,7 +7428,7 @@ export const schema: Schema = {
           "description": "Email sent today",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "state": {
@@ -7496,7 +7436,7 @@ export const schema: Schema = {
           "description": "Email state",
           "fullType": "hosting.web.mail.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.mail.StateEnum"
         }
       }
@@ -7511,7 +7451,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "domain": {
@@ -7519,7 +7459,7 @@ export const schema: Schema = {
           "description": "Email service domain",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -7527,7 +7467,7 @@ export const schema: Schema = {
           "description": "Account id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -7542,7 +7482,7 @@ export const schema: Schema = {
           "description": "Name of the variable",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -7550,7 +7490,7 @@ export const schema: Schema = {
           "description": "The environnement variable status",
           "fullType": "hosting.web.envVar.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.envVar.StatusEnum"
         },
         "taskId": {
@@ -7566,7 +7506,7 @@ export const schema: Schema = {
           "description": "Type of variable set",
           "fullType": "hosting.web.envVar.TypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.envVar.TypeEnum"
         },
         "value": {
@@ -7574,7 +7514,7 @@ export const schema: Schema = {
           "description": "Value of the variable",
           "fullType": "password",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "password"
         }
       }
@@ -7612,7 +7552,7 @@ export const schema: Schema = {
           "description": "Number of database allowed by this option",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
@@ -7620,7 +7560,7 @@ export const schema: Schema = {
           "description": "The extraSqlPerso option name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "size": {
@@ -7628,7 +7568,7 @@ export const schema: Schema = {
           "description": "Quota size allowed per each database by this option",
           "fullType": "complexType.UnitAndValue<double>",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "complexType.UnitAndValue<double>"
         },
         "status": {
@@ -7636,7 +7576,7 @@ export const schema: Schema = {
           "description": "The extraSqlPerso option status",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "taskId": {
@@ -7659,7 +7599,7 @@ export const schema: Schema = {
           "description": "Freedom domain",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -7667,7 +7607,7 @@ export const schema: Schema = {
           "description": "Available status for freedom",
           "fullType": "hosting.web.freedom.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.freedom.StatusEnum"
         },
         "type": {
@@ -7675,7 +7615,7 @@ export const schema: Schema = {
           "description": "Freedom type",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -7729,7 +7669,7 @@ export const schema: Schema = {
           "description": "AttachedDomain IDs linked to this multidomain",
           "fullType": "string[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string[]"
         },
         "home": {
@@ -7737,7 +7677,7 @@ export const schema: Schema = {
           "description": "Home directory",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "login": {
@@ -7745,7 +7685,7 @@ export const schema: Schema = {
           "description": "Login of the multidomain independent user",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "state": {
@@ -7753,7 +7693,7 @@ export const schema: Schema = {
           "description": "User status",
           "fullType": "hosting.web.user.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.user.StateEnum"
         }
       }
@@ -7766,25 +7706,22 @@ export const schema: Schema = {
         "navigationSystems": {
           "canBeNull": false,
           "description": "Navigation systems",
-          "fullType": "hosting.web.localSeo.Directory[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.localSeo.Directory[]"
         },
         "searchEngines": {
           "canBeNull": false,
           "description": "Search engines",
-          "fullType": "hosting.web.localSeo.Directory[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.localSeo.Directory[]"
         },
         "socialNetworks": {
           "canBeNull": false,
           "description": "Social networks",
-          "fullType": "hosting.web.localSeo.Directory[]",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.localSeo.Directory[]"
         }
       }
@@ -7797,17 +7734,15 @@ export const schema: Schema = {
         "code": {
           "canBeNull": false,
           "description": "Identifier to use to get the result of a visibility check for the directory",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "displayName": {
           "canBeNull": false,
           "description": "Human-readable name of the directory",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -7820,15 +7755,13 @@ export const schema: Schema = {
         "availability": {
           "canBeNull": false,
           "description": "Availability of the email address",
-          "fullType": "hosting.web.localSeo.account.EmailAvailabilityEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.localSeo.account.EmailAvailabilityEnum"
         },
         "serviceName": {
           "canBeNull": true,
           "description": "Hosting on which the email address is used",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -7892,39 +7825,34 @@ export const schema: Schema = {
         "city": {
           "canBeNull": false,
           "description": "City of the location",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "country": {
           "canBeNull": false,
           "description": "Country of the location",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
           "canBeNull": false,
           "description": "Id of the search",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
           "canBeNull": false,
           "description": "Name of the location",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "province": {
           "canBeNull": true,
           "description": "Province of the location",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -7932,33 +7860,29 @@ export const schema: Schema = {
         "street": {
           "canBeNull": false,
           "description": "Street of the location",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "streetNo": {
           "canBeNull": false,
           "description": "Street numero of the location",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "token": {
           "canBeNull": false,
           "description": "Token to use to get the results of the search",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "zip": {
           "canBeNull": false,
           "description": "Zipcode of the location",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -7971,7 +7895,6 @@ export const schema: Schema = {
         "alreadyManaged": {
           "canBeNull": true,
           "description": "Is the searched location already managed ?",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -7979,9 +7902,8 @@ export const schema: Schema = {
         "searchData": {
           "canBeNull": false,
           "description": "Searched location data",
-          "fullType": "hosting.web.localSeo.SearchData",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.localSeo.SearchData"
         }
       }
@@ -7994,7 +7916,6 @@ export const schema: Schema = {
         "city": {
           "canBeNull": true,
           "description": "City of the location",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8002,7 +7923,6 @@ export const schema: Schema = {
         "cityStatus": {
           "canBeNull": true,
           "description": "City of the location (sync status)",
-          "fullType": "hosting.web.localSeo.FieldStatusEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.localSeo.FieldStatusEnum"
@@ -8010,7 +7930,6 @@ export const schema: Schema = {
         "country": {
           "canBeNull": true,
           "description": "Country of the location",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8018,7 +7937,6 @@ export const schema: Schema = {
         "countryStatus": {
           "canBeNull": true,
           "description": "Country of the location (sync status)",
-          "fullType": "hosting.web.localSeo.FieldStatusEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.localSeo.FieldStatusEnum"
@@ -8026,7 +7944,6 @@ export const schema: Schema = {
         "dateCreated": {
           "canBeNull": true,
           "description": "The date and time the listing was created in database",
-          "fullType": "datetime",
           "readOnly": false,
           "required": false,
           "type": "datetime"
@@ -8034,7 +7951,6 @@ export const schema: Schema = {
         "directoryType": {
           "canBeNull": true,
           "description": "The directory where this listing appears",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8042,7 +7958,6 @@ export const schema: Schema = {
         "email": {
           "canBeNull": true,
           "description": "A contact email for the location",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8050,7 +7965,6 @@ export const schema: Schema = {
         "emailStatus": {
           "canBeNull": true,
           "description": "A contact email for the location (sync status)",
-          "fullType": "hosting.web.localSeo.FieldStatusEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.localSeo.FieldStatusEnum"
@@ -8058,7 +7972,6 @@ export const schema: Schema = {
         "flowStatus": {
           "canBeNull": true,
           "description": "The status of the current listing",
-          "fullType": "hosting.web.localSeo.FlowStatusEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.localSeo.FlowStatusEnum"
@@ -8066,7 +7979,6 @@ export const schema: Schema = {
         "listingId": {
           "canBeNull": true,
           "description": "The listing id in the directory database",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8074,7 +7986,6 @@ export const schema: Schema = {
         "listingUrl": {
           "canBeNull": true,
           "description": "The listing url on the directory website",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8082,7 +7993,6 @@ export const schema: Schema = {
         "name": {
           "canBeNull": true,
           "description": "The location's name used for this listing",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8090,7 +8000,6 @@ export const schema: Schema = {
         "nameStatus": {
           "canBeNull": true,
           "description": "The location's name used for this listing (sync status)",
-          "fullType": "hosting.web.localSeo.FieldStatusEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.localSeo.FieldStatusEnum"
@@ -8098,7 +8007,6 @@ export const schema: Schema = {
         "phone": {
           "canBeNull": true,
           "description": "The location's contact phone number",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8106,7 +8014,6 @@ export const schema: Schema = {
         "phoneStatus": {
           "canBeNull": true,
           "description": "The location's contact phone number (sync status)",
-          "fullType": "hosting.web.localSeo.FieldStatusEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.localSeo.FieldStatusEnum"
@@ -8114,7 +8021,6 @@ export const schema: Schema = {
         "province": {
           "canBeNull": true,
           "description": "Province of the location",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8122,7 +8028,6 @@ export const schema: Schema = {
         "provinceStatus": {
           "canBeNull": true,
           "description": "Province of the location (sync status)",
-          "fullType": "hosting.web.localSeo.FieldStatusEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.localSeo.FieldStatusEnum"
@@ -8130,7 +8035,6 @@ export const schema: Schema = {
         "street": {
           "canBeNull": true,
           "description": "The location's street address",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8138,7 +8042,6 @@ export const schema: Schema = {
         "streetAndNo": {
           "canBeNull": true,
           "description": "A localized combination of street and streetNo",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8146,7 +8049,6 @@ export const schema: Schema = {
         "streetAndNoStatus": {
           "canBeNull": true,
           "description": "A localized combination of street and streetNo (sync status)",
-          "fullType": "hosting.web.localSeo.FieldStatusEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.localSeo.FieldStatusEnum"
@@ -8154,7 +8056,6 @@ export const schema: Schema = {
         "streetNo": {
           "canBeNull": true,
           "description": "The location's street number",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8162,7 +8063,6 @@ export const schema: Schema = {
         "streetNoStatus": {
           "canBeNull": true,
           "description": "The location's street number (sync status)",
-          "fullType": "hosting.web.localSeo.FieldStatusEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.localSeo.FieldStatusEnum"
@@ -8170,7 +8070,6 @@ export const schema: Schema = {
         "streetStatus": {
           "canBeNull": true,
           "description": "The location's street address (sync status)",
-          "fullType": "hosting.web.localSeo.FieldStatusEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.localSeo.FieldStatusEnum"
@@ -8178,7 +8077,6 @@ export const schema: Schema = {
         "streetType": {
           "canBeNull": true,
           "description": "The street type for Spain",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8186,7 +8084,6 @@ export const schema: Schema = {
         "streetTypeStatus": {
           "canBeNull": true,
           "description": "The street type for Spain (sync status)",
-          "fullType": "hosting.web.localSeo.FieldStatusEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.localSeo.FieldStatusEnum"
@@ -8194,7 +8091,6 @@ export const schema: Schema = {
         "syncStatus": {
           "canBeNull": true,
           "description": "The sync status of the listing",
-          "fullType": "hosting.web.localSeo.ListingStatusEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.localSeo.ListingStatusEnum"
@@ -8202,7 +8098,6 @@ export const schema: Schema = {
         "website": {
           "canBeNull": true,
           "description": "A valid url for the location's website",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8210,7 +8105,6 @@ export const schema: Schema = {
         "websiteStatus": {
           "canBeNull": true,
           "description": "A valid url for the location's website (sync status)",
-          "fullType": "hosting.web.localSeo.FieldStatusEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.localSeo.FieldStatusEnum"
@@ -8218,7 +8112,6 @@ export const schema: Schema = {
         "zip": {
           "canBeNull": true,
           "description": "Zipcode of the location",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8226,7 +8119,6 @@ export const schema: Schema = {
         "zipStatus": {
           "canBeNull": true,
           "description": "Zipcode of the location (sync status)",
-          "fullType": "hosting.web.localSeo.FieldStatusEnum",
           "readOnly": false,
           "required": false,
           "type": "hosting.web.localSeo.FieldStatusEnum"
@@ -8235,15 +8127,15 @@ export const schema: Schema = {
     },
     "hosting.web.localSeo.account": {
       "description": "Local SEO accounts",
-      "id": "account",
-      "namespace": "hosting.web.localSeo",
+      "id": "localSeo.account",
+      "namespace": "hosting.web",
       "properties": {
         "creationDate": {
           "canBeNull": false,
           "description": "Date of creation of the account",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "email": {
@@ -8251,7 +8143,7 @@ export const schema: Schema = {
           "description": "Email address associated to the account",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -8259,7 +8151,7 @@ export const schema: Schema = {
           "description": "Account id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lastUpdate": {
@@ -8267,7 +8159,7 @@ export const schema: Schema = {
           "description": "Date of the last account's update",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
@@ -8275,7 +8167,7 @@ export const schema: Schema = {
           "description": "Current status of the account",
           "fullType": "hosting.web.localSeo.account.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.localSeo.account.StatusEnum"
         },
         "taskId": {
@@ -8314,8 +8206,8 @@ export const schema: Schema = {
     },
     "hosting.web.localSeo.location": {
       "description": "Local SEO locations",
-      "id": "location",
-      "namespace": "hosting.web.localSeo",
+      "id": "localSeo.location",
+      "namespace": "hosting.web",
       "properties": {
         "accountId": {
           "canBeNull": true,
@@ -8338,7 +8230,7 @@ export const schema: Schema = {
           "description": "Country of the location",
           "fullType": "hosting.web.localSeo.location.CountryEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.localSeo.location.CountryEnum"
         },
         "creationDate": {
@@ -8346,7 +8238,7 @@ export const schema: Schema = {
           "description": "Date of the installation of the location",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -8354,7 +8246,7 @@ export const schema: Schema = {
           "description": "Location id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lastUpdate": {
@@ -8362,7 +8254,7 @@ export const schema: Schema = {
           "description": "Date of the last location's update",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "name": {
@@ -8378,7 +8270,7 @@ export const schema: Schema = {
           "description": "Local SEO offer for this location",
           "fullType": "hosting.web.localSeo.location.OfferEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.localSeo.location.OfferEnum"
         },
         "status": {
@@ -8386,7 +8278,7 @@ export const schema: Schema = {
           "description": "Current status of the location",
           "fullType": "hosting.web.localSeo.location.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.localSeo.location.StatusEnum"
         },
         "taskId": {
@@ -8448,15 +8340,13 @@ export const schema: Schema = {
         "date": {
           "canBeNull": false,
           "description": "The datetime of this bounce",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "message": {
           "canBeNull": true,
           "description": "The return message for this bounce",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8464,7 +8354,6 @@ export const schema: Schema = {
         "to": {
           "canBeNull": true,
           "description": "The email where you have the bounce",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8493,15 +8382,13 @@ export const schema: Schema = {
         "date": {
           "canBeNull": false,
           "description": "The datetime of this volume history point",
-          "fullType": "datetime",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "volume": {
           "canBeNull": true,
           "description": "The volume history size",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8518,7 +8405,7 @@ export const schema: Schema = {
           "description": "The admin folder, relative to the module's installation path",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "adminName": {
@@ -8526,7 +8413,7 @@ export const schema: Schema = {
           "description": "Login for the admin account",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "creationDate": {
@@ -8534,7 +8421,7 @@ export const schema: Schema = {
           "description": "Date of the installation of the module",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "dependencies": {
@@ -8542,7 +8429,7 @@ export const schema: Schema = {
           "description": "The dependencies to which the module has access. A dependency can be a standard database (like MySQL or PostgreSQL) or a key-value store (like Redis or Memcached) for example",
           "fullType": "hosting.web.module.DependencyType[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.module.DependencyType[]"
         },
         "id": {
@@ -8550,7 +8437,7 @@ export const schema: Schema = {
           "description": "Installation ID",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "language": {
@@ -8558,7 +8445,7 @@ export const schema: Schema = {
           "description": "The language of the module",
           "fullType": "hosting.web.module.LanguageEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.module.LanguageEnum"
         },
         "lastUpdate": {
@@ -8566,7 +8453,7 @@ export const schema: Schema = {
           "description": "Date of the last module's upgrade",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "moduleId": {
@@ -8574,7 +8461,7 @@ export const schema: Schema = {
           "description": "ID of the module associated with this installation",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "path": {
@@ -8582,7 +8469,7 @@ export const schema: Schema = {
           "description": "Where the module is installed, relative to your home directory",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -8590,7 +8477,7 @@ export const schema: Schema = {
           "description": "The module status",
           "fullType": "hosting.web.module.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.module.StatusEnum"
         },
         "targetUrl": {
@@ -8598,7 +8485,7 @@ export const schema: Schema = {
           "description": "The URL from where your module can be reached",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "taskId": {
@@ -8640,7 +8527,6 @@ export const schema: Schema = {
         "name": {
           "canBeNull": true,
           "description": "The name of this dependency",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8648,7 +8534,6 @@ export const schema: Schema = {
         "password": {
           "canBeNull": true,
           "description": "The password associated with the user",
-          "fullType": "password",
           "readOnly": false,
           "required": false,
           "type": "password"
@@ -8656,7 +8541,6 @@ export const schema: Schema = {
         "port": {
           "canBeNull": true,
           "description": "The port on where to contact this dependency",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -8664,7 +8548,6 @@ export const schema: Schema = {
         "prefix": {
           "canBeNull": true,
           "description": "The prefix to set to the data to distinguish between the data from the module and the rest",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8672,7 +8555,6 @@ export const schema: Schema = {
         "server": {
           "canBeNull": true,
           "description": "The server on where your dependency is hosted",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8680,15 +8562,13 @@ export const schema: Schema = {
         "type": {
           "canBeNull": false,
           "description": "Type",
-          "fullType": "hosting.web.module.DependencyTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.module.DependencyTypeEnum"
         },
         "user": {
           "canBeNull": true,
           "description": "The user to use to connect to this dependency",
-          "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
@@ -8745,7 +8625,7 @@ export const schema: Schema = {
           "description": "Container to run this website",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "creationDate": {
@@ -8753,7 +8633,7 @@ export const schema: Schema = {
           "description": "When ovhconfig was created, or found for the first time, on the hosting servers",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "engineName": {
@@ -8761,7 +8641,7 @@ export const schema: Schema = {
           "description": "Version of engine you want",
           "fullType": "hosting.web.ovhConfig.EngineNameEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.ovhConfig.EngineNameEnum"
         },
         "engineVersion": {
@@ -8769,7 +8649,7 @@ export const schema: Schema = {
           "description": "Name of engine you want",
           "fullType": "hosting.web.ovhConfig.EngineVersionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.ovhConfig.EngineVersionEnum"
         },
         "environment": {
@@ -8777,7 +8657,7 @@ export const schema: Schema = {
           "description": "Environment configuration you want",
           "fullType": "hosting.web.ovhConfig.EnvironmentEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.ovhConfig.EnvironmentEnum"
         },
         "fileExist": {
@@ -8785,7 +8665,7 @@ export const schema: Schema = {
           "description": "If .ovhConfig exists",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "historical": {
@@ -8801,7 +8681,7 @@ export const schema: Schema = {
           "description": "Configuration you want for http firewall",
           "fullType": "hosting.web.ovhConfig.HttpFirewallEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.ovhConfig.HttpFirewallEnum"
         },
         "id": {
@@ -8809,7 +8689,7 @@ export const schema: Schema = {
           "description": "Configuration's id",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "path": {
@@ -8825,7 +8705,7 @@ export const schema: Schema = {
           "description": "The configuration status",
           "fullType": "hosting.web.ovhConfig.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.ovhConfig.StatusEnum"
         },
         "taskId": {
@@ -8937,7 +8817,7 @@ export const schema: Schema = {
           "description": "The ownlogs fqdn available on logs.clusterXX.hosting.ovh.net",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -8945,7 +8825,7 @@ export const schema: Schema = {
           "description": "Identifier of this ownLogs",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "logs": {
@@ -8953,7 +8833,7 @@ export const schema: Schema = {
           "description": "URL to access this ownLogs logs",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "stats": {
@@ -8961,7 +8841,7 @@ export const schema: Schema = {
           "description": "URL to access this ownLogs stats",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -8969,7 +8849,7 @@ export const schema: Schema = {
           "description": "Status of this ownLogs",
           "fullType": "hosting.web.ownLogs.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.ownLogs.StatusEnum"
         },
         "taskId": {
@@ -9011,7 +8891,7 @@ export const schema: Schema = {
           "description": "The client application environment",
           "fullType": "hosting.web.runtime.EnvEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.runtime.EnvEnum"
         },
         "creationDate": {
@@ -9019,7 +8899,7 @@ export const schema: Schema = {
           "description": "The creation date of the runtime configuration",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -9027,7 +8907,7 @@ export const schema: Schema = {
           "description": "The runtime configuration ID",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "isDefault": {
@@ -9035,7 +8915,7 @@ export const schema: Schema = {
           "description": "Is the runtime configuration is the one by default for the hosting",
           "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isDeletable": {
@@ -9043,7 +8923,7 @@ export const schema: Schema = {
           "description": "Return if the runtime configuration can be deleted",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "lastUpdate": {
@@ -9051,7 +8931,7 @@ export const schema: Schema = {
           "description": "The last update date of the runtime configuration",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "name": {
@@ -9075,7 +8955,7 @@ export const schema: Schema = {
           "description": "The status of the runtime",
           "fullType": "hosting.web.runtime.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.runtime.StateEnum"
         },
         "taskId": {
@@ -9091,7 +8971,7 @@ export const schema: Schema = {
           "description": "The backend type of the runtime",
           "fullType": "hosting.web.runtime.TypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.runtime.TypeEnum"
         }
       }
@@ -9152,7 +9032,7 @@ export const schema: Schema = {
           "description": "If the hostedssl is currently bound to a report",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "provider": {
@@ -9160,7 +9040,7 @@ export const schema: Schema = {
           "description": "Provider of the HostedSsl",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "regenerable": {
@@ -9168,7 +9048,7 @@ export const schema: Schema = {
           "description": "Regenerable flag",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "status": {
@@ -9176,7 +9056,7 @@ export const schema: Schema = {
           "description": "Status of the HostedSsl",
           "fullType": "hosting.web.hostedssl.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.hostedssl.StatusEnum"
         },
         "taskId": {
@@ -9192,22 +9072,22 @@ export const schema: Schema = {
           "description": "Type of the HostedSsl",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
     },
     "hosting.web.ssl.report": {
       "description": "Hostedssl Report",
-      "id": "report",
-      "namespace": "hosting.web.ssl",
+      "id": "ssl.report",
+      "namespace": "hosting.web",
       "properties": {
         "certificateSigningRequestStatus": {
           "canBeNull": false,
           "description": "\"Certificate signing request\" test status done by certification authority",
           "fullType": "hosting.web.hostedssl.ReportValueEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.hostedssl.ReportValueEnum"
         },
         "domainControlValidationStatus": {
@@ -9215,7 +9095,7 @@ export const schema: Schema = {
           "description": "\"Domain control validation\" test status done by certification authority",
           "fullType": "hosting.web.hostedssl.ReportValueEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.hostedssl.ReportValueEnum"
         },
         "organizationValidationStatus": {
@@ -9223,7 +9103,7 @@ export const schema: Schema = {
           "description": "Applicant's legal status obtained or verified directly with registration agency",
           "fullType": "hosting.web.hostedssl.ReportValueEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.hostedssl.ReportValueEnum"
         },
         "phoneCallApprovalStatus": {
@@ -9231,7 +9111,7 @@ export const schema: Schema = {
           "description": "Approval verified through a phone call to the contract signer",
           "fullType": "hosting.web.hostedssl.ReportValueEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.hostedssl.ReportValueEnum"
         },
         "providerOrderId": {
@@ -9239,7 +9119,7 @@ export const schema: Schema = {
           "description": "The order ID from given hostedssl provider",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "termsAndConditionsAcceptanceStatus": {
@@ -9247,7 +9127,7 @@ export const schema: Schema = {
           "description": "Terms and conditions agreements acceptance",
           "fullType": "hosting.web.hostedssl.ReportValueEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.hostedssl.ReportValueEnum"
         },
         "tradeNameVerificationStatus": {
@@ -9255,7 +9135,7 @@ export const schema: Schema = {
           "description": "Trade name verified directly with registration agency or through a verified third party",
           "fullType": "hosting.web.hostedssl.ReportValueEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.hostedssl.ReportValueEnum"
         }
       }
@@ -9278,7 +9158,7 @@ export const schema: Schema = {
           "description": "Function name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -9286,7 +9166,7 @@ export const schema: Schema = {
           "description": "the id of the task",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "lastUpdate": {
@@ -9318,7 +9198,7 @@ export const schema: Schema = {
           "description": "Task Creation date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
@@ -9326,7 +9206,7 @@ export const schema: Schema = {
           "description": "Task status",
           "fullType": "hosting.web.task.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.task.StatusEnum"
         }
       }
@@ -9389,7 +9269,7 @@ export const schema: Schema = {
           "description": "Home directory",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "isPrimaryAccount": {
@@ -9397,7 +9277,7 @@ export const schema: Schema = {
           "description": "Is this user primary",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "login": {
@@ -9405,7 +9285,7 @@ export const schema: Schema = {
           "description": "Login used to connect on FTP and SSH",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "serviceManagementCredentials": {
@@ -9413,7 +9293,7 @@ export const schema: Schema = {
           "description": "Credentials to manage your webhosting",
           "fullType": "hosting.web.user.ServiceCredentials",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.user.ServiceCredentials"
         },
         "sshState": {
@@ -9421,7 +9301,7 @@ export const schema: Schema = {
           "description": "User ssh status",
           "fullType": "hosting.web.user.SshStateEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.user.SshStateEnum"
         },
         "state": {
@@ -9429,7 +9309,7 @@ export const schema: Schema = {
           "description": "User state",
           "fullType": "hosting.web.user.StateEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.user.StateEnum"
         },
         "status": {
@@ -9437,7 +9317,7 @@ export const schema: Schema = {
           "description": "The user status",
           "fullType": "hosting.web.user.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.user.StatusEnum"
         },
         "taskId": {
@@ -9458,25 +9338,22 @@ export const schema: Schema = {
         "port": {
           "canBeNull": false,
           "description": "Port to use to access to the service",
-          "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "url": {
           "canBeNull": false,
           "description": "Url to contact the service",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "user": {
           "canBeNull": false,
           "description": "Login to authentificate you on the service",
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -9489,17 +9366,15 @@ export const schema: Schema = {
         "ftp": {
           "canBeNull": false,
           "description": "Credentials to manage files by ftp",
-          "fullType": "hosting.web.user.Credentials",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.user.Credentials"
         },
         "ssh": {
           "canBeNull": false,
           "description": "Credentials to manage webhosting by ssh",
-          "fullType": "hosting.web.user.Credentials",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "hosting.web.user.Credentials"
         }
       }
@@ -9547,7 +9422,7 @@ export const schema: Schema = {
           "description": "Date of the user creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
@@ -9563,7 +9438,7 @@ export const schema: Schema = {
           "description": "The userLogs login used to connect to logs.ovh.net",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "ownLogsId": {
@@ -9579,7 +9454,7 @@ export const schema: Schema = {
           "description": "Status of this userLogs",
           "fullType": "hosting.web.userLogs.StatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "hosting.web.userLogs.StatusEnum"
         },
         "taskId": {
@@ -9632,23 +9507,20 @@ export const schema: Schema = {
       "properties": {
         "currencyCode": {
           "canBeNull": false,
-          "fullType": "order.CurrencyCodeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "order.CurrencyCodeEnum"
         },
         "text": {
           "canBeNull": false,
-          "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "fullType": "double",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "double"
         }
       }
@@ -9661,31 +9533,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -9693,7 +9561,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -9772,42 +9639,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -9821,7 +9688,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -9844,21 +9711,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

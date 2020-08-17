@@ -3,7 +3,7 @@ import {Schema} from '../../src/schema';
 // imported from https://api.us.ovhcloud.com:443/1.0/dbaas/logs.json
 
 export const schema: Schema = {
-  "apiVersion": "1",
+  "apiVersion": "1.0",
   "apis": [
     {
       "description": "Operations about the DBAAS-LOGS service",
@@ -105,17 +105,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "uuid",
-              "description": "Helper ID",
+              "description": "Engine ID",
               "fullType": "uuid",
-              "name": "helperId",
+              "name": "engineId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "uuid",
-              "description": "Engine ID",
+              "description": "Helper ID",
               "fullType": "uuid",
-              "name": "engineId",
+              "name": "helperId",
               "paramType": "path",
               "required": true
             }
@@ -222,7 +222,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as admin contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactAdmin",
               "paramType": "body",
               "required": false
@@ -230,7 +230,7 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as tech contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactTech",
               "paramType": "body",
               "required": false
@@ -238,14 +238,14 @@ export const schema: Schema = {
             {
               "dataType": "string",
               "description": "The contact to set as billing contact",
-              "fullType": "string",
+              "fullType": "coreTypes.AccountId:string",
               "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your Logs pack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -443,14 +443,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Allowed network ID",
-              "fullType": "uuid",
-              "name": "allowedNetworkId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Service name",
               "fullType": "string",
@@ -463,6 +455,14 @@ export const schema: Schema = {
               "description": "Cluster ID",
               "fullType": "uuid",
               "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Allowed network ID",
+              "fullType": "uuid",
+              "name": "allowedNetworkId",
               "paramType": "path",
               "required": true
             }
@@ -558,6 +558,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "uuid",
+              "description": "Cluster ID",
+              "fullType": "uuid",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "string",
               "description": "Service name",
               "fullType": "string",
@@ -570,14 +578,6 @@ export const schema: Schema = {
               "description": "Retention ID",
               "fullType": "uuid",
               "name": "retentionId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Cluster ID",
-              "fullType": "uuid",
-              "name": "clusterId",
               "paramType": "path",
               "required": true
             }
@@ -825,18 +825,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "uuid",
-              "description": "Input ID",
-              "fullType": "uuid",
-              "name": "inputId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Input ID",
+              "fullType": "uuid",
+              "name": "inputId",
               "paramType": "path",
               "required": true
             }
@@ -901,6 +901,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "uuid",
+              "description": "Allowed network ID",
+              "fullType": "uuid",
+              "name": "allowedNetworkId",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "string",
               "description": "Service name",
               "fullType": "string",
@@ -913,14 +921,6 @@ export const schema: Schema = {
               "description": "Input ID",
               "fullType": "uuid",
               "name": "inputId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Allowed network ID",
-              "fullType": "uuid",
-              "name": "allowedNetworkId",
               "paramType": "path",
               "required": true
             }
@@ -1115,18 +1115,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "uuid",
               "description": "Input ID",
               "fullType": "uuid",
               "name": "inputId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1578,7 +1578,7 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/alias"
     },
     {
-      "description": "Alia",
+      "description": "Alias",
       "operations": [
         {
           "apiStatus": {
@@ -1618,18 +1618,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Alias ID",
+              "fullType": "uuid",
+              "name": "aliasId",
               "paramType": "path",
               "required": true
             }
@@ -1653,18 +1653,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "uuid",
-              "description": "Alias ID",
-              "fullType": "uuid",
-              "name": "aliasId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Alias ID",
+              "fullType": "uuid",
+              "name": "aliasId",
               "paramType": "path",
               "required": true
             }
@@ -1833,18 +1833,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "uuid",
               "description": "Alias ID",
               "fullType": "uuid",
               "name": "aliasId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2024,18 +2024,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Index ID",
-              "fullType": "uuid",
-              "name": "indexId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Index ID",
+              "fullType": "uuid",
+              "name": "indexId",
               "paramType": "path",
               "required": true
             }
@@ -2093,18 +2093,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "uuid",
               "description": "Index ID",
               "fullType": "uuid",
               "name": "indexId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2234,18 +2234,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "uuid",
               "description": "Dashboard ID",
               "fullType": "uuid",
               "name": "dashboardId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3196,18 +3196,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Role ID",
-              "fullType": "uuid",
-              "name": "roleId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Role ID",
+              "fullType": "uuid",
+              "name": "roleId",
               "paramType": "path",
               "required": true
             }
@@ -3231,18 +3231,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "uuid",
-              "description": "Role ID",
-              "fullType": "uuid",
-              "name": "roleId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Role ID",
+              "fullType": "uuid",
+              "name": "roleId",
               "paramType": "path",
               "required": true
             }
@@ -3265,6 +3265,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "uuid",
               "description": "Role ID",
               "fullType": "uuid",
@@ -3277,14 +3285,6 @@ export const schema: Schema = {
               "description": "Username",
               "fullType": "string",
               "name": "username",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3344,14 +3344,6 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "uuid",
               "description": "Role ID",
               "fullType": "uuid",
@@ -3364,6 +3356,14 @@ export const schema: Schema = {
               "description": "Username",
               "fullType": "string",
               "name": "username",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3620,14 +3620,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Permission ID",
-              "fullType": "uuid",
-              "name": "permissionId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Service name",
               "fullType": "string",
@@ -3640,6 +3632,14 @@ export const schema: Schema = {
               "description": "Role ID",
               "fullType": "uuid",
               "name": "roleId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Permission ID",
+              "fullType": "uuid",
+              "name": "permissionId",
               "paramType": "path",
               "required": true
             }
@@ -3663,7 +3663,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your Logs pack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3683,14 +3683,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "services.Service",
-              "description": "Request Body",
+              "description": "New object properties",
               "fullType": "services.Service",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "The internal ID of your Logs pack",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3889,7 +3889,7 @@ export const schema: Schema = {
           "description": "Alias ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "createdAt": {
@@ -3897,7 +3897,7 @@ export const schema: Schema = {
           "description": "Input creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
@@ -3913,7 +3913,7 @@ export const schema: Schema = {
           "description": "Indicates if you are allowed to edit entry",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isShareable": {
@@ -3921,7 +3921,7 @@ export const schema: Schema = {
           "description": "Indicates if you are allowed to share entry",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "name": {
@@ -3929,7 +3929,7 @@ export const schema: Schema = {
           "description": "Alias name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "optionId": {
@@ -3960,7 +3960,7 @@ export const schema: Schema = {
           "description": "Network ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "network": {
@@ -3968,7 +3968,7 @@ export const schema: Schema = {
           "description": "IP block",
           "fullType": "ipBlock",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipBlock"
         }
       }
@@ -3983,7 +3983,7 @@ export const schema: Schema = {
           "description": "Archive ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "createdAt": {
@@ -3999,7 +3999,7 @@ export const schema: Schema = {
           "description": "Filename",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "md5": {
@@ -4007,7 +4007,7 @@ export const schema: Schema = {
           "description": "MD5 checksum",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "retrievalDelay": {
@@ -4015,7 +4015,7 @@ export const schema: Schema = {
           "description": "Retrieval delay",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "retrievalState": {
@@ -4023,7 +4023,7 @@ export const schema: Schema = {
           "description": "Retrieval state",
           "fullType": "dbaas.logs.ArchiveRetrievalStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.ArchiveRetrievalStateEnum"
         },
         "sha256": {
@@ -4031,7 +4031,7 @@ export const schema: Schema = {
           "description": "sha256 checksum",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "size": {
@@ -4039,7 +4039,7 @@ export const schema: Schema = {
           "description": "File size in bytes",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -4065,7 +4065,7 @@ export const schema: Schema = {
           "description": "Temporary URL expiration date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "url": {
@@ -4073,7 +4073,7 @@ export const schema: Schema = {
           "description": "Temporary URL to get archive",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4088,7 +4088,7 @@ export const schema: Schema = {
           "description": "Cluster ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "clusterType": {
@@ -4096,7 +4096,7 @@ export const schema: Schema = {
           "description": "Cluster type",
           "fullType": "dbaas.logs.ClusterClusterTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.ClusterClusterTypeEnum"
         },
         "dedicatedInputPEM": {
@@ -4104,7 +4104,7 @@ export const schema: Schema = {
           "description": "PEM for dedicated inputs",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "defaultRetentionId": {
@@ -4112,7 +4112,7 @@ export const schema: Schema = {
           "description": "Retention ID used by default when none is given on new stream",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "directInputAllowedNetworks": {
@@ -4120,7 +4120,7 @@ export const schema: Schema = {
           "description": "Allowed networks for DIRECT_INPUT flow type",
           "fullType": "ipBlock[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipBlock[]"
         },
         "directInputPEM": {
@@ -4128,7 +4128,7 @@ export const schema: Schema = {
           "description": "PEM for direct inputs",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "hostname": {
@@ -4136,7 +4136,7 @@ export const schema: Schema = {
           "description": "Hostname",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "isDefault": {
@@ -4144,7 +4144,7 @@ export const schema: Schema = {
           "description": "All content generated by given service will be placed on this cluster",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isUnlocked": {
@@ -4152,7 +4152,7 @@ export const schema: Schema = {
           "description": "Allow given service to perform advanced operations on cluster",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "queryAllowedNetworks": {
@@ -4160,7 +4160,7 @@ export const schema: Schema = {
           "description": "Allowed networks for QUERY flow type",
           "fullType": "ipBlock[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipBlock[]"
         },
         "region": {
@@ -4168,7 +4168,7 @@ export const schema: Schema = {
           "description": "Data center localization",
           "fullType": "dbaas.logs.ClusterRegionEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.ClusterRegionEnum"
         }
       }
@@ -4183,7 +4183,7 @@ export const schema: Schema = {
           "description": "Network ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "flowType": {
@@ -4191,7 +4191,7 @@ export const schema: Schema = {
           "description": "Flow type",
           "fullType": "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum"
         },
         "network": {
@@ -4199,7 +4199,7 @@ export const schema: Schema = {
           "description": "IP block",
           "fullType": "ipBlock",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "ipBlock"
         }
       }
@@ -4214,7 +4214,7 @@ export const schema: Schema = {
           "description": "Flow type",
           "fullType": "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum"
         },
         "network": {
@@ -4222,7 +4222,7 @@ export const schema: Schema = {
           "description": "IP block",
           "fullType": "ipBlock",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipBlock"
         }
       }
@@ -4303,7 +4303,7 @@ export const schema: Schema = {
           "description": "Indicates if a new stream can use it",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "retentionId": {
@@ -4311,7 +4311,7 @@ export const schema: Schema = {
           "description": "Retention ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         }
       }
@@ -4326,7 +4326,7 @@ export const schema: Schema = {
           "description": "Dashboard creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "dashboardId": {
@@ -4334,7 +4334,7 @@ export const schema: Schema = {
           "description": "Dashboard ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "description": {
@@ -4342,7 +4342,7 @@ export const schema: Schema = {
           "description": "Dashboard description",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "isEditable": {
@@ -4350,7 +4350,7 @@ export const schema: Schema = {
           "description": "Indicates if you are allowed to edit entry",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isShareable": {
@@ -4358,7 +4358,7 @@ export const schema: Schema = {
           "description": "Indicates if you are allowed to share entry",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "optionId": {
@@ -4374,7 +4374,7 @@ export const schema: Schema = {
           "description": "Dashboard description",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "updatedAt": {
@@ -4397,7 +4397,7 @@ export const schema: Schema = {
           "description": "Input engine ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "isDeprecated": {
@@ -4405,7 +4405,7 @@ export const schema: Schema = {
           "description": "Indicates if engine will soon not be supported",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "name": {
@@ -4413,7 +4413,7 @@ export const schema: Schema = {
           "description": "Software name",
           "fullType": "dbaas.logs.EngineNameEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.EngineNameEnum"
         },
         "version": {
@@ -4421,7 +4421,7 @@ export const schema: Schema = {
           "description": "Software version",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4447,7 +4447,7 @@ export const schema: Schema = {
           "description": "Type of format to decode",
           "fullType": "dbaas.logs.FlowggerConfigurationLogFormatEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.FlowggerConfigurationLogFormatEnum"
         },
         "logFraming": {
@@ -4455,7 +4455,7 @@ export const schema: Schema = {
           "description": "Indicates how messages are delimited",
           "fullType": "dbaas.logs.FlowggerConfigurationLogFramingEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.FlowggerConfigurationLogFramingEnum"
         }
       }
@@ -4494,7 +4494,7 @@ export const schema: Schema = {
           "description": "Helper description",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engineId": {
@@ -4502,7 +4502,7 @@ export const schema: Schema = {
           "description": "Input engine UUID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "helperId": {
@@ -4510,7 +4510,7 @@ export const schema: Schema = {
           "description": "Helper UUID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "sections": {
@@ -4518,7 +4518,7 @@ export const schema: Schema = {
           "description": "Helper sections",
           "fullType": "dbaas.logs.HelperSection[]",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.HelperSection[]"
         },
         "title": {
@@ -4526,7 +4526,7 @@ export const schema: Schema = {
           "description": "Helper title",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -4541,7 +4541,7 @@ export const schema: Schema = {
           "description": "Section content",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -4549,7 +4549,7 @@ export const schema: Schema = {
           "description": "Section name",
           "fullType": "dbaas.logs.HelperSectionNameEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.HelperSectionNameEnum"
         }
       }
@@ -4583,7 +4583,7 @@ export const schema: Schema = {
           "description": "Index creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
@@ -4599,7 +4599,7 @@ export const schema: Schema = {
           "description": "Index ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "isEditable": {
@@ -4607,7 +4607,7 @@ export const schema: Schema = {
           "description": "Indicates if you are allowed to edit entry",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isShareable": {
@@ -4615,7 +4615,7 @@ export const schema: Schema = {
           "description": "Indicates if you are allowed to share entry",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "maxSize": {
@@ -4623,7 +4623,7 @@ export const schema: Schema = {
           "description": "Maximum index size (in bytes)",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "name": {
@@ -4631,7 +4631,7 @@ export const schema: Schema = {
           "description": "Index name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "nbShard": {
@@ -4678,7 +4678,7 @@ export const schema: Schema = {
           "description": "Input creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
@@ -4686,7 +4686,7 @@ export const schema: Schema = {
           "description": "Input description",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engineId": {
@@ -4694,7 +4694,7 @@ export const schema: Schema = {
           "description": "Input engine ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "exposedPort": {
@@ -4710,7 +4710,7 @@ export const schema: Schema = {
           "description": "Hostname",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "inputId": {
@@ -4718,7 +4718,7 @@ export const schema: Schema = {
           "description": "Input ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "isRestartRequired": {
@@ -4726,7 +4726,7 @@ export const schema: Schema = {
           "description": "Indicate if input need to be restarted",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "nbInstance": {
@@ -4750,7 +4750,7 @@ export const schema: Schema = {
           "description": "Input IP address",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "singleInstanceEnabled": {
@@ -4766,7 +4766,7 @@ export const schema: Schema = {
           "description": "Input SSL certificate",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -4774,7 +4774,7 @@ export const schema: Schema = {
           "description": "init: configuration required, pending: ready to start, running: available",
           "fullType": "dbaas.logs.InputStatusEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.InputStatusEnum"
         },
         "streamId": {
@@ -4782,7 +4782,7 @@ export const schema: Schema = {
           "description": "Associated Graylog stream",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "title": {
@@ -4790,7 +4790,7 @@ export const schema: Schema = {
           "description": "Input title",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "updatedAt": {
@@ -4813,7 +4813,7 @@ export const schema: Schema = {
           "description": "Indicates if action is allowed",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "type": {
@@ -4821,7 +4821,7 @@ export const schema: Schema = {
           "description": "Action type",
           "fullType": "dbaas.logs.InputActionTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.InputActionTypeEnum"
         }
       }
@@ -4850,7 +4850,7 @@ export const schema: Schema = {
           "description": "IP block",
           "fullType": "ipBlock",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "ipBlock"
         }
       }
@@ -4865,7 +4865,7 @@ export const schema: Schema = {
           "description": "configuration log format",
           "fullType": "dbaas.logs.FlowggerConfigurationLogFormatEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.FlowggerConfigurationLogFormatEnum"
         },
         "logFraming": {
@@ -4873,7 +4873,7 @@ export const schema: Schema = {
           "description": "Log framing",
           "fullType": "dbaas.logs.FlowggerConfigurationLogFramingEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.FlowggerConfigurationLogFramingEnum"
         }
       }
@@ -4896,7 +4896,7 @@ export const schema: Schema = {
           "description": "Input section",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "patternSection": {
@@ -4935,7 +4935,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engineId": {
@@ -4943,7 +4943,7 @@ export const schema: Schema = {
           "description": "Engine ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "exposedPort": {
@@ -4983,7 +4983,7 @@ export const schema: Schema = {
           "description": "Stream ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "title": {
@@ -4991,7 +4991,7 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5026,7 +5026,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engineId": {
@@ -5034,7 +5034,7 @@ export const schema: Schema = {
           "description": "Engine ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "exposedPort": {
@@ -5074,7 +5074,7 @@ export const schema: Schema = {
           "description": "Stream ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "title": {
@@ -5082,8 +5082,55 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
+        }
+      }
+    },
+    "dbaas.logs.Kibana": {
+      "description": "Kibana instance",
+      "id": "Kibana",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Kibana creation",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "isEditable": {
+          "canBeNull": false,
+          "description": "Indicates if you are allowed to edit entry",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "kibanaId": {
+          "canBeNull": false,
+          "description": "Kibana ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Kibana name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "updatedAt": {
+          "canBeNull": true,
+          "description": "Kibana last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         }
       }
     },
@@ -5105,7 +5152,7 @@ export const schema: Schema = {
           "description": "The filter section of logstash.conf",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "patternSection": {
@@ -5128,7 +5175,7 @@ export const schema: Schema = {
           "description": "Membership creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "note": {
@@ -5144,7 +5191,7 @@ export const schema: Schema = {
           "description": "Username on DBaaS Logs",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5159,7 +5206,7 @@ export const schema: Schema = {
           "description": "Current number of alias booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "curNbDashboard": {
@@ -5167,7 +5214,7 @@ export const schema: Schema = {
           "description": "Current number of dashboard booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "curNbIndex": {
@@ -5175,7 +5222,7 @@ export const schema: Schema = {
           "description": "Current number of index booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "curNbInput": {
@@ -5183,7 +5230,7 @@ export const schema: Schema = {
           "description": "Current number of input booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "curNbRole": {
@@ -5191,7 +5238,7 @@ export const schema: Schema = {
           "description": "Current number of role booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "curNbStream": {
@@ -5199,7 +5246,7 @@ export const schema: Schema = {
           "description": "Current number of stream booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "esStorage": {
@@ -5215,7 +5262,7 @@ export const schema: Schema = {
           "description": "Maximum number of alias allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbDashboard": {
@@ -5223,7 +5270,7 @@ export const schema: Schema = {
           "description": "Maximum number of dashboard allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbIndex": {
@@ -5231,7 +5278,7 @@ export const schema: Schema = {
           "description": "Maximum number of index allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbInput": {
@@ -5239,7 +5286,7 @@ export const schema: Schema = {
           "description": "Maximum number of input allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbRole": {
@@ -5247,7 +5294,7 @@ export const schema: Schema = {
           "description": "Maximum number of role allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbStream": {
@@ -5255,7 +5302,7 @@ export const schema: Schema = {
           "description": "Maximum number of stream allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "reference": {
@@ -5263,7 +5310,7 @@ export const schema: Schema = {
           "description": "Option unique reference",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "retention": {
@@ -5294,7 +5341,7 @@ export const schema: Schema = {
           "description": "Operation creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "dashboardId": {
@@ -5326,7 +5373,7 @@ export const schema: Schema = {
           "description": "Operation ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "optionId": {
@@ -5350,7 +5397,7 @@ export const schema: Schema = {
           "description": "Operation status",
           "fullType": "dbaas.logs.OperationStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.OperationStateEnum"
         },
         "streamId": {
@@ -5397,7 +5444,7 @@ export const schema: Schema = {
           "description": "Service creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "curNbAlias": {
@@ -5405,7 +5452,7 @@ export const schema: Schema = {
           "description": "Current number of alias booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "curNbDashboard": {
@@ -5413,7 +5460,7 @@ export const schema: Schema = {
           "description": "Current number of dashboard booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "curNbIndex": {
@@ -5421,7 +5468,7 @@ export const schema: Schema = {
           "description": "Current number of index booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "curNbInput": {
@@ -5429,7 +5476,7 @@ export const schema: Schema = {
           "description": "Current number of input booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "curNbRole": {
@@ -5437,7 +5484,7 @@ export const schema: Schema = {
           "description": "Current number of role booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "curNbStream": {
@@ -5445,7 +5492,7 @@ export const schema: Schema = {
           "description": "Current number of stream booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "indexSize": {
@@ -5461,7 +5508,7 @@ export const schema: Schema = {
           "description": "Maximum number of alias allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbDashboard": {
@@ -5469,7 +5516,7 @@ export const schema: Schema = {
           "description": "Maximum number of dashboard allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbIndex": {
@@ -5477,7 +5524,7 @@ export const schema: Schema = {
           "description": "Maximum number of index allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbInput": {
@@ -5485,7 +5532,7 @@ export const schema: Schema = {
           "description": "Maximum number of input allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbRole": {
@@ -5493,7 +5540,7 @@ export const schema: Schema = {
           "description": "Maximum number of role allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbStream": {
@@ -5501,7 +5548,7 @@ export const schema: Schema = {
           "description": "Maximum number of stream allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "optionId": {
@@ -5509,7 +5556,7 @@ export const schema: Schema = {
           "description": "Option ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "reference": {
@@ -5517,7 +5564,7 @@ export const schema: Schema = {
           "description": "Option unique reference",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "state": {
@@ -5525,7 +5572,7 @@ export const schema: Schema = {
           "description": "Option state",
           "fullType": "dbaas.logs.OptionStateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.OptionStateEnum"
         },
         "updatedAt": {
@@ -5566,7 +5613,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "optionId": {
@@ -5582,7 +5629,7 @@ export const schema: Schema = {
           "description": "Suffix",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5597,7 +5644,7 @@ export const schema: Schema = {
           "description": "Index ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "uuid"
         }
       }
@@ -5612,7 +5659,7 @@ export const schema: Schema = {
           "description": "Stream ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "uuid"
         }
       }
@@ -5627,7 +5674,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "optionId": {
@@ -5666,7 +5713,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "nbShard": {
@@ -5690,7 +5737,7 @@ export const schema: Schema = {
           "description": "Suffix",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5713,7 +5760,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5736,7 +5783,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "optionId": {
@@ -5752,7 +5799,7 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5775,7 +5822,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "optionId": {
@@ -5799,7 +5846,7 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5814,7 +5861,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "optionId": {
@@ -5830,7 +5877,7 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -5845,7 +5892,7 @@ export const schema: Schema = {
           "description": "Backlog",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "conditionType": {
@@ -5877,7 +5924,7 @@ export const schema: Schema = {
           "description": "Grace period",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "queryFilter": {
@@ -5925,7 +5972,7 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
@@ -5948,7 +5995,7 @@ export const schema: Schema = {
           "description": "Backlog",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "conditionType": {
@@ -5980,7 +6027,7 @@ export const schema: Schema = {
           "description": "Grace period",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "queryFilter": {
@@ -6028,7 +6075,7 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
@@ -6107,7 +6154,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "indexingEnabled": {
@@ -6171,7 +6218,7 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "webSocketEnabled": {
@@ -6194,7 +6241,7 @@ export const schema: Schema = {
           "description": "Field name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "isInverted": {
@@ -6210,7 +6257,7 @@ export const schema: Schema = {
           "description": "Field operator",
           "fullType": "dbaas.logs.StreamRuleOperatorEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.StreamRuleOperatorEnum"
         },
         "value": {
@@ -6218,7 +6265,7 @@ export const schema: Schema = {
           "description": "Field value",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6281,7 +6328,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "indexingEnabled": {
@@ -6329,7 +6376,7 @@ export const schema: Schema = {
           "description": "Title",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "webSocketEnabled": {
@@ -6384,7 +6431,7 @@ export const schema: Schema = {
           "description": "Permission ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "permissionType": {
@@ -6425,7 +6472,7 @@ export const schema: Schema = {
           "description": "Number of GB stored per month included",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbAlias": {
@@ -6433,7 +6480,7 @@ export const schema: Schema = {
           "description": "Maximum number of alias allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbDashboard": {
@@ -6441,7 +6488,7 @@ export const schema: Schema = {
           "description": "Maximum number of dashboard allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbIndex": {
@@ -6449,7 +6496,7 @@ export const schema: Schema = {
           "description": "Maximum number of index allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbInput": {
@@ -6457,7 +6504,7 @@ export const schema: Schema = {
           "description": "Maximum number of input allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbRole": {
@@ -6465,7 +6512,7 @@ export const schema: Schema = {
           "description": "Maximum number of role allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbStream": {
@@ -6473,7 +6520,7 @@ export const schema: Schema = {
           "description": "Maximum number of stream allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "reference": {
@@ -6481,7 +6528,7 @@ export const schema: Schema = {
           "description": "Option unique reference",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6496,7 +6543,7 @@ export const schema: Schema = {
           "description": "Current number of alias booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "curNbDashboard": {
@@ -6504,7 +6551,7 @@ export const schema: Schema = {
           "description": "Current number of dashboard booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "curNbIndex": {
@@ -6512,7 +6559,7 @@ export const schema: Schema = {
           "description": "Current number of index booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "curNbInput": {
@@ -6520,7 +6567,7 @@ export const schema: Schema = {
           "description": "Current number of input booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "curNbRole": {
@@ -6528,7 +6575,7 @@ export const schema: Schema = {
           "description": "Current number of role booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "curNbStream": {
@@ -6536,7 +6583,7 @@ export const schema: Schema = {
           "description": "Current number of stream booked",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbAlias": {
@@ -6544,7 +6591,7 @@ export const schema: Schema = {
           "description": "Maximum number of alias allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbDashboard": {
@@ -6552,7 +6599,7 @@ export const schema: Schema = {
           "description": "Maximum number of dashboard allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbIndex": {
@@ -6560,7 +6607,7 @@ export const schema: Schema = {
           "description": "Maximum number of index allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbInput": {
@@ -6568,7 +6615,7 @@ export const schema: Schema = {
           "description": "Maximum number of input allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbRole": {
@@ -6576,7 +6623,7 @@ export const schema: Schema = {
           "description": "Maximum number of role allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "maxNbStream": {
@@ -6584,7 +6631,7 @@ export const schema: Schema = {
           "description": "Maximum number of stream allowed",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -6599,7 +6646,7 @@ export const schema: Schema = {
           "description": "Role creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
@@ -6607,7 +6654,7 @@ export const schema: Schema = {
           "description": "Role description",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -6615,7 +6662,7 @@ export const schema: Schema = {
           "description": "Role name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "optionId": {
@@ -6631,7 +6678,7 @@ export const schema: Schema = {
           "description": "Role ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "updatedAt": {
@@ -6662,7 +6709,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -6670,7 +6717,7 @@ export const schema: Schema = {
           "description": "Name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "optionId": {
@@ -6701,7 +6748,7 @@ export const schema: Schema = {
           "description": "Username",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6731,7 +6778,7 @@ export const schema: Schema = {
           "description": "Alias ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "uuid"
         }
       }
@@ -6746,7 +6793,7 @@ export const schema: Schema = {
           "description": "Dashboard ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "permissionType": {
@@ -6769,7 +6816,30 @@ export const schema: Schema = {
           "description": "Index ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "permissionType": {
+          "canBeNull": true,
+          "description": "Permission type",
+          "fullType": "dbaas.logs.PermissionTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "dbaas.logs.PermissionTypeEnum"
+        }
+      }
+    },
+    "dbaas.logs.RolePermissionKibanaCreation": {
+      "description": "Missing description",
+      "id": "RolePermissionKibanaCreation",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "kibanaId": {
+          "canBeNull": false,
+          "description": "Kibana ID",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
           "type": "uuid"
         },
         "permissionType": {
@@ -6792,7 +6862,7 @@ export const schema: Schema = {
           "description": "Stream ID",
           "fullType": "uuid",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "uuid"
         }
       }
@@ -6807,7 +6877,7 @@ export const schema: Schema = {
           "description": "Description",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -6815,7 +6885,7 @@ export const schema: Schema = {
           "description": "Name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "optionId": {
@@ -6838,7 +6908,7 @@ export const schema: Schema = {
           "description": "Service creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "displayName": {
@@ -6854,7 +6924,7 @@ export const schema: Schema = {
           "description": "DEPRECATED: Is capped plan enabled?",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "serviceName": {
@@ -6862,7 +6932,7 @@ export const schema: Schema = {
           "description": "Service name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "state": {
@@ -6886,7 +6956,7 @@ export const schema: Schema = {
           "description": "Username on DBaaS Logs",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6901,7 +6971,7 @@ export const schema: Schema = {
           "description": "Metrics server url",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "token": {
@@ -6909,7 +6979,7 @@ export const schema: Schema = {
           "description": "Metrics credentials",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -6936,7 +7006,7 @@ export const schema: Schema = {
           "description": "Indicates if the current user can create alert on the stream",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "coldStorageCompression": {
@@ -6992,7 +7062,7 @@ export const schema: Schema = {
           "description": "Stream creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
@@ -7000,7 +7070,7 @@ export const schema: Schema = {
           "description": "Stream description",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "indexingEnabled": {
@@ -7032,7 +7102,7 @@ export const schema: Schema = {
           "description": "Indicates if you are allowed to edit entry",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "isShareable": {
@@ -7040,7 +7110,7 @@ export const schema: Schema = {
           "description": "Indicates if you are allowed to share entry",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "nbAlertCondition": {
@@ -7048,7 +7118,7 @@ export const schema: Schema = {
           "description": "Number of alert condition",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "nbArchive": {
@@ -7056,7 +7126,7 @@ export const schema: Schema = {
           "description": "Number of coldstored archives",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "optionId": {
@@ -7088,7 +7158,7 @@ export const schema: Schema = {
           "description": "Retention ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "streamId": {
@@ -7096,7 +7166,7 @@ export const schema: Schema = {
           "description": "Stream ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "title": {
@@ -7104,7 +7174,7 @@ export const schema: Schema = {
           "description": "Stream description",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "updatedAt": {
@@ -7135,7 +7205,7 @@ export const schema: Schema = {
           "description": "Stream alert condition ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "backlog": {
@@ -7143,7 +7213,7 @@ export const schema: Schema = {
           "description": "Backlog size",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "conditionType": {
@@ -7175,7 +7245,7 @@ export const schema: Schema = {
           "description": "Grace period in minutes",
           "fullType": "long",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "long"
         },
         "queryFilter": {
@@ -7223,7 +7293,7 @@ export const schema: Schema = {
           "description": "Condition label",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "value": {
@@ -7315,7 +7385,7 @@ export const schema: Schema = {
           "description": "Field name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "isInverted": {
@@ -7339,7 +7409,7 @@ export const schema: Schema = {
           "description": "Stream rule ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "value": {
@@ -7347,7 +7417,7 @@ export const schema: Schema = {
           "description": "Field value",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -7374,7 +7444,7 @@ export const schema: Schema = {
           "description": "Temporary url expiration date",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "url": {
@@ -7382,7 +7452,7 @@ export const schema: Schema = {
           "description": "Temporary url",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -7436,7 +7506,7 @@ export const schema: Schema = {
           "description": "Token creation",
           "fullType": "datetime",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "datetime"
         },
         "name": {
@@ -7444,7 +7514,7 @@ export const schema: Schema = {
           "description": "Token name",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "tokenId": {
@@ -7452,7 +7522,7 @@ export const schema: Schema = {
           "description": "Token ID",
           "fullType": "uuid",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "uuid"
         },
         "updatedAt": {
@@ -7468,7 +7538,7 @@ export const schema: Schema = {
           "description": "Token value",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -7491,7 +7561,7 @@ export const schema: Schema = {
           "description": "Token name",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -7529,7 +7599,7 @@ export const schema: Schema = {
           "description": "Web URI",
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "type": {
@@ -7537,7 +7607,7 @@ export const schema: Schema = {
           "description": "Service type",
           "fullType": "dbaas.logs.UrlTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "dbaas.logs.UrlTypeEnum"
         }
       }
@@ -7586,7 +7656,7 @@ export const schema: Schema = {
           "description": "Password must be at least 12 characters long contain a number, an uppercase, a lowercase and a special letter",
           "fullType": "password",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "password"
         }
       }
@@ -7599,31 +7669,27 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
-          "fullType": "boolean",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
-          "fullType": "boolean",
           "readOnly": false,
           "required": false,
           "type": "boolean"
@@ -7631,7 +7697,6 @@ export const schema: Schema = {
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
-          "fullType": "long",
           "readOnly": false,
           "required": false,
           "type": "long"
@@ -7675,42 +7740,42 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.AccountId:string"
+          "required": false,
+          "type": "string"
         },
         "creation": {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
@@ -7724,7 +7789,7 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "date",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -7747,21 +7812,21 @@ export const schema: Schema = {
           "canBeNull": false,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
-          "required": true,
-          "type": "coreTypes.ServiceId:long"
+          "required": false,
+          "type": "long"
         },
         "status": {
           "canBeNull": false,
           "fullType": "service.StateEnum",
           "readOnly": true,
-          "required": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

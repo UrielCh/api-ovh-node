@@ -164,10 +164,23 @@ export namespace billing {
         unitPrice: orderPrice;
     }
     /**
+     * billing task status
+     * type fullname: billing.BillingTaskStatusEnum
+     */
+    export type BillingTaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
+    /**
      * Types of plans
      * type fullname: billing.CategoryEnum
      */
     export type CategoryEnum = "autorenew" | "earlyrenewal" | "purchase" | "purchase-cloud" | "purchase-servers" | "purchase-telecom" | "purchase-web"
+    /**
+     * Credit balance applied on an Order
+     * interface fullName: billing.CreditBalance.CreditBalance
+     */
+    export interface CreditBalance {
+        amount: orderPrice;
+        balanceName: string;
+    }
     /**
      * Credit card informations
      * interface fullName: billing.CreditCard.CreditCard
@@ -307,6 +320,15 @@ export namespace billing {
         }
     }
     /**
+     * Status of your manual domain payment migration
+     * interface fullName: billing.ManualDomainPaymentStatus.ManualDomainPaymentStatus
+     */
+    export interface ManualDomainPaymentStatus {
+        domainsToMigrate?: number;
+        migratedDomains?: number;
+        status: billing.BillingTaskStatusEnum;
+    }
+    /**
      * Details about an OVH account
      * interface fullName: billing.Movement.Movement
      */
@@ -442,6 +464,20 @@ export namespace billing {
         url: string;
     }
     /**
+     * Information about a Bill entry
+     * interface fullName: billing.RefundDetail.RefundDetail
+     */
+    export interface RefundDetail {
+        description: string;
+        domain: string;
+        quantity: string;
+        reference: string;
+        refundDetailId: string;
+        refundId: string;
+        totalPrice: orderPrice;
+        unitPrice: orderPrice;
+    }
+    /**
      * Reusable payment mean type
      * type fullname: billing.ReusablePaymentMeanEnum
      */
@@ -469,6 +505,30 @@ export namespace billing {
         slaPlan: string;
     }
     /**
+     * Details about a Voucher account
+     * interface fullName: billing.VoucherAccount.VoucherAccount
+     */
+    export interface VoucherAccount {
+        balance: orderPrice;
+        lastUpdate: string;
+        openDate: string;
+        voucherAccountId: string;
+    }
+    /**
+     * Details about a voucher account
+     * interface fullName: billing.VoucherMovement.VoucherMovement
+     */
+    export interface VoucherMovement {
+        amount: orderPrice;
+        balance: orderPrice;
+        date: string;
+        description: string;
+        movementId: number;
+        operation: billing.voucherAccount.OperationEnum;
+        order: number;
+        previousBalance: orderPrice;
+    }
+    /**
      * Details about a withdrawal
      * interface fullName: billing.Withdrawal.Withdrawal
      */
@@ -493,6 +553,82 @@ export namespace billing {
         totalPrice: orderPrice;
         unitPrice: orderPrice;
         withdrawalDetailId: string;
+    }
+    export namespace credit {
+        /**
+         * Credit balance
+         * interface fullName: billing.credit.Balance.Balance
+         */
+        export interface Balance {
+            amount: orderPrice;
+            balanceDetails: billing.credit.balance.BalanceDetail[];
+            balanceName: string;
+            booked: billing.credit.balance.BookedMovement[];
+            creationDate: string;
+            expiring: billing.credit.balance.ExpiringMovement[];
+            expiringSummary: billing.credit.balance.ExpiringMovement[];
+            lastUpdate: string;
+            type: billing.credit.balance.Type;
+        }
+        export namespace balance {
+            /**
+             * Part of a balance
+             * interface fullName: billing.credit.balance.BalanceDetail.BalanceDetail
+             */
+            export interface BalanceDetail {
+                amount: orderPrice;
+                serviceId?: number;
+            }
+            /**
+             * Movement already booked on orders
+             * interface fullName: billing.credit.balance.BookedMovement.BookedMovement
+             */
+            export interface BookedMovement {
+                amount: orderPrice;
+                orderId: number;
+            }
+            /**
+             * Movement expiring soon
+             * interface fullName: billing.credit.balance.ExpiringMovement.ExpiringMovement
+             */
+            export interface ExpiringMovement {
+                amount: orderPrice;
+                creationDate: string;
+                expirationDate: string;
+                lastUpdate: string;
+                sourceObject: billing.credit.balance.movement.SubObject;
+            }
+            /**
+             * Credit balance
+             * interface fullName: billing.credit.balance.Movement.Movement
+             */
+            export interface Movement {
+                amount: orderPrice;
+                balanceName: string;
+                creationDate: string;
+                expirationDate?: string;
+                lastUpdate: string;
+                movementId: number;
+                orderId?: number;
+                sourceObject: billing.credit.balance.movement.SubObject;
+                type: string;
+            }
+            /**
+             * Balance type
+             * type fullname: billing.credit.balance.Type
+             */
+            export type Type = "PREPAID_ACCOUNT" | "VOUCHER" | "DEPOSIT" | "BONUS"
+            export namespace movement {
+                /**
+                 * Movement sub object
+                 * interface fullName: billing.credit.balance.movement.SubObject.SubObject
+                 */
+                export interface SubObject {
+                    id?: string;
+                    name?: string;
+                }
+            }
+        }
     }
     export namespace fidelityAccount {
         /**
@@ -673,6 +809,13 @@ export namespace billing {
          * type fullname: billing.paymentMethod.StatusEnum
          */
         export type StatusEnum = "BLOCKED" | "BLOCKED_BY_CUSTOMER" | "BROKEN" | "CANCELED" | "CANCELED_BY_CUSTOMER" | "CREATED" | "ERROR" | "EXPIRED" | "PAUSED" | "VALID" | "VALID_FOR_CREDIT"
+    }
+    export namespace voucherAccount {
+        /**
+         * Operations a voucher account movement can represent
+         * type fullname: billing.voucherAccount.OperationEnum
+         */
+        export type OperationEnum = "cancel-credit" | "cancel-debit" | "cancel-pre-debit" | "credit" | "debit" | "pre-credit" | "pre-debit"
     }
 }
 export namespace complexType {
@@ -1024,6 +1167,17 @@ export namespace http {
      */
     export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
+export namespace insight {
+    /**
+     * Insight access token
+     * interface fullName: insight.Access.Access
+     */
+    export interface Access {
+        access: string;
+        createdAt: string;
+        expireAt: string;
+    }
+}
 export namespace me {
     export namespace consent {
         /**
@@ -1057,6 +1211,56 @@ export namespace me {
         export interface Decision {
             timestamp: string;
             value: boolean;
+        }
+    }
+    export namespace consumption {
+        /**
+         * Price with currency and amount in micro-cents
+         * interface fullName: me.consumption.Price.Price
+         */
+        export interface Price {
+            currencyCode: order.CurrencyCodeEnum;
+            text: string;
+            value: number;
+            valueInUcents: number;
+        }
+        /**
+         * List of consumptions recorded in a range
+         * interface fullName: me.consumption.Transaction.Transaction
+         */
+        export interface Transaction {
+            beginDate: string;
+            creationDate?: string;
+            elements: me.consumption.transaction.Element[];
+            endDate?: string;
+            id?: number;
+            lastUpdate?: string;
+            price: me.consumption.Price;
+            serviceId: number;
+        }
+        export namespace transaction {
+            /**
+             * Element of consumption for resource
+             * interface fullName: me.consumption.transaction.Element.Element
+             */
+            export interface Element {
+                details: me.consumption.transaction.Element.Detail[];
+                planCode: string;
+                planFamily: string;
+                price: me.consumption.Price;
+                quantity: number;
+            }
+            export namespace Element {
+                /**
+                 * Element of consumption for resource
+                 * interface fullName: me.consumption.transaction.Element.Detail.Detail
+                 */
+                export interface Detail {
+                    price: me.consumption.Price;
+                    quantity: number;
+                    unique_id?: string;
+                }
+            }
         }
     }
     export namespace payment {
@@ -1161,6 +1365,14 @@ export namespace me {
 export namespace nichandle {
     export namespace Authentication {
         /**
+         * X509 Certificate
+         * interface fullName: nichandle.Authentication.Certificate.Certificate
+         */
+        export interface Certificate {
+            expiration: string;
+            subject: string;
+        }
+        /**
          * A group
          * interface fullName: nichandle.Authentication.Group.Group
          */
@@ -1172,6 +1384,26 @@ export namespace nichandle {
             name: string;
             role: nichandle.RoleEnum;
         }
+        /**
+         * A SAML 2.0 provider
+         * interface fullName: nichandle.Authentication.Provider.Provider
+         */
+        export interface Provider {
+            creation: string;
+            groupAttributeName: string;
+            idpSigningCertificate: nichandle.Authentication.Certificate;
+            lastUpdate: string;
+            ssoServiceUrl: string;
+        }
+    }
+    /**
+     * Internal customer billing capacities for customer control panel
+     * interface fullName: nichandle.BillingCapacities.BillingCapacities
+     */
+    export interface BillingCapacities {
+        canUseDebtSystem: boolean;
+        canUsePostalMailForInvoices: boolean;
+        requiredPaymentMethod: nichandle.RequiredPaymentMethodEnum;
     }
     /**
      * Countries a nichandle can choose
@@ -1297,6 +1529,14 @@ export namespace nichandle {
      */
     export type LegalFormEnum = "administration" | "association" | "corporation" | "individual" | "other" | "personalcorporation"
     /**
+     * Manager preference
+     * interface fullName: nichandle.ManagerPreference.ManagerPreference
+     */
+    export interface ManagerPreference {
+        key: string;
+        value: string;
+    }
+    /**
      * Auto renewal information
      * interface fullName: nichandle.NicAutorenewInfos.NicAutorenewInfos
      */
@@ -1341,6 +1581,22 @@ export namespace nichandle {
         zip?: string;
     }
     /**
+     * SMS notifications
+     * interface fullName: nichandle.NichandleSmsNotification.NichandleSmsNotification
+     */
+    export interface NichandleSmsNotification {
+        abuse: boolean;
+        creationDate: string;
+        phoneNumber: string;
+        status: nichandle.NotificationStatusEnum;
+        updateDate?: string;
+    }
+    /**
+     * Status of your notification
+     * type fullname: nichandle.NotificationStatusEnum
+     */
+    export type NotificationStatusEnum = "ok" | "waitingForValidation"
+    /**
      * OVH subsidiaries
      * type fullname: nichandle.OvhCompanyEnum
      */
@@ -1350,6 +1606,11 @@ export namespace nichandle {
      * type fullname: nichandle.OvhSubsidiaryEnum
      */
     export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
+    /**
+     * Indicates the mandatory nature of having a valid payment method
+     * type fullname: nichandle.RequiredPaymentMethodEnum
+     */
+    export type RequiredPaymentMethodEnum = "mandatoryForAutorenew" | "mandatoryForPostpaid" | "notMandatory"
     /**
      * Permission given on the account
      * type fullname: nichandle.RoleEnum
@@ -1403,6 +1664,16 @@ export namespace nichandle {
      * type fullname: nichandle.UserStatus
      */
     export type UserStatus = "OK" | "DISABLED" | "PASSWORD_CHANGE_REQUIRED"
+    /**
+     * VIP Status by Universe
+     * interface fullName: nichandle.VipStatus.VipStatus
+     */
+    export interface VipStatus {
+        cloud: boolean;
+        dedicated: boolean;
+        telecom: boolean;
+        web: boolean;
+    }
     /**
      * Voucher Status and Information
      * interface fullName: nichandle.VoucherStatus.VoucherStatus
@@ -1776,7 +2047,7 @@ export interface Me {
      * Alter this object properties
      * PUT /me
      */
-    $put(params: { address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country: nichandle.CountryEnum, currency: nichandle.Currency, customerCode?: string, email: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle: string, organisation?: string, ovhCompany: nichandle.OvhCompanyEnum, ovhSubsidiary: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, state: nichandle.StateEnum, vat?: string, zip?: string }): Promise<void>;
+    $put(params?: { address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, currency?: nichandle.Currency, customerCode?: string, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, state?: nichandle.StateEnum, vat?: string, zip?: string }): Promise<void>;
     /**
      * Controle cache
      */
@@ -1846,7 +2117,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/accessRestriction/developerMode
              */
-            $put(params: { enabled: boolean }): Promise<void>;
+            $put(params?: { enabled?: boolean }): Promise<void>;
             /**
              * Controle cache
              */
@@ -1882,7 +2153,7 @@ export interface Me {
                  * Alter this object properties
                  * PUT /me/accessRestriction/ip/{id}
                  */
-                $put(params: { id: number, ip: string, rule: nichandle.accessRestriction.IpRestrictionRuleEnum, warning: boolean }): Promise<void>;
+                $put(params?: { id?: number, ip?: string, rule?: nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -1899,7 +2170,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/accessRestriction/ipDefaultRule
              */
-            $put(params: { rule: nichandle.accessRestriction.IpRestrictionRuleEnum, warning: boolean }): Promise<void>;
+            $put(params?: { rule?: nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean }): Promise<void>;
             /**
              * Controle cache
              */
@@ -1935,7 +2206,7 @@ export interface Me {
                  * Alter this object properties
                  * PUT /me/accessRestriction/sms/{id}
                  */
-                $put(params: { creationDate: string, description: string, id: number, lastUsedDate?: string, phoneNumber: string, status: nichandle.accessRestriction.SmsStatusEnum }): Promise<void>;
+                $put(params?: { creationDate?: string, description?: string, id?: number, lastUsedDate?: string, phoneNumber?: string, status?: nichandle.accessRestriction.SmsStatusEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -2016,7 +2287,7 @@ export interface Me {
                  * Alter this object properties
                  * PUT /me/accessRestriction/totp/{id}
                  */
-                $put(params: { creationDate: string, description: string, id: number, lastUsedDate?: string, status: nichandle.accessRestriction.TOTPStatusEnum }): Promise<void>;
+                $put(params?: { creationDate?: string, description?: string, id?: number, lastUsedDate?: string, status?: nichandle.accessRestriction.TOTPStatusEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -2086,7 +2357,7 @@ export interface Me {
                  * Alter this object properties
                  * PUT /me/accessRestriction/u2f/{id}
                  */
-                $put(params: { creationDate: string, description: string, id: number, lastUsedDate?: string, status: nichandle.accessRestriction.U2FStatusEnum }): Promise<void>;
+                $put(params?: { creationDate?: string, description?: string, id?: number, lastUsedDate?: string, status?: nichandle.accessRestriction.U2FStatusEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -2235,7 +2506,7 @@ export interface Me {
                  * Alter this object properties
                  * PUT /me/api/credential/{credentialId}
                  */
-                $put(params: { allowedIPs?: string[], applicationId: number, creation: string, credentialId: number, expiration?: string, lastUse?: string, ovhSupport: boolean, rules: auth.AccessRule[], status: auth.CredentialStateEnum }): Promise<void>;
+                $put(params?: { allowedIPs?: string[], applicationId?: number, creation?: string, credentialId?: number, expiration?: string, lastUse?: string, ovhSupport?: boolean, rules?: auth.AccessRule[], status?: auth.CredentialStateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -2315,7 +2586,7 @@ export interface Me {
          * Alter this object properties
          * PUT /me/autorenew
          */
-        $put(params: { active: boolean, lastRenew?: string, renewDay: number }): Promise<void>;
+        $put(params?: { active?: boolean, lastRenew?: string, renewDay?: number }): Promise<void>;
         /**
          * Controle cache
          */
@@ -2542,6 +2813,43 @@ export interface Me {
             }
         };
     }
+    consumption: {
+        usage: {
+            current: {
+                /**
+                 * Get on-going consumptions for all services
+                 * GET /me/consumption/usage/current
+                 */
+                $get(): Promise<me.consumption.Transaction[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            forecast: {
+                /**
+                 * Get forecasted consumptions for all services
+                 * GET /me/consumption/usage/forecast
+                 */
+                $get(): Promise<me.consumption.Transaction[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            history: {
+                /**
+                 * Get list of transactions between two dates
+                 * GET /me/consumption/usage/history
+                 */
+                $get(params: { beginDate: string, endDate: string }): Promise<me.consumption.Transaction[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+        }
+    }
     contact: {
         /**
          * Retrieve all contact that you created
@@ -2584,6 +2892,63 @@ export interface Me {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
+    }
+    credit: {
+        balance: {
+            /**
+             * Retrieve credit balance names
+             * GET /me/credit/balance
+             */
+            $get(params?: { type?: billing.credit.balance.Type }): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(balanceName: string): {
+                /**
+                 * Retrieve a credit balance
+                 * GET /me/credit/balance/{balanceName}
+                 */
+                $get(): Promise<billing.credit.Balance>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                movement: {
+                    /**
+                     * Retrieve movements for a specific balance
+                     * GET /me/credit/balance/{balanceName}/movement
+                     */
+                    $get(): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(movementId: number): {
+                        /**
+                         * Retrieve a specific movement for a credit balance
+                         * GET /me/credit/balance/{balanceName}/movement/{movementId}
+                         */
+                        $get(): Promise<billing.credit.balance.Movement>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    };
+                }
+            };
+        }
+        code: {
+            /**
+             * Validate a code to generate associated credit movement
+             * POST /me/credit/code
+             */
+            $post(params: { inputCode: string, serviceId?: number }): Promise<billing.credit.balance.Movement>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
     }
     debtAccount: {
         /**
@@ -2879,7 +3244,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/document/{id}
              */
-            $put(params: { creationDate: string, expirationDate?: string, getUrl: string, id: string, name: string, putUrl: string, size: number, tags: complexType.SafeKeyValue<string>[], validationDate?: string }): Promise<void>;
+            $put(params?: { creationDate?: string, expirationDate?: string, getUrl?: string, id?: string, name?: string, putUrl?: string, size?: number, tags?: complexType.SafeKeyValue<string>[], validationDate?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -2930,7 +3295,7 @@ export interface Me {
          * Alter this object properties
          * PUT /me/fidelityAccount
          */
-        $put(params: { alertThreshold?: number, balance: number, canBeCredited: boolean, lastUpdate: string, openDate: string }): Promise<void>;
+        $put(params?: { alertThreshold?: number, balance?: number, canBeCredited?: boolean, lastUpdate?: string, openDate?: string }): Promise<void>;
         /**
          * Controle cache
          */
@@ -3078,6 +3443,17 @@ export interface Me {
             };
         }
     }
+    insight: {
+        /**
+         * Get your insight access token
+         * GET /me/insight
+         */
+        $get(): Promise<insight.Access>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    }
     installationTemplate: {
         /**
          * Your customized operating system installation templates
@@ -3108,7 +3484,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/installationTemplate/{templateName}
              */
-            $put(params: { availableLanguages: dedicated.TemplateOsLanguageEnum[], beta?: boolean, bitFormat: dedicated.server.BitFormatEnum, category: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage: dedicated.TemplateOsLanguageEnum, deprecated?: boolean, description: string, distribution: string, family: dedicated.TemplateOsTypeEnum, filesystems: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, lvmReady?: boolean, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName: string }): Promise<void>;
+            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], beta?: boolean, bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, deprecated?: boolean, description?: string, distribution?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, lvmReady?: boolean, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -3154,7 +3530,7 @@ export interface Me {
                      * Alter this object properties
                      * PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
                      */
-                    $put(params: { name: string, priority: number }): Promise<void>;
+                    $put(params?: { name?: string, priority?: number }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -3189,7 +3565,7 @@ export interface Me {
                              * Alter this object properties
                              * PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
                              */
-                            $put(params: { disks: string[], mode: dedicated.TemplateOsHardwareRaidEnum, name: string, step: number }): Promise<void>;
+                            $put(params?: { disks?: string[], mode?: dedicated.TemplateOsHardwareRaidEnum, name?: string, step?: number }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -3226,7 +3602,7 @@ export interface Me {
                              * Alter this object properties
                              * PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
                              */
-                            $put(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, order: number, raid?: dedicated.server.PartitionRaidEnum, size: complexType.UnitAndValue<number>, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
+                            $put(params?: { filesystem?: dedicated.TemplateOsFileSystemEnum, mountpoint?: string, order?: number, raid?: dedicated.server.PartitionRaidEnum, size?: complexType.UnitAndValue<number>, type?: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -3267,7 +3643,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/ipOrganisation/{organisationId}
              */
-            $put(params: { abuse_mailbox: string, address: string, city: string, country: nichandle.CountryEnum, firstname: string, lastname: string, organisationId: string, phone: string, registry: nichandle.IpRegistryEnum, state?: string, zip?: string }): Promise<void>;
+            $put(params?: { abuse_mailbox?: string, address?: string, city?: string, country?: nichandle.CountryEnum, firstname?: string, lastname?: string, organisationId?: string, phone?: string, registry?: nichandle.IpRegistryEnum, state?: string, zip?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -3631,7 +4007,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/ovhAccount/{ovhAccountId}
              */
-            $put(params: { alertThreshold?: number, balance: orderPrice, canBeCredited: boolean, isActive: boolean, lastUpdate: string, openDate: string, ovhAccountId: string }): Promise<void>;
+            $put(params?: { alertThreshold?: number, balance?: orderPrice, canBeCredited?: boolean, isActive?: boolean, lastUpdate?: string, openDate?: string, ovhAccountId?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -3818,7 +4194,7 @@ export interface Me {
                  * Alter this object properties
                  * PUT /me/paymentMean/bankAccount/{id}
                  */
-                $put(params: { bic: string, creationDate: string, defaultPaymentMean: boolean, description?: string, iban: string, icon?: billing.paymentMethod.IconData, id: number, mandateSignatureDate?: string, ownerAddress: string, ownerName: string, state: billing.BankAccountStateEnum, uniqueReference: string, validationDocumentLink?: string }): Promise<void>;
+                $put(params?: { bic?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, iban?: string, icon?: billing.paymentMethod.IconData, id?: number, mandateSignatureDate?: string, ownerAddress?: string, ownerName?: string, state?: billing.BankAccountStateEnum, uniqueReference?: string, validationDocumentLink?: string }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -3877,7 +4253,7 @@ export interface Me {
                  * Alter this object properties
                  * PUT /me/paymentMean/creditCard/{id}
                  */
-                $put(params: { defaultPaymentMean: boolean, description?: string, expirationDate: string, icon?: billing.paymentMethod.IconData, id: number, number: string, state: billing.CreditCardStateEnum, threeDsValidated: boolean, type: string }): Promise<void>;
+                $put(params?: { defaultPaymentMean?: boolean, description?: string, expirationDate?: string, icon?: billing.paymentMethod.IconData, id?: number, number?: string, state?: billing.CreditCardStateEnum, threeDsValidated?: boolean, type?: string }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -3926,7 +4302,7 @@ export interface Me {
                  * Alter this object properties
                  * PUT /me/paymentMean/deferredPaymentAccount/{id}
                  */
-                $put(params: { creationDate: string, defaultPaymentMean: boolean, description?: string, icon?: billing.paymentMethod.IconData, id: number, label?: string, state: billing.DeferredPaymentAccountStatusEnum }): Promise<void>;
+                $put(params?: { creationDate?: string, defaultPaymentMean?: boolean, description?: string, icon?: billing.paymentMethod.IconData, id?: number, label?: string, state?: billing.DeferredPaymentAccountStatusEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -3974,7 +4350,7 @@ export interface Me {
                  * Alter this object properties
                  * PUT /me/paymentMean/paypal/{id}
                  */
-                $put(params: { agreementId: string, creationDate: string, defaultPaymentMean: boolean, description?: string, email: string, icon?: billing.paymentMethod.IconData, id: number, state: billing.PaypalStateEnum }): Promise<void>;
+                $put(params?: { agreementId?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, email?: string, icon?: billing.paymentMethod.IconData, id?: number, state?: billing.PaypalStateEnum }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -4005,6 +4381,15 @@ export interface Me {
         }
     }
     refund: {
+        /**
+         * List of all the refunds the logged account has
+         * GET /me/refund
+         */
+        $get(params?: { date_from?: string, date_to?: string, orderId?: number }): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         export: {
             /**
              * Exports a bundle of refunds
@@ -4016,6 +4401,50 @@ export interface Me {
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
+        $(refundId: string): {
+            /**
+             * Get this object properties
+             * GET /me/refund/{refundId}
+             */
+            $get(): Promise<billing.Refund>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            details: {
+                /**
+                 * Give access to all entries of the refund
+                 * GET /me/refund/{refundId}/details
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(refundDetailId: string): {
+                    /**
+                     * Get this object properties
+                     * GET /me/refund/{refundId}/details/{refundDetailId}
+                     */
+                    $get(): Promise<billing.RefundDetail>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            }
+            payment: {
+                /**
+                 * Get this object properties
+                 * GET /me/refund/{refundId}/payment
+                 */
+                $get(): Promise<billing.Payment>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+        };
     }
     sla: {
         /**
@@ -4113,7 +4542,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/sshKey/{keyName}
              */
-            $put(params: { default_: boolean, key: string, keyName: string }): Promise<void>;
+            $put(params?: { default_?: boolean, key?: string, keyName?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -4145,7 +4574,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/subAccount/{id}
              */
-            $put(params: { creationDate: string, description?: string, id: number }): Promise<void>;
+            $put(params?: { creationDate?: string, description?: string, id?: number }): Promise<void>;
             /**
              * Controle cache
              */
@@ -4183,7 +4612,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/subscription/{subscriptionType}
              */
-            $put(params: { registered?: boolean, type: string }): Promise<void>;
+            $put(params?: { registered?: boolean, type?: string }): Promise<void>;
             /**
              * Controle cache
              */
@@ -4297,7 +4726,7 @@ export interface Me {
                          * Alter this object properties
                          * PUT /me/task/domain/{id}/argument/{key}
                          */
-                        $put(params: { acceptedFormats?: domain.DocumentFormatsEnum[], acceptedValues?: string[], description?: string, fields?: xander.ContactFieldEnum[], key: string, maximumSize?: number, minimumSize?: number, readOnly: boolean, template?: string, type: string, value?: string }): Promise<void>;
+                        $put(params?: { acceptedFormats?: domain.DocumentFormatsEnum[], acceptedValues?: string[], description?: string, fields?: xander.ContactFieldEnum[], key?: string, maximumSize?: number, minimumSize?: number, readOnly?: boolean, template?: string, type?: string, value?: string }): Promise<void>;
                         /**
                          * Controle cache
                          */
@@ -4433,6 +4862,17 @@ export interface Me {
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
+    }
+    vipStatus: {
+        /**
+         * VIP Status of this account
+         * GET /me/vipStatus
+         */
+        $get(): Promise<nichandle.VipStatus>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     voucher: {
         checkValidity: {
