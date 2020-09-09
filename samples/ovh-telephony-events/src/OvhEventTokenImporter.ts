@@ -48,9 +48,7 @@ export class OvhEventTokenImporter {
             return await this.feachToken(billingAccounts);
         }
         try {
-            const apiMe = ApiMe(this.engine);
-            const info = await apiMe.$get();
-            this.nic = info.nichandle
+            await this.resolveNic();
         } catch (e) {
             console.error('Update your cert with extra GET /me', e);
             this.nic = this._cachefile;
@@ -81,6 +79,7 @@ export class OvhEventTokenImporter {
     private async feachToken(billingAccounts?: string[]): Promise<IEvToken[]> {
         let tokens: IEvToken[] = []
         const api = ApiTel(this.engine);
+        await this.resolveNic();
         if (!billingAccounts || billingAccounts.length == 0)
             billingAccounts = await api.$get();
         function addToken(billingAccount: string, token: string) {
@@ -101,4 +100,9 @@ export class OvhEventTokenImporter {
         return tokens;
     }
 
+    private async resolveNic() {
+        const apiMe = ApiMe(this.engine);
+        const info = await apiMe.$get();
+        this.nic = info.nichandle
+    }
 }

@@ -52,7 +52,7 @@ export interface ErrorEvent {
 
 export interface IVoipEventQueues {
     event: QueueEvent;
-    token: string;
+    token: string; // pulling token, should be hide
     service: 'queues';
     ressource: string; // 0033900000000
     timestamp: number;
@@ -64,7 +64,7 @@ export interface IVoipEventQueues {
 
 export interface IVoipEventSip {
     event: LineEvent;
-    token: string;
+    token: string; // pulling token, should be hide
     service: 'sip';
     ressource: string; // 0033900000000
     timestamp: number;

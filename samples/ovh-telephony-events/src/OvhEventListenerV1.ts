@@ -96,13 +96,13 @@ export class OvhEventListenerV1 extends EventEmitter implements IOvhEventListene
                     if (events.length) {
                         if (this.listenerCount("message") > 0) {
                             for (const m of events) {
-                                delete m['token']; // hide token
+                                m.token = billingAccount; // replace secret token with billinggroup
                                 this.emit("message", m);
                             }
                         }
                         if (this._redis) {
                             for (const m of events) {
-                                delete m['token']; // hide token
+                                m.token = billingAccount; // replace secret token with billinggroup
                                 await this._redis.publish(this.channel, JSON.stringify(m));
                             }
                         }

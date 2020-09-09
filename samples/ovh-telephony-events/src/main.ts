@@ -110,14 +110,16 @@ async function main() {
     })
 
     let nbEvent = 0;
+    let actifBillings = new Set<String>();
     /**
      * simple activity viewer on screen
      * this log is debounce bay debounce ms to avoid flooding your log.
      */
     const logSentEvent = () => {
         const now = new Date();
-        console.log(`${now.toISOString()} Sent ${nbEvent} event to ${program.channel} (${importer.nic})`);
+        console.log(`${now.toISOString()} Sent ${nbEvent} event to ch: ${program.channel} grps: ${[...actifBillings].join(', ')} (nic: ${importer.nic})`);
         nbEvent = 0;
+        actifBillings.clear();
         // fromtime = 0;
     };
     const logEvents = myDebounce(logSentEvent, Number(program.debounce))
@@ -125,9 +127,10 @@ async function main() {
     const logIdle2 = debounce(() => { console.error(`${new Date().toISOString()} ERROR   no Activity in ${program.channel} (${importer.nic}) for more than 10 min, you may need to reset your tokens with OvhEventTokenImporter --reset`) }, 600000)
     logIdle1();
     logIdle2();
-    listener.on("message", (ev) => {
+    listener.on('message', (ev) => {
         logIdle1();
         logIdle2();
+        actifBillings.add(ev.token);
         nbEvent++;
         // if (!fromtime)
         //    fromtime = new Date().getTime();

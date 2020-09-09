@@ -111,6 +111,8 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
             }
             console.log(`Registred Ok on event Api V2`)
             resolve();
+            const token2Billing = {} as {[tokrn:string]: string};
+            this.tokens.forEach((token) => token2Billing[token.token] =  token.billingAccount)
 
             const listen = groups2.map(async (group: IEvTokenGroup) => {
                 let url = `https://events.voip.ovh.net/v2/session/${group.session}/events/poll`;
@@ -141,13 +143,15 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
                             if (events && events.length) {
                                 if (this.listenerCount("message") > 0) {
                                     for (const m of events) {
-                                        delete m['token']; // hide token
+                                        const billing = token2Billing[m.token];
+                                        m.token = billing;
                                         this.emit("message", m);
                                     }
                                 }
                                 if (this._redis) {
                                     for (const m of events) {
-                                        delete m['token']; // hide token
+                                        const billing = token2Billing[m.token];
+                                        m.token = billing;
                                         await this._redis.publish(this.channel, JSON.stringify(m));
                                     }
                                 }
