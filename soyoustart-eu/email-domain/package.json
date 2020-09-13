@@ -1,7 +1,7 @@
 {
     "name": "@ovh-soyoustart/email-domain",
     "description": "Add typing to to ovh api email-domain",
-    "version": "3.1.10",
+    "version": "3.1.11",
     "keywords": [
         "ovh",
         "ovhCloud",

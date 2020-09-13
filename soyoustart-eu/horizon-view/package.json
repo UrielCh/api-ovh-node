@@ -1,7 +1,7 @@
 {
     "name": "@ovh-soyoustart/horizon-view",
     "description": "Add typing to to ovh api horizon-view",
-    "version": "3.1.10",
+    "version": "3.1.11",
     "keywords": [
         "ovh",
         "ovhCloud",

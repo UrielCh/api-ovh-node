@@ -1,7 +1,7 @@
 {
     "name": "@ovh-soyoustart/vip",
     "description": "Add typing to to ovh api vip",
-    "version": "3.1.10",
+    "version": "3.1.11",
     "keywords": [
         "ovh",
         "ovhCloud",

@@ -1,7 +1,7 @@
 {
     "name": "@ovh-kimsufi/freefax",
     "description": "Add typing to to ovh api freefax",
-    "version": "3.1.10",
+    "version": "3.1.11",
     "keywords": [
         "ovh",
         "ovhCloud",
