@@ -6,7 +6,7 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Partitioning schemes available on this template",
+      "description": "Available installation templates",
       "operations": [
         {
           "apiStatus": {
@@ -15,7 +15,7 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
-          "noAuthentication": false,
+          "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
@@ -24,182 +24,14 @@ export const schema: Schema = {
               "name": "templateName",
               "paramType": "path",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.installationTemplate.templatePartitioningSchemes",
-          "responseType": "dedicated.installationTemplate.templatePartitioningSchemes"
+          "responseFullType": "dedicated.installationTemplate.Templates",
+          "responseType": "dedicated.installationTemplate.Templates"
         }
       ],
-      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}"
-    },
-    {
-      "description": "List the dedicated.installationTemplate.templatePartitions objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Partitions defined in this partitioning scheme",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition"
-    },
-    {
-      "description": " Partitions defined in this partitioning scheme",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "partition mount point",
-              "fullType": "string",
-              "name": "mountpoint",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.installationTemplate.templatePartitions",
-          "responseType": "dedicated.installationTemplate.templatePartitions"
-        }
-      ],
-      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}"
-    },
-    {
-      "description": "Hardware RAID defined in this partitioning scheme",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Hardware RAID name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.installationTemplate.hardwareRaid",
-          "responseType": "dedicated.installationTemplate.hardwareRaid"
-        }
-      ],
-      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}"
-    },
-    {
-      "description": "List the dedicated.installationTemplate.hardwareRaid objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Hardware RAIDs defined in this partitioning scheme",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid"
+      "path": "/dedicated/installationTemplate/{templateName}"
     },
     {
       "description": "List the dedicated.installationTemplate.templatePartitioningSchemes objects",
@@ -230,7 +62,7 @@ export const schema: Schema = {
       "path": "/dedicated/installationTemplate/{templateName}/partitionScheme"
     },
     {
-      "description": "Available installation templates",
+      "description": " Partitions defined in this partitioning scheme",
       "operations": [
         {
           "apiStatus": {
@@ -239,8 +71,24 @@ export const schema: Schema = {
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
-          "noAuthentication": true,
+          "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "partition mount point",
+              "fullType": "string",
+              "name": "mountpoint",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "string",
               "description": "This template name",
@@ -251,11 +99,163 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.installationTemplate.Templates",
-          "responseType": "dedicated.installationTemplate.Templates"
+          "responseFullType": "dedicated.installationTemplate.templatePartitions",
+          "responseType": "dedicated.installationTemplate.templatePartitions"
         }
       ],
-      "path": "/dedicated/installationTemplate/{templateName}"
+      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}"
+    },
+    {
+      "description": "List the dedicated.installationTemplate.templatePartitions objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Partitions defined in this partitioning scheme",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition"
+    },
+    {
+      "description": "Partitioning schemes available on this template",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.installationTemplate.templatePartitioningSchemes",
+          "responseType": "dedicated.installationTemplate.templatePartitioningSchemes"
+        }
+      ],
+      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}"
+    },
+    {
+      "description": "List the dedicated.installationTemplate.hardwareRaid objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Hardware RAIDs defined in this partitioning scheme",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid"
+    },
+    {
+      "description": "Hardware RAID defined in this partitioning scheme",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Hardware RAID name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.installationTemplate.hardwareRaid",
+          "responseType": "dedicated.installationTemplate.hardwareRaid"
+        }
+      ],
+      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}"
     },
     {
       "description": "List the dedicated.installationTemplate.Templates objects",

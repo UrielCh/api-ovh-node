@@ -2117,8 +2117,10 @@ export namespace cloud {
                  * interface fullName: cloud.project.ai.serving.Flavor.Flavor
                  */
                 export interface Flavor {
+                    cpuCore: number;
                     description: string;
                     id: string;
+                    ramMB: number;
                 }
                 /**
                  * Framework of the model
@@ -2138,7 +2140,7 @@ export namespace cloud {
                  * Framework of the model
                  * type fullname: cloud.project.ai.serving.FrameworkIdEnum
                  */
-                export type FrameworkIdEnum = "onnx" | "tensorflow_1" | "torch" | "huggingface" | "pmml" | "flow"
+                export type FrameworkIdEnum = "onnx" | "tensorflow_1" | "torch" | "huggingface" | "fastai" | "pmml" | "flow"
                 /**
                  * Metrics information
                  * interface fullName: cloud.project.ai.serving.Metrics.Metrics
@@ -2227,6 +2229,7 @@ export namespace cloud {
                     id: string;
                     link?: string;
                     name: string;
+                    ramRequirementMB?: number;
                 }
                 /**
                  * Representation of a registry
@@ -2314,7 +2317,7 @@ export namespace cloud {
                  * Data Sync Direction
                  * type fullname: cloud.project.ai.training.DataSyncDirectionEnum
                  */
-                export type DataSyncDirectionEnum = "pull" | "push"
+                export type DataSyncDirectionEnum = "from-object-storage" | "to-object-storage"
                 /**
                  * Training Platform Data Sync Request Object
                  * interface fullName: cloud.project.ai.training.DataSyncRequest.DataSyncRequest
@@ -2332,7 +2335,7 @@ export namespace cloud {
                  * interface fullName: cloud.project.ai.training.Features.Features
                  */
                 export interface Features {
-                    dashboard: boolean;
+                    lab: boolean;
                     registry: boolean;
                 }
                 /**
@@ -2404,8 +2407,8 @@ export namespace cloud {
                     description: string;
                     id: string;
                     link?: string;
+                    logo?: string;
                     name: string;
-                    ramRequirementMB?: number;
                 }
                 /**
                  * AI Training Region

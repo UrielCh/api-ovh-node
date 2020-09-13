@@ -62,19 +62,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Filter the value of domain property (like)",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your allDom",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of domain property (like)",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -96,17 +96,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your allDom",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The internal name of your allDom",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }

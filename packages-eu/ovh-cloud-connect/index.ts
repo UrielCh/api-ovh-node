@@ -196,7 +196,7 @@ export namespace ovhcloudconnect {
          * Enum values for Task function
          * type fullname: ovhcloudconnect.task.FunctionEnum
          */
-        export type FunctionEnum = "lockInterface" | "unlockInterface" | "addPopConfiguration" | "delPopConfiguration" | "addDatacenterConfiguration" | "delDatacenterConfiguration" | "addDatacenterExtraConfiguration" | "delDatacenterExtraConfiguration"
+        export type FunctionEnum = "addVrack" | "removeVrack" | "lockInterface" | "unlockInterface" | "addPopConfiguration" | "delPopConfiguration" | "addDatacenterConfiguration" | "delDatacenterConfiguration" | "addDatacenterExtraConfiguration" | "delDatacenterExtraConfiguration"
         /**
          * Enum values for Task status
          * type fullname: ovhcloudconnect.task.StatusEnum

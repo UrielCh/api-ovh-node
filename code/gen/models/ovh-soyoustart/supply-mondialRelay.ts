@@ -19,17 +19,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Zip Code",
+              "description": "Address",
               "fullType": "string",
-              "name": "zipcode",
+              "name": "address",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Address",
+              "description": "City",
               "fullType": "string",
-              "name": "address",
+              "name": "city",
               "paramType": "body",
               "required": false
             },
@@ -43,9 +43,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "City",
+              "description": "Zip Code",
               "fullType": "string",
-              "name": "city",
+              "name": "zipcode",
               "paramType": "body",
               "required": false
             }

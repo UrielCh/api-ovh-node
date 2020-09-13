@@ -147,6 +147,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "service.TerminationFutureUseEnum",
               "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
@@ -159,14 +167,6 @@ export const schema: Schema = {
               "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
               "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
               "paramType": "body",
               "required": false
             },
@@ -324,17 +324,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Image ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "imageId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Image ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "imageId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -513,17 +513,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Group ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "groupId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Group ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "groupId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -541,17 +541,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Group ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "groupId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Group ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "groupId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -583,17 +583,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -646,17 +646,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -680,17 +680,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -714,17 +714,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -748,17 +748,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -783,17 +783,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -817,14 +817,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Instance ID",
               "fullType": "string",
               "name": "instanceId",
@@ -836,6 +828,14 @@ export const schema: Schema = {
               "description": "Interface ID",
               "fullType": "string",
               "name": "interfaceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -853,14 +853,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Instance ID",
               "fullType": "string",
               "name": "instanceId",
@@ -872,6 +864,14 @@ export const schema: Schema = {
               "description": "Interface ID",
               "fullType": "string",
               "name": "interfaceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -993,17 +993,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1034,17 +1034,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1075,17 +1075,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1184,17 +1184,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1218,17 +1218,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1252,17 +1252,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Instance ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "instanceId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Instance ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "instanceId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1338,17 +1338,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Id",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Id",
+              "description": "Service name",
               "fullType": "string",
-              "name": "id",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1379,17 +1379,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Id",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Id",
+              "description": "Service name",
               "fullType": "string",
-              "name": "id",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1439,17 +1439,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Lab ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "labId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Lab ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "labId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1467,17 +1467,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Lab ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "labId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Lab ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "labId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1501,17 +1501,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Lab ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "labId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Lab ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "labId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1684,17 +1684,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Network ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "networkId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Network ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "networkId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1712,17 +1712,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Network ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "networkId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Network ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "networkId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1747,17 +1747,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Network ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "networkId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Network ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "networkId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1788,17 +1788,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Network ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "networkId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Network ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "networkId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1822,17 +1822,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Network ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "networkId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Network ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "networkId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2011,17 +2011,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Operation ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "operationId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Operation ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "operationId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2124,17 +2124,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Region name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "regionName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Region name",
+              "description": "Service name",
               "fullType": "string",
-              "name": "regionName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2158,17 +2158,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Region name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "regionName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Region name",
+              "description": "Service name",
               "fullType": "string",
-              "name": "regionName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2193,17 +2193,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Region name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "regionName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Region name",
+              "description": "Service name",
               "fullType": "string",
-              "name": "regionName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2227,17 +2227,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Region name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "regionName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Region name",
+              "description": "Service name",
               "fullType": "string",
-              "name": "regionName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2261,17 +2261,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Region name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "regionName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Region name",
+              "description": "Service name",
               "fullType": "string",
-              "name": "regionName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2296,17 +2296,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Region name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "regionName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Region name",
+              "description": "Service name",
               "fullType": "string",
-              "name": "regionName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2330,9 +2330,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Backup workflow ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "backupWorkflowId",
               "paramType": "path",
               "required": true
             },
@@ -2346,9 +2346,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Backup workflow ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "backupWorkflowId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2366,9 +2366,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Backup workflow ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "backupWorkflowId",
               "paramType": "path",
               "required": true
             },
@@ -2382,9 +2382,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Backup workflow ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "backupWorkflowId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2555,17 +2555,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Image ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "imageId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Image ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "imageId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2583,17 +2583,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Image ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "imageId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Image ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "imageId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2678,17 +2678,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Key ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "keyId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Key ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "keyId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2706,17 +2706,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Key ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "keyId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Key ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "keyId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2766,17 +2766,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Stack ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "stackId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Stack ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "stackId",
               "paramType": "path",
               "required": true
             }
@@ -2800,17 +2800,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Stack ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "stackId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Stack ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "stackId",
               "paramType": "path",
               "required": true
             }
@@ -2936,17 +2936,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Container ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "containerId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Container ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "containerId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2964,17 +2964,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Container ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "containerId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Container ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "containerId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3007,17 +3007,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Container ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "containerId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Container ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "containerId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3041,17 +3041,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Container ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "containerId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Container ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "containerId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3084,17 +3084,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Container ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "containerId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Container ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "containerId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3125,17 +3125,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Container ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "containerId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Container ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "containerId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3200,17 +3200,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Container ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "containerId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Container ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "containerId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3500,18 +3500,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "User ID",
-              "fullType": "long",
-              "name": "userId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
               "paramType": "path",
               "required": true
             }
@@ -3605,6 +3605,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Role ID",
+              "fullType": "string",
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
@@ -3616,14 +3624,6 @@ export const schema: Schema = {
               "description": "User ID",
               "fullType": "long",
               "name": "userId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Role ID",
-              "fullType": "string",
-              "name": "roleId",
               "paramType": "path",
               "required": true
             }
@@ -3847,17 +3847,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Snapshot ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "snapshotId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Snapshot ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "snapshotId",
               "paramType": "path",
               "required": true
             }
@@ -3985,17 +3985,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Volume ID",
+              "description": "Service name",
               "fullType": "string",
-              "name": "volumeId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Service name",
+              "description": "Volume ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "volumeId",
               "paramType": "path",
               "required": true
             }

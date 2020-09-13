@@ -6,82 +6,6 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Create a new ticket",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create a new ticket",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Ticket message subject",
-              "fullType": "string",
-              "name": "subject",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "support.TicketProductEnum",
-              "description": "Ticket message product",
-              "fullType": "support.TicketProductEnum",
-              "name": "product",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "support.TicketCategoryEnum",
-              "description": "Ticket message category",
-              "fullType": "support.TicketCategoryEnum",
-              "name": "category",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "support.TicketSubCategoryEnum",
-              "description": "Ticket message subcategory",
-              "fullType": "support.TicketSubCategoryEnum",
-              "name": "subcategory",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "support.TicketTypeEnum",
-              "description": "Ticket type (criticalIntervention requires VIP support level)",
-              "fullType": "support.TicketTypeEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Ticket message service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "text",
-              "description": "Ticket message body",
-              "fullType": "text",
-              "name": "body",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "support.NewMessageInfo",
-          "responseType": "support.NewMessageInfo"
-        }
-      ],
-      "path": "/support/tickets/create"
-    },
-    {
       "description": "List support tickets identifiers for this service",
       "operations": [
         {
@@ -94,26 +18,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Search by ticket number",
-              "fullType": "string",
-              "name": "ticketNumber",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Ticket message service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Minimum creation date",
-              "fullType": "datetime",
-              "name": "minCreationDate",
+              "dataType": "boolean",
+              "description": "Search archived tickets",
+              "fullType": "boolean",
+              "name": "archived",
               "paramType": "query",
               "required": false
             },
@@ -126,26 +34,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Search by ticket subject",
-              "fullType": "string",
-              "name": "subject",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Search archived tickets",
-              "fullType": "boolean",
-              "name": "archived",
+              "dataType": "datetime",
+              "description": "Maximum creation date",
+              "fullType": "datetime",
+              "name": "maxCreationDate",
               "paramType": "query",
               "required": false
             },
             {
               "dataType": "datetime",
-              "description": "Maximum creation date",
+              "description": "Minimum creation date",
               "fullType": "datetime",
-              "name": "maxCreationDate",
+              "name": "minCreationDate",
               "paramType": "query",
               "required": false
             },
@@ -158,10 +58,34 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "string",
+              "description": "Ticket message service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "support.TicketStatusEnum",
               "description": "Status of ticket",
               "fullType": "support.TicketStatusEnum",
               "name": "status",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Search by ticket subject",
+              "fullType": "string",
+              "name": "subject",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Search by ticket number",
+              "fullType": "string",
+              "name": "ticketNumber",
               "paramType": "query",
               "required": false
             }
@@ -174,87 +98,107 @@ export const schema: Schema = {
       "path": "/support/tickets"
     },
     {
-      "description": "Check whether ticket can be scored",
+      "description": "Create a new ticket",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Checks whether ticket can be scored",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "internal ticket identifier",
-              "fullType": "long",
-              "name": "ticketId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "boolean",
-          "responseType": "boolean"
-        }
-      ],
-      "path": "/support/tickets/{ticketId}/canBeScored"
-    },
-    {
-      "description": "Get ticket",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get ticket",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "internal identifier ticket",
-              "fullType": "long",
-              "name": "ticketId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "support.Ticket",
-          "responseType": "support.Ticket"
-        }
-      ],
-      "path": "/support/tickets/{ticketId}"
-    },
-    {
-      "description": "Reply to ticket",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Reply to ticket",
+          "description": "Create a new ticket",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "text",
+              "description": "Ticket message body",
+              "fullType": "text",
+              "name": "body",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "support.TicketCategoryEnum",
+              "description": "Ticket message category",
+              "fullType": "support.TicketCategoryEnum",
+              "name": "category",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "support.TicketProductEnum",
+              "description": "Ticket message product",
+              "fullType": "support.TicketProductEnum",
+              "name": "product",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Ticket message service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "support.TicketSubCategoryEnum",
+              "description": "Ticket message subcategory",
+              "fullType": "support.TicketSubCategoryEnum",
+              "name": "subcategory",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Ticket message subject",
+              "fullType": "string",
+              "name": "subject",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "support.TicketTypeEnum",
+              "description": "Ticket type (criticalIntervention requires VIP support level)",
+              "fullType": "support.TicketTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "support.NewMessageInfo",
+          "responseType": "support.NewMessageInfo"
+        }
+      ],
+      "path": "/support/tickets/create"
+    },
+    {
+      "description": "Reopen a ticket",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Reopen a ticket",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "text",
+              "description": "ticket reopen reason",
+              "fullType": "text",
+              "name": "body",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "long",
               "description": "internal ticket identifier",
               "fullType": "long",
               "name": "ticketId",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "text",
-              "description": "text body of ticket response",
-              "fullType": "text",
-              "name": "body",
-              "paramType": "body",
               "required": true
             }
           ],
@@ -263,7 +207,7 @@ export const schema: Schema = {
           "responseType": "void"
         }
       ],
-      "path": "/support/tickets/{ticketId}/reply"
+      "path": "/support/tickets/{ticketId}/reopen"
     },
     {
       "description": "Close ticket",
@@ -294,6 +238,34 @@ export const schema: Schema = {
       "path": "/support/tickets/{ticketId}/close"
     },
     {
+      "description": "Get ticket",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get ticket",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "internal identifier ticket",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "support.Ticket",
+          "responseType": "support.Ticket"
+        }
+      ],
+      "path": "/support/tickets/{ticketId}"
+    },
+    {
       "description": "Get ticket messages",
       "operations": [
         {
@@ -322,42 +294,6 @@ export const schema: Schema = {
       "path": "/support/tickets/{ticketId}/messages"
     },
     {
-      "description": "Reopen a ticket",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Reopen a ticket",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "internal ticket identifier",
-              "fullType": "long",
-              "name": "ticketId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "text",
-              "description": "ticket reopen reason",
-              "fullType": "text",
-              "name": "body",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/support/tickets/{ticketId}/reopen"
-    },
-    {
       "description": "Set ticket score",
       "operations": [
         {
@@ -369,14 +305,6 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "long",
-              "description": "internal ticket identifier",
-              "fullType": "long",
-              "name": "ticketId",
-              "paramType": "path",
-              "required": true
-            },
             {
               "dataType": "string",
               "description": "ticket score",
@@ -392,6 +320,14 @@ export const schema: Schema = {
               "name": "scoreComment",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "internal ticket identifier",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
             }
           ],
           "resellerOnly": false,
@@ -400,6 +336,70 @@ export const schema: Schema = {
         }
       ],
       "path": "/support/tickets/{ticketId}/score"
+    },
+    {
+      "description": "Reply to ticket",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Reply to ticket",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "text",
+              "description": "text body of ticket response",
+              "fullType": "text",
+              "name": "body",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "internal ticket identifier",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/support/tickets/{ticketId}/reply"
+    },
+    {
+      "description": "Check whether ticket can be scored",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Checks whether ticket can be scored",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "internal ticket identifier",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "boolean",
+          "responseType": "boolean"
+        }
+      ],
+      "path": "/support/tickets/{ticketId}/canBeScored"
     }
   ],
   "basePath": "https://ca.api.soyoustart.com/1.0",

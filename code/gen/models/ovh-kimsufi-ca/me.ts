@@ -6,672 +6,262 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Manage payment method transaction",
+      "description": "IP Restriction default rule",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "description": "Get associated payment method transaction",
+          "description": "Get this object properties",
           "httpMethod": "GET",
           "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Payment method transaction ID",
-              "fullType": "long",
-              "name": "transactionId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
+          "parameters": [],
           "resellerOnly": false,
-          "responseFullType": "me.payment.method.Transaction",
-          "responseType": "me.payment.method.Transaction"
-        }
-      ],
-      "path": "/me/payment/transaction/{transactionId}"
-    },
-    {
-      "description": "Retrieve payment method transaction ID list",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Retrieve associated payment method transaction ID list",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Payment method ID",
-              "fullType": "long",
-              "name": "paymentMethodId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "me.payment.method.Transaction.Status",
-              "description": "Transaction status",
-              "fullType": "me.payment.method.Transaction.Status",
-              "name": "status",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/payment/transaction"
-    },
-    {
-      "description": "Finalize one payment method registration",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Finalize one payment method registration",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Payment method ID",
-              "fullType": "long",
-              "name": "paymentMethodId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Expiration month",
-              "fullType": "long",
-              "name": "expirationMonth",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Expiration year",
-              "fullType": "long",
-              "name": "expirationYear",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Registration ID",
-              "fullType": "string",
-              "name": "registrationId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Form Session ID",
-              "fullType": "string",
-              "name": "formSessionId",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "me.payment.method.PaymentMethod",
-          "responseType": "me.payment.method.PaymentMethod"
-        }
-      ],
-      "path": "/me/payment/method/{paymentMethodId}/finalize"
-    },
-    {
-      "description": "Manage payment method",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get one payment method",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Payment method ID",
-              "fullType": "long",
-              "name": "paymentMethodId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "me.payment.method.PaymentMethod",
-          "responseType": "me.payment.method.PaymentMethod"
+          "responseFullType": "nichandle.IpRestrictionDefaultRule",
+          "responseType": "nichandle.IpRestrictionDefaultRule"
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "description": "Edit payment method",
+          "description": "Alter this object properties",
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Payment method ID",
-              "fullType": "long",
-              "name": "paymentMethodId",
-              "paramType": "path",
+              "dataType": "nichandle.IpRestrictionDefaultRule",
+              "description": "New object properties",
+              "fullType": "nichandle.IpRestrictionDefaultRule",
+              "name": null,
+              "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Set this method like default",
-              "fullType": "boolean",
-              "name": "default",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Customer personalized description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "billing.PaymentMethod",
-          "responseType": "billing.PaymentMethod"
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/accessRestriction/ipDefaultRule"
+    },
+    {
+      "description": "Login restrictions on a development version of the Manager",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.DeveloperModeRestriction",
+          "responseType": "nichandle.DeveloperModeRestriction"
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
-          "description": "Cancel one payment method",
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.DeveloperModeRestriction",
+              "description": "New object properties",
+              "fullType": "nichandle.DeveloperModeRestriction",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/accessRestriction/developerMode"
+    },
+    {
+      "description": "disable operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Disable this TOTP account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "password",
+              "description": "OTP code given by the application",
+              "fullType": "password",
+              "name": "code",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/accessRestriction/totp/{id}/disable"
+    },
+    {
+      "description": "validate operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Validate your TOTP account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "password",
+              "description": "OTP code given by the application",
+              "fullType": "password",
+              "name": "code",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/accessRestriction/totp/{id}/validate"
+    },
+    {
+      "description": "enable operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Enable this TOTP account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "password",
+              "description": "OTP code given by the application",
+              "fullType": "password",
+              "name": "code",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/accessRestriction/totp/{id}/enable"
+    },
+    {
+      "description": "TOTP Two-Factor Authentication",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.accessRestriction.TOTPAccount",
+          "responseType": "nichandle.accessRestriction.TOTPAccount"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.accessRestriction.TOTPAccount",
+              "description": "New object properties",
+              "fullType": "nichandle.accessRestriction.TOTPAccount",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete this Two-Factor",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Payment method ID",
-              "fullType": "long",
-              "name": "paymentMethodId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "me.payment.method.PaymentMethod",
-          "responseType": "me.payment.method.PaymentMethod"
-        }
-      ],
-      "path": "/me/payment/method/{paymentMethodId}"
-    },
-    {
-      "description": "Challenge your payment method",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Challenge one payment method",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Payment method ID",
-              "fullType": "long",
-              "name": "paymentMethodId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Challenge",
-              "fullType": "string",
-              "name": "challenge",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "me.payment.method.PaymentMethod",
-          "responseType": "me.payment.method.PaymentMethod"
-        }
-      ],
-      "path": "/me/payment/method/{paymentMethodId}/challenge"
-    },
-    {
-      "description": "Manage payment method",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Retrieve payment method ID list",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "me.payment.method.PaymentMethod.Status",
-              "description": "Status",
-              "fullType": "me.payment.method.PaymentMethod.Status",
-              "name": "status",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Payment method type",
-              "fullType": "string",
-              "name": "paymentType",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Pay an order and register a new payment method if necessary",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "me.payment.method.CallbackUrl",
-              "description": "URL's necessary to register",
-              "fullType": "me.payment.method.CallbackUrl",
-              "name": "callbackUrl",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Is this payment method set as the default one",
-              "fullType": "boolean",
-              "name": "default",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Customer personalized description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "The ID of one order to pay it",
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Payment type",
-              "fullType": "string",
-              "name": "paymentType",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Register this payment method if it's possible (by default it's false and do a oneshot transaction)",
-              "fullType": "boolean",
-              "name": "register",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "me.payment.method.Register.ValidationResult",
-          "responseType": "me.payment.method.Register.ValidationResult"
-        }
-      ],
-      "path": "/me/payment/method"
-    },
-    {
-      "description": "Available payment methods",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Retrieve available payment method",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "me.payment.method.AvailablePaymentMethod[]",
-          "responseType": "me.payment.method.AvailablePaymentMethod[]"
-        }
-      ],
-      "path": "/me/payment/availableMethods"
-    },
-    {
-      "description": "Customer IPXE scripts",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Name of this script",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.ipxe",
-          "responseType": "nichandle.ipxe"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Remove this IPXE Script",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Name of this script",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/ipxeScript/{name}"
-    },
-    {
-      "description": "List the nichandle.ipxe objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of all your IPXE scripts",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add an IPXE script",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "name of your script",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "text",
-              "description": "Content of your IPXE script",
-              "fullType": "text",
-              "name": "script",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "A personnal description of this script",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.ipxe",
-          "responseType": "nichandle.ipxe"
-        }
-      ],
-      "path": "/me/ipxeScript"
-    },
-    {
-      "description": "List all consent campaign available",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List all consent campaign available",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "me.consent.Campaign[]",
-          "responseType": "me.consent.Campaign[]"
-        }
-      ],
-      "path": "/me/consent"
-    },
-    {
-      "description": "Get decision value for a consent campaign",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get decision value for a consent campaign",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Consent campaign name",
-              "fullType": "string",
-              "name": "campaignName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "me.consent.Consent",
-          "responseType": "me.consent.Consent"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Update decision of a consent campaign",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Consent campaign name",
-              "fullType": "string",
-              "name": "campaignName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Decision value",
-              "fullType": "boolean",
-              "name": "value",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/consent/{campaignName}/decision"
-    },
-    {
-      "description": "Retrieve information about a consent campaign",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve information about a consent campaign",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Consent campaign name",
-              "fullType": "string",
-              "name": "campaignName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "me.consent.Campaign",
-          "responseType": "me.consent.Campaign"
-        }
-      ],
-      "path": "/me/consent/{campaignName}"
-    },
-    {
-      "description": "List the billing.SlaOperation objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List active SLA",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/sla"
-    },
-    {
-      "description": "SLA properties",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.SlaOperation",
-          "responseType": "billing.SlaOperation"
-        }
-      ],
-      "path": "/me/sla/{id}"
-    },
-    {
-      "description": "canBeApplied operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Check whether this SLA can be applied on your services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "boolean",
-          "responseType": "boolean"
-        }
-      ],
-      "path": "/me/sla/{id}/canBeApplied"
-    },
-    {
-      "description": "apply operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Ask for SLA application",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
+              "description": "The Id of the restriction",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -683,73 +273,17 @@ export const schema: Schema = {
           "responseType": "void"
         }
       ],
-      "path": "/me/sla/{id}/apply"
+      "path": "/me/accessRestriction/totp/{id}"
     },
     {
-      "description": "services operations",
+      "description": "List the nichandle.accessRestriction.TOTPAccount objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get services impacted by this SLA",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.SlaOperationService[]",
-          "responseType": "billing.SlaOperationService[]"
-        }
-      ],
-      "path": "/me/sla/{id}/services"
-    },
-    {
-      "description": "status operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the status request of this SLA",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string",
-          "responseType": "string"
-        }
-      ],
-      "path": "/me/sla/{id}/status"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve all contact that you created",
+          "description": "List of TOTP accounts",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
@@ -762,598 +296,107 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Create a new contact",
+          "description": "Add a TOTP access restriction",
           "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "contact.Address",
-              "description": "Address of the contact",
-              "fullType": "contact.Address",
-              "name": "address",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Cellphone number",
-              "fullType": "phoneNumber",
-              "name": "cellPhone",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Landline phone number",
-              "fullType": "phoneNumber",
-              "name": "phone",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Fax phone number",
-              "fullType": "phoneNumber",
-              "name": "fax",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "date",
-              "description": "Birthday date",
-              "fullType": "date",
-              "name": "birthDay",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "City of birth",
-              "fullType": "string",
-              "name": "birthCity",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Birth Zipcode",
-              "fullType": "string",
-              "name": "birthZip",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Birth Country",
-              "fullType": "nichandle.CountryEnum",
-              "name": "birthCountry",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "VAT number",
-              "fullType": "string",
-              "name": "vat",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Company national identification number",
-              "fullType": "string",
-              "name": "companyNationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "National identification number",
-              "fullType": "string",
-              "name": "nationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Type of your organisation",
-              "fullType": "string",
-              "name": "organisationType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Name of your organisation",
-              "fullType": "string",
-              "name": "organisationName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Email address",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "First name",
-              "fullType": "string",
-              "name": "firstName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "nichandle.GenderEnum",
-              "description": "Gender",
-              "fullType": "nichandle.GenderEnum",
-              "name": "gender",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.LanguageEnum",
-              "description": "Language",
-              "fullType": "nichandle.LanguageEnum",
-              "name": "language",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Nationality",
-              "fullType": "nichandle.CountryEnum",
-              "name": "nationality",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Last name",
-              "fullType": "string",
-              "name": "lastName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "nichandle.LegalFormEnum",
-              "description": "Legal form of the contact",
-              "fullType": "nichandle.LegalFormEnum",
-              "name": "legalForm",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "contact.Contact",
-          "responseType": "contact.Contact"
-        }
-      ],
-      "path": "/me/contact"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve information about a contact",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Contact Identifier",
-              "fullType": "long",
-              "name": "contactId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "contact.Contact",
-          "responseType": "contact.Contact"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Update an existing contact",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Contact Identifier",
-              "fullType": "long",
-              "name": "contactId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "contact.Address",
-              "description": "Address of the contact",
-              "fullType": "contact.Address",
-              "name": "address",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Cellphone number",
-              "fullType": "phoneNumber",
-              "name": "cellPhone",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Landline phone number",
-              "fullType": "phoneNumber",
-              "name": "phone",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Fax phone number",
-              "fullType": "phoneNumber",
-              "name": "fax",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "date",
-              "description": "Birthday date",
-              "fullType": "date",
-              "name": "birthDay",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "City of birth",
-              "fullType": "string",
-              "name": "birthCity",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Birth Zipcode",
-              "fullType": "string",
-              "name": "birthZip",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Birth Country",
-              "fullType": "nichandle.CountryEnum",
-              "name": "birthCountry",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "VAT number",
-              "fullType": "string",
-              "name": "vat",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Company national identification number",
-              "fullType": "string",
-              "name": "companyNationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "National identification number",
-              "fullType": "string",
-              "name": "nationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Type of your organisation",
-              "fullType": "string",
-              "name": "organisationType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Name of your organisation",
-              "fullType": "string",
-              "name": "organisationName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Email address",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "First name",
-              "fullType": "string",
-              "name": "firstName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.GenderEnum",
-              "description": "Gender",
-              "fullType": "nichandle.GenderEnum",
-              "name": "gender",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.LanguageEnum",
-              "description": "Language",
-              "fullType": "nichandle.LanguageEnum",
-              "name": "language",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Nationality",
-              "fullType": "nichandle.CountryEnum",
-              "name": "nationality",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Last name",
-              "fullType": "string",
-              "name": "lastName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.LegalFormEnum",
-              "description": "Legal form of the contact",
-              "fullType": "nichandle.LegalFormEnum",
-              "name": "legalForm",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "contact.Contact",
-          "responseType": "contact.Contact"
-        }
-      ],
-      "path": "/me/contact/{contactId}"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Display mandatory/read-only informations of a contact",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Contact Identifier",
-              "fullType": "long",
-              "name": "contactId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "contact.FieldInformation[]",
-          "responseType": "contact.FieldInformation[]"
-        }
-      ],
-      "path": "/me/contact/{contactId}/fields"
-    },
-    {
-      "description": "Auto renewal information",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
           "resellerOnly": false,
-          "responseFullType": "nichandle.NicAutorenewInfos",
-          "responseType": "nichandle.NicAutorenewInfos"
-        },
+          "responseFullType": "nichandle.accessRestriction.TOTPSecret",
+          "responseType": "nichandle.accessRestriction.TOTPSecret"
+        }
+      ],
+      "path": "/me/accessRestriction/totp"
+    },
+    {
+      "description": "validate operations",
+      "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
+          "description": "Validate your SMS account",
+          "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "nichandle.NicAutorenewInfos",
-              "description": "New object properties",
-              "fullType": "nichandle.NicAutorenewInfos",
-              "name": null,
+              "dataType": "password",
+              "description": "SMS code send to a cellphone",
+              "fullType": "password",
+              "name": "code",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
               "required": true
             }
           ],
           "resellerOnly": false,
           "responseFullType": "void",
           "responseType": "void"
-        },
+        }
+      ],
+      "path": "/me/accessRestriction/sms/{id}/validate"
+    },
+    {
+      "description": "sendCode operations",
+      "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Activate auto renew for this nic",
+          "description": "Send a SMS to this account",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Day of autorenew",
+              "description": "The Id of the restriction",
               "fullType": "long",
-              "name": "renewDay",
-              "paramType": "body",
+              "name": "id",
+              "paramType": "path",
               "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
+          "responseFullType": "nichandle.accessRestriction.SmsCode",
+          "responseType": "nichandle.accessRestriction.SmsCode"
         }
       ],
-      "path": "/me/autorenew"
+      "path": "/me/accessRestriction/sms/{id}/sendCode"
     },
     {
-      "description": "Customer public SSH key, can be used for rescue netboot or server access after reinstallation",
+      "description": "disable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Name of this public SSH key",
-              "fullType": "string",
-              "name": "keyName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.sshKey",
-          "responseType": "nichandle.sshKey"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.sshKey",
-              "description": "New object properties",
-              "fullType": "nichandle.sshKey",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Name of this public SSH key",
-              "fullType": "string",
-              "name": "keyName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Remove this public SSH key",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Name of this public SSH key",
-              "fullType": "string",
-              "name": "keyName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/sshKey/{keyName}"
-    },
-    {
-      "description": "List the nichandle.sshKey objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of your public SSH keys",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add a new public SSH key",
+          "description": "Disable this SMS account",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "name of the new public SSH key",
-              "fullType": "string",
-              "name": "keyName",
+              "dataType": "password",
+              "description": "SMS code send by a cellphone",
+              "fullType": "password",
+              "name": "code",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "ASCII encoded public SSH key to add",
-              "fullType": "string",
-              "name": "key",
-              "paramType": "body",
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1362,51 +405,10 @@ export const schema: Schema = {
           "responseType": "void"
         }
       ],
-      "path": "/me/sshKey"
+      "path": "/me/accessRestriction/sms/{id}/disable"
     },
     {
-      "description": "Details about your OVH identifier",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.Nichandle",
-          "responseType": "nichandle.Nichandle"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.Nichandle",
-              "description": "New object properties",
-              "fullType": "nichandle.Nichandle",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me"
-    },
-    {
-      "description": "Deferred payment account info",
+      "description": "Sms Two-Factor Authentication",
       "operations": [
         {
           "apiStatus": {
@@ -1419,7 +421,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "The Id of the restriction",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1427,8 +429,8 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "billing.DeferredPaymentAccount",
-          "responseType": "billing.DeferredPaymentAccount"
+          "responseFullType": "nichandle.accessRestriction.SmsAccount",
+          "responseType": "nichandle.accessRestriction.SmsAccount"
         },
         {
           "apiStatus": {
@@ -1440,185 +442,16 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "billing.DeferredPaymentAccount",
+              "dataType": "nichandle.accessRestriction.SmsAccount",
               "description": "New object properties",
-              "fullType": "billing.DeferredPaymentAccount",
+              "fullType": "nichandle.accessRestriction.SmsAccount",
               "name": null,
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/paymentMean/deferredPaymentAccount/{id}"
-    },
-    {
-      "description": "chooseAsDefaultPaymentMean operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Allow you to use deferred payment. Will cancel the previous choice.",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/paymentMean/deferredPaymentAccount/{id}/chooseAsDefaultPaymentMean"
-    },
-    {
-      "description": "List the billing.DeferredPaymentAccount objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of authorized deferred payment account for this customer",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/paymentMean/deferredPaymentAccount"
-    },
-    {
-      "description": "chooseAsDefaultPaymentMean operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Choose this credit card as your default payment mean. Will cancel the previous choice.",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/paymentMean/creditCard/{id}/chooseAsDefaultPaymentMean"
-    },
-    {
-      "description": "challenge operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Challenge your bank account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Payload to answer the challenge",
-              "fullType": "string",
-              "name": "challenge",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/paymentMean/creditCard/{id}/challenge"
-    },
-    {
-      "description": "Credit card informations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.CreditCard",
-          "responseType": "billing.CreditCard"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "billing.CreditCard",
-              "description": "New object properties",
-              "fullType": "billing.CreditCard",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id of the object",
+              "description": "The Id of the restriction",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1634,13 +467,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Disable payment through this credit card",
+          "description": "Delete this Two-Factor",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "The Id of the restriction",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -1652,17 +485,53 @@ export const schema: Schema = {
           "responseType": "void"
         }
       ],
-      "path": "/me/paymentMean/creditCard/{id}"
+      "path": "/me/accessRestriction/sms/{id}"
     },
     {
-      "description": "List the billing.CreditCard objects",
+      "description": "enable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List of credit cards",
+          "description": "Enable this SMS account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "password",
+              "description": "SMS code send by a cellphone",
+              "fullType": "password",
+              "name": "code",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/accessRestriction/sms/{id}/enable"
+    },
+    {
+      "description": "List the nichandle.accessRestriction.SmsAccount objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of Sms accounts",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
@@ -1675,1294 +544,25 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Add a new credit card",
+          "description": "Add a SMS access restriction",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Custom description of this account",
+              "description": "Cell phone number to register",
               "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Callback URL where the customer will be redirected to after validation",
-              "fullType": "string",
-              "name": "returnUrl",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Set as default payment mean once validated",
-              "fullType": "boolean",
-              "name": "setDefault",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.PaymentMeanValidation",
-          "responseType": "billing.PaymentMeanValidation"
-        }
-      ],
-      "path": "/me/paymentMean/creditCard"
-    },
-    {
-      "description": "List the billing.BankAccount objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of bank accounts",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "billing.BankAccountStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "billing.BankAccountStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Enable payment through a new account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "boolean",
-              "description": "Set as default payment mean once validated",
-              "fullType": "boolean",
-              "name": "setDefault",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Account owner's address",
-              "fullType": "string",
-              "name": "ownerAddress",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Account's BIC",
-              "fullType": "string",
-              "name": "bic",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Custom description of this account",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Account's IBAN",
-              "fullType": "string",
-              "name": "iban",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Account owner's name",
-              "fullType": "string",
-              "name": "ownerName",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.PaymentMeanValidation",
-          "responseType": "billing.PaymentMeanValidation"
-        }
-      ],
-      "path": "/me/paymentMean/bankAccount"
-    },
-    {
-      "description": "SEPA bank account info",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.BankAccount",
-          "responseType": "billing.BankAccount"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "billing.BankAccount",
-              "description": "New object properties",
-              "fullType": "billing.BankAccount",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Disable payment through this account",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/paymentMean/bankAccount/{id}"
-    },
-    {
-      "description": "challenge operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Challenge your bank account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Payload to answer the challenge",
-              "fullType": "string",
-              "name": "challenge",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/paymentMean/bankAccount/{id}/challenge"
-    },
-    {
-      "description": "chooseAsDefaultPaymentMean operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Choose this bank account as your default payment mean. Will cancel the previous choice.",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/paymentMean/bankAccount/{id}/chooseAsDefaultPaymentMean"
-    },
-    {
-      "description": "List the billing.Paypal objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of Paypal accounts usable for payments on this account",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Enable payment through a new PayPal account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "boolean",
-              "description": "Set as default payment mean once validated",
-              "fullType": "boolean",
-              "name": "setDefault",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Callback URL where the customer will be redirected to after validation",
-              "fullType": "string",
-              "name": "returnUrl",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Custom description of this account",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.PaymentMeanValidation",
-          "responseType": "billing.PaymentMeanValidation"
-        }
-      ],
-      "path": "/me/paymentMean/paypal"
-    },
-    {
-      "description": "chooseAsDefaultPaymentMean operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Choose this Paypal agreement as your default payment mean. Will cancel the previous choice.",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/paymentMean/paypal/{id}/chooseAsDefaultPaymentMean"
-    },
-    {
-      "description": "Paypal account info",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Paypal",
-          "responseType": "billing.Paypal"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "billing.Paypal",
-              "description": "New object properties",
-              "fullType": "billing.Paypal",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Disable payment through this PayPal account",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/paymentMean/paypal/{id}"
-    },
-    {
-      "description": "challenge operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Challenge your bank account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Payload to answer the challenge",
-              "fullType": "string",
-              "name": "challenge",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/paymentMean/paypal/{id}/challenge"
-    },
-    {
-      "description": "Contract of service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the contract",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "agreements.Contract",
-          "responseType": "agreements.Contract"
-        }
-      ],
-      "path": "/me/agreements/{id}/contract"
-    },
-    {
-      "description": "Contract agreement",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the contract",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "agreements.ContractAgreement",
-          "responseType": "agreements.ContractAgreement"
-        }
-      ],
-      "path": "/me/agreements/{id}"
-    },
-    {
-      "description": "accept operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Accept this contract",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the contract",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string",
-          "responseType": "string"
-        }
-      ],
-      "path": "/me/agreements/{id}/accept"
-    },
-    {
-      "description": "List the agreements.ContractAgreement objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of contracts signed between you and OVH",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "agreements.AgreementStateEnum",
-              "description": "Filter the value of agreed property (like)",
-              "fullType": "agreements.AgreementStateEnum",
-              "name": "agreed",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Filter the value of contractId property (like)",
-              "fullType": "long",
-              "name": "contractId",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/agreements"
-    },
-    {
-      "description": "Add CORS support on your container",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add CORS support on your container",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Allow this origin",
-              "fullType": "string",
-              "name": "origin",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/document/cors"
-    },
-    {
-      "description": "List of documents added on your account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Document id",
-              "fullType": "string",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.document.Document",
-          "responseType": "nichandle.document.Document"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.document.Document",
-              "description": "New object properties",
-              "fullType": "nichandle.document.Document",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Document id",
-              "fullType": "string",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete a document",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Document id",
-              "fullType": "string",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/document/{id}"
-    },
-    {
-      "description": "List the nichandle.document.Document objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of documents added in your account",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create new document",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "File name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "complexType.SafeKeyValue<string>[]",
-              "description": "File tags",
-              "fullType": "complexType.SafeKeyValue<string>[]",
-              "name": "tags",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.document.Document",
-          "responseType": "nichandle.document.Document"
-        }
-      ],
-      "path": "/me/document"
-    },
-    {
-      "description": "Details about an IP block organisation",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "organisationId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.Ipv4Org",
-          "responseType": "nichandle.Ipv4Org"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.Ipv4Org",
-              "description": "New object properties",
-              "fullType": "nichandle.Ipv4Org",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "organisationId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete this organisation",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "organisationId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/ipOrganisation/{organisationId}"
-    },
-    {
-      "description": "List the nichandle.Ipv4Org objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of organisations",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add an organisation",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "abuse_mailbox",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "city",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "firstname",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "address",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "nichandle.IpRegistryEnum",
-              "description": null,
-              "fullType": "nichandle.IpRegistryEnum",
-              "name": "registry",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "state",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "zip",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "lastname",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": null,
-              "fullType": "nichandle.CountryEnum",
-              "name": "country",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": null,
-              "fullType": "phoneNumber",
               "name": "phone",
               "paramType": "body",
               "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
+          "responseFullType": "nichandle.accessRestriction.SmsSecret",
+          "responseType": "nichandle.accessRestriction.SmsSecret"
         }
       ],
-      "path": "/me/ipOrganisation"
-    },
-    {
-      "description": "Details about an OVH account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "ovhAccountId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.OvhAccount",
-          "responseType": "billing.OvhAccount"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "billing.OvhAccount",
-              "description": "New object properties",
-              "fullType": "billing.OvhAccount",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "ovhAccountId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/ovhAccount/{ovhAccountId}"
-    },
-    {
-      "description": "Details about an OVH account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "ovhAccountId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "movementId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Movement",
-          "responseType": "billing.Movement"
-        }
-      ],
-      "path": "/me/ovhAccount/{ovhAccountId}/movements/{movementId}"
-    },
-    {
-      "description": "List the billing.Movement objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Details about an entry of the OVH account",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of date property (<=)",
-              "fullType": "datetime",
-              "name": "date.to",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of date property (>=)",
-              "fullType": "datetime",
-              "name": "date.from",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "ovhAccountId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/ovhAccount/{ovhAccountId}/movements"
-    },
-    {
-      "description": "retrieveMoney operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Transfer money from ovhAccount to your bank account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "A valid bank account",
-              "fullType": "long",
-              "name": "bankAccountId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The amount in cents you want to transfer",
-              "fullType": "long",
-              "name": "amount",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "ovhAccountId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Order",
-          "responseType": "billing.Order"
-        }
-      ],
-      "path": "/me/ovhAccount/{ovhAccountId}/retrieveMoney"
-    },
-    {
-      "description": "creditOrder operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Generate an order that can be paid in order to credit the OVH account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "The amount in cents you want to credit your account of",
-              "fullType": "long",
-              "name": "amount",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "ovhAccountId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Order",
-          "responseType": "billing.Order"
-        }
-      ],
-      "path": "/me/ovhAccount/{ovhAccountId}/creditOrder"
-    },
-    {
-      "description": "List the billing.OvhAccount objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of OVH accounts the logged account has",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/me/ovhAccount"
-    },
-    {
-      "description": "checkValidity operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Verify existing voucher",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Voucher value",
-              "fullType": "string",
-              "name": "voucher",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.VoucherStatus",
-          "responseType": "nichandle.VoucherStatus"
-        }
-      ],
-      "path": "/me/voucher/checkValidity"
-    },
-    {
-      "description": "Email notification",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.emailNotification",
-          "responseType": "nichandle.emailNotification"
-        }
-      ],
-      "path": "/me/notification/email/history/{id}"
-    },
-    {
-      "description": "List the nichandle.emailNotification objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of all your email notifications",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/notification/email/history"
-    },
-    {
-      "description": "Request a password recover",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Request a password recover",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "nichandle.OvhCompanyEnum",
-              "description": "Company of your OVH Account Id",
-              "fullType": "nichandle.OvhCompanyEnum",
-              "name": "ovhCompany",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Your OVH Account Id",
-              "fullType": "string",
-              "name": "ovhId",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/passwordRecover"
+      "path": "/me/accessRestriction/sms"
     },
     {
       "description": "List the nichandle.IpRestriction objects",
@@ -2990,14 +590,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Send an email if someone try to access with this IP address",
-              "fullType": "boolean",
-              "name": "warning",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "ipBlock",
               "description": "An IP range where we will apply the rule",
               "fullType": "ipBlock",
@@ -3010,6 +602,14 @@ export const schema: Schema = {
               "description": "Accept or deny IP access",
               "fullType": "nichandle.accessRestriction.IpRestrictionRuleEnum",
               "name": "rule",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Send an email if someone try to access with this IP address",
+              "fullType": "boolean",
+              "name": "warning",
               "paramType": "body",
               "required": true
             }
@@ -3102,270 +702,6 @@ export const schema: Schema = {
       "path": "/me/accessRestriction/ip/{id}"
     },
     {
-      "description": "List the nichandle.accessRestriction.TOTPAccount objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of TOTP accounts",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add a TOTP access restriction",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.accessRestriction.TOTPSecret",
-          "responseType": "nichandle.accessRestriction.TOTPSecret"
-        }
-      ],
-      "path": "/me/accessRestriction/totp"
-    },
-    {
-      "description": "validate operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Validate your TOTP account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "password",
-              "description": "OTP code given by the application",
-              "fullType": "password",
-              "name": "code",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/accessRestriction/totp/{id}/validate"
-    },
-    {
-      "description": "disable operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Disable this TOTP account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "password",
-              "description": "OTP code given by the application",
-              "fullType": "password",
-              "name": "code",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/accessRestriction/totp/{id}/disable"
-    },
-    {
-      "description": "TOTP Two-Factor Authentication",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.accessRestriction.TOTPAccount",
-          "responseType": "nichandle.accessRestriction.TOTPAccount"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.accessRestriction.TOTPAccount",
-              "description": "New object properties",
-              "fullType": "nichandle.accessRestriction.TOTPAccount",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete this Two-Factor",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/accessRestriction/totp/{id}"
-    },
-    {
-      "description": "enable operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Enable this TOTP account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "password",
-              "description": "OTP code given by the application",
-              "fullType": "password",
-              "name": "code",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/accessRestriction/totp/{id}/enable"
-    },
-    {
-      "description": "enable operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Enable this U2F account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "password",
-              "description": null,
-              "fullType": "password",
-              "name": "signatureData",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "clientData",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/accessRestriction/u2f/{id}/enable"
-    },
-    {
       "description": "challenge operations",
       "operations": [
         {
@@ -3392,6 +728,138 @@ export const schema: Schema = {
         }
       ],
       "path": "/me/accessRestriction/u2f/{id}/challenge"
+    },
+    {
+      "description": "disable operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Disable this U2F account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "clientData",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "password",
+              "description": null,
+              "fullType": "password",
+              "name": "signatureData",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/accessRestriction/u2f/{id}/disable"
+    },
+    {
+      "description": "validate operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Validate your U2F account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "clientData",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "password",
+              "description": null,
+              "fullType": "password",
+              "name": "registrationData",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/accessRestriction/u2f/{id}/validate"
+    },
+    {
+      "description": "enable operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Enable this U2F account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "clientData",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "password",
+              "description": null,
+              "fullType": "password",
+              "name": "signatureData",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/accessRestriction/u2f/{id}/enable"
     },
     {
       "description": "U2F Two-Factor Authentication",
@@ -3474,94 +942,6 @@ export const schema: Schema = {
       "path": "/me/accessRestriction/u2f/{id}"
     },
     {
-      "description": "validate operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Validate your U2F account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "password",
-              "description": null,
-              "fullType": "password",
-              "name": "registrationData",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "clientData",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/accessRestriction/u2f/{id}/validate"
-    },
-    {
-      "description": "disable operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Disable this U2F account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "password",
-              "description": null,
-              "fullType": "password",
-              "name": "signatureData",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "clientData",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/accessRestriction/u2f/{id}/disable"
-    },
-    {
       "description": "List the nichandle.accessRestriction.U2FAccount objects",
       "operations": [
         {
@@ -3592,47 +972,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/me/accessRestriction/u2f"
-    },
-    {
-      "description": "Login restrictions on a development version of the Manager",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.DeveloperModeRestriction",
-          "responseType": "nichandle.DeveloperModeRestriction"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.DeveloperModeRestriction",
-              "description": "New object properties",
-              "fullType": "nichandle.DeveloperModeRestriction",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/accessRestriction/developerMode"
     },
     {
       "description": "validate operations",
@@ -3764,366 +1103,48 @@ export const schema: Schema = {
       "path": "/me/accessRestriction/backupCode/enable"
     },
     {
-      "description": "IP Restriction default rule",
+      "description": "List the billing.Bill objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.IpRestrictionDefaultRule",
-          "responseType": "nichandle.IpRestrictionDefaultRule"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.IpRestrictionDefaultRule",
-              "description": "New object properties",
-              "fullType": "nichandle.IpRestrictionDefaultRule",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/accessRestriction/ipDefaultRule"
-    },
-    {
-      "description": "enable operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Enable this SMS account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "password",
-              "description": "SMS code send by a cellphone",
-              "fullType": "password",
-              "name": "code",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/accessRestriction/sms/{id}/enable"
-    },
-    {
-      "description": "sendCode operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Send a SMS to this account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.accessRestriction.SmsCode",
-          "responseType": "nichandle.accessRestriction.SmsCode"
-        }
-      ],
-      "path": "/me/accessRestriction/sms/{id}/sendCode"
-    },
-    {
-      "description": "disable operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Disable this SMS account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "password",
-              "description": "SMS code send by a cellphone",
-              "fullType": "password",
-              "name": "code",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/accessRestriction/sms/{id}/disable"
-    },
-    {
-      "description": "validate operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Validate your SMS account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "password",
-              "description": "SMS code send to a cellphone",
-              "fullType": "password",
-              "name": "code",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/accessRestriction/sms/{id}/validate"
-    },
-    {
-      "description": "Sms Two-Factor Authentication",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
+          "description": "List of all the bills the logged account has",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.accessRestriction.SmsAccount",
-          "responseType": "nichandle.accessRestriction.SmsAccount"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
+              "dataType": "billing.CategoryEnum",
+              "description": "Filter the value of category property (=)",
+              "fullType": "billing.CategoryEnum",
+              "name": "category",
+              "paramType": "query",
+              "required": false
+            },
             {
-              "dataType": "nichandle.accessRestriction.SmsAccount",
-              "description": "New object properties",
-              "fullType": "nichandle.accessRestriction.SmsAccount",
-              "name": null,
-              "paramType": "body",
-              "required": true
+              "dataType": "datetime",
+              "description": "Filter the value of date property (>=)",
+              "fullType": "datetime",
+              "name": "date.from",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of date property (<=)",
+              "fullType": "datetime",
+              "name": "date.to",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "long",
-              "description": "The Id of the restriction",
+              "description": "Filter the value of orderId property (=)",
               "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete this Two-Factor",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/accessRestriction/sms/{id}"
-    },
-    {
-      "description": "List the nichandle.accessRestriction.SmsAccount objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of Sms accounts",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add a SMS access restriction",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Cell phone number to register",
-              "fullType": "string",
-              "name": "phone",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.accessRestriction.SmsSecret",
-          "responseType": "nichandle.accessRestriction.SmsSecret"
-        }
-      ],
-      "path": "/me/accessRestriction/sms"
-    },
-    {
-      "description": "Details about a payment",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "depositId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "billId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Payment",
-          "responseType": "billing.Payment"
-        }
-      ],
-      "path": "/me/deposit/{depositId}/paidBills/{billId}/payment"
-    },
-    {
-      "description": "List the billing.BillDetail objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Give access to all entries of the bill",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "depositId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "billId",
-              "paramType": "path",
-              "required": true
+              "name": "orderId",
+              "paramType": "query",
+              "required": false
             }
           ],
           "resellerOnly": false,
@@ -4131,51 +1152,59 @@ export const schema: Schema = {
           "responseType": "string[]"
         }
       ],
-      "path": "/me/deposit/{depositId}/paidBills/{billId}/details"
+      "path": "/me/bill"
     },
     {
-      "description": "Information about a Bill entry",
+      "description": "Exports a bundle of invoices",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
+          "description": "Exports a bundle of invoices",
+          "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "depositId",
-              "paramType": "path",
+              "dataType": "billing.ArchiveTypeEnum",
+              "description": "The file type of the archive",
+              "fullType": "billing.ArchiveTypeEnum",
+              "name": "archiveType",
+              "paramType": "body",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "billId",
-              "paramType": "path",
-              "required": true
+              "dataType": "datetime",
+              "description": "End interval of the export",
+              "fullType": "datetime",
+              "name": "endDate",
+              "paramType": "body",
+              "required": false
             },
             {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "billDetailId",
-              "paramType": "path",
-              "required": true
+              "dataType": "string[]",
+              "description": "A list of ids to export",
+              "fullType": "string[]",
+              "name": "ids",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Start interval of the export",
+              "fullType": "datetime",
+              "name": "startDate",
+              "paramType": "body",
+              "required": false
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "billing.BillDetail",
-          "responseType": "billing.BillDetail"
+          "responseFullType": "void",
+          "responseType": "void"
         }
       ],
-      "path": "/me/deposit/{depositId}/paidBills/{billId}/details/{billDetailId}"
+      "path": "/me/bill/export"
     },
     {
       "description": "Details about a Bill",
@@ -4193,14 +1222,6 @@ export const schema: Schema = {
               "dataType": "string",
               "description": null,
               "fullType": "string",
-              "name": "depositId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
               "name": "billId",
               "paramType": "path",
               "required": true
@@ -4211,10 +1232,10 @@ export const schema: Schema = {
           "responseType": "billing.Bill"
         }
       ],
-      "path": "/me/deposit/{depositId}/paidBills/{billId}"
+      "path": "/me/bill/{billId}"
     },
     {
-      "description": "Operation that happend on a debt",
+      "description": "Details about a payment",
       "operations": [
         {
           "apiStatus": {
@@ -4229,10 +1250,130 @@ export const schema: Schema = {
               "dataType": "string",
               "description": null,
               "fullType": "string",
-              "name": "depositId",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Payment",
+          "responseType": "billing.Payment"
+        }
+      ],
+      "path": "/me/bill/{billId}/payment"
+    },
+    {
+      "description": "List the billing.BillDetail objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Give access to all entries of the bill",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/bill/{billId}/details"
+    },
+    {
+      "description": "Information about a Bill entry",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "billDetailId",
               "paramType": "path",
               "required": true
             },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.BillDetail",
+          "responseType": "billing.BillDetail"
+        }
+      ],
+      "path": "/me/bill/{billId}/details/{billDetailId}"
+    },
+    {
+      "description": "List the debt.Operation objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "All operations related to these debts",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of depositOrderId property (=)",
+              "fullType": "long",
+              "name": "depositOrderId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/bill/{billId}/debt/operation"
+    },
+    {
+      "description": "Operation that happend on a debt",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
             {
               "dataType": "string",
               "description": null,
@@ -4255,7 +1396,7 @@ export const schema: Schema = {
           "responseType": "debt.Operation"
         }
       ],
-      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}"
+      "path": "/me/bill/{billId}/debt/operation/{operationId}"
     },
     {
       "description": "associatedObject operations",
@@ -4269,14 +1410,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "depositId",
-              "paramType": "path",
-              "required": true
-            },
             {
               "dataType": "string",
               "description": null,
@@ -4299,87 +1432,7 @@ export const schema: Schema = {
           "responseType": "debt.entry.AssociatedObject"
         }
       ],
-      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}/associatedObject"
-    },
-    {
-      "description": "List the debt.Operation objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "All operations related to these debts",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Filter the value of depositOrderId property (=)",
-              "fullType": "long",
-              "name": "depositOrderId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "depositId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "billId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt/operation"
-    },
-    {
-      "description": "State of a debt",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "depositId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "billId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "debt.Debt",
-          "responseType": "debt.Debt"
-        }
-      ],
-      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt"
+      "path": "/me/bill/{billId}/debt/operation/{operationId}/associatedObject"
     },
     {
       "description": "pay operations",
@@ -4397,14 +1450,6 @@ export const schema: Schema = {
               "dataType": "string",
               "description": null,
               "fullType": "string",
-              "name": "depositId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
               "name": "billId",
               "paramType": "path",
               "required": true
@@ -4415,38 +1460,10 @@ export const schema: Schema = {
           "responseType": "billing.Order"
         }
       ],
-      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt/pay"
+      "path": "/me/bill/{billId}/debt/pay"
     },
     {
-      "description": "List the billing.Bill objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get invoices paid by this deposit",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "depositId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/me/deposit/{depositId}/paidBills"
-    },
-    {
-      "description": "Details about a deposit",
+      "description": "State of a debt",
       "operations": [
         {
           "apiStatus": {
@@ -4461,48 +1478,39 @@ export const schema: Schema = {
               "dataType": "string",
               "description": null,
               "fullType": "string",
-              "name": "depositId",
+              "name": "billId",
               "paramType": "path",
               "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "billing.Deposit",
-          "responseType": "billing.Deposit"
+          "responseFullType": "debt.Debt",
+          "responseType": "debt.Debt"
         }
       ],
-      "path": "/me/deposit/{depositId}"
+      "path": "/me/bill/{billId}/debt"
     },
     {
-      "description": "List the billing.DepositDetail objects",
+      "description": "List the nichandle.Subscription objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Give access to all entries of this deposit",
+          "description": "List of all OVH things you can subscribe to",
           "httpMethod": "GET",
           "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "depositId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
+          "parameters": [],
           "resellerOnly": false,
           "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
-      "path": "/me/deposit/{depositId}/details"
+      "path": "/me/subscription"
     },
     {
-      "description": "Information about a Deposit entry",
+      "description": "List of all OVH things you can subscribe to",
       "operations": [
         {
           "apiStatus": {
@@ -4515,9 +1523,782 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "The type of subscription",
               "fullType": "string",
-              "name": "depositId",
+              "name": "subscriptionType",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.Subscription",
+          "responseType": "nichandle.Subscription"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.Subscription",
+              "description": "New object properties",
+              "fullType": "nichandle.Subscription",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The type of subscription",
+              "fullType": "string",
+              "name": "subscriptionType",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/subscription/{subscriptionType}"
+    },
+    {
+      "description": "List the billing.SlaOperation objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List active SLA",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/sla"
+    },
+    {
+      "description": "services operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get services impacted by this SLA",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.SlaOperationService[]",
+          "responseType": "billing.SlaOperationService[]"
+        }
+      ],
+      "path": "/me/sla/{id}/services"
+    },
+    {
+      "description": "SLA properties",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.SlaOperation",
+          "responseType": "billing.SlaOperation"
+        }
+      ],
+      "path": "/me/sla/{id}"
+    },
+    {
+      "description": "status operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the status request of this SLA",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string",
+          "responseType": "string"
+        }
+      ],
+      "path": "/me/sla/{id}/status"
+    },
+    {
+      "description": "canBeApplied operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Check whether this SLA can be applied on your services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "boolean",
+          "responseType": "boolean"
+        }
+      ],
+      "path": "/me/sla/{id}/canBeApplied"
+    },
+    {
+      "description": "apply operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Ask for SLA application",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/sla/{id}/apply"
+    },
+    {
+      "description": "changeEmail operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Initiate an email change procedure",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "New email to associate to your account",
+              "fullType": "string",
+              "name": "newEmail",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.emailChange.Task",
+          "responseType": "nichandle.emailChange.Task"
+        }
+      ],
+      "path": "/me/changeEmail"
+    },
+    {
+      "description": "List the nichandle.document.Document objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of documents added in your account",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create new document",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "File name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "complexType.SafeKeyValue<string>[]",
+              "description": "File tags",
+              "fullType": "complexType.SafeKeyValue<string>[]",
+              "name": "tags",
+              "paramType": "body",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.document.Document",
+          "responseType": "nichandle.document.Document"
+        }
+      ],
+      "path": "/me/document"
+    },
+    {
+      "description": "Add CORS support on your container",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add CORS support on your container",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Allow this origin",
+              "fullType": "string",
+              "name": "origin",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/document/cors"
+    },
+    {
+      "description": "List of documents added on your account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Document id",
+              "fullType": "string",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.document.Document",
+          "responseType": "nichandle.document.Document"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.document.Document",
+              "description": "New object properties",
+              "fullType": "nichandle.document.Document",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Document id",
+              "fullType": "string",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete a document",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Document id",
+              "fullType": "string",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/document/{id}"
+    },
+    {
+      "description": "List the agreements.ContractAgreement objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of contracts signed between you and OVH",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "agreements.AgreementStateEnum",
+              "description": "Filter the value of agreed property (like)",
+              "fullType": "agreements.AgreementStateEnum",
+              "name": "agreed",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of contractId property (like)",
+              "fullType": "long",
+              "name": "contractId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/agreements"
+    },
+    {
+      "description": "Contract agreement",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the contract",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "agreements.ContractAgreement",
+          "responseType": "agreements.ContractAgreement"
+        }
+      ],
+      "path": "/me/agreements/{id}"
+    },
+    {
+      "description": "Contract of service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the contract",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "agreements.Contract",
+          "responseType": "agreements.Contract"
+        }
+      ],
+      "path": "/me/agreements/{id}/contract"
+    },
+    {
+      "description": "accept operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Accept this contract",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the contract",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string",
+          "responseType": "string"
+        }
+      ],
+      "path": "/me/agreements/{id}/accept"
+    },
+    {
+      "description": "List the api.Credential objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of your Api Credentials",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Filter the value of applicationId property (like)",
+              "fullType": "long",
+              "name": "applicationId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "auth.CredentialStateEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "auth.CredentialStateEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/api/credential"
+    },
+    {
+      "description": "API Credential",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "credentialId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "api.Credential",
+          "responseType": "api.Credential"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "api.Credential",
+              "description": "New object properties",
+              "fullType": "api.Credential",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "credentialId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove this credential",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "credentialId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/api/credential/{credentialId}"
+    },
+    {
+      "description": "API Application",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "credentialId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "api.Application",
+          "responseType": "api.Application"
+        }
+      ],
+      "path": "/me/api/credential/{credentialId}/application"
+    },
+    {
+      "description": "List the api.Application objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of your Api Application",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/api/application"
+    },
+    {
+      "description": "API Application",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "applicationId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "api.Application",
+          "responseType": "api.Application"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove this application. It will revoke all credential belonging to this application.",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "applicationId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/api/application/{applicationId}"
+    },
+    {
+      "description": "changePassword operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Initiate a password change procedure",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/changePassword"
+    },
+    {
+      "description": "List the billing.OvhAccount objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of OVH accounts the logged account has",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/ovhAccount"
+    },
+    {
+      "description": "Details about an OVH account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "movementId",
               "paramType": "path",
               "required": true
             },
@@ -4525,20 +2306,144 @@ export const schema: Schema = {
               "dataType": "string",
               "description": null,
               "fullType": "string",
-              "name": "depositDetailId",
+              "name": "ovhAccountId",
               "paramType": "path",
               "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "billing.DepositDetail",
-          "responseType": "billing.DepositDetail"
+          "responseFullType": "billing.Movement",
+          "responseType": "billing.Movement"
         }
       ],
-      "path": "/me/deposit/{depositId}/details/{depositDetailId}"
+      "path": "/me/ovhAccount/{ovhAccountId}/movements/{movementId}"
     },
     {
-      "description": "Details about a payment",
+      "description": "List the billing.Movement objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Details about an entry of the OVH account",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "ovhAccountId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of date property (>=)",
+              "fullType": "datetime",
+              "name": "date.from",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of date property (<=)",
+              "fullType": "datetime",
+              "name": "date.to",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/ovhAccount/{ovhAccountId}/movements"
+    },
+    {
+      "description": "creditOrder operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Generate an order that can be paid in order to credit the OVH account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The amount in cents you want to credit your account of",
+              "fullType": "long",
+              "name": "amount",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "ovhAccountId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Order",
+          "responseType": "billing.Order"
+        }
+      ],
+      "path": "/me/ovhAccount/{ovhAccountId}/creditOrder"
+    },
+    {
+      "description": "retrieveMoney operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Transfer money from ovhAccount to your bank account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The amount in cents you want to transfer",
+              "fullType": "long",
+              "name": "amount",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "A valid bank account",
+              "fullType": "long",
+              "name": "bankAccountId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "ovhAccountId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Order",
+          "responseType": "billing.Order"
+        }
+      ],
+      "path": "/me/ovhAccount/{ovhAccountId}/retrieveMoney"
+    },
+    {
+      "description": "Details about an OVH account",
       "operations": [
         {
           "apiStatus": {
@@ -4553,17 +2458,129 @@ export const schema: Schema = {
               "dataType": "string",
               "description": null,
               "fullType": "string",
-              "name": "depositId",
+              "name": "ovhAccountId",
               "paramType": "path",
               "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "billing.Payment",
-          "responseType": "billing.Payment"
+          "responseFullType": "billing.OvhAccount",
+          "responseType": "billing.OvhAccount"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "billing.OvhAccount",
+              "description": "New object properties",
+              "fullType": "billing.OvhAccount",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "ovhAccountId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
         }
       ],
-      "path": "/me/deposit/{depositId}/payment"
+      "path": "/me/ovhAccount/{ovhAccountId}"
+    },
+    {
+      "description": "Auto renewal information",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.NicAutorenewInfos",
+          "responseType": "nichandle.NicAutorenewInfos"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.NicAutorenewInfos",
+              "description": "New object properties",
+              "fullType": "nichandle.NicAutorenewInfos",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Activate auto renew for this nic",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Day of autorenew",
+              "fullType": "long",
+              "name": "renewDay",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/autorenew"
+    },
+    {
+      "description": "Route for getting visitor's country and continent",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Fetch visitor country & region",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "geolocation.ContinentCountryLocation",
+          "responseType": "geolocation.ContinentCountryLocation"
+        }
+      ],
+      "path": "/me/geolocation"
     },
     {
       "description": "List the billing.Deposit objects",
@@ -4610,7 +2627,7 @@ export const schema: Schema = {
       "path": "/me/deposit"
     },
     {
-      "description": "Partitioning schemes available on this template",
+      "description": "State of a debt",
       "operations": [
         {
           "apiStatus": {
@@ -4623,98 +2640,110 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": null,
               "fullType": "string",
-              "name": "templateName",
+              "name": "billId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": null,
               "fullType": "string",
-              "name": "schemeName",
+              "name": "depositId",
               "paramType": "path",
               "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.installationTemplate.templatePartitioningSchemes",
-          "responseType": "dedicated.installationTemplate.templatePartitioningSchemes"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.installationTemplate.templatePartitioningSchemes",
-              "description": "New object properties",
-              "fullType": "dedicated.installationTemplate.templatePartitioningSchemes",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "remove this scheme of partition",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
+          "responseFullType": "debt.Debt",
+          "responseType": "debt.Debt"
         }
       ],
-      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}"
+      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt"
     },
     {
-      "description": "Hardware RAID defined in this partitioning scheme",
+      "description": "pay operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create an order in order to pay this order's debt",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Order",
+          "responseType": "billing.Order"
+        }
+      ],
+      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt/pay"
+    },
+    {
+      "description": "associatedObject operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return main data about the object related to this debt operation",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "operationId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "debt.entry.AssociatedObject",
+          "responseType": "debt.entry.AssociatedObject"
+        }
+      ],
+      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}/associatedObject"
+    },
+    {
+      "description": "Operation that happend on a debt",
       "operations": [
         {
           "apiStatus": {
@@ -4727,109 +2756,405 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": null,
               "fullType": "string",
-              "name": "templateName",
+              "name": "billId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": null,
               "fullType": "string",
-              "name": "schemeName",
+              "name": "depositId",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Hardware RAID name",
-              "fullType": "string",
-              "name": "name",
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "operationId",
               "paramType": "path",
               "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.installationTemplate.hardwareRaid",
-          "responseType": "dedicated.installationTemplate.hardwareRaid"
-        },
+          "responseFullType": "debt.Operation",
+          "responseType": "debt.Operation"
+        }
+      ],
+      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}"
+    },
+    {
+      "description": "List the debt.Operation objects",
+      "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
+          "description": "All operations related to these debts",
+          "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.installationTemplate.hardwareRaid",
-              "description": "New object properties",
-              "fullType": "dedicated.installationTemplate.hardwareRaid",
-              "name": null,
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of depositOrderId property (=)",
+              "fullType": "long",
+              "name": "depositOrderId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/deposit/{depositId}/paidBills/{billId}/debt/operation"
+    },
+    {
+      "description": "List the billing.BillDetail objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Give access to all entries of the bill",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/deposit/{depositId}/paidBills/{billId}/details"
+    },
+    {
+      "description": "Information about a Bill entry",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "billDetailId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.BillDetail",
+          "responseType": "billing.BillDetail"
+        }
+      ],
+      "path": "/me/deposit/{depositId}/paidBills/{billId}/details/{billDetailId}"
+    },
+    {
+      "description": "Details about a payment",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Payment",
+          "responseType": "billing.Payment"
+        }
+      ],
+      "path": "/me/deposit/{depositId}/paidBills/{billId}/payment"
+    },
+    {
+      "description": "Details about a Bill",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Bill",
+          "responseType": "billing.Bill"
+        }
+      ],
+      "path": "/me/deposit/{depositId}/paidBills/{billId}"
+    },
+    {
+      "description": "List the billing.Bill objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get invoices paid by this deposit",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/deposit/{depositId}/paidBills"
+    },
+    {
+      "description": "Details about a payment",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Payment",
+          "responseType": "billing.Payment"
+        }
+      ],
+      "path": "/me/deposit/{depositId}/payment"
+    },
+    {
+      "description": "List the billing.DepositDetail objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Give access to all entries of this deposit",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/deposit/{depositId}/details"
+    },
+    {
+      "description": "Information about a Deposit entry",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "depositDetailId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.DepositDetail",
+          "responseType": "billing.DepositDetail"
+        }
+      ],
+      "path": "/me/deposit/{depositId}/details/{depositDetailId}"
+    },
+    {
+      "description": "Details about a deposit",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "depositId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Deposit",
+          "responseType": "billing.Deposit"
+        }
+      ],
+      "path": "/me/deposit/{depositId}"
+    },
+    {
+      "description": "pay operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Pay with a payment method reference",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "billing.order.PayWithPaymentMethod",
+              "description": "Payment method informations for pay",
+              "fullType": "billing.order.PayWithPaymentMethod",
+              "name": "paymentMethod",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Hardware RAID name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Remove this RAID",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Hardware RAID name",
-              "fullType": "string",
-              "name": "name",
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
               "paramType": "path",
               "required": true
             }
@@ -4839,37 +3164,724 @@ export const schema: Schema = {
           "responseType": "void"
         }
       ],
-      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}"
+      "path": "/me/order/{orderId}/pay"
     },
     {
-      "description": "List the dedicated.installationTemplate.hardwareRaid objects",
+      "description": "status operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Hardware RAIDs defined in this partitioning scheme",
+          "description": "Return status of order",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
+          "resellerOnly": false,
+          "responseFullType": "billing.order.OrderStatusEnum",
+          "responseType": "billing.order.OrderStatusEnum"
+        }
+      ],
+      "path": "/me/order/{orderId}/status"
+    },
+    {
+      "description": "State of a debt",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "debt.Debt",
+          "responseType": "debt.Debt"
+        }
+      ],
+      "path": "/me/order/{orderId}/debt"
+    },
+    {
+      "description": "associatedObject operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return main data about the object related to this debt operation",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "operationId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "debt.entry.AssociatedObject",
+          "responseType": "debt.entry.AssociatedObject"
+        }
+      ],
+      "path": "/me/order/{orderId}/debt/operation/{operationId}/associatedObject"
+    },
+    {
+      "description": "Operation that happend on a debt",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "operationId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "debt.Operation",
+          "responseType": "debt.Operation"
+        }
+      ],
+      "path": "/me/order/{orderId}/debt/operation/{operationId}"
+    },
+    {
+      "description": "List the debt.Operation objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "All operations related to these debts",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of depositOrderId property (=)",
+              "fullType": "long",
+              "name": "depositOrderId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/order/{orderId}/debt/operation"
+    },
+    {
+      "description": "pay operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create an order in order to pay this order's debt",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Order",
+          "responseType": "billing.Order"
+        }
+      ],
+      "path": "/me/order/{orderId}/debt/pay"
+    },
+    {
+      "description": "paymentMeans operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return main data about the object the processing of the order generated",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.order.PaymentMeans",
+          "responseType": "billing.order.PaymentMeans"
+        }
+      ],
+      "path": "/me/order/{orderId}/paymentMeans"
+    },
+    {
+      "description": "Details about an Order",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Order",
+          "responseType": "billing.Order"
+        }
+      ],
+      "path": "/me/order/{orderId}"
+    },
+    {
+      "description": "associatedObject operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return main data about the object the processing of the order generated",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.order.AssociatedObject",
+          "responseType": "billing.order.AssociatedObject"
+        }
+      ],
+      "path": "/me/order/{orderId}/associatedObject"
+    },
+    {
+      "description": "followUp operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Return tracking of the order",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.order.FollowUp[]",
+          "responseType": "billing.order.FollowUp[]"
+        }
+      ],
+      "path": "/me/order/{orderId}/followUp"
+    },
+    {
+      "description": "details operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve order's detailed consumption information as a file",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "consumption.ConsumptionExportFormatsEnum",
+              "description": "Format of the file",
+              "fullType": "consumption.ConsumptionExportFormatsEnum",
+              "name": "fileFormat",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.order.ConsumptionDetails",
+          "responseType": "billing.order.ConsumptionDetails"
+        }
+      ],
+      "path": "/me/order/{orderId}/consumption/details"
+    },
+    {
+      "description": "paymentMethods operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List of registered payment method you can use to pay this order",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.order.PaymentMethods",
+          "responseType": "billing.order.PaymentMethods"
+        }
+      ],
+      "path": "/me/order/{orderId}/paymentMethods"
+    },
+    {
+      "description": "Extensions of a detail",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderDetailId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.ItemDetail",
+          "responseType": "billing.ItemDetail"
+        }
+      ],
+      "path": "/me/order/{orderId}/details/{orderDetailId}/extension"
+    },
+    {
+      "description": "Information about a Bill entry",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderDetailId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.OrderDetail",
+          "responseType": "billing.OrderDetail"
+        }
+      ],
+      "path": "/me/order/{orderId}/details/{orderDetailId}"
+    },
+    {
+      "description": "List the billing.OrderDetail objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Give access to all entries of the order",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/order/{orderId}/details"
+    },
+    {
+      "description": "payWithRegisteredPaymentMean operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Pay with an already registered payment mean",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "billing.ReusablePaymentMeanEnum",
+              "description": "The registered payment mean you want to use",
+              "fullType": "billing.ReusablePaymentMeanEnum",
+              "name": "paymentMean",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of registered payment mean, mandatory for bankAccount, creditCard and paypal",
+              "fullType": "long",
+              "name": "paymentMeanId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/order/{orderId}/payWithRegisteredPaymentMean"
+    },
+    {
+      "description": "availableRegisteredPaymentMean operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of registered payment mean you can use to pay this order",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.order.RegisteredPaymentMean[]",
+          "responseType": "billing.order.RegisteredPaymentMean[]"
+        }
+      ],
+      "path": "/me/order/{orderId}/availableRegisteredPaymentMean"
+    },
+    {
+      "description": "Details about a Bill",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Bill",
+          "responseType": "billing.Bill"
+        }
+      ],
+      "path": "/me/order/{orderId}/bill"
+    },
+    {
+      "description": "retraction operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Request retraction of order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "text",
+              "description": "An optional comment of why you want to retract",
+              "fullType": "text",
+              "name": "comment",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "billing.order.RetractionReasonEnum",
+              "description": "The reason why you want to retract",
+              "fullType": "billing.order.RetractionReasonEnum",
+              "name": "reason",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/order/{orderId}/retraction"
+    },
+    {
+      "description": "Details about a Refund",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Refund",
+          "responseType": "billing.Refund"
+        }
+      ],
+      "path": "/me/order/{orderId}/refund"
+    },
+    {
+      "description": "Details about a payment",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Payment",
+          "responseType": "billing.Payment"
+        }
+      ],
+      "path": "/me/order/{orderId}/payment"
+    },
+    {
+      "description": "List the billing.Order objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of all the orders the logged account has",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of date property (>=)",
+              "fullType": "datetime",
+              "name": "date.from",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of date property (<=)",
+              "fullType": "datetime",
+              "name": "date.to",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/order"
+    },
+    {
+      "description": "List the nichandle.sshKey objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of your public SSH keys",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
           "resellerOnly": false,
           "responseFullType": "string[]",
           "responseType": "string[]"
@@ -4879,57 +3891,1658 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Add an hardware RAID in this partitioning scheme",
+          "description": "Add a new public SSH key",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Hardware RAID name",
+              "description": "ASCII encoded public SSH key to add",
               "fullType": "string",
-              "name": "name",
+              "name": "key",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "dedicated.TemplateOsHardwareRaidEnum",
-              "description": "RAID mode",
-              "fullType": "dedicated.TemplateOsHardwareRaidEnum",
-              "name": "mode",
+              "dataType": "string",
+              "description": "name of the new public SSH key",
+              "fullType": "string",
+              "name": "keyName",
               "paramType": "body",
               "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/sshKey"
+    },
+    {
+      "description": "Customer public SSH key, can be used for rescue netboot or server access after reinstallation",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of this public SSH key",
+              "fullType": "string",
+              "name": "keyName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.sshKey",
+          "responseType": "nichandle.sshKey"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.sshKey",
+              "description": "New object properties",
+              "fullType": "nichandle.sshKey",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name of this public SSH key",
+              "fullType": "string",
+              "name": "keyName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove this public SSH key",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of this public SSH key",
+              "fullType": "string",
+              "name": "keyName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/sshKey/{keyName}"
+    },
+    {
+      "description": "Debt balance of the account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "debt.Balance",
+          "responseType": "debt.Balance"
+        }
+      ],
+      "path": "/me/debtAccount"
+    },
+    {
+      "description": "List the debt.Debt objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "All debts related to your account",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/debtAccount/debt"
+    },
+    {
+      "description": "pay operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create an order in order to pay this order's debt",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "debtId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Order",
+          "responseType": "billing.Order"
+        }
+      ],
+      "path": "/me/debtAccount/debt/{debtId}/pay"
+    },
+    {
+      "description": "associatedObject operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return main data about the object related to this debt operation",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "debtId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "operationId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "debt.entry.AssociatedObject",
+          "responseType": "debt.entry.AssociatedObject"
+        }
+      ],
+      "path": "/me/debtAccount/debt/{debtId}/operation/{operationId}/associatedObject"
+    },
+    {
+      "description": "Operation that happend on a debt",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "debtId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "operationId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "debt.Operation",
+          "responseType": "debt.Operation"
+        }
+      ],
+      "path": "/me/debtAccount/debt/{debtId}/operation/{operationId}"
+    },
+    {
+      "description": "List the debt.Operation objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "All operations related to these debts",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "debtId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of depositOrderId property (=)",
+              "fullType": "long",
+              "name": "depositOrderId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/debtAccount/debt/{debtId}/operation"
+    },
+    {
+      "description": "State of a debt",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "debtId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "debt.Debt",
+          "responseType": "debt.Debt"
+        }
+      ],
+      "path": "/me/debtAccount/debt/{debtId}"
+    },
+    {
+      "description": "pay operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create an order in order to pay all your due debts",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "billing.Order",
+          "responseType": "billing.Order"
+        }
+      ],
+      "path": "/me/debtAccount/pay"
+    },
+    {
+      "description": "checkValidity operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Verify existing voucher",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Voucher value",
+              "fullType": "string",
+              "name": "voucher",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.VoucherStatus",
+          "responseType": "nichandle.VoucherStatus"
+        }
+      ],
+      "path": "/me/voucher/checkValidity"
+    },
+    {
+      "description": "Balance of the fidelity account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "billing.FidelityAccount",
+          "responseType": "billing.FidelityAccount"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "billing.FidelityAccount",
+              "description": "New object properties",
+              "fullType": "billing.FidelityAccount",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/fidelityAccount"
+    },
+    {
+      "description": "creditOrder operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Generate an order that can be paid in order to credit the fidelity account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The amount of points you want to credit your fidelity account of",
+              "fullType": "long",
+              "name": "amount",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Order",
+          "responseType": "billing.Order"
+        }
+      ],
+      "path": "/me/fidelityAccount/creditOrder"
+    },
+    {
+      "description": "List the billing.FidelityMovement objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of entries of the fidelity account",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of date property (>=)",
+              "fullType": "datetime",
+              "name": "date.from",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of date property (<=)",
+              "fullType": "datetime",
+              "name": "date.to",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/fidelityAccount/movements"
+    },
+    {
+      "description": "Details about a fidelity account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "movementId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.FidelityMovement",
+          "responseType": "billing.FidelityMovement"
+        }
+      ],
+      "path": "/me/fidelityAccount/movements/{movementId}"
+    },
+    {
+      "description": "Email notification",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.emailNotification",
+          "responseType": "nichandle.emailNotification"
+        }
+      ],
+      "path": "/me/notification/email/history/{id}"
+    },
+    {
+      "description": "List the nichandle.emailNotification objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of all your email notifications",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/notification/email/history"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve information about a contact",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Contact Identifier",
+              "fullType": "long",
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "contact.Contact",
+          "responseType": "contact.Contact"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update an existing contact",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "contact.Address",
+              "description": "Address of the contact",
+              "fullType": "contact.Address",
+              "name": "address",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "City of birth",
+              "fullType": "string",
+              "name": "birthCity",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": "Birth Country",
+              "fullType": "nichandle.CountryEnum",
+              "name": "birthCountry",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "date",
+              "description": "Birthday date",
+              "fullType": "date",
+              "name": "birthDay",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Birth Zipcode",
+              "fullType": "string",
+              "name": "birthZip",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "Cellphone number",
+              "fullType": "phoneNumber",
+              "name": "cellPhone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Company national identification number",
+              "fullType": "string",
+              "name": "companyNationalIdentificationNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Email address",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "Fax phone number",
+              "fullType": "phoneNumber",
+              "name": "fax",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "First name",
+              "fullType": "string",
+              "name": "firstName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.GenderEnum",
+              "description": "Gender",
+              "fullType": "nichandle.GenderEnum",
+              "name": "gender",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.LanguageEnum",
+              "description": "Language",
+              "fullType": "nichandle.LanguageEnum",
+              "name": "language",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Last name",
+              "fullType": "string",
+              "name": "lastName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.LegalFormEnum",
+              "description": "Legal form of the contact",
+              "fullType": "nichandle.LegalFormEnum",
+              "name": "legalForm",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "National identification number",
+              "fullType": "string",
+              "name": "nationalIdentificationNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": "Nationality",
+              "fullType": "nichandle.CountryEnum",
+              "name": "nationality",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Name of your organisation",
+              "fullType": "string",
+              "name": "organisationName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Type of your organisation",
+              "fullType": "string",
+              "name": "organisationType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "Landline phone number",
+              "fullType": "phoneNumber",
+              "name": "phone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "VAT number",
+              "fullType": "string",
+              "name": "vat",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Contact Identifier",
+              "fullType": "long",
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "contact.Contact",
+          "responseType": "contact.Contact"
+        }
+      ],
+      "path": "/me/contact/{contactId}"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Display mandatory/read-only informations of a contact",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Contact Identifier",
+              "fullType": "long",
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "contact.FieldInformation[]",
+          "responseType": "contact.FieldInformation[]"
+        }
+      ],
+      "path": "/me/contact/{contactId}/fields"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve all contact that you created",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a new contact",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "contact.Address",
+              "description": "Address of the contact",
+              "fullType": "contact.Address",
+              "name": "address",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "City of birth",
+              "fullType": "string",
+              "name": "birthCity",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": "Birth Country",
+              "fullType": "nichandle.CountryEnum",
+              "name": "birthCountry",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "date",
+              "description": "Birthday date",
+              "fullType": "date",
+              "name": "birthDay",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Birth Zipcode",
+              "fullType": "string",
+              "name": "birthZip",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "Cellphone number",
+              "fullType": "phoneNumber",
+              "name": "cellPhone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Company national identification number",
+              "fullType": "string",
+              "name": "companyNationalIdentificationNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Email address",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "Fax phone number",
+              "fullType": "phoneNumber",
+              "name": "fax",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "First name",
+              "fullType": "string",
+              "name": "firstName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.GenderEnum",
+              "description": "Gender",
+              "fullType": "nichandle.GenderEnum",
+              "name": "gender",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.LanguageEnum",
+              "description": "Language",
+              "fullType": "nichandle.LanguageEnum",
+              "name": "language",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Last name",
+              "fullType": "string",
+              "name": "lastName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.LegalFormEnum",
+              "description": "Legal form of the contact",
+              "fullType": "nichandle.LegalFormEnum",
+              "name": "legalForm",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "National identification number",
+              "fullType": "string",
+              "name": "nationalIdentificationNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": "Nationality",
+              "fullType": "nichandle.CountryEnum",
+              "name": "nationality",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Name of your organisation",
+              "fullType": "string",
+              "name": "organisationName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Type of your organisation",
+              "fullType": "string",
+              "name": "organisationType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "Landline phone number",
+              "fullType": "phoneNumber",
+              "name": "phone",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "VAT number",
+              "fullType": "string",
+              "name": "vat",
+              "paramType": "body",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "contact.Contact",
+          "responseType": "contact.Contact"
+        }
+      ],
+      "path": "/me/contact"
+    },
+    {
+      "description": "List the nichandle.emailChange.Task objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of email change tasks you are involved in",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.changeEmail.TaskStateEnum",
+              "description": "Filter the value of state property (like)",
+              "fullType": "nichandle.changeEmail.TaskStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/task/emailChange"
+    },
+    {
+      "description": "refuse operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Refuse this change request",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The token you received by email for this request",
+              "fullType": "string",
+              "name": "token",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/task/emailChange/{id}/refuse"
+    },
+    {
+      "description": "Task running an email change on an account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.emailChange.Task",
+          "responseType": "nichandle.emailChange.Task"
+        }
+      ],
+      "path": "/me/task/emailChange/{id}"
+    },
+    {
+      "description": "accept operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Accept this change request",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The token you received by email for this request",
+              "fullType": "string",
+              "name": "token",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/task/emailChange/{id}/accept"
+    },
+    {
+      "description": "accept operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Accept this change request",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The token you received by email for this request",
+              "fullType": "string",
+              "name": "token",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/task/contactChange/{id}/accept"
+    },
+    {
+      "description": "resendEmail operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "This call will send you a new email, containing a new token",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/task/contactChange/{id}/resendEmail"
+    },
+    {
+      "description": "Task running a contact change on a service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.contactChange.Task",
+          "responseType": "nichandle.contactChange.Task"
+        }
+      ],
+      "path": "/me/task/contactChange/{id}"
+    },
+    {
+      "description": "refuse operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Refuse this change request",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The token you received by email for this request",
+              "fullType": "string",
+              "name": "token",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/task/contactChange/{id}/refuse"
+    },
+    {
+      "description": "List the nichandle.contactChange.Task objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of service contact change tasks you are involved in",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Filter the value of askingAccount property (like)",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "askingAccount",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.changeContact.TaskStateEnum",
+              "description": "Filter the value of state property (like)",
+              "fullType": "nichandle.changeContact.TaskStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of toAccount property (like)",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "toAccount",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/task/contactChange"
+    },
+    {
+      "description": "List the nichandle.DomainTask objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of domain task",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Filter the value of domain property (like)",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "domain.NicOperationFunctionEnum",
+              "description": "Filter the value of function property (like)",
+              "fullType": "domain.NicOperationFunctionEnum",
+              "name": "function",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "domain.OperationStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "domain.OperationStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/task/domain"
+    },
+    {
+      "description": "cancel operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Cancel the task",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the task",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/task/domain/{id}/cancel"
+    },
+    {
+      "description": "relaunch operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Relaunch the task",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the task",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/task/domain/{id}/relaunch"
+    },
+    {
+      "description": "accelerate operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Accelerate the task",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the task",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/task/domain/{id}/accelerate"
+    },
+    {
+      "description": "Domain tasks",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the task",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.DomainTask",
+          "responseType": "nichandle.DomainTask"
+        }
+      ],
+      "path": "/me/task/domain/{id}"
+    },
+    {
+      "description": "List the nichandle.DomainTaskArgument objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of arguments",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the task",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/task/domain/{id}/argument"
+    },
+    {
+      "description": "Domain operation argument",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the task",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Key of the argument",
+              "fullType": "string",
+              "name": "key",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.DomainTaskArgument",
+          "responseType": "nichandle.DomainTaskArgument"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.DomainTaskArgument",
+              "description": "New object properties",
+              "fullType": "nichandle.DomainTaskArgument",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the task",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Key of the argument",
+              "fullType": "string",
+              "name": "key",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/task/domain/{id}/argument/{key}"
+    },
+    {
+      "description": "Domain operation progress",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the task",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.DomainTaskProgressBar",
+          "responseType": "nichandle.DomainTaskProgressBar"
+        }
+      ],
+      "path": "/me/task/domain/{id}/progressbar"
+    },
+    {
+      "description": "subscribe operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Subscribe an email to a restricted mailing list",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email you want to subscribe to",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Mailing list",
+              "fullType": "string",
+              "name": "mailingList",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/mailingList/subscribe"
+    },
+    {
+      "description": "availableLists operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of mailing list you can subscribe",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/mailingList/availableLists"
+    },
+    {
+      "description": "Exports a bundle of refunds",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Exports a bundle of refunds",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "billing.ArchiveTypeEnum",
+              "description": "The file type of the archive",
+              "fullType": "billing.ArchiveTypeEnum",
+              "name": "archiveType",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "End interval of the export",
+              "fullType": "datetime",
+              "name": "endDate",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string[]",
-              "description": "Disk list. Syntax is cX:dY for disks and [cX:dY, cX:dY] for groups. With X and Y resp. the controler id and the disk id.",
+              "description": "A list of ids to export",
               "fullType": "string[]",
-              "name": "disks",
+              "name": "ids",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
-              "dataType": "long",
-              "description": "Specifies the creation order of the hardware RAID",
-              "fullType": "long",
-              "name": "step",
+              "dataType": "datetime",
+              "description": "Start interval of the export",
+              "fullType": "datetime",
+              "name": "startDate",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
+              "required": false
             }
           ],
           "resellerOnly": false,
@@ -4937,10 +5550,123 @@ export const schema: Schema = {
           "responseType": "void"
         }
       ],
-      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid"
+      "path": "/me/refund/export"
     },
     {
-      "description": " Partitions defined in this partitioning scheme",
+      "description": "List the nichandle.Ipv4Org objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of organisations",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add an organisation",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "abuse_mailbox",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "address",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "city",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": null,
+              "fullType": "nichandle.CountryEnum",
+              "name": "country",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "firstname",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "lastname",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": null,
+              "fullType": "phoneNumber",
+              "name": "phone",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.IpRegistryEnum",
+              "description": null,
+              "fullType": "nichandle.IpRegistryEnum",
+              "name": "registry",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "state",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "zip",
+              "paramType": "body",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/ipOrganisation"
+    },
+    {
+      "description": "Details about an IP block organisation",
       "operations": [
         {
           "apiStatus": {
@@ -4953,32 +5679,16 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": null,
               "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "partition mount point",
-              "fullType": "string",
-              "name": "mountpoint",
+              "name": "organisationId",
               "paramType": "path",
               "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.installationTemplate.templatePartitions",
-          "responseType": "dedicated.installationTemplate.templatePartitions"
+          "responseFullType": "nichandle.Ipv4Org",
+          "responseType": "nichandle.Ipv4Org"
         },
         {
           "apiStatus": {
@@ -4990,34 +5700,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.installationTemplate.templatePartitions",
+              "dataType": "nichandle.Ipv4Org",
               "description": "New object properties",
-              "fullType": "dedicated.installationTemplate.templatePartitions",
+              "fullType": "nichandle.Ipv4Org",
               "name": null,
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": null,
               "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "partition mount point",
-              "fullType": "string",
-              "name": "mountpoint",
+              "name": "organisationId",
               "paramType": "path",
               "required": true
             }
@@ -5031,31 +5725,15 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "remove this partition",
+          "description": "Delete this organisation",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": null,
               "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "partition mount point",
-              "fullType": "string",
-              "name": "mountpoint",
+              "name": "organisationId",
               "paramType": "path",
               "required": true
             }
@@ -5065,37 +5743,385 @@ export const schema: Schema = {
           "responseType": "void"
         }
       ],
-      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}"
+      "path": "/me/ipOrganisation/{organisationId}"
     },
     {
-      "description": "List the dedicated.installationTemplate.templatePartitions objects",
+      "description": "Available payment methods",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve available payment method",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "me.payment.method.AvailablePaymentMethod[]",
+          "responseType": "me.payment.method.AvailablePaymentMethod[]"
+        }
+      ],
+      "path": "/me/payment/availableMethods"
+    },
+    {
+      "description": "Manage payment method",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve payment method ID list",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Payment method type",
+              "fullType": "string",
+              "name": "paymentType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "me.payment.method.PaymentMethod.Status",
+              "description": "Status",
+              "fullType": "me.payment.method.PaymentMethod.Status",
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Pay an order and register a new payment method if necessary",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "me.payment.method.CallbackUrl",
+              "description": "URL's necessary to register",
+              "fullType": "me.payment.method.CallbackUrl",
+              "name": "callbackUrl",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Is this payment method set as the default one",
+              "fullType": "boolean",
+              "name": "default",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Customer personalized description",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "The ID of one order to pay it",
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Payment type",
+              "fullType": "string",
+              "name": "paymentType",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Register this payment method if it's possible (by default it's false and do a oneshot transaction)",
+              "fullType": "boolean",
+              "name": "register",
+              "paramType": "body",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "me.payment.method.Register.ValidationResult",
+          "responseType": "me.payment.method.Register.ValidationResult"
+        }
+      ],
+      "path": "/me/payment/method"
+    },
+    {
+      "description": "Finalize one payment method registration",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Finalize one payment method registration",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Expiration month",
+              "fullType": "long",
+              "name": "expirationMonth",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Expiration year",
+              "fullType": "long",
+              "name": "expirationYear",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Form Session ID",
+              "fullType": "string",
+              "name": "formSessionId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Registration ID",
+              "fullType": "string",
+              "name": "registrationId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Payment method ID",
+              "fullType": "long",
+              "name": "paymentMethodId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "me.payment.method.PaymentMethod",
+          "responseType": "me.payment.method.PaymentMethod"
+        }
+      ],
+      "path": "/me/payment/method/{paymentMethodId}/finalize"
+    },
+    {
+      "description": "Manage payment method",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get one payment method",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Payment method ID",
+              "fullType": "long",
+              "name": "paymentMethodId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "me.payment.method.PaymentMethod",
+          "responseType": "me.payment.method.PaymentMethod"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Edit payment method",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "Set this method like default",
+              "fullType": "boolean",
+              "name": "default",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Customer personalized description",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Payment method ID",
+              "fullType": "long",
+              "name": "paymentMethodId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.PaymentMethod",
+          "responseType": "billing.PaymentMethod"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Cancel one payment method",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Payment method ID",
+              "fullType": "long",
+              "name": "paymentMethodId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "me.payment.method.PaymentMethod",
+          "responseType": "me.payment.method.PaymentMethod"
+        }
+      ],
+      "path": "/me/payment/method/{paymentMethodId}"
+    },
+    {
+      "description": "Challenge your payment method",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Challenge one payment method",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Challenge",
+              "fullType": "string",
+              "name": "challenge",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Payment method ID",
+              "fullType": "long",
+              "name": "paymentMethodId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "me.payment.method.PaymentMethod",
+          "responseType": "me.payment.method.PaymentMethod"
+        }
+      ],
+      "path": "/me/payment/method/{paymentMethodId}/challenge"
+    },
+    {
+      "description": "Manage payment method transaction",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get associated payment method transaction",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Payment method transaction ID",
+              "fullType": "long",
+              "name": "transactionId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "me.payment.method.Transaction",
+          "responseType": "me.payment.method.Transaction"
+        }
+      ],
+      "path": "/me/payment/transaction/{transactionId}"
+    },
+    {
+      "description": "Retrieve payment method transaction ID list",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve associated payment method transaction ID list",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Payment method ID",
+              "fullType": "long",
+              "name": "paymentMethodId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "me.payment.method.Transaction.Status",
+              "description": "Transaction status",
+              "fullType": "me.payment.method.Transaction.Status",
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/payment/transaction"
+    },
+    {
+      "description": "List the nichandle.ipxe objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Partitions defined in this partitioning scheme",
+          "description": "List of all your IPXE scripts",
           "httpMethod": "GET",
           "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
+          "parameters": [],
           "resellerOnly": false,
           "responseFullType": "string[]",
           "responseType": "string[]"
@@ -5105,79 +6131,81 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Add a partition in this partitioning scheme",
+          "description": "Add an IPXE script",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "step",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "raid",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "dedicated.TemplatePartitionTypeEnum",
-              "description": null,
-              "fullType": "dedicated.TemplatePartitionTypeEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "size of partition in Mb, 0 => rest of the space",
-              "fullType": "long",
-              "name": "size",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.TemplateOsFileSystemEnum",
-              "description": "Partition filesytem",
-              "fullType": "dedicated.TemplateOsFileSystemEnum",
-              "name": "filesystem",
+              "dataType": "string",
+              "description": "A personnal description of this script",
+              "fullType": "string",
+              "name": "description",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The volume name needed for proxmox distribution",
+              "description": "name of your script",
               "fullType": "string",
-              "name": "volumeName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "partition mount point",
-              "fullType": "string",
-              "name": "mountpoint",
+              "name": "name",
               "paramType": "body",
               "required": true
             },
             {
+              "dataType": "text",
+              "description": "Content of your IPXE script",
+              "fullType": "text",
+              "name": "script",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.ipxe",
+          "responseType": "nichandle.ipxe"
+        }
+      ],
+      "path": "/me/ipxeScript"
+    },
+    {
+      "description": "Customer IPXE scripts",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "string",
-              "description": "This template name",
+              "description": "Name of this script",
               "fullType": "string",
-              "name": "templateName",
+              "name": "name",
               "paramType": "path",
               "required": true
-            },
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.ipxe",
+          "responseType": "nichandle.ipxe"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove this IPXE Script",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "Name of this script",
               "fullType": "string",
-              "name": "schemeName",
+              "name": "name",
               "paramType": "path",
               "required": true
             }
@@ -5187,7 +6215,1492 @@ export const schema: Schema = {
           "responseType": "void"
         }
       ],
-      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition"
+      "path": "/me/ipxeScript/{name}"
+    },
+    {
+      "description": "SEPA bank account info",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.BankAccount",
+          "responseType": "billing.BankAccount"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "billing.BankAccount",
+              "description": "New object properties",
+              "fullType": "billing.BankAccount",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Disable payment through this account",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/paymentMean/bankAccount/{id}"
+    },
+    {
+      "description": "chooseAsDefaultPaymentMean operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Choose this bank account as your default payment mean. Will cancel the previous choice.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/paymentMean/bankAccount/{id}/chooseAsDefaultPaymentMean"
+    },
+    {
+      "description": "challenge operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Challenge your bank account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Payload to answer the challenge",
+              "fullType": "string",
+              "name": "challenge",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/paymentMean/bankAccount/{id}/challenge"
+    },
+    {
+      "description": "List the billing.BankAccount objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of bank accounts",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "billing.BankAccountStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "billing.BankAccountStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Enable payment through a new account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Account's BIC",
+              "fullType": "string",
+              "name": "bic",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Custom description of this account",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Account's IBAN",
+              "fullType": "string",
+              "name": "iban",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account owner's address",
+              "fullType": "string",
+              "name": "ownerAddress",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account owner's name",
+              "fullType": "string",
+              "name": "ownerName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Set as default payment mean once validated",
+              "fullType": "boolean",
+              "name": "setDefault",
+              "paramType": "body",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.PaymentMeanValidation",
+          "responseType": "billing.PaymentMeanValidation"
+        }
+      ],
+      "path": "/me/paymentMean/bankAccount"
+    },
+    {
+      "description": "Credit card informations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.CreditCard",
+          "responseType": "billing.CreditCard"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "billing.CreditCard",
+              "description": "New object properties",
+              "fullType": "billing.CreditCard",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Disable payment through this credit card",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/paymentMean/creditCard/{id}"
+    },
+    {
+      "description": "challenge operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Challenge your bank account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Payload to answer the challenge",
+              "fullType": "string",
+              "name": "challenge",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/paymentMean/creditCard/{id}/challenge"
+    },
+    {
+      "description": "chooseAsDefaultPaymentMean operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Choose this credit card as your default payment mean. Will cancel the previous choice.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/paymentMean/creditCard/{id}/chooseAsDefaultPaymentMean"
+    },
+    {
+      "description": "List the billing.CreditCard objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of credit cards",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a new credit card",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Custom description of this account",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Callback URL where the customer will be redirected to after validation",
+              "fullType": "string",
+              "name": "returnUrl",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Set as default payment mean once validated",
+              "fullType": "boolean",
+              "name": "setDefault",
+              "paramType": "body",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.PaymentMeanValidation",
+          "responseType": "billing.PaymentMeanValidation"
+        }
+      ],
+      "path": "/me/paymentMean/creditCard"
+    },
+    {
+      "description": "List the billing.DeferredPaymentAccount objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of authorized deferred payment account for this customer",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/me/paymentMean/deferredPaymentAccount"
+    },
+    {
+      "description": "chooseAsDefaultPaymentMean operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Allow you to use deferred payment. Will cancel the previous choice.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/paymentMean/deferredPaymentAccount/{id}/chooseAsDefaultPaymentMean"
+    },
+    {
+      "description": "Deferred payment account info",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.DeferredPaymentAccount",
+          "responseType": "billing.DeferredPaymentAccount"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "billing.DeferredPaymentAccount",
+              "description": "New object properties",
+              "fullType": "billing.DeferredPaymentAccount",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/paymentMean/deferredPaymentAccount/{id}"
+    },
+    {
+      "description": "Paypal account info",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Paypal",
+          "responseType": "billing.Paypal"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "billing.Paypal",
+              "description": "New object properties",
+              "fullType": "billing.Paypal",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Disable payment through this PayPal account",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/paymentMean/paypal/{id}"
+    },
+    {
+      "description": "chooseAsDefaultPaymentMean operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Choose this Paypal agreement as your default payment mean. Will cancel the previous choice.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/paymentMean/paypal/{id}/chooseAsDefaultPaymentMean"
+    },
+    {
+      "description": "challenge operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Challenge your bank account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Payload to answer the challenge",
+              "fullType": "string",
+              "name": "challenge",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/paymentMean/paypal/{id}/challenge"
+    },
+    {
+      "description": "List the billing.Paypal objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of Paypal accounts usable for payments on this account",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Enable payment through a new PayPal account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Custom description of this account",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Callback URL where the customer will be redirected to after validation",
+              "fullType": "string",
+              "name": "returnUrl",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Set as default payment mean once validated",
+              "fullType": "boolean",
+              "name": "setDefault",
+              "paramType": "body",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.PaymentMeanValidation",
+          "responseType": "billing.PaymentMeanValidation"
+        }
+      ],
+      "path": "/me/paymentMean/paypal"
+    },
+    {
+      "description": "Details about your OVH identifier",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.Nichandle",
+          "responseType": "nichandle.Nichandle"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.Nichandle",
+              "description": "New object properties",
+              "fullType": "nichandle.Nichandle",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me"
+    },
+    {
+      "description": "A group linked to this account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Group's name",
+              "fullType": "string",
+              "name": "group",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.Authentication.Group",
+          "responseType": "nichandle.Authentication.Group"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete this object",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Group's name",
+              "fullType": "string",
+              "name": "group",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter a group",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Group's description",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.Authentication.RoleEnum",
+              "description": "Group's role",
+              "fullType": "nichandle.Authentication.RoleEnum",
+              "name": "role",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Group's name",
+              "fullType": "string",
+              "name": "group",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/identity/group/{group}"
+    },
+    {
+      "description": "Groups linked to this account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve all groups of this account",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a new group",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Group's description",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Group's name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.Authentication.RoleEnum",
+              "description": "Group's Role",
+              "fullType": "nichandle.Authentication.RoleEnum",
+              "name": "role",
+              "paramType": "body",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.Authentication.Group",
+          "responseType": "nichandle.Authentication.Group"
+        }
+      ],
+      "path": "/me/identity/group"
+    },
+    {
+      "description": "A user linked to this account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Disable this user",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "User's login",
+              "fullType": "string",
+              "name": "user",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/identity/user/{user}/disable"
+    },
+    {
+      "description": "A user linked to this account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Enable this user",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "User's login",
+              "fullType": "string",
+              "name": "user",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/identity/user/{user}/enable"
+    },
+    {
+      "description": "A user linked to this account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "User's login",
+              "fullType": "string",
+              "name": "user",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.User",
+          "responseType": "nichandle.User"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete this object",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "User's login",
+              "fullType": "string",
+              "name": "user",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter a user",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "User's description",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "User's email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "User's group",
+              "fullType": "string",
+              "name": "group",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "User's login",
+              "fullType": "string",
+              "name": "user",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/identity/user/{user}"
+    },
+    {
+      "description": "Users linked to this account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve all users of this account",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a new user",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "User's description",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "User's email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User's group",
+              "fullType": "string",
+              "name": "group",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "User's login",
+              "fullType": "string",
+              "name": "login",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "password",
+              "description": "User's password",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/identity/user"
+    },
+    {
+      "description": "Information about a Withdrawal entry",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "withdrawalDetailId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "withdrawalId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.WithdrawalDetail",
+          "responseType": "billing.WithdrawalDetail"
+        }
+      ],
+      "path": "/me/withdrawal/{withdrawalId}/details/{withdrawalDetailId}"
+    },
+    {
+      "description": "List the billing.WithdrawalDetail objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Give access to all entries of this withdrawal",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "withdrawalId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/withdrawal/{withdrawalId}/details"
+    },
+    {
+      "description": "Details about a payment",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "withdrawalId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Payment",
+          "responseType": "billing.Payment"
+        }
+      ],
+      "path": "/me/withdrawal/{withdrawalId}/payment"
+    },
+    {
+      "description": "Details about a withdrawal",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "withdrawalId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "billing.Withdrawal",
+          "responseType": "billing.Withdrawal"
+        }
+      ],
+      "path": "/me/withdrawal/{withdrawalId}"
+    },
+    {
+      "description": "List the billing.Withdrawal objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of all the withdrawals made from your prepaid account",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of date property (>=)",
+              "fullType": "datetime",
+              "name": "date.from",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of date property (<=)",
+              "fullType": "datetime",
+              "name": "date.to",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of orderId property (=)",
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/withdrawal"
+    },
+    {
+      "description": "List all consent campaign available",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List all consent campaign available",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "me.consent.Campaign[]",
+          "responseType": "me.consent.Campaign[]"
+        }
+      ],
+      "path": "/me/consent"
+    },
+    {
+      "description": "Retrieve information about a consent campaign",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve information about a consent campaign",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Consent campaign name",
+              "fullType": "string",
+              "name": "campaignName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "me.consent.Campaign",
+          "responseType": "me.consent.Campaign"
+        }
+      ],
+      "path": "/me/consent/{campaignName}"
+    },
+    {
+      "description": "Get decision value for a consent campaign",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get decision value for a consent campaign",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Consent campaign name",
+              "fullType": "string",
+              "name": "campaignName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "me.consent.Consent",
+          "responseType": "me.consent.Consent"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update decision of a consent campaign",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "Decision value",
+              "fullType": "boolean",
+              "name": "value",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Consent campaign name",
+              "fullType": "string",
+              "name": "campaignName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/consent/{campaignName}/decision"
+    },
+    {
+      "description": "Get all certificates of the account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all certificates of the account",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Certificate definition name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/certificates"
+    },
+    {
+      "description": "Request a password recover",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Request a password recover",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhCompanyEnum",
+              "description": "Company of your OVH Account Id",
+              "fullType": "nichandle.OvhCompanyEnum",
+              "name": "ovhCompany",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your OVH Account Id",
+              "fullType": "string",
+              "name": "ovhId",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/passwordRecover"
     },
     {
       "description": "List the dedicated.installationTemplate.templatePartitioningSchemes objects",
@@ -5224,18 +7737,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications)",
-              "fullType": "long",
-              "name": "priority",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "name of this partitioning scheme",
               "fullType": "string",
               "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications)",
+              "fullType": "long",
+              "name": "priority",
               "paramType": "body",
               "required": true
             },
@@ -5254,6 +7767,586 @@ export const schema: Schema = {
         }
       ],
       "path": "/me/installationTemplate/{templateName}/partitionScheme"
+    },
+    {
+      "description": "List the dedicated.installationTemplate.templatePartitions objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Partitions defined in this partitioning scheme",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a partition in this partitioning scheme",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.TemplateOsFileSystemEnum",
+              "description": "Partition filesytem",
+              "fullType": "dedicated.TemplateOsFileSystemEnum",
+              "name": "filesystem",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "partition mount point",
+              "fullType": "string",
+              "name": "mountpoint",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "raid",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "size of partition in Mb, 0 => rest of the space",
+              "fullType": "long",
+              "name": "size",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "step",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.TemplatePartitionTypeEnum",
+              "description": null,
+              "fullType": "dedicated.TemplatePartitionTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The volume name needed for proxmox distribution",
+              "fullType": "string",
+              "name": "volumeName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition"
+    },
+    {
+      "description": " Partitions defined in this partitioning scheme",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "partition mount point",
+              "fullType": "string",
+              "name": "mountpoint",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.installationTemplate.templatePartitions",
+          "responseType": "dedicated.installationTemplate.templatePartitions"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.installationTemplate.templatePartitions",
+              "description": "New object properties",
+              "fullType": "dedicated.installationTemplate.templatePartitions",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "partition mount point",
+              "fullType": "string",
+              "name": "mountpoint",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "remove this partition",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "partition mount point",
+              "fullType": "string",
+              "name": "mountpoint",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}"
+    },
+    {
+      "description": "List the dedicated.installationTemplate.hardwareRaid objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Hardware RAIDs defined in this partitioning scheme",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add an hardware RAID in this partitioning scheme",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string[]",
+              "description": "Disk list. Syntax is cX:dY for disks and [cX:dY, cX:dY] for groups. With X and Y resp. the controler id and the disk id.",
+              "fullType": "string[]",
+              "name": "disks",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.TemplateOsHardwareRaidEnum",
+              "description": "RAID mode",
+              "fullType": "dedicated.TemplateOsHardwareRaidEnum",
+              "name": "mode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Hardware RAID name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Specifies the creation order of the hardware RAID",
+              "fullType": "long",
+              "name": "step",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid"
+    },
+    {
+      "description": "Hardware RAID defined in this partitioning scheme",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Hardware RAID name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.installationTemplate.hardwareRaid",
+          "responseType": "dedicated.installationTemplate.hardwareRaid"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.installationTemplate.hardwareRaid",
+              "description": "New object properties",
+              "fullType": "dedicated.installationTemplate.hardwareRaid",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Hardware RAID name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove this RAID",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Hardware RAID name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}"
+    },
+    {
+      "description": "Partitioning schemes available on this template",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.installationTemplate.templatePartitioningSchemes",
+          "responseType": "dedicated.installationTemplate.templatePartitioningSchemes"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.installationTemplate.templatePartitioningSchemes",
+              "description": "New object properties",
+              "fullType": "dedicated.installationTemplate.templatePartitioningSchemes",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "remove this scheme of partition",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/installationTemplate/{templateName}/partitionScheme/{schemeName}"
     },
     {
       "description": "checkIntegrity operations",
@@ -5397,18 +8490,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Your template name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "dedicated.TemplateOsLanguageEnum",
               "description": null,
               "fullType": "dedicated.TemplateOsLanguageEnum",
               "name": "defaultLanguage",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your template name",
+              "fullType": "string",
+              "name": "name",
               "paramType": "body",
               "required": true
             }
@@ -5419,425 +8512,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/me/installationTemplate"
-    },
-    {
-      "description": "availableAutomaticPaymentMeans operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available payment methods in this Nic's country",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "billing.AutomaticPaymentMean",
-          "responseType": "billing.AutomaticPaymentMean"
-        }
-      ],
-      "path": "/me/availableAutomaticPaymentMeans"
-    },
-    {
-      "description": "availableLists operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of mailing list you can subscribe",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/me/mailingList/availableLists"
-    },
-    {
-      "description": "subscribe operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Subscribe an email to a restricted mailing list",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Mailing list",
-              "fullType": "string",
-              "name": "mailingList",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Email you want to subscribe to",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/mailingList/subscribe"
-    },
-    {
-      "description": "changeEmail operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Initiate an email change procedure",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "New email to associate to your account",
-              "fullType": "string",
-              "name": "newEmail",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.emailChange.Task",
-          "responseType": "nichandle.emailChange.Task"
-        }
-      ],
-      "path": "/me/changeEmail"
-    },
-    {
-      "description": "creditOrder operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Generate an order that can be paid in order to credit the fidelity account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "The amount of points you want to credit your fidelity account of",
-              "fullType": "long",
-              "name": "amount",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Order",
-          "responseType": "billing.Order"
-        }
-      ],
-      "path": "/me/fidelityAccount/creditOrder"
-    },
-    {
-      "description": "Balance of the fidelity account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "billing.FidelityAccount",
-          "responseType": "billing.FidelityAccount"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "billing.FidelityAccount",
-              "description": "New object properties",
-              "fullType": "billing.FidelityAccount",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/fidelityAccount"
-    },
-    {
-      "description": "Details about a fidelity account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "movementId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.FidelityMovement",
-          "responseType": "billing.FidelityMovement"
-        }
-      ],
-      "path": "/me/fidelityAccount/movements/{movementId}"
-    },
-    {
-      "description": "List the billing.FidelityMovement objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of entries of the fidelity account",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of date property (<=)",
-              "fullType": "datetime",
-              "name": "date.to",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of date property (>=)",
-              "fullType": "datetime",
-              "name": "date.from",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/fidelityAccount/movements"
-    },
-    {
-      "description": "Route for getting visitor's country and continent",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Fetch visitor country & region",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "geolocation.ContinentCountryLocation",
-          "responseType": "geolocation.ContinentCountryLocation"
-        }
-      ],
-      "path": "/me/geolocation"
-    },
-    {
-      "description": "changePassword operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Initiate a password change procedure",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/changePassword"
-    },
-    {
-      "description": "List the nichandle.Subscription objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of all OVH things you can subscribe to",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/me/subscription"
-    },
-    {
-      "description": "List of all OVH things you can subscribe to",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The type of subscription",
-              "fullType": "string",
-              "name": "subscriptionType",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.Subscription",
-          "responseType": "nichandle.Subscription"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.Subscription",
-              "description": "New object properties",
-              "fullType": "nichandle.Subscription",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The type of subscription",
-              "fullType": "string",
-              "name": "subscriptionType",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/subscription/{subscriptionType}"
-    },
-    {
-      "description": "List the nichandle.SubAccount objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of sub-accounts",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create a new sub-account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Description of the new sub-account",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long",
-          "responseType": "long"
-        }
-      ],
-      "path": "/me/subAccount"
-    },
-    {
-      "description": "createConsumerKey operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create a consumer key for the current application",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.SubAccountConsumerKey",
-          "responseType": "nichandle.SubAccountConsumerKey"
-        }
-      ],
-      "path": "/me/subAccount/{id}/createConsumerKey"
     },
     {
       "description": "Sub Account",
@@ -5898,2766 +8572,92 @@ export const schema: Schema = {
       "path": "/me/subAccount/{id}"
     },
     {
-      "description": "Users linked to this account",
+      "description": "createConsumerKey operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Retrieve all users of this account",
+          "description": "Create a consumer key for the current application",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.SubAccountConsumerKey",
+          "responseType": "nichandle.SubAccountConsumerKey"
+        }
+      ],
+      "path": "/me/subAccount/{id}/createConsumerKey"
+    },
+    {
+      "description": "List the nichandle.SubAccount objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of sub-accounts",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
           "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
+          "responseFullType": "long[]",
+          "responseType": "long[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Create a new user",
+          "description": "Create a new sub-account",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "User's login",
-              "fullType": "string",
-              "name": "login",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "User's description",
+              "description": "Description of the new sub-account",
               "fullType": "string",
               "name": "description",
               "paramType": "body",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "User's email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "password",
-              "description": "User's password",
-              "fullType": "password",
-              "name": "password",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "User's group",
-              "fullType": "string",
-              "name": "group",
-              "paramType": "body",
-              "required": false
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
+          "responseFullType": "long",
+          "responseType": "long"
         }
       ],
-      "path": "/me/identity/user"
+      "path": "/me/subAccount"
     },
     {
-      "description": "A user linked to this account",
+      "description": "availableAutomaticPaymentMeans operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Enable this user",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "User's login",
-              "fullType": "string",
-              "name": "user",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/identity/user/{user}/enable"
-    },
-    {
-      "description": "A user linked to this account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Disable this user",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "User's login",
-              "fullType": "string",
-              "name": "user",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/identity/user/{user}/disable"
-    },
-    {
-      "description": "A user linked to this account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "User's login",
-              "fullType": "string",
-              "name": "user",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.User",
-          "responseType": "nichandle.User"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete this object",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "User's login",
-              "fullType": "string",
-              "name": "user",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter a user",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "User's login",
-              "fullType": "string",
-              "name": "user",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "User's email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "User's description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "User's group",
-              "fullType": "string",
-              "name": "group",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/identity/user/{user}"
-    },
-    {
-      "description": "Groups linked to this account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve all groups of this account",
+          "description": "List available payment methods in this Nic's country",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
           "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create a new group",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Group's name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Group's description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.Authentication.RoleEnum",
-              "description": "Group's Role",
-              "fullType": "nichandle.Authentication.RoleEnum",
-              "name": "role",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.Authentication.Group",
-          "responseType": "nichandle.Authentication.Group"
+          "responseFullType": "billing.AutomaticPaymentMean",
+          "responseType": "billing.AutomaticPaymentMean"
         }
       ],
-      "path": "/me/identity/group"
-    },
-    {
-      "description": "A group linked to this account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Group's name",
-              "fullType": "string",
-              "name": "group",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.Authentication.Group",
-          "responseType": "nichandle.Authentication.Group"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete this object",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Group's name",
-              "fullType": "string",
-              "name": "group",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter a group",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Group's name",
-              "fullType": "string",
-              "name": "group",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Group's description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.Authentication.RoleEnum",
-              "description": "Group's role",
-              "fullType": "nichandle.Authentication.RoleEnum",
-              "name": "role",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/identity/group/{group}"
-    },
-    {
-      "description": "Details about a Bill",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "billId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Bill",
-          "responseType": "billing.Bill"
-        }
-      ],
-      "path": "/me/bill/{billId}"
-    },
-    {
-      "description": "Information about a Bill entry",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "billId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "billDetailId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.BillDetail",
-          "responseType": "billing.BillDetail"
-        }
-      ],
-      "path": "/me/bill/{billId}/details/{billDetailId}"
-    },
-    {
-      "description": "List the billing.BillDetail objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Give access to all entries of the bill",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "billId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/me/bill/{billId}/details"
-    },
-    {
-      "description": "Details about a payment",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "billId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Payment",
-          "responseType": "billing.Payment"
-        }
-      ],
-      "path": "/me/bill/{billId}/payment"
-    },
-    {
-      "description": "List the debt.Operation objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "All operations related to these debts",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Filter the value of depositOrderId property (=)",
-              "fullType": "long",
-              "name": "depositOrderId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "billId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/bill/{billId}/debt/operation"
-    },
-    {
-      "description": "Operation that happend on a debt",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "billId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "operationId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "debt.Operation",
-          "responseType": "debt.Operation"
-        }
-      ],
-      "path": "/me/bill/{billId}/debt/operation/{operationId}"
-    },
-    {
-      "description": "associatedObject operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Return main data about the object related to this debt operation",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "billId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "operationId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "debt.entry.AssociatedObject",
-          "responseType": "debt.entry.AssociatedObject"
-        }
-      ],
-      "path": "/me/bill/{billId}/debt/operation/{operationId}/associatedObject"
-    },
-    {
-      "description": "pay operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create an order in order to pay this order's debt",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "billId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Order",
-          "responseType": "billing.Order"
-        }
-      ],
-      "path": "/me/bill/{billId}/debt/pay"
-    },
-    {
-      "description": "State of a debt",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "billId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "debt.Debt",
-          "responseType": "debt.Debt"
-        }
-      ],
-      "path": "/me/bill/{billId}/debt"
-    },
-    {
-      "description": "Exports a bundle of invoices",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Exports a bundle of invoices",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "datetime",
-              "description": "End interval of the export",
-              "fullType": "datetime",
-              "name": "endDate",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Start interval of the export",
-              "fullType": "datetime",
-              "name": "startDate",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "billing.ArchiveTypeEnum",
-              "description": "The file type of the archive",
-              "fullType": "billing.ArchiveTypeEnum",
-              "name": "archiveType",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string[]",
-              "description": "A list of ids to export",
-              "fullType": "string[]",
-              "name": "ids",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/bill/export"
-    },
-    {
-      "description": "List the billing.Bill objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of all the bills the logged account has",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "billing.CategoryEnum",
-              "description": "Filter the value of category property (=)",
-              "fullType": "billing.CategoryEnum",
-              "name": "category",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Filter the value of orderId property (=)",
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of date property (<=)",
-              "fullType": "datetime",
-              "name": "date.to",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of date property (>=)",
-              "fullType": "datetime",
-              "name": "date.from",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/me/bill"
-    },
-    {
-      "description": "List the debt.Debt objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "All debts related to your account",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/debtAccount/debt"
-    },
-    {
-      "description": "List the debt.Operation objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "All operations related to these debts",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Filter the value of depositOrderId property (=)",
-              "fullType": "long",
-              "name": "depositOrderId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "debtId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/debtAccount/debt/{debtId}/operation"
-    },
-    {
-      "description": "associatedObject operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Return main data about the object related to this debt operation",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "debtId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "operationId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "debt.entry.AssociatedObject",
-          "responseType": "debt.entry.AssociatedObject"
-        }
-      ],
-      "path": "/me/debtAccount/debt/{debtId}/operation/{operationId}/associatedObject"
-    },
-    {
-      "description": "Operation that happend on a debt",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "debtId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "operationId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "debt.Operation",
-          "responseType": "debt.Operation"
-        }
-      ],
-      "path": "/me/debtAccount/debt/{debtId}/operation/{operationId}"
-    },
-    {
-      "description": "pay operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create an order in order to pay this order's debt",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "debtId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Order",
-          "responseType": "billing.Order"
-        }
-      ],
-      "path": "/me/debtAccount/debt/{debtId}/pay"
-    },
-    {
-      "description": "State of a debt",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "debtId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "debt.Debt",
-          "responseType": "debt.Debt"
-        }
-      ],
-      "path": "/me/debtAccount/debt/{debtId}"
-    },
-    {
-      "description": "pay operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create an order in order to pay all your due debts",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "billing.Order",
-          "responseType": "billing.Order"
-        }
-      ],
-      "path": "/me/debtAccount/pay"
-    },
-    {
-      "description": "Debt balance of the account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "debt.Balance",
-          "responseType": "debt.Balance"
-        }
-      ],
-      "path": "/me/debtAccount"
-    },
-    {
-      "description": "Exports a bundle of refunds",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Exports a bundle of refunds",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string[]",
-              "description": "A list of ids to export",
-              "fullType": "string[]",
-              "name": "ids",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "End interval of the export",
-              "fullType": "datetime",
-              "name": "endDate",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Start interval of the export",
-              "fullType": "datetime",
-              "name": "startDate",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "billing.ArchiveTypeEnum",
-              "description": "The file type of the archive",
-              "fullType": "billing.ArchiveTypeEnum",
-              "name": "archiveType",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/refund/export"
-    },
-    {
-      "description": "List the billing.Withdrawal objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of all the withdrawals made from your prepaid account",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Filter the value of orderId property (=)",
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of date property (<=)",
-              "fullType": "datetime",
-              "name": "date.to",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of date property (>=)",
-              "fullType": "datetime",
-              "name": "date.from",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/me/withdrawal"
-    },
-    {
-      "description": "Details about a payment",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "withdrawalId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Payment",
-          "responseType": "billing.Payment"
-        }
-      ],
-      "path": "/me/withdrawal/{withdrawalId}/payment"
-    },
-    {
-      "description": "Details about a withdrawal",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "withdrawalId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Withdrawal",
-          "responseType": "billing.Withdrawal"
-        }
-      ],
-      "path": "/me/withdrawal/{withdrawalId}"
-    },
-    {
-      "description": "List the billing.WithdrawalDetail objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Give access to all entries of this withdrawal",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "withdrawalId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/me/withdrawal/{withdrawalId}/details"
-    },
-    {
-      "description": "Information about a Withdrawal entry",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "withdrawalId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "withdrawalDetailId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.WithdrawalDetail",
-          "responseType": "billing.WithdrawalDetail"
-        }
-      ],
-      "path": "/me/withdrawal/{withdrawalId}/details/{withdrawalDetailId}"
-    },
-    {
-      "description": "API Application",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "applicationId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "api.Application",
-          "responseType": "api.Application"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Remove this application. It will revoke all credential belonging to this application.",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "applicationId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/api/application/{applicationId}"
-    },
-    {
-      "description": "List the api.Application objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of your Api Application",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/api/application"
-    },
-    {
-      "description": "API Application",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "credentialId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "api.Application",
-          "responseType": "api.Application"
-        }
-      ],
-      "path": "/me/api/credential/{credentialId}/application"
-    },
-    {
-      "description": "API Credential",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "credentialId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "api.Credential",
-          "responseType": "api.Credential"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "api.Credential",
-              "description": "New object properties",
-              "fullType": "api.Credential",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "credentialId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Remove this credential",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "credentialId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/api/credential/{credentialId}"
-    },
-    {
-      "description": "List the api.Credential objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of your Api Credentials",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "auth.CredentialStateEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "auth.CredentialStateEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Filter the value of applicationId property (like)",
-              "fullType": "long",
-              "name": "applicationId",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/api/credential"
-    },
-    {
-      "description": "List the nichandle.contactChange.Task objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of service contact change tasks you are involved in",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.changeContact.TaskStateEnum",
-              "description": "Filter the value of state property (like)",
-              "fullType": "nichandle.changeContact.TaskStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of toAccount property (like)",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "toAccount",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of askingAccount property (like)",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "askingAccount",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/task/contactChange"
-    },
-    {
-      "description": "refuse operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Refuse this change request",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The token you received by email for this request",
-              "fullType": "string",
-              "name": "token",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/task/contactChange/{id}/refuse"
-    },
-    {
-      "description": "resendEmail operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "This call will send you a new email, containing a new token",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/task/contactChange/{id}/resendEmail"
-    },
-    {
-      "description": "Task running a contact change on a service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.contactChange.Task",
-          "responseType": "nichandle.contactChange.Task"
-        }
-      ],
-      "path": "/me/task/contactChange/{id}"
-    },
-    {
-      "description": "accept operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Accept this change request",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The token you received by email for this request",
-              "fullType": "string",
-              "name": "token",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/task/contactChange/{id}/accept"
-    },
-    {
-      "description": "List the nichandle.DomainTask objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of domain task",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "domain.NicOperationFunctionEnum",
-              "description": "Filter the value of function property (like)",
-              "fullType": "domain.NicOperationFunctionEnum",
-              "name": "function",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of domain property (like)",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "domain.OperationStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "domain.OperationStatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/task/domain"
-    },
-    {
-      "description": "Domain operation progress",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the task",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.DomainTaskProgressBar",
-          "responseType": "nichandle.DomainTaskProgressBar"
-        }
-      ],
-      "path": "/me/task/domain/{id}/progressbar"
-    },
-    {
-      "description": "cancel operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Cancel the task",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the task",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/task/domain/{id}/cancel"
-    },
-    {
-      "description": "List the nichandle.DomainTaskArgument objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of arguments",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the task",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/me/task/domain/{id}/argument"
-    },
-    {
-      "description": "Domain operation argument",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the task",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Key of the argument",
-              "fullType": "string",
-              "name": "key",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.DomainTaskArgument",
-          "responseType": "nichandle.DomainTaskArgument"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.DomainTaskArgument",
-              "description": "New object properties",
-              "fullType": "nichandle.DomainTaskArgument",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id of the task",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Key of the argument",
-              "fullType": "string",
-              "name": "key",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/task/domain/{id}/argument/{key}"
-    },
-    {
-      "description": "Domain tasks",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the task",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.DomainTask",
-          "responseType": "nichandle.DomainTask"
-        }
-      ],
-      "path": "/me/task/domain/{id}"
-    },
-    {
-      "description": "accelerate operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Accelerate the task",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the task",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/task/domain/{id}/accelerate"
-    },
-    {
-      "description": "relaunch operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Relaunch the task",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the task",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/task/domain/{id}/relaunch"
-    },
-    {
-      "description": "Task running an email change on an account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.emailChange.Task",
-          "responseType": "nichandle.emailChange.Task"
-        }
-      ],
-      "path": "/me/task/emailChange/{id}"
-    },
-    {
-      "description": "accept operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Accept this change request",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The token you received by email for this request",
-              "fullType": "string",
-              "name": "token",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/task/emailChange/{id}/accept"
-    },
-    {
-      "description": "refuse operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Refuse this change request",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The token you received by email for this request",
-              "fullType": "string",
-              "name": "token",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/task/emailChange/{id}/refuse"
-    },
-    {
-      "description": "List the nichandle.emailChange.Task objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of email change tasks you are involved in",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.changeEmail.TaskStateEnum",
-              "description": "Filter the value of state property (like)",
-              "fullType": "nichandle.changeEmail.TaskStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/task/emailChange"
-    },
-    {
-      "description": "List the billing.Order objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of all the orders the logged account has",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of date property (>=)",
-              "fullType": "datetime",
-              "name": "date.from",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of date property (<=)",
-              "fullType": "datetime",
-              "name": "date.to",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/order"
-    },
-    {
-      "description": "pay operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Pay with a payment method reference",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "billing.order.PayWithPaymentMethod",
-              "description": "Payment method informations for pay",
-              "fullType": "billing.order.PayWithPaymentMethod",
-              "name": "paymentMethod",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/order/{orderId}/pay"
-    },
-    {
-      "description": "Information about a Bill entry",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderDetailId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.OrderDetail",
-          "responseType": "billing.OrderDetail"
-        }
-      ],
-      "path": "/me/order/{orderId}/details/{orderDetailId}"
-    },
-    {
-      "description": "Extensions of a detail",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderDetailId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.ItemDetail",
-          "responseType": "billing.ItemDetail"
-        }
-      ],
-      "path": "/me/order/{orderId}/details/{orderDetailId}/extension"
-    },
-    {
-      "description": "List the billing.OrderDetail objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Give access to all entries of the order",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/order/{orderId}/details"
-    },
-    {
-      "description": "Details about a payment",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Payment",
-          "responseType": "billing.Payment"
-        }
-      ],
-      "path": "/me/order/{orderId}/payment"
-    },
-    {
-      "description": "availableRegisteredPaymentMean operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of registered payment mean you can use to pay this order",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.order.RegisteredPaymentMean[]",
-          "responseType": "billing.order.RegisteredPaymentMean[]"
-        }
-      ],
-      "path": "/me/order/{orderId}/availableRegisteredPaymentMean"
-    },
-    {
-      "description": "paymentMethods operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "List of registered payment method you can use to pay this order",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.order.PaymentMethods",
-          "responseType": "billing.order.PaymentMethods"
-        }
-      ],
-      "path": "/me/order/{orderId}/paymentMethods"
-    },
-    {
-      "description": "associatedObject operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Return main data about the object the processing of the order generated",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.order.AssociatedObject",
-          "responseType": "billing.order.AssociatedObject"
-        }
-      ],
-      "path": "/me/order/{orderId}/associatedObject"
-    },
-    {
-      "description": "status operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Return status of order",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.order.OrderStatusEnum",
-          "responseType": "billing.order.OrderStatusEnum"
-        }
-      ],
-      "path": "/me/order/{orderId}/status"
-    },
-    {
-      "description": "paymentMeans operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Return main data about the object the processing of the order generated",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.order.PaymentMeans",
-          "responseType": "billing.order.PaymentMeans"
-        }
-      ],
-      "path": "/me/order/{orderId}/paymentMeans"
-    },
-    {
-      "description": "retraction operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Request retraction of order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "text",
-              "description": "An optional comment of why you want to retract",
-              "fullType": "text",
-              "name": "comment",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "billing.order.RetractionReasonEnum",
-              "description": "The reason why you want to retract",
-              "fullType": "billing.order.RetractionReasonEnum",
-              "name": "reason",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/order/{orderId}/retraction"
-    },
-    {
-      "description": "Details about an Order",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Order",
-          "responseType": "billing.Order"
-        }
-      ],
-      "path": "/me/order/{orderId}"
-    },
-    {
-      "description": "Details about a Bill",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Bill",
-          "responseType": "billing.Bill"
-        }
-      ],
-      "path": "/me/order/{orderId}/bill"
-    },
-    {
-      "description": "details operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve order's detailed consumption information as a file",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "consumption.ConsumptionExportFormatsEnum",
-              "description": "Format of the file",
-              "fullType": "consumption.ConsumptionExportFormatsEnum",
-              "name": "fileFormat",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.order.ConsumptionDetails",
-          "responseType": "billing.order.ConsumptionDetails"
-        }
-      ],
-      "path": "/me/order/{orderId}/consumption/details"
-    },
-    {
-      "description": "Details about a Refund",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Refund",
-          "responseType": "billing.Refund"
-        }
-      ],
-      "path": "/me/order/{orderId}/refund"
-    },
-    {
-      "description": "State of a debt",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "debt.Debt",
-          "responseType": "debt.Debt"
-        }
-      ],
-      "path": "/me/order/{orderId}/debt"
-    },
-    {
-      "description": "pay operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create an order in order to pay this order's debt",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Order",
-          "responseType": "billing.Order"
-        }
-      ],
-      "path": "/me/order/{orderId}/debt/pay"
-    },
-    {
-      "description": "List the debt.Operation objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "All operations related to these debts",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Filter the value of depositOrderId property (=)",
-              "fullType": "long",
-              "name": "depositOrderId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/me/order/{orderId}/debt/operation"
-    },
-    {
-      "description": "associatedObject operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Return main data about the object related to this debt operation",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "operationId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "debt.entry.AssociatedObject",
-          "responseType": "debt.entry.AssociatedObject"
-        }
-      ],
-      "path": "/me/order/{orderId}/debt/operation/{operationId}/associatedObject"
-    },
-    {
-      "description": "Operation that happend on a debt",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "operationId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "debt.Operation",
-          "responseType": "debt.Operation"
-        }
-      ],
-      "path": "/me/order/{orderId}/debt/operation/{operationId}"
-    },
-    {
-      "description": "payWithRegisteredPaymentMean operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Pay with an already registered payment mean",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of registered payment mean, mandatory for bankAccount, creditCard and paypal",
-              "fullType": "long",
-              "name": "paymentMeanId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "billing.ReusablePaymentMeanEnum",
-              "description": "The registered payment mean you want to use",
-              "fullType": "billing.ReusablePaymentMeanEnum",
-              "name": "paymentMean",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/order/{orderId}/payWithRegisteredPaymentMean"
-    },
-    {
-      "description": "followUp operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Return tracking of the order",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.order.FollowUp[]",
-          "responseType": "billing.order.FollowUp[]"
-        }
-      ],
-      "path": "/me/order/{orderId}/followUp"
-    },
-    {
-      "description": "Get all certificates of the account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get all certificates of the account",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Certificate definition name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/me/certificates"
+      "path": "/me/availableAutomaticPaymentMeans"
     }
   ],
   "basePath": "https://ca.api.kimsufi.com/1.0",

@@ -147,18 +147,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Name of pccZone",
-              "fullType": "string",
-              "name": "pccZone",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of Host profile",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name of pccZone",
+              "fullType": "string",
+              "name": "pccZone",
               "paramType": "path",
               "required": true
             }
@@ -241,20 +241,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Minimum reference year",
-              "fullType": "long",
-              "name": "minYear",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "Name of pccZone",
               "fullType": "string",
               "name": "pccZone",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Minimum reference year",
+              "fullType": "long",
+              "name": "minYear",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "dedicatedCloud.HostStockProfile[]"
@@ -302,19 +302,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Profile filter",
-              "fullType": "string",
-              "name": "profileFilter",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Name of pccZone",
               "fullType": "string",
               "name": "pccZone",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Profile filter",
+              "fullType": "string",
+              "name": "profileFilter",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "dedicatedCloud.ZpoolStockProfile[]"
@@ -453,18 +453,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "networkAccessId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -481,18 +481,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "networkAccessId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -516,18 +516,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "networkAccessId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -550,6 +550,22 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "networkAccessId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
@@ -564,22 +580,6 @@ export const schema: Schema = {
               "name": "state",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "networkAccessId",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "long[]"
@@ -600,18 +600,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "networkAccessId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -650,18 +650,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "networkAccessId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -700,18 +700,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "networkAccessId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -777,17 +777,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The contact to set as tech contact",
+              "description": "The contact to set as billing contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
+              "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "The contact to set as billing contact",
+              "description": "The contact to set as tech contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
+              "name": "contactTech",
               "paramType": "body",
               "required": false
             },
@@ -818,26 +818,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "The timeout (in seconds) for the user sessions on the Private Cloud management interface. 0 value disable the timeout",
-              "fullType": "long",
-              "name": "userSessionTimeout",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "dedicatedCloud.UserLogoutPolicyEnum",
-              "description": "Logout policy of your Private Cloud",
-              "fullType": "dedicatedCloud.UserLogoutPolicyEnum",
-              "name": "userLogoutPolicy",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "dedicatedCloud.UserAccessPolicyEnum",
-              "description": "Access policy of your Private Cloud: opened to every IPs or filtered",
-              "fullType": "dedicatedCloud.UserAccessPolicyEnum",
-              "name": "userAccessPolicy",
+              "dataType": "string",
+              "description": "Description of your Private Cloud",
+              "fullType": "string",
+              "name": "description",
               "paramType": "body",
               "required": false
             },
@@ -850,6 +834,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "dedicatedCloud.UserAccessPolicyEnum",
+              "description": "Access policy of your Private Cloud: opened to every IPs or filtered",
+              "fullType": "dedicatedCloud.UserAccessPolicyEnum",
+              "name": "userAccessPolicy",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "long",
               "description": "The maximum amount of connected users allowed on the Private Cloud management interface",
               "fullType": "long",
@@ -858,10 +850,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Description of your Private Cloud",
-              "fullType": "string",
-              "name": "description",
+              "dataType": "dedicatedCloud.UserLogoutPolicyEnum",
+              "description": "Logout policy of your Private Cloud",
+              "fullType": "dedicatedCloud.UserLogoutPolicyEnum",
+              "name": "userLogoutPolicy",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "The timeout (in seconds) for the user sessions on the Private Cloud management interface. 0 value disable the timeout",
+              "fullType": "long",
+              "name": "userSessionTimeout",
               "paramType": "body",
               "required": false
             },
@@ -944,6 +944,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "service.TerminationFutureUseEnum",
               "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
@@ -956,14 +964,6 @@ export const schema: Schema = {
               "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
               "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
               "paramType": "body",
               "required": false
             },
@@ -1064,18 +1064,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1092,18 +1092,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1127,18 +1127,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1161,18 +1161,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1195,18 +1195,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1237,34 +1237,26 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "boolean",
-              "description": "Disk size on mail report",
-              "fullType": "boolean",
-              "name": "diskSizeInReport",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "RestorePoint number on mail report",
-              "fullType": "boolean",
-              "name": "restorePointInReport",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "time",
-              "description": "Schedule hour for start backup. UTC Timezone",
-              "fullType": "time",
-              "name": "scheduleHour",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "dedicatedCloud.backup.OfferTypeEnum",
               "description": "Backup offer type",
               "fullType": "dedicatedCloud.backup.OfferTypeEnum",
               "name": "backupOffer",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Backup size on day on email report",
+              "fullType": "boolean",
+              "name": "backupSizeInReport",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Disk size on mail report",
+              "fullType": "boolean",
+              "name": "diskSizeInReport",
               "paramType": "body",
               "required": true
             },
@@ -1286,10 +1278,26 @@ export const schema: Schema = {
             },
             {
               "dataType": "boolean",
-              "description": "Backup size on day on email report",
+              "description": "RestorePoint number on mail report",
               "fullType": "boolean",
-              "name": "backupSizeInReport",
+              "name": "restorePointInReport",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "time",
+              "description": "Schedule hour for start backup. UTC Timezone",
+              "fullType": "time",
+              "name": "scheduleHour",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
               "required": true
             },
             {
@@ -1297,14 +1305,6 @@ export const schema: Schema = {
               "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "datacenterId",
               "paramType": "path",
               "required": true
             }
@@ -1327,18 +1327,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1372,18 +1372,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1406,18 +1406,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1440,18 +1440,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1474,18 +1474,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1524,18 +1524,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1569,14 +1569,6 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Your secondary OVH Private Cloud",
-              "fullType": "string",
-              "name": "secondaryServiceName",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Your secondary datacenter id",
               "fullType": "long",
@@ -1594,10 +1586,10 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain of the service",
+              "description": "Your secondary OVH Private Cloud",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "name": "secondaryServiceName",
+              "paramType": "body",
               "required": true
             },
             {
@@ -1605,6 +1597,14 @@ export const schema: Schema = {
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1629,18 +1629,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1666,18 +1666,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1700,18 +1700,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1743,22 +1743,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipv4",
-              "description": "Internal ZVM ip of your onsite infrastructure",
-              "fullType": "ipv4",
-              "name": "remoteZvmInternalIp",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "ipv4Block",
-              "description": "Internal zerto subnet of your onsite infrastructure (ip/cidr)",
-              "fullType": "ipv4Block",
-              "name": "remoteVraNetwork",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "ipv4",
               "description": "Your onsite endpoint internal IP for the secured replication data tunnel",
               "fullType": "ipv4",
               "name": "remoteEndpointInternalIp",
@@ -1774,11 +1758,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "ipv4Block",
+              "description": "Internal zerto subnet of your onsite infrastructure (ip/cidr)",
+              "fullType": "ipv4Block",
+              "name": "remoteVraNetwork",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Internal ZVM ip of your onsite infrastructure",
+              "fullType": "ipv4",
+              "name": "remoteZvmInternalIp",
+              "paramType": "body",
               "required": true
             },
             {
@@ -1786,6 +1778,14 @@ export const schema: Schema = {
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1808,18 +1808,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1842,18 +1842,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1903,18 +1903,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1937,18 +1937,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1971,14 +1971,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -1991,6 +1983,14 @@ export const schema: Schema = {
               "description": "Filer Id",
               "fullType": "long",
               "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2016,14 +2016,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2036,6 +2028,14 @@ export const schema: Schema = {
               "description": "Filer Id",
               "fullType": "long",
               "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2058,22 +2058,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicatedCloud.filer.NodeTypeEnum",
-              "description": "Filer cluster node used to get location (default value: master)",
-              "fullType": "dedicatedCloud.filer.NodeTypeEnum",
-              "name": "node",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2088,6 +2072,22 @@ export const schema: Schema = {
               "name": "filerId",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicatedCloud.filer.NodeTypeEnum",
+              "description": "Filer cluster node used to get location (default value: master)",
+              "fullType": "dedicatedCloud.filer.NodeTypeEnum",
+              "name": "node",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "dedicatedCloud.filer.Location"
@@ -2108,14 +2108,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2128,6 +2120,14 @@ export const schema: Schema = {
               "description": "Filer Id",
               "fullType": "long",
               "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2150,30 +2150,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicatedCloud.TaskStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of name property (like)",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2188,6 +2164,30 @@ export const schema: Schema = {
               "name": "filerId",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of name property (like)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicatedCloud.TaskStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "dedicatedCloud.TaskStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -2208,14 +2208,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2228,6 +2220,14 @@ export const schema: Schema = {
               "description": "Filer Id",
               "fullType": "long",
               "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -2266,14 +2266,6 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2286,6 +2278,14 @@ export const schema: Schema = {
               "description": "Filer Id",
               "fullType": "long",
               "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -2324,14 +2324,6 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2344,6 +2336,14 @@ export const schema: Schema = {
               "description": "Filer Id",
               "fullType": "long",
               "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -2374,18 +2374,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2408,14 +2408,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2428,6 +2420,14 @@ export const schema: Schema = {
               "description": "Id of the host",
               "fullType": "long",
               "name": "hostId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2458,14 +2458,6 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2478,6 +2470,14 @@ export const schema: Schema = {
               "description": "Id of the host",
               "fullType": "long",
               "name": "hostId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2503,14 +2503,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2523,6 +2515,14 @@ export const schema: Schema = {
               "description": "Id of the host",
               "fullType": "long",
               "name": "hostId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2545,14 +2545,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2565,6 +2557,14 @@ export const schema: Schema = {
               "description": "Id of the host",
               "fullType": "long",
               "name": "hostId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2587,14 +2587,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2607,6 +2599,14 @@ export const schema: Schema = {
               "description": "Id of the host",
               "fullType": "long",
               "name": "hostId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2629,14 +2629,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2649,6 +2641,14 @@ export const schema: Schema = {
               "description": "Id of the host",
               "fullType": "long",
               "name": "hostId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2671,14 +2671,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2691,6 +2683,14 @@ export const schema: Schema = {
               "description": "Id of the host",
               "fullType": "long",
               "name": "hostId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2713,14 +2713,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2733,6 +2725,14 @@ export const schema: Schema = {
               "description": "Id of the host",
               "fullType": "long",
               "name": "hostId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2763,14 +2763,6 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2783,6 +2775,14 @@ export const schema: Schema = {
               "description": "Id of the host",
               "fullType": "long",
               "name": "hostId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2805,30 +2805,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicatedCloud.TaskStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of name property (like)",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2843,6 +2819,30 @@ export const schema: Schema = {
               "name": "hostId",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of name property (like)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicatedCloud.TaskStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "dedicatedCloud.TaskStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -2863,14 +2863,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2883,6 +2875,14 @@ export const schema: Schema = {
               "description": "Id of the host",
               "fullType": "long",
               "name": "hostId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -2921,14 +2921,6 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2941,6 +2933,14 @@ export const schema: Schema = {
               "description": "Id of the host",
               "fullType": "long",
               "name": "hostId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -2979,14 +2979,6 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -2999,6 +2991,14 @@ export const schema: Schema = {
               "description": "Id of the host",
               "fullType": "long",
               "name": "hostId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3037,18 +3037,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3072,14 +3072,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Id of the cluster you want the host to be added (\"domain-cXX\")",
-              "fullType": "string",
-              "name": "vmwareClusterId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Host profile you want to order",
               "fullType": "string",
               "name": "name",
@@ -3088,17 +3080,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain of the service",
+              "description": "Id of the cluster you want the host to be added (\"domain-cXX\")",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "name": "vmwareClusterId",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3121,18 +3121,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3155,18 +3155,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3189,18 +3189,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3223,18 +3223,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3258,6 +3258,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ip",
+              "description": "Ip to set on your private gateway in your network",
+              "fullType": "ip",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ip",
               "description": "Your netmask to set on the private gateway",
               "fullType": "ip",
               "name": "netmask",
@@ -3273,11 +3281,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "ip",
-              "description": "Ip to set on your private gateway in your network",
-              "fullType": "ip",
-              "name": "ip",
-              "paramType": "body",
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
               "required": true
             },
             {
@@ -3285,14 +3293,6 @@ export const schema: Schema = {
               "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "datacenterId",
               "paramType": "path",
               "required": true
             }
@@ -3315,6 +3315,22 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
@@ -3329,22 +3345,6 @@ export const schema: Schema = {
               "name": "state",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "datacenterId",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "long[]"
@@ -3365,18 +3365,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3415,18 +3415,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3465,18 +3465,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3507,18 +3507,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3541,18 +3541,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3586,18 +3586,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3633,18 +3633,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3678,18 +3678,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3731,18 +3731,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3776,18 +3776,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3821,14 +3821,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -3838,17 +3830,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id of the virtual machine.",
+              "description": "Id of the restore point.",
               "fullType": "long",
-              "name": "vmId",
+              "name": "restorePointId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Id of the restore point.",
+              "description": "Id of the virtual machine.",
               "fullType": "long",
-              "name": "restorePointId",
+              "name": "vmId",
               "paramType": "path",
               "required": true
             }
@@ -3882,14 +3882,6 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
@@ -3899,17 +3891,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Id of the virtual machine.",
+              "description": "Id of the restore point.",
               "fullType": "long",
-              "name": "vmId",
+              "name": "restorePointId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Id of the restore point.",
+              "description": "Id of the virtual machine.",
               "fullType": "long",
-              "name": "restorePointId",
+              "name": "vmId",
               "paramType": "path",
               "required": true
             }
@@ -3932,18 +3932,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3982,18 +3982,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -4032,18 +4032,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -4090,18 +4090,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -4178,10 +4178,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "password",
-              "description": "Active Directory password",
-              "fullType": "password",
-              "name": "password",
+              "dataType": "string",
+              "description": "Active Directory base DN for groups, e.g. dc=example,dc=com",
+              "fullType": "string",
+              "name": "baseDnForGroups",
               "paramType": "body",
               "required": true
             },
@@ -4195,19 +4195,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Active Directory username, e.g. jdoe@example.com",
+              "description": "Description of your option access network",
               "fullType": "string",
-              "name": "username",
+              "name": "description",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Active Directory base DN for groups, e.g. dc=example,dc=com",
-              "fullType": "string",
-              "name": "baseDnForGroups",
-              "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "string",
@@ -4234,12 +4226,20 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Description of your option access network",
-              "fullType": "string",
-              "name": "description",
+              "dataType": "password",
+              "description": "Active Directory password",
+              "fullType": "password",
+              "name": "password",
               "paramType": "body",
-              "required": false
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Active Directory username, e.g. jdoe@example.com",
+              "fullType": "string",
+              "name": "username",
+              "paramType": "body",
+              "required": true
             },
             {
               "dataType": "string",
@@ -4268,18 +4268,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the Active Directory",
               "fullType": "long",
               "name": "activeDirectoryId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4296,18 +4296,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the Active Directory",
               "fullType": "long",
               "name": "activeDirectoryId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4354,18 +4354,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the Active Directory",
               "fullType": "long",
               "name": "activeDirectoryId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4396,18 +4396,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the Active Directory",
               "fullType": "long",
               "name": "activeDirectoryId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4456,18 +4456,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Filer Id",
               "fullType": "long",
               "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4493,18 +4493,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Filer Id",
               "fullType": "long",
               "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4527,12 +4527,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicatedCloud.filer.NodeTypeEnum",
-              "description": "Filer cluster node used to get location (default value: master)",
-              "fullType": "dedicatedCloud.filer.NodeTypeEnum",
-              "name": "node",
-              "paramType": "query",
-              "required": false
+              "dataType": "long",
+              "description": "Filer Id",
+              "fullType": "long",
+              "name": "filerId",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -4543,12 +4543,12 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Filer Id",
-              "fullType": "long",
-              "name": "filerId",
-              "paramType": "path",
-              "required": true
+              "dataType": "dedicatedCloud.filer.NodeTypeEnum",
+              "description": "Filer cluster node used to get location (default value: master)",
+              "fullType": "dedicatedCloud.filer.NodeTypeEnum",
+              "name": "node",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "dedicatedCloud.filer.Location"
@@ -4569,18 +4569,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Filer Id",
               "fullType": "long",
               "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4603,20 +4603,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicatedCloud.TaskStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of name property (like)",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "query",
-              "required": false
+              "dataType": "long",
+              "description": "Filer Id",
+              "fullType": "long",
+              "name": "filerId",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -4627,12 +4619,20 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Filer Id",
-              "fullType": "long",
-              "name": "filerId",
-              "paramType": "path",
-              "required": true
+              "dataType": "string",
+              "description": "Filter the value of name property (like)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicatedCloud.TaskStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "dedicatedCloud.TaskStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -4653,18 +4653,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Filer Id",
               "fullType": "long",
               "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -4703,18 +4703,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Filer Id",
               "fullType": "long",
               "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -4753,18 +4753,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Filer Id",
               "fullType": "long",
               "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -4795,10 +4795,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "datetime",
-              "description": "Filter the tasks by last modification date (>=)",
-              "fullType": "datetime",
-              "name": "lastModificationDate.from",
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the tasks by datacenter Id",
+              "fullType": "long",
+              "name": "datacenterId",
               "paramType": "query",
               "required": false
             },
@@ -4811,34 +4819,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "long",
-              "description": "Filter the tasks by host Id",
-              "fullType": "long",
-              "name": "hostId",
+              "dataType": "date",
+              "description": "Filter the tasks by end date (<=)",
+              "fullType": "date",
+              "name": "endDate.to",
               "paramType": "query",
               "required": false
             },
             {
-              "dataType": "dedicatedCloud.TaskStateEnum[]",
-              "description": "Filter the tasks by state",
-              "fullType": "dedicatedCloud.TaskStateEnum[]",
-              "name": "state",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Filter the tasks by user Id",
-              "fullType": "long",
-              "name": "userId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Filter the tasks by order Id",
-              "fullType": "long",
-              "name": "orderId",
+              "dataType": "datetime",
+              "description": "Filter the tasks by execution date (>=)",
+              "fullType": "datetime",
+              "name": "executionDate.from",
               "paramType": "query",
               "required": false
             },
@@ -4852,9 +4844,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Filter the tasks by parent task Id",
+              "description": "Filter the tasks by filer Id",
               "fullType": "long",
-              "name": "parentTaskId",
+              "name": "filerId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the tasks by host Id",
+              "fullType": "long",
+              "name": "hostId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the tasks by last modification date (>=)",
+              "fullType": "datetime",
+              "name": "lastModificationDate.from",
               "paramType": "query",
               "required": false
             },
@@ -4883,34 +4891,34 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "datetime",
-              "description": "Filter the tasks by execution date (>=)",
-              "fullType": "datetime",
-              "name": "executionDate.from",
+              "dataType": "long",
+              "description": "Filter the tasks by order Id",
+              "fullType": "long",
+              "name": "orderId",
               "paramType": "query",
               "required": false
             },
             {
               "dataType": "long",
-              "description": "Filter the tasks by filer Id",
+              "description": "Filter the tasks by parent task Id",
               "fullType": "long",
-              "name": "filerId",
+              "name": "parentTaskId",
               "paramType": "query",
               "required": false
             },
             {
-              "dataType": "date",
-              "description": "Filter the tasks by end date (<=)",
-              "fullType": "date",
-              "name": "endDate.to",
+              "dataType": "dedicatedCloud.TaskStateEnum[]",
+              "description": "Filter the tasks by state",
+              "fullType": "dedicatedCloud.TaskStateEnum[]",
+              "name": "state",
               "paramType": "query",
               "required": false
             },
             {
               "dataType": "long",
-              "description": "Filter the tasks by datacenter Id",
+              "description": "Filter the tasks by user Id",
               "fullType": "long",
-              "name": "datacenterId",
+              "name": "userId",
               "paramType": "query",
               "required": false
             },
@@ -4921,14 +4929,6 @@ export const schema: Schema = {
               "name": "vlanId",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "long[]"
@@ -5398,18 +5398,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipv4Block",
               "description": "IP ex: 213.186.33.34/24",
               "fullType": "ipv4Block",
               "name": "network",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -5432,18 +5432,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipv4Block",
               "description": "IP ex: 213.186.33.34/24",
               "fullType": "ipv4Block",
               "name": "network",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -5466,20 +5466,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicatedCloud.TaskStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of name property (like)",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "query",
-              "required": false
+              "dataType": "ipv4Block",
+              "description": "IP ex: 213.186.33.34/24",
+              "fullType": "ipv4Block",
+              "name": "network",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -5490,12 +5482,20 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "ipv4Block",
-              "description": "IP ex: 213.186.33.34/24",
-              "fullType": "ipv4Block",
-              "name": "network",
-              "paramType": "path",
-              "required": true
+              "dataType": "string",
+              "description": "Filter the value of name property (like)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicatedCloud.TaskStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "dedicatedCloud.TaskStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -5516,18 +5516,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipv4Block",
               "description": "IP ex: 213.186.33.34/24",
               "fullType": "ipv4Block",
               "name": "network",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -5566,18 +5566,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipv4Block",
               "description": "IP ex: 213.186.33.34/24",
               "fullType": "ipv4Block",
               "name": "network",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -5616,18 +5616,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipv4Block",
               "description": "IP ex: 213.186.33.34/24",
               "fullType": "ipv4Block",
               "name": "network",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -6107,17 +6107,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Domain of the service",
+              "description": "The name of this robot",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "name",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The name of this robot",
+              "description": "Domain of the service",
               "fullType": "string",
-              "name": "name",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -6246,17 +6246,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Domain of the service",
+              "description": "Name of the Service Pack",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "name",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of the Service Pack",
+              "description": "Domain of the service",
               "fullType": "string",
-              "name": "name",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -6280,6 +6280,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Filter the value of name property (like)",
               "fullType": "string",
               "name": "name",
@@ -6293,14 +6301,6 @@ export const schema: Schema = {
               "name": "state",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "long[]"
@@ -6485,18 +6485,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipv4",
-              "description": "IP address of the remote service, e.g. 123.100.200.0",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Description of the exception",
               "fullType": "string",
               "name": "description",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "IP address of the remote service, e.g. 123.100.200.0",
+              "fullType": "ipv4",
+              "name": "ip",
               "paramType": "body",
               "required": true
             },
@@ -6527,18 +6527,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the trusted IP",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -6555,18 +6555,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the trusted IP",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -6597,18 +6597,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the trusted IP",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -6695,19 +6695,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Filter the value of name property (like)",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of name property (like)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -6722,10 +6722,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "First name of the user",
-              "fullType": "string",
-              "name": "firstName",
+              "dataType": "boolean",
+              "description": "Is this User able to add ressources in the Datacenter he has access ? (default is no right to add ressource)",
+              "fullType": "boolean",
+              "name": "canAddRessource",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Is this user able to manage the users rights",
+              "fullType": "boolean",
+              "name": "canManageRights",
               "paramType": "body",
               "required": false
             },
@@ -6736,6 +6744,38 @@ export const schema: Schema = {
               "name": "email",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Date of removal of the user.",
+              "fullType": "datetime",
+              "name": "expirationDate",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "First name of the user",
+              "fullType": "string",
+              "name": "firstName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Last name of the user",
+              "fullType": "string",
+              "name": "lastName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Name of the user (login)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
             },
             {
               "dataType": "dedicatedCloud.right.NetworkRoleEnum",
@@ -6754,42 +6794,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "boolean",
-              "description": "Is this User able to add ressources in the Datacenter he has access ? (default is no right to add ressource)",
-              "fullType": "boolean",
-              "name": "canAddRessource",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Date of removal of the user.",
-              "fullType": "datetime",
-              "name": "expirationDate",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Last name of the user",
-              "fullType": "string",
-              "name": "lastName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Defines if the user can confirm security tokens (if a compatible option is enabled)",
-              "fullType": "boolean",
-              "name": "tokenValidator",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Is this user able to manage the users rights",
-              "fullType": "boolean",
-              "name": "canManageRights",
+              "dataType": "password",
+              "description": "The user password. It must fits your Private Cloud password policy. If this field is empty, a random password will be generated and sent by email.",
+              "fullType": "password",
+              "name": "password",
               "paramType": "body",
               "required": false
             },
@@ -6810,14 +6818,6 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Name of the user (login)",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "dedicatedCloud.right.RightEnum",
               "description": "Determine what kind of access the User will have in all Datacenters of your Private Cloud (default is disabled)",
               "fullType": "dedicatedCloud.right.RightEnum",
@@ -6826,18 +6826,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "dedicatedCloud.right.VmNetworkRoleEnum",
-              "description": "Determine how this user will be able to act on this Private Cloud VM Network",
-              "fullType": "dedicatedCloud.right.VmNetworkRoleEnum",
-              "name": "vmNetworkRole",
+              "dataType": "boolean",
+              "description": "Defines if the user can confirm security tokens (if a compatible option is enabled)",
+              "fullType": "boolean",
+              "name": "tokenValidator",
               "paramType": "body",
               "required": false
             },
             {
-              "dataType": "password",
-              "description": "The user password. It must fits your Private Cloud password policy. If this field is empty, a random password will be generated and sent by email.",
-              "fullType": "password",
-              "name": "password",
+              "dataType": "dedicatedCloud.right.VmNetworkRoleEnum",
+              "description": "Determine how this user will be able to act on this Private Cloud VM Network",
+              "fullType": "dedicatedCloud.right.VmNetworkRoleEnum",
+              "name": "vmNetworkRole",
               "paramType": "body",
               "required": false
             },
@@ -6973,54 +6973,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "boolean",
-              "description": "Defines if the user is a full admin in readonly",
-              "fullType": "boolean",
-              "name": "fullAdminRo",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Defines if the user receives technical alerts",
-              "fullType": "boolean",
-              "name": "receiveAlerts",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Mobile phone number of the user in international format (+prefix.number)",
-              "fullType": "string",
-              "name": "phoneNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Defines if the user can manage the users rights",
-              "fullType": "boolean",
-              "name": "canManageRights",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Defines if the user can confirm security tokens (if a compatible option is enabled)",
-              "fullType": "boolean",
-              "name": "tokenValidator",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Last name of the user",
-              "fullType": "string",
-              "name": "lastName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
               "description": "Defines if the user can manage ip failovers",
               "fullType": "boolean",
               "name": "canManageIpFailOvers",
@@ -7029,17 +6981,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "boolean",
-              "description": "Is this User able to access nsx interface (requires NSX option)",
+              "description": "Defines if the user can manage the network",
               "fullType": "boolean",
-              "name": "nsxRight",
+              "name": "canManageNetwork",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "boolean",
-              "description": "Defines if the user can manage the network",
+              "description": "Defines if the user can manage the users rights",
               "fullType": "boolean",
-              "name": "canManageNetwork",
+              "name": "canManageRights",
               "paramType": "body",
               "required": false
             },
@@ -7056,6 +7008,54 @@ export const schema: Schema = {
               "description": "First name of the user",
               "fullType": "string",
               "name": "firstName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Defines if the user is a full admin in readonly",
+              "fullType": "boolean",
+              "name": "fullAdminRo",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Last name of the user",
+              "fullType": "string",
+              "name": "lastName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Is this User able to access nsx interface (requires NSX option)",
+              "fullType": "boolean",
+              "name": "nsxRight",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Mobile phone number of the user in international format (+prefix.number)",
+              "fullType": "string",
+              "name": "phoneNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Defines if the user receives technical alerts",
+              "fullType": "boolean",
+              "name": "receiveAlerts",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Defines if the user can confirm security tokens (if a compatible option is enabled)",
+              "fullType": "boolean",
+              "name": "tokenValidator",
               "paramType": "body",
               "required": false
             },
@@ -7224,22 +7224,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The VMware MoRef of the object",
-              "fullType": "string",
-              "name": "vmwareObjectId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "dedicatedCloud.right.UserObjectRightTypeEnum",
-              "description": "Type of the object",
-              "fullType": "dedicatedCloud.right.UserObjectRightTypeEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Right propagation on children objects",
               "fullType": "boolean",
@@ -7252,6 +7236,22 @@ export const schema: Schema = {
               "description": "User access on the VMware object",
               "fullType": "dedicatedCloud.right.RightEnum",
               "name": "right",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicatedCloud.right.UserObjectRightTypeEnum",
+              "description": "Type of the object",
+              "fullType": "dedicatedCloud.right.UserObjectRightTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The VMware MoRef of the object",
+              "fullType": "string",
+              "name": "vmwareObjectId",
               "paramType": "body",
               "required": true
             },
@@ -7290,6 +7290,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "objectRightId",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "string",
               "description": "Domain of the service",
               "fullType": "string",
@@ -7302,14 +7310,6 @@ export const schema: Schema = {
               "description": "",
               "fullType": "long",
               "name": "userId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "objectRightId",
               "paramType": "path",
               "required": true
             }
@@ -7326,6 +7326,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "objectRightId",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "string",
               "description": "Domain of the service",
               "fullType": "string",
@@ -7338,14 +7346,6 @@ export const schema: Schema = {
               "description": "",
               "fullType": "long",
               "name": "userId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "objectRightId",
               "paramType": "path",
               "required": true
             }
@@ -7402,6 +7402,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "rightId",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "string",
               "description": "Domain of the service",
               "fullType": "string",
@@ -7414,14 +7422,6 @@ export const schema: Schema = {
               "description": "",
               "fullType": "long",
               "name": "userId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "rightId",
               "paramType": "path",
               "required": true
             }
@@ -7445,6 +7445,14 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "rightId",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "string",
               "description": "Domain of the service",
               "fullType": "string",
@@ -7457,14 +7465,6 @@ export const schema: Schema = {
               "description": "",
               "fullType": "long",
               "name": "userId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "rightId",
               "paramType": "path",
               "required": true
             }
@@ -7487,22 +7487,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicatedCloud.TaskStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "dedicatedCloud.TaskStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of name property (like)",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "Domain of the service",
               "fullType": "string",
@@ -7517,6 +7501,22 @@ export const schema: Schema = {
               "name": "userId",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of name property (like)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicatedCloud.TaskStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "dedicatedCloud.TaskStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -7546,17 +7546,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "",
+              "description": "Task id",
               "fullType": "long",
-              "name": "userId",
+              "name": "taskId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Task id",
+              "description": "",
               "fullType": "long",
-              "name": "taskId",
+              "name": "userId",
               "paramType": "path",
               "required": true
             }
@@ -7596,17 +7596,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "",
+              "description": "Task id",
               "fullType": "long",
-              "name": "userId",
+              "name": "taskId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Task id",
+              "description": "",
               "fullType": "long",
-              "name": "taskId",
+              "name": "userId",
               "paramType": "path",
               "required": true
             }
@@ -7646,17 +7646,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "",
+              "description": "Task id",
               "fullType": "long",
-              "name": "userId",
+              "name": "taskId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Task id",
+              "description": "",
               "fullType": "long",
-              "name": "taskId",
+              "name": "userId",
               "paramType": "path",
               "required": true
             }
@@ -7955,18 +7955,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the VM Encryption KMS",
               "fullType": "long",
               "name": "kmsId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -7983,18 +7983,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the VM Encryption KMS",
               "fullType": "long",
               "name": "kmsId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -8033,18 +8033,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the VM Encryption KMS",
               "fullType": "long",
               "name": "kmsId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -9128,6 +9128,14 @@ export const schema: Schema = {
     "dedicatedCloud.CommercialNameEnum": {
       "description": "The commercial name component",
       "enum": [
+        "CDI",
+        "CDI-HDS",
+        "CDI-HIPAA",
+        "CDI-NSX",
+        "CDI-NSX-VROPS",
+        "CDI-PCIDSS",
+        "CDI-UNKNOWN",
+        "CDI-VROPS",
         "DC",
         "DC-ANCIENT",
         "DC-ANCIENT-HDS",
@@ -9152,6 +9160,22 @@ export const schema: Schema = {
         "DC-PCIDSS",
         "DC-UNKNOWN",
         "DC-VROPS",
+        "ESSENTIALS",
+        "ESSENTIALS-HDS",
+        "ESSENTIALS-HIPAA",
+        "ESSENTIALS-NSX",
+        "ESSENTIALS-NSX-VROPS",
+        "ESSENTIALS-PCIDSS",
+        "ESSENTIALS-UNKNOWN",
+        "ESSENTIALS-VROPS",
+        "PREMIER",
+        "PREMIER-HDS",
+        "PREMIER-HIPAA",
+        "PREMIER-NSX",
+        "PREMIER-NSX-VROPS",
+        "PREMIER-PCIDSS",
+        "PREMIER-UNKNOWN",
+        "PREMIER-VROPS",
         "SDDC",
         "SDDC-HDS",
         "SDDC-HIPAA",
@@ -9411,6 +9435,14 @@ export const schema: Schema = {
       "id": "Filer",
       "namespace": "dedicatedCloud",
       "properties": {
+        "activeNode": {
+          "canBeNull": true,
+          "description": "Filer active node.",
+          "fullType": "dedicatedCloud.filer.NodeTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicatedCloud.filer.NodeTypeEnum"
+        },
         "billingType": {
           "canBeNull": true,
           "description": "Billing type of this filer",
@@ -9418,6 +9450,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "dedicatedCloud.ressources.BillingTypeEnum"
+        },
+        "connectionState": {
+          "canBeNull": true,
+          "description": "Filer connexion state.",
+          "fullType": "dedicatedCloud.filer.ConnexionStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicatedCloud.filer.ConnexionStateEnum"
         },
         "filerId": {
           "canBeNull": false,
@@ -9430,6 +9470,14 @@ export const schema: Schema = {
         "fullProfile": {
           "canBeNull": false,
           "description": "Human-Readable profile name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "master": {
+          "canBeNull": false,
+          "description": "Filer master node hostname.",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -9458,6 +9506,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
+        },
+        "slave": {
+          "canBeNull": true,
+          "description": "Filer slave node hostname.",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "spaceFree": {
           "canBeNull": true,
@@ -10438,7 +10494,8 @@ export const schema: Schema = {
         "toRecycle",
         "toRemove",
         "toUnprovision",
-        "unprovisionning"
+        "unprovisionning",
+        "upgrading"
       ],
       "enumType": "string",
       "id": "StateEnum",
@@ -12168,6 +12225,16 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "VpnConfigStateEnum",
       "namespace": "dedicatedCloud.disasterRecovery"
+    },
+    "dedicatedCloud.filer.ConnexionStateEnum": {
+      "description": "Connexion states for a Dedicated Cloud Filer.",
+      "enum": [
+        "offline",
+        "online"
+      ],
+      "enumType": "string",
+      "id": "ConnexionStateEnum",
+      "namespace": "dedicatedCloud.filer"
     },
     "dedicatedCloud.filer.HourlyConsumption": {
       "description": "Hourly consumption of a filer",

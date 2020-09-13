@@ -55,14 +55,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "ID of cluster",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "dedicated.ceph.clusterUpdate.crushTunablesEnum",
               "description": "Tunables of cluster",
               "fullType": "dedicated.ceph.clusterUpdate.crushTunablesEnum",
@@ -76,6 +68,14 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "label",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "ID of cluster",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -117,19 +117,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "ID of cluster",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ip[]",
               "description": "List of new ACLs",
               "fullType": "ip[]",
               "name": "aclList",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "ID of cluster",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -152,17 +152,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "ID of ACL",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "aclId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "ID of ACL",
+              "description": "ID of cluster",
               "fullType": "string",
-              "name": "aclId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -180,17 +180,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "ID of ACL",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "aclId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "ID of ACL",
+              "description": "ID of cluster",
               "fullType": "string",
-              "name": "aclId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -240,17 +240,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "CephFS filesystem name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "fsName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "CephFS filesystem name",
+              "description": "ID of cluster",
               "fullType": "string",
-              "name": "fsName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -268,17 +268,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "CephFS filesystem name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "fsName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "CephFS filesystem name",
+              "description": "ID of cluster",
               "fullType": "string",
-              "name": "fsName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -302,17 +302,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "CephFS filesystem name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "fsName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "CephFS filesystem name",
+              "description": "ID of cluster",
               "fullType": "string",
-              "name": "fsName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -336,17 +336,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "CephFS filesystem name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "fsName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "CephFS filesystem name",
+              "description": "ID of cluster",
               "fullType": "string",
-              "name": "fsName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -378,17 +378,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The contact to set as tech contact",
+              "description": "The contact to set as billing contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
+              "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "The contact to set as billing contact",
+              "description": "The contact to set as tech contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
+              "name": "contactTech",
               "paramType": "body",
               "required": false
             },
@@ -419,6 +419,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "service.TerminationFutureUseEnum",
               "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
@@ -431,14 +439,6 @@ export const schema: Schema = {
               "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
               "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
               "paramType": "body",
               "required": false
             },
@@ -524,18 +524,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Name of new pool",
               "fullType": "string",
               "name": "poolName",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "ID of cluster",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -558,17 +558,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "name of ceph pool",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "poolName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "name of ceph pool",
+              "description": "ID of cluster",
               "fullType": "string",
-              "name": "poolName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -586,17 +586,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "name of pool",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "poolName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "name of pool",
+              "description": "ID of cluster",
               "fullType": "string",
-              "name": "poolName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -779,18 +779,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "ID of cluster",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Name of new user",
               "fullType": "string",
               "name": "userName",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "ID of cluster",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -813,17 +813,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of ceph user",
+              "description": "ID of cluster",
               "fullType": "string",
-              "name": "userName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Name of ceph user",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "userName",
               "paramType": "path",
               "required": true
             }
@@ -841,17 +841,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of ceph user",
+              "description": "ID of cluster",
               "fullType": "string",
-              "name": "userName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Name of ceph user",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "userName",
               "paramType": "path",
               "required": true
             }
@@ -875,17 +875,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of ceph user",
+              "description": "ID of cluster",
               "fullType": "string",
-              "name": "userName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "ID of cluster",
+              "description": "Name of ceph user",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "userName",
               "paramType": "path",
               "required": true
             }
@@ -902,12 +902,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Name of ceph user",
-              "fullType": "string",
-              "name": "userName",
-              "paramType": "path",
-              "required": true
+              "dataType": "dedicated.ceph.userPoolPermSetAll.permissions[]",
+              "description": "Permissions",
+              "fullType": "dedicated.ceph.userPoolPermSetAll.permissions[]",
+              "name": "permissions",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -918,12 +918,12 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.ceph.userPoolPermSetAll.permissions[]",
-              "description": "Permissions",
-              "fullType": "dedicated.ceph.userPoolPermSetAll.permissions[]",
-              "name": "permissions",
-              "paramType": "body",
-              "required": false
+              "dataType": "string",
+              "description": "Name of ceph user",
+              "fullType": "string",
+              "name": "userName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "string"
@@ -938,34 +938,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Name of ceph user",
-              "fullType": "string",
-              "name": "userName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "ID of cluster",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "boolean",
-              "description": "Write permission",
+              "description": "Class read permission",
               "fullType": "boolean",
-              "name": "write",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Execute permission",
-              "fullType": "boolean",
-              "name": "execute",
+              "name": "classRead",
               "paramType": "body",
               "required": true
             },
@@ -979,9 +955,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "boolean",
-              "description": "Read permission",
+              "description": "Execute permission",
               "fullType": "boolean",
-              "name": "read",
+              "name": "execute",
               "paramType": "body",
               "required": true
             },
@@ -995,10 +971,34 @@ export const schema: Schema = {
             },
             {
               "dataType": "boolean",
-              "description": "Class read permission",
+              "description": "Read permission",
               "fullType": "boolean",
-              "name": "classRead",
+              "name": "read",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Write permission",
+              "fullType": "boolean",
+              "name": "write",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "ID of cluster",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name of ceph user",
+              "fullType": "string",
+              "name": "userName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1021,9 +1021,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Name of ceph user",
+              "description": "Name of Ceph pool",
               "fullType": "string",
-              "name": "userName",
+              "name": "poolName",
               "paramType": "path",
               "required": true
             },
@@ -1037,9 +1037,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of Ceph pool",
+              "description": "Name of ceph user",
               "fullType": "string",
-              "name": "poolName",
+              "name": "userName",
               "paramType": "path",
               "required": true
             }

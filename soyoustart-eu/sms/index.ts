@@ -775,7 +775,7 @@ export interface Sms {
              * Get the /me/document id generated
              * GET /sms/{serviceName}/document
              */
-            $get(params: { creationDatetime_from?: string, creationDatetime_to?: string, tag?: string, wayType: sms.DocumentWayTypeEnum }): Promise<string>;
+            $get(params: { batchID?: string, creationDatetime_from?: string, creationDatetime_to?: string, tag?: string, wayType: sms.DocumentWayTypeEnum }): Promise<string>;
             /**
              * Controle cache
              */

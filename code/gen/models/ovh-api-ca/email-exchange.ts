@@ -62,17 +62,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -97,17 +97,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -130,18 +130,26 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "email.exchange.OvhLicenceEnum",
               "description": "Filter the value of accountLicense property (=)",
               "fullType": "email.exchange.OvhLicenceEnum",
               "name": "accountLicense",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of primaryEmailAddress property (like)",
-              "fullType": "string",
-              "name": "primaryEmailAddress",
               "paramType": "query",
               "required": false
             },
@@ -155,19 +163,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "Filter the value of primaryEmailAddress property (like)",
               "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your exchange service",
-              "fullType": "string",
-              "name": "exchangeService",
-              "paramType": "path",
-              "required": true
+              "name": "primaryEmailAddress",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -190,42 +190,26 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "email.exchange.spamAndVirusConfiguration",
-              "description": "Antispam and Antivirus configuration",
-              "fullType": "email.exchange.spamAndVirusConfiguration",
-              "name": "spamAndVirusConfiguration",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "email.exchange.OvhLicenceEnum",
-              "description": "Exchange license",
-              "fullType": "email.exchange.OvhLicenceEnum",
-              "name": "license",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "password",
-              "description": "Account password",
-              "fullType": "password",
-              "name": "password",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Litigation status",
-              "fullType": "boolean",
-              "name": "litigation",
+              "dataType": "string",
+              "description": "Account display name",
+              "fullType": "string",
+              "name": "displayName",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Account last name",
+              "description": "Email domain",
               "fullType": "string",
-              "name": "lastName",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account first name",
+              "fullType": "string",
+              "name": "firstName",
               "paramType": "body",
               "required": false
             },
@@ -247,9 +231,33 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "SAM account name (exchange 2010 login)",
+              "description": "Account last name",
               "fullType": "string",
-              "name": "SAMAccountName",
+              "name": "lastName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "email.exchange.OvhLicenceEnum",
+              "description": "Exchange license",
+              "fullType": "email.exchange.OvhLicenceEnum",
+              "name": "license",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Litigation status",
+              "fullType": "boolean",
+              "name": "litigation",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Litigation length in days, 0 means unlimited",
+              "fullType": "long",
+              "name": "litigationPeriod",
               "paramType": "body",
               "required": false
             },
@@ -262,10 +270,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Account first name",
-              "fullType": "string",
-              "name": "firstName",
+              "dataType": "email.exchange.MailingFilterEnum[]",
+              "description": "Enable mailing filtrering",
+              "fullType": "email.exchange.MailingFilterEnum[]",
+              "name": "mailingFilter",
               "paramType": "body",
               "required": false
             },
@@ -278,50 +286,42 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "email.exchange.MailingFilterEnum[]",
-              "description": "Enable mailing filtrering",
-              "fullType": "email.exchange.MailingFilterEnum[]",
-              "name": "mailingFilter",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Email domain",
-              "fullType": "string",
-              "name": "domain",
+              "dataType": "password",
+              "description": "Account password",
+              "fullType": "password",
+              "name": "password",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Litigation length in days, 0 means unlimited",
-              "fullType": "long",
-              "name": "litigationPeriod",
+              "dataType": "string",
+              "description": "SAM account name (exchange 2010 login)",
+              "fullType": "string",
+              "name": "SAMAccountName",
               "paramType": "body",
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Account display name",
-              "fullType": "string",
-              "name": "displayName",
+              "dataType": "email.exchange.spamAndVirusConfiguration",
+              "description": "Antispam and Antivirus configuration",
+              "fullType": "email.exchange.spamAndVirusConfiguration",
+              "name": "spamAndVirusConfiguration",
               "paramType": "body",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
             },
             {
               "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -345,17 +345,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -381,17 +381,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -424,17 +424,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -466,17 +466,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -510,17 +510,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -552,9 +552,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "Alias",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "alias",
               "paramType": "path",
               "required": true
             },
@@ -568,17 +568,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "primaryEmailAddress",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Alias",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "alias",
+              "name": "primaryEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -596,9 +596,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "Alias",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "alias",
               "paramType": "path",
               "required": true
             },
@@ -612,17 +612,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "primaryEmailAddress",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Alias",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "alias",
+              "name": "primaryEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -646,17 +646,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -682,17 +682,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -726,17 +726,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -769,17 +769,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -819,17 +819,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -861,17 +861,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -905,17 +905,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -947,17 +947,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -983,17 +983,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -1019,17 +1019,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -1061,17 +1061,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -1097,17 +1097,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -1139,17 +1139,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -1183,17 +1183,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -1224,10 +1224,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id to give full access",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -1241,17 +1241,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "primaryEmailAddress",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give full access",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "Default email for this mailbox",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -1268,10 +1268,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id to give full access",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -1285,17 +1285,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "primaryEmailAddress",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give full access",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "Default email for this mailbox",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -1319,17 +1319,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -1354,14 +1354,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "email.exchange.OutlookVersionEnum",
-              "description": "Version of outlook",
-              "fullType": "email.exchange.OutlookVersionEnum",
-              "name": "version",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "email.exchange.LanguageEnum",
               "description": "Language of outlook",
               "fullType": "email.exchange.LanguageEnum",
@@ -1370,11 +1362,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
+              "dataType": "email.exchange.OutlookVersionEnum",
+              "description": "Version of outlook",
+              "fullType": "email.exchange.OutlookVersionEnum",
+              "name": "version",
+              "paramType": "body",
               "required": true
             },
             {
@@ -1382,6 +1374,14 @@ export const schema: Schema = {
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -1413,17 +1413,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -1456,17 +1456,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -1498,17 +1498,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -1542,17 +1542,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -1583,10 +1583,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id to give send as",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -1600,17 +1600,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "primaryEmailAddress",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give send as",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "Default email for this mailbox",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -1627,10 +1627,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id to give send as",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -1644,17 +1644,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "primaryEmailAddress",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give send as",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "Default email for this mailbox",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -1678,17 +1678,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -1722,17 +1722,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -1763,10 +1763,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id to give send on behalf to",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -1780,17 +1780,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "primaryEmailAddress",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give send on behalf to",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "Default email for this mailbox",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -1807,10 +1807,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id to give send on behalf to",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -1824,17 +1824,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "primaryEmailAddress",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give send on behalf to",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "Default email for this mailbox",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -1858,17 +1858,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -1900,25 +1900,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Default email for this mailbox",
-              "fullType": "string",
-              "name": "primaryEmailAddress",
               "paramType": "path",
               "required": true
             },
@@ -1927,6 +1911,22 @@ export const schema: Schema = {
               "description": "Task id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Default email for this mailbox",
+              "fullType": "string",
+              "name": "primaryEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -1950,17 +1950,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -2008,17 +2008,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -2066,17 +2066,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -2100,17 +2100,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -2134,6 +2134,30 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "email.exchange.DeviceActiveSyncStateEnum",
+              "description": "Filter the value of deviceState property (=)",
+              "fullType": "email.exchange.DeviceActiveSyncStateEnum",
+              "name": "deviceState",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Filter the value of identity property (like)",
               "fullType": "string",
               "name": "identity",
@@ -2147,30 +2171,6 @@ export const schema: Schema = {
               "name": "IMEI",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "email.exchange.DeviceActiveSyncStateEnum",
-              "description": "Filter the value of deviceState property (=)",
-              "fullType": "email.exchange.DeviceActiveSyncStateEnum",
-              "name": "deviceState",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your exchange service",
-              "fullType": "string",
-              "name": "exchangeService",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "string[]"
@@ -2192,14 +2192,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -2211,6 +2203,14 @@ export const schema: Schema = {
               "description": "Exchange identity",
               "fullType": "string",
               "name": "identity",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -2235,14 +2235,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -2254,6 +2246,14 @@ export const schema: Schema = {
               "description": "Exchange identity",
               "fullType": "string",
               "name": "identity",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -2277,14 +2277,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -2296,6 +2288,14 @@ export const schema: Schema = {
               "description": "Exchange identity",
               "fullType": "string",
               "name": "identity",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -2318,6 +2318,22 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "boolean",
               "description": "Filter the value of main property (like)",
               "fullType": "boolean",
@@ -2332,22 +2348,6 @@ export const schema: Schema = {
               "name": "state",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your exchange service",
-              "fullType": "string",
-              "name": "exchangeService",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "string[]"
@@ -2361,6 +2361,22 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "If you host domain in OVH we can configure autodiscover record automatically",
+              "fullType": "boolean",
+              "name": "configureAutodiscover",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "If you host domain in OVH we can configure mx record automatically",
+              "fullType": "boolean",
+              "name": "configureMx",
+              "paramType": "body",
+              "required": false
+            },
             {
               "dataType": "boolean",
               "description": "This newly created domain will be an organization (Exchange 2010 only)",
@@ -2386,14 +2402,6 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "boolean",
-              "description": "If you host domain in OVH we can configure mx record automatically",
-              "fullType": "boolean",
-              "name": "configureMx",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "If specified, indicates which organization this newly created domain will be part of (Exchange 2010 only)",
               "fullType": "string",
@@ -2410,26 +2418,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "boolean",
-              "description": "If you host domain in OVH we can configure autodiscover record automatically",
-              "fullType": "boolean",
-              "name": "configureAutodiscover",
-              "paramType": "body",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
               "description": "The internal name of your exchange organization",
               "fullType": "string",
               "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your exchange service",
-              "fullType": "string",
-              "name": "exchangeService",
               "paramType": "path",
               "required": true
             }
@@ -2453,9 +2453,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "domainName",
               "paramType": "path",
               "required": true
             },
@@ -2469,9 +2469,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "domainName",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -2489,9 +2489,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "domainName",
               "paramType": "path",
               "required": true
             },
@@ -2505,9 +2505,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "domainName",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -2532,9 +2532,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "domainName",
               "paramType": "path",
               "required": true
             },
@@ -2548,9 +2548,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "domainName",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -2574,9 +2574,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "domainName",
               "paramType": "path",
               "required": true
             },
@@ -2590,9 +2590,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "domainName",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -2610,9 +2610,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "domainName",
               "paramType": "path",
               "required": true
             },
@@ -2626,9 +2626,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "domainName",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -2645,14 +2645,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Activate the disclaimer only for external emails",
-              "fullType": "boolean",
-              "name": "outsideOnly",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "text",
               "description": "Signature, added at the bottom of your organization emails",
               "fullType": "text",
@@ -2661,10 +2653,18 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "boolean",
+              "description": "Activate the disclaimer only for external emails",
+              "fullType": "boolean",
+              "name": "outsideOnly",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "domainName",
               "paramType": "path",
               "required": true
             },
@@ -2678,9 +2678,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "domainName",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -2705,9 +2705,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "domainName",
               "paramType": "path",
               "required": true
             },
@@ -2721,9 +2721,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "domainName",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -2747,9 +2747,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "domainName",
               "paramType": "path",
               "required": true
             },
@@ -2763,9 +2763,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "domainName",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -2789,17 +2789,25 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Filter the value of lastName property (like)",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "lastName",
-              "paramType": "query",
-              "required": false
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "Filter the value of firstName property (like)",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "firstName",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of displayName property (like)",
+              "fullType": "string",
+              "name": "displayName",
               "paramType": "query",
               "required": false
             },
@@ -2813,9 +2821,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of displayName property (like)",
+              "description": "Filter the value of firstName property (like)",
               "fullType": "string",
-              "name": "displayName",
+              "name": "firstName",
               "paramType": "query",
               "required": false
             },
@@ -2829,19 +2837,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "Filter the value of lastName property (like)",
               "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your exchange service",
-              "fullType": "string",
-              "name": "exchangeService",
-              "paramType": "path",
-              "required": true
+              "name": "lastName",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -2857,17 +2857,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Contact last name",
+              "description": "Contact display name",
               "fullType": "string",
-              "name": "lastName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Contact first name",
-              "fullType": "string",
-              "name": "firstName",
+              "name": "displayName",
               "paramType": "body",
               "required": false
             },
@@ -2881,9 +2873,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Indicates to which organization this newly created external contact will belongs (Exchange 2010 only)",
+              "description": "Contact first name",
               "fullType": "string",
-              "name": "organization2010",
+              "name": "firstName",
               "paramType": "body",
               "required": false
             },
@@ -2897,14 +2889,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Contact display name",
-              "fullType": "string",
-              "name": "displayName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Contact initials",
               "fullType": "string",
               "name": "initials",
@@ -2913,17 +2897,33 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "Contact last name",
               "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
+              "name": "lastName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Indicates to which organization this newly created external contact will belongs (Exchange 2010 only)",
+              "fullType": "string",
+              "name": "organization2010",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -2947,14 +2947,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -2966,6 +2958,14 @@ export const schema: Schema = {
               "description": "Contact email",
               "fullType": "string",
               "name": "externalEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -2983,14 +2983,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -3002,6 +2994,14 @@ export const schema: Schema = {
               "description": "Contact email",
               "fullType": "string",
               "name": "externalEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3026,14 +3026,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -3045,6 +3037,14 @@ export const schema: Schema = {
               "description": "Contact email",
               "fullType": "string",
               "name": "externalEmailAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3066,6 +3066,22 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "date",
               "description": "Get active licenses since date ",
@@ -3089,22 +3105,6 @@ export const schema: Schema = {
               "name": "toDate",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your exchange service",
-              "fullType": "string",
-              "name": "exchangeService",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "email.exchange.DailyLicense[]"
@@ -3126,11 +3126,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Filter the value of mailingListAddress property (like)",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "mailingListAddress",
-              "paramType": "query",
-              "required": false
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -3142,11 +3142,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "Filter the value of mailingListAddress property (like)",
               "fullType": "string",
-              "name": "exchangeService",
-              "paramType": "path",
-              "required": true
+              "name": "mailingListAddress",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -3161,12 +3161,36 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "email.exchange.MailingListDepartRestrictionEnum",
+              "description": "Depart restriction policy",
+              "fullType": "email.exchange.MailingListDepartRestrictionEnum",
+              "name": "departRestriction",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
               "description": "Name displayed in Global Access List",
               "fullType": "string",
               "name": "displayName",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "If true mailing list is hiddend in Global Address List",
+              "fullType": "boolean",
+              "name": "hiddenFromGAL",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "email.exchange.MailingListJoinRestrictionEnum",
+              "description": "Join restriction policy",
+              "fullType": "email.exchange.MailingListJoinRestrictionEnum",
+              "name": "joinRestriction",
+              "paramType": "body",
+              "required": true
             },
             {
               "dataType": "string",
@@ -3185,12 +3209,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "email.exchange.MailingListDepartRestrictionEnum",
-              "description": "Depart restriction policy",
-              "fullType": "email.exchange.MailingListDepartRestrictionEnum",
-              "name": "departRestriction",
+              "dataType": "long",
+              "description": "Maximum send email size in MB",
+              "fullType": "long",
+              "name": "maxSendSize",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "boolean",
@@ -3201,27 +3225,11 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "boolean",
-              "description": "If true mailing list is hiddend in Global Address List",
-              "fullType": "boolean",
-              "name": "hiddenFromGAL",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Maximum send email size in MB",
-              "fullType": "long",
-              "name": "maxSendSize",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "email.exchange.MailingListJoinRestrictionEnum",
-              "description": "Join restriction policy",
-              "fullType": "email.exchange.MailingListJoinRestrictionEnum",
-              "name": "joinRestriction",
-              "paramType": "body",
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
               "required": true
             },
             {
@@ -3229,14 +3237,6 @@ export const schema: Schema = {
               "description": "The internal name of your exchange organization",
               "fullType": "string",
               "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your exchange service",
-              "fullType": "string",
-              "name": "exchangeService",
               "paramType": "path",
               "required": true
             }
@@ -3260,14 +3260,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -3279,6 +3271,14 @@ export const schema: Schema = {
               "description": "The mailing list address",
               "fullType": "string",
               "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3296,14 +3296,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -3315,6 +3307,14 @@ export const schema: Schema = {
               "description": "The mailing list address",
               "fullType": "string",
               "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3339,14 +3339,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -3358,6 +3350,14 @@ export const schema: Schema = {
               "description": "The mailing list address",
               "fullType": "string",
               "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3381,14 +3381,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -3400,6 +3392,14 @@ export const schema: Schema = {
               "description": "The mailing list address",
               "fullType": "string",
               "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3425,14 +3425,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -3444,6 +3436,14 @@ export const schema: Schema = {
               "description": "The mailing list address",
               "fullType": "string",
               "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3467,9 +3467,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "Alias",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "alias",
               "paramType": "path",
               "required": true
             },
@@ -3491,9 +3491,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Alias",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "alias",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3511,9 +3511,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "Alias",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "alias",
               "paramType": "path",
               "required": true
             },
@@ -3535,9 +3535,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Alias",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "alias",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3561,14 +3561,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -3580,6 +3572,14 @@ export const schema: Schema = {
               "description": "The mailing list address",
               "fullType": "string",
               "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3605,14 +3605,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -3624,6 +3616,14 @@ export const schema: Schema = {
               "description": "The mailing list address",
               "fullType": "string",
               "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3647,14 +3647,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -3674,6 +3666,14 @@ export const schema: Schema = {
               "description": "Manager account id",
               "fullType": "long",
               "name": "managerAccountId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3691,14 +3691,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -3718,6 +3710,14 @@ export const schema: Schema = {
               "description": "Manager account id",
               "fullType": "long",
               "name": "managerAccountId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3741,14 +3741,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -3760,6 +3752,14 @@ export const schema: Schema = {
               "description": "The mailing list address",
               "fullType": "string",
               "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3777,14 +3777,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Member contact id",
-              "fullType": "long",
-              "name": "memberContactId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
               "description": "Member account id",
               "fullType": "long",
               "name": "memberAccountId",
@@ -3792,12 +3784,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
+              "dataType": "long",
+              "description": "Member contact id",
+              "fullType": "long",
+              "name": "memberContactId",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -3812,6 +3804,14 @@ export const schema: Schema = {
               "description": "The mailing list address",
               "fullType": "string",
               "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3835,14 +3835,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -3862,6 +3854,14 @@ export const schema: Schema = {
               "description": "Member account id",
               "fullType": "long",
               "name": "memberAccountId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3879,14 +3879,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -3906,6 +3898,14 @@ export const schema: Schema = {
               "description": "Member account id",
               "fullType": "long",
               "name": "memberAccountId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3929,14 +3929,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -3948,6 +3940,14 @@ export const schema: Schema = {
               "description": "The mailing list address",
               "fullType": "string",
               "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -3965,14 +3965,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Member contact id",
-              "fullType": "long",
-              "name": "memberContactId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
               "description": "Member account id",
               "fullType": "long",
               "name": "memberAccountId",
@@ -3980,12 +3972,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
+              "dataType": "long",
+              "description": "Member contact id",
+              "fullType": "long",
+              "name": "memberContactId",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -4000,6 +3992,14 @@ export const schema: Schema = {
               "description": "The mailing list address",
               "fullType": "string",
               "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4023,14 +4023,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -4050,6 +4042,14 @@ export const schema: Schema = {
               "description": "Member account id",
               "fullType": "long",
               "name": "memberContactId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4067,14 +4067,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -4094,6 +4086,14 @@ export const schema: Schema = {
               "description": "Member account id",
               "fullType": "long",
               "name": "memberContactId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4117,14 +4117,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -4136,6 +4128,14 @@ export const schema: Schema = {
               "description": "The mailing list address",
               "fullType": "string",
               "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4161,14 +4161,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -4180,6 +4172,14 @@ export const schema: Schema = {
               "description": "The mailing list address",
               "fullType": "string",
               "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4202,10 +4202,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id to give send on behalf to",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -4226,10 +4226,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give send on behalf to",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4246,10 +4246,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id to give send on behalf to",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -4270,10 +4270,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give send on behalf to",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4297,14 +4297,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -4316,6 +4308,14 @@ export const schema: Schema = {
               "description": "The mailing list address",
               "fullType": "string",
               "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4341,14 +4341,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -4360,6 +4352,14 @@ export const schema: Schema = {
               "description": "The mailing list address",
               "fullType": "string",
               "name": "mailingListAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4382,10 +4382,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id to give send on behalf to",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -4406,10 +4406,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give send on behalf to",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4426,10 +4426,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id to give send on behalf to",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -4450,10 +4450,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give send on behalf to",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4476,20 +4476,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "email.exchange.OutlookVersionEnum",
-              "description": "OS version of outlook",
-              "fullType": "email.exchange.OutlookVersionEnum",
-              "name": "outlookVersion",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "email.exchange.LanguageEnum",
-              "description": "Language version of outlook",
-              "fullType": "email.exchange.LanguageEnum",
-              "name": "outlookLanguage",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your exchange service",
+              "fullType": "string",
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -4500,12 +4492,20 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange service",
-              "fullType": "string",
-              "name": "exchangeService",
-              "paramType": "path",
-              "required": true
+              "dataType": "email.exchange.LanguageEnum",
+              "description": "Language version of outlook",
+              "fullType": "email.exchange.LanguageEnum",
+              "name": "outlookLanguage",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "email.exchange.OutlookVersionEnum",
+              "description": "OS version of outlook",
+              "fullType": "email.exchange.OutlookVersionEnum",
+              "name": "outlookVersion",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "email.exchange.OutlookVersions[]"
@@ -4527,17 +4527,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4562,17 +4562,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4596,17 +4596,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4632,17 +4632,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4666,14 +4666,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -4685,6 +4677,14 @@ export const schema: Schema = {
               "description": "Notified Account Id",
               "fullType": "long",
               "name": "notifiedAccountId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4702,14 +4702,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -4721,6 +4713,14 @@ export const schema: Schema = {
               "description": "Notified Account Id",
               "fullType": "long",
               "name": "notifiedAccountId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4744,11 +4744,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Filter the value of path property (like)",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "path",
-              "paramType": "query",
-              "required": false
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -4760,11 +4760,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "Filter the value of path property (like)",
               "fullType": "string",
-              "name": "exchangeService",
-              "paramType": "path",
-              "required": true
+              "name": "path",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -4778,6 +4778,14 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "email.exchange.PublicFolderRightTypeEnum",
+              "description": "Access right for the guest users",
+              "fullType": "email.exchange.PublicFolderRightTypeEnum",
+              "name": "anonymousPermission",
+              "paramType": "body",
+              "required": false
+            },
             {
               "dataType": "email.exchange.PublicFolderRightTypeEnum",
               "description": "Default access right",
@@ -4795,22 +4803,6 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "email.exchange.PublicFolderTypeEnum",
-              "description": "Type for public folder",
-              "fullType": "email.exchange.PublicFolderTypeEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "email.exchange.PublicFolderRightTypeEnum",
-              "description": "Access right for the guest users",
-              "fullType": "email.exchange.PublicFolderRightTypeEnum",
-              "name": "anonymousPermission",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "long",
               "description": "Quota for public folder in MB",
               "fullType": "long",
@@ -4819,11 +4811,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
+              "dataType": "email.exchange.PublicFolderTypeEnum",
+              "description": "Type for public folder",
+              "fullType": "email.exchange.PublicFolderTypeEnum",
+              "name": "type",
+              "paramType": "body",
               "required": true
             },
             {
@@ -4831,6 +4823,14 @@ export const schema: Schema = {
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -4854,17 +4854,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -4890,17 +4890,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -4933,17 +4933,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -4975,17 +4975,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -5010,14 +5010,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Account id to have access to public folder",
-              "fullType": "long",
-              "name": "allowedAccountId",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "email.exchange.PublicFolderRightTypeEnum",
               "description": "Access rights to be set for the account",
               "fullType": "email.exchange.PublicFolderRightTypeEnum",
@@ -5026,11 +5018,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
+              "dataType": "long",
+              "description": "Account id to have access to public folder",
+              "fullType": "long",
+              "name": "allowedAccountId",
+              "paramType": "body",
               "required": true
             },
             {
@@ -5038,6 +5030,14 @@ export const schema: Schema = {
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -5068,10 +5068,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -5085,17 +5085,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Path for public folder",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "path",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "Path for public folder",
+              "fullType": "string",
+              "name": "path",
               "paramType": "path",
               "required": true
             }
@@ -5112,10 +5112,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -5129,17 +5129,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Path for public folder",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "path",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "Path for public folder",
+              "fullType": "string",
+              "name": "path",
               "paramType": "path",
               "required": true
             }
@@ -5163,10 +5163,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -5180,17 +5180,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Path for public folder",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "path",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "Path for public folder",
+              "fullType": "string",
+              "name": "path",
               "paramType": "path",
               "required": true
             }
@@ -5214,17 +5214,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -5256,17 +5256,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -5290,11 +5290,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Filter the value of resourceEmailAddress property (like)",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "resourceEmailAddress",
-              "paramType": "query",
-              "required": false
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -5306,11 +5306,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "Filter the value of resourceEmailAddress property (like)",
               "fullType": "string",
-              "name": "exchangeService",
-              "paramType": "path",
-              "required": true
+              "name": "resourceEmailAddress",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -5325,58 +5325,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "resource location",
-              "fullType": "string",
-              "name": "location",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "email.exchange.ShowMeetingDetailsEnum",
-              "description": "granted right on a calendar of that resourceAccount",
-              "fullType": "email.exchange.ShowMeetingDetailsEnum",
-              "name": "showMeetingDetails",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "email.exchange.ResourceTypeEnum",
-              "description": "type of your reservation",
-              "fullType": "email.exchange.ResourceTypeEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "boolean",
-              "description": "remove any text in the message body of incoming meeting requests on resourceAccount",
+              "description": "meeting organizer's name is used as the subject of the meeting request",
               "fullType": "boolean",
-              "name": "deleteComments",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "number of the same equipment or capacity of a room",
-              "fullType": "long",
-              "name": "capacity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "resource account display name",
-              "fullType": "string",
-              "name": "displayName",
+              "name": "addOrganizerToSubject",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "boolean",
-              "description": "remove email subject of incoming meeting requests on resourceAccount",
+              "description": "resource can be scheduled by more than one person during the same time period",
               "fullType": "boolean",
-              "name": "deleteSubject",
+              "name": "allowConflict",
               "paramType": "body",
               "required": false
             },
@@ -5389,10 +5349,42 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "long",
+              "description": "number of the same equipment or capacity of a room",
+              "fullType": "long",
+              "name": "capacity",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "boolean",
-              "description": "meeting organizer's name is used as the subject of the meeting request",
+              "description": "remove any text in the message body of incoming meeting requests on resourceAccount",
               "fullType": "boolean",
-              "name": "addOrganizerToSubject",
+              "name": "deleteComments",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "remove email subject of incoming meeting requests on resourceAccount",
+              "fullType": "boolean",
+              "name": "deleteSubject",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "resource account display name",
+              "fullType": "string",
+              "name": "displayName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "resource location",
+              "fullType": "string",
+              "name": "location",
               "paramType": "body",
               "required": false
             },
@@ -5413,19 +5405,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "boolean",
-              "description": "resource can be scheduled by more than one person during the same time period",
-              "fullType": "boolean",
-              "name": "allowConflict",
+              "dataType": "email.exchange.ShowMeetingDetailsEnum",
+              "description": "granted right on a calendar of that resourceAccount",
+              "fullType": "email.exchange.ShowMeetingDetailsEnum",
+              "name": "showMeetingDetails",
               "paramType": "body",
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
+              "dataType": "email.exchange.ResourceTypeEnum",
+              "description": "type of your reservation",
+              "fullType": "email.exchange.ResourceTypeEnum",
+              "name": "type",
+              "paramType": "body",
               "required": true
             },
             {
@@ -5433,6 +5425,14 @@ export const schema: Schema = {
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -5456,17 +5456,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -5492,17 +5492,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -5535,17 +5535,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -5577,17 +5577,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -5621,17 +5621,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -5662,10 +5662,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "delegate's account id",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -5679,17 +5679,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "resource as email",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "resourceEmailAddress",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "delegate's account id",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "resource as email",
+              "fullType": "string",
+              "name": "resourceEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -5706,10 +5706,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "delegate's account id",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -5723,17 +5723,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "resource as email",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "resourceEmailAddress",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "delegate's account id",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "resource as email",
+              "fullType": "string",
+              "name": "resourceEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -5757,17 +5757,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -5792,17 +5792,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -5826,17 +5826,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -5861,17 +5861,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -5895,11 +5895,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Filter the value of sharedEmailAddress property (like)",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "sharedEmailAddress",
-              "paramType": "query",
-              "required": false
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -5911,11 +5911,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "Filter the value of sharedEmailAddress property (like)",
               "fullType": "string",
-              "name": "exchangeService",
-              "paramType": "path",
-              "required": true
+              "name": "sharedEmailAddress",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -5930,10 +5930,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "email.exchange.MailingFilterEnum[]",
-              "description": "Enable mailing filtrering",
-              "fullType": "email.exchange.MailingFilterEnum[]",
-              "name": "mailingFilter",
+              "dataType": "string",
+              "description": "Shared account display name",
+              "fullType": "string",
+              "name": "displayName",
               "paramType": "body",
               "required": false
             },
@@ -5942,22 +5942,6 @@ export const schema: Schema = {
               "description": "Shared account first name",
               "fullType": "string",
               "name": "firstName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Shared account maximum size",
-              "fullType": "long",
-              "name": "quota",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Shared account display name",
-              "fullType": "string",
-              "name": "displayName",
               "paramType": "body",
               "required": false
             },
@@ -5971,11 +5955,35 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Shared account initials",
+              "fullType": "string",
+              "name": "initials",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Shared account last name",
               "fullType": "string",
               "name": "lastName",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "email.exchange.MailingFilterEnum[]",
+              "description": "Enable mailing filtrering",
+              "fullType": "email.exchange.MailingFilterEnum[]",
+              "name": "mailingFilter",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Shared account maximum size",
+              "fullType": "long",
+              "name": "quota",
+              "paramType": "body",
+              "required": true
             },
             {
               "dataType": "string",
@@ -5987,25 +5995,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Shared account initials",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "initials",
-              "paramType": "body",
-              "required": false
+              "name": "exchangeService",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
               "description": "The internal name of your exchange organization",
               "fullType": "string",
               "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your exchange service",
-              "fullType": "string",
-              "name": "exchangeService",
               "paramType": "path",
               "required": true
             }
@@ -6029,17 +6029,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -6065,17 +6065,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -6108,17 +6108,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -6150,17 +6150,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -6194,17 +6194,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -6235,10 +6235,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id to give full access",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -6252,17 +6252,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Default email for this shared mailbox",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "sharedEmailAddress",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give full access",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "Default email for this shared mailbox",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -6279,10 +6279,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id to give full access",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -6296,17 +6296,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Default email for this shared mailbox",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "sharedEmailAddress",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give full access",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "Default email for this shared mailbox",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -6330,17 +6330,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -6374,17 +6374,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -6415,10 +6415,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id to give send as",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -6432,17 +6432,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Default email for this shared mailbox",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "sharedEmailAddress",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give send as",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "Default email for this shared mailbox",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -6459,10 +6459,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id to give send as",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -6476,17 +6476,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Default email for this shared mailbox",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "sharedEmailAddress",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give send as",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "Default email for this shared mailbox",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -6510,17 +6510,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -6554,17 +6554,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -6595,10 +6595,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id to give send on behalf to",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -6612,17 +6612,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Default email for this shared mailbox",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "sharedEmailAddress",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give send on behalf to",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "Default email for this shared mailbox",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -6639,10 +6639,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
+              "dataType": "long",
+              "description": "Account id to give send on behalf to",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -6656,17 +6656,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Default email for this shared mailbox",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "sharedEmailAddress",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give send on behalf to",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "Default email for this shared mailbox",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -6690,17 +6690,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             },
@@ -6732,25 +6732,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Default email for this shared mailbox",
-              "fullType": "string",
-              "name": "sharedEmailAddress",
               "paramType": "path",
               "required": true
             },
@@ -6759,6 +6743,22 @@ export const schema: Schema = {
               "description": "Task id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Default email for this shared mailbox",
+              "fullType": "string",
+              "name": "sharedEmailAddress",
               "paramType": "path",
               "required": true
             }
@@ -6782,17 +6782,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -6816,17 +6816,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -6850,14 +6850,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
-              "fullType": "string",
-              "name": "organizationName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your exchange service",
               "fullType": "string",
               "name": "exchangeService",
@@ -6869,6 +6861,14 @@ export const schema: Schema = {
               "description": "Task id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your exchange organization",
+              "fullType": "string",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -6892,17 +6892,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }
@@ -6926,17 +6926,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your exchange organization",
+              "description": "The internal name of your exchange service",
               "fullType": "string",
-              "name": "organizationName",
+              "name": "exchangeService",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The internal name of your exchange service",
+              "description": "The internal name of your exchange organization",
               "fullType": "string",
-              "name": "exchangeService",
+              "name": "organizationName",
               "paramType": "path",
               "required": true
             }

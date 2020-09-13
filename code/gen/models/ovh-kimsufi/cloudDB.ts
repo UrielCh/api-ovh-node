@@ -108,18 +108,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Backup name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "uuid",
               "description": "Cluster id",
               "fullType": "uuid",
               "name": "clusterId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Backup name",
+              "fullType": "string",
+              "name": "name",
               "paramType": "body",
               "required": true
             }
@@ -142,18 +142,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Enterprise cluster ID",
-              "fullType": "string",
-              "name": "clusterId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "uuid",
               "description": "Backup id",
               "fullType": "uuid",
               "name": "backupId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Enterprise cluster ID",
+              "fullType": "string",
+              "name": "clusterId",
               "paramType": "path",
               "required": true
             }
@@ -170,18 +170,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Enterprise cluster ID",
-              "fullType": "string",
-              "name": "clusterId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "uuid",
               "description": "Backup id",
               "fullType": "uuid",
               "name": "backupId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Enterprise cluster ID",
+              "fullType": "string",
+              "name": "clusterId",
               "paramType": "path",
               "required": true
             }
@@ -204,6 +204,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "service.TerminationFutureUseEnum",
               "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
@@ -216,14 +224,6 @@ export const schema: Schema = {
               "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
               "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
               "paramType": "body",
               "required": false
             },
@@ -642,18 +642,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "time",
-              "description": "Hour and minute the maintenance will start in UTC",
-              "fullType": "time",
-              "name": "startTime",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "long",
               "description": "Maximum duration of maintenance window in minutes",
               "fullType": "long",
               "name": "duration",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "time",
+              "description": "Hour and minute the maintenance will start in UTC",
+              "fullType": "time",
+              "name": "startTime",
               "paramType": "body",
               "required": false
             },
@@ -731,18 +731,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "datetime",
-              "description": "Date and time used for the PITR",
-              "fullType": "datetime",
-              "name": "timestamp",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "uuid",
               "description": "Backup id",
               "fullType": "uuid",
               "name": "backupId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Date and time used for the PITR",
+              "fullType": "datetime",
+              "name": "timestamp",
               "paramType": "body",
               "required": false
             },
@@ -959,18 +959,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Security group name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "uuid",
               "description": "Cluster id",
               "fullType": "uuid",
               "name": "clusterId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Security group name",
+              "fullType": "string",
+              "name": "name",
               "paramType": "body",
               "required": true
             }
@@ -1169,17 +1169,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Security group id",
+              "description": "Rule id",
               "fullType": "uuid",
-              "name": "securityGroupId",
+              "name": "ruleId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "uuid",
-              "description": "Rule id",
+              "description": "Security group id",
               "fullType": "uuid",
-              "name": "ruleId",
+              "name": "securityGroupId",
               "paramType": "path",
               "required": true
             }
@@ -1205,17 +1205,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "uuid",
-              "description": "Security group id",
+              "description": "Rule id",
               "fullType": "uuid",
-              "name": "securityGroupId",
+              "name": "ruleId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "uuid",
-              "description": "Rule id",
+              "description": "Security group id",
               "fullType": "uuid",
-              "name": "ruleId",
+              "name": "securityGroupId",
               "paramType": "path",
               "required": true
             }
@@ -1291,12 +1291,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "cloudDB.task.Status",
-              "description": "Filter the value of status property (=)",
-              "fullType": "cloudDB.task.Status",
-              "name": "status",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "Enterprise cluster ID",
+              "fullType": "string",
+              "name": "clusterId",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -1307,12 +1307,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Enterprise cluster ID",
-              "fullType": "string",
-              "name": "clusterId",
-              "paramType": "path",
-              "required": true
+              "dataType": "cloudDB.task.Status",
+              "description": "Filter the value of status property (=)",
+              "fullType": "cloudDB.task.Status",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "uuid[]"

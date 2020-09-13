@@ -88,6 +88,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "service.TerminationFutureUseEnum",
               "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
@@ -100,14 +108,6 @@ export const schema: Schema = {
               "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
               "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
               "paramType": "body",
               "required": false
             },
@@ -199,12 +199,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "license.TaskStateEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "license.TaskStateEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The name of your RedHat license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "license.ActionType",
@@ -215,12 +215,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "The name of your RedHat license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "license.TaskStateEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "license.TaskStateEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"

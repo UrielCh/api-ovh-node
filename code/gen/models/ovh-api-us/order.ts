@@ -121,14 +121,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Description of your cart",
               "fullType": "string",
               "name": "description",
@@ -142,6 +134,14 @@ export const schema: Schema = {
               "name": "expire",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "order.cart.Cart"
@@ -209,10 +209,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -220,14 +220,6 @@ export const schema: Schema = {
               "description": "Identifier of a baremetal server offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -245,6 +237,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -295,10 +295,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -319,14 +319,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
               "name": "pricingMode",
@@ -339,6 +331,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -380,14 +380,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
               "fullType": "boolean",
@@ -402,6 +394,14 @@ export const schema: Schema = {
               "name": "waiveRetractationPeriod",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "order.Order"
@@ -443,10 +443,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -454,14 +454,6 @@ export const schema: Schema = {
               "description": "Identifier of the Public Cloud offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -479,6 +471,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -529,10 +529,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -553,14 +553,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
               "name": "pricingMode",
@@ -573,6 +565,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -643,18 +643,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Coupon identifier",
               "fullType": "string",
               "name": "coupon",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -685,17 +685,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of planCode property (=)",
+              "description": "Filter the value of family property (=)",
               "fullType": "string",
-              "name": "planCode",
+              "name": "family",
               "paramType": "query",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Filter the value of family property (=)",
+              "description": "Filter the value of planCode property (=)",
               "fullType": "string",
-              "name": "family",
+              "name": "planCode",
               "paramType": "query",
               "required": false
             }
@@ -713,10 +713,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -724,14 +724,6 @@ export const schema: Schema = {
               "description": "Identifier of a dedicated server offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -749,6 +741,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -779,19 +779,19 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of a dedicated server offer",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of family property (=)",
               "fullType": "string",
               "name": "family",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of a dedicated server offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": true
             }
           ],
           "responseType": "order.cart.GenericOptionDefinition[]"
@@ -807,10 +807,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -831,14 +831,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
               "name": "pricingMode",
@@ -851,6 +843,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -893,10 +893,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -904,14 +904,6 @@ export const schema: Schema = {
               "description": "Identifier of the Dedicated Discover server offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -929,6 +921,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -979,10 +979,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -1003,14 +1003,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
               "name": "pricingMode",
@@ -1023,6 +1015,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1065,10 +1065,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -1076,14 +1076,6 @@ export const schema: Schema = {
               "description": "Identifier of the IP addresses offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -1101,6 +1093,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1151,10 +1151,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -1175,14 +1175,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
               "name": "pricingMode",
@@ -1195,6 +1187,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1237,10 +1237,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -1248,14 +1248,6 @@ export const schema: Schema = {
               "description": "Identifier of the IP Load-Balancing offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -1273,6 +1265,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1323,10 +1323,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -1347,14 +1347,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
               "name": "pricingMode",
@@ -1367,6 +1359,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1471,6 +1471,22 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "New duration for item",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "New quantity for item",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Cart identifier",
               "fullType": "string",
               "name": "cartId",
@@ -1484,22 +1500,6 @@ export const schema: Schema = {
               "name": "itemId",
               "paramType": "path",
               "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "New quantity for item",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "New duration for item",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": false
             }
           ],
           "responseType": "order.cart.Item"
@@ -1557,22 +1557,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Product item identifier",
-              "fullType": "long",
-              "name": "itemId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Label for your configuration item",
               "fullType": "string",
               "name": "label",
@@ -1585,6 +1569,22 @@ export const schema: Schema = {
               "fullType": "text",
               "name": "value",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Product item identifier",
+              "fullType": "long",
+              "name": "itemId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1615,17 +1615,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Product item identifier",
+              "description": "Configuration item identifier",
               "fullType": "long",
-              "name": "itemId",
+              "name": "configurationId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Configuration item identifier",
+              "description": "Product item identifier",
               "fullType": "long",
-              "name": "configurationId",
+              "name": "itemId",
               "paramType": "path",
               "required": true
             }
@@ -1651,17 +1651,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Product item identifier",
+              "description": "Configuration item identifier",
               "fullType": "long",
-              "name": "itemId",
+              "name": "configurationId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Configuration item identifier",
+              "description": "Product item identifier",
               "fullType": "long",
-              "name": "configurationId",
+              "name": "itemId",
               "paramType": "path",
               "required": true
             }
@@ -1739,10 +1739,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the rental of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -1750,14 +1750,6 @@ export const schema: Schema = {
               "description": "Identifier of the CloudLinux license offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the rental of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -1775,6 +1767,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1817,10 +1817,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the rental of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -1828,14 +1828,6 @@ export const schema: Schema = {
               "description": "Identifier of the Directadmin license offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the rental of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -1853,6 +1845,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1895,10 +1895,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the rental of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -1906,14 +1906,6 @@ export const schema: Schema = {
               "description": "Identifier of the Plesk license offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the rental of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -1931,6 +1923,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1981,10 +1981,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -2005,14 +2005,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Pricing mode selected for the product",
               "fullType": "string",
               "name": "pricingMode",
@@ -2025,6 +2017,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2067,10 +2067,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the rental of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -2078,14 +2078,6 @@ export const schema: Schema = {
               "description": "Identifier of the SqlServer license offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the rental of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -2103,6 +2095,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2145,10 +2145,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the rental of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -2156,14 +2156,6 @@ export const schema: Schema = {
               "description": "Identifier of the Virtuozzo license offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the rental of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -2181,6 +2173,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2231,10 +2231,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -2255,14 +2255,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Pricing mode selected for the product",
               "fullType": "string",
               "name": "pricingMode",
@@ -2275,6 +2267,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2317,10 +2317,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the rental of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -2328,14 +2328,6 @@ export const schema: Schema = {
               "description": "Identifier of the Windows license offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the rental of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -2353,6 +2345,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2395,10 +2395,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the rental of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -2406,14 +2406,6 @@ export const schema: Schema = {
               "description": "Identifier of the Worklight license offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the rental of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -2431,6 +2423,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2473,10 +2473,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the rental of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -2484,14 +2484,6 @@ export const schema: Schema = {
               "description": "Identifier of the cPanel license offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the rental of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -2509,6 +2501,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2551,10 +2551,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -2562,14 +2562,6 @@ export const schema: Schema = {
               "description": "Identifier of the OVHcloud Connect offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -2588,12 +2580,192 @@ export const schema: Schema = {
               "name": "quantity",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "order.cart.Item"
         }
       ],
       "path": "/order/cart/{cartId}/ovhCloudConnect"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about Hosted Private Cloud offers",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new Hosted Private Cloud item in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the Hosted Private Cloud offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/privateCloud"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about Hosted Private Cloud options",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the Hosted Private Cloud you want to consult options",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new Hosted Private Cloud option in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Cart item to be linked",
+              "fullType": "long",
+              "name": "itemId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of a Hosted Private Cloud option offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/privateCloud/options"
     },
     {
       "description": "Missing description",
@@ -2629,10 +2801,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -2640,14 +2812,6 @@ export const schema: Schema = {
               "description": "Identifier of the SSL Comodo offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -2665,6 +2829,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2715,10 +2887,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -2739,14 +2911,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
               "name": "pricingMode",
@@ -2759,6 +2923,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2827,10 +2999,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -2838,14 +3010,6 @@ export const schema: Schema = {
               "description": "Identifier of the Veeam Enterprise offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -2863,6 +3027,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2913,10 +3085,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -2937,14 +3109,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
               "name": "pricingMode",
@@ -2957,6 +3121,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2999,10 +3171,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -3010,14 +3182,6 @@ export const schema: Schema = {
               "description": "Identifier of the VPS offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -3035,6 +3199,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -3085,10 +3257,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -3109,14 +3281,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Pricing mode selected for the purchase of the product",
               "fullType": "string",
               "name": "pricingMode",
@@ -3129,6 +3293,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -3171,10 +3343,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cart identifier",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
               "required": true
             },
             {
@@ -3182,14 +3354,6 @@ export const schema: Schema = {
               "description": "Identifier of the vRack offer",
               "fullType": "string",
               "name": "planCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
               "paramType": "body",
               "required": true
             },
@@ -3207,6 +3371,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -3274,17 +3446,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the additional baremetal servers offer",
-              "fullType": "string",
-              "name": "planCode",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "description": "Identifier of the additional baremetal servers offer",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "body",
               "required": true
             },
@@ -3377,17 +3549,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the additional Cloud offer",
-              "fullType": "string",
-              "name": "planCode",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "description": "Identifier of the additional Cloud offer",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "body",
               "required": true
             },
@@ -3480,17 +3652,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the additional dedicated offer",
-              "fullType": "string",
-              "name": "planCode",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "description": "Identifier of the additional dedicated offer",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "body",
               "required": true
             },
@@ -3583,17 +3755,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the additional IP Load-Balancing offer",
-              "fullType": "string",
-              "name": "planCode",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "description": "Identifier of the additional IP Load-Balancing offer",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "body",
               "required": true
             },
@@ -3686,17 +3858,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the additional Logs offer",
-              "fullType": "string",
-              "name": "planCode",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "description": "Identifier of the additional Logs offer",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "body",
               "required": true
             },
@@ -3789,17 +3961,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the additional private cloud offer",
-              "fullType": "string",
-              "name": "planCode",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "description": "Identifier of the additional private cloud offer",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "body",
               "required": true
             },
@@ -3892,17 +4064,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the additional private cloud offer",
-              "fullType": "string",
-              "name": "planCode",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "description": "Identifier of the additional private cloud offer",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "body",
               "required": true
             },
@@ -3995,17 +4167,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the additional private cloud offer",
-              "fullType": "string",
-              "name": "planCode",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "description": "Identifier of the additional private cloud offer",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "body",
               "required": true
             },
@@ -4098,17 +4270,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the additional private cloud enterprise offer",
-              "fullType": "string",
-              "name": "planCode",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "description": "Identifier of the additional private cloud enterprise offer",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "body",
               "required": true
             },
@@ -4201,17 +4373,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the additional VPS offer",
-              "fullType": "string",
-              "name": "planCode",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Duration selected for the purchase of the product",
-              "fullType": "duration",
-              "name": "duration",
+              "description": "Identifier of the additional VPS offer",
+              "fullType": "string",
+              "name": "planCode",
               "paramType": "body",
               "required": true
             },
@@ -4581,6 +4753,32 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve information of Private Cloud catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.pcc.Catalog"
+        }
+      ],
+      "path": "/order/catalog/formatted/privateCloud"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
@@ -4848,19 +5046,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Quantity you want to upgrade to",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The dedicated service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -4876,14 +5074,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Plan code of the offer you want to upgrade to",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
               "fullType": "boolean",
@@ -4897,6 +5087,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
               "required": true
             },
             {
@@ -4977,19 +5175,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Quantity you want to upgrade to",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The dedicated service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -5005,14 +5203,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Plan code of the offer you want to upgrade to",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
               "fullType": "boolean",
@@ -5026,6 +5216,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
               "required": true
             },
             {
@@ -5106,19 +5304,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Quantity you want to upgrade to",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The internal ID of your Plesk license service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -5134,14 +5332,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Plan code of the offer you want to upgrade to",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
               "fullType": "boolean",
@@ -5155,6 +5345,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
               "required": true
             },
             {
@@ -5235,19 +5433,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Quantity you want to upgrade to",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The internal ID of your cPanel license service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -5263,14 +5461,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Plan code of the offer you want to upgrade to",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
               "fullType": "boolean",
@@ -5284,6 +5474,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
               "required": true
             },
             {
@@ -5364,19 +5562,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Quantity you want to upgrade to",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The private cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -5392,14 +5590,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Plan code of the offer you want to upgrade to",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
               "fullType": "boolean",
@@ -5413,6 +5603,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
               "required": true
             },
             {
@@ -5493,19 +5691,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Quantity you want to upgrade to",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The internal ID of your VPS service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -5521,14 +5719,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Plan code of the offer you want to upgrade to",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
               "fullType": "boolean",
@@ -5542,6 +5732,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
               "required": true
             },
             {
@@ -5622,19 +5820,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Quantity you want to upgrade to",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The VPS service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -5650,14 +5848,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Plan code of the offer you want to upgrade to",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Indicates that order will be automatically paid with preferred payment method",
               "fullType": "boolean",
@@ -5671,6 +5861,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "quantity",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
               "required": true
             },
             {
@@ -6664,7 +6862,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "maximumQuantity": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Maximum quantity that can be ordered",
           "fullType": "long",
           "readOnly": true,

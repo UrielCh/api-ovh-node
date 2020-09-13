@@ -242,18 +242,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your CDN Website offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipv4",
               "description": "",
               "fullType": "ipv4",
               "name": "ipv4",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your CDN Website offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -270,18 +270,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your CDN Website offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipv4",
               "description": "",
               "fullType": "ipv4",
               "name": "ipv4",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your CDN Website offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -304,18 +304,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your CDN Website offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipv4",
               "description": "",
               "fullType": "ipv4",
               "name": "ipv4",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your CDN Website offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -338,18 +338,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your CDN Website offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipv4",
               "description": "",
               "fullType": "ipv4",
               "name": "ipv4",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your CDN Website offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -435,17 +435,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your CDN Website offer",
+              "description": "",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "",
+              "description": "The internal name of your CDN Website offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -463,17 +463,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your CDN Website offer",
+              "description": "",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "",
+              "description": "The internal name of your CDN Website offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -497,17 +497,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your CDN Website offer",
+              "description": "",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "",
+              "description": "The internal name of your CDN Website offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -530,27 +530,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "cdn.website.StatsTypeEnum",
+              "dataType": "string",
               "description": "",
-              "fullType": "cdn.website.StatsTypeEnum",
-              "name": "type",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "cdn.website.StatsPeriodEnum",
-              "description": "",
-              "fullType": "cdn.website.StatsPeriodEnum",
-              "name": "period",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "cdn.website.StatsValueEnum",
-              "description": "",
-              "fullType": "cdn.website.StatsValueEnum",
-              "name": "value",
-              "paramType": "query",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
               "required": true
             },
             {
@@ -562,11 +546,27 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
+              "dataType": "cdn.website.StatsPeriodEnum",
               "description": "",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "path",
+              "fullType": "cdn.website.StatsPeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "cdn.website.StatsTypeEnum",
+              "description": "",
+              "fullType": "cdn.website.StatsTypeEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "cdn.website.StatsValueEnum",
+              "description": "",
+              "fullType": "cdn.website.StatsValueEnum",
+              "name": "value",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -589,17 +589,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your CDN Website offer",
+              "description": "",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "",
+              "description": "The internal name of your CDN Website offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -623,17 +623,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your CDN Website offer",
+              "description": "",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "",
+              "description": "The internal name of your CDN Website offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },

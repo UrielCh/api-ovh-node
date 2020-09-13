@@ -116,14 +116,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service Id",
-              "fullType": "string",
-              "name": "serviceId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Indicates if renew order is generated",
               "fullType": "boolean",
@@ -145,6 +137,14 @@ export const schema: Schema = {
               "fullType": "coreTypes.ServiceId[]:long[]",
               "name": "services",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service Id",
+              "fullType": "string",
+              "name": "serviceId",
+              "paramType": "path",
               "required": true
             }
           ],

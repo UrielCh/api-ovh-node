@@ -26,18 +26,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Filter the value of routedTo.serviceName property (like)",
-              "fullType": "string",
-              "name": "routedTo.serviceName",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "ipBlock",
               "description": "Filter the value of ip property (contains or equals)",
               "fullType": "ipBlock",
               "name": "ip",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of routedTo.serviceName property (like)",
+              "fullType": "string",
+              "name": "routedTo.serviceName",
               "paramType": "query",
               "required": false
             },
@@ -157,6 +157,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "ipv4",
+              "description": "IP of your backend",
+              "fullType": "ipv4",
+              "name": "ipBackend",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "ip.LoadBalancingBackendProbeEnum",
               "description": "The type of probe used",
               "fullType": "ip.LoadBalancingBackendProbeEnum",
@@ -171,14 +179,6 @@ export const schema: Schema = {
               "name": "weight",
               "paramType": "body",
               "required": false
-            },
-            {
-              "dataType": "ipv4",
-              "description": "IP of your backend",
-              "fullType": "ipv4",
-              "name": "ipBackend",
-              "paramType": "body",
-              "required": true
             },
             {
               "dataType": "string",
@@ -207,18 +207,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipv4",
               "description": "IP of your backend",
               "fullType": "ipv4",
               "name": "backend",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -235,18 +235,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipv4",
               "description": "IP of your backend",
               "fullType": "ipv4",
               "name": "backend",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -270,18 +270,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipv4",
               "description": "IP of your backend",
               "fullType": "ipv4",
               "name": "backend",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -304,14 +304,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ip",
-              "description": "Main backend ip, must be in the same zone as the backup",
-              "fullType": "ip",
-              "name": "mainBackendIp",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "boolean",
               "description": "Set or unset the backend as backup. mainBackendIp is optional in case of unset",
               "fullType": "boolean",
@@ -320,18 +312,26 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "ip",
+              "description": "Main backend ip, must be in the same zone as the backup",
+              "fullType": "ip",
+              "name": "mainBackendIp",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "ipv4",
               "description": "IP of your backend",
               "fullType": "ipv4",
               "name": "backend",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -362,18 +362,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipv4",
               "description": "IP of your backend",
               "fullType": "ipv4",
               "name": "backend",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -397,14 +397,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "text",
-              "description": "certificate key",
-              "fullType": "text",
-              "name": "key",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "text",
               "description": "certificate",
               "fullType": "text",
               "name": "certificate",
@@ -418,6 +410,14 @@ export const schema: Schema = {
               "name": "chain",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "text",
+              "description": "certificate key",
+              "fullType": "text",
+              "name": "key",
+              "paramType": "body",
+              "required": true
             },
             {
               "dataType": "string",
@@ -446,19 +446,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ip.LoadBalancingZoneEnum",
-              "description": "one of your ip loadbalancing's zone",
-              "fullType": "ip.LoadBalancingZoneEnum",
-              "name": "zone",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ip.LoadBalancingZoneEnum",
+              "description": "one of your ip loadbalancing's zone",
+              "fullType": "ip.LoadBalancingZoneEnum",
+              "name": "zone",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -595,19 +595,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ip.LoadBalancingZoneEnum",
-              "description": "one of your ip loadbalancing's zone",
-              "fullType": "ip.LoadBalancingZoneEnum",
-              "name": "zone",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The internal name of your IP load balancing",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ip.LoadBalancingZoneEnum",
+              "description": "one of your ip loadbalancing's zone",
+              "fullType": "ip.LoadBalancingZoneEnum",
+              "name": "zone",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -907,17 +907,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The contact to set as tech contact",
+              "description": "The contact to set as billing contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
+              "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "The contact to set as billing contact",
+              "description": "The contact to set as tech contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
+              "name": "contactTech",
               "paramType": "body",
               "required": false
             },
@@ -948,6 +948,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "service.TerminationFutureUseEnum",
               "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
@@ -960,14 +968,6 @@ export const schema: Schema = {
               "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
               "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
               "paramType": "body",
               "required": false
             },
@@ -1111,20 +1111,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ip.BlockedIpStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "ip.BlockedIpStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "ipBlock",
               "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "ip.BlockedIpStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "ip.BlockedIpStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "ipv4[]"
@@ -1213,20 +1213,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ip.ArpStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "ip.ArpStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "ipBlock",
               "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "ip.ArpStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "ip.ArpStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "ipv4[]"
@@ -1465,12 +1465,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ip.FirewallStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "ip.FirewallStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
+              "dataType": "ipBlock",
+              "description": "",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "boolean",
@@ -1481,12 +1481,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "ipBlock",
-              "description": "",
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "path",
-              "required": true
+              "dataType": "ip.FirewallStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "ip.FirewallStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "ipv4[]"
@@ -1632,14 +1632,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ip.FirewallRuleStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "ip.FirewallRuleStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "ipBlock",
               "description": "",
               "fullType": "ipBlock",
@@ -1654,6 +1646,14 @@ export const schema: Schema = {
               "name": "ipOnFirewall",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "ip.FirewallRuleStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "ip.FirewallRuleStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -1684,6 +1684,22 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "ip.FirewallProtocolEnum",
+              "description": "Network protocol",
+              "fullType": "ip.FirewallProtocolEnum",
+              "name": "protocol",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ip.FirewallSequenceRangeEnum",
+              "description": "Sequence number of your rule",
+              "fullType": "ip.FirewallSequenceRangeEnum",
+              "name": "sequence",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "ipv4Block",
               "description": "Source ip for your rule. Any if not set",
               "fullType": "ipv4Block",
@@ -1698,22 +1714,6 @@ export const schema: Schema = {
               "name": "sourcePort",
               "paramType": "body",
               "required": false
-            },
-            {
-              "dataType": "ip.FirewallSequenceRangeEnum",
-              "description": "Sequence number of your rule",
-              "fullType": "ip.FirewallSequenceRangeEnum",
-              "name": "sequence",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "ip.FirewallProtocolEnum",
-              "description": "Network protocol",
-              "fullType": "ip.FirewallProtocolEnum",
-              "name": "protocol",
-              "paramType": "body",
-              "required": true
             },
             {
               "dataType": "ip.FirewallOptionTCP",
@@ -2009,6 +2009,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "ID of the rule",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "ipBlock",
               "description": "",
               "fullType": "ipBlock",
@@ -2021,14 +2029,6 @@ export const schema: Schema = {
               "description": "",
               "fullType": "ipv4",
               "name": "ipOnGame",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "ID of the rule",
-              "fullType": "long",
-              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -2045,6 +2045,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "long",
+              "description": "ID of the rule",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "ipBlock",
               "description": "",
               "fullType": "ipBlock",
@@ -2057,14 +2065,6 @@ export const schema: Schema = {
               "description": "",
               "fullType": "ipv4",
               "name": "ipOnGame",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "ID of the rule",
-              "fullType": "long",
-              "name": "id",
               "paramType": "path",
               "required": true
             }
@@ -2087,20 +2087,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipv4",
-              "description": "Filter the value of ipAddress property (=)",
-              "fullType": "ipv4",
-              "name": "ipAddress",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "ipBlock",
               "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Filter the value of ipAddress property (=)",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -2121,20 +2121,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipv4",
-              "description": "Filter the value of ipAddress property (=)",
-              "fullType": "ipv4",
-              "name": "ipAddress",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "ipBlock",
               "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Filter the value of ipAddress property (=)",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -2155,20 +2155,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipv4",
-              "description": "Filter the value of ipAddress property (=)",
-              "fullType": "ipv4",
-              "name": "ipAddress",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "ipBlock",
               "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Filter the value of ipAddress property (=)",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -2189,20 +2189,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipv4",
-              "description": "Filter the value of ipAddress property (=)",
-              "fullType": "ipv4",
-              "name": "ipAddress",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "ipBlock",
               "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Filter the value of ipAddress property (=)",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -2223,20 +2223,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipv4",
-              "description": "Filter the value of ipAddress property (=)",
-              "fullType": "ipv4",
-              "name": "ipAddress",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "ipBlock",
               "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Filter the value of ipAddress property (=)",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -2257,20 +2257,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipv4",
-              "description": "Filter the value of ipAddress property (=)",
-              "fullType": "ipv4",
-              "name": "ipAddress",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "ipBlock",
               "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Filter the value of ipAddress property (=)",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -2291,20 +2291,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipv4",
-              "description": "Filter the value of ipAddress property (=)",
-              "fullType": "ipv4",
-              "name": "ipAddress",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "ipBlock",
               "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Filter the value of ipAddress property (=)",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -2325,20 +2325,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipv4",
-              "description": "Filter the value of ipAddress property (=)",
-              "fullType": "ipv4",
-              "name": "ipAddress",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "ipBlock",
               "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Filter the value of ipAddress property (=)",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -2413,6 +2413,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "ipBlock",
+              "description": "",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "boolean",
               "description": "Filter the value of auto property (=)",
               "fullType": "boolean",
@@ -2427,14 +2435,6 @@ export const schema: Schema = {
               "name": "state",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "ipBlock",
-              "description": "",
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "ipv4[]"
@@ -2580,11 +2580,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "datetime",
-              "description": "End date",
-              "fullType": "datetime",
-              "name": "to",
-              "paramType": "query",
+              "dataType": "ipBlock",
+              "description": "",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "",
+              "fullType": "ipv4",
+              "name": "ipOnMitigation",
+              "paramType": "path",
               "required": true
             },
             {
@@ -2604,19 +2612,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "ipBlock",
-              "description": "",
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "",
-              "fullType": "ipv4",
-              "name": "ipOnMitigation",
-              "paramType": "path",
+              "dataType": "datetime",
+              "description": "End date",
+              "fullType": "datetime",
+              "name": "to",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -2638,22 +2638,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ip.MitigationStatsScaleEnum",
-              "description": "Scale of aggregation",
-              "fullType": "ip.MitigationStatsScaleEnum",
-              "name": "scale",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "datetime",
-              "description": "Date to view top traffic",
-              "fullType": "datetime",
-              "name": "date",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "ipBlock",
               "description": "",
               "fullType": "ipBlock",
@@ -2667,6 +2651,22 @@ export const schema: Schema = {
               "fullType": "ipv4",
               "name": "ipOnMitigation",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Date to view top traffic",
+              "fullType": "datetime",
+              "name": "date",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "ip.MitigationStatsScaleEnum",
+              "description": "Scale of aggregation",
+              "fullType": "ip.MitigationStatsScaleEnum",
+              "name": "scale",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -2935,6 +2935,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "ipBlock",
+              "description": "",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "ipv4",
               "description": "Filter the value of ipOnAntiphishing property (within or equals)",
               "fullType": "ipv4",
@@ -2949,14 +2957,6 @@ export const schema: Schema = {
               "name": "state",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "ipBlock",
-              "description": "",
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "long[]"
@@ -2977,18 +2977,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipBlock",
-              "description": "",
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Internal ID of the phishing entry",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipBlock",
+              "description": "",
+              "fullType": "ipBlock",
+              "name": "ip",
               "paramType": "path",
               "required": true
             }
@@ -3031,18 +3031,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "reverse",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "ip",
               "description": "",
               "fullType": "ip",
               "name": "ipReverse",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "reverse",
               "paramType": "body",
               "required": true
             },
@@ -3188,20 +3188,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ip.SpamStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "ip.SpamStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "ipBlock",
               "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "ip.SpamStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "ip.SpamStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "ipv4[]"
@@ -3256,22 +3256,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "datetime",
-              "description": "Start date",
-              "fullType": "datetime",
-              "name": "from",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "datetime",
-              "description": "End date",
-              "fullType": "datetime",
-              "name": "to",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "ipBlock",
               "description": "",
               "fullType": "ipBlock",
@@ -3285,6 +3269,22 @@ export const schema: Schema = {
               "fullType": "ipv4",
               "name": "ipSpamming",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Start date",
+              "fullType": "datetime",
+              "name": "from",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "End date",
+              "fullType": "datetime",
+              "name": "to",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -3340,12 +3340,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ip.TaskStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "ip.TaskStatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
+              "dataType": "ipBlock",
+              "description": "",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "ip.TaskFunctionEnum",
@@ -3356,12 +3356,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "ipBlock",
-              "description": "",
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "path",
-              "required": true
+              "dataType": "ip.TaskStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "ip.TaskStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"

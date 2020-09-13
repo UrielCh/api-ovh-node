@@ -218,6 +218,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "ipBlock",
+              "description": "An IP range where we will apply the rule",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "nichandle.accessRestriction.IpRestrictionRuleEnum",
               "description": "Accept or deny IP access",
               "fullType": "nichandle.accessRestriction.IpRestrictionRuleEnum",
@@ -230,14 +238,6 @@ export const schema: Schema = {
               "description": "Send an email if someone try to access with this IP address",
               "fullType": "boolean",
               "name": "warning",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "ipBlock",
-              "description": "An IP range where we will apply the rule",
-              "fullType": "ipBlock",
-              "name": "ip",
               "paramType": "body",
               "required": true
             }
@@ -979,18 +979,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "password",
-              "description": "",
-              "fullType": "password",
-              "name": "signatureData",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "",
               "fullType": "string",
               "name": "clientData",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "password",
+              "description": "",
+              "fullType": "password",
+              "name": "signatureData",
               "paramType": "body",
               "required": true
             },
@@ -1021,18 +1021,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "password",
-              "description": "",
-              "fullType": "password",
-              "name": "registrationData",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "",
               "fullType": "string",
               "name": "clientData",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "password",
+              "description": "",
+              "fullType": "password",
+              "name": "registrationData",
               "paramType": "body",
               "required": true
             },
@@ -1063,18 +1063,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Filter the value of contractId property (like)",
-              "fullType": "long",
-              "name": "contractId",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "agreements.AgreementStateEnum",
               "description": "Filter the value of agreed property (like)",
               "fullType": "agreements.AgreementStateEnum",
               "name": "agreed",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of contractId property (like)",
+              "fullType": "long",
+              "name": "contractId",
               "paramType": "query",
               "required": false
             }
@@ -1530,22 +1530,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Filter the value of orderId property (=)",
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of date property (<=)",
-              "fullType": "datetime",
-              "name": "date.to",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "billing.CategoryEnum",
               "description": "Filter the value of category property (=)",
               "fullType": "billing.CategoryEnum",
@@ -1558,6 +1542,22 @@ export const schema: Schema = {
               "description": "Filter the value of date property (>=)",
               "fullType": "datetime",
               "name": "date.from",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of date property (<=)",
+              "fullType": "datetime",
+              "name": "date.to",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of orderId property (=)",
+              "fullType": "long",
+              "name": "orderId",
               "paramType": "query",
               "required": false
             }
@@ -1589,14 +1589,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "datetime",
-              "description": "Start interval of the export",
-              "fullType": "datetime",
-              "name": "startDate",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
               "description": "End interval of the export",
               "fullType": "datetime",
               "name": "endDate",
@@ -1608,6 +1600,14 @@ export const schema: Schema = {
               "description": "A list of ids to export",
               "fullType": "string[]",
               "name": "ids",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Start interval of the export",
+              "fullType": "datetime",
+              "name": "startDate",
               "paramType": "body",
               "required": false
             }
@@ -1682,20 +1682,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Filter the value of depositOrderId property (=)",
-              "fullType": "long",
-              "name": "depositOrderId",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of depositOrderId property (=)",
+              "fullType": "long",
+              "name": "depositOrderId",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -1839,7 +1839,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "billId",
+              "name": "billDetailId",
               "paramType": "path",
               "required": true
             },
@@ -1847,7 +1847,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "billDetailId",
+              "name": "billId",
               "paramType": "path",
               "required": true
             }
@@ -2104,17 +2104,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Service ID",
+              "description": "Group ID",
               "fullType": "long",
-              "name": "serviceId",
+              "name": "groupId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Group ID",
+              "description": "Service ID",
               "fullType": "long",
-              "name": "groupId",
+              "name": "serviceId",
               "paramType": "path",
               "required": true
             }
@@ -2306,19 +2306,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Consent campaign name",
-              "fullType": "string",
-              "name": "campaignName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Decision value",
               "fullType": "boolean",
               "name": "value",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Consent campaign name",
+              "fullType": "string",
+              "name": "campaignName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2427,26 +2427,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "phoneNumber",
-              "description": "Cellphone number",
-              "fullType": "phoneNumber",
-              "name": "cellPhone",
+              "dataType": "string",
+              "description": "City of birth",
+              "fullType": "string",
+              "name": "birthCity",
               "paramType": "body",
               "required": false
             },
             {
-              "dataType": "phoneNumber",
-              "description": "Landline phone number",
-              "fullType": "phoneNumber",
-              "name": "phone",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Fax phone number",
-              "fullType": "phoneNumber",
-              "name": "fax",
+              "dataType": "nichandle.CountryEnum",
+              "description": "Birth Country",
+              "fullType": "nichandle.CountryEnum",
+              "name": "birthCountry",
               "paramType": "body",
               "required": false
             },
@@ -2460,14 +2452,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "City of birth",
-              "fullType": "string",
-              "name": "birthCity",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Birth Zipcode",
               "fullType": "string",
               "name": "birthZip",
@@ -2475,18 +2459,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Birth Country",
-              "fullType": "nichandle.CountryEnum",
-              "name": "birthCountry",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "VAT number",
-              "fullType": "string",
-              "name": "vat",
+              "dataType": "phoneNumber",
+              "description": "Cellphone number",
+              "fullType": "phoneNumber",
+              "name": "cellPhone",
               "paramType": "body",
               "required": false
             },
@@ -2500,35 +2476,19 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "National identification number",
-              "fullType": "string",
-              "name": "nationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Type of your organisation",
-              "fullType": "string",
-              "name": "organisationType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Name of your organisation",
-              "fullType": "string",
-              "name": "organisationName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Email address",
               "fullType": "string",
               "name": "email",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "Fax phone number",
+              "fullType": "phoneNumber",
+              "name": "fax",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -2555,14 +2515,6 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Nationality",
-              "fullType": "nichandle.CountryEnum",
-              "name": "nationality",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "Last name",
               "fullType": "string",
@@ -2577,6 +2529,54 @@ export const schema: Schema = {
               "name": "legalForm",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "National identification number",
+              "fullType": "string",
+              "name": "nationalIdentificationNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": "Nationality",
+              "fullType": "nichandle.CountryEnum",
+              "name": "nationality",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Name of your organisation",
+              "fullType": "string",
+              "name": "organisationName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Type of your organisation",
+              "fullType": "string",
+              "name": "organisationType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "Landline phone number",
+              "fullType": "phoneNumber",
+              "name": "phone",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "VAT number",
+              "fullType": "string",
+              "name": "vat",
+              "paramType": "body",
+              "required": false
             }
           ],
           "responseType": "contact.Contact"
@@ -2617,14 +2617,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Contact Identifier",
-              "fullType": "long",
-              "name": "contactId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "contact.Address",
               "description": "Address of the contact",
               "fullType": "contact.Address",
@@ -2633,26 +2625,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "phoneNumber",
-              "description": "Cellphone number",
-              "fullType": "phoneNumber",
-              "name": "cellPhone",
+              "dataType": "string",
+              "description": "City of birth",
+              "fullType": "string",
+              "name": "birthCity",
               "paramType": "body",
               "required": false
             },
             {
-              "dataType": "phoneNumber",
-              "description": "Landline phone number",
-              "fullType": "phoneNumber",
-              "name": "phone",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "phoneNumber",
-              "description": "Fax phone number",
-              "fullType": "phoneNumber",
-              "name": "fax",
+              "dataType": "nichandle.CountryEnum",
+              "description": "Birth Country",
+              "fullType": "nichandle.CountryEnum",
+              "name": "birthCountry",
               "paramType": "body",
               "required": false
             },
@@ -2666,14 +2650,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "City of birth",
-              "fullType": "string",
-              "name": "birthCity",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Birth Zipcode",
               "fullType": "string",
               "name": "birthZip",
@@ -2681,18 +2657,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Birth Country",
-              "fullType": "nichandle.CountryEnum",
-              "name": "birthCountry",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "VAT number",
-              "fullType": "string",
-              "name": "vat",
+              "dataType": "phoneNumber",
+              "description": "Cellphone number",
+              "fullType": "phoneNumber",
+              "name": "cellPhone",
               "paramType": "body",
               "required": false
             },
@@ -2706,33 +2674,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "National identification number",
-              "fullType": "string",
-              "name": "nationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Type of your organisation",
-              "fullType": "string",
-              "name": "organisationType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Name of your organisation",
-              "fullType": "string",
-              "name": "organisationName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Email address",
               "fullType": "string",
               "name": "email",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "Fax phone number",
+              "fullType": "phoneNumber",
+              "name": "fax",
               "paramType": "body",
               "required": false
             },
@@ -2761,14 +2713,6 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Nationality",
-              "fullType": "nichandle.CountryEnum",
-              "name": "nationality",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "Last name",
               "fullType": "string",
@@ -2783,6 +2727,62 @@ export const schema: Schema = {
               "name": "legalForm",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "National identification number",
+              "fullType": "string",
+              "name": "nationalIdentificationNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": "Nationality",
+              "fullType": "nichandle.CountryEnum",
+              "name": "nationality",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Name of your organisation",
+              "fullType": "string",
+              "name": "organisationName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Type of your organisation",
+              "fullType": "string",
+              "name": "organisationType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "phoneNumber",
+              "description": "Landline phone number",
+              "fullType": "phoneNumber",
+              "name": "phone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "VAT number",
+              "fullType": "string",
+              "name": "vat",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Contact Identifier",
+              "fullType": "long",
+              "name": "contactId",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "contact.Contact"
@@ -3027,19 +3027,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Filter the value of depositOrderId property (=)",
-              "fullType": "long",
-              "name": "depositOrderId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "debtId",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of depositOrderId property (=)",
+              "fullType": "long",
+              "name": "depositOrderId",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -3171,10 +3171,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Filter the value of orderId property (=)",
-              "fullType": "long",
-              "name": "orderId",
+              "dataType": "datetime",
+              "description": "Filter the value of date property (>=)",
+              "fullType": "datetime",
+              "name": "date.from",
               "paramType": "query",
               "required": false
             },
@@ -3187,10 +3187,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "datetime",
-              "description": "Filter the value of date property (>=)",
-              "fullType": "datetime",
-              "name": "date.from",
+              "dataType": "long",
+              "description": "Filter the value of orderId property (=)",
+              "fullType": "long",
+              "name": "orderId",
               "paramType": "query",
               "required": false
             }
@@ -3268,7 +3268,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "depositId",
+              "name": "depositDetailId",
               "paramType": "path",
               "required": true
             },
@@ -3276,7 +3276,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "depositDetailId",
+              "name": "depositId",
               "paramType": "path",
               "required": true
             }
@@ -3328,7 +3328,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "depositId",
+              "name": "billId",
               "paramType": "path",
               "required": true
             },
@@ -3336,7 +3336,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "billId",
+              "name": "depositId",
               "paramType": "path",
               "required": true
             }
@@ -3362,7 +3362,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "depositId",
+              "name": "billId",
               "paramType": "path",
               "required": true
             },
@@ -3370,7 +3370,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "billId",
+              "name": "depositId",
               "paramType": "path",
               "required": true
             }
@@ -3393,12 +3393,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Filter the value of depositOrderId property (=)",
-              "fullType": "long",
-              "name": "depositOrderId",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "billId",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -3409,12 +3409,12 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "billId",
-              "paramType": "path",
-              "required": true
+              "dataType": "long",
+              "description": "Filter the value of depositOrderId property (=)",
+              "fullType": "long",
+              "name": "depositOrderId",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -3438,7 +3438,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "depositId",
+              "name": "billId",
               "paramType": "path",
               "required": true
             },
@@ -3446,7 +3446,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "billId",
+              "name": "depositId",
               "paramType": "path",
               "required": true
             },
@@ -3480,7 +3480,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "depositId",
+              "name": "billId",
               "paramType": "path",
               "required": true
             },
@@ -3488,7 +3488,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "billId",
+              "name": "depositId",
               "paramType": "path",
               "required": true
             },
@@ -3522,7 +3522,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "depositId",
+              "name": "billId",
               "paramType": "path",
               "required": true
             },
@@ -3530,7 +3530,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "billId",
+              "name": "depositId",
               "paramType": "path",
               "required": true
             }
@@ -3556,7 +3556,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "depositId",
+              "name": "billId",
               "paramType": "path",
               "required": true
             },
@@ -3564,7 +3564,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "billId",
+              "name": "depositId",
               "paramType": "path",
               "required": true
             }
@@ -3590,7 +3590,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "depositId",
+              "name": "billDetailId",
               "paramType": "path",
               "required": true
             },
@@ -3606,7 +3606,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "billDetailId",
+              "name": "depositId",
               "paramType": "path",
               "required": true
             }
@@ -3632,7 +3632,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "depositId",
+              "name": "billId",
               "paramType": "path",
               "required": true
             },
@@ -3640,7 +3640,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "billId",
+              "name": "depositId",
               "paramType": "path",
               "required": true
             }
@@ -3700,20 +3700,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "complexType.SafeKeyValue<string>[]",
-              "description": "File tags",
-              "fullType": "complexType.SafeKeyValue<string>[]",
-              "name": "tags",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "File name",
               "fullType": "string",
               "name": "name",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "complexType.SafeKeyValue<string>[]",
+              "description": "File tags",
+              "fullType": "complexType.SafeKeyValue<string>[]",
+              "name": "tags",
+              "paramType": "body",
+              "required": false
             }
           ],
           "responseType": "nichandle.document.Document"
@@ -3979,17 +3979,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "datetime",
-              "description": "Filter the value of date property (<=)",
+              "description": "Filter the value of date property (>=)",
               "fullType": "datetime",
-              "name": "date.to",
+              "name": "date.from",
               "paramType": "query",
               "required": false
             },
             {
               "dataType": "datetime",
-              "description": "Filter the value of date property (>=)",
+              "description": "Filter the value of date property (<=)",
               "fullType": "datetime",
-              "name": "date.from",
+              "name": "date.to",
               "paramType": "query",
               "required": false
             }
@@ -4067,19 +4067,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Group's name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Group's description",
               "fullType": "string",
               "name": "description",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Group's name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
             },
             {
               "dataType": "nichandle.Authentication.RoleEnum",
@@ -4149,14 +4149,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Group's name",
-              "fullType": "string",
-              "name": "group",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Group's description",
               "fullType": "string",
               "name": "description",
@@ -4170,6 +4162,14 @@ export const schema: Schema = {
               "name": "role",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Group's name",
+              "fullType": "string",
+              "name": "group",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "void"
@@ -4202,14 +4202,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "User's login",
-              "fullType": "string",
-              "name": "login",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "User's description",
               "fullType": "string",
               "name": "description",
@@ -4225,20 +4217,28 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "password",
-              "description": "User's password",
-              "fullType": "password",
-              "name": "password",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "User's group",
               "fullType": "string",
               "name": "group",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "User's login",
+              "fullType": "string",
+              "name": "login",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "password",
+              "description": "User's password",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": true
             }
           ],
           "responseType": "void"
@@ -4300,11 +4300,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "User's login",
+              "description": "User's description",
               "fullType": "string",
-              "name": "user",
-              "paramType": "path",
-              "required": true
+              "name": "description",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -4316,19 +4316,19 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "User's description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "User's group",
               "fullType": "string",
               "name": "group",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "User's login",
+              "fullType": "string",
+              "name": "user",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "void"
@@ -4429,6 +4429,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "OVH template name yours will be based on, choose one among the list given by compatibleTemplates function",
+              "fullType": "string",
+              "name": "baseTemplateName",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "dedicated.TemplateOsLanguageEnum",
               "description": "",
               "fullType": "dedicated.TemplateOsLanguageEnum",
@@ -4441,14 +4449,6 @@ export const schema: Schema = {
               "description": "Your template name",
               "fullType": "string",
               "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "OVH template name yours will be based on, choose one among the list given by compatibleTemplates function",
-              "fullType": "string",
-              "name": "baseTemplateName",
               "paramType": "body",
               "required": true
             }
@@ -4590,18 +4590,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications)",
-              "fullType": "long",
-              "name": "priority",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "name of this partitioning scheme",
               "fullType": "string",
               "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications)",
+              "fullType": "long",
+              "name": "priority",
               "paramType": "body",
               "required": true
             },
@@ -4633,17 +4633,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": "name of this partitioning scheme",
               "fullType": "string",
-              "name": "templateName",
+              "name": "schemeName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This template name",
               "fullType": "string",
-              "name": "schemeName",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }
@@ -4661,17 +4661,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": "name of this partitioning scheme",
               "fullType": "string",
-              "name": "templateName",
+              "name": "schemeName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This template name",
               "fullType": "string",
-              "name": "schemeName",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }
@@ -4696,17 +4696,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": "name of this partitioning scheme",
               "fullType": "string",
-              "name": "templateName",
+              "name": "schemeName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This template name",
               "fullType": "string",
-              "name": "schemeName",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }
@@ -4730,17 +4730,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": "name of this partitioning scheme",
               "fullType": "string",
-              "name": "templateName",
+              "name": "schemeName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This template name",
               "fullType": "string",
-              "name": "schemeName",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }
@@ -4757,26 +4757,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.TemplateOsHardwareRaidEnum",
-              "description": "RAID mode",
-              "fullType": "dedicated.TemplateOsHardwareRaidEnum",
-              "name": "mode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Specifies the creation order of the hardware RAID",
-              "fullType": "long",
-              "name": "step",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string[]",
               "description": "Disk list. Syntax is cX:dY for disks and [cX:dY, cX:dY] for groups. With X and Y resp. the controler id and the disk id.",
               "fullType": "string[]",
               "name": "disks",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.TemplateOsHardwareRaidEnum",
+              "description": "RAID mode",
+              "fullType": "dedicated.TemplateOsHardwareRaidEnum",
+              "name": "mode",
               "paramType": "body",
               "required": true
             },
@@ -4789,11 +4781,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
+              "dataType": "long",
+              "description": "Specifies the creation order of the hardware RAID",
+              "fullType": "long",
+              "name": "step",
+              "paramType": "body",
               "required": true
             },
             {
@@ -4801,6 +4793,14 @@ export const schema: Schema = {
               "description": "name of this partitioning scheme",
               "fullType": "string",
               "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }
@@ -4824,9 +4824,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": "Hardware RAID name",
               "fullType": "string",
-              "name": "templateName",
+              "name": "name",
               "paramType": "path",
               "required": true
             },
@@ -4840,9 +4840,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Hardware RAID name",
+              "description": "This template name",
               "fullType": "string",
-              "name": "name",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }
@@ -4860,9 +4860,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": "Hardware RAID name",
               "fullType": "string",
-              "name": "templateName",
+              "name": "name",
               "paramType": "path",
               "required": true
             },
@@ -4876,9 +4876,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Hardware RAID name",
+              "description": "This template name",
               "fullType": "string",
-              "name": "name",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }
@@ -4903,9 +4903,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": "Hardware RAID name",
               "fullType": "string",
-              "name": "templateName",
+              "name": "name",
               "paramType": "path",
               "required": true
             },
@@ -4919,9 +4919,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Hardware RAID name",
+              "description": "This template name",
               "fullType": "string",
-              "name": "name",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }
@@ -4945,17 +4945,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": "name of this partitioning scheme",
               "fullType": "string",
-              "name": "templateName",
+              "name": "schemeName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This template name",
               "fullType": "string",
-              "name": "schemeName",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }
@@ -4972,26 +4972,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "step",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "dedicated.TemplateOsFileSystemEnum",
               "description": "Partition filesytem",
               "fullType": "dedicated.TemplateOsFileSystemEnum",
               "name": "filesystem",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "size of partition in Mb, 0 => rest of the space",
-              "fullType": "long",
-              "name": "size",
               "paramType": "body",
               "required": true
             },
@@ -5004,20 +4988,28 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The volume name needed for proxmox distribution",
-              "fullType": "string",
-              "name": "volumeName",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "raid",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "size of partition in Mb, 0 => rest of the space",
+              "fullType": "long",
+              "name": "size",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "step",
+              "paramType": "body",
+              "required": true
             },
             {
               "dataType": "dedicated.TemplatePartitionTypeEnum",
@@ -5029,17 +5021,25 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": "The volume name needed for proxmox distribution",
               "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
+              "name": "volumeName",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
               "description": "name of this partitioning scheme",
               "fullType": "string",
               "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }
@@ -5063,9 +5063,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": "partition mount point",
               "fullType": "string",
-              "name": "templateName",
+              "name": "mountpoint",
               "paramType": "path",
               "required": true
             },
@@ -5079,9 +5079,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "partition mount point",
+              "description": "This template name",
               "fullType": "string",
-              "name": "mountpoint",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }
@@ -5099,9 +5099,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": "partition mount point",
               "fullType": "string",
-              "name": "templateName",
+              "name": "mountpoint",
               "paramType": "path",
               "required": true
             },
@@ -5115,9 +5115,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "partition mount point",
+              "description": "This template name",
               "fullType": "string",
-              "name": "mountpoint",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }
@@ -5142,9 +5142,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": "partition mount point",
               "fullType": "string",
-              "name": "templateName",
+              "name": "mountpoint",
               "paramType": "path",
               "required": true
             },
@@ -5158,9 +5158,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "partition mount point",
+              "description": "This template name",
               "fullType": "string",
-              "name": "mountpoint",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }
@@ -5197,6 +5197,14 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
+              "name": "abuse_mailbox",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
               "name": "address",
               "paramType": "body",
               "required": true
@@ -5205,15 +5213,15 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "zip",
+              "name": "city",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
-              "dataType": "string",
+              "dataType": "nichandle.CountryEnum",
               "description": "",
-              "fullType": "string",
-              "name": "city",
+              "fullType": "nichandle.CountryEnum",
+              "name": "country",
               "paramType": "body",
               "required": true
             },
@@ -5229,31 +5237,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "abuse_mailbox",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
               "name": "lastname",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "state",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "",
-              "fullType": "nichandle.CountryEnum",
-              "name": "country",
               "paramType": "body",
               "required": true
             },
@@ -5272,6 +5256,22 @@ export const schema: Schema = {
               "name": "registry",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "state",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "zip",
+              "paramType": "body",
+              "required": false
             }
           ],
           "responseType": "void"
@@ -5377,17 +5377,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "name of your script",
+              "description": "A personnal description of this script",
               "fullType": "string",
-              "name": "name",
+              "name": "description",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "A personnal description of this script",
+              "description": "name of your script",
               "fullType": "string",
-              "name": "description",
+              "name": "name",
               "paramType": "body",
               "required": true
             },
@@ -5482,17 +5482,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Mailing list",
+              "description": "Email you want to subscribe to",
               "fullType": "string",
-              "name": "mailingList",
+              "name": "email",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Email you want to subscribe to",
+              "description": "Mailing list",
               "fullType": "string",
-              "name": "email",
+              "name": "mailingList",
               "paramType": "body",
               "required": true
             }
@@ -5585,17 +5585,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Migration ID",
+              "description": "Contract ID",
               "fullType": "long",
-              "name": "migrationId",
+              "name": "contractId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Contract ID",
+              "description": "Migration ID",
               "fullType": "long",
-              "name": "contractId",
+              "name": "migrationId",
               "paramType": "path",
               "required": true
             }
@@ -5619,17 +5619,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Migration ID",
+              "description": "Contract ID",
               "fullType": "long",
-              "name": "migrationId",
+              "name": "contractId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Contract ID",
+              "description": "Migration ID",
               "fullType": "long",
-              "name": "contractId",
+              "name": "migrationId",
               "paramType": "path",
               "required": true
             }
@@ -5730,17 +5730,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "datetime",
-              "description": "Filter the value of date property (<=)",
+              "description": "Filter the value of date property (>=)",
               "fullType": "datetime",
-              "name": "date.to",
+              "name": "date.from",
               "paramType": "query",
               "required": false
             },
             {
               "dataType": "datetime",
-              "description": "Filter the value of date property (>=)",
+              "description": "Filter the value of date property (<=)",
               "fullType": "datetime",
-              "name": "date.from",
+              "name": "date.to",
               "paramType": "query",
               "required": false
             }
@@ -5867,19 +5867,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "consumption.ConsumptionExportFormatsEnum",
-              "description": "Format of the file",
-              "fullType": "consumption.ConsumptionExportFormatsEnum",
-              "name": "fileFormat",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "consumption.ConsumptionExportFormatsEnum",
+              "description": "Format of the file",
+              "fullType": "consumption.ConsumptionExportFormatsEnum",
+              "name": "fileFormat",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -5928,19 +5928,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Filter the value of depositOrderId property (=)",
-              "fullType": "long",
-              "name": "depositOrderId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of depositOrderId property (=)",
+              "fullType": "long",
+              "name": "depositOrderId",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -5964,7 +5964,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "",
               "fullType": "long",
-              "name": "orderId",
+              "name": "operationId",
               "paramType": "path",
               "required": true
             },
@@ -5972,7 +5972,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "",
               "fullType": "long",
-              "name": "operationId",
+              "name": "orderId",
               "paramType": "path",
               "required": true
             }
@@ -5998,7 +5998,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "",
               "fullType": "long",
-              "name": "orderId",
+              "name": "operationId",
               "paramType": "path",
               "required": true
             },
@@ -6006,7 +6006,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "",
               "fullType": "long",
-              "name": "operationId",
+              "name": "orderId",
               "paramType": "path",
               "required": true
             }
@@ -6084,7 +6084,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "",
               "fullType": "long",
-              "name": "orderId",
+              "name": "orderDetailId",
               "paramType": "path",
               "required": true
             },
@@ -6092,7 +6092,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "",
               "fullType": "long",
-              "name": "orderDetailId",
+              "name": "orderId",
               "paramType": "path",
               "required": true
             }
@@ -6118,7 +6118,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "",
               "fullType": "long",
-              "name": "orderId",
+              "name": "orderDetailId",
               "paramType": "path",
               "required": true
             },
@@ -6126,7 +6126,7 @@ export const schema: Schema = {
               "dataType": "long",
               "description": "",
               "fullType": "long",
-              "name": "orderDetailId",
+              "name": "orderId",
               "paramType": "path",
               "required": true
             }
@@ -6209,20 +6209,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Id of registered payment mean, mandatory for bankAccount, creditCard and paypal",
-              "fullType": "long",
-              "name": "paymentMeanId",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "billing.ReusablePaymentMeanEnum",
               "description": "The registered payment mean you want to use",
               "fullType": "billing.ReusablePaymentMeanEnum",
               "name": "paymentMean",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of registered payment mean, mandatory for bankAccount, creditCard and paypal",
+              "fullType": "long",
+              "name": "paymentMeanId",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "long",
@@ -6527,12 +6527,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "datetime",
-              "description": "Filter the value of date property (<=)",
-              "fullType": "datetime",
-              "name": "date.to",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "ovhAccountId",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "datetime",
@@ -6543,12 +6543,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "ovhAccountId",
-              "paramType": "path",
-              "required": true
+              "dataType": "datetime",
+              "description": "Filter the value of date property (<=)",
+              "fullType": "datetime",
+              "name": "date.to",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -6569,18 +6569,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "ovhAccountId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "",
               "fullType": "long",
               "name": "movementId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "ovhAccountId",
               "paramType": "path",
               "required": true
             }
@@ -6604,17 +6604,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "A valid bank account",
+              "description": "The amount in cents you want to transfer",
               "fullType": "long",
-              "name": "bankAccountId",
+              "name": "amount",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "The amount in cents you want to transfer",
+              "description": "A valid bank account",
               "fullType": "long",
-              "name": "amount",
+              "name": "bankAccountId",
               "paramType": "body",
               "required": true
             },
@@ -6662,18 +6662,18 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Your OVH Account Id",
-              "fullType": "string",
-              "name": "ovhId",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "nichandle.OvhCompanyEnum",
               "description": "Company of your OVH Account Id",
               "fullType": "nichandle.OvhCompanyEnum",
               "name": "ovhCompany",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your OVH Account Id",
+              "fullType": "string",
+              "name": "ovhId",
               "paramType": "body",
               "required": true
             }
@@ -6721,18 +6721,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "me.payment.method.StatusEnum",
-              "description": "Filter on 'status' property",
-              "fullType": "me.payment.method.StatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "Filter on 'paymentType' property",
               "fullType": "string",
               "name": "paymentType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "me.payment.method.StatusEnum",
+              "description": "Filter on 'status' property",
+              "fullType": "me.payment.method.StatusEnum",
+              "name": "status",
               "paramType": "query",
               "required": false
             }
@@ -6913,18 +6913,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "me.payment.transaction.StatusEnum",
-              "description": "Status",
-              "fullType": "me.payment.transaction.StatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "long",
               "description": "Payment method ID",
               "fullType": "long",
               "name": "paymentMethodId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "me.payment.transaction.StatusEnum",
+              "description": "Status",
+              "fullType": "me.payment.transaction.StatusEnum",
+              "name": "status",
               "paramType": "query",
               "required": false
             }
@@ -6993,34 +6993,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Set as default payment mean once validated",
-              "fullType": "boolean",
-              "name": "setDefault",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Account's IBAN",
+              "description": "Account's BIC",
               "fullType": "string",
-              "name": "iban",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Account owner's name",
-              "fullType": "string",
-              "name": "ownerName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Account owner's address",
-              "fullType": "string",
-              "name": "ownerAddress",
+              "name": "bic",
               "paramType": "body",
               "required": true
             },
@@ -7034,11 +7010,35 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Account's BIC",
+              "description": "Account's IBAN",
               "fullType": "string",
-              "name": "bic",
+              "name": "iban",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account owner's address",
+              "fullType": "string",
+              "name": "ownerAddress",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account owner's name",
+              "fullType": "string",
+              "name": "ownerName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Set as default payment mean once validated",
+              "fullType": "boolean",
+              "name": "setDefault",
+              "paramType": "body",
+              "required": false
             }
           ],
           "responseType": "billing.PaymentMeanValidation"
@@ -7684,12 +7684,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string[]",
-              "description": "A list of ids to export",
-              "fullType": "string[]",
-              "name": "ids",
+              "dataType": "billing.ArchiveTypeEnum",
+              "description": "The file type of the archive",
+              "fullType": "billing.ArchiveTypeEnum",
+              "name": "archiveType",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "datetime",
@@ -7700,20 +7700,20 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "string[]",
+              "description": "A list of ids to export",
+              "fullType": "string[]",
+              "name": "ids",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "datetime",
               "description": "Start interval of the export",
               "fullType": "datetime",
               "name": "startDate",
               "paramType": "body",
               "required": false
-            },
-            {
-              "dataType": "billing.ArchiveTypeEnum",
-              "description": "The file type of the archive",
-              "fullType": "billing.ArchiveTypeEnum",
-              "name": "archiveType",
-              "paramType": "body",
-              "required": true
             }
           ],
           "responseType": "void"
@@ -7789,7 +7789,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "refundId",
+              "name": "refundDetailId",
               "paramType": "path",
               "required": true
             },
@@ -7797,7 +7797,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "refundDetailId",
+              "name": "refundId",
               "paramType": "path",
               "required": true
             }
@@ -8005,17 +8005,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "name of the new public SSH key",
+              "description": "ASCII encoded public SSH key to add",
               "fullType": "string",
-              "name": "keyName",
+              "name": "key",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "ASCII encoded public SSH key to add",
+              "description": "name of the new public SSH key",
               "fullType": "string",
-              "name": "key",
+              "name": "keyName",
               "paramType": "body",
               "required": true
             }
@@ -8314,6 +8314,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Filter the value of askingAccount property (like)",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "askingAccount",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "nichandle.changeContact.TaskStateEnum",
               "description": "Filter the value of state property (like)",
               "fullType": "nichandle.changeContact.TaskStateEnum",
@@ -8326,14 +8334,6 @@ export const schema: Schema = {
               "description": "Filter the value of toAccount property (like)",
               "fullType": "coreTypes.AccountId:string",
               "name": "toAccount",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of askingAccount property (like)",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "askingAccount",
               "paramType": "query",
               "required": false
             }
@@ -8484,18 +8484,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "domain.OperationStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "domain.OperationStatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "domain.NicOperationFunctionEnum",
               "description": "Filter the value of function property (like)",
               "fullType": "domain.NicOperationFunctionEnum",
               "name": "function",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "domain.OperationStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "domain.OperationStatusEnum",
+              "name": "status",
               "paramType": "query",
               "required": false
             }
@@ -9035,6 +9035,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "datetime",
+              "description": "Filter the value of date property (>=)",
+              "fullType": "datetime",
+              "name": "date.from",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
               "description": "Filter the value of date property (<=)",
               "fullType": "datetime",
               "name": "date.to",
@@ -9046,14 +9054,6 @@ export const schema: Schema = {
               "description": "Filter the value of orderId property (=)",
               "fullType": "long",
               "name": "orderId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of date property (>=)",
-              "fullType": "datetime",
-              "name": "date.from",
               "paramType": "query",
               "required": false
             }
@@ -9131,7 +9131,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "withdrawalId",
+              "name": "withdrawalDetailId",
               "paramType": "path",
               "required": true
             },
@@ -9139,7 +9139,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "withdrawalDetailId",
+              "name": "withdrawalId",
               "paramType": "path",
               "required": true
             }
@@ -9200,17 +9200,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "boolean",
-              "description": "Let the modem with vendor configuration. It prevent to apply the config managed by ovh manager",
+              "description": "Send the modem as soon as possible, do not wait the xdsl line to be active",
               "fullType": "boolean",
-              "name": "resellerModemBasicConfig",
+              "name": "resellerFastModemShipping",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "boolean",
-              "description": "Send the modem as soon as possible, do not wait the xdsl line to be active",
+              "description": "Let the modem with vendor configuration. It prevent to apply the config managed by ovh manager",
               "fullType": "boolean",
-              "name": "resellerFastModemShipping",
+              "name": "resellerModemBasicConfig",
               "paramType": "body",
               "required": false
             }

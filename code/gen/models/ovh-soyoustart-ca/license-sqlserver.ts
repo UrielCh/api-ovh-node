@@ -6,6 +6,62 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
+      "description": "Get the orderable Sql Server versions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the orderable Sql Server versions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Your license Ip",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.SqlServerOrderConfiguration[]",
+          "responseType": "license.SqlServerOrderConfiguration[]"
+        }
+      ],
+      "path": "/license/sqlserver/orderableVersions"
+    },
+    {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Terminate your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your SQL Server license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string",
+          "responseType": "string"
+        }
+      ],
+      "path": "/license/sqlserver/{serviceName}/terminate"
+    },
+    {
       "description": "Details about a Service",
       "operations": [
         {
@@ -140,12 +196,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "license.TaskStateEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "license.TaskStateEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The name of your SQL Server license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "license.ActionType",
@@ -156,12 +212,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "The name of your SQL Server license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "license.TaskStateEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "license.TaskStateEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
           "resellerOnly": false,
@@ -184,6 +240,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "service.TerminationFutureUseEnum",
               "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
@@ -196,14 +260,6 @@ export const schema: Schema = {
               "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
               "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
               "paramType": "body",
               "required": false
             },
@@ -230,62 +286,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/license/sqlserver/{serviceName}/confirmTermination"
-    },
-    {
-      "description": "Terminate your service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Terminate your service",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your SQL Server license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string",
-          "responseType": "string"
-        }
-      ],
-      "path": "/license/sqlserver/{serviceName}/terminate"
-    },
-    {
-      "description": "Get the orderable Sql Server versions",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the orderable Sql Server versions",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Your license Ip",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "license.SqlServerOrderConfiguration[]",
-          "responseType": "license.SqlServerOrderConfiguration[]"
-        }
-      ],
-      "path": "/license/sqlserver/orderableVersions"
     },
     {
       "description": "Operations about the LICENSE service",

@@ -35,14 +35,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "sms.TypeSenderEnum",
-              "description": "Sender type that will be used to send the message",
-              "fullType": "sms.TypeSenderEnum",
-              "name": "senderType",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "text",
               "description": "The message to send",
               "fullType": "text",
@@ -55,6 +47,14 @@ export const schema: Schema = {
               "description": "Do not display STOP clause in the message, this requires that this is not an advertising message",
               "fullType": "boolean",
               "name": "noStopClause",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "sms.TypeSenderEnum",
+              "description": "Sender type that will be used to send the message",
+              "fullType": "sms.TypeSenderEnum",
+              "name": "senderType",
               "paramType": "body",
               "required": true
             }
@@ -304,12 +304,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Filter the value of smsOutgoingID property (=)",
-              "fullType": "long",
-              "name": "smsOutgoingID",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "uuid",
@@ -320,12 +320,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "long",
+              "description": "Filter the value of smsOutgoingID property (=)",
+              "fullType": "long",
+              "name": "smsOutgoingID",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -347,17 +347,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The sms number blacklisted",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "number",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The sms number blacklisted",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "number",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -375,17 +375,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The sms number blacklisted",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "number",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The sms number blacklisted",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "number",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -408,6 +408,22 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Filter SMSs with their batch ID (outgoing SMSs only)",
+              "fullType": "uuid",
+              "name": "batchID",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "datetime",
               "description": "Filter the value of creationDatetime property (>=)",
               "fullType": "datetime",
@@ -424,14 +440,6 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "sms.DocumentWayTypeEnum",
-              "description": "specify outgoing or incoming sms",
-              "fullType": "sms.DocumentWayTypeEnum",
-              "name": "wayType",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Select sms with a specific identifier group tag",
               "fullType": "string",
@@ -440,11 +448,11 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "sms.DocumentWayTypeEnum",
+              "description": "specify outgoing or incoming sms",
+              "fullType": "sms.DocumentWayTypeEnum",
+              "name": "wayType",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -467,18 +475,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The receiver number to check",
-              "fullType": "string",
-              "name": "receiver",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your SMS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The receiver number to check",
+              "fullType": "string",
+              "name": "receiver",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -562,18 +570,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "HLR id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -596,18 +604,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "HLR id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -631,19 +639,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Filter the value of tag property (=)",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "tag",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of sender property (=)",
-              "fullType": "string",
-              "name": "sender",
-              "paramType": "query",
-              "required": false
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "datetime",
@@ -663,11 +663,19 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "Filter the value of sender property (=)",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "name": "sender",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of tag property (=)",
+              "fullType": "string",
+              "name": "tag",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -688,18 +696,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -716,18 +724,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -770,10 +778,74 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "sms.CharsetEnum",
+              "description": "The sms coding",
+              "fullType": "sms.CharsetEnum",
+              "name": "charset",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "sms.ClassEnum",
+              "description": "The sms class",
+              "fullType": "sms.ClassEnum",
+              "name": "class",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "sms.CodingEnum",
+              "description": "The sms coding",
+              "fullType": "sms.CodingEnum",
+              "name": "coding",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "The time -in minute(s)- to wait before sending the message",
+              "fullType": "long",
+              "name": "differedPeriod",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The sms message",
+              "fullType": "string",
+              "name": "message",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Do not display STOP clause in the message, this requires that this is not an advertising message",
+              "fullType": "boolean",
+              "name": "noStopClause",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "sms.PriorityEnum",
               "description": "The priority of the message",
               "fullType": "sms.PriorityEnum",
               "name": "priority",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string[]",
+              "description": "The receivers list",
+              "fullType": "string[]",
+              "name": "receivers",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The receivers document url link in csv format",
+              "fullType": "string",
+              "name": "receiversDocumentUrl",
               "paramType": "body",
               "required": false
             },
@@ -786,18 +858,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "sms.CharsetEnum",
-              "description": "The sms coding",
-              "fullType": "sms.CharsetEnum",
-              "name": "charset",
+              "dataType": "string",
+              "description": "The sender",
+              "fullType": "string",
+              "name": "sender",
               "paramType": "body",
               "required": false
             },
             {
-              "dataType": "sms.CodingEnum",
-              "description": "The sms coding",
-              "fullType": "sms.CodingEnum",
-              "name": "coding",
+              "dataType": "boolean",
+              "description": "Set the flag to send a special sms which can be reply by the receiver (smsResponse).",
+              "fullType": "boolean",
+              "name": "senderForResponse",
               "paramType": "body",
               "required": false
             },
@@ -816,70 +888,6 @@ export const schema: Schema = {
               "name": "validityPeriod",
               "paramType": "body",
               "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Do not display STOP clause in the message, this requires that this is not an advertising message",
-              "fullType": "boolean",
-              "name": "noStopClause",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Set the flag to send a special sms which can be reply by the receiver (smsResponse).",
-              "fullType": "boolean",
-              "name": "senderForResponse",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "sms.ClassEnum",
-              "description": "The sms class",
-              "fullType": "sms.ClassEnum",
-              "name": "class",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The receivers document url link in csv format",
-              "fullType": "string",
-              "name": "receiversDocumentUrl",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "The time -in minute(s)- to wait before sending the message",
-              "fullType": "long",
-              "name": "differedPeriod",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string[]",
-              "description": "The receivers list",
-              "fullType": "string[]",
-              "name": "receivers",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The sender",
-              "fullType": "string",
-              "name": "sender",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The sms message",
-              "fullType": "string",
-              "name": "message",
-              "paramType": "body",
-              "required": true
             },
             {
               "dataType": "string",
@@ -908,18 +916,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -936,18 +944,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -970,10 +978,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Filter the value of deliveryReceipt property (=)",
-              "fullType": "long",
-              "name": "deliveryReceipt",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (>=)",
+              "fullType": "datetime",
+              "name": "creationDatetime.from",
               "paramType": "query",
               "required": false
             },
@@ -987,9 +1003,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Filter the value of ptt property (=)",
+              "description": "Filter the value of deliveryReceipt property (=)",
               "fullType": "long",
-              "name": "ptt",
+              "name": "deliveryReceipt",
               "paramType": "query",
               "required": false
             },
@@ -998,6 +1014,22 @@ export const schema: Schema = {
               "description": "Filter the value of differedDelivery property (=)",
               "fullType": "long",
               "name": "differedDelivery",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of ptt property (=)",
+              "fullType": "long",
+              "name": "ptt",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of receiver property (=)",
+              "fullType": "string",
+              "name": "receiver",
               "paramType": "query",
               "required": false
             },
@@ -1016,30 +1048,6 @@ export const schema: Schema = {
               "name": "tag",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of receiver property (=)",
-              "fullType": "string",
-              "name": "receiver",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of creationDatetime property (>=)",
-              "fullType": "datetime",
-              "name": "creationDatetime.from",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "long[]"
@@ -1060,18 +1068,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1088,18 +1096,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1122,18 +1130,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1211,17 +1219,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "bookKey",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the phonebook",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "bookKey",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1239,17 +1247,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "bookKey",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the phonebook",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "bookKey",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1274,17 +1282,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "bookKey",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the phonebook",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "bookKey",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1307,11 +1315,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "telephony.ContactsExportFormatsEnum",
-              "description": "Format of the file",
-              "fullType": "telephony.ContactsExportFormatsEnum",
-              "name": "format",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "Identifier of the phonebook",
+              "fullType": "string",
+              "name": "bookKey",
+              "paramType": "path",
               "required": true
             },
             {
@@ -1323,11 +1331,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Identifier of the phonebook",
-              "fullType": "string",
-              "name": "bookKey",
-              "paramType": "path",
+              "dataType": "telephony.ContactsExportFormatsEnum",
+              "description": "Format of the file",
+              "fullType": "telephony.ContactsExportFormatsEnum",
+              "name": "format",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -1358,17 +1366,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "bookKey",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the phonebook",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "bookKey",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1392,17 +1400,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "Identifier of the phonebook",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "bookKey",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Identifier of the phonebook",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "bookKey",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1420,11 +1428,27 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Contact surname",
+              "description": "Group name of the phonebook",
               "fullType": "string",
-              "name": "surname",
+              "name": "group",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "internationalPhoneNumber",
+              "description": "Home mobile phone number of the contact",
+              "fullType": "internationalPhoneNumber",
+              "name": "homeMobile",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "internationalPhoneNumber",
+              "description": "Home landline phone number of the contact",
+              "fullType": "internationalPhoneNumber",
+              "name": "homePhone",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -1436,9 +1460,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Group name of the phonebook",
+              "description": "Contact surname",
               "fullType": "string",
-              "name": "group",
+              "name": "surname",
               "paramType": "body",
               "required": true
             },
@@ -1452,14 +1476,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "internationalPhoneNumber",
-              "description": "Home landline phone number of the contact",
-              "fullType": "internationalPhoneNumber",
-              "name": "homePhone",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "internationalPhoneNumber",
               "description": "Landline phone office number of the contact",
               "fullType": "internationalPhoneNumber",
               "name": "workPhone",
@@ -1467,26 +1483,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "internationalPhoneNumber",
-              "description": "Home mobile phone number of the contact",
-              "fullType": "internationalPhoneNumber",
-              "name": "homeMobile",
-              "paramType": "body",
-              "required": false
+              "dataType": "string",
+              "description": "Identifier of the phonebook",
+              "fullType": "string",
+              "name": "bookKey",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
               "description": "The internal name of your SMS offer",
               "fullType": "string",
               "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Identifier of the phonebook",
-              "fullType": "string",
-              "name": "bookKey",
               "paramType": "path",
               "required": true
             }
@@ -1510,14 +1518,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
@@ -1529,6 +1529,14 @@ export const schema: Schema = {
               "description": "Contact identifier",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1546,14 +1554,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
@@ -1565,6 +1565,14 @@ export const schema: Schema = {
               "description": "Contact identifier",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1589,14 +1597,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Identifier of the phonebook",
               "fullType": "string",
               "name": "bookKey",
@@ -1608,6 +1608,14 @@ export const schema: Schema = {
               "description": "Contact identifier",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1650,12 +1658,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "ID of the /me/document file you want to import",
-              "fullType": "string",
-              "name": "documentId",
+              "dataType": "boolean",
+              "description": "Download file from URL before sending to contacts (works only with csvUrl and not document ID)",
+              "fullType": "boolean",
+              "name": "autoUpdate",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
@@ -1666,26 +1674,26 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "boolean",
-              "description": "Download file from URL before sending to contacts (works only with csvUrl and not document ID)",
-              "fullType": "boolean",
-              "name": "autoUpdate",
+              "dataType": "string",
+              "description": "Description name of the document",
+              "fullType": "string",
+              "name": "description",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "ID of the /me/document file you want to import",
+              "fullType": "string",
+              "name": "documentId",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "long",
               "description": "Slot number id used to handle the document",
               "fullType": "long",
               "name": "slotId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Description name of the document",
-              "fullType": "string",
-              "name": "description",
               "paramType": "body",
               "required": true
             },
@@ -1814,17 +1822,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "boolean",
-              "description": "Only get action's price in credits without executing it",
+              "description": "Limit checks to syntaxical validation",
               "fullType": "boolean",
-              "name": "priceOnly",
+              "name": "freemium",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "boolean",
-              "description": "Limit checks to syntaxical validation",
+              "description": "Only get action's price in credits without executing it",
               "fullType": "boolean",
-              "name": "freemium",
+              "name": "priceOnly",
               "paramType": "body",
               "required": true
             },
@@ -1897,11 +1905,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "sms.CountryEnum",
-              "description": "Filter to have the country destination",
-              "fullType": "sms.CountryEnum",
-              "name": "countryDestination",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             },
             {
@@ -1913,19 +1921,19 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "sms.CountryEnum",
+              "description": "Filter to have the country destination",
+              "fullType": "sms.CountryEnum",
+              "name": "countryDestination",
+              "paramType": "query",
+              "required": true
+            },
+            {
               "dataType": "sms.PackQuantityEnum",
               "description": "Sms pack offer quantity",
               "fullType": "sms.PackQuantityEnum",
               "name": "quantity",
               "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -1968,11 +1976,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The sender (alpha or phone number)",
+              "description": "Sender description",
               "fullType": "string",
-              "name": "sender",
+              "name": "description",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "string",
@@ -1984,11 +1992,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Sender description",
+              "description": "The sender (alpha or phone number)",
               "fullType": "string",
-              "name": "description",
+              "name": "sender",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
@@ -2018,17 +2026,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The sms sender",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "sender",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The sms sender",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "sender",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2046,17 +2054,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The sms sender",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "sender",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The sms sender",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "sender",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2081,17 +2089,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The sms sender",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "sender",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The sms sender",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "sender",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2115,17 +2123,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The sms sender",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "sender",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The sms sender",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "sender",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2143,14 +2151,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Document name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Document description",
               "fullType": "string",
               "name": "description",
@@ -2159,10 +2159,10 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "Document name",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "name": "name",
+              "paramType": "body",
               "required": true
             },
             {
@@ -2170,6 +2170,14 @@ export const schema: Schema = {
               "description": "The sms sender",
               "fullType": "string",
               "name": "sender",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2192,10 +2200,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "uuid",
+              "description": "Document ID",
+              "fullType": "uuid",
+              "name": "documentID",
               "paramType": "path",
               "required": true
             },
@@ -2208,10 +2216,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "uuid",
-              "description": "Document ID",
-              "fullType": "uuid",
-              "name": "documentID",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2235,10 +2243,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "uuid",
+              "description": "Document ID",
+              "fullType": "uuid",
+              "name": "documentID",
               "paramType": "path",
               "required": true
             },
@@ -2251,10 +2259,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "uuid",
-              "description": "Document ID",
-              "fullType": "uuid",
-              "name": "documentID",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2286,17 +2294,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The sms sender",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "sender",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The sms sender",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "sender",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2319,20 +2327,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "sms.SenderRefererEnum",
-              "description": "Information type",
-              "fullType": "sms.SenderRefererEnum",
-              "name": "referer",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "The internal name of your SMS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "sms.SenderRefererEnum",
+              "description": "Information type",
+              "fullType": "sms.SenderRefererEnum",
+              "name": "referer",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "sms.SenderAvailable[]"
@@ -2406,20 +2414,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "telephony.TaskStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "telephony.TaskStatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "The internal name of your SMS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "telephony.TaskStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "telephony.TaskStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -2494,10 +2502,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "sms.TypeTemplateEnum",
+              "description": "Specify the kind of template",
+              "fullType": "sms.TypeTemplateEnum",
+              "name": "activity",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
-              "description": "Message seen by the moderator",
+              "description": "Template description",
               "fullType": "string",
-              "name": "reason",
+              "name": "description",
               "paramType": "body",
               "required": false
             },
@@ -2519,19 +2535,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Template description",
+              "description": "Message seen by the moderator",
               "fullType": "string",
-              "name": "description",
+              "name": "reason",
               "paramType": "body",
               "required": false
-            },
-            {
-              "dataType": "sms.TypeTemplateEnum",
-              "description": "Specify the kind of template",
-              "fullType": "sms.TypeTemplateEnum",
-              "name": "activity",
-              "paramType": "body",
-              "required": true
             },
             {
               "dataType": "string",
@@ -2561,17 +2569,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "Name of the template",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "name",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of the template",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "name",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2589,17 +2597,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "Name of the template",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "name",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of the template",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "name",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2624,17 +2632,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "Name of the template",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "name",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of the template",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "name",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2658,14 +2666,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Message pattern to be moderated. Use \"#VALUE#\" format for dynamic text area",
-              "fullType": "string",
-              "name": "message",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Template description",
               "fullType": "string",
               "name": "description",
@@ -2674,10 +2674,10 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "Message pattern to be moderated. Use \"#VALUE#\" format for dynamic text area",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "name": "message",
+              "paramType": "body",
               "required": true
             },
             {
@@ -2685,6 +2685,14 @@ export const schema: Schema = {
               "description": "Name of the template",
               "fullType": "string",
               "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2707,18 +2715,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Sms account destination.",
-              "fullType": "string",
-              "name": "smsAccountTarget",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "double",
               "description": "Amount of credits to transfer.",
               "fullType": "double",
               "name": "credits",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Sms account destination.",
+              "fullType": "string",
+              "name": "smsAccountTarget",
               "paramType": "body",
               "required": true
             },
@@ -2770,17 +2778,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The sms password",
+              "description": "The sms login",
               "fullType": "string",
-              "name": "password",
+              "name": "login",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The sms login",
+              "description": "The sms password",
               "fullType": "string",
-              "name": "login",
+              "name": "password",
               "paramType": "body",
               "required": true
             },
@@ -2812,17 +2820,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The sms user login",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "login",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The sms user login",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "login",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2840,17 +2848,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The sms user login",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "login",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The sms user login",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "login",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2875,17 +2883,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The sms user login",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "login",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The sms user login",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "login",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2909,11 +2917,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Select sms with a specific identifier group tag",
+              "description": "The sms user login",
               "fullType": "string",
-              "name": "tag",
-              "paramType": "query",
-              "required": false
+              "name": "login",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "datetime",
@@ -2932,27 +2948,19 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "string",
+              "description": "Select sms with a specific identifier group tag",
+              "fullType": "string",
+              "name": "tag",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "sms.DocumentWayTypeEnum",
               "description": "specify outgoing or incoming sms",
               "fullType": "sms.DocumentWayTypeEnum",
               "name": "wayType",
               "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The sms user login",
-              "fullType": "string",
-              "name": "login",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -2975,19 +2983,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Filter the value of tag property (=)",
+              "description": "The sms user login",
               "fullType": "string",
-              "name": "tag",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of sender property (=)",
-              "fullType": "string",
-              "name": "sender",
-              "paramType": "query",
-              "required": false
+              "name": "login",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -2999,11 +2999,19 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The sms user login",
+              "description": "Filter the value of sender property (=)",
               "fullType": "string",
-              "name": "login",
-              "paramType": "path",
-              "required": true
+              "name": "sender",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of tag property (=)",
+              "fullType": "string",
+              "name": "tag",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -3024,10 +3032,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
@@ -3040,10 +3048,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3060,10 +3068,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
@@ -3076,10 +3084,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3103,17 +3111,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The sms user login",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "login",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The sms user login",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "login",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3130,10 +3138,74 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "sms.CharsetEnum",
+              "description": "The sms coding",
+              "fullType": "sms.CharsetEnum",
+              "name": "charset",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "sms.ClassEnum",
+              "description": "The sms class",
+              "fullType": "sms.ClassEnum",
+              "name": "class",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "sms.CodingEnum",
+              "description": "The sms coding",
+              "fullType": "sms.CodingEnum",
+              "name": "coding",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "The time -in minute(s)- to wait before sending the message",
+              "fullType": "long",
+              "name": "differedPeriod",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The sms message",
+              "fullType": "string",
+              "name": "message",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Do not display STOP clause in the message, this requires that this is not an advertising message",
+              "fullType": "boolean",
+              "name": "noStopClause",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "sms.PriorityEnum",
               "description": "The priority of the message",
               "fullType": "sms.PriorityEnum",
               "name": "priority",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string[]",
+              "description": "The receivers list",
+              "fullType": "string[]",
+              "name": "receivers",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The receivers document url link in csv format",
+              "fullType": "string",
+              "name": "receiversDocumentUrl",
               "paramType": "body",
               "required": false
             },
@@ -3146,18 +3218,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "sms.CharsetEnum",
-              "description": "The sms coding",
-              "fullType": "sms.CharsetEnum",
-              "name": "charset",
+              "dataType": "string",
+              "description": "The sender",
+              "fullType": "string",
+              "name": "sender",
               "paramType": "body",
               "required": false
             },
             {
-              "dataType": "sms.CodingEnum",
-              "description": "The sms coding",
-              "fullType": "sms.CodingEnum",
-              "name": "coding",
+              "dataType": "boolean",
+              "description": "Set the flag to send a special sms which can be reply by the receiver (smsResponse).",
+              "fullType": "boolean",
+              "name": "senderForResponse",
               "paramType": "body",
               "required": false
             },
@@ -3178,67 +3250,11 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "boolean",
-              "description": "Do not display STOP clause in the message, this requires that this is not an advertising message",
-              "fullType": "boolean",
-              "name": "noStopClause",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Set the flag to send a special sms which can be reply by the receiver (smsResponse).",
-              "fullType": "boolean",
-              "name": "senderForResponse",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "sms.ClassEnum",
-              "description": "The sms class",
-              "fullType": "sms.ClassEnum",
-              "name": "class",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "The receivers document url link in csv format",
+              "description": "The sms user login",
               "fullType": "string",
-              "name": "receiversDocumentUrl",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "The time -in minute(s)- to wait before sending the message",
-              "fullType": "long",
-              "name": "differedPeriod",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string[]",
-              "description": "The receivers list",
-              "fullType": "string[]",
-              "name": "receivers",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The sender",
-              "fullType": "string",
-              "name": "sender",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The sms message",
-              "fullType": "string",
-              "name": "message",
-              "paramType": "body",
+              "name": "login",
+              "paramType": "path",
               "required": true
             },
             {
@@ -3246,14 +3262,6 @@ export const schema: Schema = {
               "description": "The internal name of your SMS offer",
               "fullType": "string",
               "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The sms user login",
-              "fullType": "string",
-              "name": "login",
               "paramType": "path",
               "required": true
             }
@@ -3276,10 +3284,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
@@ -3292,10 +3300,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3312,10 +3320,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
@@ -3328,10 +3336,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3354,10 +3362,42 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The sms user login",
+              "fullType": "string",
+              "name": "login",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "long",
               "description": "Filter the value of deliveryReceipt property (=)",
               "fullType": "long",
               "name": "deliveryReceipt",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of differedDelivery property (=)",
+              "fullType": "long",
+              "name": "differedDelivery",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of ptt property (=)",
+              "fullType": "long",
+              "name": "ptt",
               "paramType": "query",
               "required": false
             },
@@ -3371,30 +3411,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of tag property (=)",
-              "fullType": "string",
-              "name": "tag",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Filter the value of ptt property (=)",
-              "fullType": "long",
-              "name": "ptt",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Filter the value of differedDelivery property (=)",
-              "fullType": "long",
-              "name": "differedDelivery",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of sender property (=)",
               "fullType": "string",
               "name": "sender",
@@ -3403,19 +3419,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "Filter the value of tag property (=)",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The sms user login",
-              "fullType": "string",
-              "name": "login",
-              "paramType": "path",
-              "required": true
+              "name": "tag",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -3436,10 +3444,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
@@ -3452,10 +3460,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3472,10 +3480,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
@@ -3488,10 +3496,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3514,10 +3522,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
@@ -3530,10 +3538,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3557,17 +3565,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The sms user login",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "login",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The sms user login",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "login",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3584,22 +3592,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "ID of the /me/document file you want to import",
-              "fullType": "string",
-              "name": "documentId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "URL of the file you want to import",
-              "fullType": "string",
-              "name": "csvUrl",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "boolean",
               "description": "Download file from URL before sending to contacts (works only with csvUrl and not document ID)",
               "fullType": "boolean",
@@ -3608,12 +3600,12 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Slot number id used to handle the document",
-              "fullType": "long",
-              "name": "slotId",
+              "dataType": "string",
+              "description": "URL of the file you want to import",
+              "fullType": "string",
+              "name": "csvUrl",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "string",
@@ -3625,10 +3617,18 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "ID of the /me/document file you want to import",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "name": "documentId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Slot number id used to handle the document",
+              "fullType": "long",
+              "name": "slotId",
+              "paramType": "body",
               "required": true
             },
             {
@@ -3636,6 +3636,14 @@ export const schema: Schema = {
               "description": "The sms user login",
               "fullType": "string",
               "name": "login",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3659,17 +3667,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The sms user login",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "login",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The sms user login",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "login",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3695,17 +3703,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The sms user login",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "login",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The sms user login",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "login",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3738,17 +3746,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The sms user login",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "login",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The sms user login",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "login",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3780,14 +3788,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "boolean",
-              "description": "Only get action's price in credits without executing it",
-              "fullType": "boolean",
-              "name": "priceOnly",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
               "description": "Limit checks to syntaxical validation",
               "fullType": "boolean",
               "name": "freemium",
@@ -3795,11 +3795,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "boolean",
+              "description": "Only get action's price in credits without executing it",
+              "fullType": "boolean",
+              "name": "priceOnly",
+              "paramType": "body",
               "required": true
             },
             {
@@ -3807,6 +3807,14 @@ export const schema: Schema = {
               "description": "The sms user login",
               "fullType": "string",
               "name": "login",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3838,17 +3846,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The sms user login",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "login",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The sms user login",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "login",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -3906,17 +3914,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The virtual number",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "number",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The virtual number",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "number",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3940,17 +3948,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The virtual number",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "number",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The virtual number",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "number",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3968,17 +3976,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The virtual number",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "number",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The virtual number",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "number",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3996,17 +4004,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The virtual number",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "number",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The virtual number",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "number",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4029,18 +4037,26 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The virtual number",
+              "fullType": "string",
+              "name": "number",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "datetime",
               "description": "Filter the value of creationDatetime property (>=)",
               "fullType": "datetime",
               "name": "creationDatetime.from",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of sender property (=)",
-              "fullType": "string",
-              "name": "sender",
               "paramType": "query",
               "required": false
             },
@@ -4054,27 +4070,19 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of tag property (=)",
+              "description": "Filter the value of sender property (=)",
               "fullType": "string",
-              "name": "tag",
+              "name": "sender",
               "paramType": "query",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "Filter the value of tag property (=)",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The virtual number",
-              "fullType": "string",
-              "name": "number",
-              "paramType": "path",
-              "required": true
+              "name": "tag",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -4095,10 +4103,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
@@ -4111,10 +4119,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4131,10 +4139,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
@@ -4147,10 +4155,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4174,17 +4182,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The virtual number",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "number",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The virtual number",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "number",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4201,6 +4209,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "sms.CharsetEnum",
+              "description": "The sms coding",
+              "fullType": "sms.CharsetEnum",
+              "name": "charset",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "sms.ClassEnum",
               "description": "The sms class",
               "fullType": "sms.ClassEnum",
@@ -4209,18 +4225,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "The receivers document url link in csv format",
-              "fullType": "string",
-              "name": "receiversDocumentUrl",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string[]",
-              "description": "The receivers list",
-              "fullType": "string[]",
-              "name": "receivers",
+              "dataType": "sms.CodingEnum",
+              "description": "The sms coding",
+              "fullType": "sms.CodingEnum",
+              "name": "coding",
               "paramType": "body",
               "required": false
             },
@@ -4249,26 +4257,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "sms.CodingEnum",
-              "description": "The sms coding",
-              "fullType": "sms.CodingEnum",
-              "name": "coding",
+              "dataType": "string[]",
+              "description": "The receivers list",
+              "fullType": "string[]",
+              "name": "receivers",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "The identifier group tag",
+              "description": "The receivers document url link in csv format",
               "fullType": "string",
-              "name": "tag",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "sms.CharsetEnum",
-              "description": "The sms coding",
-              "fullType": "sms.CharsetEnum",
-              "name": "charset",
+              "name": "receiversDocumentUrl",
               "paramType": "body",
               "required": false
             },
@@ -4277,6 +4277,14 @@ export const schema: Schema = {
               "description": "The receivers document slot id",
               "fullType": "string",
               "name": "receiversSlotId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The identifier group tag",
+              "fullType": "string",
+              "name": "tag",
               "paramType": "body",
               "required": false
             },
@@ -4290,17 +4298,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your SMS offer",
+              "description": "The virtual number",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "number",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The virtual number",
+              "description": "The internal name of your SMS offer",
               "fullType": "string",
-              "name": "number",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4323,10 +4331,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
@@ -4339,10 +4347,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4359,10 +4367,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
@@ -4375,10 +4383,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4401,18 +4409,42 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Filter the value of deliveryReceipt property (=)",
-              "fullType": "long",
-              "name": "deliveryReceipt",
+              "dataType": "string",
+              "description": "The virtual number",
+              "fullType": "string",
+              "name": "number",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (>=)",
+              "fullType": "datetime",
+              "name": "creationDatetime.from",
               "paramType": "query",
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Filter the value of sender property (=)",
-              "fullType": "string",
-              "name": "sender",
+              "dataType": "datetime",
+              "description": "Filter the value of creationDatetime property (<=)",
+              "fullType": "datetime",
+              "name": "creationDatetime.to",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Filter the value of deliveryReceipt property (=)",
+              "fullType": "long",
+              "name": "deliveryReceipt",
               "paramType": "query",
               "required": false
             },
@@ -4433,18 +4465,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "datetime",
-              "description": "Filter the value of creationDatetime property (<=)",
-              "fullType": "datetime",
-              "name": "creationDatetime.to",
+              "dataType": "string",
+              "description": "Filter the value of receiver property (=)",
+              "fullType": "string",
+              "name": "receiver",
               "paramType": "query",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Filter the value of receiver property (=)",
+              "description": "Filter the value of sender property (=)",
               "fullType": "string",
-              "name": "receiver",
+              "name": "sender",
               "paramType": "query",
               "required": false
             },
@@ -4455,30 +4487,6 @@ export const schema: Schema = {
               "name": "tag",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of creationDatetime property (>=)",
-              "fullType": "datetime",
-              "name": "creationDatetime.from",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The virtual number",
-              "fullType": "string",
-              "name": "number",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "long[]"
@@ -4499,10 +4507,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
@@ -4515,10 +4523,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4535,10 +4543,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
@@ -4551,10 +4559,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4577,10 +4585,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your SMS offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
@@ -4593,10 +4601,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }

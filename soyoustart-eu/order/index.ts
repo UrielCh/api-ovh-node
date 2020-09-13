@@ -214,7 +214,7 @@ export namespace hosting {
          * Available datacenters
          * type fullname: hosting.PrivateDatabase.DatacenterEnum
          */
-        export type DatacenterEnum = "bhs1" | "gra1" | "gra2" | "p19"
+        export type DatacenterEnum = "bhs1" | "gra1" | "gra2" | "gra3" | "p19"
         /**
          * Available offers
          * type fullname: hosting.PrivateDatabase.OfferEnum
@@ -473,7 +473,7 @@ export namespace nichandle {
      * OVH subsidiaries
      * type fullname: nichandle.OvhSubsidiaryEnum
      */
-    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
+    export type OvhSubsidiaryEnum = "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "SN" | "TN"
 }
 export namespace order {
     /**
@@ -486,6 +486,7 @@ export namespace order {
         url: string;
     }
     /**
+     * Currency code
      * type fullname: order.CurrencyCodeEnum
      */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
@@ -527,7 +528,7 @@ export namespace order {
         withoutTax: order.Price;
     }
     /**
-     * Price with it's currency and textual representation
+     * Price with its currency and textual representation
      * interface fullName: order.Price.Price
      */
     export interface Price {

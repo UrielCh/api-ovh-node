@@ -6,25 +6,6 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Operations about the LICENSE service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/license/cpanel"
-    },
-    {
       "description": "Get the orderable CPanel versions",
       "operations": [
         {
@@ -53,102 +34,46 @@ export const schema: Schema = {
       "path": "/license/cpanel/orderableVersions"
     },
     {
-      "description": "licenses Todos",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your Cpanel license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This Task id",
-              "fullType": "long",
-              "name": "taskId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "license.Task",
-          "responseType": "license.Task"
-        }
-      ],
-      "path": "/license/cpanel/{serviceName}/tasks/{taskId}"
-    },
-    {
-      "description": "List the license.Task objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "tasks linked to this license",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "license.TaskStateEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "license.TaskStateEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.ActionType",
-              "description": "Filter the value of action property (=)",
-              "fullType": "license.ActionType",
-              "name": "action",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your Cpanel license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/license/cpanel/{serviceName}/tasks"
-    },
-    {
-      "description": "changeIp operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Move this license to another Ip",
+          "description": "Confirm termination of your service",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipv4",
-              "description": "The Ip on which you want to move this license",
-              "fullType": "ipv4",
-              "name": "destinationIp",
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "service.TerminationFutureUseEnum",
+              "description": "What next after your termination request",
+              "fullType": "service.TerminationFutureUseEnum",
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "service.TerminationReasonEnum",
+              "description": "Reason of your termination request",
+              "fullType": "service.TerminationReasonEnum",
+              "name": "reason",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
+              "name": "token",
               "paramType": "body",
               "required": true
             },
@@ -162,11 +87,39 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "license.Task",
-          "responseType": "license.Task"
+          "responseFullType": "string",
+          "responseType": "string"
         }
       ],
-      "path": "/license/cpanel/{serviceName}/changeIp"
+      "path": "/license/cpanel/{serviceName}/confirmTermination"
+    },
+    {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Terminate your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Cpanel license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string",
+          "responseType": "string"
+        }
+      ],
+      "path": "/license/cpanel/{serviceName}/terminate"
     },
     {
       "description": "allowedDestinationIp operations",
@@ -255,94 +208,6 @@ export const schema: Schema = {
       "path": "/license/cpanel/{serviceName}"
     },
     {
-      "description": "Terminate your service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Terminate your service",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your Cpanel license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string",
-          "responseType": "string"
-        }
-      ],
-      "path": "/license/cpanel/{serviceName}/terminate"
-    },
-    {
-      "description": "Confirm termination of your service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Confirm termination of your service",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "service.TerminationFutureUseEnum",
-              "description": "What next after your termination request",
-              "fullType": "service.TerminationFutureUseEnum",
-              "name": "futureUse",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "service.TerminationReasonEnum",
-              "description": "Reason of your termination request",
-              "fullType": "service.TerminationReasonEnum",
-              "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
-              "fullType": "string",
-              "name": "token",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your Cpanel license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string",
-          "responseType": "string"
-        }
-      ],
-      "path": "/license/cpanel/{serviceName}/confirmTermination"
-    },
-    {
       "description": "Details about a Service",
       "operations": [
         {
@@ -401,6 +266,86 @@ export const schema: Schema = {
       "path": "/license/cpanel/{serviceName}/serviceInfos"
     },
     {
+      "description": "List the license.Task objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "tasks linked to this license",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Cpanel license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.ActionType",
+              "description": "Filter the value of action property (=)",
+              "fullType": "license.ActionType",
+              "name": "action",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.TaskStateEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "license.TaskStateEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/license/cpanel/{serviceName}/tasks"
+    },
+    {
+      "description": "licenses Todos",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Cpanel license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "This Task id",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
+        }
+      ],
+      "path": "/license/cpanel/{serviceName}/tasks/{taskId}"
+    },
+    {
       "description": "canLicenseBeMovedTo operations",
       "operations": [
         {
@@ -413,11 +358,47 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The name of your Cpanel license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "ipv4",
               "description": "The Ip on which you want to move this license",
               "fullType": "ipv4",
               "name": "destinationIp",
               "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.ChangeIpStatus",
+          "responseType": "license.ChangeIpStatus"
+        }
+      ],
+      "path": "/license/cpanel/{serviceName}/canLicenseBeMovedTo"
+    },
+    {
+      "description": "changeIp operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Move this license to another Ip",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "The Ip on which you want to move this license",
+              "fullType": "ipv4",
+              "name": "destinationIp",
+              "paramType": "body",
               "required": true
             },
             {
@@ -430,11 +411,30 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "license.ChangeIpStatus",
-          "responseType": "license.ChangeIpStatus"
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
         }
       ],
-      "path": "/license/cpanel/{serviceName}/canLicenseBeMovedTo"
+      "path": "/license/cpanel/{serviceName}/changeIp"
+    },
+    {
+      "description": "Operations about the LICENSE service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/license/cpanel"
     }
   ],
   "basePath": "https://ca.api.soyoustart.com/1.0",

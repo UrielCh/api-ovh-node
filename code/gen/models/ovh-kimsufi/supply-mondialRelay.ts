@@ -26,20 +26,20 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "coreTypes.CountryEnum",
-              "description": "ISO country code",
-              "fullType": "coreTypes.CountryEnum",
-              "name": "country",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "City",
               "fullType": "string",
               "name": "city",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "coreTypes.CountryEnum",
+              "description": "ISO country code",
+              "fullType": "coreTypes.CountryEnum",
+              "name": "country",
+              "paramType": "body",
+              "required": true
             },
             {
               "dataType": "string",

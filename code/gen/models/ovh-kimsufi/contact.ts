@@ -35,18 +35,18 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Form type",
-              "fullType": "string",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "complexType.SafeKeyValue<string>[]",
               "description": "Form informations",
               "fullType": "complexType.SafeKeyValue<string>[]",
               "name": "form",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Form type",
+              "fullType": "string",
+              "name": "type",
               "paramType": "body",
               "required": true
             }

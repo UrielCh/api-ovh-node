@@ -196,7 +196,7 @@ export namespace order {
             description: string;
             duration: string;
             interval: number;
-            maximumQuantity: number;
+            maximumQuantity?: number;
             maximumRepeat?: number;
             minimumQuantity: number;
             minimumRepeat: number;
@@ -1308,6 +1308,38 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            privateCloud: {
+                /**
+                 * Get informations about Hosted Private Cloud offers
+                 * GET /order/cart/{cartId}/privateCloud
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new Hosted Private Cloud item in your cart
+                 * POST /order/cart/{cartId}/privateCloud
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                options: {
+                    /**
+                     * Get informations about Hosted Private Cloud options
+                     * GET /order/cart/{cartId}/privateCloud/options
+                     */
+                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    /**
+                     * Post a new Hosted Private Cloud option in your cart
+                     * POST /order/cart/{cartId}/privateCloud/options
+                     */
+                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            }
             sslComodo: {
                 /**
                  * Get informations about SSL Comodo offers
@@ -1843,6 +1875,17 @@ export interface Order {
                  * GET /order/catalog/formatted/licensecPanel
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            privateCloud: {
+                /**
+                 * Retrieve information of Private Cloud catalog
+                 * GET /order/catalog/formatted/privateCloud
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.pcc.Catalog>;
                 /**
                  * Controle cache
                  */

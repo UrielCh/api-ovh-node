@@ -147,7 +147,7 @@ export default class GenApiTypes {
             port: this.port, // 443
             path: this.basePath + apiPath // /1.0/
         });
-
+        // archive the current API model file for future checks.
         if (destination) {
             const replacer = (key: string, value: any) =>
                 value instanceof Object && !(value instanceof Array) ?
@@ -159,6 +159,22 @@ export default class GenApiTypes {
             const importHeader = `import {Schema} from '../../src/schema';${EOL}${EOL}`;
             const commentHeader = `// imported from https://${this.host}:${this.port}${this.basePath}${apiPath}${EOL}${EOL}`;
             const exportHeader = `export const schema: Schema = `;
+
+            // sort parameters: body, then path, then query
+            // then sort by name
+            schema.apis.forEach(api => {
+                api.operations.forEach(operation => {
+                    operation.parameters.sort((a, b) => {
+                        const t1 = a.paramType.localeCompare(b.paramType);
+                        if (t1 != 0)
+                            return t1;
+                        const an = a.name || '';
+                        const bn = b.name || '';
+                        return an.localeCompare(bn);
+                    });
+                })
+            })
+
             const json = JSON.stringify(schema, replacer, 2);
             await fse.writeFile(destination, `${importHeader}${commentHeader}${exportHeader}${json}`, { encoding: 'UTF8' });
         }

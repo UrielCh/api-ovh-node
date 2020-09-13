@@ -70,17 +70,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The contact to set as tech contact",
+              "description": "The contact to set as billing contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
+              "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "The contact to set as billing contact",
+              "description": "The contact to set as tech contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
+              "name": "contactTech",
               "paramType": "body",
               "required": false
             },
@@ -417,6 +417,13 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "registry.inputPermissions",
+              "description": "Permissions of a user over a namespace",
+              "fullType": "registry.inputPermissions",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
               "description": "Image id",
               "fullType": "string",
@@ -430,13 +437,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "namespaceId",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "registry.inputPermissions",
-              "description": "Permissions of a user over a namespace",
-              "fullType": "registry.inputPermissions",
-              "paramType": "body",
               "required": true
             },
             {
@@ -680,18 +680,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "registry.inputPermissions",
+              "description": "Permissions of a user over a namespace",
+              "fullType": "registry.inputPermissions",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
               "description": "Namespace id",
               "fullType": "string",
               "name": "namespaceId",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "registry.inputPermissions",
-              "description": "Permissions of a user over a namespace",
-              "fullType": "registry.inputPermissions",
-              "paramType": "body",
               "required": true
             },
             {

@@ -148,18 +148,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "saas.csp2.SupportedServiceEnum[]",
-              "description": "Services that your domain needs to be configured with",
-              "fullType": "saas.csp2.SupportedServiceEnum[]",
-              "name": "supportedServices",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Your OVH-hosted domain to configure",
               "fullType": "string",
               "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "saas.csp2.SupportedServiceEnum[]",
+              "description": "Services that your domain needs to be configured with",
+              "fullType": "saas.csp2.SupportedServiceEnum[]",
+              "name": "supportedServices",
               "paramType": "body",
               "required": true
             },
@@ -216,18 +216,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The unique identifier of your Office service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "License unique identifier",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The unique identifier of your Office service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -324,17 +324,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Quantity of licenses to order",
+              "description": "License's type unique identifier",
               "fullType": "long",
-              "name": "quantity",
+              "name": "licenseId",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "License's type unique identifier",
+              "description": "Quantity of licenses to order",
               "fullType": "long",
-              "name": "licenseId",
+              "name": "quantity",
               "paramType": "body",
               "required": true
             },
@@ -365,18 +365,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The unique identifier of your Office service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Subscription's unique identifier",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The unique identifier of your Office service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -393,18 +393,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The unique identifier of your Office service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Subscription's unique identifier",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The unique identifier of your Office service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -427,18 +427,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The unique identifier of your Office service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Subscription's unique identifier",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The unique identifier of your Office service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -461,18 +461,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The unique identifier of your Office service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Subscription's unique identifier",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The unique identifier of your Office service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -503,18 +503,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The unique identifier of your Office service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Subscription's unique identifier",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The unique identifier of your Office service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -553,18 +553,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The unique identifier of your Office service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Subscription's unique identifier",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The unique identifier of your Office service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -613,18 +613,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The unique identifier of your Office service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Unique identifier of the task",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The unique identifier of your Office service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -647,19 +647,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "msServices.LicensePeriodEnum",
-              "description": "The period to query",
-              "fullType": "msServices.LicensePeriodEnum",
-              "name": "timePeriod",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The unique identifier of your Office service",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "msServices.LicensePeriodEnum",
+              "description": "The period to query",
+              "fullType": "msServices.LicensePeriodEnum",
+              "name": "timePeriod",
+              "paramType": "query",
               "required": true
             }
           ],

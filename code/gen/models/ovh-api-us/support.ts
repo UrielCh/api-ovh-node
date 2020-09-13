@@ -18,10 +18,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "datetime",
-              "description": "Minimum creation date",
-              "fullType": "datetime",
-              "name": "minCreationDate",
+              "dataType": "boolean",
+              "description": "Search archived tickets",
+              "fullType": "boolean",
+              "name": "archived",
               "paramType": "query",
               "required": false
             },
@@ -42,6 +42,14 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "datetime",
+              "description": "Minimum creation date",
+              "fullType": "datetime",
+              "name": "minCreationDate",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "support.TicketProductEnum",
               "description": "Search by ticket product",
               "fullType": "support.TicketProductEnum",
@@ -50,10 +58,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "boolean",
-              "description": "Search archived tickets",
-              "fullType": "boolean",
-              "name": "archived",
+              "dataType": "string",
+              "description": "Ticket message service name",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "query",
               "required": false
             },
@@ -70,14 +78,6 @@ export const schema: Schema = {
               "description": "Search by ticket subject",
               "fullType": "string",
               "name": "subject",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Ticket message service name",
-              "fullType": "string",
-              "name": "serviceName",
               "paramType": "query",
               "required": false
             },
@@ -108,18 +108,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "support.TicketTypeEnum",
-              "description": "Ticket type (criticalIntervention requires VIP support level)",
-              "fullType": "support.TicketTypeEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Ticket message subject",
-              "fullType": "string",
-              "name": "subject",
+              "dataType": "text",
+              "description": "Ticket message body",
+              "fullType": "text",
+              "name": "body",
               "paramType": "body",
               "required": true
             },
@@ -128,6 +120,14 @@ export const schema: Schema = {
               "description": "Ticket message category",
               "fullType": "support.TicketCategoryEnum",
               "name": "category",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "support.TicketProductEnum",
+              "description": "Ticket message product",
+              "fullType": "support.TicketProductEnum",
+              "name": "product",
               "paramType": "body",
               "required": false
             },
@@ -148,18 +148,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "support.TicketProductEnum",
-              "description": "Ticket message product",
-              "fullType": "support.TicketProductEnum",
-              "name": "product",
+              "dataType": "string",
+              "description": "Ticket message subject",
+              "fullType": "string",
+              "name": "subject",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
-              "dataType": "text",
-              "description": "Ticket message body",
-              "fullType": "text",
-              "name": "body",
+              "dataType": "support.TicketTypeEnum",
+              "description": "Ticket type (criticalIntervention requires VIP support level)",
+              "fullType": "support.TicketTypeEnum",
+              "name": "type",
               "paramType": "body",
               "required": true
             }
@@ -286,19 +286,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "internal ticket identifier",
-              "fullType": "long",
-              "name": "ticketId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "text",
               "description": "ticket reopen reason",
               "fullType": "text",
               "name": "body",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "internal ticket identifier",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -320,19 +320,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "internal ticket identifier",
-              "fullType": "long",
-              "name": "ticketId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "text",
               "description": "text body of ticket response",
               "fullType": "text",
               "name": "body",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "internal ticket identifier",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -354,11 +354,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "internal ticket identifier",
-              "fullType": "long",
-              "name": "ticketId",
-              "paramType": "path",
+              "dataType": "string",
+              "description": "ticket score",
+              "fullType": "string",
+              "name": "score",
+              "paramType": "body",
               "required": true
             },
             {
@@ -370,11 +370,11 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "ticket score",
-              "fullType": "string",
-              "name": "score",
-              "paramType": "body",
+              "dataType": "long",
+              "description": "internal ticket identifier",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
               "required": true
             }
           ],

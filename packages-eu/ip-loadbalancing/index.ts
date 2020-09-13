@@ -548,6 +548,7 @@ export namespace ipLoadbalancing {
             dedicatedIpfo?: string[];
             defaultFarmId?: number;
             defaultSslId?: number;
+            deniedSource?: string[];
             disabled: boolean;
             displayName?: string;
             frontendId: number;
@@ -569,6 +570,7 @@ export namespace ipLoadbalancing {
             dedicatedIpfo?: string[];
             defaultFarmId?: number;
             defaultSslId?: number;
+            deniedSource?: string[];
             disabled: boolean;
             displayName?: string;
             frontendId: number;
@@ -942,7 +944,7 @@ export interface IpLoadbalancing {
                  * Add a new http frontend on your IP Load Balancing
                  * POST /ipLoadbalancing/{serviceName}/http/frontend
                  */
-                $post(params: { allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, disabled?: boolean, displayName?: string, hsts?: boolean, httpHeader?: string[], port: string, redirectLocation?: string, ssl?: boolean, zone: string }): Promise<ipLoadbalancing.frontendHttp.FrontendHttp>;
+                $post(params: { allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, deniedSource?: string[], disabled?: boolean, displayName?: string, hsts?: boolean, httpHeader?: string[], port: string, redirectLocation?: string, ssl?: boolean, zone: string }): Promise<ipLoadbalancing.frontendHttp.FrontendHttp>;
                 /**
                  * Controle cache
                  */
@@ -962,7 +964,7 @@ export interface IpLoadbalancing {
                      * Alter this object properties
                      * PUT /ipLoadbalancing/{serviceName}/http/frontend/{frontendId}
                      */
-                    $put(params?: { allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, disabled?: boolean, displayName?: string, frontendId?: number, hsts?: boolean, httpHeader?: string[], port?: string, redirectLocation?: string, ssl?: boolean, zone?: string }): Promise<void>;
+                    $put(params?: { allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, deniedSource?: string[], disabled?: boolean, displayName?: string, frontendId?: number, hsts?: boolean, httpHeader?: string[], port?: string, redirectLocation?: string, ssl?: boolean, zone?: string }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -1308,7 +1310,7 @@ export interface IpLoadbalancing {
                  * Add a new TCP frontend on your IP Load Balancing
                  * POST /ipLoadbalancing/{serviceName}/tcp/frontend
                  */
-                $post(params: { allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, disabled?: boolean, displayName?: string, port: string, ssl?: boolean, zone: string }): Promise<ipLoadbalancing.frontendTcp.FrontendTcp>;
+                $post(params: { allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, deniedSource?: string[], disabled?: boolean, displayName?: string, port: string, ssl?: boolean, zone: string }): Promise<ipLoadbalancing.frontendTcp.FrontendTcp>;
                 /**
                  * Controle cache
                  */
@@ -1328,7 +1330,7 @@ export interface IpLoadbalancing {
                      * Alter this object properties
                      * PUT /ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}
                      */
-                    $put(params?: { allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, disabled?: boolean, displayName?: string, frontendId?: number, port?: string, ssl?: boolean, zone?: string }): Promise<void>;
+                    $put(params?: { allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, deniedSource?: string[], disabled?: boolean, displayName?: string, frontendId?: number, port?: string, ssl?: boolean, zone?: string }): Promise<void>;
                     /**
                      * Controle cache
                      */

@@ -47,18 +47,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Project description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "long",
               "description": "Amount of cloud credit to purchase. Unit is base currency.",
               "fullType": "long",
               "name": "credit",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Project description",
+              "fullType": "string",
+              "name": "description",
               "paramType": "body",
               "required": false
             },
@@ -277,20 +277,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "cloud.AclTypeEnum",
-              "description": "Filter the value of type property (=)",
-              "fullType": "cloud.AclTypeEnum",
-              "name": "type",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "The project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "cloud.AclTypeEnum",
+              "description": "Filter the value of type property (=)",
+              "fullType": "cloud.AclTypeEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -348,17 +348,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The project id",
-              "fullType": "string",
-              "name": "serviceName",
+              "description": "OVH customer unique identifier",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "accountId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "OVH customer unique identifier",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "accountId",
+              "description": "The project id",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -376,17 +376,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The project id",
-              "fullType": "string",
-              "name": "serviceName",
+              "description": "OVH customer unique identifier",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "accountId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "OVH customer unique identifier",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "accountId",
+              "description": "The project id",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -463,6 +463,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "cloud.AlertingDelayEnum",
+              "description": "Delay between alerts in seconds",
+              "fullType": "cloud.AlertingDelayEnum",
+              "name": "delay",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
               "description": "Email to contact",
               "fullType": "string",
@@ -475,14 +483,6 @@ export const schema: Schema = {
               "description": "Monthly threshold for this alerting in currency",
               "fullType": "long",
               "name": "monthlyThreshold",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "cloud.AlertingDelayEnum",
-              "description": "Delay between alerts in seconds",
-              "fullType": "cloud.AlertingDelayEnum",
-              "name": "delay",
               "paramType": "body",
               "required": true
             },
@@ -514,17 +514,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The project id",
+              "description": "Alerting unique UUID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Alerting unique UUID",
+              "description": "The project id",
               "fullType": "string",
-              "name": "id",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -542,17 +542,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The project id",
+              "description": "Alerting unique UUID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Alerting unique UUID",
+              "description": "The project id",
               "fullType": "string",
-              "name": "id",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -577,17 +577,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The project id",
+              "description": "Alerting unique UUID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Alerting unique UUID",
+              "description": "The project id",
               "fullType": "string",
-              "name": "id",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -611,17 +611,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The project id",
+              "description": "Alerting unique UUID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Alerting unique UUID",
+              "description": "The project id",
               "fullType": "string",
-              "name": "id",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -644,10 +644,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The project id",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Alert id",
+              "fullType": "long",
+              "name": "alertId",
               "paramType": "path",
               "required": true
             },
@@ -660,10 +660,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Alert id",
-              "fullType": "long",
-              "name": "alertId",
+              "dataType": "string",
+              "description": "The project id",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -686,6 +686,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The project id",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "datetime",
               "description": "Get bills from",
               "fullType": "datetime",
@@ -699,14 +707,6 @@ export const schema: Schema = {
               "fullType": "datetime",
               "name": "to",
               "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The project id",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -763,17 +763,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The contact to set as tech contact",
+              "description": "The contact to set as billing contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
+              "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "The contact to set as billing contact",
+              "description": "The contact to set as tech contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
+              "name": "contactTech",
               "paramType": "body",
               "required": false
             },
@@ -804,6 +804,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "service.TerminationFutureUseEnum",
               "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
@@ -816,14 +824,6 @@ export const schema: Schema = {
               "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
               "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
               "paramType": "body",
               "required": false
             },
@@ -862,11 +862,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "datetime",
-              "description": "Get usage to",
-              "fullType": "datetime",
-              "name": "to",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The project id",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             },
             {
@@ -878,11 +878,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The project id",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "datetime",
+              "description": "Get usage to",
+              "fullType": "datetime",
+              "name": "to",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -1238,18 +1238,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The project id",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Credit id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The project id",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1273,19 +1273,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Flavor region",
-              "fullType": "string",
-              "name": "region",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Flavor region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "cloud.flavor.Flavor[]"
@@ -1378,6 +1378,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Project id",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Get compatible images with flavor type",
               "fullType": "string",
               "name": "flavorType",
@@ -1399,14 +1407,6 @@ export const schema: Schema = {
               "name": "region",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Project id",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "cloud.image.Image[]"
@@ -1462,19 +1462,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Instance region",
-              "fullType": "string",
-              "name": "region",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Instance region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "cloud.instance.Instance[]"
@@ -1554,14 +1554,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Project name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "SSH keypair id",
               "fullType": "string",
               "name": "sshKeyId",
@@ -1583,6 +1575,14 @@ export const schema: Schema = {
               "name": "volumeId",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Project name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "cloud.instance.InstanceDetail"
@@ -1676,14 +1676,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Project name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "SSH keypair id",
               "fullType": "string",
               "name": "sshKeyId",
@@ -1705,6 +1697,14 @@ export const schema: Schema = {
               "name": "volumeId",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Project name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "cloud.instance.Instance[]"
@@ -1726,19 +1726,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Instance region",
-              "fullType": "string",
-              "name": "region",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Instance region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "cloud.instancegroup.InstanceGroup[]"
@@ -1769,19 +1769,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Project name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "cloud.instancegroup.InstanceGroupTypeEnum",
               "description": "Instance group type",
               "fullType": "cloud.instancegroup.InstanceGroupTypeEnum",
               "name": "type",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Project name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -1840,19 +1840,19 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Instance region",
-              "fullType": "string",
-              "name": "region",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Instance region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "cloud.instancegroup.InstanceGroup"
@@ -1930,18 +1930,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Instance id",
-              "fullType": "string",
-              "name": "instanceId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Instance new name",
               "fullType": "string",
               "name": "instanceName",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Instance id",
+              "fullType": "string",
+              "name": "instanceId",
+              "paramType": "path",
               "required": true
             },
             {
@@ -2067,14 +2067,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Instance id",
-              "fullType": "string",
-              "name": "instanceId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ip",
               "description": "Static ip (Can only be defined for private networks)",
               "fullType": "ip",
@@ -2088,6 +2080,14 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "networkId",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Instance id",
+              "fullType": "string",
+              "name": "instanceId",
+              "paramType": "path",
               "required": true
             },
             {
@@ -2203,19 +2203,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "cloud.instance.MetricsPeriod",
-              "description": "The period the statistics are fetched for",
-              "fullType": "cloud.instance.MetricsPeriod",
-              "name": "period",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "cloud.instance.MetricsPeriod",
+              "description": "The period the statistics are fetched for",
+              "fullType": "cloud.instance.MetricsPeriod",
+              "name": "period",
+              "paramType": "query",
               "required": true
             },
             {
@@ -2245,6 +2245,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "cloud.instance.RebootTypeEnum",
+              "description": "Reboot type (default soft)",
+              "fullType": "cloud.instance.RebootTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
               "description": "Instance id",
               "fullType": "string",
@@ -2258,14 +2266,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "cloud.instance.RebootTypeEnum",
-              "description": "Reboot type (default soft)",
-              "fullType": "cloud.instance.RebootTypeEnum",
-              "name": "type",
-              "paramType": "body",
               "required": true
             }
           ],
@@ -2337,19 +2337,19 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Instance id",
-              "fullType": "string",
-              "name": "instanceId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Enable rescue mode",
               "fullType": "boolean",
               "name": "rescue",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Instance id",
+              "fullType": "string",
+              "name": "instanceId",
+              "paramType": "path",
               "required": true
             },
             {
@@ -2456,6 +2456,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Snapshot name",
+              "fullType": "string",
+              "name": "snapshotName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Instance id",
               "fullType": "string",
               "name": "instanceId",
@@ -2468,14 +2476,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Snapshot name",
-              "fullType": "string",
-              "name": "snapshotName",
-              "paramType": "body",
               "required": true
             }
           ],
@@ -2686,18 +2686,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Ip id",
-              "fullType": "string",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Attach failover ip to instance",
               "fullType": "string",
               "name": "instanceId",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Ip id",
+              "fullType": "string",
+              "name": "id",
+              "paramType": "path",
               "required": true
             },
             {
@@ -2748,11 +2748,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cloud project ID",
+              "description": "Kubernetes cluster name",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "name": "name",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "cloud.kube.Region",
@@ -2763,20 +2763,20 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Kubernetes cluster name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "cloud.kube.Version",
               "description": "Kubernetes version to install",
               "fullType": "cloud.kube.Version",
               "name": "version",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Cloud project ID",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "cloud.kube.Cluster"
@@ -2824,17 +2824,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cloud project ID",
+              "description": "Cluster ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "kubeId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Cloud project ID",
               "fullType": "string",
-              "name": "kubeId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2852,17 +2852,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cloud project ID",
+              "description": "Cluster ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "kubeId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Cloud project ID",
               "fullType": "string",
-              "name": "kubeId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2880,10 +2880,10 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cloud project ID",
+              "description": "Cluster new name",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "name": "name",
+              "paramType": "body",
               "required": true
             },
             {
@@ -2896,10 +2896,10 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cluster new name",
+              "description": "Cloud project ID",
               "fullType": "string",
-              "name": "name",
-              "paramType": "body",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -2922,17 +2922,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cloud project ID",
+              "description": "Cluster ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "kubeId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Cloud project ID",
               "fullType": "string",
-              "name": "kubeId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2956,17 +2956,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cloud project ID",
+              "description": "Cluster ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "kubeId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Cloud project ID",
               "fullType": "string",
-              "name": "kubeId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2990,17 +2990,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cloud project ID",
+              "description": "Cluster ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "kubeId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Cloud project ID",
               "fullType": "string",
-              "name": "kubeId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3016,14 +3016,6 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "string",
-              "description": "Cloud project ID",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
             {
               "dataType": "string",
               "description": "Flavor name",
@@ -3047,6 +3039,14 @@ export const schema: Schema = {
               "name": "kubeId",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cloud project ID",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "cloud.kube.Node"
@@ -3068,9 +3068,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cloud project ID",
+              "description": "Cluster ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "kubeId",
               "paramType": "path",
               "required": true
             },
@@ -3084,9 +3084,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Cloud project ID",
               "fullType": "string",
-              "name": "kubeId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3104,9 +3104,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Cloud project ID",
+              "description": "Cluster ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "kubeId",
               "paramType": "path",
               "required": true
             },
@@ -3120,9 +3120,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Cluster ID",
+              "description": "Cloud project ID",
               "fullType": "string",
-              "name": "kubeId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3145,22 +3145,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Cloud project ID",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cluster ID",
-              "fullType": "string",
-              "name": "kubeId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "cloud.kube.Version",
               "description": "Kubernetes version to use after reset, by default it keeps the current version",
               "fullType": "cloud.kube.Version",
@@ -3175,6 +3159,22 @@ export const schema: Schema = {
               "name": "workerNodesPolicy",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Cluster ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cloud project ID",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "void"
@@ -3195,12 +3195,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Cloud project ID",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "cloud.kube.UpdateStrategy",
+              "description": "The update strategy to apply on your service (next patch or minor version)",
+              "fullType": "cloud.kube.UpdateStrategy",
+              "name": "strategy",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -3211,12 +3211,12 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "cloud.kube.UpdateStrategy",
-              "description": "The update strategy to apply on your service (next patch or minor version)",
-              "fullType": "cloud.kube.UpdateStrategy",
-              "name": "strategy",
-              "paramType": "body",
-              "required": false
+              "dataType": "string",
+              "description": "Cloud project ID",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "void"
@@ -3237,11 +3237,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Cloud project ID",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "cloud.kube.UpdatePolicy",
+              "description": "Update policy",
+              "fullType": "cloud.kube.UpdatePolicy",
+              "name": "updatePolicy",
+              "paramType": "body",
               "required": true
             },
             {
@@ -3253,11 +3253,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "cloud.kube.UpdatePolicy",
-              "description": "Update policy",
-              "fullType": "cloud.kube.UpdatePolicy",
-              "name": "updatePolicy",
-              "paramType": "body",
+              "dataType": "string",
+              "description": "Cloud project ID",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -3533,20 +3533,20 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Project name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Vland id, between 0 and 4000. 0 value means no vlan.",
               "fullType": "long",
               "name": "vlanId",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Project name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "cloud.network.Network"
@@ -3666,18 +3666,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Network id",
-              "fullType": "string",
-              "name": "networkId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Region to active on your network",
               "fullType": "string",
               "name": "region",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Network id",
+              "fullType": "string",
+              "name": "networkId",
+              "paramType": "path",
               "required": true
             },
             {
@@ -3759,14 +3759,6 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Network id",
-              "fullType": "string",
-              "name": "networkId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "boolean",
               "description": "Set to true if you don't want to set a default gateway IP",
               "fullType": "boolean",
@@ -3783,19 +3775,27 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Project name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ip",
               "description": "First IP for this region (eg: 192.168.1.12)",
               "fullType": "ip",
               "name": "start",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Network id",
+              "fullType": "string",
+              "name": "networkId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Project name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -4249,19 +4249,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Public Cloud region",
-              "fullType": "string",
-              "name": "regionName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Number of backup to keep",
               "fullType": "long",
               "name": "rotation",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Public Cloud region",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
               "required": true
             },
             {
@@ -4501,6 +4501,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Get compatible snapshots with flavor type",
               "fullType": "string",
               "name": "flavorType",
@@ -4514,14 +4522,6 @@ export const schema: Schema = {
               "name": "region",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "cloud.image.Image[]"
@@ -4543,17 +4543,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Project id",
+              "description": "Snapshot id",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "imageId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Snapshot id",
+              "description": "Project id",
               "fullType": "string",
-              "name": "imageId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4571,17 +4571,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Project id",
+              "description": "Snapshot id",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "imageId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Snapshot id",
+              "description": "Project id",
               "fullType": "string",
-              "name": "imageId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4605,19 +4605,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Region",
-              "fullType": "string",
-              "name": "region",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Project name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "cloud.sshkey.SshKey[]"
@@ -4993,20 +4993,20 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "boolean",
-              "description": "Do not return container objects",
-              "fullType": "boolean",
-              "name": "noObjects",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Do not return container objects",
+              "fullType": "boolean",
+              "name": "noObjects",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "cloud.storage.ContainerDetail"
@@ -5021,20 +5021,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Container id",
-              "fullType": "string",
-              "name": "containerId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "cloud.storage.TypeEnum",
               "description": "Container type",
               "fullType": "cloud.storage.TypeEnum",
               "name": "containerType",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Container id",
+              "fullType": "string",
+              "name": "containerId",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -5072,18 +5072,18 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Delete this origin",
-              "fullType": "string",
-              "name": "origin",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Delete this origin",
+              "fullType": "string",
+              "name": "origin",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -5100,18 +5100,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Container id",
-              "fullType": "string",
-              "name": "containerId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Allow this origin",
               "fullType": "string",
               "name": "origin",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Container id",
+              "fullType": "string",
+              "name": "containerId",
+              "paramType": "path",
               "required": true
             },
             {
@@ -5141,14 +5141,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Container ID",
-              "fullType": "string",
-              "name": "containerId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "datetime",
               "description": "Temporary URL expiration",
               "fullType": "datetime",
@@ -5162,6 +5154,14 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "objectName",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Container ID",
+              "fullType": "string",
+              "name": "containerId",
+              "paramType": "path",
               "required": true
             },
             {
@@ -5226,14 +5226,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Container ID",
-              "fullType": "string",
-              "name": "containerId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "User description",
               "fullType": "string",
               "name": "description",
@@ -5246,6 +5238,14 @@ export const schema: Schema = {
               "fullType": "cloud.storage.RightEnum",
               "name": "right",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Container ID",
+              "fullType": "string",
+              "name": "containerId",
+              "paramType": "path",
               "required": true
             },
             {
@@ -5379,20 +5379,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "datetime",
-              "description": "Filter results having date superior to from",
-              "fullType": "datetime",
-              "name": "from",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter results having date superior to from",
+              "fullType": "datetime",
+              "name": "from",
+              "paramType": "query",
+              "required": false
             },
             {
               "dataType": "datetime",
@@ -5588,14 +5588,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Region",
-              "fullType": "string",
-              "name": "region",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
@@ -5608,6 +5600,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "userId",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "query",
               "required": true
             },
             {
@@ -5638,14 +5638,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Region",
-              "fullType": "string",
-              "name": "region",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Service name",
               "fullType": "string",
               "name": "serviceName",
@@ -5658,6 +5650,14 @@ export const schema: Schema = {
               "fullType": "long",
               "name": "userId",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -5940,19 +5940,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Volume region",
-              "fullType": "string",
-              "name": "region",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Volume region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "cloud.volume.Volume[]"
@@ -5999,14 +5999,6 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Project id",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Volume size (in GiB)",
               "fullType": "long",
@@ -6029,6 +6021,14 @@ export const schema: Schema = {
               "name": "type",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Project id",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "cloud.volume.Volume"
@@ -6050,19 +6050,19 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Snapshots region",
-              "fullType": "string",
-              "name": "region",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Project id",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Snapshots region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "cloud.volume.Snapshot[]"
@@ -6385,19 +6385,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "New volume size (in GiB) (must be greater than current one)",
               "fullType": "long",
               "name": "size",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             },
             {
@@ -6473,20 +6473,20 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "OVH subsidiary",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "OVH cloud flavor id",
               "fullType": "string",
               "name": "flavorId",
               "paramType": "query",
               "required": false
+            },
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "OVH subsidiary",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
             },
             {
               "dataType": "string",

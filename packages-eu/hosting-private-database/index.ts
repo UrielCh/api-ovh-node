@@ -102,7 +102,7 @@ export namespace hosting {
          * Available datacenters
          * type fullname: hosting.PrivateDatabase.DatacenterEnum
          */
-        export type DatacenterEnum = "bhs1" | "gra1" | "gra2" | "p19"
+        export type DatacenterEnum = "bhs1" | "gra1" | "gra2" | "gra3" | "p19"
         /**
          * Parameters required to query metrics from OpenTSDB
          * interface fullName: hosting.PrivateDatabase.GraphEndpoint.GraphEndpoint

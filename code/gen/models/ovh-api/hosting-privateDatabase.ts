@@ -149,17 +149,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The contact to set as tech contact",
+              "description": "The contact to set as billing contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
+              "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "The contact to set as billing contact",
+              "description": "The contact to set as tech contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
+              "name": "contactTech",
               "paramType": "body",
               "required": false
             },
@@ -318,6 +318,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "service.TerminationFutureUseEnum",
               "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
@@ -330,14 +338,6 @@ export const schema: Schema = {
               "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
               "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
               "paramType": "body",
               "required": false
             },
@@ -431,17 +431,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Database name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "databaseName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Database name",
+              "description": "The internal name of your private database",
               "fullType": "string",
-              "name": "databaseName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -459,17 +459,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Database name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "databaseName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Database name",
+              "description": "The internal name of your private database",
               "fullType": "string",
-              "name": "databaseName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -492,6 +492,22 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Database name",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "datetime",
               "description": "Filter the value of creationDate property (like)",
               "fullType": "datetime",
@@ -506,22 +522,6 @@ export const schema: Schema = {
               "name": "deletionDate",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Database name",
-              "fullType": "string",
-              "name": "databaseName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "long[]"
@@ -545,17 +545,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
+              "description": "Database name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "databaseName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Database name",
+              "description": "The internal name of your private database",
               "fullType": "string",
-              "name": "databaseName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -579,14 +579,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Database name",
               "fullType": "string",
               "name": "databaseName",
@@ -598,6 +590,14 @@ export const schema: Schema = {
               "description": "Dump id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -615,14 +615,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Database name",
               "fullType": "string",
               "name": "databaseName",
@@ -634,6 +626,14 @@ export const schema: Schema = {
               "description": "Dump id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -657,14 +657,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Database name",
               "fullType": "string",
               "name": "databaseName",
@@ -676,6 +668,14 @@ export const schema: Schema = {
               "description": "Dump id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -698,20 +698,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "hosting.PrivateDatabase.Database.Extension.Status",
-              "description": "Filter the value of status property (=)",
-              "fullType": "hosting.PrivateDatabase.Database.Extension.Status",
-              "name": "status",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Filter the value of extensionName property (like)",
+              "description": "Database name",
               "fullType": "string",
-              "name": "extensionName",
-              "paramType": "query",
-              "required": false
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -723,11 +715,19 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Database name",
+              "description": "Filter the value of extensionName property (like)",
               "fullType": "string",
-              "name": "databaseName",
-              "paramType": "path",
-              "required": true
+              "name": "extensionName",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "hosting.PrivateDatabase.Database.Extension.Status",
+              "description": "Filter the value of status property (=)",
+              "fullType": "hosting.PrivateDatabase.Database.Extension.Status",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -749,14 +749,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Database name",
               "fullType": "string",
               "name": "databaseName",
@@ -768,6 +760,14 @@ export const schema: Schema = {
               "description": "Extension name",
               "fullType": "string",
               "name": "extensionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -791,14 +791,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Database name",
               "fullType": "string",
               "name": "databaseName",
@@ -810,6 +802,14 @@ export const schema: Schema = {
               "description": "Extension name",
               "fullType": "string",
               "name": "extensionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -833,14 +833,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Database name",
               "fullType": "string",
               "name": "databaseName",
@@ -852,6 +844,14 @@ export const schema: Schema = {
               "description": "Extension name",
               "fullType": "string",
               "name": "extensionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -874,12 +874,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Send an email when the import will be done? Default: false",
-              "fullType": "boolean",
-              "name": "sendEmail",
+              "dataType": "string",
+              "description": "Documents ID of the dump from /me/documents",
+              "fullType": "string",
+              "name": "documentId",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "boolean",
@@ -890,11 +890,19 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Documents ID of the dump from /me/documents",
-              "fullType": "string",
-              "name": "documentId",
+              "dataType": "boolean",
+              "description": "Send an email when the import will be done? Default: false",
+              "fullType": "boolean",
+              "name": "sendEmail",
               "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Database name",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "path",
               "required": true
             },
             {
@@ -902,14 +910,6 @@ export const schema: Schema = {
               "description": "The internal name of your private database",
               "fullType": "string",
               "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Database name",
-              "fullType": "string",
-              "name": "databaseName",
               "paramType": "path",
               "required": true
             }
@@ -933,9 +933,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "New user name used to connect on your database",
+              "description": "Name of your new database",
               "fullType": "string",
-              "name": "userName",
+              "name": "databaseName",
               "paramType": "body",
               "required": true
             },
@@ -948,18 +948,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Name of your new database",
-              "fullType": "string",
-              "name": "databaseName",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "password",
               "description": "Password for the new user ( alphanumeric and 8 characters minimum )",
               "fullType": "password",
               "name": "password",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "New user name used to connect on your database",
+              "fullType": "string",
+              "name": "userName",
               "paramType": "body",
               "required": true
             },
@@ -990,12 +990,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Filter the value of orphan property (=)",
-              "fullType": "boolean",
-              "name": "orphan",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -1006,12 +1006,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "boolean",
+              "description": "Filter the value of orphan property (=)",
+              "fullType": "boolean",
+              "name": "orphan",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -1032,18 +1032,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Dump id",
               "fullType": "long",
               "name": "dumpId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1060,18 +1060,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Dump id",
               "fullType": "long",
               "name": "dumpId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1102,18 +1102,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Dump id",
               "fullType": "long",
               "name": "dumpId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1345,6 +1345,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "hosting.PrivateDatabase.task.FunctionEnum",
               "description": "Filter the value of function property (=)",
               "fullType": "hosting.PrivateDatabase.task.FunctionEnum",
@@ -1359,14 +1367,6 @@ export const schema: Schema = {
               "name": "status",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "long[]"
@@ -1387,18 +1387,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "The id of the task",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1467,18 +1467,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "User name used to connect on your databases",
-              "fullType": "string",
-              "name": "userName",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "password",
               "description": "Password for the new user ( alphanumeric and 8 characters minimum )",
               "fullType": "password",
               "name": "password",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "User name used to connect on your databases",
+              "fullType": "string",
+              "name": "userName",
               "paramType": "body",
               "required": true
             },
@@ -1692,6 +1692,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Database name where grant is set",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "The internal name of your private database",
               "fullType": "string",
               "name": "serviceName",
@@ -1703,14 +1711,6 @@ export const schema: Schema = {
               "description": "User name used to connect to your databases",
               "fullType": "string",
               "name": "userName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Database name where grant is set",
-              "fullType": "string",
-              "name": "databaseName",
               "paramType": "path",
               "required": true
             }
@@ -1728,6 +1728,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Database name where grant is set",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "The internal name of your private database",
               "fullType": "string",
               "name": "serviceName",
@@ -1739,14 +1747,6 @@ export const schema: Schema = {
               "description": "User name used to connect to your databases",
               "fullType": "string",
               "name": "userName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Database name where grant is set",
-              "fullType": "string",
-              "name": "databaseName",
               "paramType": "path",
               "required": true
             }
@@ -1778,6 +1778,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Database name where grant is set",
+              "fullType": "string",
+              "name": "databaseName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "The internal name of your private database",
               "fullType": "string",
               "name": "serviceName",
@@ -1789,14 +1797,6 @@ export const schema: Schema = {
               "description": "User name used to connect to your databases",
               "fullType": "string",
               "name": "userName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Database name where grant is set",
-              "fullType": "string",
-              "name": "databaseName",
               "paramType": "path",
               "required": true
             }
@@ -1845,6 +1845,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "ipBlock",
               "description": "Filter the value of ip property (contains or equals)",
               "fullType": "ipBlock",
@@ -1867,14 +1875,6 @@ export const schema: Schema = {
               "name": "sftp",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "ipBlock[]"
@@ -1906,17 +1906,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "boolean",
-              "description": "Authorize this IP to access sftp port",
+              "description": "Authorize this IP to access service port",
               "fullType": "boolean",
-              "name": "sftp",
+              "name": "service",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "boolean",
-              "description": "Authorize this IP to access service port",
+              "description": "Authorize this IP to access sftp port",
               "fullType": "boolean",
-              "name": "service",
+              "name": "sftp",
               "paramType": "body",
               "required": false
             },
@@ -1947,18 +1947,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipBlock",
               "description": "The whitelisted IP in your instance",
               "fullType": "ipBlock",
               "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1975,18 +1975,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipBlock",
               "description": "The whitelisted IP in your instance",
               "fullType": "ipBlock",
               "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2010,18 +2010,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipBlock",
               "description": "The whitelisted IP in your instance",
               "fullType": "ipBlock",
               "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2320,6 +2320,7 @@ export const schema: Schema = {
         "bhs1",
         "gra1",
         "gra2",
+        "gra3",
         "p19"
       ],
       "enumType": "string",

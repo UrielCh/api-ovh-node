@@ -88,17 +88,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": "name of this partitioning scheme",
               "fullType": "string",
-              "name": "templateName",
+              "name": "schemeName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This template name",
               "fullType": "string",
-              "name": "schemeName",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }
@@ -122,17 +122,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": "name of this partitioning scheme",
               "fullType": "string",
-              "name": "templateName",
+              "name": "schemeName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This template name",
               "fullType": "string",
-              "name": "schemeName",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }
@@ -156,9 +156,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": "Hardware RAID name",
               "fullType": "string",
-              "name": "templateName",
+              "name": "name",
               "paramType": "path",
               "required": true
             },
@@ -172,9 +172,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Hardware RAID name",
+              "description": "This template name",
               "fullType": "string",
-              "name": "name",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }
@@ -198,17 +198,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": "name of this partitioning scheme",
               "fullType": "string",
-              "name": "templateName",
+              "name": "schemeName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "name of this partitioning scheme",
+              "description": "This template name",
               "fullType": "string",
-              "name": "schemeName",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }
@@ -232,9 +232,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "This template name",
+              "description": "partition mount point",
               "fullType": "string",
-              "name": "templateName",
+              "name": "mountpoint",
               "paramType": "path",
               "required": true
             },
@@ -248,9 +248,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "partition mount point",
+              "description": "This template name",
               "fullType": "string",
-              "name": "mountpoint",
+              "name": "templateName",
               "paramType": "path",
               "required": true
             }

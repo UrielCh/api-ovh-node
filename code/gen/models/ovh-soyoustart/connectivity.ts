@@ -78,18 +78,18 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "connectivity.eligibility.LineStatusEnum",
-              "description": "Status of the line number",
-              "fullType": "connectivity.eligibility.LineStatusEnum",
-              "name": "status",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Line number",
               "fullType": "string",
               "name": "lineNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "connectivity.eligibility.LineStatusEnum",
+              "description": "Status of the line number",
+              "fullType": "connectivity.eligibility.LineStatusEnum",
+              "name": "status",
               "paramType": "body",
               "required": true
             }
@@ -139,11 +139,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Street number, that can be found using /connectivity/eligibility/search/streetNumbers method",
+              "description": "Owner name, at least the first three chars",
               "fullType": "string",
-              "name": "streetNumber",
+              "name": "ownerName",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "string",
@@ -155,11 +155,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Owner name, at least the first three chars",
+              "description": "Street number, that can be found using /connectivity/eligibility/search/streetNumbers method",
               "fullType": "string",
-              "name": "ownerName",
+              "name": "streetNumber",
               "paramType": "body",
-              "required": false
+              "required": true
             }
           ],
           "responseType": "xdsl.AsyncTaskArray<connectivity.eligibility.Line>"
@@ -181,17 +181,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Choosen offer product code",
+              "description": "Eligibility test reference",
               "fullType": "string",
-              "name": "productCode",
+              "name": "eligibilityReference",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Eligibility test reference",
+              "description": "Choosen offer product code",
               "fullType": "string",
-              "name": "eligibilityReference",
+              "name": "productCode",
               "paramType": "body",
               "required": true
             }
@@ -327,17 +327,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Street number",
+              "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
               "fullType": "string",
-              "name": "streetNumber",
+              "name": "streetCode",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Unique identifier of the street (you can get it with POST /connectivity/eligibility/search/streets)",
+              "description": "Street number",
               "fullType": "string",
-              "name": "streetCode",
+              "name": "streetNumber",
               "paramType": "body",
               "required": true
             }
@@ -386,18 +386,18 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "connectivity.eligibility.LineStatusEnum",
-              "description": "Status of the line number",
-              "fullType": "connectivity.eligibility.LineStatusEnum",
-              "name": "status",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Line number",
               "fullType": "string",
               "name": "lineNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "connectivity.eligibility.LineStatusEnum",
+              "description": "Status of the line number",
+              "fullType": "connectivity.eligibility.LineStatusEnum",
+              "name": "status",
               "paramType": "body",
               "required": true
             }
@@ -497,14 +497,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "connectivity.monitoring.GenericIncidentStatusEnum",
-              "description": "Filter by the status of the incident (detected, validated or closed)",
-              "fullType": "connectivity.monitoring.GenericIncidentStatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "datetime",
               "description": "List only incidents created after this date",
               "fullType": "datetime",
@@ -517,6 +509,14 @@ export const schema: Schema = {
               "description": "List only incidents closed prior to this date",
               "fullType": "datetime",
               "name": "endDate",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "connectivity.monitoring.GenericIncidentStatusEnum",
+              "description": "Filter by the status of the incident (detected, validated or closed)",
+              "fullType": "connectivity.monitoring.GenericIncidentStatusEnum",
+              "name": "status",
               "paramType": "query",
               "required": false
             }
@@ -539,14 +539,6 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "connectivity.monitoring.GenericIncidentStatusEnum",
-              "description": "Filter by the status of the incident (validated or closed)",
-              "fullType": "connectivity.monitoring.GenericIncidentStatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "datetime",
               "description": "List only incidents created after this date",
               "fullType": "datetime",
@@ -559,6 +551,14 @@ export const schema: Schema = {
               "description": "List only incidents closed prior to this date",
               "fullType": "datetime",
               "name": "endDate",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "connectivity.monitoring.GenericIncidentStatusEnum",
+              "description": "Filter by the status of the incident (validated or closed)",
+              "fullType": "connectivity.monitoring.GenericIncidentStatusEnum",
+              "name": "status",
               "paramType": "query",
               "required": false
             }

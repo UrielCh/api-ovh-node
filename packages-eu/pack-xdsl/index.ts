@@ -1187,7 +1187,7 @@ export interface Pack {
                      * Get the possibilities of migration offers available
                      * POST /pack/xdsl/{packName}/migration/offers
                      */
-                    $post(): Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
+                    $post(params?: { buildingReference?: string }): Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
                     /**
                      * Controle cache
                      */

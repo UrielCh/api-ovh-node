@@ -21,102 +21,6 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "organisation",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "zip",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "corporationType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "vat",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "birthDay",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "fax",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.LanguageEnum",
-              "description": "",
-              "fullType": "nichandle.LanguageEnum",
-              "name": "language",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "nationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "firstname",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
               "name": "address",
               "paramType": "body",
               "required": false
@@ -133,7 +37,39 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "phone",
+              "name": "birthCity",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "birthDay",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "city",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "companyNationalIdentificationNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "corporationType",
               "paramType": "body",
               "required": false
             },
@@ -149,7 +85,15 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "city",
+              "name": "email",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "fax",
               "paramType": "body",
               "required": false
             },
@@ -157,15 +101,7 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "birthCity",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "",
-              "fullType": "nichandle.CountryEnum",
-              "name": "phoneCountry",
+              "name": "firstname",
               "paramType": "body",
               "required": false
             },
@@ -178,26 +114,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "nichandle.OvhCompanyEnum",
+              "dataType": "nichandle.LanguageEnum",
               "description": "",
-              "fullType": "nichandle.OvhCompanyEnum",
-              "name": "ovhCompany",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "companyNationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "spareEmail",
+              "fullType": "nichandle.LanguageEnum",
+              "name": "language",
               "paramType": "body",
               "required": false
             },
@@ -210,10 +130,90 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "nationalIdentificationNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "organisation",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.OvhCompanyEnum",
+              "description": "",
+              "fullType": "nichandle.OvhCompanyEnum",
+              "name": "ovhCompany",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "phone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": "",
+              "fullType": "nichandle.CountryEnum",
+              "name": "phoneCountry",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "nichandle.GenderEnum",
               "description": "",
               "fullType": "nichandle.GenderEnum",
               "name": "sex",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "spareEmail",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "vat",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "zip",
               "paramType": "body",
               "required": false
             }
@@ -262,18 +262,18 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "subsidiary",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "nichandle.OvhCompanyEnum",
               "description": "",
               "fullType": "nichandle.OvhCompanyEnum",
               "name": "company",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "subsidiary",
               "paramType": "query",
               "required": true
             }
@@ -356,14 +356,6 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "nichandle.OvhCompanyEnum",
-              "description": "",
-              "fullType": "nichandle.OvhCompanyEnum",
-              "name": "ovhCompany",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "nichandle.CountryEnum",
               "description": "",
               "fullType": "nichandle.CountryEnum",
@@ -372,18 +364,26 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "nichandle.LegalFormEnum",
               "description": "",
               "fullType": "nichandle.LegalFormEnum",
               "name": "legalform",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.OvhCompanyEnum",
+              "description": "",
+              "fullType": "nichandle.OvhCompanyEnum",
+              "name": "ovhCompany",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
@@ -432,178 +432,10 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "birthDay",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.LanguageEnum",
-              "description": "",
-              "fullType": "nichandle.LanguageEnum",
-              "name": "language",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "fax",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "corporationType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "vat",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "organisation",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "zip",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "spareEmail",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "companyNationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "nichandle.CreationRulesActionEnum",
               "description": "",
               "fullType": "nichandle.CreationRulesActionEnum",
               "name": "action",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.LegalFormEnum",
-              "description": "",
-              "fullType": "nichandle.LegalFormEnum",
-              "name": "legalform",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.GenderEnum",
-              "description": "",
-              "fullType": "nichandle.GenderEnum",
-              "name": "sex",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "birthCity",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.OvhCompanyEnum",
-              "description": "",
-              "fullType": "nichandle.OvhCompanyEnum",
-              "name": "ovhCompany",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "",
-              "fullType": "nichandle.CountryEnum",
-              "name": "phoneCountry",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "italianSDI",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "city",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "",
-              "fullType": "nichandle.CountryEnum",
-              "name": "country",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "firstname",
               "paramType": "body",
               "required": false
             },
@@ -619,14 +451,6 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
-              "name": "nationalIdentificationNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
               "name": "area",
               "paramType": "body",
               "required": false
@@ -635,7 +459,183 @@ export const schema: Schema = {
               "dataType": "string",
               "description": "",
               "fullType": "string",
+              "name": "birthCity",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "birthDay",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "city",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "companyNationalIdentificationNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "corporationType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": "",
+              "fullType": "nichandle.CountryEnum",
+              "name": "country",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "fax",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "firstname",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "italianSDI",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.LanguageEnum",
+              "description": "",
+              "fullType": "nichandle.LanguageEnum",
+              "name": "language",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.LegalFormEnum",
+              "description": "",
+              "fullType": "nichandle.LegalFormEnum",
+              "name": "legalform",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "nationalIdentificationNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "organisation",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.OvhCompanyEnum",
+              "description": "",
+              "fullType": "nichandle.OvhCompanyEnum",
+              "name": "ovhCompany",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
               "name": "phone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": "",
+              "fullType": "nichandle.CountryEnum",
+              "name": "phoneCountry",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.GenderEnum",
+              "description": "",
+              "fullType": "nichandle.GenderEnum",
+              "name": "sex",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "spareEmail",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "vat",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "zip",
               "paramType": "body",
               "required": false
             }

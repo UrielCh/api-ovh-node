@@ -114,17 +114,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The contact to set as tech contact",
+              "description": "The contact to set as billing contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
+              "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "The contact to set as billing contact",
+              "description": "The contact to set as tech contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
+              "name": "contactTech",
               "paramType": "body",
               "required": false
             },
@@ -202,14 +202,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service Name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Description",
               "fullType": "string",
               "name": "description",
@@ -230,6 +222,14 @@ export const schema: Schema = {
               "fullType": "paas.timeseries.Tag[]",
               "name": "tags",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service Name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -252,17 +252,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service Name",
+              "description": "Key id",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "keyId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Key id",
+              "description": "Service Name",
               "fullType": "string",
-              "name": "keyId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -280,17 +280,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service Name",
+              "description": "Key id",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "keyId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Key id",
+              "description": "Service Name",
               "fullType": "string",
-              "name": "keyId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -306,22 +306,6 @@ export const schema: Schema = {
           "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service Name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Key id",
-              "fullType": "string",
-              "name": "keyId",
-              "paramType": "path",
-              "required": true
-            },
             {
               "dataType": "string",
               "description": "Description",
@@ -344,6 +328,22 @@ export const schema: Schema = {
               "fullType": "paas.timeseries.Tag[]",
               "name": "tags",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Key id",
+              "fullType": "string",
+              "name": "keyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service Name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -445,22 +445,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service Name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Project name",
-              "fullType": "string",
-              "name": "displayName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Project description",
               "fullType": "string",
               "name": "description",
@@ -469,11 +453,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Region to use",
+              "description": "Project name",
               "fullType": "string",
-              "name": "regionId",
+              "name": "displayName",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
               "dataType": "string",
@@ -490,6 +474,22 @@ export const schema: Schema = {
               "name": "raTokenKey",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Region to use",
+              "fullType": "string",
+              "name": "regionId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Service Name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             }
           ],
           "responseType": "paas.timeseries.Project"
@@ -531,14 +531,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Service Name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Token description",
               "fullType": "string",
               "name": "description",
@@ -559,6 +551,14 @@ export const schema: Schema = {
               "fullType": "paas.timeseries.Tag[]",
               "name": "tags",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service Name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],

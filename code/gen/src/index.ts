@@ -14,6 +14,7 @@ async function main() {
             console.error(`Fail to gen ${endpoint.host} API`, e)
         }
     }
+    console.log(`All generation Done`);
 }
 
 main().then(() => console.log);

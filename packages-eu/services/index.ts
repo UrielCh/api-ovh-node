@@ -121,7 +121,7 @@ export namespace order {
             description: string;
             duration: string;
             interval: number;
-            maximumQuantity: number;
+            maximumQuantity?: number;
             maximumRepeat?: number;
             minimumQuantity: number;
             minimumRepeat: number;
@@ -528,6 +528,50 @@ export interface Services {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        upgrade: {
+            /**
+             * List offers this option can be converted to
+             * GET /services/{serviceId}/upgrade
+             */
+            $get(): Promise<order.cart.GenericProductDefinition[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(planCode: string): {
+                /**
+                 * View an offer this option can be converted to
+                 * GET /services/{serviceId}/upgrade/{planCode}
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                execute: {
+                    /**
+                     * Perform the migration to another offer. May require you to pay an Order
+                     * POST /services/{serviceId}/upgrade/{planCode}/execute
+                     */
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                simulate: {
+                    /**
+                     * Simulate the conversion to another offer. It won't generate any Order or issue any changes to your Service
+                     * POST /services/{serviceId}/upgrade/{planCode}/simulate
+                     */
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            };
         }
     };
 }

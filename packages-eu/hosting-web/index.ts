@@ -120,7 +120,7 @@ export namespace hosting {
          * Available datacenters
          * type fullname: hosting.web.DatacenterEnum
          */
-        export type DatacenterEnum = "bhs1" | "gra1" | "gra2" | "p19"
+        export type DatacenterEnum = "bhs1" | "gra1" | "gra2" | "gra3" | "p19"
         /**
          * Disk properties (size and type of disk)
          * interface fullName: hosting.web.DiskType.DiskType
@@ -179,6 +179,14 @@ export namespace hosting {
          * type fullname: hosting.web.OperatingSystemEnum
          */
         export type OperatingSystemEnum = "linux"
+        /**
+         * Struct which describes version and container image available
+         * interface fullName: hosting.web.OvhConfigCapabilities.OvhConfigCapabilities
+         */
+        export interface OvhConfigCapabilities {
+            containerImage: string[];
+            version: hosting.web.ovhConfig.AvailableEngineVersionEnum;
+        }
         /**
          * State of available php versions for this account
          * interface fullName: hosting.web.PhpVersion.PhpVersion
@@ -896,7 +904,7 @@ export namespace hosting {
              * Hosting available configuration version
              * type fullname: hosting.web.ovhConfig.AvailableEngineVersionEnum
              */
-            export type AvailableEngineVersionEnum = "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3"
+            export type AvailableEngineVersionEnum = "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4"
             /**
              * Hosting configuration engine
              * type fullname: hosting.web.ovhConfig.EngineNameEnum
@@ -906,7 +914,7 @@ export namespace hosting {
              * Hosting configuration version
              * type fullname: hosting.web.ovhConfig.EngineVersionEnum
              */
-            export type EngineVersionEnum = "4.4" | "5.0" | "5.1" | "5.2" | "5.3" | "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "AUTO"
+            export type EngineVersionEnum = "4.4" | "5.0" | "5.1" | "5.2" | "5.3" | "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4" | "AUTO"
             /**
              * Hosting configuration environment
              * type fullname: hosting.web.ovhConfig.EnvironmentEnum
@@ -928,7 +936,7 @@ export namespace hosting {
              * Hosting configuration image to run website
              * type fullname: hosting.web.ovhconfig.ContainerEnum
              */
-            export type ContainerEnum = "jessie.i386" | "legacy" | "stable" | "testing"
+            export type ContainerEnum = "jessie.i386" | "legacy" | "stable" | "stable64" | "testing"
         }
         /**
          * Hosting own logs
@@ -2160,6 +2168,17 @@ export interface Hosting {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
+            }
+            ovhConfigCapabilities: {
+                /**
+                 * Get the list of versions and container image available on your hosting
+                 * GET /hosting/web/{serviceName}/ovhConfigCapabilities
+                 */
+                $get(): Promise<hosting.web.OvhConfigCapabilities[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             ovhConfigRefresh: {
                 /**

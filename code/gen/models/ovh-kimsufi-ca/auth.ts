@@ -44,6 +44,25 @@ export const schema: Schema = {
       "path": "/auth/time"
     },
     {
+      "description": "Details about the current authentication",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Details about the current authentication",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "auth.Details",
+          "responseType": "auth.Details"
+        }
+      ],
+      "path": "/auth/details"
+    },
+    {
       "description": "Operations with credentials",
       "operations": [
         {
@@ -97,25 +116,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/auth/logout"
-    },
-    {
-      "description": "Details about the current authentication",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Details about the current authentication",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "auth.Details",
-          "responseType": "auth.Details"
-        }
-      ],
-      "path": "/auth/details"
     }
   ],
   "basePath": "https://ca.api.kimsufi.com/1.0",

@@ -115,17 +115,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domainName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The unique identifier of your Office service",
               "fullType": "string",
-              "name": "domainName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -174,18 +174,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The unique identifier of your Office service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Task's unique identifier",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The unique identifier of your Office service",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -261,6 +261,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The unique identifier of your Office service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "date",
               "description": "Period's start point.",
               "fullType": "date",
@@ -274,14 +282,6 @@ export const schema: Schema = {
               "fullType": "date",
               "name": "to",
               "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The unique identifier of your Office service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -304,25 +304,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Filter the value of activationEmail property (like)",
+              "description": "The unique identifier of your Office service",
               "fullType": "string",
-              "name": "activationEmail",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.office.LicenceEnum[]",
-              "description": "Filter the value of licences property (=)",
-              "fullType": "license.office.LicenceEnum[]",
-              "name": "licences",
-              "paramType": "query",
-              "required": false
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
-              "description": "Filter the value of lastName property (like)",
+              "description": "Filter the value of activationEmail property (like)",
               "fullType": "string",
-              "name": "lastName",
+              "name": "activationEmail",
               "paramType": "query",
               "required": false
             },
@@ -336,11 +328,19 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Filter the value of lastName property (like)",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "name": "lastName",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.office.LicenceEnum[]",
+              "description": "Filter the value of licences property (=)",
+              "fullType": "license.office.LicenceEnum[]",
+              "name": "licences",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -355,10 +355,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "coreTypes.CountryEnum",
-              "description": "ISO 3166-1 alpha-2 country code where the user is using Office365 services",
-              "fullType": "coreTypes.CountryEnum",
-              "name": "usageLocation",
+              "dataType": "string",
+              "description": "Office domain",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account first name",
+              "fullType": "string",
+              "name": "firstName",
               "paramType": "body",
               "required": false
             },
@@ -371,18 +379,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Account first name",
-              "fullType": "string",
-              "name": "firstName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Office domain",
-              "fullType": "string",
-              "name": "domain",
+              "dataType": "license.office.LicenceEnum",
+              "description": "Office licence",
+              "fullType": "license.office.LicenceEnum",
+              "name": "licence",
               "paramType": "body",
               "required": true
             },
@@ -395,12 +395,12 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "license.office.LicenceEnum",
-              "description": "Office licence",
-              "fullType": "license.office.LicenceEnum",
-              "name": "licence",
+              "dataType": "coreTypes.CountryEnum",
+              "description": "ISO 3166-1 alpha-2 country code where the user is using Office365 services",
+              "fullType": "coreTypes.CountryEnum",
+              "name": "usageLocation",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "string",
@@ -430,17 +430,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Email used to activate Microsoft Office",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "activationEmail",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Email used to activate Microsoft Office",
+              "description": "The unique identifier of your Office service",
               "fullType": "string",
-              "name": "activationEmail",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -458,17 +458,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Email used to activate Microsoft Office",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "activationEmail",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Email used to activate Microsoft Office",
+              "description": "The unique identifier of your Office service",
               "fullType": "string",
-              "name": "activationEmail",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -493,17 +493,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The unique identifier of your Office service",
+              "description": "Email used to activate Microsoft Office",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "activationEmail",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Email used to activate Microsoft Office",
+              "description": "The unique identifier of your Office service",
               "fullType": "string",
-              "name": "activationEmail",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -526,6 +526,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Email to send the new password to. Default is nicAdmin's email.",
+              "fullType": "string",
+              "name": "notifyEmail",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "password",
               "description": "New password or empty to receive a generated password by email",
               "fullType": "password",
@@ -543,25 +551,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Email to send the new password to. Default is nicAdmin's email.",
+              "description": "Email used to activate Microsoft Office",
               "fullType": "string",
-              "name": "notifyEmail",
-              "paramType": "body",
-              "required": false
+              "name": "activationEmail",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
               "description": "The unique identifier of your Office service",
               "fullType": "string",
               "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Email used to activate Microsoft Office",
-              "fullType": "string",
-              "name": "activationEmail",
               "paramType": "path",
               "required": true
             }

@@ -108,17 +108,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Domain of the service",
+              "description": "The inventory name of your backup repository",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "inventoryName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The inventory name of your backup repository",
+              "description": "Domain of the service",
               "fullType": "string",
-              "name": "inventoryName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -136,17 +136,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Domain of the service",
+              "description": "The inventory name of your backup repository",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "inventoryName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The inventory name of your backup repository",
+              "description": "Domain of the service",
               "fullType": "string",
-              "name": "inventoryName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -178,17 +178,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain of the service",
+              "description": "The inventory name of your backup repository",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "inventoryName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The inventory name of your backup repository",
+              "description": "Domain of the service",
               "fullType": "string",
-              "name": "inventoryName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -342,12 +342,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "veeamCloudConnect.TaskStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "veeamCloudConnect.TaskStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -358,12 +358,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "veeamCloudConnect.TaskStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "veeamCloudConnect.TaskStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"

@@ -61,6 +61,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "service.TerminationFutureUseEnum",
               "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
@@ -73,14 +81,6 @@ export const schema: Schema = {
               "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
               "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
               "paramType": "body",
               "required": false
             },
@@ -119,18 +119,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Your Veeam Backup And Replication Server Port",
-              "fullType": "long",
-              "name": "port",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Your Veeam Backup And Replication username",
-              "fullType": "string",
-              "name": "username",
+              "dataType": "ip",
+              "description": "Your Veeam Backup And Replication Server IP",
+              "fullType": "ip",
+              "name": "ip",
               "paramType": "body",
               "required": true
             },
@@ -143,10 +135,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "ip",
-              "description": "Your Veeam Backup And Replication Server IP",
-              "fullType": "ip",
-              "name": "ip",
+              "dataType": "long",
+              "description": "Your Veeam Backup And Replication Server Port",
+              "fullType": "long",
+              "name": "port",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your Veeam Backup And Replication username",
+              "fullType": "string",
+              "name": "username",
               "paramType": "body",
               "required": true
             },
@@ -230,12 +230,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "veeamEnterprise.TaskStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "veeamEnterprise.TaskStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -246,12 +246,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "veeamEnterprise.TaskStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "veeamEnterprise.TaskStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -332,14 +332,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "password",
-              "description": "Your Veeam Backup And Replication associated password",
-              "fullType": "password",
-              "name": "password",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "ip",
               "description": "Your Veeam Backup And Replication Server IP",
               "fullType": "ip",
@@ -348,10 +340,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "Your Veeam Backup And Replication username",
-              "fullType": "string",
-              "name": "username",
+              "dataType": "password",
+              "description": "Your Veeam Backup And Replication associated password",
+              "fullType": "password",
+              "name": "password",
               "paramType": "body",
               "required": true
             },
@@ -360,6 +352,14 @@ export const schema: Schema = {
               "description": "Your Veeam Backup And Replication Server Port",
               "fullType": "long",
               "name": "port",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your Veeam Backup And Replication username",
+              "fullType": "string",
+              "name": "username",
               "paramType": "body",
               "required": true
             },

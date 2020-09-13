@@ -139,17 +139,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The contact to set as tech contact",
+              "description": "The contact to set as billing contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
+              "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "The contact to set as billing contact",
+              "description": "The contact to set as tech contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
+              "name": "contactTech",
               "paramType": "body",
               "required": false
             },
@@ -274,6 +274,13 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "docker.framework.password",
+              "description": "The new framework password",
+              "fullType": "docker.framework.password",
+              "paramType": "body",
+              "required": true
+            },
+            {
               "dataType": "string",
               "description": "framework id",
               "fullType": "string",
@@ -287,13 +294,6 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "docker.framework.password",
-              "description": "The new framework password",
-              "fullType": "docker.framework.password",
-              "paramType": "body",
               "required": true
             }
           ],
@@ -545,17 +545,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "slave id",
+              "description": "service name",
               "fullType": "string",
-              "name": "slaveId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "service name",
+              "description": "slave id",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "slaveId",
               "paramType": "path",
               "required": true
             }

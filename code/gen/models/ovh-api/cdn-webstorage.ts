@@ -140,6 +140,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The internal name of your CDN Static offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "cdn.webstorage.StatsPeriodEnum",
               "description": "",
               "fullType": "cdn.webstorage.StatsPeriodEnum",
@@ -153,14 +161,6 @@ export const schema: Schema = {
               "fullType": "cdn.webstorage.StatsTypeEnum",
               "name": "type",
               "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your CDN Static offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
               "required": true
             }
           ],

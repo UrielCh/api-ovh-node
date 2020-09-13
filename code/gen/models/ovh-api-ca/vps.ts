@@ -61,6 +61,14 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "VPS OS selection in order api",
+              "fullType": "string",
+              "name": "os",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "nichandle.OvhSubsidiaryEnum",
               "description": "Subsidiary to sort datacenters",
               "fullType": "nichandle.OvhSubsidiaryEnum",
@@ -75,14 +83,6 @@ export const schema: Schema = {
               "name": "planCode",
               "paramType": "query",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "VPS OS selection in order api",
-              "fullType": "string",
-              "name": "os",
-              "paramType": "query",
-              "required": false
             }
           ],
           "responseType": "vps.order.rule.Datacenters"
@@ -321,19 +321,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "vps.RestoreStateEnum",
-              "description": "The state of the restore point",
-              "fullType": "vps.RestoreStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "vps.RestoreStateEnum",
+              "description": "The state of the restore point",
+              "fullType": "vps.RestoreStateEnum",
+              "name": "state",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -428,9 +428,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "boolean",
-              "description": "Wether to allow the NFS protocol for this ACL",
+              "description": "Wether to allow the CIFS (SMB) protocol for this ACL",
               "fullType": "boolean",
-              "name": "nfs",
+              "name": "cifs",
               "paramType": "body",
               "required": true
             },
@@ -452,9 +452,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "boolean",
-              "description": "Wether to allow the CIFS (SMB) protocol for this ACL",
+              "description": "Wether to allow the NFS protocol for this ACL",
               "fullType": "boolean",
-              "name": "cifs",
+              "name": "nfs",
               "paramType": "body",
               "required": true
             },
@@ -485,18 +485,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipBlock",
               "description": "The IP Block specific to this ACL",
               "fullType": "ipBlock",
               "name": "ipBlock",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -513,18 +513,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipBlock",
               "description": "The IP Block specific to this ACL",
               "fullType": "ipBlock",
               "name": "ipBlock",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -548,18 +548,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipBlock",
               "description": "The IP Block specific to this ACL",
               "fullType": "ipBlock",
               "name": "ipBlock",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -643,17 +643,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The contact to set as tech contact",
+              "description": "The contact to set as billing contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
+              "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "The contact to set as billing contact",
+              "description": "The contact to set as tech contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
+              "name": "contactTech",
               "paramType": "body",
               "required": false
             },
@@ -684,6 +684,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "service.TerminationFutureUseEnum",
               "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
@@ -696,14 +704,6 @@ export const schema: Schema = {
               "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
               "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
               "paramType": "body",
               "required": false
             },
@@ -828,18 +828,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -863,18 +863,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -897,19 +897,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "vps.disk.StatisticTypeEnum",
-              "description": "The type of statistic to be fetched",
-              "fullType": "vps.disk.StatisticTypeEnum",
-              "name": "type",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "vps.VpsMonitoringPeriodEnum",
-              "description": "The period the statistics are fetched for",
-              "fullType": "vps.VpsMonitoringPeriodEnum",
-              "name": "period",
-              "paramType": "query",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
               "required": true
             },
             {
@@ -921,11 +913,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
+              "dataType": "vps.VpsMonitoringPeriodEnum",
+              "description": "The period the statistics are fetched for",
+              "fullType": "vps.VpsMonitoringPeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "vps.disk.StatisticTypeEnum",
+              "description": "The type of statistic to be fetched",
+              "fullType": "vps.disk.StatisticTypeEnum",
+              "name": "type",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -947,11 +947,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "vps.disk.StatisticTypeEnum",
-              "description": "The type of statistic to be fetched",
-              "fullType": "vps.disk.StatisticTypeEnum",
-              "name": "type",
-              "paramType": "query",
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
               "required": true
             },
             {
@@ -963,11 +963,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
+              "dataType": "vps.disk.StatisticTypeEnum",
+              "description": "The type of statistic to be fetched",
+              "fullType": "vps.disk.StatisticTypeEnum",
+              "name": "type",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -1128,17 +1128,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "Id of the object",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Id of the object",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
-              "name": "id",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1239,18 +1239,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ip",
               "description": "The effective ip address of the Ip object",
               "fullType": "ip",
               "name": "ipAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1267,18 +1267,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ip",
               "description": "The effective ip address of the Ip object",
               "fullType": "ip",
               "name": "ipAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1302,18 +1302,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ip",
               "description": "The effective ip address of the Ip object",
               "fullType": "ip",
               "name": "ipAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1416,6 +1416,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "vps.VpsMonitoringPeriodEnum",
               "description": "The period the statistics are fetched for",
               "fullType": "vps.VpsMonitoringPeriodEnum",
@@ -1429,14 +1437,6 @@ export const schema: Schema = {
               "fullType": "vps.VpsStatisticTypeEnum",
               "name": "type",
               "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -1518,12 +1518,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Delete option now, don't wait for expiration",
-              "fullType": "boolean",
-              "name": "deleteNow",
-              "paramType": "query",
-              "required": false
+              "dataType": "vps.VpsOptionEnum",
+              "description": "The option name",
+              "fullType": "vps.VpsOptionEnum",
+              "name": "option",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -1534,12 +1534,12 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "vps.VpsOptionEnum",
-              "description": "The option name",
-              "fullType": "vps.VpsOptionEnum",
-              "name": "option",
-              "paramType": "path",
-              "required": true
+              "dataType": "boolean",
+              "description": "Delete option now, don't wait for expiration",
+              "fullType": "boolean",
+              "name": "deleteNow",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "void"
@@ -1554,18 +1554,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "vps.VpsOptionEnum",
               "description": "The option name",
               "fullType": "vps.VpsOptionEnum",
               "name": "option",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1664,10 +1664,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string[]",
-              "description": "SSH key names to pre-install on your VPS (name from /me/sshKey)",
-              "fullType": "string[]",
-              "name": "sshKey",
+              "dataType": "boolean",
+              "description": "If asked, the installation password will NOT be sent (only if sshKey defined)",
+              "fullType": "boolean",
+              "name": "doNotSendPassword",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Distribution language. default : en",
+              "fullType": "string",
+              "name": "language",
               "paramType": "body",
               "required": false
             },
@@ -1680,10 +1688,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "boolean",
-              "description": "If asked, the installation password will NOT be sent (only if sshKey defined)",
-              "fullType": "boolean",
-              "name": "doNotSendPassword",
+              "dataType": "string[]",
+              "description": "SSH key names to pre-install on your VPS (name from /me/sshKey)",
+              "fullType": "string[]",
+              "name": "sshKey",
               "paramType": "body",
               "required": false
             },
@@ -1694,14 +1702,6 @@ export const schema: Schema = {
               "name": "templateId",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Distribution language. default : en",
-              "fullType": "string",
-              "name": "language",
-              "paramType": "body",
-              "required": false
             },
             {
               "dataType": "string",
@@ -1793,17 +1793,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "domain on slave server",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "domain on slave server",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1821,17 +1821,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "domain on slave server",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "domain on slave server",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1856,17 +1856,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "domain on slave server",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "domain on slave server",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1890,17 +1890,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "domain on slave server",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "domain on slave server",
+              "description": "The internal name of your VPS offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2205,12 +2205,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "vps.TaskTypeEnum",
-              "description": "Filter the value of type property (=)",
-              "fullType": "vps.TaskTypeEnum",
-              "name": "type",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "vps.TaskStateEnum",
@@ -2221,12 +2221,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "vps.TaskTypeEnum",
+              "description": "Filter the value of type property (=)",
+              "fullType": "vps.TaskTypeEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -2247,18 +2247,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2307,18 +2307,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2341,18 +2341,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2375,18 +2375,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -2443,19 +2443,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "vps.VpsStatisticTypeEnum",
-              "description": "The type of statistic to be fetched",
-              "fullType": "vps.VpsStatisticTypeEnum",
-              "name": "type",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "vps.VpsStatisticTypeEnum",
+              "description": "The type of statistic to be fetched",
+              "fullType": "vps.VpsStatisticTypeEnum",
+              "name": "type",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -2503,20 +2503,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "datetime",
-              "description": "Filter the value of creationTime property (like)",
-              "fullType": "datetime",
-              "name": "creationTime",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "The internal name of your VPS offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of creationTime property (like)",
+              "fullType": "datetime",
+              "name": "creationTime",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -2537,18 +2537,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2595,18 +2595,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }

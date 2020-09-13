@@ -56,18 +56,18 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Application ID",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Application name",
               "fullType": "string",
               "name": "name",
               "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Application ID",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             }
           ],
@@ -116,17 +116,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Application ID",
+              "description": "Key ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "keyId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Key ID",
+              "description": "Application ID",
               "fullType": "string",
-              "name": "keyId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -202,17 +202,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Application ID",
+              "description": "Region ID",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "regionId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Region ID",
+              "description": "Application ID",
               "fullType": "string",
-              "name": "regionId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -262,17 +262,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Application ID",
+              "description": "Role name",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "roleName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Role name",
+              "description": "Application ID",
               "fullType": "string",
-              "name": "roleName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }

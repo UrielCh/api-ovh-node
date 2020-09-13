@@ -67,18 +67,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The number in the street",
-              "fullType": "string",
-              "name": "streetNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "xdsl.eligibility.Street",
-              "description": "The information about the street",
-              "fullType": "xdsl.eligibility.Street",
-              "name": "street",
+              "dataType": "xdsl.eligibility.City",
+              "description": "The information about the city",
+              "fullType": "xdsl.eligibility.City",
+              "name": "city",
               "paramType": "body",
               "required": true
             },
@@ -91,12 +83,20 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "xdsl.eligibility.City",
-              "description": "The information about the city",
-              "fullType": "xdsl.eligibility.City",
-              "name": "city",
+              "dataType": "xdsl.eligibility.Street",
+              "description": "The information about the street",
+              "fullType": "xdsl.eligibility.Street",
+              "name": "street",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The number in the street",
+              "fullType": "string",
+              "name": "streetNumber",
+              "paramType": "body",
+              "required": false
             }
           ],
           "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Line>"
@@ -120,10 +120,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "xdsl.eligibility.Street",
-              "description": "The information about the street",
-              "fullType": "xdsl.eligibility.Street",
-              "name": "street",
+              "dataType": "xdsl.eligibility.City",
+              "description": "The information about the city",
+              "fullType": "xdsl.eligibility.City",
+              "name": "city",
               "paramType": "body",
               "required": true
             },
@@ -136,10 +136,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "xdsl.eligibility.City",
-              "description": "The information about the city",
-              "fullType": "xdsl.eligibility.City",
-              "name": "city",
+              "dataType": "xdsl.eligibility.Street",
+              "description": "The information about the street",
+              "fullType": "xdsl.eligibility.Street",
+              "name": "street",
               "paramType": "body",
               "required": true
             },
@@ -174,17 +174,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The choosen offer label",
+              "description": "The eligibility test id",
               "fullType": "string",
-              "name": "offerLabel",
+              "name": "eligibilityId",
               "paramType": "query",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The eligibility test id",
+              "description": "The choosen offer label",
               "fullType": "string",
-              "name": "eligibilityId",
+              "name": "offerLabel",
               "paramType": "query",
               "required": true
             }
@@ -1144,18 +1144,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your XDSL offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ip",
               "description": "IP which spam",
               "fullType": "ip",
               "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your XDSL offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1178,18 +1178,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your XDSL offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ip",
               "description": "IP which spam",
               "fullType": "ip",
               "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your XDSL offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1307,17 +1307,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The contact to set as tech contact",
+              "description": "The contact to set as billing contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
+              "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "The contact to set as billing contact",
+              "description": "The contact to set as tech contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
+              "name": "contactTech",
               "paramType": "body",
               "required": false
             },
@@ -1466,18 +1466,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your XDSL offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ip",
               "description": "The IP address",
               "fullType": "ip",
               "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your XDSL offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1494,18 +1494,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your XDSL offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ip",
               "description": "The IP address",
               "fullType": "ip",
               "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your XDSL offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1589,17 +1589,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "The number of the line",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "number",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The number of the line",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "number",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1623,17 +1623,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "The number of the line",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "number",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The number of the line",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "number",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1681,17 +1681,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "The number of the line",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "number",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The number of the line",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "number",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1715,17 +1715,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "The number of the line",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "number",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The number of the line",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "number",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1749,17 +1749,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "The number of the line",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "number",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The number of the line",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "number",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1791,17 +1791,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "The number of the line",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "number",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The number of the line",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "number",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1824,11 +1824,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "limit",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The number of the line",
+              "fullType": "string",
+              "name": "number",
+              "paramType": "path",
               "required": true
             },
             {
@@ -1840,11 +1840,11 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The number of the line",
-              "fullType": "string",
-              "name": "number",
-              "paramType": "path",
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "limit",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -1867,17 +1867,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "The number of the line",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "number",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The number of the line",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "number",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1900,19 +1900,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "xdsl.LineStatisticsTypeEnum",
-              "description": "",
-              "fullType": "xdsl.LineStatisticsTypeEnum",
-              "name": "type",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "xdsl.StatisticsPeriodEnum",
-              "description": "",
-              "fullType": "xdsl.StatisticsPeriodEnum",
-              "name": "period",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The number of the line",
+              "fullType": "string",
+              "name": "number",
+              "paramType": "path",
               "required": true
             },
             {
@@ -1924,11 +1916,19 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The number of the line",
-              "fullType": "string",
-              "name": "number",
-              "paramType": "path",
+              "dataType": "xdsl.StatisticsPeriodEnum",
+              "description": "",
+              "fullType": "xdsl.StatisticsPeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "xdsl.LineStatisticsTypeEnum",
+              "description": "",
+              "fullType": "xdsl.LineStatisticsTypeEnum",
+              "name": "type",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -2003,19 +2003,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "xdsl.WLANFrequencyEnum",
-              "description": "WLAN frequency you want to retrieve channels",
-              "fullType": "xdsl.WLANFrequencyEnum",
-              "name": "frequency",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The internal name of your XDSL offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "xdsl.WLANFrequencyEnum",
+              "description": "WLAN frequency you want to retrieve channels",
+              "fullType": "xdsl.WLANFrequencyEnum",
+              "name": "frequency",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -2226,17 +2226,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "MAC address of the device",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "macAddress",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "MAC address of the device",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "macAddress",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2573,17 +2573,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Name of the LAN",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "lanName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of the LAN",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "lanName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2608,17 +2608,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Name of the LAN",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "lanName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of the LAN",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "lanName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2642,17 +2642,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Name of the LAN",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "lanName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of the LAN",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "lanName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2676,9 +2676,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Name of the DHCP",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "dhcpName",
               "paramType": "path",
               "required": true
             },
@@ -2692,9 +2692,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of the DHCP",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "dhcpName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2719,9 +2719,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Name of the DHCP",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "dhcpName",
               "paramType": "path",
               "required": true
             },
@@ -2735,9 +2735,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of the DHCP",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "dhcpName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2761,9 +2761,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Name of the DHCP",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "dhcpName",
               "paramType": "path",
               "required": true
             },
@@ -2777,9 +2777,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of the DHCP",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "dhcpName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2805,14 +2805,6 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of the DHCP static lease",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "The MAC address of the device",
               "fullType": "string",
               "name": "MACAddress",
@@ -2821,9 +2813,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Name of the DHCP static lease",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "name",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Name of the DHCP",
+              "fullType": "string",
+              "name": "dhcpName",
               "paramType": "path",
               "required": true
             },
@@ -2837,9 +2837,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of the DHCP",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "dhcpName",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2863,9 +2863,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Name of the DHCP",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "dhcpName",
               "paramType": "path",
               "required": true
             },
@@ -2879,17 +2879,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of the DHCP",
+              "description": "The MAC address of the device",
               "fullType": "string",
-              "name": "dhcpName",
+              "name": "MACAddress",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The MAC address of the device",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "MACAddress",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2907,9 +2907,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Name of the DHCP",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "dhcpName",
               "paramType": "path",
               "required": true
             },
@@ -2923,17 +2923,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of the DHCP",
+              "description": "The MAC address of the device",
               "fullType": "string",
-              "name": "dhcpName",
+              "name": "MACAddress",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The MAC address of the device",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "MACAddress",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -2958,9 +2958,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Name of the DHCP",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "dhcpName",
               "paramType": "path",
               "required": true
             },
@@ -2974,17 +2974,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Name of the DHCP",
+              "description": "The MAC address of the device",
               "fullType": "string",
-              "name": "dhcpName",
+              "name": "MACAddress",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The MAC address of the device",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "MACAddress",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3027,28 +3027,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "xdsl.xdslModemConfig.ProtocolTypeEnum",
-              "description": "Protocol of the port mapping (TCP / UDP)",
-              "fullType": "xdsl.xdslModemConfig.ProtocolTypeEnum",
-              "name": "protocol",
+              "dataType": "ipv4",
+              "description": "An ip which will access to the defined rule. Default : no restriction applied",
+              "fullType": "ipv4",
+              "name": "allowedRemoteIp",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The port on the Internal Client that will get the connections",
-              "fullType": "long",
-              "name": "internalPort",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "External Port that the modem will listen on",
-              "fullType": "long",
-              "name": "externalPortStart",
-              "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "string",
@@ -3059,10 +3043,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "Name of the port mapping entry",
-              "fullType": "string",
-              "name": "name",
+              "dataType": "long",
+              "description": "The last port of the interval on the External Client that will get the connections",
+              "fullType": "long",
+              "name": "externalPortEnd",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "External Port that the modem will listen on",
+              "fullType": "long",
+              "name": "externalPortStart",
               "paramType": "body",
               "required": true
             },
@@ -3076,19 +3068,27 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "The last port of the interval on the External Client that will get the connections",
+              "description": "The port on the Internal Client that will get the connections",
               "fullType": "long",
-              "name": "externalPortEnd",
+              "name": "internalPort",
               "paramType": "body",
-              "required": false
+              "required": true
             },
             {
-              "dataType": "ipv4",
-              "description": "An ip which will access to the defined rule. Default : no restriction applied",
-              "fullType": "ipv4",
-              "name": "allowedRemoteIp",
+              "dataType": "string",
+              "description": "Name of the port mapping entry",
+              "fullType": "string",
+              "name": "name",
               "paramType": "body",
-              "required": false
+              "required": true
+            },
+            {
+              "dataType": "xdsl.xdslModemConfig.ProtocolTypeEnum",
+              "description": "Protocol of the port mapping (TCP / UDP)",
+              "fullType": "xdsl.xdslModemConfig.ProtocolTypeEnum",
+              "name": "protocol",
+              "paramType": "body",
+              "required": true
             },
             {
               "dataType": "string",
@@ -3118,17 +3118,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Name of the port mapping entry",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "name",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of the port mapping entry",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "name",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3146,17 +3146,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Name of the port mapping entry",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "name",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of the port mapping entry",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "name",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3181,17 +3181,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Name of the port mapping entry",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "name",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Name of the port mapping entry",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "name",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3626,19 +3626,19 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The SMS account which will be debited for each sent SMS, if the type is sms",
-              "fullType": "string",
-              "name": "smsAccount",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "The e-mail address, if type is mail",
               "fullType": "string",
               "name": "email",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "xdsl.monitoringNotifications.FrequencyEnum",
+              "description": "",
+              "fullType": "xdsl.monitoringNotifications.FrequencyEnum",
+              "name": "frequency",
+              "paramType": "body",
+              "required": true
             },
             {
               "dataType": "string",
@@ -3649,18 +3649,18 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "string",
+              "description": "The SMS account which will be debited for each sent SMS, if the type is sms",
+              "fullType": "string",
+              "name": "smsAccount",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "xdsl.monitoringNotifications.TypeEnum",
               "description": "",
               "fullType": "xdsl.monitoringNotifications.TypeEnum",
               "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "xdsl.monitoringNotifications.FrequencyEnum",
-              "description": "",
-              "fullType": "xdsl.monitoringNotifications.FrequencyEnum",
-              "name": "frequency",
               "paramType": "body",
               "required": true
             },
@@ -3691,18 +3691,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your XDSL offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your XDSL offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3719,18 +3719,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your XDSL offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your XDSL offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3754,18 +3754,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your XDSL offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your XDSL offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -3984,20 +3984,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "xdsl.ResiliationSurvey",
-              "description": "Comment about resiliation reasons",
-              "fullType": "xdsl.ResiliationSurvey",
-              "name": "resiliationSurvey",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "datetime",
               "description": "The desired resiliation date",
               "fullType": "datetime",
               "name": "resiliationDate",
               "paramType": "body",
               "required": false
+            },
+            {
+              "dataType": "xdsl.ResiliationSurvey",
+              "description": "Comment about resiliation reasons",
+              "fullType": "xdsl.ResiliationSurvey",
+              "name": "resiliationSurvey",
+              "paramType": "body",
+              "required": true
             },
             {
               "dataType": "string",
@@ -4052,20 +4052,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "datetime",
-              "description": "The desired resiliation date",
-              "fullType": "datetime",
-              "name": "resiliationDate",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "The internal name of your XDSL offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "The desired resiliation date",
+              "fullType": "datetime",
+              "name": "resiliationDate",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "xdsl.ResiliationTerms"
@@ -4113,17 +4113,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Return merchandise authorisation identifier",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Return merchandise authorisation identifier",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "id",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4141,17 +4141,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Return merchandise authorisation identifier",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Return merchandise authorisation identifier",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "id",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4176,17 +4176,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your XDSL offer",
+              "description": "Return merchandise authorisation identifier",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "id",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Return merchandise authorisation identifier",
+              "description": "The internal name of your XDSL offer",
               "fullType": "string",
-              "name": "id",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4314,6 +4314,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The internal name of your XDSL offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "xdsl.StatisticsPeriodEnum",
               "description": "",
               "fullType": "xdsl.StatisticsPeriodEnum",
@@ -4327,14 +4335,6 @@ export const schema: Schema = {
               "fullType": "xdsl.AccessStatisticsTypeEnum",
               "name": "type",
               "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your XDSL offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
               "required": true
             }
           ],
@@ -4357,6 +4357,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "The internal name of your XDSL offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Filter the value of function property (=)",
               "fullType": "string",
               "name": "function",
@@ -4370,14 +4378,6 @@ export const schema: Schema = {
               "name": "status",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your XDSL offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "long[]"
@@ -4398,18 +4398,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your XDSL offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your XDSL offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4432,18 +4432,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your XDSL offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id of the object",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your XDSL offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -4492,20 +4492,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "RIO number for portability",
-              "fullType": "string",
-              "name": "rio",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "boolean",
               "description": "Do not set RIO, and relaunch order without portability",
               "fullType": "boolean",
               "name": "relaunchWithoutPortability",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "RIO number for portability",
+              "fullType": "string",
+              "name": "rio",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",

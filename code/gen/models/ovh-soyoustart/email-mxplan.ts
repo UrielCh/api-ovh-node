@@ -89,11 +89,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Filter the value of primaryEmailAddress property (like)",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "primaryEmailAddress",
-              "paramType": "query",
-              "required": false
+              "name": "service",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "long",
@@ -105,11 +105,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Filter the value of primaryEmailAddress property (like)",
               "fullType": "string",
-              "name": "service",
-              "paramType": "path",
-              "required": true
+              "name": "primaryEmailAddress",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -131,17 +131,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -159,17 +159,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -194,17 +194,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -228,17 +228,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -264,17 +264,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -298,9 +298,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Alias",
               "fullType": "string",
-              "name": "service",
+              "name": "alias",
               "paramType": "path",
               "required": true
             },
@@ -314,9 +314,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Alias",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "alias",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -334,9 +334,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Alias",
               "fullType": "string",
-              "name": "service",
+              "name": "alias",
               "paramType": "path",
               "required": true
             },
@@ -350,9 +350,9 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Alias",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "alias",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -376,17 +376,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -418,17 +418,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -452,17 +452,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -488,17 +488,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -522,17 +522,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -558,17 +558,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -591,10 +591,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your mxplan organization",
-              "fullType": "string",
-              "name": "service",
+              "dataType": "long",
+              "description": "Account id to give full access",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -607,10 +607,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give full access",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "The internal name of your mxplan organization",
+              "fullType": "string",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -627,10 +627,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your mxplan organization",
-              "fullType": "string",
-              "name": "service",
+              "dataType": "long",
+              "description": "Account id to give full access",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -643,10 +643,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give full access",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "The internal name of your mxplan organization",
+              "fullType": "string",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -670,17 +670,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -706,17 +706,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -739,10 +739,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your mxplan organization",
-              "fullType": "string",
-              "name": "service",
+              "dataType": "long",
+              "description": "Account id to give send as",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -755,10 +755,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give send as",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "The internal name of your mxplan organization",
+              "fullType": "string",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -775,10 +775,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your mxplan organization",
-              "fullType": "string",
-              "name": "service",
+              "dataType": "long",
+              "description": "Account id to give send as",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -791,10 +791,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give send as",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "The internal name of your mxplan organization",
+              "fullType": "string",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -818,17 +818,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -854,17 +854,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -887,10 +887,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your mxplan organization",
-              "fullType": "string",
-              "name": "service",
+              "dataType": "long",
+              "description": "Account id to give send on behalf to",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -903,10 +903,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give send on behalf to",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "The internal name of your mxplan organization",
+              "fullType": "string",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -923,10 +923,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your mxplan organization",
-              "fullType": "string",
-              "name": "service",
+              "dataType": "long",
+              "description": "Account id to give send on behalf to",
+              "fullType": "long",
+              "name": "allowedAccountId",
               "paramType": "path",
               "required": true
             },
@@ -939,10 +939,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Account id to give send on behalf to",
-              "fullType": "long",
-              "name": "allowedAccountId",
+              "dataType": "string",
+              "description": "The internal name of your mxplan organization",
+              "fullType": "string",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -966,17 +966,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Default email for this mailbox",
               "fullType": "string",
-              "name": "service",
+              "name": "email",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Default email for this mailbox",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "email",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -1000,14 +1000,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
-              "fullType": "string",
-              "name": "service",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Default email for this mailbox",
               "fullType": "string",
               "name": "email",
@@ -1019,6 +1011,14 @@ export const schema: Schema = {
               "description": "Task id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your mxplan organization",
+              "fullType": "string",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -1041,20 +1041,20 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "email.pro.ObjectStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "email.pro.ObjectStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "The internal name of your mxplan organization",
               "fullType": "string",
               "name": "service",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "email.pro.ObjectStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "email.pro.ObjectStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -1076,17 +1076,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "service",
+              "name": "domainName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "domainName",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -1111,17 +1111,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "service",
+              "name": "domainName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "domainName",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -1145,17 +1145,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "service",
+              "name": "domainName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "domainName",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -1173,17 +1173,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "service",
+              "name": "domainName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "domainName",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -1217,17 +1217,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "service",
+              "name": "domainName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "domainName",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -1252,17 +1252,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "service",
+              "name": "domainName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "domainName",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -1286,17 +1286,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Domain name",
               "fullType": "string",
-              "name": "service",
+              "name": "domainName",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain name",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "domainName",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -1320,9 +1320,33 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "The internal name of your mxplan organization",
+              "fullType": "string",
+              "name": "service",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of displayName property (like)",
+              "fullType": "string",
+              "name": "displayName",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Filter the value of externalEmailAddress property (like)",
               "fullType": "string",
               "name": "externalEmailAddress",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of firstName property (like)",
+              "fullType": "string",
+              "name": "firstName",
               "paramType": "query",
               "required": false
             },
@@ -1336,35 +1360,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of firstName property (like)",
-              "fullType": "string",
-              "name": "firstName",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "Filter the value of lastName property (like)",
               "fullType": "string",
               "name": "lastName",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of displayName property (like)",
-              "fullType": "string",
-              "name": "displayName",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your mxplan organization",
-              "fullType": "string",
-              "name": "service",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "string[]"
@@ -1379,34 +1379,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "boolean",
-              "description": "Hide the contact in Global Address List",
-              "fullType": "boolean",
-              "name": "hiddenFromGAL",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Contact first name",
-              "fullType": "string",
-              "name": "firstName",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "string",
               "description": "Contact display name",
               "fullType": "string",
               "name": "displayName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Contact last name",
-              "fullType": "string",
-              "name": "lastName",
               "paramType": "body",
               "required": false
             },
@@ -1420,9 +1396,33 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Contact first name",
+              "fullType": "string",
+              "name": "firstName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Hide the contact in Global Address List",
+              "fullType": "boolean",
+              "name": "hiddenFromGAL",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Contact initials",
               "fullType": "string",
               "name": "initials",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Contact last name",
+              "fullType": "string",
+              "name": "lastName",
               "paramType": "body",
               "required": false
             },
@@ -1454,17 +1454,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Contact email",
               "fullType": "string",
-              "name": "service",
+              "name": "externalEmailAddress",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Contact email",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "externalEmailAddress",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -1482,17 +1482,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Contact email",
               "fullType": "string",
-              "name": "service",
+              "name": "externalEmailAddress",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Contact email",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "externalEmailAddress",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -1517,17 +1517,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your mxplan organization",
+              "description": "Contact email",
               "fullType": "string",
-              "name": "service",
+              "name": "externalEmailAddress",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Contact email",
+              "description": "The internal name of your mxplan organization",
               "fullType": "string",
-              "name": "externalEmailAddress",
+              "name": "service",
               "paramType": "path",
               "required": true
             }
@@ -1602,18 +1602,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your mxplan organization",
-              "fullType": "string",
-              "name": "service",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Task id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your mxplan organization",
+              "fullType": "string",
+              "name": "service",
               "paramType": "path",
               "required": true
             }

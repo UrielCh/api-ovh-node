@@ -61,10 +61,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Filter the value of orderId property (=)",
-              "fullType": "long",
-              "name": "orderId",
+              "dataType": "string",
+              "description": "The internal name of your HPC Spot account",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of hpcspotItemEndDate property (>=)",
+              "fullType": "datetime",
+              "name": "hpcspotItemEndDate.from",
               "paramType": "query",
               "required": false
             },
@@ -85,10 +93,10 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "datetime",
-              "description": "Filter the value of hpcspotItemEndDate property (>=)",
-              "fullType": "datetime",
-              "name": "hpcspotItemEndDate.from",
+              "dataType": "long",
+              "description": "Filter the value of orderId property (=)",
+              "fullType": "long",
+              "name": "orderId",
               "paramType": "query",
               "required": false
             },
@@ -99,14 +107,6 @@ export const schema: Schema = {
               "name": "type",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your HPC Spot account",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "long[]"
@@ -127,18 +127,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your HPC Spot account",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "ID of the detail",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your HPC Spot account",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }

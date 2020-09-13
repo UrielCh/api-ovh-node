@@ -186,7 +186,7 @@ export namespace hosting {
          * Available datacenters
          * type fullname: hosting.PrivateDatabase.DatacenterEnum
          */
-        export type DatacenterEnum = "bhs1" | "gra1" | "gra2" | "p19"
+        export type DatacenterEnum = "bhs1" | "gra1" | "gra2" | "gra3" | "p19"
         /**
          * Available offers
          * type fullname: hosting.PrivateDatabase.OfferEnum
@@ -590,7 +590,7 @@ export namespace order {
             description: string;
             duration: string;
             interval: number;
-            maximumQuantity: number;
+            maximumQuantity?: number;
             maximumRepeat?: number;
             minimumQuantity: number;
             minimumRepeat: number;
@@ -2263,6 +2263,22 @@ export interface Order {
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
+            }
+            ovhCloudConnect: {
+                /**
+                 * Get informations about OVHcloud Connect offers
+                 * GET /order/cart/{cartId}/ovhCloudConnect
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new OVHcloud Connect item in your cart
+                 * POST /order/cart/{cartId}/ovhCloudConnect
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             privateCloud: {
                 /**

@@ -184,6 +184,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The internal name of your Active Directory organization",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "long",
               "description": "Filter the value of id property (like)",
               "fullType": "long",
@@ -198,14 +206,6 @@ export const schema: Schema = {
               "name": "userPrincipalName",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your Active Directory organization",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "string[]"
@@ -1040,18 +1040,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your Active Directory organization",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Task id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your Active Directory organization",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1179,11 +1179,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "msServices.LicensePeriodEnum",
-              "description": "Period of time used to determine sharepoint account license statistics",
-              "fullType": "msServices.LicensePeriodEnum",
-              "name": "period",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The internal name of your Active Directory organization",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             },
             {
@@ -1195,11 +1195,11 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your Active Directory organization",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "msServices.LicensePeriodEnum",
+              "description": "Period of time used to determine sharepoint account license statistics",
+              "fullType": "msServices.LicensePeriodEnum",
+              "name": "period",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -1247,12 +1247,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "msServices.TaskStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "msServices.TaskStatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your Active Directory organization",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -1263,12 +1263,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your Active Directory organization",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "msServices.TaskStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "msServices.TaskStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -1289,18 +1289,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your Active Directory organization",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Task id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your Active Directory organization",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1449,11 +1449,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "msServices.LicensePeriodEnum",
-              "description": "Period of time used to determine sync account license statistics",
-              "fullType": "msServices.LicensePeriodEnum",
-              "name": "period",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The internal name of your Active Directory organization",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             },
             {
@@ -1465,11 +1465,11 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your Active Directory organization",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "msServices.LicensePeriodEnum",
+              "description": "Period of time used to determine sync account license statistics",
+              "fullType": "msServices.LicensePeriodEnum",
+              "name": "period",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -1491,6 +1491,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The internal name of your Active Directory organization",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "msServices.TaskFunctionEnum",
               "description": "Filter the value of function property (=)",
               "fullType": "msServices.TaskFunctionEnum",
@@ -1505,14 +1513,6 @@ export const schema: Schema = {
               "name": "status",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your Active Directory organization",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "long[]"
@@ -1533,18 +1533,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your Active Directory organization",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Task id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your Active Directory organization",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }

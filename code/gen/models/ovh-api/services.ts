@@ -19,17 +19,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Filter services by API route path (comma separated)",
+              "description": "Order services by services.expanded.Service properties",
               "fullType": "string",
-              "name": "routes",
+              "name": "orderBy",
               "paramType": "query",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "Order services by services.expanded.Service properties",
+              "description": "Filter services by API route path (comma separated)",
               "fullType": "string",
-              "name": "orderBy",
+              "name": "routes",
               "paramType": "query",
               "required": false
             },
@@ -138,18 +138,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Service ID",
-              "fullType": "long",
-              "name": "serviceId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Plan code",
               "fullType": "string",
               "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
               "paramType": "path",
               "required": true
             }
@@ -179,18 +179,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Service ID",
-              "fullType": "long",
-              "name": "serviceId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Plan code",
               "fullType": "string",
               "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
               "paramType": "path",
               "required": true
             }
@@ -220,18 +220,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Service ID",
-              "fullType": "long",
-              "name": "serviceId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Plan code",
               "fullType": "string",
               "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
               "paramType": "path",
               "required": true
             }
@@ -280,18 +280,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "Service ID",
-              "fullType": "long",
-              "name": "serviceId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Form name",
               "fullType": "string",
               "name": "formName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
               "paramType": "path",
               "required": true
             }
@@ -321,18 +321,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Service ID",
-              "fullType": "long",
-              "name": "serviceId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "Form name",
               "fullType": "string",
               "name": "formName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
               "paramType": "path",
               "required": true
             }
@@ -367,6 +367,148 @@ export const schema: Schema = {
         }
       ],
       "path": "/services/{serviceId}/options"
+    },
+    {
+      "description": "Upgrade your offer to another offer",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List offers this option can be converted to",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        }
+      ],
+      "path": "/services/{serviceId}/upgrade"
+    },
+    {
+      "description": "Upgrade your offer to another offer",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "View an offer this option can be converted to",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition"
+        }
+      ],
+      "path": "/services/{serviceId}/upgrade/{planCode}"
+    },
+    {
+      "description": "Upgrade your option offer to another offer",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Perform the migration to another offer. May require you to pay an Order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.operation.ExecutionRequest",
+              "description": "Request Body",
+              "fullType": "services.operation.ExecutionRequest",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.operation.Order"
+        }
+      ],
+      "path": "/services/{serviceId}/upgrade/{planCode}/execute"
+    },
+    {
+      "description": "Upgrade your option offer to another offer",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Simulate the conversion to another offer. It won't generate any Order or issue any changes to your Service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.operation.ExecutionRequest",
+              "description": "Request Body",
+              "fullType": "services.operation.ExecutionRequest",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.operation.Order"
+        }
+      ],
+      "path": "/services/{serviceId}/upgrade/{planCode}/simulate"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
@@ -825,7 +967,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "maximumQuantity": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Maximum quantity that can be ordered",
           "fullType": "long",
           "readOnly": true,

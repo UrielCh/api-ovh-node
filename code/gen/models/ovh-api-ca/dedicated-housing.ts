@@ -148,9 +148,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "boolean",
-              "description": "Wether to allow the NFS protocol for this ACL",
+              "description": "Wether to allow the CIFS (SMB) protocol for this ACL",
               "fullType": "boolean",
-              "name": "nfs",
+              "name": "cifs",
               "paramType": "body",
               "required": true
             },
@@ -163,18 +163,18 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "boolean",
-              "description": "Wether to allow the CIFS (SMB) protocol for this ACL",
-              "fullType": "boolean",
-              "name": "cifs",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "ipBlock",
               "description": "The IP Block specific to this ACL. It musts belong to your server.",
               "fullType": "ipBlock",
               "name": "ipBlock",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Wether to allow the NFS protocol for this ACL",
+              "fullType": "boolean",
+              "name": "nfs",
               "paramType": "body",
               "required": true
             },
@@ -205,18 +205,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your Housing bay",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipBlock",
               "description": "The IP Block specific to this ACL",
               "fullType": "ipBlock",
               "name": "ipBlock",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your Housing bay",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -233,18 +233,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your Housing bay",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipBlock",
               "description": "The IP Block specific to this ACL",
               "fullType": "ipBlock",
               "name": "ipBlock",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your Housing bay",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -268,18 +268,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your Housing bay",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "ipBlock",
               "description": "The IP Block specific to this ACL",
               "fullType": "ipBlock",
               "name": "ipBlock",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your Housing bay",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -433,6 +433,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The internal name of your Housing bay",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "dedicated.housing.TaskFunctionEnum",
               "description": "Filter the value of function property (=)",
               "fullType": "dedicated.housing.TaskFunctionEnum",
@@ -447,14 +455,6 @@ export const schema: Schema = {
               "name": "status",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your Housing bay",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "long[]"

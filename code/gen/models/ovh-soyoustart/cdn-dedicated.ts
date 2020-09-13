@@ -113,17 +113,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The contact to set as tech contact",
+              "description": "The contact to set as billing contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
+              "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "The contact to set as billing contact",
+              "description": "The contact to set as tech contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
+              "name": "contactTech",
               "paramType": "body",
               "required": false
             },
@@ -209,17 +209,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your CDN offer",
+              "description": "Domain of this object",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain of this object",
+              "description": "The internal name of your CDN offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -237,17 +237,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your CDN offer",
+              "description": "Domain of this object",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain of this object",
+              "description": "The internal name of your CDN offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -272,17 +272,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your CDN offer",
+              "description": "Domain of this object",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain of this object",
+              "description": "The internal name of your CDN offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -306,17 +306,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your CDN offer",
+              "description": "Domain of this object",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain of this object",
+              "description": "The internal name of your CDN offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -342,17 +342,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The internal name of your CDN offer",
+              "description": "Domain of this object",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain of this object",
+              "description": "The internal name of your CDN offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -376,14 +376,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your CDN offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Domain of this object",
               "fullType": "string",
               "name": "domain",
@@ -395,6 +387,14 @@ export const schema: Schema = {
               "description": "",
               "fullType": "ipv4",
               "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your CDN offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -412,14 +412,6 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your CDN offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
               "description": "Domain of this object",
               "fullType": "string",
               "name": "domain",
@@ -431,6 +423,14 @@ export const schema: Schema = {
               "description": "",
               "fullType": "ipv4",
               "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your CDN offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -454,11 +454,11 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Filter the value of fileMatch property (like)",
+              "description": "Domain of this object",
               "fullType": "string",
-              "name": "fileMatch",
-              "paramType": "query",
-              "required": false
+              "name": "domain",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -470,11 +470,11 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Domain of this object",
+              "description": "Filter the value of fileMatch property (like)",
               "fullType": "string",
-              "name": "domain",
-              "paramType": "path",
-              "required": true
+              "name": "fileMatch",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "long[]"
@@ -489,18 +489,26 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "cdnanycast.CacheRuleFileTypeEnum",
-              "description": "File type for cache rule to add to the domain",
-              "fullType": "cdnanycast.CacheRuleFileTypeEnum",
-              "name": "fileType",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "cdnanycast.CacheRuleCacheTypeEnum",
               "description": "Type of cache rule to add to the domain",
               "fullType": "cdnanycast.CacheRuleCacheTypeEnum",
               "name": "cacheType",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "File match for cache rule to add to the domain",
+              "fullType": "string",
+              "name": "fileMatch",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "cdnanycast.CacheRuleFileTypeEnum",
+              "description": "File type for cache rule to add to the domain",
+              "fullType": "cdnanycast.CacheRuleFileTypeEnum",
+              "name": "fileType",
               "paramType": "body",
               "required": true
             },
@@ -514,10 +522,10 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "File match for cache rule to add to the domain",
+              "description": "Domain of this object",
               "fullType": "string",
-              "name": "fileMatch",
-              "paramType": "body",
+              "name": "domain",
+              "paramType": "path",
               "required": true
             },
             {
@@ -525,14 +533,6 @@ export const schema: Schema = {
               "description": "The internal name of your CDN offer",
               "fullType": "string",
               "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of this object",
-              "fullType": "string",
-              "name": "domain",
               "paramType": "path",
               "required": true
             }
@@ -555,10 +555,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your CDN offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id for this cache rule",
+              "fullType": "long",
+              "name": "cacheRuleId",
               "paramType": "path",
               "required": true
             },
@@ -571,10 +571,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id for this cache rule",
-              "fullType": "long",
-              "name": "cacheRuleId",
+              "dataType": "string",
+              "description": "The internal name of your CDN offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -591,10 +591,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your CDN offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id for this cache rule",
+              "fullType": "long",
+              "name": "cacheRuleId",
               "paramType": "path",
               "required": true
             },
@@ -607,10 +607,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id for this cache rule",
-              "fullType": "long",
-              "name": "cacheRuleId",
+              "dataType": "string",
+              "description": "The internal name of your CDN offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -634,10 +634,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your CDN offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id for this cache rule",
+              "fullType": "long",
+              "name": "cacheRuleId",
               "paramType": "path",
               "required": true
             },
@@ -650,10 +650,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id for this cache rule",
-              "fullType": "long",
-              "name": "cacheRuleId",
+              "dataType": "string",
+              "description": "The internal name of your CDN offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -676,10 +676,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your CDN offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id for this cache rule",
+              "fullType": "long",
+              "name": "cacheRuleId",
               "paramType": "path",
               "required": true
             },
@@ -692,10 +692,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id for this cache rule",
-              "fullType": "long",
-              "name": "cacheRuleId",
+              "dataType": "string",
+              "description": "The internal name of your CDN offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -718,10 +718,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your CDN offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id for this cache rule",
+              "fullType": "long",
+              "name": "cacheRuleId",
               "paramType": "path",
               "required": true
             },
@@ -734,10 +734,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id for this cache rule",
-              "fullType": "long",
-              "name": "cacheRuleId",
+              "dataType": "string",
+              "description": "The internal name of your CDN offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -760,10 +760,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your CDN offer",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Id for this cache rule",
+              "fullType": "long",
+              "name": "cacheRuleId",
               "paramType": "path",
               "required": true
             },
@@ -776,10 +776,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id for this cache rule",
-              "fullType": "long",
-              "name": "cacheRuleId",
+              "dataType": "string",
+              "description": "The internal name of your CDN offer",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -811,17 +811,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your CDN offer",
+              "description": "Domain of this object",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain of this object",
+              "description": "The internal name of your CDN offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -845,17 +845,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your CDN offer",
+              "description": "Domain of this object",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain of this object",
+              "description": "The internal name of your CDN offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -877,6 +877,22 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain of this object",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your CDN offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
             {
               "dataType": "cdnanycast.StatsPeriodEnum",
               "description": "",
@@ -900,22 +916,6 @@ export const schema: Schema = {
               "name": "value",
               "paramType": "query",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your CDN offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of this object",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "cdnanycast.StatsDataType[]"
@@ -937,17 +937,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your CDN offer",
+              "description": "Domain of this object",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain of this object",
+              "description": "The internal name of your CDN offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -971,17 +971,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your CDN offer",
+              "description": "Domain of this object",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "Domain of this object",
+              "description": "The internal name of your CDN offer",
               "fullType": "string",
-              "name": "domain",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             },
@@ -1038,19 +1038,19 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "cdnanycast.StatsPeriodEnum",
-              "description": "",
-              "fullType": "cdnanycast.StatsPeriodEnum",
-              "name": "period",
-              "paramType": "query",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The internal name of your CDN offer",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "cdnanycast.StatsPeriodEnum",
+              "description": "",
+              "fullType": "cdnanycast.StatsPeriodEnum",
+              "name": "period",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -1166,6 +1166,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "text",
+              "description": "certificate (empty for lets encrypt generation)",
+              "fullType": "text",
+              "name": "certificate",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "text",
               "description": "certificate chain (empty for lets encrypt generation)",
               "fullType": "text",
               "name": "chain",
@@ -1177,14 +1185,6 @@ export const schema: Schema = {
               "description": "certificate key (empty for lets encrypt generation)",
               "fullType": "text",
               "name": "key",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "text",
-              "description": "certificate (empty for lets encrypt generation)",
-              "fullType": "text",
-              "name": "certificate",
               "paramType": "body",
               "required": false
             },
@@ -1223,6 +1223,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "The internal name of your CDN offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
               "dataType": "cdnanycast.TaskFunctionEnum",
               "description": "Filter the value of function property (=)",
               "fullType": "cdnanycast.TaskFunctionEnum",
@@ -1237,14 +1245,6 @@ export const schema: Schema = {
               "name": "status",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your CDN offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "long[]"
@@ -1300,6 +1300,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "text",
+              "description": "certificate",
+              "fullType": "text",
+              "name": "certificate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "text",
               "description": "certificate chain",
               "fullType": "text",
               "name": "chain",
@@ -1311,14 +1319,6 @@ export const schema: Schema = {
               "description": "certificate key",
               "fullType": "text",
               "name": "key",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "text",
-              "description": "certificate",
-              "fullType": "text",
-              "name": "certificate",
               "paramType": "body",
               "required": true
             },

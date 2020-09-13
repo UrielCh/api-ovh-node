@@ -97,17 +97,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The contact to set as tech contact",
+              "description": "The contact to set as billing contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
+              "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "The contact to set as billing contact",
+              "description": "The contact to set as tech contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
+              "name": "contactTech",
               "paramType": "body",
               "required": false
             },
@@ -191,18 +191,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Service name",
-              "fullType": "uuid",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Pop ID",
               "fullType": "long",
               "name": "popId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -219,18 +219,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Service name",
-              "fullType": "uuid",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Pop ID",
               "fullType": "long",
               "name": "popId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -253,18 +253,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Service name",
-              "fullType": "uuid",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Pop ID",
               "fullType": "long",
               "name": "popId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -322,10 +322,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Service name",
-              "fullType": "uuid",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Datacenter ID",
+              "fullType": "long",
+              "name": "datacenterId",
               "paramType": "path",
               "required": true
             },
@@ -338,10 +338,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Datacenter ID",
-              "fullType": "long",
-              "name": "datacenterId",
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -358,10 +358,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Service name",
-              "fullType": "uuid",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Datacenter ID",
+              "fullType": "long",
+              "name": "datacenterId",
               "paramType": "path",
               "required": true
             },
@@ -374,10 +374,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Datacenter ID",
-              "fullType": "long",
-              "name": "datacenterId",
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -400,10 +400,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Service name",
-              "fullType": "uuid",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Datacenter ID",
+              "fullType": "long",
+              "name": "datacenterId",
               "paramType": "path",
               "required": true
             },
@@ -416,10 +416,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Datacenter ID",
-              "fullType": "long",
-              "name": "datacenterId",
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -443,10 +443,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "uuid",
-              "description": "Service name",
-              "fullType": "uuid",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "Datacenter ID",
+              "fullType": "long",
+              "name": "datacenterId",
               "paramType": "path",
               "required": true
             },
@@ -459,10 +459,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Datacenter ID",
-              "fullType": "long",
-              "name": "datacenterId",
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -485,22 +485,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Service name",
-              "fullType": "uuid",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Pop ID",
-              "fullType": "long",
-              "name": "popId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Datacenter ID",
               "fullType": "long",
@@ -513,6 +497,22 @@ export const schema: Schema = {
               "description": "Extra ID",
               "fullType": "long",
               "name": "extraId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Pop ID",
+              "fullType": "long",
+              "name": "popId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -529,22 +529,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Service name",
-              "fullType": "uuid",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Pop ID",
-              "fullType": "long",
-              "name": "popId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Datacenter ID",
               "fullType": "long",
@@ -557,6 +541,22 @@ export const schema: Schema = {
               "description": "Extra ID",
               "fullType": "long",
               "name": "extraId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Pop ID",
+              "fullType": "long",
+              "name": "popId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -579,6 +579,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "service.TerminationFutureUseEnum",
               "description": "What next after your termination request",
               "fullType": "service.TerminationFutureUseEnum",
@@ -591,14 +599,6 @@ export const schema: Schema = {
               "description": "Reason of your termination request",
               "fullType": "service.TerminationReasonEnum",
               "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
               "paramType": "body",
               "required": false
             },
@@ -663,18 +663,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Service name",
-              "fullType": "uuid",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -723,18 +723,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Service name",
-              "fullType": "uuid",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -757,18 +757,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Service name",
-              "fullType": "uuid",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -791,18 +791,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Service name",
-              "fullType": "uuid",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -930,18 +930,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Service name",
-              "fullType": "uuid",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Service key ID",
               "fullType": "long",
               "name": "serviceKeyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -964,18 +964,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Service name",
-              "fullType": "uuid",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Service key ID",
               "fullType": "long",
               "name": "serviceKeyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1005,18 +1005,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "uuid",
-              "description": "Service name",
-              "fullType": "uuid",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Service key ID",
               "fullType": "long",
               "name": "serviceKeyId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1065,18 +1065,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "uuid",
-              "description": "Service name",
-              "fullType": "uuid",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
               "description": "Id",
               "fullType": "long",
               "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -1710,6 +1710,8 @@ export const schema: Schema = {
     "ovhcloudconnect.task.FunctionEnum": {
       "description": "Enum values for Task function",
       "enum": [
+        "addVrack",
+        "removeVrack",
         "lockInterface",
         "unlockInterface",
         "addPopConfiguration",

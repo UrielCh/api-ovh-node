@@ -214,7 +214,7 @@ export namespace hosting {
          * Available datacenters
          * type fullname: hosting.PrivateDatabase.DatacenterEnum
          */
-        export type DatacenterEnum = "bhs1" | "gra1" | "gra2" | "p19"
+        export type DatacenterEnum = "bhs1" | "gra1" | "gra2" | "gra3" | "p19"
         /**
          * Available offers
          * type fullname: hosting.PrivateDatabase.OfferEnum

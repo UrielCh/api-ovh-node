@@ -44,18 +44,18 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "distribution.image.service",
-              "description": "service type name",
-              "fullType": "distribution.image.service",
-              "name": "serviceType",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "image name",
               "fullType": "string",
               "name": "imageName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "distribution.image.service",
+              "description": "service type name",
+              "fullType": "distribution.image.service",
+              "name": "serviceType",
               "paramType": "path",
               "required": true
             }

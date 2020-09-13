@@ -1179,6 +1179,34 @@ export namespace insight {
     }
 }
 export namespace me {
+    /**
+     * Country Migration
+     * interface fullName: me.Migration.Migration
+     */
+    export interface Migration {
+        from: nichandle.OvhSubsidiaryEnum;
+        id: number;
+        status: me.migration.StatusEnum;
+        steps?: me.migration.Step[];
+        to: nichandle.OvhSubsidiaryEnum;
+    }
+    export namespace agreements {
+        /**
+         * State of the agreement
+         * type fullname: me.agreements.AgreementStatusEnum
+         */
+        export type AgreementStatusEnum = "obsolete" | "todo" | "ko" | "ok"
+        /**
+         * Contract Agreement
+         * interface fullName: me.agreements.ContractAgreement.ContractAgreement
+         */
+        export interface ContractAgreement {
+            agreed: me.agreements.AgreementStatusEnum;
+            contractId: number;
+            date: string;
+            id: number;
+        }
+    }
     export namespace consent {
         /**
          * Consent campaign
@@ -1261,6 +1289,72 @@ export namespace me {
                     unique_id?: string;
                 }
             }
+        }
+    }
+    export namespace migration {
+        /**
+         * contract
+         * interface fullName: me.migration.Contract.Contract
+         */
+        export interface Contract {
+            active: boolean;
+            date: string;
+            id: number;
+            name: string;
+            pdf: string;
+            text: string;
+        }
+        /**
+         * Status of the migration
+         * type fullname: me.migration.StatusEnum
+         */
+        export type StatusEnum = "CANCELED" | "CHECKED" | "DOING" | "MIGRATED" | "TO_CHECK" | "TODO"
+        /**
+         * Country Migration Step
+         * interface fullName: me.migration.Step.Step
+         */
+        export interface Step {
+            contracts?: me.migration.step.Contracts;
+            debt?: me.migration.step.Debt;
+            name: me.migration.step.NameEnum;
+            orders?: me.migration.step.Orders;
+            status: me.migration.step.StatusEnum;
+        }
+        export namespace step {
+            /**
+             * Country Migration step contracts data
+             * interface fullName: me.migration.step.Contracts.Contracts
+             */
+            export interface Contracts {
+                agreements: me.agreements.ContractAgreement[];
+            }
+            /**
+             * Country Migration step debt data
+             * interface fullName: me.migration.step.Debt.Debt
+             */
+            export interface Debt {
+                balanceAmount?: orderPrice;
+                ovhAccountAmount?: orderPrice;
+            }
+            /**
+             * Name of the migration step
+             * type fullname: me.migration.step.NameEnum
+             */
+            export type NameEnum = "ORDERS" | "DEBT" | "NIC" | "CONTRACTS"
+            /**
+             * Country Migration step orders data
+             * interface fullName: me.migration.step.Orders.Orders
+             */
+            export interface Orders {
+                pendingOperations: boolean;
+                pendingPromotions: boolean;
+                pendingSubscriptions: boolean;
+            }
+            /**
+             * Status of the migration step
+             * type fullname: me.migration.step.StatusEnum
+             */
+            export type StatusEnum = "OK" | "PENDING"
         }
     }
     export namespace payment {
@@ -1605,7 +1699,7 @@ export namespace nichandle {
      * OVH subsidiaries
      * type fullname: nichandle.OvhSubsidiaryEnum
      */
-    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
+    export type OvhSubsidiaryEnum = "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "SN" | "TN"
     /**
      * Indicates the mandatory nature of having a valid payment method
      * type fullname: nichandle.RequiredPaymentMethodEnum
@@ -1920,11 +2014,12 @@ export namespace nichandle {
 }
 export namespace order {
     /**
+     * Currency code
      * type fullname: order.CurrencyCodeEnum
      */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
-     * Price with it's currency and textual representation
+     * Price with its currency and textual representation
      * interface fullName: order.Price.Price
      */
     export interface Price {
@@ -3705,6 +3800,72 @@ export interface Me {
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
+    }
+    migration: {
+        /**
+         * Retrieve all country migrations
+         * GET /me/migration
+         */
+        $get(): Promise<number[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $(migrationId: number): {
+            /**
+             * Retrieve information about a country migration
+             * GET /me/migration/{migrationId}
+             */
+            $get(): Promise<me.Migration>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            contract: {
+                /**
+                 * Retrieve all contracts for a billing country migration
+                 * GET /me/migration/{migrationId}/contract
+                 */
+                $get(): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(contractId: number): {
+                    /**
+                     * Retrieve detail about a contract for a billing country migration
+                     * GET /me/migration/{migrationId}/contract/{contractId}
+                     */
+                    $get(): Promise<me.migration.Contract>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    accept: {
+                        /**
+                         * Accept contract
+                         * POST /me/migration/{migrationId}/contract/{contractId}/accept
+                         */
+                        $post(): Promise<me.agreements.ContractAgreement>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    agreement: {
+                        /**
+                         * Retrieve agreement for this contract
+                         * GET /me/migration/{migrationId}/contract/{contractId}/agreement
+                         */
+                        $get(): Promise<me.agreements.ContractAgreement>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                };
+            }
+        };
     }
     notification: {
         email: {

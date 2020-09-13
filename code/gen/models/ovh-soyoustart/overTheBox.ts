@@ -195,17 +195,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your overTheBox offer",
+              "description": "The id of the backup",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "backupId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The id of the backup",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
-              "name": "backupId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -263,17 +263,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The contact to set as tech contact",
+              "description": "The contact to set as billing contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
+              "name": "contactBilling",
               "paramType": "body",
               "required": false
             },
             {
               "dataType": "string",
-              "description": "The contact to set as billing contact",
+              "description": "The contact to set as tech contact",
               "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
+              "name": "contactTech",
               "paramType": "body",
               "required": false
             },
@@ -350,12 +350,12 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "overTheBox.ActionStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "overTheBox.ActionStatusEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
+              "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
             },
             {
               "dataType": "string",
@@ -366,12 +366,12 @@ export const schema: Schema = {
               "required": false
             },
             {
-              "dataType": "string",
-              "description": "The internal name of your overTheBox offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "overTheBox.ActionStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "overTheBox.ActionStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
@@ -421,17 +421,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your overTheBox offer",
+              "description": "The id of the action",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "actionId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The id of the action",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
-              "name": "actionId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -646,18 +646,18 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "datetime",
-              "description": "The expirationDate of the remote access (default 1 day)",
-              "fullType": "datetime",
-              "name": "expirationDate",
-              "paramType": "body",
-              "required": false
-            },
-            {
               "dataType": "ipBlock",
               "description": "IP block from which the remote access will be allowed (the default value is the IP from which the call is made)",
               "fullType": "ipBlock",
               "name": "allowedIp",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "The expirationDate of the remote access (default 1 day)",
+              "fullType": "datetime",
+              "name": "expirationDate",
               "paramType": "body",
               "required": false
             },
@@ -705,17 +705,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your overTheBox offer",
+              "description": "The id of the remote access",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "remoteAccessId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The id of the remote access",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
-              "name": "remoteAccessId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -733,17 +733,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your overTheBox offer",
+              "description": "The id of the remote access",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "remoteAccessId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The id of the remote access",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
-              "name": "remoteAccessId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -767,17 +767,17 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your overTheBox offer",
+              "description": "The id of the remote access",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "remoteAccessId",
               "paramType": "path",
               "required": true
             },
             {
               "dataType": "string",
-              "description": "The id of the remote access",
+              "description": "The internal name of your overTheBox offer",
               "fullType": "string",
-              "name": "remoteAccessId",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
@@ -854,6 +854,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "The internal name of your overTheBox offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Filter the value of name property (=)",
               "fullType": "string",
               "name": "name",
@@ -867,14 +875,6 @@ export const schema: Schema = {
               "name": "status",
               "paramType": "query",
               "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your overTheBox offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "responseType": "string[]"
