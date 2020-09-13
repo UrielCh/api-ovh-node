@@ -19,7 +19,7 @@
     "typescript": "^3.9.5"
   },
   "publishConfig": {
-    "access": "false"
+    "access": "restricted"
   },
   "repository": {
     "type": "git",
