@@ -202,16 +202,12 @@ export namespace dedicatedCloud {
      * interface fullName: dedicatedCloud.Filer.Filer
      */
     export interface Filer {
-        activeNode?: dedicatedCloudfilerNodeTypeEnum;
         billingType?: dedicatedCloudressourcesBillingTypeEnum;
-        connectionState?: dedicatedCloudfilerConnexionStateEnum;
         filerId: number;
         fullProfile: string;
-        master: string;
         name: string;
         profile: string;
         size: complexType.UnitAndValue<number>;
-        slave?: string;
         spaceFree?: number;
         spaceProvisionned?: number;
         spaceUsed?: number;
@@ -865,11 +861,6 @@ export namespace dedicatedCloud {
         export type VpnConfigStateEnum = "configured" | "configuring" | "error" | "notConfigured" | "tunnelError"
     }
     export namespace filer {
-        /**
-         * Connexion states for a Dedicated Cloud Filer.
-         * type fullname: dedicatedCloud.filer.ConnexionStateEnum
-         */
-        export type ConnexionStateEnum = "offline" | "online"
         /**
          * Hourly consumption of a filer
          * interface fullName: dedicatedCloud.filer.HourlyConsumption.HourlyConsumption
@@ -1879,7 +1870,7 @@ export interface DedicatedCloud {
                              * Location of the Filer
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/location
                              */
-                            $get(params?: { node?: dedicatedCloudfilerNodeTypeEnum }): Promise<dedicatedCloud.filer.Location>;
+                            $get(params?: { node?: dedicatedCloud.filer.NodeTypeEnum }): Promise<dedicatedCloud.filer.Location>;
                             /**
                              * Controle cache
                              */
@@ -2457,7 +2448,7 @@ export interface DedicatedCloud {
                      * Location of the Filer
                      * GET /dedicatedCloud/{serviceName}/filer/{filerId}/location
                      */
-                    $get(params?: { node?: dedicatedCloudfilerNodeTypeEnum }): Promise<dedicatedCloud.filer.Location>;
+                    $get(params?: { node?: dedicatedCloud.filer.NodeTypeEnum }): Promise<dedicatedCloud.filer.Location>;
                     /**
                      * Controle cache
                      */
@@ -3540,9 +3531,7 @@ type dedicatedCloudHypervisorVersionEnum = dedicatedCloud.HypervisorVersionEnum;
 type dedicatedCloudrightNetworkRoleEnum = dedicatedCloud.right.NetworkRoleEnum;
 type dedicatedCloudCommercialNameEnum = dedicatedCloud.CommercialNameEnum;
 type dedicatedCloudoptionAccessNetworkStateEnum = dedicatedCloud.optionAccessNetwork.StateEnum;
-type dedicatedCloudfilerNodeTypeEnum = dedicatedCloud.filer.NodeTypeEnum;
 type dedicatedCloudressourcesBillingTypeEnum = dedicatedCloud.ressources.BillingTypeEnum;
-type dedicatedCloudfilerConnexionStateEnum = dedicatedCloud.filer.ConnexionStateEnum;
 type dedicatedCloudfilerStateEnum = dedicatedCloud.filer.StateEnum;
 type dedicatedCloudhostSystemConnectionState = dedicatedCloud.hostSystemConnectionState;
 type dedicatedCloudhostStateEnum = dedicatedCloud.host.StateEnum;

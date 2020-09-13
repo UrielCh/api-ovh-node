@@ -6,25 +6,6 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Operations about the DEDICATED service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/dedicated/server"
-    },
-    {
       "description": "List available options for this service",
       "operations": [
         {
@@ -51,6 +32,25 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/dedicated/server/{serviceName}"
+    },
+    {
+      "description": "Operations about the DEDICATED service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/dedicated/server"
     }
   ],
   "basePath": "https://ca.api.kimsufi.com/1.0",

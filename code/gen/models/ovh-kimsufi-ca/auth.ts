@@ -6,44 +6,6 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Get the current credential details",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the current credential details",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "api.Credential",
-          "responseType": "api.Credential"
-        }
-      ],
-      "path": "/auth/currentCredential"
-    },
-    {
-      "description": "Get the time of OVH servers",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the current time of the OVH servers, since UNIX epoch",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long",
-          "responseType": "long"
-        }
-      ],
-      "path": "/auth/time"
-    },
-    {
       "description": "Details about the current authentication",
       "operations": [
         {
@@ -99,6 +61,25 @@ export const schema: Schema = {
       "path": "/auth/credential"
     },
     {
+      "description": "Get the current credential details",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the current credential details",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "api.Credential",
+          "responseType": "api.Credential"
+        }
+      ],
+      "path": "/auth/currentCredential"
+    },
+    {
       "description": "Expire current credential",
       "operations": [
         {
@@ -116,6 +97,25 @@ export const schema: Schema = {
         }
       ],
       "path": "/auth/logout"
+    },
+    {
+      "description": "Get the time of OVH servers",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the current time of the OVH servers, since UNIX epoch",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "long",
+          "responseType": "long"
+        }
+      ],
+      "path": "/auth/time"
     }
   ],
   "basePath": "https://ca.api.kimsufi.com/1.0",

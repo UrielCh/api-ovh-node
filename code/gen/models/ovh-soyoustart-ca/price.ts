@@ -34,6 +34,34 @@ export const schema: Schema = {
       "path": "/price/dedicated/server/ip/{routedTo}"
     },
     {
+      "description": "Get price of available firewall models",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of available firewall models",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.Dedicated.Server.FirewallEnum",
+              "description": "Model of firewall",
+              "fullType": "price.Dedicated.Server.FirewallEnum",
+              "name": "firewallModel",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "order.Price",
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicated/server/firewall/{firewallModel}"
+    },
+    {
       "description": "Get price of anti-DDos Pro option",
       "operations": [
         {
@@ -88,34 +116,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/price/dedicated/server/backupStorage/{capacity}"
-    },
-    {
-      "description": "Get price of available firewall models",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get price of available firewall models",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "price.Dedicated.Server.FirewallEnum",
-              "description": "Model of firewall",
-              "fullType": "price.Dedicated.Server.FirewallEnum",
-              "name": "firewallModel",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "order.Price",
-          "responseType": "order.Price"
-        }
-      ],
-      "path": "/price/dedicated/server/firewall/{firewallModel}"
     }
   ],
   "basePath": "https://ca.api.soyoustart.com/1.0",

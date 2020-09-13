@@ -25,25 +25,6 @@ export const schema: Schema = {
       "path": "/auth/details"
     },
     {
-      "description": "Get the time of OVH servers",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the current time of the OVH servers, since UNIX epoch",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long",
-          "responseType": "long"
-        }
-      ],
-      "path": "/auth/time"
-    },
-    {
       "description": "Operations with credentials",
       "operations": [
         {
@@ -97,6 +78,25 @@ export const schema: Schema = {
         }
       ],
       "path": "/auth/logout"
+    },
+    {
+      "description": "Get the time of OVH servers",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the current time of the OVH servers, since UNIX epoch",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "long",
+          "responseType": "long"
+        }
+      ],
+      "path": "/auth/time"
     },
     {
       "description": "Get the current credential details",

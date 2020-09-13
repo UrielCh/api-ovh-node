@@ -6,32 +6,23 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Available installation templates",
+      "description": "List the dedicated.installationTemplate.Templates objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "OVH operating system installation templates",
           "httpMethod": "GET",
           "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
+          "parameters": [],
           "resellerOnly": false,
-          "responseFullType": "dedicated.installationTemplate.Templates",
-          "responseType": "dedicated.installationTemplate.Templates"
+          "responseFullType": "string[]",
+          "responseType": "string[]"
         }
       ],
-      "path": "/dedicated/installationTemplate/{templateName}"
+      "path": "/dedicated/installationTemplate"
     },
     {
       "description": "List the dedicated.installationTemplate.templatePartitioningSchemes objects",
@@ -178,42 +169,6 @@ export const schema: Schema = {
       "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}"
     },
     {
-      "description": "List the dedicated.installationTemplate.hardwareRaid objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Hardware RAIDs defined in this partitioning scheme",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid"
-    },
-    {
       "description": "Hardware RAID defined in this partitioning scheme",
       "operations": [
         {
@@ -258,23 +213,68 @@ export const schema: Schema = {
       "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}"
     },
     {
-      "description": "List the dedicated.installationTemplate.Templates objects",
+      "description": "List the dedicated.installationTemplate.hardwareRaid objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "OVH operating system installation templates",
+          "description": "Hardware RAIDs defined in this partitioning scheme",
           "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [],
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "resellerOnly": false,
           "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
-      "path": "/dedicated/installationTemplate"
+      "path": "/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid"
+    },
+    {
+      "description": "Available installation templates",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.installationTemplate.Templates",
+          "responseType": "dedicated.installationTemplate.Templates"
+        }
+      ],
+      "path": "/dedicated/installationTemplate/{templateName}"
     }
   ],
   "basePath": "https://ca.api.kimsufi.com/1.0",
