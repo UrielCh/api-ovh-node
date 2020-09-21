@@ -144,10 +144,10 @@ async function main() {
             await recordApi.$post({ ip, subDomain });
         } else {
             const old = await recordApi.$(subid[0]).$get();
-            console.log(`Updating subDomain ${chalk.redBright(subDomain)} from service ${chalk.yellow(service)} from ${chalk.yellow(old.ip)} to ${chalk.yellow(ip)}`);
+            console.log(`Updating ${chalk.redBright(subDomain)}.${chalk.yellow(service)} from ${chalk.yellow(old.ip)} to ${chalk.yellow(ip)}`);
             if (old.ip != ip) {
                 await recordApi.$(subid[0]).$put({ ip });
-                console.log(`updating ${chalk.redBright(subDomain)} of ${chalk.yellow(service)} to ${chalk.yellow(ip)}.`);
+                console.log(`updating ${chalk.redBright(subDomain)}.${chalk.yellow(service)} ${chalk.cyanBright('done')}.`);
             }
         }
     }
