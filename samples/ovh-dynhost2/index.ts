@@ -4,7 +4,7 @@ import http from 'http';
 import https, { RequestOptions } from 'https';
 import chalk from 'chalk';
 import os from 'os';
-const { Curl } = require('node-libcurl');
+import { Curl } from 'node-libcurl';
 
 function help() {
     let version = '?';
@@ -114,7 +114,7 @@ export async function doCurl(url: string): Promise<string> {
         const curl = new Curl();
         curl.setOpt(Curl.option.URL, url);
         if (program.interface)
-            curl.setOpt(Curl.option.CURLOPT_INTERFACE, program.interface);
+            curl.setOpt(Curl.option.INTERFACE, program.interface);
         curl.on('end', function (statusCode: number, data: string, headers: any) {
             if (statusCode >= 200 && statusCode < 300)
                 resolve(data);
