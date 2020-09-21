@@ -94,7 +94,7 @@ export async function detectPublicIpFrom(urls: string[]) {
             // discard it
             urls.splice(index, index);
             // download it
-            console.log(`Detecting IP using ${chalk.green(url)}.`);
+            console.log(`Detecting IP using ${chalk.green(url)}`);
             const text = await doGet(url);
             const matcher = text.match(/([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})/);
             if (!matcher) continue;
