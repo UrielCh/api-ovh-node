@@ -112,7 +112,7 @@ async function main() {
     let engine = new Ovh({
         certCache: tokenfile,
         accessRules:
-            "GET /domain/zone/*/status, GET /domain/zone/*/dynHost/*, PUT /domain/zone/*/dynHost/record/*, POST /domain/zone/*/refresh"
+            "GET /domain/zone/*/status, GET /domain/zone/*/dynHost/*, PUT /domain/zone/*/dynHost/record/*, POST /domain/zone/*/dynHost/record, POST /domain/zone/*/refresh"
     });
     let api = ApiDomain(engine);
 
