@@ -22,7 +22,7 @@ Options:
     -u [url]                  add url used to find public IP
     -l, --local <localAdress> Local address to bind if you have mutiple gateway
     -t, --token <tokenfile>   save and reuse the certificat by storing them in a file
-
+    --timeout [timeout]       timeout to get ip address
 ```
 
 ### example

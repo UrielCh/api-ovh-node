@@ -17,6 +17,7 @@ function help() {
     -u [url]                  add url used to find public IP
     -l, --local <localAdress> Local address to bind if you have mutiple gateway
     -t, --token <tokenfile>   save and reuse the certificat by storing them in a file
+    --timeout [timeout]       timeout to get ip address
 `);
     process.exit(1);
 }
@@ -26,6 +27,7 @@ const program = {
     domains: [] as string[],
     local: '',
     tokenfile: '',
+    timeout: 2000
 }
 let args = process.argv.splice(1);
 while (args.length && !args[0].startsWith('-')) {
@@ -34,6 +36,10 @@ while (args.length && !args[0].startsWith('-')) {
 let errCnt = 0;
 for (let i = 0; i < args.length - 1; i++) {
     switch (args[i]) {
+        case '--timeout':
+            program.timeout = Number(args[++i]);
+            break;
+        
         case '-d':
             program.domains.push(args[++i])
             break;
@@ -70,7 +76,7 @@ if (errCnt || !args.length) {
 
 export async function doGet(url: string): Promise<string> {
     return new Promise((resolve, reject) => {
-        const timeout = 5000;
+        const timeout = program.timeout;
         const data: string[] = [];
         const options: RequestOptions = {
             timeout,
@@ -102,7 +108,7 @@ export async function detectPublicIpFrom(urls: string[]) {
         try {
             // peak an ip resolver
             // discard it
-            urls.splice(index, index);
+            urls.splice(index, 1);
             // download it
             console.log(`Detecting IP using ${chalk.green(url)}`);
             const text = await doGet(url);
