@@ -1,6 +1,7 @@
 import ApiDomain from "@ovh-api/domain";
 import Ovh from "@ovh-api/api";
-import http, { RequestOptions } from 'http';
+import http from 'http';
+import https, { RequestOptions } from 'https';
 import chalk from 'chalk';
 import os from 'os';
 
@@ -72,7 +73,7 @@ export async function doGet(url: string): Promise<string> {
         if (program.local) {
             options.localAddress = program.local;
         }
-        const request = http.get(url, options, (res: http.IncomingMessage) => {
+        const request = https.get(url, options, (res: http.IncomingMessage) => {
             res.setEncoding('utf8');
             res.on('data', (chunk: string) => { data.push(chunk) });
             res.on('end', (error: string) => resolve(data.join('')));
