@@ -54,7 +54,7 @@ if (program.local && !program.local.match(/$(\d+\.){3}\d+$/)) {
     let nets = netss[program.local];
     if (nets) {
         nets = nets.filter(net => net.address)
-        console.log(`replacing local ${chalk.green(program.local)} by ${chalk.yellow(nets[0].address)}`);
+        console.log(`Replacing local ${chalk.green(program.local)} by ${chalk.yellow(nets[0].address)}`);
         program.local = nets[0].address;
     }
 }
@@ -66,7 +66,9 @@ if (errCnt || !args.length) {
 export async function doGet(url: string): Promise<string> {
     return new Promise((resolve, reject) => {
         const data: string[] = [];
-        const options: RequestOptions = {};
+        const options: RequestOptions = {
+            timeout: 5000,
+        };
         if (program.local) {
             options.localAddress = program.local;
         }
@@ -84,13 +86,14 @@ let lastIp = "";
 export async function detectPublicIpFrom(urls: string[]) {
     if (lastIp) return lastIp;
     loop: while (urls.length) {
+        const index = Math.floor(Math.random() * urls.length);
+        const url = urls[index];
         try {
             // peak an ip resolver
-            const index = Math.floor(Math.random() * urls.length);
-            const url = urls[index];
             // discard it
             urls.splice(index, index);
             // download it
+            console.log(`Detecting IP using ${chalk.green(url)}.`);
             const text = await doGet(url);
             const matcher = text.match(/([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})/);
             if (!matcher) continue;
@@ -99,7 +102,9 @@ export async function detectPublicIpFrom(urls: string[]) {
             }
             lastIp = matcher[0];
             return lastIp;
-        } catch { }
+        } catch (e) {
+            console.error(url, e);
+        }
     }
     throw "faild to detec IP";
 }
@@ -113,13 +118,15 @@ async function main() {
     }
 
     if (urls.length === 0) {
+        urls.push("https://api.ipify.org");
+        urls.push("https://ifconfig.co/ip");
         urls.push("https://ipinfo.io/ip");
-        urls.push("http://myexternalip.com/raw");
+        urls.push("https://myexternalip.com/raw");
     }
 
     if (!tokenfile) {
         tokenfile = "token.json";
-        console.error(`token file path ${chalk.redBright('not')} provided using ${chalk.green(tokenfile)}`);
+        console.error(`Token file path ${chalk.redBright('not')} provided using ${chalk.green(tokenfile)}`);
     }
     let engine = new Ovh({
         certCache: tokenfile,
