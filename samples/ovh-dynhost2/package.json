@@ -1,6 +1,6 @@
 {
   "name": "ovh-dynhost2",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Update a Ovh DynHost",
   "main": "index.js",
   "keywords": [
@@ -30,8 +30,7 @@
     "@ovh-api/api": "^3.1.5",
     "@ovh-api/domain": "^3.1.11",
     "chalk": "^4.1.0",
-    "node-libcurl": "^2.2.0",
-    "node-pre-gyp": "^0.15.0"
+    "node-libcurl": "^2.2.0"
   },
   "devDependencies": {
     "@types/node": "^14.11.1",

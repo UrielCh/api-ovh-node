@@ -50,3 +50,17 @@ Update one entry on a multiple gateway host by interface IP
 ```bash
 ovh-dynhost2 -d dom1.domain.com -l 10.0.0.2
 ```
+
+### note
+
+To make the compilation works for a global root setup, you may need to configure your npm with this:
+
+```bash
+apt install python libcurl4-openssl-dev build-essential
+npm install -g node-pre-gyp
+
+npm config set user 0
+npm config set unsafe-perm true
+
+npm install -g ovh-dynhost2
+```
