@@ -6,7 +6,7 @@ import chalk from 'chalk';
 import os from 'os';
 
 function help() {
-    const { version } = require('../package.json');
+    const { version } = require('package.json');
     console.log(`ovh-dynhost2 V:${version}
     Options:
     -d [domain]               add domain to configure
