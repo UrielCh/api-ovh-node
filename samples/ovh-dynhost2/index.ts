@@ -49,12 +49,12 @@ for (let i = 0; i < args.length - 1; i++) {
 }
 
 
-if (!~program.local.indexOf('.')) {
+if (program.local && program.local.match(/$(\d+\.){3}\d+$/)) {
     const netss = os.networkInterfaces();
     let nets = netss[program.local];
     if (nets) {
         nets = nets.filter(net => net.address)
-        console.log(`replacing local ${chalk.yellow(program.local)} by ${chalk.yellow(nets[0].address)}`);
+        console.log(`replacing local ${chalk.green(program.local)} by ${chalk.yellow(nets[0].address)}`);
         program.local = nets[0].address;
     }
 }
@@ -91,7 +91,6 @@ export async function detectPublicIpFrom(urls: string[]) {
             // discard it
             urls.splice(index, index);
             // download it
-
             const text = await doGet(url);
             const matcher = text.match(/([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})/);
             if (!matcher) continue;
@@ -153,17 +152,17 @@ async function main() {
 
         const ip = await detectPublicIpFrom(program.urls);
         if (!subid.length) {
-            console.error(`${chalk.redBright(subDomain)}.${chalk.yellow(service)} do not exists creating it now.`);
+            console.error(`${chalk.green(subDomain)}.${chalk.yellow(service)} do not exists creating it now.`);
             await recordApi.$post({ ip, subDomain });
-            console.log(`Sucess ${chalk.redBright(subDomain)}.${chalk.yellow(service)} have IP: ${chalk.yellow(ip)}`);
+            console.log(`Sucess ${chalk.green(subDomain)}.${chalk.yellow(service)} have IP: ${chalk.yellow(ip)}`);
         } else {
             const old = await recordApi.$(subid[0]).$get();
             if (old.ip != ip) {
-                console.log(`Updating ${chalk.redBright(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('from')} ${chalk.yellow(old.ip)} ${chalk.whiteBright('to')} ${chalk.yellow(ip)}`);
+                console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('from')} ${chalk.yellow(old.ip)} ${chalk.whiteBright('to')} ${chalk.yellow(ip)}`);
                 await recordApi.$(subid[0]).$put({ ip });
-                console.log(`Updating ${chalk.redBright(subDomain)}.${chalk.yellow(service)} ${chalk.green('done')}.`);
+                console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.green('done')}.`);
             } else {
-                console.log(`No change ${chalk.redBright(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('Keep IP')} ${chalk.yellow(old.ip)}`);
+                console.log(`No change ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('Keep IP')} ${chalk.yellow(old.ip)}`);
             }
         }
     }

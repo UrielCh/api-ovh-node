@@ -38,3 +38,15 @@ Update one entry with an 2 custom url to detect public IP
 ```bash
 ovh-dynhost2 -d dom1.domain.com -u http://monip.org -u http://ipProvider1.org/raw -t ~/.secretToken.json
 ```
+
+Update one entry on a multiple gateway host by interface name
+
+```bash
+ovh-dynhost2 -d dom1.domain.com -l eth2
+```
+
+Update one entry on a multiple gateway host by interface IP
+
+```bash
+ovh-dynhost2 -d dom1.domain.com -l 10.0.0.2
+```
