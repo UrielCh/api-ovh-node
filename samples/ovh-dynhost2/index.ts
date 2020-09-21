@@ -1,26 +1,15 @@
 import ApiDomain from "@ovh-api/domain";
 import Ovh from "@ovh-api/api";
-import fetch from "node-fetch";
-//import program from "commander";
-
-//function collect(val: string, acc: string[]) {
-//    acc.push(val);
-//    return acc;
-//}
-
-//program
-//    .version("1.0.0")
-//    .option("-d, --domain [domain]", "domain to configure", collect, [])
-//    .option("-t, --test [url]", "url used to find public IP", collect, [])
-//    .option("--token <tokenfile>", "save and reuse the certificat by storing them in a file")
-//     .parse(process.argv);
+import http from 'http';
+import { RequestOptions } from "https";
 
 function help() {
     console.log(`
     Options:
-    -d [domain]              add domain to configure
-    -u [url]                 add url used to find public IP
-    -t, --token <tokenfile>  save and reuse the certificat by storing them in a file
+    -d [domain]               add domain to configure
+    -u [url]                  add url used to find public IP
+    -l, --local <localAdress> Local address to bind if you have mutiple gateway
+    -t, --token <tokenfile>   save and reuse the certificat by storing them in a file
 `);
     process.exit(1);
 }
@@ -28,6 +17,7 @@ function help() {
 const program = {
     urls: [] as string[],
     domains: [] as string[],
+    local: '',
     tokenfile: '',
 }
 let args = process.argv.splice(1);
@@ -43,6 +33,10 @@ for (let i = 0; i < args.length - 1; i++) {
         case '-u':
             program.urls.push(args[++i])
             break;
+        case '-l':
+        case '--local':
+            program.local = args[++i];
+            break;
         case '-t':
         case '--token':
             program.tokenfile = args[++i]
@@ -56,16 +50,36 @@ if (errCnt || !args.length) {
     help();
 }
 
+export async function doGet(url: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+        const data: string[] = [];
+        const options: RequestOptions = {};
+        if (program.local) {
+            options.localAddress = program.local;
+        }
+        const request = http.get(url, options, (res: http.IncomingMessage) => {
+            res.setEncoding('utf8');
+            res.on('data', (chunk: string) => {data.push(chunk)});
+            res.on('end', (error: string) => resolve(data.join('')));
+        });
+        request.on('error', (error: string) => reject(error));
+    });
+}
+
+
 let lastIp = "";
 export async function detectPublicIpFrom(urls: string[]) {
     if (lastIp) return lastIp;
     loop: while (urls.length) {
         try {
+            // peak an ip resolver
             const index = Math.floor(Math.random() * urls.length);
             const url = urls[index];
+            // discard it
             urls.splice(index, index);
-            const resp = await fetch(url);
-            const text = await resp.text();
+            // download it
+
+            const text = await doGet(url);
             const matcher = text.match(/([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})/);
             if (!matcher) continue;
             for (let i = 1; i < 5; i++) {

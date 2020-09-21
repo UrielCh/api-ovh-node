@@ -125,7 +125,7 @@ const handlerChild = <ProxyHandler<OvhProxyApi>>{
     },
     get(target: OvhProxyApi, p: PropertyKey, receiver: any) {
         if (typeof p === 'symbol')
-            return (<any>target)[p];
+            return (target as any)[p];
         const key = p.toString();
         switch (key) {
             case 'toString':
