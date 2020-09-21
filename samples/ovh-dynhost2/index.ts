@@ -1,7 +1,7 @@
 import ApiDomain from "@ovh-api/domain";
 import Ovh from "@ovh-api/api";
-import http from 'http';
-import { RequestOptions } from "https";
+import http, { RequestOptions } from 'http';
+import chalk from 'chalk';
 
 function help() {
     console.log(`
@@ -139,15 +139,15 @@ async function main() {
         const subid = await recordApi.$get({ subDomain });
 
         const ip = await detectPublicIpFrom(program.urls);
-        console.log("updating", subDomain, "from srv", service, ip);
         if (!subid.length) {
-            console.error(`${subDomain} do not exists in ${service} creating it.`);
+            console.error(`${chalk.redBright(subDomain)} do not exists in ${chalk.yellow(service)} creating it now.`);
             await recordApi.$post({ ip, subDomain });
         } else {
             const old = await recordApi.$(subid[0]).$get();
+            console.log(`Updating subDomain ${chalk.redBright(subDomain)} from service ${chalk.yellow(service)} from ${chalk.yellow(old.ip)} to ${chalk.yellow(ip)}`);
             if (old.ip != ip) {
                 await recordApi.$(subid[0]).$put({ ip });
-                console.log(`updating ${subDomain} of ${service} to ${ip}.`);
+                console.log(`updating ${chalk.redBright(subDomain)} of ${chalk.yellow(service)} to ${chalk.yellow(ip)}.`);
             }
         }
     }
