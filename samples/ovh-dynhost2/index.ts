@@ -49,7 +49,6 @@ for (let i = 0; i < args.length - 1; i++) {
     }
 }
 
-
 if (program.local && !program.local.match(/$(\d+\.){3}\d+$/)) {
     const netss = os.networkInterfaces();
     let nets = netss[program.local];
@@ -66,19 +65,21 @@ if (errCnt || !args.length) {
 
 export async function doGet(url: string): Promise<string> {
     return new Promise((resolve, reject) => {
+        const timeout = 5000;
         const data: string[] = [];
         const options: RequestOptions = {
-            timeout: 5000,
+            timeout,
         };
         if (program.local) {
             options.localAddress = program.local;
         }
-        const request = https.get(url, options, (res: http.IncomingMessage) => {
+        const req = https.get(url, options, (res: http.IncomingMessage) => {
             res.setEncoding('utf8');
-            res.on('data', (chunk: string) => { data.push(chunk) });
+            res.on('data', (chunk: string) => data.push(chunk));
             res.on('end', (error: string) => resolve(data.join('')));
         });
-        request.on('error', (error: string) => reject(error));
+        req.on('error', (error: string) => reject(error));
+        req.on('socket', (socket) => socket.setTimeout(timeout, () => { socket.destroy(); }));
     });
 }
 
@@ -107,7 +108,7 @@ export async function detectPublicIpFrom(urls: string[]) {
             console.error(url, e);
         }
     }
-    throw "faild to detec IP";
+    throw "faild to detect IP";
 }
 
 async function main() {
@@ -136,6 +137,8 @@ async function main() {
     });
     let api = ApiDomain(engine);
 
+    const ip = await detectPublicIpFrom(program.urls);
+
     for (const dom of domains) {
         let split = dom.split(".");
         let [service, subDomain] = ['', ''];
@@ -158,7 +161,6 @@ async function main() {
         let recordApi = api.zone.$(service).dynHost.record;
         const subid = await recordApi.$get({ subDomain });
 
-        const ip = await detectPublicIpFrom(program.urls);
         if (!subid.length) {
             console.error(`${chalk.green(subDomain)}.${chalk.yellow(service)} do not exists creating it now.`);
             await recordApi.$post({ ip, subDomain });
@@ -176,4 +178,4 @@ async function main() {
     }
 }
 
-main()
+main().catch(console.error)
