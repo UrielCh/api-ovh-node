@@ -49,7 +49,7 @@ for (let i = 0; i < args.length - 1; i++) {
 }
 
 
-if (program.local && program.local.match(/$(\d+\.){3}\d+$/)) {
+if (program.local && !program.local.match(/$(\d+\.){3}\d+$/)) {
     const netss = os.networkInterfaces();
     let nets = netss[program.local];
     if (nets) {
