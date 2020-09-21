@@ -4,6 +4,7 @@ import http from 'http';
 import https, { RequestOptions } from 'https';
 import chalk from 'chalk';
 import os from 'os';
+const { Curl } = require('node-libcurl');
 
 function help() {
     let version = '?';
@@ -16,7 +17,9 @@ function help() {
     -d [domain]               add domain to configure
     -u [url]                  add url used to find public IP
     -l, --local <localAdress> Local address to bind if you have mutiple gateway
+    -i, --interface <inet>    interface to use
     -t, --token <tokenfile>   save and reuse the certificat by storing them in a file
+    --curl                    use curl
     --timeout [timeout]       timeout to get ip address
 `);
     process.exit(1);
@@ -27,7 +30,9 @@ const program = {
     domains: [] as string[],
     local: '',
     tokenfile: '',
-    timeout: 2000
+    interface: '',
+    timeout: 2000,
+    curl: false,
 }
 let args = process.argv.splice(1);
 while (args.length && !args[0].startsWith('-')) {
@@ -39,7 +44,12 @@ for (let i = 0; i < args.length - 1; i++) {
         case '--timeout':
             program.timeout = Number(args[++i]);
             break;
-        
+        case '--interface':
+            program.interface = args[++i];
+            break;
+        case '--curl':
+            program.curl = true;
+            break;
         case '-d':
             program.domains.push(args[++i])
             break;
@@ -99,6 +109,24 @@ export async function doGet(url: string): Promise<string> {
     });
 }
 
+export async function doCurl(url: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+        const curl = new Curl();
+        curl.setOpt(Curl.option.URL, url);
+        if (program.interface)
+            curl.setOpt(Curl.option.CURLOPT_INTERFACE, program.interface);
+        curl.on('end', function (statusCode: number, data: string, headers: any) {
+            if (statusCode >= 200 && statusCode < 300)
+                resolve(data);
+            else
+                reject(data);
+            curl.close();
+        });
+        curl.on('error', curl.close.bind(curl));
+        curl.perform();
+    });
+}
+
 let lastIp = "";
 export async function detectPublicIpFrom(urls: string[]) {
     if (lastIp) return lastIp;
@@ -110,8 +138,13 @@ export async function detectPublicIpFrom(urls: string[]) {
             // discard it
             urls.splice(index, 1);
             // download it
-            console.log(`Detecting IP using ${chalk.green(url)}`);
-            const text = await doGet(url);
+            console.log(`Detecting IP using ${chalk.green(url)} CURL:${program.curl}`);
+            let text = '';
+            if (!program.curl) {
+                text = await doGet(url);
+            } else {
+                text = await doCurl(url);
+            }
             const matcher = text.match(/([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})/);
             if (!matcher) continue;
             for (let i = 1; i < 5; i++) {
@@ -130,8 +163,7 @@ async function main() {
     let { urls, domains, tokenfile } = program;
 
     if (domains.length === 0) {
-        console.error("must provide at least one dyn domain, use -d parameter");
-        return;
+        console.error("warning: you should provide at least one dyn domain, use -d parameter");
     }
 
     if (urls.length === 0) {
@@ -153,6 +185,7 @@ async function main() {
     let api = ApiDomain(engine);
 
     const ip = await detectPublicIpFrom(program.urls);
+    console.log(`Your IP is ${chalk.yellow(ip)}`);
 
     for (const dom of domains) {
         let split = dom.split(".");
