@@ -78,8 +78,13 @@ export async function doGet(url: string): Promise<string> {
             res.on('data', (chunk: string) => data.push(chunk));
             res.on('end', (error: string) => resolve(data.join('')));
         });
-        req.on('error', (error: string) => reject(error));
-        req.on('socket', (socket) => socket.setTimeout(timeout, () => { socket.destroy(); }));
+        req.on('error', (error: string) => {
+            if (req.aborted)
+                return reject('Timeout');
+            return reject(error);
+        });
+        req.on('timeout', () => req.abort());
+        // req.on('socket', (socket) => socket.setTimeout(timeout, () => { socket.destroy(); }));
     });
 }
 

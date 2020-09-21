@@ -1,6 +1,6 @@
 {
   "name": "ovh-dynhost2",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Update a Ovh DynHost",
   "main": "index.js",
   "keywords": [
@@ -8,7 +8,6 @@
     "dns",
     "dynhost"
   ],
-  "typings": "index.d.ts",
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "bin": {
