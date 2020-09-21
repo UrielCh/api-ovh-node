@@ -6,7 +6,8 @@ import chalk from 'chalk';
 import os from 'os';
 
 function help() {
-    console.log(`
+    const { version } = require('../package.json');
+    console.log(`ovh-dynhost2 V:${version}
     Options:
     -d [domain]               add domain to configure
     -u [url]                  add url used to find public IP
@@ -87,7 +88,6 @@ export async function doGet(url: string): Promise<string> {
         // req.on('socket', (socket) => socket.setTimeout(timeout, () => { socket.destroy(); }));
     });
 }
-
 
 let lastIp = "";
 export async function detectPublicIpFrom(urls: string[]) {
