@@ -107,7 +107,7 @@ async function main() {
 
     if (!tokenfile) {
         tokenfile = "token.json";
-        console.error(`token path not provided using ${tokenfile}`);
+        console.error(`token file path ${chalk.redBright('not')} provided using ${chalk.green(tokenfile)}`);
     }
     let engine = new Ovh({
         certCache: tokenfile,
@@ -144,10 +144,10 @@ async function main() {
             await recordApi.$post({ ip, subDomain });
         } else {
             const old = await recordApi.$(subid[0]).$get();
-            console.log(`Updating ${chalk.redBright(subDomain)}.${chalk.yellow(service)} from ${chalk.yellow(old.ip)} to ${chalk.yellow(ip)}`);
+            console.log(`Updating ${chalk.redBright(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('from')}  ${chalk.yellow(old.ip)} ${chalk.whiteBright('to')} ${chalk.yellow(ip)}`);
             if (old.ip != ip) {
                 await recordApi.$(subid[0]).$put({ ip });
-                console.log(`updating ${chalk.redBright(subDomain)}.${chalk.yellow(service)} ${chalk.cyanBright('done')}.`);
+                console.log(`Updating ${chalk.redBright(subDomain)}.${chalk.yellow(service)} ${chalk.green('done')}.`);
             }
         }
     }
