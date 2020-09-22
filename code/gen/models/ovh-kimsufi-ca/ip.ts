@@ -6,6 +6,351 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
+      "description": "Operations about the IP service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/ip/service"
+    },
+    {
+      "description": "Confirm termination of your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Confirm termination of your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "service.TerminationFutureUseEnum",
+              "description": "What next after your termination request",
+              "fullType": "service.TerminationFutureUseEnum",
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "service.TerminationReasonEnum",
+              "description": "Reason of your termination request",
+              "fullType": "service.TerminationReasonEnum",
+              "name": "reason",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
+              "name": "token",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP services",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string",
+          "responseType": "string"
+        }
+      ],
+      "path": "/ip/service/{serviceName}/confirmTermination"
+    },
+    {
+      "description": "Details about a non-expiring Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP services",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "services.NonExpiringService",
+          "responseType": "services.NonExpiringService"
+        }
+      ],
+      "path": "/ip/service/{serviceName}/serviceInfos"
+    },
+    {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Terminate your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP services",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string",
+          "responseType": "string"
+        }
+      ],
+      "path": "/ip/service/{serviceName}/terminate"
+    },
+    {
+      "description": "Your IP linked to service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP services",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "ip.ServiceIp",
+          "responseType": "ip.ServiceIp"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ip.ServiceIp",
+              "description": "New object properties",
+              "fullType": "ip.ServiceIp",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP services",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/ip/service/{serviceName}"
+    },
+    {
+      "description": "List the license.cloudLinux.CloudLinux objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Cloud Linux licenses associated to this IP",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": null,
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Filter the value of ipAddress property (=)",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/ip/{ip}/license/cloudLinux"
+    },
+    {
+      "description": "List the license.sqlserver.SqlServer objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "SQL Server licenses associated to this IP",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": null,
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Filter the value of ipAddress property (=)",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/ip/{ip}/license/sqlserver"
+    },
+    {
+      "description": "List the ip.Antiphishing objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Ip under anti-phishing",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": null,
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Filter the value of ipOnAntiphishing property (within or equals)",
+              "fullType": "ipv4",
+              "name": "ipOnAntiphishing",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "ip.AntiphishingStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "ip.AntiphishingStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/ip/{ip}/phishing"
+    },
+    {
+      "description": "Phishing URLs hosted on your IP",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Internal ID of the phishing entry",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipBlock",
+              "description": null,
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "ip.Antiphishing",
+          "responseType": "ip.Antiphishing"
+        }
+      ],
+      "path": "/ip/{ip}/phishing/{id}"
+    },
+    {
       "description": "List the ip.IpTask objects",
       "operations": [
         {
@@ -86,7 +431,43 @@ export const schema: Schema = {
       "path": "/ip/{ip}/task/{taskId}"
     },
     {
-      "description": "Your IP",
+      "description": "List the ip.ArpBlockedIp objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "ARP blocked IP",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": null,
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ip.ArpStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "ip.ArpStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "ipv4[]",
+          "responseType": "ipv4[]"
+        }
+      ],
+      "path": "/ip/{ip}/arp"
+    },
+    {
+      "description": "ARP blocked IP information",
       "operations": [
         {
           "apiStatus": {
@@ -104,26 +485,106 @@ export const schema: Schema = {
               "name": "ip",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "your IP",
+              "fullType": "ipv4",
+              "name": "ipBlocked",
+              "paramType": "path",
+              "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "ip.Ip",
-          "responseType": "ip.Ip"
+          "responseFullType": "ip.ArpBlockedIp",
+          "responseType": "ip.ArpBlockedIp"
+        }
+      ],
+      "path": "/ip/{ip}/arp/{ipBlocked}"
+    },
+    {
+      "description": "unblock operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Unblock this IP",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": null,
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "your IP",
+              "fullType": "ipv4",
+              "name": "ipBlocked",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/ip/{ip}/arp/{ipBlocked}/unblock"
+    },
+    {
+      "description": "List the ip.ReverseIp objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Reverse on your ip",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": null,
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "ip[]",
+          "responseType": "ip[]"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
+          "description": "Add reverse on an ip",
+          "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ip.Ip",
-              "description": "New object properties",
-              "fullType": "ip.Ip",
-              "name": null,
+              "dataType": "ip",
+              "description": null,
+              "fullType": "ip",
+              "name": "ipReverse",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "reverse",
               "paramType": "body",
               "required": true
             },
@@ -137,11 +598,11 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
+          "responseFullType": "ip.ReverseIp",
+          "responseType": "ip.ReverseIp"
         }
       ],
-      "path": "/ip/{ip}"
+      "path": "/ip/{ip}/reverse"
     },
     {
       "description": "Your reverse records on IP",
@@ -210,14 +671,14 @@ export const schema: Schema = {
       "path": "/ip/{ip}/reverse/{ipReverse}"
     },
     {
-      "description": "List the ip.ReverseIp objects",
+      "description": "Your IP",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Reverse on your ip",
+          "description": "Get this object properties",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -231,31 +692,23 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "ip[]",
-          "responseType": "ip[]"
+          "responseFullType": "ip.Ip",
+          "responseType": "ip.Ip"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Add reverse on an ip",
-          "httpMethod": "POST",
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ip",
-              "description": null,
-              "fullType": "ip",
-              "name": "ipReverse",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "reverse",
+              "dataType": "ip.Ip",
+              "description": "New object properties",
+              "fullType": "ip.Ip",
+              "name": null,
               "paramType": "body",
               "required": true
             },
@@ -269,11 +722,11 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "ip.ReverseIp",
-          "responseType": "ip.ReverseIp"
+          "responseFullType": "void",
+          "responseType": "void"
         }
       ],
-      "path": "/ip/{ip}/reverse"
+      "path": "/ip/{ip}"
     },
     {
       "description": "List the ip.BlockedIp objects",
@@ -442,354 +895,6 @@ export const schema: Schema = {
       "path": "/ip/{ip}/ripe"
     },
     {
-      "description": "List the ip.ArpBlockedIp objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "ARP blocked IP",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipBlock",
-              "description": null,
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ip.ArpStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "ip.ArpStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "ipv4[]",
-          "responseType": "ipv4[]"
-        }
-      ],
-      "path": "/ip/{ip}/arp"
-    },
-    {
-      "description": "unblock operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Unblock this IP",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipBlock",
-              "description": null,
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "your IP",
-              "fullType": "ipv4",
-              "name": "ipBlocked",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/ip/{ip}/arp/{ipBlocked}/unblock"
-    },
-    {
-      "description": "ARP blocked IP information",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipBlock",
-              "description": null,
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "your IP",
-              "fullType": "ipv4",
-              "name": "ipBlocked",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "ip.ArpBlockedIp",
-          "responseType": "ip.ArpBlockedIp"
-        }
-      ],
-      "path": "/ip/{ip}/arp/{ipBlocked}"
-    },
-    {
-      "description": "List the ip.Antiphishing objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Ip under anti-phishing",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipBlock",
-              "description": null,
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Filter the value of ipOnAntiphishing property (within or equals)",
-              "fullType": "ipv4",
-              "name": "ipOnAntiphishing",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "ip.AntiphishingStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "ip.AntiphishingStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/ip/{ip}/phishing"
-    },
-    {
-      "description": "Phishing URLs hosted on your IP",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Internal ID of the phishing entry",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipBlock",
-              "description": null,
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "ip.Antiphishing",
-          "responseType": "ip.Antiphishing"
-        }
-      ],
-      "path": "/ip/{ip}/phishing/{id}"
-    },
-    {
-      "description": "List the license.cloudLinux.CloudLinux objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Cloud Linux licenses associated to this IP",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipBlock",
-              "description": null,
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Filter the value of ipAddress property (=)",
-              "fullType": "ipv4",
-              "name": "ipAddress",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/ip/{ip}/license/cloudLinux"
-    },
-    {
-      "description": "List the license.sqlserver.SqlServer objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "SQL Server licenses associated to this IP",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipBlock",
-              "description": null,
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Filter the value of ipAddress property (=)",
-              "fullType": "ipv4",
-              "name": "ipAddress",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/ip/{ip}/license/sqlserver"
-    },
-    {
-      "description": "List the ip.SpamIp objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Ip spamming",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipBlock",
-              "description": null,
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ip.SpamStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "ip.SpamStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "ipv4[]",
-          "responseType": "ipv4[]"
-        }
-      ],
-      "path": "/ip/{ip}/spam"
-    },
-    {
-      "description": "stats operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get statistics about the email traffic",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipBlock",
-              "description": null,
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "IP address which is sending spam",
-              "fullType": "ipv4",
-              "name": "ipSpamming",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "datetime",
-              "description": "Start date",
-              "fullType": "datetime",
-              "name": "from",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "datetime",
-              "description": "End date",
-              "fullType": "datetime",
-              "name": "to",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "ip.SpamStats[]",
-          "responseType": "ip.SpamStats[]"
-        }
-      ],
-      "path": "/ip/{ip}/spam/{ipSpamming}/stats"
-    },
-    {
       "description": "unblock operations",
       "operations": [
         {
@@ -862,6 +967,94 @@ export const schema: Schema = {
       "path": "/ip/{ip}/spam/{ipSpamming}"
     },
     {
+      "description": "stats operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get statistics about the email traffic",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": null,
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "IP address which is sending spam",
+              "fullType": "ipv4",
+              "name": "ipSpamming",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "Start date",
+              "fullType": "datetime",
+              "name": "from",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "End date",
+              "fullType": "datetime",
+              "name": "to",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "ip.SpamStats[]",
+          "responseType": "ip.SpamStats[]"
+        }
+      ],
+      "path": "/ip/{ip}/spam/{ipSpamming}/stats"
+    },
+    {
+      "description": "List the ip.SpamIp objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Ip spamming",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": null,
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ip.SpamStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "ip.SpamStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "ipv4[]",
+          "responseType": "ipv4[]"
+        }
+      ],
+      "path": "/ip/{ip}/spam"
+    },
+    {
       "description": "List the ip.Ip objects",
       "operations": [
         {
@@ -912,199 +1105,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/ip"
-    },
-    {
-      "description": "Confirm termination of your service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Confirm termination of your service",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "service.TerminationFutureUseEnum",
-              "description": "What next after your termination request",
-              "fullType": "service.TerminationFutureUseEnum",
-              "name": "futureUse",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "service.TerminationReasonEnum",
-              "description": "Reason of your termination request",
-              "fullType": "service.TerminationReasonEnum",
-              "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
-              "fullType": "string",
-              "name": "token",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP services",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string",
-          "responseType": "string"
-        }
-      ],
-      "path": "/ip/service/{serviceName}/confirmTermination"
-    },
-    {
-      "description": "Terminate your service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Terminate your service",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP services",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string",
-          "responseType": "string"
-        }
-      ],
-      "path": "/ip/service/{serviceName}/terminate"
-    },
-    {
-      "description": "Your IP linked to service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP services",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "ip.ServiceIp",
-          "responseType": "ip.ServiceIp"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ip.ServiceIp",
-              "description": "New object properties",
-              "fullType": "ip.ServiceIp",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP services",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/ip/service/{serviceName}"
-    },
-    {
-      "description": "Details about a non-expiring Service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP services",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "services.NonExpiringService",
-          "responseType": "services.NonExpiringService"
-        }
-      ],
-      "path": "/ip/service/{serviceName}/serviceInfos"
-    },
-    {
-      "description": "Operations about the IP service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/ip/service"
     }
   ],
   "basePath": "https://ca.api.kimsufi.com/1.0",

@@ -6,34 +6,6 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Get price of anti-DDos Pro option",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get price of anti-DDos Pro option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "price.Dedicated.Server.AntiDDoSProEnum",
-              "description": "commercial range of your dedicated server",
-              "fullType": "price.Dedicated.Server.AntiDDoSProEnum",
-              "name": "commercialRange",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "order.Price",
-          "responseType": "order.Price"
-        }
-      ],
-      "path": "/price/dedicated/server/antiDDoSPro/{commercialRange}"
-    },
-    {
       "description": "Get price of available firewall models",
       "operations": [
         {
@@ -60,6 +32,34 @@ export const schema: Schema = {
         }
       ],
       "path": "/price/dedicated/server/firewall/{firewallModel}"
+    },
+    {
+      "description": "Get price of backup storage offer",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of backup storage offer",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.Dedicated.Server.BackupStorageEnum",
+              "description": "Capacity in gigabytes of backup storage offer",
+              "fullType": "price.Dedicated.Server.BackupStorageEnum",
+              "name": "capacity",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "order.Price",
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicated/server/backupStorage/{capacity}"
     },
     {
       "description": "Get price of IPs",
@@ -90,22 +90,22 @@ export const schema: Schema = {
       "path": "/price/dedicated/server/ip/{routedTo}"
     },
     {
-      "description": "Get price of backup storage offer",
+      "description": "Get price of anti-DDos Pro option",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get price of backup storage offer",
+          "description": "Get price of anti-DDos Pro option",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "price.Dedicated.Server.BackupStorageEnum",
-              "description": "Capacity in gigabytes of backup storage offer",
-              "fullType": "price.Dedicated.Server.BackupStorageEnum",
-              "name": "capacity",
+              "dataType": "price.Dedicated.Server.AntiDDoSProEnum",
+              "description": "commercial range of your dedicated server",
+              "fullType": "price.Dedicated.Server.AntiDDoSProEnum",
+              "name": "commercialRange",
               "paramType": "path",
               "required": true
             }
@@ -115,7 +115,7 @@ export const schema: Schema = {
           "responseType": "order.Price"
         }
       ],
-      "path": "/price/dedicated/server/backupStorage/{capacity}"
+      "path": "/price/dedicated/server/antiDDoSPro/{commercialRange}"
     }
   ],
   "basePath": "https://ca.api.soyoustart.com/1.0",

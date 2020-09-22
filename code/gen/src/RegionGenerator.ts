@@ -43,12 +43,14 @@ export class RegionGenerator {
         await fse.mkdirp(this.workDir);
         let oldApis = await fse.readdir(this.workDir)
         oldApis = oldApis.filter(name => !apiSet.has(name))
-        oldApis.forEach(name => {
-            const fullDir = path.join(this.workDir, name);
-            console.log(`${this.endpoint.directory}/${name} can be remove, deleting: ${fullDir}`);
-            rimraf.sync(fullDir);
-            this.deletedApi++;
-        })
+        oldApis.forEach(name => this.deleteApi(name))
+    }
+
+    async deleteApi(name: string) {
+        const fullDir = path.join(this.workDir, name);
+        console.log(`${this.endpoint.directory}/${name} can be remove, deleting: ${fullDir}`);
+        rimraf.sync(fullDir);
+        this.deletedApi++;
     }
 
     async genRegion() {
@@ -93,11 +95,17 @@ export class RegionGenerator {
                 }
                 return;
             }
-            // ignore empry API
-            if (!cg.schema || !cg.schema.apis || !cg.schema.apis)
-                return;
+
+
             let flat = pathToApiName(apiPath);
             let dir = this.getPackageDir(flat);
+
+            // ignore empty API
+            if (!cg.schema || !cg.schema.apis || !cg.schema.apis) {
+                console.log(flat + ' is empty.');
+                this.deleteApi(path.basename(dir));
+                return;
+            }
             await fse.ensureDir(dir);
 
             ////////////

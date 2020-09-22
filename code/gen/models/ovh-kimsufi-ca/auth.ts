@@ -6,40 +6,42 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Operations with credentials",
+      "description": "Expire current credential",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Request a new credential for your application",
+          "description": "Expire current credential",
           "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "auth.AccessRule[]",
-              "description": "Access required for your application",
-              "fullType": "auth.AccessRule[]",
-              "name": "accessRules",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Where you want to redirect the user after sucessfull authentication",
-              "fullType": "string",
-              "name": "redirection",
-              "paramType": "body",
-              "required": false
-            }
-          ],
+          "noAuthentication": false,
+          "parameters": [],
           "resellerOnly": false,
-          "responseFullType": "auth.Credential",
-          "responseType": "auth.Credential"
+          "responseFullType": "void",
+          "responseType": "void"
         }
       ],
-      "path": "/auth/credential"
+      "path": "/auth/logout"
+    },
+    {
+      "description": "Get the time of OVH servers",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the current time of the OVH servers, since UNIX epoch",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "long",
+          "responseType": "long"
+        }
+      ],
+      "path": "/auth/time"
     },
     {
       "description": "Get the current credential details",
@@ -80,42 +82,40 @@ export const schema: Schema = {
       "path": "/auth/details"
     },
     {
-      "description": "Expire current credential",
+      "description": "Operations with credentials",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Expire current credential",
+          "description": "Request a new credential for your application",
           "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/auth/logout"
-    },
-    {
-      "description": "Get the time of OVH servers",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the current time of the OVH servers, since UNIX epoch",
-          "httpMethod": "GET",
           "noAuthentication": true,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "auth.AccessRule[]",
+              "description": "Access required for your application",
+              "fullType": "auth.AccessRule[]",
+              "name": "accessRules",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Where you want to redirect the user after sucessfull authentication",
+              "fullType": "string",
+              "name": "redirection",
+              "paramType": "body",
+              "required": false
+            }
+          ],
           "resellerOnly": false,
-          "responseFullType": "long",
-          "responseType": "long"
+          "responseFullType": "auth.Credential",
+          "responseType": "auth.Credential"
         }
       ],
-      "path": "/auth/time"
+      "path": "/auth/credential"
     }
   ],
   "basePath": "https://ca.api.kimsufi.com/1.0",

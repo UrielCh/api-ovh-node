@@ -6,6 +6,234 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
+      "description": "Get ticket",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get ticket",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "internal identifier ticket",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "support.Ticket",
+          "responseType": "support.Ticket"
+        }
+      ],
+      "path": "/support/tickets/{ticketId}"
+    },
+    {
+      "description": "Reopen a ticket",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Reopen a ticket",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "text",
+              "description": "ticket reopen reason",
+              "fullType": "text",
+              "name": "body",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "internal ticket identifier",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/support/tickets/{ticketId}/reopen"
+    },
+    {
+      "description": "Check whether ticket can be scored",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Checks whether ticket can be scored",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "internal ticket identifier",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "boolean",
+          "responseType": "boolean"
+        }
+      ],
+      "path": "/support/tickets/{ticketId}/canBeScored"
+    },
+    {
+      "description": "Set ticket score",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Set ticket score",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "ticket score",
+              "fullType": "string",
+              "name": "score",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "text",
+              "description": "ticket comment about the score",
+              "fullType": "text",
+              "name": "scoreComment",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "internal ticket identifier",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/support/tickets/{ticketId}/score"
+    },
+    {
+      "description": "Reply to ticket",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Reply to ticket",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "text",
+              "description": "text body of ticket response",
+              "fullType": "text",
+              "name": "body",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "internal ticket identifier",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/support/tickets/{ticketId}/reply"
+    },
+    {
+      "description": "Close ticket",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Close ticket",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "internal ticket identifier",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/support/tickets/{ticketId}/close"
+    },
+    {
+      "description": "Get ticket messages",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get ticket messages",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "internal ticket identifier",
+              "fullType": "long",
+              "name": "ticketId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "support.Message[]",
+          "responseType": "support.Message[]"
+        }
+      ],
+      "path": "/support/tickets/{ticketId}/messages"
+    },
+    {
       "description": "Create a new ticket",
       "operations": [
         {
@@ -80,234 +308,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/support/tickets/create"
-    },
-    {
-      "description": "Set ticket score",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Set ticket score",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "ticket score",
-              "fullType": "string",
-              "name": "score",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "text",
-              "description": "ticket comment about the score",
-              "fullType": "text",
-              "name": "scoreComment",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "internal ticket identifier",
-              "fullType": "long",
-              "name": "ticketId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/support/tickets/{ticketId}/score"
-    },
-    {
-      "description": "Close ticket",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Close ticket",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "internal ticket identifier",
-              "fullType": "long",
-              "name": "ticketId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/support/tickets/{ticketId}/close"
-    },
-    {
-      "description": "Reply to ticket",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Reply to ticket",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "text",
-              "description": "text body of ticket response",
-              "fullType": "text",
-              "name": "body",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "internal ticket identifier",
-              "fullType": "long",
-              "name": "ticketId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/support/tickets/{ticketId}/reply"
-    },
-    {
-      "description": "Check whether ticket can be scored",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Checks whether ticket can be scored",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "internal ticket identifier",
-              "fullType": "long",
-              "name": "ticketId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "boolean",
-          "responseType": "boolean"
-        }
-      ],
-      "path": "/support/tickets/{ticketId}/canBeScored"
-    },
-    {
-      "description": "Reopen a ticket",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Reopen a ticket",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "text",
-              "description": "ticket reopen reason",
-              "fullType": "text",
-              "name": "body",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "internal ticket identifier",
-              "fullType": "long",
-              "name": "ticketId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/support/tickets/{ticketId}/reopen"
-    },
-    {
-      "description": "Get ticket",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get ticket",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "internal identifier ticket",
-              "fullType": "long",
-              "name": "ticketId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "support.Ticket",
-          "responseType": "support.Ticket"
-        }
-      ],
-      "path": "/support/tickets/{ticketId}"
-    },
-    {
-      "description": "Get ticket messages",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get ticket messages",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "internal ticket identifier",
-              "fullType": "long",
-              "name": "ticketId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "support.Message[]",
-          "responseType": "support.Message[]"
-        }
-      ],
-      "path": "/support/tickets/{ticketId}/messages"
     },
     {
       "description": "List support tickets identifiers for this service",

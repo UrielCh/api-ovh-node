@@ -6,6 +6,1308 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
+      "description": "compatible operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get name binary for asa",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.BinaryFirewall",
+          "responseType": "dedicated.BinaryFirewall"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/firewall/binary/compatible"
+    },
+    {
+      "description": "link operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get url of binary to update firewall asa",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Binary name",
+              "fullType": "string",
+              "name": "binaryName",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.BinaryFirewallLink",
+          "responseType": "dedicated.BinaryFirewallLink"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/firewall/binary/link"
+    },
+    {
+      "description": "Confirm termination of your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Confirm termination of your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "service.TerminationFutureUseEnum",
+              "description": "What next after your termination request",
+              "fullType": "service.TerminationFutureUseEnum",
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "service.TerminationReasonEnum",
+              "description": "Reason of your termination request",
+              "fullType": "service.TerminationReasonEnum",
+              "name": "reason",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
+              "name": "token",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string",
+          "responseType": "string"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/confirmTermination"
+    },
+    {
+      "description": "List the dedicated.server.VirtualMacManagement objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of IPs associated to this Virtual MAC",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Virtual MAC address in 00:00:00:00:00:00 format",
+              "fullType": "string",
+              "name": "macAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "ipv4[]",
+          "responseType": "ipv4[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add an IP to this Virtual MAC",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "IP address to link to this virtual MAC",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Friendly name of your Virtual Machine behind this IP/MAC",
+              "fullType": "string",
+              "name": "virtualMachineName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Virtual MAC address in 00:00:00:00:00:00 format",
+              "fullType": "string",
+              "name": "macAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.Task",
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress"
+    },
+    {
+      "description": " ip address linked with this virtual mac address",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "IP address",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Virtual MAC address in 00:00:00:00:00:00 format",
+              "fullType": "string",
+              "name": "macAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.VirtualMacManagement",
+          "responseType": "dedicated.server.VirtualMacManagement"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove this ip from virtual mac , if you remove the last linked Ip, virtualmac will be deleted",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "IP address",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Virtual MAC address in 00:00:00:00:00:00 format",
+              "fullType": "string",
+              "name": "macAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.Task",
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}"
+    },
+    {
+      "description": "A virtual MAC address associated to one or more IPs",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Virtual MAC address in 00:00:00:00:00:00 format",
+              "fullType": "string",
+              "name": "macAddress",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.VirtualMac",
+          "responseType": "dedicated.server.VirtualMac"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/virtualMac/{macAddress}"
+    },
+    {
+      "description": "List the dedicated.server.VirtualMac objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Virtual MAC addresses of the server",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a virtual mac to an IP address",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Ip address to link with this virtualMac",
+              "fullType": "ipv4",
+              "name": "ipAddress",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.VmacTypeEnum",
+              "description": "vmac address type",
+              "fullType": "dedicated.server.VmacTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Friendly name of your Virtual Machine behind this IP/MAC",
+              "fullType": "string",
+              "name": "virtualMachineName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.Task",
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/virtualMac"
+    },
+    {
+      "description": "status operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get installation status",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.InstallationProgressStatus",
+          "responseType": "dedicated.server.InstallationProgressStatus"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/install/status"
+    },
+    {
+      "description": "compatibleTemplatePartitionSchemes operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve compatible  install template partitions scheme",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes"
+    },
+    {
+      "description": "templateCapabilities operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Gives some capabilities regarding the template for the current dedicated server.",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.TemplateCaps",
+          "responseType": "dedicated.server.TemplateCaps"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/install/templateCapabilities"
+    },
+    {
+      "description": "start operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Start an install",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.server.InstallCustom",
+              "description": "parameters for default install",
+              "fullType": "dedicated.server.InstallCustom",
+              "name": "details",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Partition scheme name",
+              "fullType": "string",
+              "name": "partitionSchemeName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.Task",
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/install/start"
+    },
+    {
+      "description": "hardwareRaidProfile operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve hardware RAID profile",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.HardwareRaidProfile",
+          "responseType": "dedicated.server.HardwareRaidProfile"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/install/hardwareRaidProfile"
+    },
+    {
+      "description": "hardwareRaidSize operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get hardware RAID size for a given configuration",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Partition scheme name",
+              "fullType": "string",
+              "name": "partitionSchemeName",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.HardwareRaidSize",
+          "responseType": "dedicated.server.HardwareRaidSize"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/install/hardwareRaidSize"
+    },
+    {
+      "description": "compatibleTemplates operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve compatible  install templates names",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.InstallTemplate",
+          "responseType": "dedicated.server.InstallTemplate"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/install/compatibleTemplates"
+    },
+    {
+      "description": "Information about the options of a dedicated server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.server.OptionEnum",
+              "description": "The option name",
+              "fullType": "dedicated.server.OptionEnum",
+              "name": "option",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.Option",
+          "responseType": "dedicated.server.Option"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Release a given option",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.server.OptionEnum",
+              "description": "The option name",
+              "fullType": "dedicated.server.OptionEnum",
+              "name": "option",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/option/{option}"
+    },
+    {
+      "description": "List the dedicated.server.Option objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of dedicated server options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.OptionEnum[]",
+          "responseType": "dedicated.server.OptionEnum[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/option"
+    },
+    {
+      "description": "backupCloudOfferDetails operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get details on offered backup cloud if available for the current server",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.backup.BackupOffer",
+          "responseType": "dedicated.server.backup.BackupOffer"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/backupCloudOfferDetails"
+    },
+    {
+      "description": "ipCountryAvailable operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve available country for IP order",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.IpCountryEnum[]",
+          "responseType": "dedicated.server.IpCountryEnum[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/ipCountryAvailable"
+    },
+    {
+      "description": "Server informations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.Dedicated",
+          "responseType": "dedicated.server.Dedicated"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.server.Dedicated",
+              "description": "New object properties",
+              "fullType": "dedicated.server.Dedicated",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}"
+    },
+    {
+      "description": "Bring you own Image on your server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.ByoiStatus",
+          "responseType": "dedicated.server.ByoiStatus"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Start an install with your own image",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Image checksum",
+              "fullType": "string",
+              "name": "checkSum",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.CheckSumTypesEnum",
+              "description": "Checksum type",
+              "fullType": "dedicated.CheckSumTypesEnum",
+              "name": "checkSumType",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.ConfigDrive",
+              "description": "enable and set ConfigDrive",
+              "fullType": "dedicated.server.ConfigDrive",
+              "name": "configdrive",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Image description",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Disk group id to process install on (only available for some templates)",
+              "fullType": "long",
+              "name": "diskGroupId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "complexType.SafeKeyValueCanBeNull<password>[]",
+              "description": "HTTP Headers",
+              "fullType": "complexType.SafeKeyValueCanBeNull<password>[]",
+              "name": "httpHeader",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "dedicated.ImageTypesEnum",
+              "description": "Image type",
+              "fullType": "dedicated.ImageTypesEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Image URL",
+              "fullType": "string",
+              "name": "URL",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete your current image installation",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/bringYourOwnImage"
+    },
+    {
+      "description": "Server tasks",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "the id of the task",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.Task",
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/task/{taskId}"
+    },
+    {
+      "description": "cancel operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "this action stop the task progression if it's possible",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "the id of the task",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/task/{taskId}/cancel"
+    },
+    {
+      "description": "List the dedicated.server.Task objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Dedicated server todos",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.TaskFunctionEnum",
+              "description": "Filter the value of function property (=)",
+              "fullType": "dedicated.TaskFunctionEnum",
+              "name": "function",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicated.TaskStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "dedicated.TaskStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/task"
+    },
+    {
+      "description": "List the dedicated.server.spla objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Your own SPLA licenses attached to this dedicated server",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.SplaStatusEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "dedicated.server.SplaStatusEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicated.server.SplaTypeEnum",
+              "description": "Filter the value of type property (=)",
+              "fullType": "dedicated.server.SplaTypeEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a new SPLA license",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "License serial number",
+              "fullType": "string",
+              "name": "serialNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.SplaTypeEnum",
+              "description": "License type",
+              "fullType": "dedicated.server.SplaTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long",
+          "responseType": "long"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/spla"
+    },
+    {
+      "description": "SPLA licenses management",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "License id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.spla",
+          "responseType": "dedicated.server.spla"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.server.spla",
+              "description": "New object properties",
+              "fullType": "dedicated.server.spla",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "License id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/spla/{id}"
+    },
+    {
+      "description": "revoke operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Revoke an SPLA license",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "License id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/spla/{id}/revoke"
+    },
+    {
       "description": "mrtg operations",
       "operations": [
         {
@@ -53,6 +1355,1082 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/mrtg"
     },
     {
+      "description": "Service monitoring details",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "This monitoring id",
+              "fullType": "long",
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.serviceMonitoring",
+          "responseType": "dedicated.server.serviceMonitoring"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.server.serviceMonitoring",
+              "description": "New object properties",
+              "fullType": "dedicated.server.serviceMonitoring",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "This monitoring id",
+              "fullType": "long",
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove this service monitoring",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "This monitoring id",
+              "fullType": "long",
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}"
+    },
+    {
+      "description": "Monitoring SMS alert details, This service is currently not supported for servers at BHS ",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of this alert",
+              "fullType": "long",
+              "name": "alertId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "This monitoring id",
+              "fullType": "long",
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.smsAlert",
+          "responseType": "dedicated.server.smsAlert"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.server.smsAlert",
+              "description": "New object properties",
+              "fullType": "dedicated.server.smsAlert",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of this alert",
+              "fullType": "long",
+              "name": "alertId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "This monitoring id",
+              "fullType": "long",
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove this SMS alert",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of this alert",
+              "fullType": "long",
+              "name": "alertId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "This monitoring id",
+              "fullType": "long",
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}"
+    },
+    {
+      "description": "List the dedicated.server.smsAlert objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Service monitoring alert by SMS",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "This monitoring id",
+              "fullType": "long",
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a SMS alert",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Daily hour start time for SMS notification",
+              "fullType": "long",
+              "name": "fromHour",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "dedicated.server.AlertLanguageEnum",
+              "description": "Alert language",
+              "fullType": "dedicated.server.AlertLanguageEnum",
+              "name": "language",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Alert destination",
+              "fullType": "string",
+              "name": "phoneNumberTo",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your SMS account",
+              "fullType": "string",
+              "name": "smsAccount",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Daily hour end time for SMS notification",
+              "fullType": "long",
+              "name": "toHour",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "This monitoring id",
+              "fullType": "long",
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.smsAlert",
+          "responseType": "dedicated.server.smsAlert"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms"
+    },
+    {
+      "description": "List the dedicated.server.emailAlert objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Service monitoring alert by email",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "This monitoring id",
+              "fullType": "long",
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a new email alert",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Alert destination",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.AlertLanguageEnum",
+              "description": "Alert language",
+              "fullType": "dedicated.server.AlertLanguageEnum",
+              "name": "language",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "This monitoring id",
+              "fullType": "long",
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.emailAlert",
+          "responseType": "dedicated.server.emailAlert"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email"
+    },
+    {
+      "description": "Service monitoring Email alert",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "This monitoring id",
+              "fullType": "long",
+              "name": "alertId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "This monitoring id",
+              "fullType": "long",
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.emailAlert",
+          "responseType": "dedicated.server.emailAlert"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.server.emailAlert",
+              "description": "New object properties",
+              "fullType": "dedicated.server.emailAlert",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "This monitoring id",
+              "fullType": "long",
+              "name": "alertId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "This monitoring id",
+              "fullType": "long",
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove this Email alert monitoring",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "This monitoring id",
+              "fullType": "long",
+              "name": "alertId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "This monitoring id",
+              "fullType": "long",
+              "name": "monitoringId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}"
+    },
+    {
+      "description": "List the dedicated.server.serviceMonitoring objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Service monitoring details",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a new service monitoring",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The expected return",
+              "fullType": "string",
+              "name": "challengeText",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Is this service monitoring is enabled",
+              "fullType": "boolean",
+              "name": "enabled",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.MonitoringIntervalEnum",
+              "description": "The test interval",
+              "fullType": "dedicated.server.MonitoringIntervalEnum",
+              "name": "interval",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "The IP to monitor",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The service port to monitor",
+              "fullType": "long",
+              "name": "port",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.MonitoringProtocolEnum",
+              "description": "The protocol to use",
+              "fullType": "dedicated.server.MonitoringProtocolEnum",
+              "name": "protocol",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The URL to test",
+              "fullType": "string",
+              "name": "url",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.serviceMonitoring",
+          "responseType": "dedicated.server.serviceMonitoring"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/serviceMonitoring"
+    },
+    {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Terminate your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string",
+          "responseType": "string"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/terminate"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "services.Service",
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/serviceInfos"
+    },
+    {
+      "description": "memory operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Ask for a faulty RAM module replacement",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "text",
+              "description": "User comment",
+              "fullType": "text",
+              "name": "comment",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "text",
+              "description": "Technical details or logs",
+              "fullType": "text",
+              "name": "details",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string[]",
+              "description": "The list of faulty RAM slots (if you have the information)",
+              "fullType": "string[]",
+              "name": "slots",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "support.NewMessageInfo",
+          "responseType": "support.NewMessageInfo"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/support/replace/memory"
+    },
+    {
+      "description": "cooling operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Ask for a cooling module replacement",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "text",
+              "description": "User comment",
+              "fullType": "text",
+              "name": "comment",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "text",
+              "description": "Technical details or logs",
+              "fullType": "text",
+              "name": "details",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "support.NewMessageInfo",
+          "responseType": "support.NewMessageInfo"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/support/replace/cooling"
+    },
+    {
+      "description": "hardDiskDrive operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Ask for a broken HDD replacement",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "text",
+              "description": "User comment",
+              "fullType": "text",
+              "name": "comment",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.SupportReplaceHddInfo[]",
+              "description": "If 'inverse' is set as 'false', the list of HDD TO REPLACE. If 'inverse' is set as 'true', the list of HDD TO NOT REPLACE.",
+              "fullType": "dedicated.server.SupportReplaceHddInfo[]",
+              "name": "disks",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "If set to 'true', replace only NON LISTED DISKS",
+              "fullType": "boolean",
+              "name": "inverse",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "support.NewMessageInfo",
+          "responseType": "support.NewMessageInfo"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/support/replace/hardDiskDrive"
+    },
+    {
+      "description": "mrtg operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve traffic graph values",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "macAddress",
+              "description": "NetworkInterfaceController mac",
+              "fullType": "macAddress",
+              "name": "mac",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.MrtgPeriodEnum",
+              "description": "mrtg period",
+              "fullType": "dedicated.server.MrtgPeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.MrtgTypeEnum",
+              "description": "mrtg type",
+              "fullType": "dedicated.server.MrtgTypeEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.MrtgTimestampValue[]",
+          "responseType": "dedicated.server.MrtgTimestampValue[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg"
+    },
+    {
+      "description": "Your networkInterfaceController",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "macAddress",
+              "description": "NetworkInterfaceController mac",
+              "fullType": "macAddress",
+              "name": "mac",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.networkInterfaceController.NetworkInterfaceController",
+          "responseType": "dedicated.networkInterfaceController.NetworkInterfaceController"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/networkInterfaceController/{mac}"
+    },
+    {
+      "description": "List the dedicated.networkInterfaceController.NetworkInterfaceController objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List server networkInterfaceController",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum",
+              "description": "Filter the value of linkType property (=)",
+              "fullType": "dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum",
+              "name": "linkType",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "macAddress[]",
+          "responseType": "macAddress[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/networkInterfaceController"
+    },
+    {
+      "description": "ipBlockMerge operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Merge a splitted block and route it to the choosen server. You cannot undo this operation",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "The splitted block you want to merge",
+              "fullType": "ipBlock",
+              "name": "block",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.Task",
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/ipBlockMerge"
+    },
+    {
+      "description": "connection operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get server opened connections",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.RtmConnection[]",
+          "responseType": "dedicated.server.RtmConnection[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/connection"
+    },
+    {
       "description": "process operations",
       "operations": [
         {
@@ -79,226 +2457,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicated/server/{serviceName}/statistics/process"
-    },
-    {
-      "description": "cpu operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get server cpu informations",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.RtmCpu",
-          "responseType": "dedicated.server.RtmCpu"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/cpu"
-    },
-    {
-      "description": "chart operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve partition charts",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Partition",
-              "fullType": "string",
-              "name": "partition",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.RtmChartPeriodEnum",
-              "description": "chart period",
-              "fullType": "dedicated.server.RtmChartPeriodEnum",
-              "name": "period",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "complexType.ChartReturn",
-          "responseType": "complexType.ChartReturn"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/partition/{partition}/chart"
-    },
-    {
-      "description": "Server partitions informations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Partition",
-              "fullType": "string",
-              "name": "partition",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.RtmPartition",
-          "responseType": "dedicated.server.RtmPartition"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/partition/{partition}"
-    },
-    {
-      "description": "List the dedicated.server.RtmPartition objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Server partitions",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/partition"
-    },
-    {
-      "description": "pci operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get server PCI devices informations",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.RtmPci[]",
-          "responseType": "dedicated.server.RtmPci[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/pci"
-    },
-    {
-      "description": "memory operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get server memory informations",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.RtmMemory[]",
-          "responseType": "dedicated.server.RtmMemory[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/memory"
-    },
-    {
-      "description": "load operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get server load",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.RtmLoad",
-          "responseType": "dedicated.server.RtmLoad"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/load"
     },
     {
       "description": "List the dedicated.server.RtmRaidVolume objects",
@@ -541,14 +2699,14 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/statistics/raid"
     },
     {
-      "description": "connection operations",
+      "description": "Servers statistics sent by RTM (Real Time Monitoring)",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get server opened connections",
+          "description": "Get this object properties",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -562,11 +2720,11 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.server.RtmConnection[]",
-          "responseType": "dedicated.server.RtmConnection[]"
+          "responseFullType": "dedicated.server.Rtm",
+          "responseType": "dedicated.server.Rtm"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/statistics/connection"
+      "path": "/dedicated/server/{serviceName}/statistics"
     },
     {
       "description": "chart operations",
@@ -613,34 +2771,6 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/statistics/chart"
     },
     {
-      "description": "motherboard operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get server motherboard hardware informations",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.RtmMotherboardHw",
-          "responseType": "dedicated.server.RtmMotherboardHw"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/statistics/motherboard"
-    },
-    {
       "description": "os operations",
       "operations": [
         {
@@ -669,25 +2799,17 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/statistics/os"
     },
     {
-      "description": "Server disks informations",
+      "description": "load operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get server load",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "string",
-              "description": "Disk",
-              "fullType": "string",
-              "name": "disk",
-              "paramType": "path",
-              "required": true
-            },
             {
               "dataType": "string",
               "description": "The internal name of your dedicated server",
@@ -698,11 +2820,67 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.server.RtmDisk",
-          "responseType": "dedicated.server.RtmDisk"
+          "responseFullType": "dedicated.server.RtmLoad",
+          "responseType": "dedicated.server.RtmLoad"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/statistics/disk/{disk}"
+      "path": "/dedicated/server/{serviceName}/statistics/load"
+    },
+    {
+      "description": "cpu operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get server cpu informations",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.RtmCpu",
+          "responseType": "dedicated.server.RtmCpu"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/cpu"
+    },
+    {
+      "description": "List the dedicated.server.RtmDisk objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Server disks",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/disk"
     },
     {
       "description": "smart operations",
@@ -741,14 +2919,106 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/statistics/disk/{disk}/smart"
     },
     {
-      "description": "List the dedicated.server.RtmDisk objects",
+      "description": "Server disks informations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Server disks",
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Disk",
+              "fullType": "string",
+              "name": "disk",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.RtmDisk",
+          "responseType": "dedicated.server.RtmDisk"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/disk/{disk}"
+    },
+    {
+      "description": "pci operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get server PCI devices informations",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.RtmPci[]",
+          "responseType": "dedicated.server.RtmPci[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/pci"
+    },
+    {
+      "description": "motherboard operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get server motherboard hardware informations",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.RtmMotherboardHw",
+          "responseType": "dedicated.server.RtmMotherboardHw"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/motherboard"
+    },
+    {
+      "description": "List the dedicated.server.RtmPartition objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Server partitions",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -766,10 +3036,10 @@ export const schema: Schema = {
           "responseType": "string[]"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/statistics/disk"
+      "path": "/dedicated/server/{serviceName}/statistics/partition"
     },
     {
-      "description": "Servers statistics sent by RTM (Real Time Monitoring)",
+      "description": "Server partitions informations",
       "operations": [
         {
           "apiStatus": {
@@ -782,6 +3052,14 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
+              "description": "Partition",
+              "fullType": "string",
+              "name": "partition",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
@@ -790,21 +3068,65 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.server.Rtm",
-          "responseType": "dedicated.server.Rtm"
+          "responseFullType": "dedicated.server.RtmPartition",
+          "responseType": "dedicated.server.RtmPartition"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/statistics"
+      "path": "/dedicated/server/{serviceName}/statistics/partition/{partition}"
     },
     {
-      "description": "List the dedicated.server.VirtualMac objects",
+      "description": "chart operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Virtual MAC addresses of the server",
+          "description": "Retrieve partition charts",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Partition",
+              "fullType": "string",
+              "name": "partition",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.RtmChartPeriodEnum",
+              "description": "chart period",
+              "fullType": "dedicated.server.RtmChartPeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "complexType.ChartReturn",
+          "responseType": "complexType.ChartReturn"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/partition/{partition}/chart"
+    },
+    {
+      "description": "memory operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get server memory informations",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -818,40 +3140,30 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        },
+          "responseFullType": "dedicated.server.RtmMemory[]",
+          "responseType": "dedicated.server.RtmMemory[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/statistics/memory"
+    },
+    {
+      "description": "dnsServer operations",
+      "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Add a virtual mac to an IP address",
-          "httpMethod": "POST",
+          "description": "domain name server informations",
+          "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipv4",
-              "description": "Ip address to link with this virtualMac",
-              "fullType": "ipv4",
-              "name": "ipAddress",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.VmacTypeEnum",
-              "description": "vmac address type",
-              "fullType": "dedicated.server.VmacTypeEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Friendly name of your Virtual Machine behind this IP/MAC",
+              "description": "domain on slave server",
               "fullType": "string",
-              "name": "virtualMachineName",
-              "paramType": "body",
+              "name": "domain",
+              "paramType": "path",
               "required": true
             },
             {
@@ -864,14 +3176,14 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.server.Task",
-          "responseType": "dedicated.server.Task"
+          "responseFullType": "secondaryDns.SecondaryDNSNameServer",
+          "responseType": "secondaryDns.SecondaryDNSNameServer"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/virtualMac"
+      "path": "/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer"
     },
     {
-      "description": " ip address linked with this virtual mac address",
+      "description": "Secondary dns infos",
       "operations": [
         {
           "apiStatus": {
@@ -883,18 +3195,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipv4",
-              "description": "IP address",
-              "fullType": "ipv4",
-              "name": "ipAddress",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Virtual MAC address in 00:00:00:00:00:00 format",
+              "description": "domain on slave server",
               "fullType": "string",
-              "name": "macAddress",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
@@ -908,31 +3212,61 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.server.VirtualMacManagement",
-          "responseType": "dedicated.server.VirtualMacManagement"
+          "responseFullType": "secondaryDns.SecondaryDNS",
+          "responseType": "secondaryDns.SecondaryDNS"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Remove this ip from virtual mac , if you remove the last linked Ip, virtualmac will be deleted",
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "secondaryDns.SecondaryDNS",
+              "description": "New object properties",
+              "fullType": "secondaryDns.SecondaryDNS",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "domain on slave server",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "remove this domain",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipv4",
-              "description": "IP address",
-              "fullType": "ipv4",
-              "name": "ipAddress",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
-              "description": "Virtual MAC address in 00:00:00:00:00:00 format",
+              "description": "domain on slave server",
               "fullType": "string",
-              "name": "macAddress",
+              "name": "domain",
               "paramType": "path",
               "required": true
             },
@@ -946,139 +3280,21 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.server.Task",
-          "responseType": "dedicated.server.Task"
+          "responseFullType": "void",
+          "responseType": "void"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}"
+      "path": "/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}"
     },
     {
-      "description": "List the dedicated.server.VirtualMacManagement objects",
+      "description": "List the secondaryDns.SecondaryDNS objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List of IPs associated to this Virtual MAC",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Virtual MAC address in 00:00:00:00:00:00 format",
-              "fullType": "string",
-              "name": "macAddress",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "ipv4[]",
-          "responseType": "ipv4[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add an IP to this Virtual MAC",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "IP address to link to this virtual MAC",
-              "fullType": "ipv4",
-              "name": "ipAddress",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Friendly name of your Virtual Machine behind this IP/MAC",
-              "fullType": "string",
-              "name": "virtualMachineName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Virtual MAC address in 00:00:00:00:00:00 format",
-              "fullType": "string",
-              "name": "macAddress",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.Task",
-          "responseType": "dedicated.server.Task"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress"
-    },
-    {
-      "description": "A virtual MAC address associated to one or more IPs",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Virtual MAC address in 00:00:00:00:00:00 format",
-              "fullType": "string",
-              "name": "macAddress",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.VirtualMac",
-          "responseType": "dedicated.server.VirtualMac"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/virtualMac/{macAddress}"
-    },
-    {
-      "description": "status operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get installation status",
+          "description": "List of secondary dns domain name",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1088,133 +3304,63 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.InstallationProgressStatus",
-          "responseType": "dedicated.server.InstallationProgressStatus"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/install/status"
-    },
-    {
-      "description": "hardwareRaidSize operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get hardware RAID size for a given configuration",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Partition scheme name",
-              "fullType": "string",
-              "name": "partitionSchemeName",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.HardwareRaidSize",
-          "responseType": "dedicated.server.HardwareRaidSize"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/install/hardwareRaidSize"
-    },
-    {
-      "description": "hardwareRaidProfile operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve hardware RAID profile",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.HardwareRaidProfile",
-          "responseType": "dedicated.server.HardwareRaidProfile"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/install/hardwareRaidProfile"
-    },
-    {
-      "description": "compatibleTemplatePartitionSchemes operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve compatible  install template partitions scheme",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "query",
               "required": true
             }
           ],
           "resellerOnly": false,
           "responseFullType": "string[]",
           "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "add a domain on secondary dns",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The domain to add",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes"
+      "path": "/dedicated/server/{serviceName}/secondaryDnsDomains"
     },
     {
-      "description": "templateCapabilities operations",
+      "description": "ipCanBeMovedTo operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Gives some capabilities regarding the template for the current dedicated server.",
+          "description": "Check if given IP can be moved to this server",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1227,30 +3373,30 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "templateName",
+              "dataType": "ipBlock",
+              "description": "The ip to move to this server",
+              "fullType": "ipBlock",
+              "name": "ip",
               "paramType": "query",
               "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.server.TemplateCaps",
-          "responseType": "dedicated.server.TemplateCaps"
+          "responseFullType": "void",
+          "responseType": "void"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/install/templateCapabilities"
+      "path": "/dedicated/server/{serviceName}/ipCanBeMovedTo"
     },
     {
-      "description": "compatibleTemplates operations",
+      "description": "hardware operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Retrieve compatible  install templates names",
+          "description": "Retrieve hardware informations about this dedicated server",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1264,48 +3410,24 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.server.InstallTemplate",
-          "responseType": "dedicated.server.InstallTemplate"
+          "responseFullType": "dedicated.server.HardwareSpecifications",
+          "responseType": "dedicated.server.HardwareSpecifications"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/install/compatibleTemplates"
+      "path": "/dedicated/server/{serviceName}/specifications/hardware"
     },
     {
-      "description": "start operations",
+      "description": "ip operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Start an install",
-          "httpMethod": "POST",
+          "description": "Retrieve IP capabilities about this dedicated server",
+          "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "dedicated.server.InstallCustom",
-              "description": "parameters for default install",
-              "fullType": "dedicated.server.InstallCustom",
-              "name": "details",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Partition scheme name",
-              "fullType": "string",
-              "name": "partitionSchemeName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "body",
-              "required": true
-            },
             {
               "dataType": "string",
               "description": "The internal name of your dedicated server",
@@ -1316,11 +3438,39 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.server.Task",
-          "responseType": "dedicated.server.Task"
+          "responseFullType": "dedicated.server.IpOrderable",
+          "responseType": "dedicated.server.IpOrderable"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/install/start"
+      "path": "/dedicated/server/{serviceName}/specifications/ip"
+    },
+    {
+      "description": "network operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve network informations about this dedicated server",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.NetworkSpecifications",
+          "responseType": "dedicated.server.NetworkSpecifications"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/specifications/network"
     },
     {
       "description": "secondaryDnsNameServerAvailable operations",
@@ -1351,42 +3501,14 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/secondaryDnsNameServerAvailable"
     },
     {
-      "description": "authenticationSecret operations",
+      "description": "compliantWindowsSqlServer operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Retrieve secret to connect to the server / application",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.Access[]",
-          "responseType": "dedicated.server.Access[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/authenticationSecret"
-    },
-    {
-      "description": "backupCloudOfferDetails operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get details on offered backup cloud if available for the current server",
+          "description": "Get the windows SQL server license compliant with your server.",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1400,29 +3522,37 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.server.backup.BackupOffer",
-          "responseType": "dedicated.server.backup.BackupOffer"
+          "responseFullType": "license.WindowsSqlVersionEnum[]",
+          "responseType": "license.WindowsSqlVersionEnum[]"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/backupCloudOfferDetails"
+      "path": "/dedicated/server/{serviceName}/license/compliantWindowsSqlServer"
     },
     {
-      "description": "ipMove operations",
+      "description": "windows operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Move an Ip failover to this server",
+          "description": "Add your existing windows license serial to this dedicated server. Will be manageable in /license/windows.",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipBlock",
-              "description": "The ip to move to this server",
-              "fullType": "ipBlock",
-              "name": "ip",
+              "dataType": "string",
+              "description": "Your license serial number",
+              "fullType": "string",
+              "name": "licenseId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "license.WindowsOsVersionEnum",
+              "description": "Your license version",
+              "fullType": "license.WindowsOsVersionEnum",
+              "name": "version",
               "paramType": "body",
               "required": true
             },
@@ -1440,29 +3570,21 @@ export const schema: Schema = {
           "responseType": "dedicated.server.Task"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/ipMove"
+      "path": "/dedicated/server/{serviceName}/license/windows"
     },
     {
-      "description": "Service monitoring details",
+      "description": "compliantWindows operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get the windows license compliant with your server.",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The internal name of your dedicated server",
               "fullType": "string",
@@ -1472,533 +3594,21 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.server.serviceMonitoring",
-          "responseType": "dedicated.server.serviceMonitoring"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.server.serviceMonitoring",
-              "description": "New object properties",
-              "fullType": "dedicated.server.serviceMonitoring",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Remove this service monitoring",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
+          "responseFullType": "license.WindowsOsVersionEnum[]",
+          "responseType": "license.WindowsOsVersionEnum[]"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}"
+      "path": "/dedicated/server/{serviceName}/license/compliantWindows"
     },
     {
-      "description": "List the dedicated.server.emailAlert objects",
+      "description": "List the dedicated.server.Intervention objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Service monitoring alert by email",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add a new email alert",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Alert destination",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.AlertLanguageEnum",
-              "description": "Alert language",
-              "fullType": "dedicated.server.AlertLanguageEnum",
-              "name": "language",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.emailAlert",
-          "responseType": "dedicated.server.emailAlert"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email"
-    },
-    {
-      "description": "Service monitoring Email alert",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "alertId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.emailAlert",
-          "responseType": "dedicated.server.emailAlert"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.server.emailAlert",
-              "description": "New object properties",
-              "fullType": "dedicated.server.emailAlert",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "alertId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Remove this Email alert monitoring",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "alertId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}"
-    },
-    {
-      "description": "Monitoring SMS alert details, This service is currently not supported for servers at BHS ",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of this alert",
-              "fullType": "long",
-              "name": "alertId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.smsAlert",
-          "responseType": "dedicated.server.smsAlert"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.server.smsAlert",
-              "description": "New object properties",
-              "fullType": "dedicated.server.smsAlert",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id of this alert",
-              "fullType": "long",
-              "name": "alertId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Remove this SMS alert",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of this alert",
-              "fullType": "long",
-              "name": "alertId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}"
-    },
-    {
-      "description": "List the dedicated.server.smsAlert objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Service monitoring alert by SMS",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create a SMS alert",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Daily hour start time for SMS notification",
-              "fullType": "long",
-              "name": "fromHour",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "dedicated.server.AlertLanguageEnum",
-              "description": "Alert language",
-              "fullType": "dedicated.server.AlertLanguageEnum",
-              "name": "language",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Alert destination",
-              "fullType": "string",
-              "name": "phoneNumberTo",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Your SMS account",
-              "fullType": "string",
-              "name": "smsAccount",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Daily hour end time for SMS notification",
-              "fullType": "long",
-              "name": "toHour",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "This monitoring id",
-              "fullType": "long",
-              "name": "monitoringId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.smsAlert",
-          "responseType": "dedicated.server.smsAlert"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms"
-    },
-    {
-      "description": "List the dedicated.server.serviceMonitoring objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Service monitoring details",
+          "description": "technical intervention history",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2014,192 +3624,92 @@ export const schema: Schema = {
           "resellerOnly": false,
           "responseFullType": "long[]",
           "responseType": "long[]"
-        },
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/intervention"
+    },
+    {
+      "description": "Intervention made on this server",
+      "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Add a new service monitoring",
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The intervention id",
+              "fullType": "long",
+              "name": "interventionId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.Intervention",
+          "responseType": "dedicated.server.Intervention"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/intervention/{interventionId}"
+    },
+    {
+      "description": "enable operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Enable this VirtualNetworkInterface",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The expected return",
-              "fullType": "string",
-              "name": "challengeText",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Is this service monitoring is enabled",
-              "fullType": "boolean",
-              "name": "enabled",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.MonitoringIntervalEnum",
-              "description": "The test interval",
-              "fullType": "dedicated.server.MonitoringIntervalEnum",
-              "name": "interval",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "The IP to monitor",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The service port to monitor",
-              "fullType": "long",
-              "name": "port",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.MonitoringProtocolEnum",
-              "description": "The protocol to use",
-              "fullType": "dedicated.server.MonitoringProtocolEnum",
-              "name": "protocol",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The URL to test",
-              "fullType": "string",
-              "name": "url",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
               "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "VirtualNetworkInterface unique id",
+              "fullType": "uuid",
+              "name": "uuid",
+              "paramType": "path",
+              "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.server.serviceMonitoring",
-          "responseType": "dedicated.server.serviceMonitoring"
+          "responseFullType": "dedicated.server.Task",
+          "responseType": "dedicated.server.Task"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/serviceMonitoring"
+      "path": "/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/enable"
     },
     {
-      "description": "List the dedicated.server.Option objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of dedicated server options",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.OptionEnum[]",
-          "responseType": "dedicated.server.OptionEnum[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/option"
-    },
-    {
-      "description": "Information about the options of a dedicated server",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.server.OptionEnum",
-              "description": "The option name",
-              "fullType": "dedicated.server.OptionEnum",
-              "name": "option",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.Option",
-          "responseType": "dedicated.server.Option"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Release a given option",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.server.OptionEnum",
-              "description": "The option name",
-              "fullType": "dedicated.server.OptionEnum",
-              "name": "option",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/option/{option}"
-    },
-    {
-      "description": "List the dedicated.networkInterfaceController.NetworkInterfaceController objects",
+      "description": "disable operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "List server networkInterfaceController",
-          "httpMethod": "GET",
+          "description": "Disable this VirtualNetworkInterface",
+          "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
@@ -2211,108 +3721,20 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum",
-              "description": "Filter the value of linkType property (=)",
-              "fullType": "dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum",
-              "name": "linkType",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "macAddress[]",
-          "responseType": "macAddress[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/networkInterfaceController"
-    },
-    {
-      "description": "mrtg operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Retrieve traffic graph values",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "macAddress",
-              "description": "NetworkInterfaceController mac",
-              "fullType": "macAddress",
-              "name": "mac",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.MrtgPeriodEnum",
-              "description": "mrtg period",
-              "fullType": "dedicated.server.MrtgPeriodEnum",
-              "name": "period",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.MrtgTypeEnum",
-              "description": "mrtg type",
-              "fullType": "dedicated.server.MrtgTypeEnum",
-              "name": "type",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.MrtgTimestampValue[]",
-          "responseType": "dedicated.server.MrtgTimestampValue[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg"
-    },
-    {
-      "description": "Your networkInterfaceController",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "macAddress",
-              "description": "NetworkInterfaceController mac",
-              "fullType": "macAddress",
-              "name": "mac",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "uuid",
+              "description": "VirtualNetworkInterface unique id",
+              "fullType": "uuid",
+              "name": "uuid",
               "paramType": "path",
               "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.networkInterfaceController.NetworkInterfaceController",
-          "responseType": "dedicated.networkInterfaceController.NetworkInterfaceController"
+          "responseFullType": "dedicated.server.Task",
+          "responseType": "dedicated.server.Task"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/networkInterfaceController/{mac}"
+      "path": "/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/disable"
     },
     {
       "description": "Your VirtualNetworkInterface",
@@ -2389,78 +3811,6 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}"
     },
     {
-      "description": "enable operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Enable this VirtualNetworkInterface",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "VirtualNetworkInterface unique id",
-              "fullType": "uuid",
-              "name": "uuid",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.Task",
-          "responseType": "dedicated.server.Task"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/enable"
-    },
-    {
-      "description": "disable operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Disable this VirtualNetworkInterface",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "VirtualNetworkInterface unique id",
-              "fullType": "uuid",
-              "name": "uuid",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.Task",
-          "responseType": "dedicated.server.Task"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/disable"
-    },
-    {
       "description": "List the dedicated.virtualNetworkInterface.VirtualNetworkInterface objects",
       "operations": [
         {
@@ -2521,14 +3871,14 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/virtualNetworkInterface"
     },
     {
-      "description": "Terminate your service",
+      "description": "reboot operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
+          "description": "Hard reboot this server",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -2542,21 +3892,21 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "string",
-          "responseType": "string"
+          "responseFullType": "dedicated.server.Task",
+          "responseType": "dedicated.server.Task"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/terminate"
+      "path": "/dedicated/server/{serviceName}/reboot"
     },
     {
-      "description": "ipCanBeMovedTo operations",
+      "description": "secondaryDnsNameDomainToken operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Check if given IP can be moved to this server",
+          "description": "DNS field to temporarily add to your zone so that we can verify you are the owner of this domain",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2569,178 +3919,30 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "ipBlock",
-              "description": "The ip to move to this server",
-              "fullType": "ipBlock",
-              "name": "ip",
+              "dataType": "string",
+              "description": "The domain to check",
+              "fullType": "string",
+              "name": "domain",
               "paramType": "query",
               "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
+          "responseFullType": "secondaryDns.SecondaryDNSCheckField",
+          "responseType": "secondaryDns.SecondaryDNSCheckField"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/ipCanBeMovedTo"
+      "path": "/dedicated/server/{serviceName}/secondaryDnsNameDomainToken"
     },
     {
-      "description": "hardDiskDrive operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Ask for a broken HDD replacement",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "text",
-              "description": "User comment",
-              "fullType": "text",
-              "name": "comment",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.SupportReplaceHddInfo[]",
-              "description": "If 'inverse' is set as 'false', the list of HDD TO REPLACE. If 'inverse' is set as 'true', the list of HDD TO NOT REPLACE.",
-              "fullType": "dedicated.server.SupportReplaceHddInfo[]",
-              "name": "disks",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "If set to 'true', replace only NON LISTED DISKS",
-              "fullType": "boolean",
-              "name": "inverse",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "support.NewMessageInfo",
-          "responseType": "support.NewMessageInfo"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/support/replace/hardDiskDrive"
-    },
-    {
-      "description": "cooling operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Ask for a cooling module replacement",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "text",
-              "description": "User comment",
-              "fullType": "text",
-              "name": "comment",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "text",
-              "description": "Technical details or logs",
-              "fullType": "text",
-              "name": "details",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "support.NewMessageInfo",
-          "responseType": "support.NewMessageInfo"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/support/replace/cooling"
-    },
-    {
-      "description": "memory operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Ask for a faulty RAM module replacement",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "text",
-              "description": "User comment",
-              "fullType": "text",
-              "name": "comment",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "text",
-              "description": "Technical details or logs",
-              "fullType": "text",
-              "name": "details",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string[]",
-              "description": "The list of faulty RAM slots (if you have the information)",
-              "fullType": "string[]",
-              "name": "slots",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "support.NewMessageInfo",
-          "responseType": "support.NewMessageInfo"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/support/replace/memory"
-    },
-    {
-      "description": "ipCountryAvailable operations",
+      "description": "Physical KVM",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Retrieve available country for IP order",
+          "description": "Get this object properties",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2754,11 +3956,11 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.server.IpCountryEnum[]",
-          "responseType": "dedicated.server.IpCountryEnum[]"
+          "responseFullType": "dedicated.server.kvm",
+          "responseType": "dedicated.server.kvm"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/ipCountryAvailable"
+      "path": "/dedicated/server/{serviceName}/features/kvm"
     },
     {
       "description": "authorizableBlocks operations",
@@ -2787,6 +3989,34 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks"
+    },
+    {
+      "description": "password operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change your Backup FTP password",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.Task",
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/features/backupFTP/password"
     },
     {
       "description": "List the dedicated.server.BackupFtpAcl objects",
@@ -3047,90 +4277,6 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/features/backupFTP"
     },
     {
-      "description": "password operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Change your Backup FTP password",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.Task",
-          "responseType": "dedicated.server.Task"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/features/backupFTP/password"
-    },
-    {
-      "description": "Physical KVM",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.kvm",
-          "responseType": "dedicated.server.kvm"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/features/kvm"
-    },
-    {
-      "description": "Server IPMI interface",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.Ipmi",
-          "responseType": "dedicated.server.Ipmi"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/features/ipmi"
-    },
-    {
       "description": "access operations",
       "operations": [
         {
@@ -3221,6 +4367,34 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/features/ipmi/access"
     },
     {
+      "description": "Server IPMI interface",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.Ipmi",
+          "responseType": "dedicated.server.Ipmi"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/features/ipmi"
+    },
+    {
       "description": "resetInterface operations",
       "operations": [
         {
@@ -3249,66 +4423,8 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/features/ipmi/resetInterface"
     },
     {
-      "description": "resetSessions operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Reset KVM IPMI sessions",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.Task",
-          "responseType": "dedicated.server.Task"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/features/ipmi/resetSessions"
-    },
-    {
       "description": "test operations",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Result of http, ping and identification tests on IPMI interface",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.IpmiTestTypeEnum",
-              "description": "Test type result on KVM IPMI interface",
-              "fullType": "dedicated.server.IpmiTestTypeEnum",
-              "name": "type",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.IpmiTestResult",
-          "responseType": "dedicated.server.IpmiTestResult"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -3346,9 +4462,67 @@ export const schema: Schema = {
           "resellerOnly": false,
           "responseFullType": "dedicated.server.Task",
           "responseType": "dedicated.server.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Result of http, ping and identification tests on IPMI interface",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.IpmiTestTypeEnum",
+              "description": "Test type result on KVM IPMI interface",
+              "fullType": "dedicated.server.IpmiTestTypeEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.IpmiTestResult",
+          "responseType": "dedicated.server.IpmiTestResult"
         }
       ],
       "path": "/dedicated/server/{serviceName}/features/ipmi/test"
+    },
+    {
+      "description": "resetSessions operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Reset KVM IPMI sessions",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.Task",
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/features/ipmi/resetSessions"
     },
     {
       "description": "Firewall attached to this server",
@@ -3409,26 +4583,18 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/features/firewall"
     },
     {
-      "description": "Intervention made on this server",
+      "description": "Your BiosSettings",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "The intervention id",
-              "fullType": "long",
-              "name": "interventionId",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The internal name of your dedicated server",
               "fullType": "string",
@@ -3438,141 +4604,39 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.server.Intervention",
-          "responseType": "dedicated.server.Intervention"
+          "responseFullType": "dedicated.biosSettings.BiosSettings",
+          "responseType": "dedicated.biosSettings.BiosSettings"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/intervention/{interventionId}"
+      "path": "/dedicated/server/{serviceName}/biosSettings"
     },
     {
-      "description": "List the dedicated.server.Intervention objects",
+      "description": "configure operations",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Beta version",
+            "value": "BETA"
           },
-          "description": "technical intervention history",
-          "httpMethod": "GET",
+          "description": "Configure SGX feature",
+          "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/intervention"
-    },
-    {
-      "description": "secondaryDnsNameDomainToken operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "DNS field to temporarily add to your zone so that we can verify you are the owner of this domain",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "dedicated.server.BiosSettingsSgxPrmrrEnum",
+              "description": "Size of the Processor Reserved Memory",
+              "fullType": "dedicated.server.BiosSettingsSgxPrmrrEnum",
+              "name": "prmrr",
+              "paramType": "body",
+              "required": false
             },
             {
-              "dataType": "string",
-              "description": "The domain to check",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "secondaryDns.SecondaryDNSCheckField",
-          "responseType": "secondaryDns.SecondaryDNSCheckField"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/secondaryDnsNameDomainToken"
-    },
-    {
-      "description": "List the dedicated.server.spla objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Your own SPLA licenses attached to this dedicated server",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.SplaStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "dedicated.server.SplaStatusEnum",
+              "dataType": "dedicated.server.BiosSettingsSgxStatusEnum",
+              "description": "Desired SGX status",
+              "fullType": "dedicated.server.BiosSettingsSgxStatusEnum",
               "name": "status",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "dedicated.server.SplaTypeEnum",
-              "description": "Filter the value of type property (=)",
-              "fullType": "dedicated.server.SplaTypeEnum",
-              "name": "type",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add a new SPLA license",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "License serial number",
-              "fullType": "string",
-              "name": "serialNumber",
               "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.SplaTypeEnum",
-              "description": "License type",
-              "fullType": "dedicated.server.SplaTypeEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "string",
@@ -3584,69 +4648,25 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "long",
-          "responseType": "long"
+          "responseFullType": "dedicated.server.Task",
+          "responseType": "dedicated.server.Task"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/spla"
+      "path": "/dedicated/server/{serviceName}/biosSettings/sgx/configure"
     },
     {
-      "description": "revoke operations",
+      "description": "Your BiosSettings for SGX feature",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Revoke an SPLA license",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "License id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/spla/{id}/revoke"
-    },
-    {
-      "description": "SPLA licenses management",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Beta version",
+            "value": "BETA"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "long",
-              "description": "License id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The internal name of your dedicated server",
               "fullType": "string",
@@ -3656,59 +4676,133 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "dedicated.server.spla",
-          "responseType": "dedicated.server.spla"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.server.spla",
-              "description": "New object properties",
-              "fullType": "dedicated.server.spla",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "License id",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
+          "responseFullType": "dedicated.biosSettingsSgx.BiosSettingsSgx",
+          "responseType": "dedicated.biosSettingsSgx.BiosSettingsSgx"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/spla/{id}"
+      "path": "/dedicated/server/{serviceName}/biosSettings/sgx"
     },
     {
-      "description": "List the dedicated.server.Netboot objects",
+      "description": "ips operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Server compatibles netboots",
+          "description": "List all ip from server",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "ipBlock[]",
+          "responseType": "ipBlock[]"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/ips"
+    },
+    {
+      "description": "backupStorage operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the backup storage orderable with your server.",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.BackupStorageOrderable",
+          "responseType": "dedicated.server.BackupStorageOrderable"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/orderable/backupStorage"
+    },
+    {
+      "description": "usbKey operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get USB keys orderable with your server",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.UsbKeyOrderableDetails",
+          "responseType": "dedicated.server.UsbKeyOrderableDetails"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/orderable/usbKey"
+    },
+    {
+      "description": "ip operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get IP orderable with your server.",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "dedicated.server.IpOrderable",
+          "responseType": "dedicated.server.IpOrderable"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/orderable/ip"
+    },
+    {
+      "description": "feature operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Is this feature orderable with your server",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3721,20 +4815,48 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.server.BootTypeEnum",
-              "description": "Filter the value of bootType property (=)",
-              "fullType": "dedicated.server.BootTypeEnum",
-              "name": "bootType",
+              "dataType": "dedicated.server.OrderableSysFeatureEnum",
+              "description": "the feature",
+              "fullType": "dedicated.server.OrderableSysFeatureEnum",
+              "name": "feature",
               "paramType": "query",
-              "required": false
+              "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
+          "responseFullType": "boolean",
+          "responseType": "boolean"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/boot"
+      "path": "/dedicated/server/{serviceName}/orderable/feature"
+    },
+    {
+      "description": "kvmExpress operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Is a KVM express orderable with your server",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "boolean",
+          "responseType": "boolean"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/orderable/kvmExpress"
     },
     {
       "description": "List the dedicated.server.netbootOption objects",
@@ -3853,324 +4975,14 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/boot/{bootId}"
     },
     {
-      "description": "ips operations",
+      "description": "List the dedicated.server.Netboot objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List all ip from server",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "ipBlock[]",
-          "responseType": "ipBlock[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/ips"
-    },
-    {
-      "description": "Details about a Service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "services.Service",
-          "responseType": "services.Service"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "services.Service",
-              "description": "New object properties",
-              "fullType": "services.Service",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/serviceInfos"
-    },
-    {
-      "description": "reboot operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Hard reboot this server",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.Task",
-          "responseType": "dedicated.server.Task"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/reboot"
-    },
-    {
-      "description": "hardware operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve hardware informations about this dedicated server",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.HardwareSpecifications",
-          "responseType": "dedicated.server.HardwareSpecifications"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/specifications/hardware"
-    },
-    {
-      "description": "network operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve network informations about this dedicated server",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.NetworkSpecifications",
-          "responseType": "dedicated.server.NetworkSpecifications"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/specifications/network"
-    },
-    {
-      "description": "ip operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Retrieve IP capabilities about this dedicated server",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.IpOrderable",
-          "responseType": "dedicated.server.IpOrderable"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/specifications/ip"
-    },
-    {
-      "description": "usbKey operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get USB keys orderable with your server",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.UsbKeyOrderableDetails",
-          "responseType": "dedicated.server.UsbKeyOrderableDetails"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/orderable/usbKey"
-    },
-    {
-      "description": "ip operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get IP orderable with your server.",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.IpOrderable",
-          "responseType": "dedicated.server.IpOrderable"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/orderable/ip"
-    },
-    {
-      "description": "backupStorage operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the backup storage orderable with your server.",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.BackupStorageOrderable",
-          "responseType": "dedicated.server.BackupStorageOrderable"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/orderable/backupStorage"
-    },
-    {
-      "description": "kvmExpress operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Is a KVM express orderable with your server",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "boolean",
-          "responseType": "boolean"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/orderable/kvmExpress"
-    },
-    {
-      "description": "feature operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Is this feature orderable with your server",
+          "description": "Server compatibles netboots",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -4183,592 +4995,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.server.OrderableSysFeatureEnum",
-              "description": "the feature",
-              "fullType": "dedicated.server.OrderableSysFeatureEnum",
-              "name": "feature",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "boolean",
-          "responseType": "boolean"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/orderable/feature"
-    },
-    {
-      "description": "List the secondaryDns.SecondaryDNS objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of secondary dns domain name",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "add a domain on secondary dns",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The domain to add",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/secondaryDnsDomains"
-    },
-    {
-      "description": "Secondary dns infos",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "domain on slave server",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "secondaryDns.SecondaryDNS",
-          "responseType": "secondaryDns.SecondaryDNS"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "secondaryDns.SecondaryDNS",
-              "description": "New object properties",
-              "fullType": "secondaryDns.SecondaryDNS",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "domain on slave server",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "remove this domain",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "domain on slave server",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}"
-    },
-    {
-      "description": "dnsServer operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "domain name server informations",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "domain on slave server",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "secondaryDns.SecondaryDNSNameServer",
-          "responseType": "secondaryDns.SecondaryDNSNameServer"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer"
-    },
-    {
-      "description": "ipBlockMerge operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Merge a splitted block and route it to the choosen server. You cannot undo this operation",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipBlock",
-              "description": "The splitted block you want to merge",
-              "fullType": "ipBlock",
-              "name": "block",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.Task",
-          "responseType": "dedicated.server.Task"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/ipBlockMerge"
-    },
-    {
-      "description": "Your BiosSettings",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.biosSettings.BiosSettings",
-          "responseType": "dedicated.biosSettings.BiosSettings"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/biosSettings"
-    },
-    {
-      "description": "Your BiosSettings for SGX feature",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.biosSettingsSgx.BiosSettingsSgx",
-          "responseType": "dedicated.biosSettingsSgx.BiosSettingsSgx"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/biosSettings/sgx"
-    },
-    {
-      "description": "configure operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Configure SGX feature",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.server.BiosSettingsSgxPrmrrEnum",
-              "description": "Size of the Processor Reserved Memory",
-              "fullType": "dedicated.server.BiosSettingsSgxPrmrrEnum",
-              "name": "prmrr",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "dedicated.server.BiosSettingsSgxStatusEnum",
-              "description": "Desired SGX status",
-              "fullType": "dedicated.server.BiosSettingsSgxStatusEnum",
-              "name": "status",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.Task",
-          "responseType": "dedicated.server.Task"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/biosSettings/sgx/configure"
-    },
-    {
-      "description": "link operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get url of binary to update firewall asa",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Binary name",
-              "fullType": "string",
-              "name": "binaryName",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.BinaryFirewallLink",
-          "responseType": "dedicated.BinaryFirewallLink"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/firewall/binary/link"
-    },
-    {
-      "description": "compatible operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get name binary for asa",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.BinaryFirewall",
-          "responseType": "dedicated.BinaryFirewall"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/firewall/binary/compatible"
-    },
-    {
-      "description": "Confirm termination of your service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Confirm termination of your service",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "service.TerminationFutureUseEnum",
-              "description": "What next after your termination request",
-              "fullType": "service.TerminationFutureUseEnum",
-              "name": "futureUse",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "service.TerminationReasonEnum",
-              "description": "Reason of your termination request",
-              "fullType": "service.TerminationReasonEnum",
-              "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
-              "fullType": "string",
-              "name": "token",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string",
-          "responseType": "string"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/confirmTermination"
-    },
-    {
-      "description": "cancel operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "this action stop the task progression if it's possible",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "the id of the task",
-              "fullType": "long",
-              "name": "taskId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/task/{taskId}/cancel"
-    },
-    {
-      "description": "Server tasks",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "the id of the task",
-              "fullType": "long",
-              "name": "taskId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.Task",
-          "responseType": "dedicated.server.Task"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/task/{taskId}"
-    },
-    {
-      "description": "List the dedicated.server.Task objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Dedicated server todos",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.TaskFunctionEnum",
-              "description": "Filter the value of function property (=)",
-              "fullType": "dedicated.TaskFunctionEnum",
-              "name": "function",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "dedicated.TaskStatusEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "dedicated.TaskStatusEnum",
-              "name": "status",
+              "dataType": "dedicated.server.BootTypeEnum",
+              "description": "Filter the value of bootType property (=)",
+              "fullType": "dedicated.server.BootTypeEnum",
+              "name": "bootType",
               "paramType": "query",
               "required": false
             }
@@ -4778,255 +5008,25 @@ export const schema: Schema = {
           "responseType": "long[]"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/task"
+      "path": "/dedicated/server/{serviceName}/boot"
     },
     {
-      "description": "Server informations",
+      "description": "ipMove operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.Dedicated",
-          "responseType": "dedicated.server.Dedicated"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.server.Dedicated",
-              "description": "New object properties",
-              "fullType": "dedicated.server.Dedicated",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}"
-    },
-    {
-      "description": "Bring you own Image on your server",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.server.ByoiStatus",
-          "responseType": "dedicated.server.ByoiStatus"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Start an install with your own image",
+          "description": "Move an Ip failover to this server",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Image checksum",
-              "fullType": "string",
-              "name": "checkSum",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.CheckSumTypesEnum",
-              "description": "Checksum type",
-              "fullType": "dedicated.CheckSumTypesEnum",
-              "name": "checkSumType",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.ConfigDrive",
-              "description": "enable and set ConfigDrive",
-              "fullType": "dedicated.server.ConfigDrive",
-              "name": "configdrive",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Image description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Disk group id to process install on (only available for some templates)",
-              "fullType": "long",
-              "name": "diskGroupId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "complexType.SafeKeyValueCanBeNull<password>[]",
-              "description": "HTTP Headers",
-              "fullType": "complexType.SafeKeyValueCanBeNull<password>[]",
-              "name": "httpHeader",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "dedicated.ImageTypesEnum",
-              "description": "Image type",
-              "fullType": "dedicated.ImageTypesEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Image URL",
-              "fullType": "string",
-              "name": "URL",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete your current image installation",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/bringYourOwnImage"
-    },
-    {
-      "description": "compliantWindowsSqlServer operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the windows SQL server license compliant with your server.",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "license.WindowsSqlVersionEnum[]",
-          "responseType": "license.WindowsSqlVersionEnum[]"
-        }
-      ],
-      "path": "/dedicated/server/{serviceName}/license/compliantWindowsSqlServer"
-    },
-    {
-      "description": "windows operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add your existing windows license serial to this dedicated server. Will be manageable in /license/windows.",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Your license serial number",
-              "fullType": "string",
-              "name": "licenseId",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "license.WindowsOsVersionEnum",
-              "description": "Your license version",
-              "fullType": "license.WindowsOsVersionEnum",
-              "name": "version",
+              "dataType": "ipBlock",
+              "description": "The ip to move to this server",
+              "fullType": "ipBlock",
+              "name": "ip",
               "paramType": "body",
               "required": true
             },
@@ -5044,18 +5044,18 @@ export const schema: Schema = {
           "responseType": "dedicated.server.Task"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/license/windows"
+      "path": "/dedicated/server/{serviceName}/ipMove"
     },
     {
-      "description": "compliantWindows operations",
+      "description": "authenticationSecret operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get the windows license compliant with your server.",
-          "httpMethod": "GET",
+          "description": "Retrieve secret to connect to the server / application",
+          "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
@@ -5068,11 +5068,11 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "license.WindowsOsVersionEnum[]",
-          "responseType": "license.WindowsOsVersionEnum[]"
+          "responseFullType": "dedicated.server.Access[]",
+          "responseType": "dedicated.server.Access[]"
         }
       ],
-      "path": "/dedicated/server/{serviceName}/license/compliantWindows"
+      "path": "/dedicated/server/{serviceName}/authenticationSecret"
     },
     {
       "description": "Operations about the DEDICATED service",
