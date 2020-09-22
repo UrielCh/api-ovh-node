@@ -6,25 +6,6 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Details about the current authentication",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Details about the current authentication",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "auth.Details",
-          "responseType": "auth.Details"
-        }
-      ],
-      "path": "/auth/details"
-    },
-    {
       "description": "Operations with credentials",
       "operations": [
         {
@@ -78,6 +59,25 @@ export const schema: Schema = {
         }
       ],
       "path": "/auth/currentCredential"
+    },
+    {
+      "description": "Details about the current authentication",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Details about the current authentication",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "auth.Details",
+          "responseType": "auth.Details"
+        }
+      ],
+      "path": "/auth/details"
     },
     {
       "description": "Expire current credential",

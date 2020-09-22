@@ -385,6 +385,13 @@ export namespace cloud {
     }
     /**
      * Missing description
+     * interface fullName: cloud.ProjectKubeIpRestrictionUpsert.ProjectKubeIpRestrictionUpsert
+     */
+    export interface ProjectKubeIpRestrictionUpsert {
+        ips?: string[];
+    }
+    /**
+     * Missing description
      * interface fullName: cloud.ProjectKubeNodeCreation.ProjectKubeNodeCreation
      */
     export interface ProjectKubeNodeCreation {
@@ -2113,6 +2120,13 @@ export namespace cloud {
                  */
                 export type BackendIdEnum = "serving-runtime" | "bentoml"
                 /**
+                 * Features of Serving Engine
+                 * interface fullName: cloud.project.ai.serving.Features.Features
+                 */
+                export interface Features {
+                    chooseBackend: boolean;
+                }
+                /**
                  * Compute Flavor for the Serving Engine
                  * interface fullName: cloud.project.ai.serving.Flavor.Flavor
                  */
@@ -2293,7 +2307,7 @@ export namespace cloud {
                     containerRegion: string;
                     created: string;
                     id: string;
-                    name: string;
+                    name?: string;
                     pullDate?: string;
                     pullStatus?: cloud.project.ai.training.DataSyncStatusEnum;
                     pushDate?: string;
@@ -2337,6 +2351,14 @@ export namespace cloud {
                 export interface Features {
                     lab: boolean;
                     registry: boolean;
+                }
+                /**
+                 * Training Platform Gpu Object
+                 * interface fullName: cloud.project.ai.training.Gpu.Gpu
+                 */
+                export interface Gpu {
+                    maxGpus: number;
+                    type: string;
                 }
                 /**
                  * Training Platform Job Object
@@ -2419,7 +2441,6 @@ export namespace cloud {
                     consoleUrl: string;
                     documentationUrl: string;
                     id: string;
-                    maxGpu: number;
                     version: string;
                 }
                 /**
@@ -3479,6 +3500,17 @@ export interface Cloud {
                              * GET /cloud/project/{serviceName}/ai/capabilities/serving/backend
                              */
                             $get(): Promise<cloud.project.ai.serving.Backend[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        feature: {
+                            /**
+                             * List Serving Engine Features
+                             * GET /cloud/project/{serviceName}/ai/capabilities/serving/feature
+                             */
+                            $get(): Promise<cloud.project.ai.serving.Features>;
                             /**
                              * Controle cache
                              */

@@ -34,49 +34,36 @@ export const schema: Schema = {
       "path": "/license/cloudLinux/orderableVersions"
     },
     {
-      "description": "Confirm termination of your service",
+      "description": "Operations about the LICENSE service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Confirm termination of your service",
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/license/cloudLinux"
+    },
+    {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Terminate your service",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "service.TerminationFutureUseEnum",
-              "description": "What next after your termination request",
-              "fullType": "service.TerminationFutureUseEnum",
-              "name": "futureUse",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "service.TerminationReasonEnum",
-              "description": "Reason of your termination request",
-              "fullType": "service.TerminationReasonEnum",
-              "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
-              "fullType": "string",
-              "name": "token",
-              "paramType": "body",
-              "required": true
-            },
             {
               "dataType": "string",
               "description": "The name of your CloudLinux license",
@@ -91,87 +78,7 @@ export const schema: Schema = {
           "responseType": "string"
         }
       ],
-      "path": "/license/cloudLinux/{serviceName}/confirmTermination"
-    },
-    {
-      "description": "licenses Todos",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your CloudLinux license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This Task id",
-              "fullType": "long",
-              "name": "taskId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "license.Task",
-          "responseType": "license.Task"
-        }
-      ],
-      "path": "/license/cloudLinux/{serviceName}/tasks/{taskId}"
-    },
-    {
-      "description": "List the license.Task objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Tasks linked to this license",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your CloudLinux license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.ActionType",
-              "description": "Filter the value of action property (=)",
-              "fullType": "license.ActionType",
-              "name": "action",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.TaskStateEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "license.TaskStateEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/license/cloudLinux/{serviceName}/tasks"
+      "path": "/license/cloudLinux/{serviceName}/terminate"
     },
     {
       "description": "Details about a Service",
@@ -232,15 +139,15 @@ export const schema: Schema = {
       "path": "/license/cloudLinux/{serviceName}/serviceInfos"
     },
     {
-      "description": "Terminate your service",
+      "description": "List the license.Task objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Terminate your service",
-          "httpMethod": "POST",
+          "description": "Tasks linked to this license",
+          "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
@@ -250,14 +157,66 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "license.ActionType",
+              "description": "Filter the value of action property (=)",
+              "fullType": "license.ActionType",
+              "name": "action",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.TaskStateEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "license.TaskStateEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "string",
-          "responseType": "string"
+          "responseFullType": "long[]",
+          "responseType": "long[]"
         }
       ],
-      "path": "/license/cloudLinux/{serviceName}/terminate"
+      "path": "/license/cloudLinux/{serviceName}/tasks"
+    },
+    {
+      "description": "licenses Todos",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your CloudLinux license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "This Task id",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
+        }
+      ],
+      "path": "/license/cloudLinux/{serviceName}/tasks/{taskId}"
     },
     {
       "description": "Your CloudLinux license",
@@ -288,23 +247,64 @@ export const schema: Schema = {
       "path": "/license/cloudLinux/{serviceName}"
     },
     {
-      "description": "Operations about the LICENSE service",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
-          "httpMethod": "GET",
+          "description": "Confirm termination of your service",
+          "httpMethod": "POST",
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "service.TerminationFutureUseEnum",
+              "description": "What next after your termination request",
+              "fullType": "service.TerminationFutureUseEnum",
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "service.TerminationReasonEnum",
+              "description": "Reason of your termination request",
+              "fullType": "service.TerminationReasonEnum",
+              "name": "reason",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
+              "name": "token",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your CloudLinux license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
+          "responseFullType": "string",
+          "responseType": "string"
         }
       ],
-      "path": "/license/cloudLinux"
+      "path": "/license/cloudLinux/{serviceName}/confirmTermination"
     }
   ],
   "basePath": "https://ca.api.soyoustart.com/1.0",

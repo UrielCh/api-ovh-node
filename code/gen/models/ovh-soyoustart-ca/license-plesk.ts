@@ -6,33 +6,14 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Operations about the LICENSE service",
+      "description": "List the license.Option objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/license/plesk"
-    },
-    {
-      "description": "Your Plesk license",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
+          "description": "options attached to this license",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -46,77 +27,11 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "license.plesk.Plesk",
-          "responseType": "license.plesk.Plesk"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "license.plesk.Plesk",
-              "description": "New object properties",
-              "fullType": "license.plesk.Plesk",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your Plesk license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
+          "responseFullType": "license.OptionLabel[]",
+          "responseType": "license.OptionLabel[]"
         }
       ],
-      "path": "/license/plesk/{serviceName}"
-    },
-    {
-      "description": "canLicenseBeMovedTo operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Will tell if the ip can accept the license",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your Plesk license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "The Ip on which you want to move this license",
-              "fullType": "ipv4",
-              "name": "destinationIp",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "license.ChangeIpStatus",
-          "responseType": "license.ChangeIpStatus"
-        }
-      ],
-      "path": "/license/plesk/{serviceName}/canLicenseBeMovedTo"
+      "path": "/license/plesk/{serviceName}/option"
     },
     {
       "description": "Your License options",
@@ -185,142 +100,6 @@ export const schema: Schema = {
       "path": "/license/plesk/{serviceName}/option/{label}"
     },
     {
-      "description": "List the license.Option objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "options attached to this license",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your Plesk license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "license.OptionLabel[]",
-          "responseType": "license.OptionLabel[]"
-        }
-      ],
-      "path": "/license/plesk/{serviceName}/option"
-    },
-    {
-      "description": "Terminate your service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Terminate your service",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your Plesk license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string",
-          "responseType": "string"
-        }
-      ],
-      "path": "/license/plesk/{serviceName}/terminate"
-    },
-    {
-      "description": "List the license.Task objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "tasks linked to this license",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your Plesk license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.ActionType",
-              "description": "Filter the value of action property (=)",
-              "fullType": "license.ActionType",
-              "name": "action",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.TaskStateEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "license.TaskStateEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/license/plesk/{serviceName}/tasks"
-    },
-    {
-      "description": "licenses Todos",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your Plesk license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This Task id",
-              "fullType": "long",
-              "name": "taskId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "license.Task",
-          "responseType": "license.Task"
-        }
-      ],
-      "path": "/license/plesk/{serviceName}/tasks/{taskId}"
-    },
-    {
       "description": "Details about a Service",
       "operations": [
         {
@@ -379,6 +158,98 @@ export const schema: Schema = {
       "path": "/license/plesk/{serviceName}/serviceInfos"
     },
     {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Terminate your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string",
+          "responseType": "string"
+        }
+      ],
+      "path": "/license/plesk/{serviceName}/terminate"
+    },
+    {
+      "description": "canLicenseBeMovedTo operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Will tell if the ip can accept the license",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "The Ip on which you want to move this license",
+              "fullType": "ipv4",
+              "name": "destinationIp",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.ChangeIpStatus",
+          "responseType": "license.ChangeIpStatus"
+        }
+      ],
+      "path": "/license/plesk/{serviceName}/canLicenseBeMovedTo"
+    },
+    {
+      "description": "allowedDestinationIp operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns an array of ips where the license can be moved to",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "ipBlock[]",
+          "responseType": "ipBlock[]"
+        }
+      ],
+      "path": "/license/plesk/{serviceName}/allowedDestinationIp"
+    },
+    {
       "description": "changeIp operations",
       "operations": [
         {
@@ -415,14 +286,14 @@ export const schema: Schema = {
       "path": "/license/plesk/{serviceName}/changeIp"
     },
     {
-      "description": "allowedDestinationIp operations",
+      "description": "licenses Todos",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Returns an array of ips where the license can be moved to",
+          "description": "Get this object properties",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -433,14 +304,66 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "This Task id",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "ipBlock[]",
-          "responseType": "ipBlock[]"
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
         }
       ],
-      "path": "/license/plesk/{serviceName}/allowedDestinationIp"
+      "path": "/license/plesk/{serviceName}/tasks/{taskId}"
+    },
+    {
+      "description": "List the license.Task objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "tasks linked to this license",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.ActionType",
+              "description": "Filter the value of action property (=)",
+              "fullType": "license.ActionType",
+              "name": "action",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.TaskStateEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "license.TaskStateEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/license/plesk/{serviceName}/tasks"
     },
     {
       "description": "Confirm termination of your service",
@@ -503,6 +426,64 @@ export const schema: Schema = {
       "path": "/license/plesk/{serviceName}/confirmTermination"
     },
     {
+      "description": "Your Plesk license",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.plesk.Plesk",
+          "responseType": "license.plesk.Plesk"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.plesk.Plesk",
+              "description": "New object properties",
+              "fullType": "license.plesk.Plesk",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/license/plesk/{serviceName}"
+    },
+    {
       "description": "Get the orderable Plesk versions and their associated compatibilities",
       "operations": [
         {
@@ -529,6 +510,25 @@ export const schema: Schema = {
         }
       ],
       "path": "/license/plesk/orderableVersions"
+    },
+    {
+      "description": "Operations about the LICENSE service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/license/plesk"
     }
   ],
   "basePath": "https://ca.api.soyoustart.com/1.0",

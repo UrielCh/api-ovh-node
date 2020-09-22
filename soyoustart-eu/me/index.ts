@@ -464,20 +464,6 @@ export namespace billing {
         url: string;
     }
     /**
-     * Information about a Bill entry
-     * interface fullName: billing.RefundDetail.RefundDetail
-     */
-    export interface RefundDetail {
-        description: string;
-        domain: string;
-        quantity: string;
-        reference: string;
-        refundDetailId: string;
-        refundId: string;
-        totalPrice: orderPrice;
-        unitPrice: orderPrice;
-    }
-    /**
      * Reusable payment mean type
      * type fullname: billing.ReusablePaymentMeanEnum
      */
@@ -553,82 +539,6 @@ export namespace billing {
         totalPrice: orderPrice;
         unitPrice: orderPrice;
         withdrawalDetailId: string;
-    }
-    export namespace credit {
-        /**
-         * Credit balance
-         * interface fullName: billing.credit.Balance.Balance
-         */
-        export interface Balance {
-            amount: orderPrice;
-            balanceDetails: billing.credit.balance.BalanceDetail[];
-            balanceName: string;
-            booked: billing.credit.balance.BookedMovement[];
-            creationDate: string;
-            expiring: billing.credit.balance.ExpiringMovement[];
-            expiringSummary: billing.credit.balance.ExpiringMovement[];
-            lastUpdate: string;
-            type: billing.credit.balance.Type;
-        }
-        export namespace balance {
-            /**
-             * Part of a balance
-             * interface fullName: billing.credit.balance.BalanceDetail.BalanceDetail
-             */
-            export interface BalanceDetail {
-                amount: orderPrice;
-                serviceId?: number;
-            }
-            /**
-             * Movement already booked on orders
-             * interface fullName: billing.credit.balance.BookedMovement.BookedMovement
-             */
-            export interface BookedMovement {
-                amount: orderPrice;
-                orderId: number;
-            }
-            /**
-             * Movement expiring soon
-             * interface fullName: billing.credit.balance.ExpiringMovement.ExpiringMovement
-             */
-            export interface ExpiringMovement {
-                amount: orderPrice;
-                creationDate: string;
-                expirationDate: string;
-                lastUpdate: string;
-                sourceObject: billing.credit.balance.movement.SubObject;
-            }
-            /**
-             * Credit balance
-             * interface fullName: billing.credit.balance.Movement.Movement
-             */
-            export interface Movement {
-                amount: orderPrice;
-                balanceName: string;
-                creationDate: string;
-                expirationDate?: string;
-                lastUpdate: string;
-                movementId: number;
-                orderId?: number;
-                sourceObject: billing.credit.balance.movement.SubObject;
-                type: string;
-            }
-            /**
-             * Balance type
-             * type fullname: billing.credit.balance.Type
-             */
-            export type Type = "PREPAID_ACCOUNT" | "VOUCHER" | "DEPOSIT" | "BONUS"
-            export namespace movement {
-                /**
-                 * Movement sub object
-                 * interface fullName: billing.credit.balance.movement.SubObject.SubObject
-                 */
-                export interface SubObject {
-                    id?: string;
-                    name?: string;
-                }
-            }
-        }
     }
     export namespace fidelityAccount {
         /**
@@ -1167,17 +1077,6 @@ export namespace http {
      */
     export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
-export namespace insight {
-    /**
-     * Insight access token
-     * interface fullName: insight.Access.Access
-     */
-    export interface Access {
-        access: string;
-        createdAt: string;
-        expireAt: string;
-    }
-}
 export namespace me {
     /**
      * Country Migration
@@ -1239,56 +1138,6 @@ export namespace me {
         export interface Decision {
             timestamp: string;
             value: boolean;
-        }
-    }
-    export namespace consumption {
-        /**
-         * Price with currency and amount in micro-cents
-         * interface fullName: me.consumption.Price.Price
-         */
-        export interface Price {
-            currencyCode: order.CurrencyCodeEnum;
-            text: string;
-            value: number;
-            valueInUcents: number;
-        }
-        /**
-         * List of consumptions recorded in a range
-         * interface fullName: me.consumption.Transaction.Transaction
-         */
-        export interface Transaction {
-            beginDate: string;
-            creationDate?: string;
-            elements: me.consumption.transaction.Element[];
-            endDate?: string;
-            id?: number;
-            lastUpdate?: string;
-            price: me.consumption.Price;
-            serviceId: number;
-        }
-        export namespace transaction {
-            /**
-             * Element of consumption for resource
-             * interface fullName: me.consumption.transaction.Element.Element
-             */
-            export interface Element {
-                details: me.consumption.transaction.Element.Detail[];
-                planCode: string;
-                planFamily: string;
-                price: me.consumption.Price;
-                quantity: number;
-            }
-            export namespace Element {
-                /**
-                 * Element of consumption for resource
-                 * interface fullName: me.consumption.transaction.Element.Detail.Detail
-                 */
-                export interface Detail {
-                    price: me.consumption.Price;
-                    quantity: number;
-                    unique_id?: string;
-                }
-            }
         }
     }
     export namespace migration {
@@ -1489,15 +1338,6 @@ export namespace nichandle {
             lastUpdate: string;
             ssoServiceUrl: string;
         }
-    }
-    /**
-     * Internal customer billing capacities for customer control panel
-     * interface fullName: nichandle.BillingCapacities.BillingCapacities
-     */
-    export interface BillingCapacities {
-        canUseDebtSystem: boolean;
-        canUsePostalMailForInvoices: boolean;
-        requiredPaymentMethod: nichandle.RequiredPaymentMethodEnum;
     }
     /**
      * Countries a nichandle can choose
@@ -1701,11 +1541,6 @@ export namespace nichandle {
      */
     export type OvhSubsidiaryEnum = "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "SN" | "TN"
     /**
-     * Indicates the mandatory nature of having a valid payment method
-     * type fullname: nichandle.RequiredPaymentMethodEnum
-     */
-    export type RequiredPaymentMethodEnum = "mandatoryForAutorenew" | "mandatoryForPostpaid" | "notMandatory"
-    /**
      * Permission given on the account
      * type fullname: nichandle.RoleEnum
      */
@@ -1758,16 +1593,6 @@ export namespace nichandle {
      * type fullname: nichandle.UserStatus
      */
     export type UserStatus = "OK" | "DISABLED" | "PASSWORD_CHANGE_REQUIRED"
-    /**
-     * VIP Status by Universe
-     * interface fullName: nichandle.VipStatus.VipStatus
-     */
-    export interface VipStatus {
-        cloud: boolean;
-        dedicated: boolean;
-        telecom: boolean;
-        web: boolean;
-    }
     /**
      * Voucher Status and Information
      * interface fullName: nichandle.VoucherStatus.VoucherStatus
@@ -2908,43 +2733,6 @@ export interface Me {
             }
         };
     }
-    consumption: {
-        usage: {
-            current: {
-                /**
-                 * Get on-going consumptions for all services
-                 * GET /me/consumption/usage/current
-                 */
-                $get(): Promise<me.consumption.Transaction[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-            forecast: {
-                /**
-                 * Get forecasted consumptions for all services
-                 * GET /me/consumption/usage/forecast
-                 */
-                $get(): Promise<me.consumption.Transaction[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-            history: {
-                /**
-                 * Get list of transactions between two dates
-                 * GET /me/consumption/usage/history
-                 */
-                $get(params: { beginDate: string, endDate: string }): Promise<me.consumption.Transaction[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-        }
-    }
     contact: {
         /**
          * Retrieve all contact that you created
@@ -2987,63 +2775,6 @@ export interface Me {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
-    }
-    credit: {
-        balance: {
-            /**
-             * Retrieve credit balance names
-             * GET /me/credit/balance
-             */
-            $get(params?: { type?: billing.credit.balance.Type }): Promise<string[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            $(balanceName: string): {
-                /**
-                 * Retrieve a credit balance
-                 * GET /me/credit/balance/{balanceName}
-                 */
-                $get(): Promise<billing.credit.Balance>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                movement: {
-                    /**
-                     * Retrieve movements for a specific balance
-                     * GET /me/credit/balance/{balanceName}/movement
-                     */
-                    $get(): Promise<number[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(movementId: number): {
-                        /**
-                         * Retrieve a specific movement for a credit balance
-                         * GET /me/credit/balance/{balanceName}/movement/{movementId}
-                         */
-                        $get(): Promise<billing.credit.balance.Movement>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-            };
-        }
-        code: {
-            /**
-             * Validate a code to generate associated credit movement
-             * POST /me/credit/code
-             */
-            $post(params: { inputCode: string, serviceId?: number }): Promise<billing.credit.balance.Movement>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-        }
     }
     debtAccount: {
         /**
@@ -3537,17 +3268,6 @@ export interface Me {
                 }
             };
         }
-    }
-    insight: {
-        /**
-         * Get your insight access token
-         * GET /me/insight
-         */
-        $get(): Promise<insight.Access>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     installationTemplate: {
         /**
@@ -4542,15 +4262,6 @@ export interface Me {
         }
     }
     refund: {
-        /**
-         * List of all the refunds the logged account has
-         * GET /me/refund
-         */
-        $get(params?: { date_from?: string, date_to?: string, orderId?: number }): Promise<string[]>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         export: {
             /**
              * Exports a bundle of refunds
@@ -4562,50 +4273,6 @@ export interface Me {
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
-        $(refundId: string): {
-            /**
-             * Get this object properties
-             * GET /me/refund/{refundId}
-             */
-            $get(): Promise<billing.Refund>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            details: {
-                /**
-                 * Give access to all entries of the refund
-                 * GET /me/refund/{refundId}/details
-                 */
-                $get(): Promise<string[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                $(refundDetailId: string): {
-                    /**
-                     * Get this object properties
-                     * GET /me/refund/{refundId}/details/{refundDetailId}
-                     */
-                    $get(): Promise<billing.RefundDetail>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                };
-            }
-            payment: {
-                /**
-                 * Get this object properties
-                 * GET /me/refund/{refundId}/payment
-                 */
-                $get(): Promise<billing.Payment>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-        };
     }
     sla: {
         /**
@@ -5023,17 +4690,6 @@ export interface Me {
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
-    }
-    vipStatus: {
-        /**
-         * VIP Status of this account
-         * GET /me/vipStatus
-         */
-        $get(): Promise<nichandle.VipStatus>;
-        /**
-         * Controle cache
-         */
-        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     voucher: {
         checkValidity: {

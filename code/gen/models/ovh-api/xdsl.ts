@@ -1991,6 +1991,32 @@ export const schema: Schema = {
       "path": "/xdsl/{serviceName}/modem"
     },
     {
+      "description": "availableACSBackend operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available ACS backend for this modem",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your XDSL offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/xdsl/{serviceName}/modem/availableACSBackend"
+    },
+    {
       "description": "availableWLANChannel operations",
       "operations": [
         {
@@ -6936,6 +6962,22 @@ export const schema: Schema = {
       "id": "Modem",
       "namespace": "xdsl",
       "properties": {
+        "acsBackend": {
+          "canBeNull": false,
+          "description": "ACS backend used by the modem",
+          "fullType": "xdsl.xdslModemConfig.ACSBackendEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "xdsl.xdslModemConfig.ACSBackendEnum"
+        },
+        "acsVersion": {
+          "canBeNull": true,
+          "description": "Version of ACS API used",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "brandName": {
           "canBeNull": false,
           "fullType": "string",
@@ -7028,6 +7070,12 @@ export const schema: Schema = {
       "namespace": "xdsl",
       "properties": {
         "canBeManagedByOvh": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "canChangeACS": {
           "canBeNull": false,
           "readOnly": false,
           "required": false,
@@ -10280,6 +10328,18 @@ export const schema: Schema = {
           "type": "long"
         }
       }
+    },
+    "xdsl.xdslModemConfig.ACSBackendEnum": {
+      "description": "ACS backend used by the modem",
+      "enum": [
+        "beta",
+        "dev",
+        "legacy",
+        "stable"
+      ],
+      "enumType": "string",
+      "id": "ACSBackendEnum",
+      "namespace": "xdsl.xdslModemConfig"
     },
     "xdsl.xdslModemConfig.AddressingTypeEnum": {
       "description": "How the modem gets its LAN IP Address",

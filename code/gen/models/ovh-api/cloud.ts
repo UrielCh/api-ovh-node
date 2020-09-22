@@ -456,6 +456,32 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/backend"
     },
     {
+      "description": "List Serving Engine Features",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List Serving Engine Features",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.serving.Features"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/capabilities/serving/feature"
+    },
+    {
       "description": "List Serving Engine available flavor",
       "operations": [
         {
@@ -3607,8 +3633,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "List all available regions",
           "httpMethod": "GET",
@@ -3633,8 +3662,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "Get connection information from a region",
           "httpMethod": "GET",
@@ -3667,8 +3699,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "List all stream for a tenant",
           "httpMethod": "GET",
@@ -3687,8 +3722,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "Create a stream",
           "httpMethod": "POST",
@@ -3720,8 +3758,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "Delete a stream",
           "httpMethod": "DELETE",
@@ -3748,8 +3789,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "Get a stream",
           "httpMethod": "GET",
@@ -3776,8 +3820,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "Update a stream",
           "httpMethod": "PUT",
@@ -3817,8 +3864,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "Retrieve statistics of the stream",
           "httpMethod": "GET",
@@ -3851,8 +3901,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "List all subscriptions for a stream",
           "httpMethod": "GET",
@@ -3879,8 +3932,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "Create a new subscription",
           "httpMethod": "POST",
@@ -3920,8 +3976,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "Delete a subscription",
           "httpMethod": "DELETE",
@@ -3956,8 +4015,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "Get a subscription",
           "httpMethod": "GET",
@@ -3998,8 +4060,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "Reset a cursor",
           "httpMethod": "POST",
@@ -4040,8 +4105,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "Retrieve statistics of the subscription",
           "httpMethod": "GET",
@@ -4082,8 +4150,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "List all tokens for a stream",
           "httpMethod": "GET",
@@ -4110,8 +4181,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "Create a token",
           "httpMethod": "POST",
@@ -4151,8 +4225,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "Delete a token",
           "httpMethod": "DELETE",
@@ -4187,8 +4264,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-09-15T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project",
+            "value": "DEPRECATED"
           },
           "description": "Get token",
           "httpMethod": "GET",
@@ -10154,6 +10234,21 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.ProjectKubeIpRestrictionUpsert": {
+      "description": "Missing description",
+      "id": "ProjectKubeIpRestrictionUpsert",
+      "namespace": "cloud",
+      "properties": {
+        "ips": {
+          "canBeNull": true,
+          "description": "List of ips to add to the cluster api-server restrictions (format with /subnet available)",
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
+        }
+      }
+    },
     "cloud.ProjectKubeNodeCreation": {
       "description": "Missing description",
       "id": "ProjectKubeNodeCreation",
@@ -15931,6 +16026,21 @@ export const schema: Schema = {
       "id": "BackendIdEnum",
       "namespace": "cloud.project.ai.serving"
     },
+    "cloud.project.ai.serving.Features": {
+      "description": "Features of Serving Engine",
+      "id": "Features",
+      "namespace": "cloud.project.ai.serving",
+      "properties": {
+        "chooseBackend": {
+          "canBeNull": false,
+          "description": "Capability to choose backend",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
     "cloud.project.ai.serving.Flavor": {
       "description": "Compute Flavor for the Serving Engine",
       "id": "Flavor",
@@ -16645,8 +16755,8 @@ export const schema: Schema = {
           "type": "string"
         },
         "name": {
-          "canBeNull": false,
-          "description": "Public Cloud Storage container Name attached",
+          "canBeNull": true,
+          "description": "Data name",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -16814,6 +16924,29 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "boolean"
+        }
+      }
+    },
+    "cloud.project.ai.training.Gpu": {
+      "description": "Training Platform Gpu Object",
+      "id": "Gpu",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "maxGpus": {
+          "canBeNull": false,
+          "description": "Maximum gpu available in the region",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "The GPU Type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -17159,14 +17292,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
-        },
-        "maxGpu": {
-          "canBeNull": false,
-          "description": "Max GPU Available in the region",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
         },
         "version": {
           "canBeNull": false,

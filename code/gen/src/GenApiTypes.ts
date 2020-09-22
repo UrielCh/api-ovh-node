@@ -10,7 +10,7 @@ export const INDEX_BY_NAME = false;
 export interface OvhParams {
     endpoint?: string;
     host?: string;
-    port?: string;
+    port?: number;
     apis?: string[];
 }
 
@@ -93,7 +93,7 @@ export default class GenApiTypes {
     alias: { [key: string]: string } = {};
     host: string;
     port: number;
-
+    schemaFile?: string;
     constructor(private namespace: string, params?: OvhParams) {
         params = params || {};
         // Custom configuration of the API endpoint
@@ -140,6 +140,7 @@ export default class GenApiTypes {
             await fse.ensureDir(destination);
             const filename = apiPath.substr(1).replace(/\//g, '-').replace('.json', '.ts');
             destination = path.join(destination, filename);
+            this.schemaFile = destination;
         }
 
         let schema: Schema = await loadJson({ // https://eu.api.ovh.com/1.0/
@@ -156,42 +157,55 @@ export default class GenApiTypes {
                         return sorted
                     }, {}) :
                     value;
+            const srcUrl = `https://${this.host}:${this.port}${this.basePath}${apiPath}`;
             const importHeader = `import {Schema} from '../../src/schema';${EOL}${EOL}`;
-            const commentHeader = `// imported from https://${this.host}:${this.port}${this.basePath}${apiPath}${EOL}${EOL}`;
+            const commentHeader = `// imported from ${srcUrl}${EOL}${EOL}`;
             const exportHeader = `export const schema: Schema = `;
 
             // sort parameters: body, then path, then query
             // then sort by name
-            schema.apis.forEach(api => {
-                api.operations.forEach(operation => {
-                    operation.parameters.sort((a, b) => {
-                        const t1 = a.paramType.localeCompare(b.paramType);
-                        if (t1 != 0)
-                            return t1;
-                        const an = a.name || '';
-                        const bn = b.name || '';
-                        return an.localeCompare(bn);
-                    });
+            if (!schema.apis) {
+                console.error(`missing APIS in ${srcUrl}`)
+            } else {
+                schema.apis.forEach(api => {
+                    if (!api.operations) {
+                        console.error(`missing APIS in Operartions in ${api.path} in ${srcUrl}`)
+                        return;
+                    }
+                    api.operations.forEach(operation => {
+                        if (!operation.parameters) {
+                            console.error(`missing APIS in Operartions parameters in ${api.path} / ${operation.httpMethod} in ${srcUrl}`)
+                            return;
+                        }
+                        operation.parameters.sort((a, b) => {
+                            const t1 = a.paramType.localeCompare(b.paramType);
+                            if (t1 != 0)
+                                return t1;
+                            const an = a.name || '';
+                            const bn = b.name || '';
+                            return an.localeCompare(bn);
+                        });
+                    })
                 })
-            })
-
+            }
             const json = JSON.stringify(schema, replacer, 2);
             await fse.writeFile(destination, `${importHeader}${commentHeader}${exportHeader}${json}`, { encoding: 'UTF8' });
-        }
 
-        // Entry Points
-        schema.apis.map((api: API) => {
-            api.operations.forEach(op => {
-                op.responseType = filterReservedKw(op.responseType);
-                op.responseFullType = filterReservedKw(op.responseFullType || '');
-                op.parameters.forEach(p => {
-                    p.dataType = filterReservedKw(p.dataType);
-                    p.fullType = filterReservedKw(p.fullType);
-                })
-            })
-            let apiPath = api.path.split('/');
-            this.addApi(apiPath, api, this.apis);
-        });
+            // Entry Points
+            if (schema.apis)
+                schema.apis.map((api: API) => {
+                    api.operations.forEach(op => {
+                        op.responseType = filterReservedKw(op.responseType);
+                        op.responseFullType = filterReservedKw(op.responseFullType || '');
+                        op.parameters.forEach(p => {
+                            p.dataType = filterReservedKw(p.dataType);
+                            p.fullType = filterReservedKw(p.fullType);
+                        })
+                    })
+                    let apiPath = api.path.split('/');
+                    this.addApi(apiPath, api, this.apis);
+                });
+        }
         // Model
         if (schema.models)
             for (const aliasName of Object.keys(schema.models)) {

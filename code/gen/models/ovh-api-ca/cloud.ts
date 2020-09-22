@@ -456,6 +456,32 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/backend"
     },
     {
+      "description": "List Serving Engine Features",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List Serving Engine Features",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.serving.Features"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/capabilities/serving/feature"
+    },
+    {
       "description": "List Serving Engine available flavor",
       "operations": [
         {
@@ -9472,6 +9498,21 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.ProjectKubeIpRestrictionUpsert": {
+      "description": "Missing description",
+      "id": "ProjectKubeIpRestrictionUpsert",
+      "namespace": "cloud",
+      "properties": {
+        "ips": {
+          "canBeNull": true,
+          "description": "List of ips to add to the cluster api-server restrictions (format with /subnet available)",
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
+        }
+      }
+    },
     "cloud.ProjectKubeNodeCreation": {
       "description": "Missing description",
       "id": "ProjectKubeNodeCreation",
@@ -15249,6 +15290,21 @@ export const schema: Schema = {
       "id": "BackendIdEnum",
       "namespace": "cloud.project.ai.serving"
     },
+    "cloud.project.ai.serving.Features": {
+      "description": "Features of Serving Engine",
+      "id": "Features",
+      "namespace": "cloud.project.ai.serving",
+      "properties": {
+        "chooseBackend": {
+          "canBeNull": false,
+          "description": "Capability to choose backend",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
     "cloud.project.ai.serving.Flavor": {
       "description": "Compute Flavor for the Serving Engine",
       "id": "Flavor",
@@ -15963,8 +16019,8 @@ export const schema: Schema = {
           "type": "string"
         },
         "name": {
-          "canBeNull": false,
-          "description": "Public Cloud Storage container Name attached",
+          "canBeNull": true,
+          "description": "Data name",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -16132,6 +16188,29 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "boolean"
+        }
+      }
+    },
+    "cloud.project.ai.training.Gpu": {
+      "description": "Training Platform Gpu Object",
+      "id": "Gpu",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "maxGpus": {
+          "canBeNull": false,
+          "description": "Maximum gpu available in the region",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "The GPU Type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -16477,14 +16556,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
-        },
-        "maxGpu": {
-          "canBeNull": false,
-          "description": "Max GPU Available in the region",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
         },
         "version": {
           "canBeNull": false,

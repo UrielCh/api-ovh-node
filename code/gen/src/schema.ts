@@ -4,7 +4,7 @@
  * Original OVH Model
  */
 export interface Schema {
-    apis:         API[];
+    apis?:         API[];
     basePath:     string;
     // models is missing from ovh-kimsufi/order
     models?:       {[key:string]: ModelsProp};
@@ -17,6 +17,42 @@ export interface API {
     operations:  Operation[];
     description: string;
 }
+/**
+ * added on 09/22/2020
+ */
+export const OvhErrors = [
+    "Server::NoContent::PartnerError",
+    "Client::NotFound::PartnerNotFound",
+    "Server::InternalServerError::PartnerError",
+    "Server::InternalServerError::MissingParameterInRequestContext",
+    "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+    "Server::InternalServerError::MarshalingError",
+    "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+    "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+    "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+    "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+    "Client::BadRequest::UnprocessableEntity",
+    "Client::Forbidden::LoadBalancerIsFrozen",
+    "Client::Forbidden::NotWhiteListed",
+    "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+    "Server::InternalServerError::CouldNotCreateLoadBalancer",
+    "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+    "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+    "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+    "Server::InternalServerError::CouldNotFindLoadBalancer",
+    "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+    "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+    "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+    "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+    "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+    "Server::InternalServerError::CouldNotFindRegion",
+    "Server::InternalServerError::CouldNotListLoadBalancers",
+    "Server::InternalServerError::CouldNotListRegions",
+    "Server::InternalServerError::CouldNotParseRequest",
+    "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+] as const;
+
+export type IOvhErrors = typeof OvhErrors[number];
 
 export interface Operation {
     apiStatus:        APIStatus;
@@ -26,8 +62,15 @@ export interface Operation {
     responseType:     string;
     responseFullType?: string;
     noAuthentication: boolean;
+    /**
+     * operation name
+     */
     operationId?:     string;
     description:      string;
+    /**
+     * added on 09/22/2020
+     */
+    errors?:          IOvhErrors[];
 }
 
 export interface APIStatus {
@@ -45,7 +88,7 @@ export type Value = "ALPHA" | "BETA" | "DEPRECATED" | "PRODUCTION";
 export interface Parameter {
     fullType:    string;
     description: null | string;
-    name?:        null | string;
+    name?:       null | string;
     paramType:   "body" | "path" | "query";
     dataType:    string;
     required:    boolean;
@@ -56,17 +99,21 @@ export interface ModelsProp {
     description?:string;
     namespace:   string;
     enum?:       string[];
-    enumType?:   "long" | "string";
-    generics?:    string[];
-    properties?:  {[key:string]: FieldProp};
+    /**
+     * extra type added on 09/22/2020
+     */
+    enumType?:   "long" | "string" | 'coreTypes.CountryEnum' | 'coreTypes.TimeZoneEnum';
+    errorValue?: "IDoNotWishToDiscloseThisInformation";
+    generics?:   string[];
+    properties?: {[key:string]: FieldProp};
 }
 
 export interface FieldProp  {
     canBeNull:    boolean;
     description?: string | null;
     fullType?:    string;
-    readOnly?:     boolean;
-    required?:     boolean;
+    readOnly?:    boolean;
+    required?:    boolean;
     type:         string;
 }
 

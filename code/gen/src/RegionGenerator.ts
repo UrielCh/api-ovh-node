@@ -24,7 +24,7 @@ export class RegionGenerator {
         if (this._apis)
             return this._apis;
         const { host, port } = this.endpoint;
-        let genApiTypes = new GenApiTypes(this.endpoint.namespace, { host: host, port: port.toString() });
+        let genApiTypes = new GenApiTypes(this.endpoint.namespace, { host, port });
         // get all available APIs for this region
         this._apis = await genApiTypes.listSchemas()
         return this._apis;
@@ -82,11 +82,11 @@ export class RegionGenerator {
         const concurrency = 1;
         console.log(`Found ${allApi.length} Api available on ${host}`);
         await Bluebird.map(apis, async apiPath => {
-            let cg = new CodeGenerator(this.endpoint.namespace, { host: host, port: port.toString() }, apiPath);
+            let cg = new CodeGenerator(this.endpoint.namespace, { host, port }, apiPath);
             try {
                 await cg.loadSchema();
             } catch (e) {
-                console.error(`${host} / ${apiPath} faild`, e);
+                console.error(`${host}${apiPath}.json failed check: ${cg.gen.schemaFile}`, e);
                 try {
                     await cg.loadSchema();
                 } catch (e) {
@@ -94,7 +94,7 @@ export class RegionGenerator {
                 return;
             }
             // ignore empry API
-            if (!cg.schema || cg.schema.apis.length == 0)
+            if (!cg.schema || !cg.schema.apis || !cg.schema.apis)
                 return;
             let flat = pathToApiName(apiPath);
             let dir = this.getPackageDir(flat);

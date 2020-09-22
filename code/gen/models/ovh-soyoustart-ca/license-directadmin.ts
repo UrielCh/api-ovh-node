@@ -34,62 +34,23 @@ export const schema: Schema = {
       "path": "/license/directadmin/orderableVersions"
     },
     {
-      "description": "Details about a Service",
+      "description": "Operations about the LICENSE service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "List available services",
           "httpMethod": "GET",
           "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your DirectAdmin license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
+          "parameters": [],
           "resellerOnly": false,
-          "responseFullType": "services.Service",
-          "responseType": "services.Service"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "services.Service",
-              "description": "New object properties",
-              "fullType": "services.Service",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your DirectAdmin license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
+          "responseFullType": "string[]",
+          "responseType": "string[]"
         }
       ],
-      "path": "/license/directadmin/{serviceName}/serviceInfos"
+      "path": "/license/directadmin"
     },
     {
       "description": "Terminate your service",
@@ -118,260 +79,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/license/directadmin/{serviceName}/terminate"
-    },
-    {
-      "description": "canLicenseBeMovedTo operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Will tell if the ip can accept the license",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your DirectAdmin license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "The Ip on which you want to move this license",
-              "fullType": "ipv4",
-              "name": "destinationIp",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "license.ChangeIpStatus",
-          "responseType": "license.ChangeIpStatus"
-        }
-      ],
-      "path": "/license/directadmin/{serviceName}/canLicenseBeMovedTo"
-    },
-    {
-      "description": "Confirm termination of your service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Confirm termination of your service",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "service.TerminationFutureUseEnum",
-              "description": "What next after your termination request",
-              "fullType": "service.TerminationFutureUseEnum",
-              "name": "futureUse",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "service.TerminationReasonEnum",
-              "description": "Reason of your termination request",
-              "fullType": "service.TerminationReasonEnum",
-              "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
-              "fullType": "string",
-              "name": "token",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your DirectAdmin license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string",
-          "responseType": "string"
-        }
-      ],
-      "path": "/license/directadmin/{serviceName}/confirmTermination"
-    },
-    {
-      "description": "changeIp operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Move this license to another Ip",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "The Ip on which you want to move this license",
-              "fullType": "ipv4",
-              "name": "destinationIp",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your DirectAdmin license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "license.Task",
-          "responseType": "license.Task"
-        }
-      ],
-      "path": "/license/directadmin/{serviceName}/changeIp"
-    },
-    {
-      "description": "allowedDestinationIp operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns an array of ips where the license can be moved to",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your DirectAdmin license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "ipBlock[]",
-          "responseType": "ipBlock[]"
-        }
-      ],
-      "path": "/license/directadmin/{serviceName}/allowedDestinationIp"
-    },
-    {
-      "description": "changeOs operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Change the Operating System for a license",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "license.DirectAdminOsEnum",
-              "description": "The operating system you want for this license",
-              "fullType": "license.DirectAdminOsEnum",
-              "name": "os",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your DirectAdmin license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "license.Task",
-          "responseType": "license.Task"
-        }
-      ],
-      "path": "/license/directadmin/{serviceName}/changeOs"
-    },
-    {
-      "description": "Your DirectAdmin license",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your DirectAdmin license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "license.directadmin.DirectAdmin",
-          "responseType": "license.directadmin.DirectAdmin"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "license.directadmin.DirectAdmin",
-              "description": "New object properties",
-              "fullType": "license.directadmin.DirectAdmin",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your DirectAdmin license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        }
-      ],
-      "path": "/license/directadmin/{serviceName}"
     },
     {
       "description": "List the license.Task objects",
@@ -454,23 +161,316 @@ export const schema: Schema = {
       "path": "/license/directadmin/{serviceName}/tasks/{taskId}"
     },
     {
-      "description": "Operations about the LICENSE service",
+      "description": "Confirm termination of your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
-          "httpMethod": "GET",
+          "description": "Confirm termination of your service",
+          "httpMethod": "POST",
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "service.TerminationFutureUseEnum",
+              "description": "What next after your termination request",
+              "fullType": "service.TerminationFutureUseEnum",
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "service.TerminationReasonEnum",
+              "description": "Reason of your termination request",
+              "fullType": "service.TerminationReasonEnum",
+              "name": "reason",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
+              "name": "token",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your DirectAdmin license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
+          "responseFullType": "string",
+          "responseType": "string"
         }
       ],
-      "path": "/license/directadmin"
+      "path": "/license/directadmin/{serviceName}/confirmTermination"
+    },
+    {
+      "description": "canLicenseBeMovedTo operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Will tell if the ip can accept the license",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your DirectAdmin license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "The Ip on which you want to move this license",
+              "fullType": "ipv4",
+              "name": "destinationIp",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.ChangeIpStatus",
+          "responseType": "license.ChangeIpStatus"
+        }
+      ],
+      "path": "/license/directadmin/{serviceName}/canLicenseBeMovedTo"
+    },
+    {
+      "description": "allowedDestinationIp operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns an array of ips where the license can be moved to",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your DirectAdmin license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "ipBlock[]",
+          "responseType": "ipBlock[]"
+        }
+      ],
+      "path": "/license/directadmin/{serviceName}/allowedDestinationIp"
+    },
+    {
+      "description": "Your DirectAdmin license",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your DirectAdmin license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.directadmin.DirectAdmin",
+          "responseType": "license.directadmin.DirectAdmin"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.directadmin.DirectAdmin",
+              "description": "New object properties",
+              "fullType": "license.directadmin.DirectAdmin",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your DirectAdmin license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/license/directadmin/{serviceName}"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your DirectAdmin license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "services.Service",
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your DirectAdmin license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
+        }
+      ],
+      "path": "/license/directadmin/{serviceName}/serviceInfos"
+    },
+    {
+      "description": "changeIp operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Move this license to another Ip",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "The Ip on which you want to move this license",
+              "fullType": "ipv4",
+              "name": "destinationIp",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your DirectAdmin license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
+        }
+      ],
+      "path": "/license/directadmin/{serviceName}/changeIp"
+    },
+    {
+      "description": "changeOs operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change the Operating System for a license",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.DirectAdminOsEnum",
+              "description": "The operating system you want for this license",
+              "fullType": "license.DirectAdminOsEnum",
+              "name": "os",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your DirectAdmin license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
+        }
+      ],
+      "path": "/license/directadmin/{serviceName}/changeOs"
     }
   ],
   "basePath": "https://ca.api.soyoustart.com/1.0",

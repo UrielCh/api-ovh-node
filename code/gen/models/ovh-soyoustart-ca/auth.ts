@@ -6,23 +6,42 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Details about the current authentication",
+      "description": "Get the current credential details",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Details about the current authentication",
+          "description": "Get the current credential details",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
           "resellerOnly": false,
-          "responseFullType": "auth.Details",
-          "responseType": "auth.Details"
+          "responseFullType": "api.Credential",
+          "responseType": "api.Credential"
         }
       ],
-      "path": "/auth/details"
+      "path": "/auth/currentCredential"
+    },
+    {
+      "description": "Get the time of OVH servers",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the current time of the OVH servers, since UNIX epoch",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "long",
+          "responseType": "long"
+        }
+      ],
+      "path": "/auth/time"
     },
     {
       "description": "Operations with credentials",
@@ -80,42 +99,23 @@ export const schema: Schema = {
       "path": "/auth/logout"
     },
     {
-      "description": "Get the time of OVH servers",
+      "description": "Details about the current authentication",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get the current time of the OVH servers, since UNIX epoch",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long",
-          "responseType": "long"
-        }
-      ],
-      "path": "/auth/time"
-    },
-    {
-      "description": "Get the current credential details",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the current credential details",
+          "description": "Details about the current authentication",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
           "resellerOnly": false,
-          "responseFullType": "api.Credential",
-          "responseType": "api.Credential"
+          "responseFullType": "auth.Details",
+          "responseType": "auth.Details"
         }
       ],
-      "path": "/auth/currentCredential"
+      "path": "/auth/details"
     }
   ],
   "basePath": "https://ca.api.soyoustart.com/1.0",

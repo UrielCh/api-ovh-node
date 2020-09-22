@@ -4193,7 +4193,7 @@ export const schema: Schema = {
         },
         "ipv6": {
           "canBeNull": true,
-          "description": "The IPV6 associated to your IP load balancing",
+          "description": "The IPV6 associated to your IP load balancing. DEPRECATED",
           "fullType": "ipv6",
           "readOnly": true,
           "required": false,

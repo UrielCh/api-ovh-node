@@ -6,23 +6,62 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Operations about the LICENSE service",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
+          "description": "Get this object properties",
           "httpMethod": "GET",
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your SQL Server license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
+          "responseFullType": "services.Service",
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your SQL Server license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
         }
       ],
-      "path": "/license/sqlserver"
+      "path": "/license/sqlserver/{serviceName}/serviceInfos"
     },
     {
       "description": "Confirm termination of your service",
@@ -85,42 +124,6 @@ export const schema: Schema = {
       "path": "/license/sqlserver/{serviceName}/confirmTermination"
     },
     {
-      "description": "licenses Todos",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your SQL Server license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "This Task id",
-              "fullType": "long",
-              "name": "taskId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "license.Task",
-          "responseType": "license.Task"
-        }
-      ],
-      "path": "/license/sqlserver/{serviceName}/tasks/{taskId}"
-    },
-    {
       "description": "List the license.Task objects",
       "operations": [
         {
@@ -165,35 +168,7 @@ export const schema: Schema = {
       "path": "/license/sqlserver/{serviceName}/tasks"
     },
     {
-      "description": "Terminate your service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Terminate your service",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your SQL Server license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string",
-          "responseType": "string"
-        }
-      ],
-      "path": "/license/sqlserver/{serviceName}/terminate"
-    },
-    {
-      "description": "Details about a Service",
+      "description": "licenses Todos",
       "operations": [
         {
           "apiStatus": {
@@ -211,44 +186,22 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "services.Service",
-          "responseType": "services.Service"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "services.Service",
-              "description": "New object properties",
-              "fullType": "services.Service",
-              "name": null,
-              "paramType": "body",
-              "required": true
             },
             {
-              "dataType": "string",
-              "description": "The name of your SQL Server license",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "long",
+              "description": "This Task id",
+              "fullType": "long",
+              "name": "taskId",
               "paramType": "path",
               "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
         }
       ],
-      "path": "/license/sqlserver/{serviceName}/serviceInfos"
+      "path": "/license/sqlserver/{serviceName}/tasks/{taskId}"
     },
     {
       "description": "Your SQL Server license",
@@ -279,6 +232,34 @@ export const schema: Schema = {
       "path": "/license/sqlserver/{serviceName}"
     },
     {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Terminate your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your SQL Server license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string",
+          "responseType": "string"
+        }
+      ],
+      "path": "/license/sqlserver/{serviceName}/terminate"
+    },
+    {
       "description": "Get the orderable Sql Server versions",
       "operations": [
         {
@@ -305,6 +286,25 @@ export const schema: Schema = {
         }
       ],
       "path": "/license/sqlserver/orderableVersions"
+    },
+    {
+      "description": "Operations about the LICENSE service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/license/sqlserver"
     }
   ],
   "basePath": "https://ca.api.soyoustart.com/1.0",

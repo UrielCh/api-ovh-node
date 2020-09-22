@@ -756,56 +756,6 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/capabilities"
     },
     {
-      "description": "Change the contacts of this service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Launch a contact change procedure",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The contact to set as admin contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactAdmin",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The contact to set as billing contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The contact to set as tech contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/dedicatedCloud/{serviceName}/changeContact"
-    },
-    {
       "description": "changeProperties operations",
       "operations": [
         {

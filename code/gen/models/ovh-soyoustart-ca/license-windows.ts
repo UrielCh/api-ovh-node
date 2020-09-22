@@ -6,89 +6,94 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Operations about the LICENSE service",
+      "description": "licenses Todos",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/license/windows"
-    },
-    {
-      "description": "Get the orderable Windows versions",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the orderable Windows versions",
+          "description": "Get this object properties",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipv4",
-              "description": "Your license Ip",
-              "fullType": "ipv4",
-              "name": "ip",
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "This Task id",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
+        }
+      ],
+      "path": "/license/windows/{serviceName}/tasks/{taskId}"
+    },
+    {
+      "description": "List the license.Task objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "tasks linked to this license",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.ActionType",
+              "description": "Filter the value of action property (=)",
+              "fullType": "license.ActionType",
+              "name": "action",
               "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "license.WindowsOrderConfiguration[]",
-          "responseType": "license.WindowsOrderConfiguration[]"
-        }
-      ],
-      "path": "/license/windows/orderableVersions"
-    },
-    {
-      "description": "Terminate your service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Terminate your service",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
+              "required": false
+            },
             {
-              "dataType": "string",
-              "description": "The name of your Windows license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
+              "dataType": "license.TaskStateEnum",
+              "description": "Filter the value of status property (=)",
+              "fullType": "license.TaskStateEnum",
+              "name": "status",
+              "paramType": "query",
+              "required": false
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "string",
-          "responseType": "string"
+          "responseFullType": "long[]",
+          "responseType": "long[]"
         }
       ],
-      "path": "/license/windows/{serviceName}/terminate"
+      "path": "/license/windows/{serviceName}/tasks"
     },
     {
-      "description": "Details about a Service",
+      "description": "List the license.Option objects",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "options attached to this license",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -102,44 +107,14 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "services.Service",
-          "responseType": "services.Service"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "services.Service",
-              "description": "New object properties",
-              "fullType": "services.Service",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your Windows license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
+          "responseFullType": "license.OptionLabel[]",
+          "responseType": "license.OptionLabel[]"
         }
       ],
-      "path": "/license/windows/{serviceName}/serviceInfos"
+      "path": "/license/windows/{serviceName}/option"
     },
     {
-      "description": "Your Windows license",
+      "description": "Your License options",
       "operations": [
         {
           "apiStatus": {
@@ -151,33 +126,11 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The name of your Windows license",
-              "fullType": "string",
-              "name": "serviceName",
+              "dataType": "license.OptionLabel",
+              "description": "This option designation",
+              "fullType": "license.OptionLabel",
+              "name": "label",
               "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "license.windows.Windows",
-          "responseType": "license.windows.Windows"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "license.windows.Windows",
-              "description": "New object properties",
-              "fullType": "license.windows.Windows",
-              "name": null,
-              "paramType": "body",
               "required": true
             },
             {
@@ -190,11 +143,41 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
+          "responseFullType": "license.Option",
+          "responseType": "license.Option"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "release this Option",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.OptionLabel",
+              "description": "This option designation",
+              "fullType": "license.OptionLabel",
+              "name": "label",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.Task",
+          "responseType": "license.Task"
         }
       ],
-      "path": "/license/windows/{serviceName}"
+      "path": "/license/windows/{serviceName}/option/{label}"
     },
     {
       "description": "Confirm termination of your service",
@@ -301,7 +284,7 @@ export const schema: Schema = {
       "path": "/license/windows/{serviceName}/sqlServer"
     },
     {
-      "description": "Your License options",
+      "description": "Your Windows license",
       "operations": [
         {
           "apiStatus": {
@@ -313,14 +296,6 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "license.OptionLabel",
-              "description": "This option designation",
-              "fullType": "license.OptionLabel",
-              "name": "label",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "string",
               "description": "The name of your Windows license",
               "fullType": "string",
@@ -330,24 +305,24 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "license.Option",
-          "responseType": "license.Option"
+          "responseFullType": "license.windows.Windows",
+          "responseType": "license.windows.Windows"
         },
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "release this Option",
-          "httpMethod": "DELETE",
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "license.OptionLabel",
-              "description": "This option designation",
-              "fullType": "license.OptionLabel",
-              "name": "label",
-              "paramType": "path",
+              "dataType": "license.windows.Windows",
+              "description": "New object properties",
+              "fullType": "license.windows.Windows",
+              "name": null,
+              "paramType": "body",
               "required": true
             },
             {
@@ -360,42 +335,14 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "license.Task",
-          "responseType": "license.Task"
+          "responseFullType": "void",
+          "responseType": "void"
         }
       ],
-      "path": "/license/windows/{serviceName}/option/{label}"
+      "path": "/license/windows/{serviceName}"
     },
     {
-      "description": "List the license.Option objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "options attached to this license",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your Windows license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "license.OptionLabel[]",
-          "responseType": "license.OptionLabel[]"
-        }
-      ],
-      "path": "/license/windows/{serviceName}/option"
-    },
-    {
-      "description": "licenses Todos",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
@@ -413,33 +360,55 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "services.Service",
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "name": null,
+              "paramType": "body",
+              "required": true
             },
             {
-              "dataType": "long",
-              "description": "This Task id",
-              "fullType": "long",
-              "name": "taskId",
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "license.Task",
-          "responseType": "license.Task"
+          "responseFullType": "void",
+          "responseType": "void"
         }
       ],
-      "path": "/license/windows/{serviceName}/tasks/{taskId}"
+      "path": "/license/windows/{serviceName}/serviceInfos"
     },
     {
-      "description": "List the license.Task objects",
+      "description": "Terminate your service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "tasks linked to this license",
-          "httpMethod": "GET",
+          "description": "Terminate your service",
+          "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
@@ -449,30 +418,61 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
-            },
-            {
-              "dataType": "license.ActionType",
-              "description": "Filter the value of action property (=)",
-              "fullType": "license.ActionType",
-              "name": "action",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.TaskStateEnum",
-              "description": "Filter the value of status property (=)",
-              "fullType": "license.TaskStateEnum",
-              "name": "status",
-              "paramType": "query",
-              "required": false
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
+          "responseFullType": "string",
+          "responseType": "string"
         }
       ],
-      "path": "/license/windows/{serviceName}/tasks"
+      "path": "/license/windows/{serviceName}/terminate"
+    },
+    {
+      "description": "Operations about the LICENSE service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/license/windows"
+    },
+    {
+      "description": "Get the orderable Windows versions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the orderable Windows versions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Your license Ip",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "license.WindowsOrderConfiguration[]",
+          "responseType": "license.WindowsOrderConfiguration[]"
+        }
+      ],
+      "path": "/license/windows/orderableVersions"
     }
   ],
   "basePath": "https://ca.api.soyoustart.com/1.0",

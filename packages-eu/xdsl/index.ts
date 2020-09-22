@@ -601,6 +601,8 @@ export namespace xdsl {
      * interface fullName: xdsl.Modem.Modem
      */
     export interface Modem {
+        acsBackend: xdsl.xdslModemConfig.ACSBackendEnum;
+        acsVersion?: string;
         brandName: string;
         capabilities: xdsl.ModemCapabilities;
         dmzIP?: string;
@@ -619,6 +621,7 @@ export namespace xdsl {
      */
     export interface ModemCapabilities {
         canBeManagedByOvh: boolean;
+        canChangeACS: boolean;
         canChangeBridgeMode: boolean;
         canChangeDHCP: boolean;
         canChangeDMZ: boolean;
@@ -1451,6 +1454,11 @@ export namespace xdsl {
     }
     export namespace xdslModemConfig {
         /**
+         * ACS backend used by the modem
+         * type fullname: xdsl.xdslModemConfig.ACSBackendEnum
+         */
+        export type ACSBackendEnum = "beta" | "dev" | "legacy" | "stable"
+        /**
          * How the modem gets its LAN IP Address
          * type fullname: xdsl.xdslModemConfig.AddressingTypeEnum
          */
@@ -2163,11 +2171,22 @@ export interface Xdsl {
              * Alter this object properties
              * PUT /xdsl/{serviceName}/modem
              */
-            $put(params?: { brandName?: string, capabilities?: xdsl.ModemCapabilities, dmzIP?: string, easyFirewallLevel?: xdsl.xdslModemConfig.EasyFirewallLevelEnum, ipv6Support?: boolean, isBridged?: boolean, lastCwmpRequestDate?: string, macAddress?: string, managedByOvh?: boolean, model?: string, mtuSize?: xdsl.xdslModemConfig.MTUSizeEnum }): Promise<void>;
+            $put(params?: { acsBackend?: xdsl.xdslModemConfig.ACSBackendEnum, acsVersion?: string, brandName?: string, capabilities?: xdsl.ModemCapabilities, dmzIP?: string, easyFirewallLevel?: xdsl.xdslModemConfig.EasyFirewallLevelEnum, ipv6Support?: boolean, isBridged?: boolean, lastCwmpRequestDate?: string, macAddress?: string, managedByOvh?: boolean, model?: string, mtuSize?: xdsl.xdslModemConfig.MTUSizeEnum }): Promise<void>;
             /**
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            availableACSBackend: {
+                /**
+                 * List available ACS backend for this modem
+                 * GET /xdsl/{serviceName}/modem/availableACSBackend
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             availableWLANChannel: {
                 /**
                  * List available WLAN channel for this modem

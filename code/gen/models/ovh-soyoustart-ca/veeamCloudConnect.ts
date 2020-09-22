@@ -53,14 +53,14 @@ export const schema: Schema = {
       "path": "/veeamCloudConnect/{serviceName}/orderableUpgrade"
     },
     {
-      "description": "capabilities operations",
+      "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Show capabilities of your current offer",
+          "description": "Get this object properties",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -74,11 +74,177 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "veeamCloudConnect.offerCapabilities",
-          "responseType": "veeamCloudConnect.offerCapabilities"
+          "responseFullType": "services.Service",
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "name": null,
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "void",
+          "responseType": "void"
         }
       ],
-      "path": "/veeamCloudConnect/{serviceName}/capabilities"
+      "path": "/veeamCloudConnect/{serviceName}/serviceInfos"
+    },
+    {
+      "description": "Veeam Cloud Connect account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "veeamCloudConnect.Account",
+          "responseType": "veeamCloudConnect.Account"
+        }
+      ],
+      "path": "/veeamCloudConnect/{serviceName}"
+    },
+    {
+      "description": "Operation with the Cloud Tenant Account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": null,
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "veeamCloudConnect.Task",
+          "responseType": "veeamCloudConnect.Task"
+        }
+      ],
+      "path": "/veeamCloudConnect/{serviceName}/task/{taskId}"
+    },
+    {
+      "description": "List the veeamCloudConnect.Task objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Tasks associated with Cloud Tenant",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter the value of name property (like)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "veeamCloudConnect.TaskStateEnum",
+              "description": "Filter the value of state property (=)",
+              "fullType": "veeamCloudConnect.TaskStateEnum",
+              "name": "state",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "long[]",
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/veeamCloudConnect/{serviceName}/task"
+    },
+    {
+      "description": "resetPassword operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Reset your Cloud Tenant Password",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "veeamCloudConnect.Task",
+          "responseType": "veeamCloudConnect.Task"
+        }
+      ],
+      "path": "/veeamCloudConnect/{serviceName}/resetPassword"
     },
     {
       "description": "List the veeamCloudConnect.BackupRepository objects",
@@ -129,50 +295,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/veeamCloudConnect/{serviceName}/backupRepository"
-    },
-    {
-      "description": "upgradeQuota operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Change your quota",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "my new quota in GB",
-              "fullType": "long",
-              "name": "newQuota",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The inventory name of your backup repository",
-              "fullType": "string",
-              "name": "inventoryName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "veeamCloudConnect.Task[]",
-          "responseType": "veeamCloudConnect.Task[]"
-        }
-      ],
-      "path": "/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota"
     },
     {
       "description": "Veeam Backup Repository",
@@ -241,77 +363,35 @@ export const schema: Schema = {
       "path": "/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}"
     },
     {
-      "description": "Veeam Cloud Connect account",
+      "description": "upgradeQuota operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
+          "description": "Change your quota",
+          "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "veeamCloudConnect.Account",
-          "responseType": "veeamCloudConnect.Account"
-        }
-      ],
-      "path": "/veeamCloudConnect/{serviceName}"
-    },
-    {
-      "description": "Details about a Service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "services.Service",
-          "responseType": "services.Service"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "services.Service",
-              "description": "New object properties",
-              "fullType": "services.Service",
-              "name": null,
+              "dataType": "long",
+              "description": "my new quota in GB",
+              "fullType": "long",
+              "name": "newQuota",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
+              "description": "The inventory name of your backup repository",
+              "fullType": "string",
+              "name": "inventoryName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
               "description": "Domain of the service",
               "fullType": "string",
               "name": "serviceName",
@@ -320,21 +400,21 @@ export const schema: Schema = {
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
+          "responseFullType": "veeamCloudConnect.Task[]",
+          "responseType": "veeamCloudConnect.Task[]"
         }
       ],
-      "path": "/veeamCloudConnect/{serviceName}/serviceInfos"
+      "path": "/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota"
     },
     {
-      "description": "List the veeamCloudConnect.Task objects",
+      "description": "capabilities operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Tasks associated with Cloud Tenant",
+          "description": "Show capabilities of your current offer",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -345,94 +425,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Filter the value of name property (like)",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "veeamCloudConnect.TaskStateEnum",
-              "description": "Filter the value of state property (=)",
-              "fullType": "veeamCloudConnect.TaskStateEnum",
-              "name": "state",
-              "paramType": "query",
-              "required": false
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "long[]",
-          "responseType": "long[]"
+          "responseFullType": "veeamCloudConnect.offerCapabilities",
+          "responseType": "veeamCloudConnect.offerCapabilities"
         }
       ],
-      "path": "/veeamCloudConnect/{serviceName}/task"
-    },
-    {
-      "description": "Operation with the Cloud Tenant Account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "taskId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "veeamCloudConnect.Task",
-          "responseType": "veeamCloudConnect.Task"
-        }
-      ],
-      "path": "/veeamCloudConnect/{serviceName}/task/{taskId}"
-    },
-    {
-      "description": "resetPassword operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Reset your Cloud Tenant Password",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "veeamCloudConnect.Task",
-          "responseType": "veeamCloudConnect.Task"
-        }
-      ],
-      "path": "/veeamCloudConnect/{serviceName}/resetPassword"
+      "path": "/veeamCloudConnect/{serviceName}/capabilities"
     }
   ],
   "basePath": "https://ca.api.soyoustart.com/1.0",

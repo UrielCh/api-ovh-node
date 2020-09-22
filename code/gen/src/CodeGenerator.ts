@@ -257,11 +257,12 @@ export class CodeGenerator {
         let avaliablePath = formatUpperCamlCase("Paths_" + this.apiPath.replace(/\//g, '_'))
         // let mainClass = formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'));
         let indexApi = { GET: [], PUT: [], POST: [], DELETE: [] };
-        (<Schema>this.schema).apis.forEach(
-            api => api.operations.forEach(
-                op => (<any>indexApi[op.httpMethod]).push(api.path)
-            )
-        );
+        if (this.schema && this.schema.apis)
+            this.schema.apis.forEach(
+                api => api.operations.forEach(
+                    op => (<any>indexApi[op.httpMethod]).push(api.path)
+                )
+            );
 
         for (let mtd of Object.keys(indexApi)) {
             let arr = (<any>indexApi)[mtd];
@@ -283,6 +284,8 @@ export class CodeGenerator {
      * @param code 
      */
     dumpApi(schema: Schema, api: CacheApi, code: string): string {
+        if (!schema.apis)
+            return code;
         for (let mtd of ['GET', 'PUT', 'POST', 'DELETE']) {
             schema.apis.sort((a, b) => a.path.localeCompare(b.path)).forEach(api => {
                 api.operations.filter(op => op.httpMethod === mtd).forEach(

@@ -9385,6 +9385,14 @@ export const schema: Schema = {
       "id": "Filer",
       "namespace": "dedicatedCloud",
       "properties": {
+        "activeNode": {
+          "canBeNull": true,
+          "description": "Filer active node.",
+          "fullType": "dedicatedCloud.filer.NodeTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicatedCloud.filer.NodeTypeEnum"
+        },
         "billingType": {
           "canBeNull": true,
           "description": "Billing type of this filer",
@@ -9392,6 +9400,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "dedicatedCloud.ressources.BillingTypeEnum"
+        },
+        "connectionState": {
+          "canBeNull": true,
+          "description": "Filer connexion state.",
+          "fullType": "dedicatedCloud.filer.ConnexionStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicatedCloud.filer.ConnexionStateEnum"
         },
         "filerId": {
           "canBeNull": false,
@@ -9404,6 +9420,14 @@ export const schema: Schema = {
         "fullProfile": {
           "canBeNull": false,
           "description": "Human-Readable profile name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "master": {
+          "canBeNull": false,
+          "description": "Filer master node hostname.",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -9432,6 +9456,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "complexType.UnitAndValue<long>"
+        },
+        "slave": {
+          "canBeNull": true,
+          "description": "Filer slave node hostname.",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "spaceFree": {
           "canBeNull": true,
@@ -12143,6 +12175,16 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "VpnConfigStateEnum",
       "namespace": "dedicatedCloud.disasterRecovery"
+    },
+    "dedicatedCloud.filer.ConnexionStateEnum": {
+      "description": "Connexion states for a Dedicated Cloud Filer.",
+      "enum": [
+        "offline",
+        "online"
+      ],
+      "enumType": "string",
+      "id": "ConnexionStateEnum",
+      "namespace": "dedicatedCloud.filer"
     },
     "dedicatedCloud.filer.HourlyConsumption": {
       "description": "Hourly consumption of a filer",
