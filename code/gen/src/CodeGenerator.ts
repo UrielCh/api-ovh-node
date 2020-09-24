@@ -120,7 +120,7 @@ export class CodeGenerator {
                 code += `${ident0} */${eol}`;
                 if (model.enumType === 'long') // enum of number
                     code += `${ident0}export type ${name} = ${model.enum.join(' | ')}${eol}`;
-                else // enum of string
+                else // enum of string or any new one.
                     code += `${ident0}export type ${name} = "${model.enum.join('" | "')}"${eol}`;
             } else if (model.properties) {
                 code += `${ident0}/**${eol}`;
