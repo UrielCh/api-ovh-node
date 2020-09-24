@@ -158,15 +158,13 @@ export default class GenApiTypes {
                     }, {}) :
                     value;
             const srcUrl = `https://${this.host}:${this.port}${this.basePath}${apiPath}`;
-            const importHeader = `import {Schema} from '../../src/schema';${EOL}${EOL}`;
-            const commentHeader = `// imported from ${srcUrl}${EOL}${EOL}`;
-            const exportHeader = `export const schema: Schema = `;
-
+            // 
             // sort parameters: body, then path, then query
             // then sort by name
             if (!schema.apis) {
                 console.error(`missing APIS in ${srcUrl}`)
             } else {
+                schema.apis.sort((a,b) => a.path.localeCompare(b.path));
                 schema.apis.forEach(api => {
                     if (!api.operations) {
                         console.error(`missing APIS in Operartions in ${api.path} in ${srcUrl}`)
@@ -189,8 +187,12 @@ export default class GenApiTypes {
                 })
             }
             const json = JSON.stringify(schema, replacer, 2);
-            await fse.writeFile(destination, `${importHeader}${commentHeader}${exportHeader}${json}`, { encoding: 'UTF8' });
 
+            const importHeader = `import {Schema} from '../../src/schema';${EOL}${EOL}`;
+            const commentHeader = `// imported from ${srcUrl}${EOL}${EOL}`;
+            const exportHeader = `export const schema: Schema = `;
+            await fse.writeFile(destination, `${importHeader}${commentHeader}${exportHeader}${json}`, { encoding: 'UTF8' });
+            
             // Entry Points
             if (schema.apis)
                 schema.apis.map((api: API) => {

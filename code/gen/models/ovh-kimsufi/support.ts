@@ -96,80 +96,6 @@ export const schema: Schema = {
       "path": "/support/tickets"
     },
     {
-      "description": "Create a new ticket",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create a new ticket",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "text",
-              "description": "Ticket message body",
-              "fullType": "text",
-              "name": "body",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "support.TicketCategoryEnum",
-              "description": "Ticket message category",
-              "fullType": "support.TicketCategoryEnum",
-              "name": "category",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "support.TicketProductEnum",
-              "description": "Ticket message product",
-              "fullType": "support.TicketProductEnum",
-              "name": "product",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Ticket message service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "support.TicketSubCategoryEnum",
-              "description": "Ticket message subcategory",
-              "fullType": "support.TicketSubCategoryEnum",
-              "name": "subcategory",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Ticket message subject",
-              "fullType": "string",
-              "name": "subject",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "support.TicketTypeEnum",
-              "description": "Ticket type (criticalIntervention requires VIP support level)",
-              "fullType": "support.TicketTypeEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "support.NewMessageInfo"
-        }
-      ],
-      "path": "/support/tickets/create"
-    },
-    {
       "description": "Get ticket",
       "operations": [
         {
@@ -382,6 +308,80 @@ export const schema: Schema = {
         }
       ],
       "path": "/support/tickets/{ticketId}/score"
+    },
+    {
+      "description": "Create a new ticket",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a new ticket",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "text",
+              "description": "Ticket message body",
+              "fullType": "text",
+              "name": "body",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "support.TicketCategoryEnum",
+              "description": "Ticket message category",
+              "fullType": "support.TicketCategoryEnum",
+              "name": "category",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "support.TicketProductEnum",
+              "description": "Ticket message product",
+              "fullType": "support.TicketProductEnum",
+              "name": "product",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Ticket message service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "support.TicketSubCategoryEnum",
+              "description": "Ticket message subcategory",
+              "fullType": "support.TicketSubCategoryEnum",
+              "name": "subcategory",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Ticket message subject",
+              "fullType": "string",
+              "name": "subject",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "support.TicketTypeEnum",
+              "description": "Ticket type (criticalIntervention requires VIP support level)",
+              "fullType": "support.TicketTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "support.NewMessageInfo"
+        }
+      ],
+      "path": "/support/tickets/create"
     }
   ],
   "basePath": "https://eu.api.kimsufi.com/1.0",

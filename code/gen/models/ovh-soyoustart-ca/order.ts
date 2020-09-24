@@ -6,7 +6,90 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Order an USB key for this server",
+      "description": "Operations about the DEDICATED service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/dedicated/server"
+    },
+    {
+      "description": "List available options for this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}"
+    },
+    {
+      "description": "Order a backup storage for this server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'backupStorage' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.BackupStorageCapacityEnum",
+              "description": "The capacity in gigabytes of your backup storage",
+              "fullType": "dedicated.server.BackupStorageCapacityEnum",
+              "name": "capacity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/backupStorage"
+    },
+    {
+      "description": "Order a backup storage for this server",
       "operations": [
         {
           "apiStatus": {
@@ -34,9 +117,9 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.server.UsbKeyCapacityEnum",
-              "description": "Capacity in gigabytes",
-              "fullType": "dedicated.server.UsbKeyCapacityEnum",
+              "dataType": "dedicated.server.BackupStorageCapacityEnum",
+              "description": "The capacity in gigabytes of your backup storage",
+              "fullType": "dedicated.server.BackupStorageCapacityEnum",
               "name": "capacity",
               "paramType": "query",
               "required": true
@@ -56,9 +139,9 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.server.UsbKeyCapacityEnum",
-              "description": "Capacity in gigabytes",
-              "fullType": "dedicated.server.UsbKeyCapacityEnum",
+              "dataType": "dedicated.server.BackupStorageCapacityEnum",
+              "description": "The capacity in gigabytes of your backup storage",
+              "fullType": "dedicated.server.BackupStorageCapacityEnum",
               "name": "capacity",
               "paramType": "body",
               "required": true
@@ -85,279 +168,7 @@ export const schema: Schema = {
           "responseType": "order.Order"
         }
       ],
-      "path": "/order/dedicated/server/{serviceName}/usbKey/{duration}"
-    },
-    {
-      "description": "Order an USB key for this server",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'usbKey' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.UsbKeyCapacityEnum",
-              "description": "Capacity in gigabytes",
-              "fullType": "dedicated.server.UsbKeyCapacityEnum",
-              "name": "capacity",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/dedicated/server/{serviceName}/usbKey"
-    },
-    {
-      "description": "Order a static IP for this server",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'staticIP' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.IpStaticCountryEnum",
-              "description": "Ip localization",
-              "fullType": "dedicated.server.IpStaticCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/dedicated/server/{serviceName}/staticIP"
-    },
-    {
-      "description": "Order a static IP for this server",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.IpStaticCountryEnum",
-              "description": "Ip localization",
-              "fullType": "dedicated.server.IpStaticCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.server.IpStaticCountryEnum",
-              "description": "Ip localization",
-              "fullType": "dedicated.server.IpStaticCountryEnum",
-              "name": "country",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/dedicated/server/{serviceName}/staticIP/{duration}"
-    },
-    {
-      "description": "order a Firewall for this server",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.FirewallModelEnum",
-              "description": "Firewall type",
-              "fullType": "dedicated.server.FirewallModelEnum",
-              "name": "firewallModel",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.server.FirewallModelEnum",
-              "description": "Firewall type",
-              "fullType": "dedicated.server.FirewallModelEnum",
-              "name": "firewallModel",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/dedicated/server/{serviceName}/firewall/{duration}"
-    },
-    {
-      "description": "order a Firewall for this server",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'firewall' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "dedicated.server.FirewallModelEnum",
-              "description": "Firewall type",
-              "fullType": "dedicated.server.FirewallModelEnum",
-              "name": "firewallModel",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/dedicated/server/{serviceName}/firewall"
+      "path": "/order/dedicated/server/{serviceName}/backupStorage/{duration}"
     },
     {
       "description": "Order a failover IP for this server",
@@ -478,14 +289,14 @@ export const schema: Schema = {
       "path": "/order/dedicated/server/{serviceName}/failoverIP/{duration}"
     },
     {
-      "description": "Order a backup storage for this server",
+      "description": "Order a feature for this server",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get allowed durations for 'backupStorage' option",
+          "description": "Get allowed durations for 'feature' option",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -498,10 +309,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.server.BackupStorageCapacityEnum",
-              "description": "The capacity in gigabytes of your backup storage",
-              "fullType": "dedicated.server.BackupStorageCapacityEnum",
-              "name": "capacity",
+              "dataType": "dedicated.server.OrderableSysFeatureEnum",
+              "description": "the feature",
+              "fullType": "dedicated.server.OrderableSysFeatureEnum",
+              "name": "feature",
               "paramType": "query",
               "required": true
             }
@@ -511,10 +322,10 @@ export const schema: Schema = {
           "responseType": "string[]"
         }
       ],
-      "path": "/order/dedicated/server/{serviceName}/backupStorage"
+      "path": "/order/dedicated/server/{serviceName}/feature"
     },
     {
-      "description": "Order a backup storage for this server",
+      "description": "Order a feature for this server",
       "operations": [
         {
           "apiStatus": {
@@ -542,10 +353,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.server.BackupStorageCapacityEnum",
-              "description": "The capacity in gigabytes of your backup storage",
-              "fullType": "dedicated.server.BackupStorageCapacityEnum",
-              "name": "capacity",
+              "dataType": "dedicated.server.OrderableSysFeatureEnum",
+              "description": "the feature",
+              "fullType": "dedicated.server.OrderableSysFeatureEnum",
+              "name": "feature",
               "paramType": "query",
               "required": true
             }
@@ -564,10 +375,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.server.BackupStorageCapacityEnum",
-              "description": "The capacity in gigabytes of your backup storage",
-              "fullType": "dedicated.server.BackupStorageCapacityEnum",
-              "name": "capacity",
+              "dataType": "dedicated.server.OrderableSysFeatureEnum",
+              "description": "the feature",
+              "fullType": "dedicated.server.OrderableSysFeatureEnum",
+              "name": "feature",
               "paramType": "body",
               "required": true
             },
@@ -593,7 +404,185 @@ export const schema: Schema = {
           "responseType": "order.Order"
         }
       ],
-      "path": "/order/dedicated/server/{serviceName}/backupStorage/{duration}"
+      "path": "/order/dedicated/server/{serviceName}/feature/{duration}"
+    },
+    {
+      "description": "order a Firewall for this server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'firewall' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.FirewallModelEnum",
+              "description": "Firewall type",
+              "fullType": "dedicated.server.FirewallModelEnum",
+              "name": "firewallModel",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/firewall"
+    },
+    {
+      "description": "order a Firewall for this server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.FirewallModelEnum",
+              "description": "Firewall type",
+              "fullType": "dedicated.server.FirewallModelEnum",
+              "name": "firewallModel",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "order.Order",
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.server.FirewallModelEnum",
+              "description": "Firewall type",
+              "fullType": "dedicated.server.FirewallModelEnum",
+              "name": "firewallModel",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "order.Order",
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/firewall/{duration}"
+    },
+    {
+      "description": "Order IP for this server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'ip' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.IpBlockSizeEnum",
+              "description": "IP block size",
+              "fullType": "dedicated.server.IpBlockSizeEnum",
+              "name": "blockSize",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.IpCountryEnum",
+              "description": "IP localization",
+              "fullType": "dedicated.server.IpCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Your organisation id to add on block informations",
+              "fullType": "string",
+              "name": "organisationId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "dedicated.server.IpTypeOrderableEnum",
+              "description": "The type of IP",
+              "fullType": "dedicated.server.IpTypeOrderableEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/dedicated/server/{serviceName}/ip"
     },
     {
       "description": "Order IP for this server",
@@ -726,14 +715,14 @@ export const schema: Schema = {
       "path": "/order/dedicated/server/{serviceName}/ip/{duration}"
     },
     {
-      "description": "Order IP for this server",
+      "description": "Migrate an IP from So you Start to OVH server, this operation is one-way only and can't be reverted",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get allowed durations for 'ip' option",
+          "description": "Get allowed durations for 'ipMigration' option",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -746,34 +735,18 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.server.IpBlockSizeEnum",
-              "description": "IP block size",
-              "fullType": "dedicated.server.IpBlockSizeEnum",
-              "name": "blockSize",
+              "dataType": "ipBlock",
+              "description": "The IP to move to this server",
+              "fullType": "ipBlock",
+              "name": "ip",
               "paramType": "query",
               "required": true
             },
             {
-              "dataType": "dedicated.server.IpCountryEnum",
-              "description": "IP localization",
-              "fullType": "dedicated.server.IpCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": false
-            },
-            {
               "dataType": "string",
-              "description": "Your organisation id to add on block informations",
+              "description": "IP migration token",
               "fullType": "string",
-              "name": "organisationId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "dedicated.server.IpTypeOrderableEnum",
-              "description": "The type of IP",
-              "fullType": "dedicated.server.IpTypeOrderableEnum",
-              "name": "type",
+              "name": "token",
               "paramType": "query",
               "required": true
             }
@@ -783,7 +756,7 @@ export const schema: Schema = {
           "responseType": "string[]"
         }
       ],
-      "path": "/order/dedicated/server/{serviceName}/ip"
+      "path": "/order/dedicated/server/{serviceName}/ipMigration"
     },
     {
       "description": "Migrate an IP from So you Start to OVH server, this operation is one-way only and can't be reverted",
@@ -884,14 +857,14 @@ export const schema: Schema = {
       "path": "/order/dedicated/server/{serviceName}/ipMigration/{duration}"
     },
     {
-      "description": "Migrate an IP from So you Start to OVH server, this operation is one-way only and can't be reverted",
+      "description": "Order a kvmip express for this server",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get allowed durations for 'ipMigration' option",
+          "description": "Get allowed durations for 'kvmExpress' option",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -902,22 +875,6 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
-            },
-            {
-              "dataType": "ipBlock",
-              "description": "The IP to move to this server",
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "IP migration token",
-              "fullType": "string",
-              "name": "token",
-              "paramType": "query",
-              "required": true
             }
           ],
           "resellerOnly": false,
@@ -925,7 +882,7 @@ export const schema: Schema = {
           "responseType": "string[]"
         }
       ],
-      "path": "/order/dedicated/server/{serviceName}/ipMigration"
+      "path": "/order/dedicated/server/{serviceName}/kvmExpress"
     },
     {
       "description": "Order a kvmip express for this server",
@@ -994,70 +951,14 @@ export const schema: Schema = {
       "path": "/order/dedicated/server/{serviceName}/kvmExpress/{duration}"
     },
     {
-      "description": "Order a kvmip express for this server",
+      "description": "Order a static IP for this server",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get allowed durations for 'kvmExpress' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/dedicated/server/{serviceName}/kvmExpress"
-    },
-    {
-      "description": "List available options for this service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed options",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your dedicated server",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/dedicated/server/{serviceName}"
-    },
-    {
-      "description": "Order a feature for this server",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'feature' option",
+          "description": "Get allowed durations for 'staticIP' option",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1070,10 +971,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.server.OrderableSysFeatureEnum",
-              "description": "the feature",
-              "fullType": "dedicated.server.OrderableSysFeatureEnum",
-              "name": "feature",
+              "dataType": "dedicated.server.IpStaticCountryEnum",
+              "description": "Ip localization",
+              "fullType": "dedicated.server.IpStaticCountryEnum",
+              "name": "country",
               "paramType": "query",
               "required": true
             }
@@ -1083,10 +984,10 @@ export const schema: Schema = {
           "responseType": "string[]"
         }
       ],
-      "path": "/order/dedicated/server/{serviceName}/feature"
+      "path": "/order/dedicated/server/{serviceName}/staticIP"
     },
     {
-      "description": "Order a feature for this server",
+      "description": "Order a static IP for this server",
       "operations": [
         {
           "apiStatus": {
@@ -1114,10 +1015,10 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "dedicated.server.OrderableSysFeatureEnum",
-              "description": "the feature",
-              "fullType": "dedicated.server.OrderableSysFeatureEnum",
-              "name": "feature",
+              "dataType": "dedicated.server.IpStaticCountryEnum",
+              "description": "Ip localization",
+              "fullType": "dedicated.server.IpStaticCountryEnum",
+              "name": "country",
               "paramType": "query",
               "required": true
             }
@@ -1136,10 +1037,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dedicated.server.OrderableSysFeatureEnum",
-              "description": "the feature",
-              "fullType": "dedicated.server.OrderableSysFeatureEnum",
-              "name": "feature",
+              "dataType": "dedicated.server.IpStaticCountryEnum",
+              "description": "Ip localization",
+              "fullType": "dedicated.server.IpStaticCountryEnum",
+              "name": "country",
               "paramType": "body",
               "required": true
             },
@@ -1165,29 +1066,46 @@ export const schema: Schema = {
           "responseType": "order.Order"
         }
       ],
-      "path": "/order/dedicated/server/{serviceName}/feature/{duration}"
+      "path": "/order/dedicated/server/{serviceName}/staticIP/{duration}"
     },
     {
-      "description": "Operations about the DEDICATED service",
+      "description": "Order an USB key for this server",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available services",
+          "description": "Get allowed durations for 'usbKey' option",
           "httpMethod": "GET",
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "dedicated.server.UsbKeyCapacityEnum",
+              "description": "Capacity in gigabytes",
+              "fullType": "dedicated.server.UsbKeyCapacityEnum",
+              "name": "capacity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
           "resellerOnly": false,
           "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
-      "path": "/order/dedicated/server"
+      "path": "/order/dedicated/server/{serviceName}/usbKey"
     },
     {
-      "description": "Order an upgrade upon your Veeam Cloud Connect account",
+      "description": "Order an USB key for this server",
       "operations": [
         {
           "apiStatus": {
@@ -1208,17 +1126,17 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "veeamCloudConnect.Offer",
-              "description": "The offer on which you want to be upgraded",
-              "fullType": "veeamCloudConnect.Offer",
-              "name": "offer",
+              "dataType": "dedicated.server.UsbKeyCapacityEnum",
+              "description": "Capacity in gigabytes",
+              "fullType": "dedicated.server.UsbKeyCapacityEnum",
+              "name": "capacity",
               "paramType": "query",
               "required": true
             }
@@ -1237,10 +1155,10 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "veeamCloudConnect.Offer",
-              "description": "The offer on which you want to be upgraded",
-              "fullType": "veeamCloudConnect.Offer",
-              "name": "offer",
+              "dataType": "dedicated.server.UsbKeyCapacityEnum",
+              "description": "Capacity in gigabytes",
+              "fullType": "dedicated.server.UsbKeyCapacityEnum",
+              "name": "capacity",
               "paramType": "body",
               "required": true
             },
@@ -1254,7 +1172,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "The internal name of your dedicated server",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -1266,33 +1184,33 @@ export const schema: Schema = {
           "responseType": "order.Order"
         }
       ],
-      "path": "/order/veeamCloudConnect/{serviceName}/upgrade/{duration}"
+      "path": "/order/dedicated/server/{serviceName}/usbKey/{duration}"
     },
     {
-      "description": "Order an upgrade upon your Veeam Cloud Connect account",
+      "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get allowed durations for 'upgrade' option",
+          "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
               "required": true
             },
             {
-              "dataType": "veeamCloudConnect.Offer",
-              "description": "The offer on which you want to be upgraded",
-              "fullType": "veeamCloudConnect.Offer",
-              "name": "offer",
+              "dataType": "license.CloudLinuxVersionEnum",
+              "description": "This license version",
+              "fullType": "license.CloudLinuxVersionEnum",
+              "name": "version",
               "paramType": "query",
               "required": true
             }
@@ -1302,38 +1220,92 @@ export const schema: Schema = {
           "responseType": "string[]"
         }
       ],
-      "path": "/order/veeamCloudConnect/{serviceName}/upgrade"
+      "path": "/order/license/cloudLinux/new"
     },
     {
-      "description": "List available options for this service",
+      "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get allowed options",
+          "description": "Get prices and contracts information",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "Duration",
               "fullType": "string",
-              "name": "serviceName",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.CloudLinuxVersionEnum",
+              "description": "This license version",
+              "fullType": "license.CloudLinuxVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "order.Order",
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "license.CloudLinuxVersionEnum",
+              "description": "This license version",
+              "fullType": "license.CloudLinuxVersionEnum",
+              "name": "version",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
               "paramType": "path",
               "required": true
             }
           ],
           "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
+          "responseFullType": "order.Order",
+          "responseType": "order.Order"
         }
       ],
-      "path": "/order/veeamCloudConnect/{serviceName}"
+      "path": "/order/license/cloudLinux/new/{duration}"
     },
     {
-      "description": "Operations about the VEEAMCC service",
+      "description": "Operations about the LICENSE service",
       "operations": [
         {
           "apiStatus": {
@@ -1349,7 +1321,35 @@ export const schema: Schema = {
           "responseType": "string[]"
         }
       ],
-      "path": "/order/veeamCloudConnect"
+      "path": "/order/license/cpanel"
+    },
+    {
+      "description": "List available options for this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Cpanel license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/cpanel/{serviceName}"
     },
     {
       "description": "Upgrade this license version",
@@ -1470,23 +1470,39 @@ export const schema: Schema = {
       "path": "/order/license/cpanel/{serviceName}/upgrade/{duration}"
     },
     {
-      "description": "List available options for this service",
+      "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get allowed options",
+          "description": "Get allowed durations for 'new' option",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The name of your Cpanel license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderableCpanelVersionEnum",
+              "description": "This license version",
+              "fullType": "license.OrderableCpanelVersionEnum",
+              "name": "version",
+              "paramType": "query",
               "required": true
             }
           ],
@@ -1495,26 +1511,7 @@ export const schema: Schema = {
           "responseType": "string[]"
         }
       ],
-      "path": "/order/license/cpanel/{serviceName}"
-    },
-    {
-      "description": "Operations about the LICENSE service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/cpanel"
+      "path": "/order/license/cpanel/new"
     },
     {
       "description": "Order a new license on a given Ip with some given options",
@@ -1613,405 +1610,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/license/cpanel/new/{duration}"
-    },
-    {
-      "description": "Order a new license on a given Ip with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'new' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.OrderableCpanelVersionEnum",
-              "description": "This license version",
-              "fullType": "license.OrderableCpanelVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/cpanel/new"
-    },
-    {
-      "description": "List available options for this service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed options",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your Windows license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/windows/{serviceName}"
-    },
-    {
-      "description": "Upgrade this license with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'upgrade' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your Windows license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.WindowsSqlVersionEnum",
-              "description": "The SQL Server version to enable on this license Windows license",
-              "fullType": "license.WindowsSqlVersionEnum",
-              "name": "sqlVersion",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsOsVersionEnum",
-              "description": "The windows version you want to enable on your windows license",
-              "fullType": "license.WindowsOsVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/windows/{serviceName}/upgrade"
-    },
-    {
-      "description": "Upgrade this license with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your Windows license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.WindowsSqlVersionEnum",
-              "description": "The SQL Server version to enable on this license Windows license",
-              "fullType": "license.WindowsSqlVersionEnum",
-              "name": "sqlVersion",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsOsVersionEnum",
-              "description": "The windows version you want to enable on your windows license",
-              "fullType": "license.WindowsOsVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "license.WindowsSqlVersionEnum",
-              "description": "The SQL Server version to enable on this license Windows license",
-              "fullType": "license.WindowsSqlVersionEnum",
-              "name": "sqlVersion",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsOsVersionEnum",
-              "description": "The windows version you want to enable on your windows license",
-              "fullType": "license.WindowsOsVersionEnum",
-              "name": "version",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your Windows license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/license/windows/{serviceName}/upgrade/{duration}"
-    },
-    {
-      "description": "Operations about the LICENSE service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/windows"
-    },
-    {
-      "description": "Order a new license on a given Ip with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsSqlVersionEnum",
-              "description": "The SQL Server version to enable on this license Windows license",
-              "fullType": "license.WindowsSqlVersionEnum",
-              "name": "sqlVersion",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsOsVersionEnum",
-              "description": "This license version",
-              "fullType": "license.WindowsOsVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsSqlVersionEnum",
-              "description": "The SQL Server version to enable on this license Windows license",
-              "fullType": "license.WindowsSqlVersionEnum",
-              "name": "sqlVersion",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsOsVersionEnum",
-              "description": "This license version",
-              "fullType": "license.WindowsOsVersionEnum",
-              "name": "version",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/license/windows/new/{duration}"
-    },
-    {
-      "description": "Order a new license on a given Ip with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'new' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsSqlVersionEnum",
-              "description": "The SQL Server version to enable on this license Windows license",
-              "fullType": "license.WindowsSqlVersionEnum",
-              "name": "sqlVersion",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsOsVersionEnum",
-              "description": "This license version",
-              "fullType": "license.WindowsOsVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/windows/new"
     },
     {
       "description": "Order a new license on a given Ip with some given options",
@@ -2156,270 +1754,6 @@ export const schema: Schema = {
       "path": "/order/license/directadmin/new/{duration}"
     },
     {
-      "description": "Upgrade this license with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'upgrade' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your SQL Server license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.SqlServerVersionEnum",
-              "description": "This license version",
-              "fullType": "license.SqlServerVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/sqlserver/{serviceName}/upgrade"
-    },
-    {
-      "description": "Upgrade this license with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your SQL Server license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.SqlServerVersionEnum",
-              "description": "This license version",
-              "fullType": "license.SqlServerVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "license.SqlServerVersionEnum",
-              "description": "This license version",
-              "fullType": "license.SqlServerVersionEnum",
-              "name": "version",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your SQL Server license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/license/sqlserver/{serviceName}/upgrade/{duration}"
-    },
-    {
-      "description": "List available options for this service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed options",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your SQL Server license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/sqlserver/{serviceName}"
-    },
-    {
-      "description": "Order a new license on a given Ip with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'new' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.SqlServerVersionEnum",
-              "description": "This license version",
-              "fullType": "license.SqlServerVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/sqlserver/new"
-    },
-    {
-      "description": "Order a new license on a given Ip with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.SqlServerVersionEnum",
-              "description": "This license version",
-              "fullType": "license.SqlServerVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "license.SqlServerVersionEnum",
-              "description": "This license version",
-              "fullType": "license.SqlServerVersionEnum",
-              "name": "version",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/license/sqlserver/new/{duration}"
-    },
-    {
       "description": "Operations about the LICENSE service",
       "operations": [
         {
@@ -2436,7 +1770,35 @@ export const schema: Schema = {
           "responseType": "string[]"
         }
       ],
-      "path": "/order/license/sqlserver"
+      "path": "/order/license/plesk"
+    },
+    {
+      "description": "List available options for this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Plesk license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/plesk/{serviceName}"
     },
     {
       "description": "Upgrade this license with some given options",
@@ -2747,34 +2109,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/license/plesk/{serviceName}/upgrade/{duration}"
-    },
-    {
-      "description": "List available options for this service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed options",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your Plesk license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/plesk/{serviceName}"
     },
     {
       "description": "Order a new license on a given Ip with some given options",
@@ -3103,7 +2437,189 @@ export const schema: Schema = {
           "responseType": "string[]"
         }
       ],
-      "path": "/order/license/plesk"
+      "path": "/order/license/sqlserver"
+    },
+    {
+      "description": "List available options for this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your SQL Server license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/sqlserver/{serviceName}"
+    },
+    {
+      "description": "Upgrade this license with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'upgrade' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your SQL Server license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.SqlServerVersionEnum",
+              "description": "This license version",
+              "fullType": "license.SqlServerVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/sqlserver/{serviceName}/upgrade"
+    },
+    {
+      "description": "Upgrade this license with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your SQL Server license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.SqlServerVersionEnum",
+              "description": "This license version",
+              "fullType": "license.SqlServerVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "order.Order",
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.SqlServerVersionEnum",
+              "description": "This license version",
+              "fullType": "license.SqlServerVersionEnum",
+              "name": "version",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your SQL Server license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "order.Order",
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/license/sqlserver/{serviceName}/upgrade/{duration}"
+    },
+    {
+      "description": "Order a new license on a given Ip with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'new' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.SqlServerVersionEnum",
+              "description": "This license version",
+              "fullType": "license.SqlServerVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/sqlserver/new"
     },
     {
       "description": "Order a new license on a given Ip with some given options",
@@ -3134,9 +2650,9 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "license.CloudLinuxVersionEnum",
+              "dataType": "license.SqlServerVersionEnum",
               "description": "This license version",
-              "fullType": "license.CloudLinuxVersionEnum",
+              "fullType": "license.SqlServerVersionEnum",
               "name": "version",
               "paramType": "query",
               "required": true
@@ -3164,9 +2680,9 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "license.CloudLinuxVersionEnum",
+              "dataType": "license.SqlServerVersionEnum",
               "description": "This license version",
-              "fullType": "license.CloudLinuxVersionEnum",
+              "fullType": "license.SqlServerVersionEnum",
               "name": "version",
               "paramType": "body",
               "required": true
@@ -3185,33 +2701,80 @@ export const schema: Schema = {
           "responseType": "order.Order"
         }
       ],
-      "path": "/order/license/cloudLinux/new/{duration}"
+      "path": "/order/license/sqlserver/new/{duration}"
     },
     {
-      "description": "Order a new license on a given Ip with some given options",
+      "description": "Operations about the LICENSE service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get allowed durations for 'new' option",
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/virtuozzo"
+    },
+    {
+      "description": "List available options for this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed options",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/virtuozzo/{serviceName}"
+    },
+    {
+      "description": "Upgrade this license with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'upgrade' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
               "required": true
             },
             {
-              "dataType": "license.CloudLinuxVersionEnum",
-              "description": "This license version",
-              "fullType": "license.CloudLinuxVersionEnum",
-              "name": "version",
+              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "description": "How much container is this license able to manage ...",
+              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "name": "containerNumber",
               "paramType": "query",
               "required": true
             }
@@ -3221,7 +2784,89 @@ export const schema: Schema = {
           "responseType": "string[]"
         }
       ],
-      "path": "/order/license/cloudLinux/new"
+      "path": "/order/license/virtuozzo/{serviceName}/upgrade"
+    },
+    {
+      "description": "Upgrade this license with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "description": "How much container is this license able to manage ...",
+              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "name": "containerNumber",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "order.Order",
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "description": "How much container is this license able to manage ...",
+              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "name": "containerNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "order.Order",
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/license/virtuozzo/{serviceName}/upgrade/{duration}"
     },
     {
       "description": "Order a new license on a given Ip with some given options",
@@ -3406,7 +3051,79 @@ export const schema: Schema = {
           "responseType": "string[]"
         }
       ],
-      "path": "/order/license/virtuozzo"
+      "path": "/order/license/windows"
+    },
+    {
+      "description": "List available options for this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/windows/{serviceName}"
+    },
+    {
+      "description": "Upgrade this license with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'upgrade' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "The SQL Server version to enable on this license Windows license",
+              "fullType": "license.WindowsSqlVersionEnum",
+              "name": "sqlVersion",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsOsVersionEnum",
+              "description": "The windows version you want to enable on your windows license",
+              "fullType": "license.WindowsOsVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/windows/{serviceName}/upgrade"
     },
     {
       "description": "Upgrade this license with some given options",
@@ -3430,17 +3147,183 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The name of your Virtuozzo license",
+              "description": "The name of your Windows license",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             },
             {
-              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "description": "How much container is this license able to manage ...",
-              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "name": "containerNumber",
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "The SQL Server version to enable on this license Windows license",
+              "fullType": "license.WindowsSqlVersionEnum",
+              "name": "sqlVersion",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsOsVersionEnum",
+              "description": "The windows version you want to enable on your windows license",
+              "fullType": "license.WindowsOsVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "order.Order",
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "The SQL Server version to enable on this license Windows license",
+              "fullType": "license.WindowsSqlVersionEnum",
+              "name": "sqlVersion",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsOsVersionEnum",
+              "description": "The windows version you want to enable on your windows license",
+              "fullType": "license.WindowsOsVersionEnum",
+              "name": "version",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "order.Order",
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/license/windows/{serviceName}/upgrade/{duration}"
+    },
+    {
+      "description": "Order a new license on a given Ip with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'new' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "The SQL Server version to enable on this license Windows license",
+              "fullType": "license.WindowsSqlVersionEnum",
+              "name": "sqlVersion",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsOsVersionEnum",
+              "description": "This license version",
+              "fullType": "license.WindowsOsVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/windows/new"
+    },
+    {
+      "description": "Order a new license on a given Ip with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "The SQL Server version to enable on this license Windows license",
+              "fullType": "license.WindowsSqlVersionEnum",
+              "name": "sqlVersion",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsOsVersionEnum",
+              "description": "This license version",
+              "fullType": "license.WindowsOsVersionEnum",
+              "name": "version",
               "paramType": "query",
               "required": true
             }
@@ -3459,10 +3342,34 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "description": "How much container is this license able to manage ...",
-              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "name": "containerNumber",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "The SQL Server version to enable on this license Windows license",
+              "fullType": "license.WindowsSqlVersionEnum",
+              "name": "sqlVersion",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsOsVersionEnum",
+              "description": "This license version",
+              "fullType": "license.WindowsOsVersionEnum",
+              "name": "version",
               "paramType": "body",
               "required": true
             },
@@ -3473,14 +3380,6 @@ export const schema: Schema = {
               "name": "duration",
               "paramType": "path",
               "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your Virtuozzo license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
             }
           ],
           "resellerOnly": false,
@@ -3488,43 +3387,26 @@ export const schema: Schema = {
           "responseType": "order.Order"
         }
       ],
-      "path": "/order/license/virtuozzo/{serviceName}/upgrade/{duration}"
+      "path": "/order/license/windows/new/{duration}"
     },
     {
-      "description": "Upgrade this license with some given options",
+      "description": "Operations about the VEEAMCC service",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get allowed durations for 'upgrade' option",
+          "description": "List available services",
           "httpMethod": "GET",
           "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your Virtuozzo license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "description": "How much container is this license able to manage ...",
-              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "name": "containerNumber",
-              "paramType": "query",
-              "required": true
-            }
-          ],
+          "parameters": [],
           "resellerOnly": false,
           "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
-      "path": "/order/license/virtuozzo/{serviceName}/upgrade"
+      "path": "/order/veeamCloudConnect"
     },
     {
       "description": "List available options for this service",
@@ -3540,7 +3422,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The name of your Virtuozzo license",
+              "description": null,
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3552,7 +3434,125 @@ export const schema: Schema = {
           "responseType": "string[]"
         }
       ],
-      "path": "/order/license/virtuozzo/{serviceName}"
+      "path": "/order/veeamCloudConnect/{serviceName}"
+    },
+    {
+      "description": "Order an upgrade upon your Veeam Cloud Connect account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'upgrade' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "veeamCloudConnect.Offer",
+              "description": "The offer on which you want to be upgraded",
+              "fullType": "veeamCloudConnect.Offer",
+              "name": "offer",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/veeamCloudConnect/{serviceName}/upgrade"
+    },
+    {
+      "description": "Order an upgrade upon your Veeam Cloud Connect account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "veeamCloudConnect.Offer",
+              "description": "The offer on which you want to be upgraded",
+              "fullType": "veeamCloudConnect.Offer",
+              "name": "offer",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "order.Order",
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "veeamCloudConnect.Offer",
+              "description": "The offer on which you want to be upgraded",
+              "fullType": "veeamCloudConnect.Offer",
+              "name": "offer",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": null,
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "order.Order",
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/veeamCloudConnect/{serviceName}/upgrade/{duration}"
     }
   ],
   "basePath": "https://ca.api.soyoustart.com/1.0",

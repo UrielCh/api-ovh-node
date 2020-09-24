@@ -23,32 +23,6 @@ export const schema: Schema = {
       "path": "/license/windows"
     },
     {
-      "description": "Get the orderable Windows versions",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the orderable Windows versions",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Your license Ip",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "license.WindowsOrderConfiguration[]"
-        }
-      ],
-      "path": "/license/windows/orderableVersions"
-    },
-    {
       "description": "Your Windows license",
       "operations": [
         {
@@ -443,6 +417,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/license/windows/{serviceName}/terminate"
+    },
+    {
+      "description": "Get the orderable Windows versions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the orderable Windows versions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Your license Ip",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "license.WindowsOrderConfiguration[]"
+        }
+      ],
+      "path": "/license/windows/orderableVersions"
     }
   ],
   "basePath": "https://eu.api.soyoustart.com/1.0",

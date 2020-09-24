@@ -5388,6 +5388,32 @@ export const schema: Schema = {
       "path": "/me/order/{orderId}/pay"
     },
     {
+      "description": "List of registered payment method you can use to pay this order",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List of registered payment method you can use to pay this order",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Order ID",
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "billing.order.PaymentMethods"
+        }
+      ],
+      "path": "/me/order/{orderId}/paymentMethods"
+    },
+    {
       "description": "Pay with an already registered payment mean",
       "operations": [
         {
@@ -5431,32 +5457,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/me/order/{orderId}/payWithRegisteredPaymentMean"
-    },
-    {
-      "description": "List of registered payment method you can use to pay this order",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "List of registered payment method you can use to pay this order",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Order ID",
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "billing.order.PaymentMethods"
-        }
-      ],
-      "path": "/me/order/{orderId}/paymentMethods"
     },
     {
       "description": "Request retraction of order",

@@ -23,25 +23,6 @@ export const schema: Schema = {
       "path": "/ipLoadbalancing"
     },
     {
-      "description": "List of zone available for an IP load balancing",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-06-11T00:00:00+01:00",
-            "deprecatedDate": "2018-05-10T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "value": "DEPRECATED"
-          },
-          "description": "List of zone available for an IP load balancing",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/ipLoadbalancing/availableZones"
-    },
-    {
       "description": "Your IP load balancing",
       "operations": [
         {
@@ -3903,6 +3884,25 @@ export const schema: Schema = {
         }
       ],
       "path": "/ipLoadbalancing/{serviceName}/zone/{name}/terminate"
+    },
+    {
+      "description": "List of zone available for an IP load balancing",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-06-11T00:00:00+01:00",
+            "deprecatedDate": "2018-05-10T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
+          },
+          "description": "List of zone available for an IP load balancing",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/ipLoadbalancing/availableZones"
     }
   ],
   "basePath": "https://api.us.ovhcloud.com/1.0",

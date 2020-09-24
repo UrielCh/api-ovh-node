@@ -23,40 +23,6 @@ export const schema: Schema = {
       "path": "/overTheBox"
     },
     {
-      "description": "List the available offers for the new call",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List the available offers for the new call",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "price.OverTheBox.OfferEnum[]"
-        }
-      ],
-      "path": "/overTheBox/availableOffers"
-    },
-    {
-      "description": "Get the list of devices connected from the same IP address",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the list of devices connected from the same IP address",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "overTheBox.DeviceForRegistration[]"
-        }
-      ],
-      "path": "/overTheBox/devices"
-    },
-    {
       "description": "Service",
       "operations": [
         {
@@ -915,6 +881,40 @@ export const schema: Schema = {
         }
       ],
       "path": "/overTheBox/{serviceName}/tasks/{taskId}"
+    },
+    {
+      "description": "List the available offers for the new call",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List the available offers for the new call",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "price.OverTheBox.OfferEnum[]"
+        }
+      ],
+      "path": "/overTheBox/availableOffers"
+    },
+    {
+      "description": "Get the list of devices connected from the same IP address",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the list of devices connected from the same IP address",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "overTheBox.DeviceForRegistration[]"
+        }
+      ],
+      "path": "/overTheBox/devices"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",

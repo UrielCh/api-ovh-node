@@ -4058,6 +4058,59 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Get informations about cPanel licenses offers",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Post a new cPanel license item in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/licensecPanel"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
           "description": "Get informations about Directadmin licenses offers",
           "httpMethod": "GET",
           "noAuthentication": true,
@@ -4428,59 +4481,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/cart/{cartId}/licenseWorklight"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get informations about cPanel licenses offers",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.GenericProductDefinition[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Post a new cPanel license item in your cart",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "order.cart.GenericProductCreation",
-              "description": "Request Body",
-              "fullType": "order.cart.GenericProductCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.Item"
-        }
-      ],
-      "path": "/order/cart/{cartId}/licensecPanel"
     },
     {
       "description": "Missing description",
@@ -7314,120 +7314,6 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Veeam Enterprise offers",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.GenericProductDefinition[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Post a new Veeam Enterprise item in your cart",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "order.cart.GenericProductCreation",
-              "description": "Request Body",
-              "fullType": "order.cart.GenericProductCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.Item"
-        }
-      ],
-      "path": "/order/cart/{cartId}/veeamEnterprise"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get informations about Veeam Enterprise options",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Identifier of the Veeam Enterprise you want to consult options",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.GenericOptionDefinition[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Post a new Veeam Enterprise option in your cart",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "order.cart.GenericOptionCreation",
-              "description": "Request Body",
-              "fullType": "order.cart.GenericOptionCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Cart ID",
-              "fullType": "string",
-              "name": "cartId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.Item"
-        }
-      ],
-      "path": "/order/cart/{cartId}/veeamEnterprise/options"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
           "description": "Get informations about Veeam Cloud Connect offers",
           "httpMethod": "GET",
           "noAuthentication": true,
@@ -7533,6 +7419,120 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/cart/{cartId}/veeamcc/options"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about Veeam Enterprise offers",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new Veeam Enterprise item in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericProductCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericProductCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/veeamEnterprise"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about Veeam Enterprise options",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the Veeam Enterprise you want to consult options",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Post a new Veeam Enterprise option in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/veeamEnterprise/options"
     },
     {
       "description": "Missing description",
@@ -10362,6 +10362,32 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve information of cPanel licenses catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.Catalog"
+        }
+      ],
+      "path": "/order/catalog/formatted/licensecPanel"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
           "description": "Retrieve information of Directadmin licenses offers catalog",
           "httpMethod": "GET",
           "noAuthentication": true,
@@ -10509,32 +10535,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/catalog/formatted/licenseWorklight"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Retrieve information of cPanel licenses catalog",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "Subsidiary of the country you want to consult catalog",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.catalog.Catalog"
-        }
-      ],
-      "path": "/order/catalog/formatted/licensecPanel"
     },
     {
       "description": "Missing description",
@@ -11106,69 +11106,6 @@ export const schema: Schema = {
       "path": "/order/cdn/dedicated"
     },
     {
-      "description": "Order a New Dedicated CDN Service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'new' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/cdn/dedicated/new"
-    },
-    {
-      "description": "Order a New Dedicated CDN Service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/cdn/dedicated/new/{duration}"
-    },
-    {
       "description": "List available options for this service",
       "operations": [
         {
@@ -11529,6 +11466,69 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/cdn/dedicated/{serviceName}/quota/{duration}"
+    },
+    {
+      "description": "Order a New Dedicated CDN Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'new' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/cdn/dedicated/new"
+    },
+    {
+      "description": "Order a New Dedicated CDN Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/cdn/dedicated/new/{duration}"
     },
     {
       "description": "Operations about the CDNSTATIC service",
@@ -14939,74 +14939,6 @@ export const schema: Schema = {
       "path": "/order/domain/zone"
     },
     {
-      "description": "Order a new DNS zone",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15T00:00:00+01:00",
-            "deprecatedDate": "2019-12-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/dns",
-            "value": "DEPRECATED"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "boolean",
-              "description": "Create only mandatory records",
-              "fullType": "boolean",
-              "name": "minimized",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Name of the zone to create",
-              "fullType": "string",
-              "name": "zoneName",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15T00:00:00+01:00",
-            "deprecatedDate": "2019-12-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/dns",
-            "value": "DEPRECATED"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "boolean",
-              "description": "Create only mandatory records",
-              "fullType": "boolean",
-              "name": "minimized",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Name of the zone to create",
-              "fullType": "string",
-              "name": "zoneName",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/domain/zone/new"
-    },
-    {
       "description": "List available options for this service",
       "operations": [
         {
@@ -15133,6 +15065,74 @@ export const schema: Schema = {
       "path": "/order/domain/zone/{zoneName}/dnsAnycast/{duration}"
     },
     {
+      "description": "Order a new DNS zone",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/dns",
+            "value": "DEPRECATED"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "Create only mandatory records",
+              "fullType": "boolean",
+              "name": "minimized",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Name of the zone to create",
+              "fullType": "string",
+              "name": "zoneName",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/dns",
+            "value": "DEPRECATED"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "Create only mandatory records",
+              "fullType": "boolean",
+              "name": "minimized",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Name of the zone to create",
+              "fullType": "string",
+              "name": "zoneName",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/domain/zone/new"
+    },
+    {
       "description": "Operations about the MX service",
       "operations": [
         {
@@ -15151,127 +15151,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/email/domain"
-    },
-    {
-      "description": "Order a new mx plan",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15T00:00:00+01:00",
-            "deprecatedDate": "2019-12-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/emailDomain",
-            "value": "DEPRECATED"
-          },
-          "description": "Get allowed durations for 'new' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Domain name which will be linked to this mx account",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "email.domain.OfferEnum",
-              "description": "Offer for your new mx account",
-              "fullType": "email.domain.OfferEnum",
-              "name": "offer",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/email/domain/new"
-    },
-    {
-      "description": "Order a new mx plan",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15T00:00:00+01:00",
-            "deprecatedDate": "2019-12-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/emailDomain",
-            "value": "DEPRECATED"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Domain name which will be linked to this mx account",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "email.domain.OfferEnum",
-              "description": "Offer for your new mx account",
-              "fullType": "email.domain.OfferEnum",
-              "name": "offer",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15T00:00:00+01:00",
-            "deprecatedDate": "2019-12-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/emailDomain",
-            "value": "DEPRECATED"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Domain name which will be linked to this mx account",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "email.domain.OfferEnum",
-              "description": "Offer for your new mx account",
-              "fullType": "email.domain.OfferEnum",
-              "name": "offer",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/email/domain/new/{duration}"
     },
     {
       "description": "List available options for this service",
@@ -15422,6 +15301,127 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/email/domain/{domain}/upgrade/{duration}"
+    },
+    {
+      "description": "Order a new mx plan",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/emailDomain",
+            "value": "DEPRECATED"
+          },
+          "description": "Get allowed durations for 'new' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name which will be linked to this mx account",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "email.domain.OfferEnum",
+              "description": "Offer for your new mx account",
+              "fullType": "email.domain.OfferEnum",
+              "name": "offer",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/email/domain/new"
+    },
+    {
+      "description": "Order a new mx plan",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/emailDomain",
+            "value": "DEPRECATED"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain name which will be linked to this mx account",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "email.domain.OfferEnum",
+              "description": "Offer for your new mx account",
+              "fullType": "email.domain.OfferEnum",
+              "name": "offer",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/emailDomain",
+            "value": "DEPRECATED"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name which will be linked to this mx account",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "email.domain.OfferEnum",
+              "description": "Offer for your new mx account",
+              "fullType": "email.domain.OfferEnum",
+              "name": "offer",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/email/domain/new/{duration}"
     },
     {
       "description": "Operations about the MSSERVICES service",
@@ -16301,52 +16301,6 @@ export const schema: Schema = {
       "path": "/order/freefax"
     },
     {
-      "description": "Credit freefax account pages",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "freefax.QuantityEnum",
-              "description": "Fax quantity possibilities to purchase",
-              "fullType": "freefax.QuantityEnum",
-              "name": "quantity",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "freefax.QuantityEnum",
-              "description": "Fax quantity possibilities to purchase",
-              "fullType": "freefax.QuantityEnum",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/freefax/new"
-    },
-    {
       "description": "List available options for this service",
       "operations": [
         {
@@ -16435,6 +16389,52 @@ export const schema: Schema = {
       "path": "/order/freefax/{serviceName}/convertToVoicefax"
     },
     {
+      "description": "Credit freefax account pages",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "freefax.QuantityEnum",
+              "description": "Fax quantity possibilities to purchase",
+              "fullType": "freefax.QuantityEnum",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "freefax.QuantityEnum",
+              "description": "Fax quantity possibilities to purchase",
+              "fullType": "freefax.QuantityEnum",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/freefax/new"
+    },
+    {
       "description": "Operations about the SQLPRIVE service",
       "operations": [
         {
@@ -16453,6 +16453,156 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/hosting/privateDatabase"
+    },
+    {
+      "description": "List available options for this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateSQL",
+            "value": "DEPRECATED"
+          },
+          "description": "Get allowed options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/hosting/privateDatabase/{serviceName}"
+    },
+    {
+      "description": "Create an order for change ram size on your private database",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateSQL",
+            "value": "DEPRECATED"
+          },
+          "description": "Get allowed durations for 'ram' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
+              "description": "Private database ram size",
+              "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
+              "name": "ram",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/hosting/privateDatabase/{serviceName}/ram"
+    },
+    {
+      "description": "Create an order for change ram size on your private database",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateSQL",
+            "value": "DEPRECATED"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
+              "description": "Private database ram size",
+              "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
+              "name": "ram",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/privateSQL",
+            "value": "DEPRECATED"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
+              "description": "Private database ram size",
+              "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
+              "name": "ram",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your private database",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/hosting/privateDatabase/{serviceName}/ram/{duration}"
     },
     {
       "description": "Order new private database",
@@ -16624,156 +16774,6 @@ export const schema: Schema = {
       "path": "/order/hosting/privateDatabase/new/{duration}"
     },
     {
-      "description": "List available options for this service",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15T00:00:00+01:00",
-            "deprecatedDate": "2019-12-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/privateSQL",
-            "value": "DEPRECATED"
-          },
-          "description": "Get allowed options",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/hosting/privateDatabase/{serviceName}"
-    },
-    {
-      "description": "Create an order for change ram size on your private database",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15T00:00:00+01:00",
-            "deprecatedDate": "2019-12-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/privateSQL",
-            "value": "DEPRECATED"
-          },
-          "description": "Get allowed durations for 'ram' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "description": "Private database ram size",
-              "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "name": "ram",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/hosting/privateDatabase/{serviceName}/ram"
-    },
-    {
-      "description": "Create an order for change ram size on your private database",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15T00:00:00+01:00",
-            "deprecatedDate": "2019-12-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/privateSQL",
-            "value": "DEPRECATED"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "description": "Private database ram size",
-              "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "name": "ram",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15T00:00:00+01:00",
-            "deprecatedDate": "2019-12-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/privateSQL",
-            "value": "DEPRECATED"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "description": "Private database ram size",
-              "fullType": "hosting.PrivateDatabase.AvailableRamSizeEnum",
-              "name": "ram",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your private database",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/hosting/privateDatabase/{serviceName}/ram/{duration}"
-    },
-    {
       "description": "Operations about the HOSTING service",
       "operations": [
         {
@@ -16792,199 +16792,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/hosting/web"
-    },
-    {
-      "description": "Order a new hosting account",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15T00:00:00+01:00",
-            "deprecatedDate": "2019-12-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Get allowed durations for 'new' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "hosting.web.DnsZoneEnum",
-              "description": "Dns zone modification possibilities ( by default : RESET_ALL )",
-              "fullType": "hosting.web.DnsZoneEnum",
-              "name": "dnsZone",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain name which will be linked to this hosting account",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.module.OrderableNameEnum",
-              "description": "Module installation ready to use",
-              "fullType": "hosting.web.module.OrderableNameEnum",
-              "name": "module",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "hosting.web.OfferEnum",
-              "description": "Offer for your new hosting account",
-              "fullType": "hosting.web.OfferEnum",
-              "name": "offer",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Indicates that order will be processed with waiving retractation period",
-              "fullType": "boolean",
-              "name": "waiveRetractationPeriod",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/hosting/web/new"
-    },
-    {
-      "description": "Order a new hosting account",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15T00:00:00+01:00",
-            "deprecatedDate": "2019-12-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.DnsZoneEnum",
-              "description": "Dns zone modification possibilities ( by default : RESET_ALL )",
-              "fullType": "hosting.web.DnsZoneEnum",
-              "name": "dnsZone",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain name which will be linked to this hosting account",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.module.OrderableNameEnum",
-              "description": "Module installation ready to use",
-              "fullType": "hosting.web.module.OrderableNameEnum",
-              "name": "module",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "hosting.web.OfferEnum",
-              "description": "Offer for your new hosting account",
-              "fullType": "hosting.web.OfferEnum",
-              "name": "offer",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Indicates that order will be processed with waiving retractation period",
-              "fullType": "boolean",
-              "name": "waiveRetractationPeriod",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2019-12-15T00:00:00+01:00",
-            "deprecatedDate": "2019-12-01T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/webHosting",
-            "value": "DEPRECATED"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "hosting.web.DnsZoneEnum",
-              "description": "Dns zone modification possibilities ( by default : RESET_ALL )",
-              "fullType": "hosting.web.DnsZoneEnum",
-              "name": "dnsZone",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain name which will be linked to this hosting account",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.module.OrderableNameEnum",
-              "description": "Module installation ready to use",
-              "fullType": "hosting.web.module.OrderableNameEnum",
-              "name": "module",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "hosting.web.OfferEnum",
-              "description": "Offer for your new hosting account",
-              "fullType": "hosting.web.OfferEnum",
-              "name": "offer",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Indicates that order will be processed with waiving retractation period",
-              "fullType": "boolean",
-              "name": "waiveRetractationPeriod",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/hosting/web/new/{duration}"
     },
     {
       "description": "List available options for this service",
@@ -17790,6 +17597,199 @@ export const schema: Schema = {
       "path": "/order/hosting/web/{serviceName}/upgrade/{duration}"
     },
     {
+      "description": "Order a new hosting account",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/webHosting",
+            "value": "DEPRECATED"
+          },
+          "description": "Get allowed durations for 'new' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "hosting.web.DnsZoneEnum",
+              "description": "Dns zone modification possibilities ( by default : RESET_ALL )",
+              "fullType": "hosting.web.DnsZoneEnum",
+              "name": "dnsZone",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Domain name which will be linked to this hosting account",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "hosting.web.module.OrderableNameEnum",
+              "description": "Module installation ready to use",
+              "fullType": "hosting.web.module.OrderableNameEnum",
+              "name": "module",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "hosting.web.OfferEnum",
+              "description": "Offer for your new hosting account",
+              "fullType": "hosting.web.OfferEnum",
+              "name": "offer",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Indicates that order will be processed with waiving retractation period",
+              "fullType": "boolean",
+              "name": "waiveRetractationPeriod",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/hosting/web/new"
+    },
+    {
+      "description": "Order a new hosting account",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/webHosting",
+            "value": "DEPRECATED"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "hosting.web.DnsZoneEnum",
+              "description": "Dns zone modification possibilities ( by default : RESET_ALL )",
+              "fullType": "hosting.web.DnsZoneEnum",
+              "name": "dnsZone",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Domain name which will be linked to this hosting account",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "hosting.web.module.OrderableNameEnum",
+              "description": "Module installation ready to use",
+              "fullType": "hosting.web.module.OrderableNameEnum",
+              "name": "module",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "hosting.web.OfferEnum",
+              "description": "Offer for your new hosting account",
+              "fullType": "hosting.web.OfferEnum",
+              "name": "offer",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Indicates that order will be processed with waiving retractation period",
+              "fullType": "boolean",
+              "name": "waiveRetractationPeriod",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "deletionDate": "2019-12-15T00:00:00+01:00",
+            "deprecatedDate": "2019-12-01T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/webHosting",
+            "value": "DEPRECATED"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "hosting.web.DnsZoneEnum",
+              "description": "Dns zone modification possibilities ( by default : RESET_ALL )",
+              "fullType": "hosting.web.DnsZoneEnum",
+              "name": "dnsZone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Domain name which will be linked to this hosting account",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "hosting.web.module.OrderableNameEnum",
+              "description": "Module installation ready to use",
+              "fullType": "hosting.web.module.OrderableNameEnum",
+              "name": "module",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "hosting.web.OfferEnum",
+              "description": "Offer for your new hosting account",
+              "fullType": "hosting.web.OfferEnum",
+              "name": "offer",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Indicates that order will be processed with waiving retractation period",
+              "fullType": "boolean",
+              "name": "waiveRetractationPeriod",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/hosting/web/new/{duration}"
+    },
+    {
       "description": "Order a HPC Spot Account",
       "operations": [
         {
@@ -17982,142 +17982,6 @@ export const schema: Schema = {
       "path": "/order/license/cpanel"
     },
     {
-      "description": "Order a new license on a given Ip with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'new' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.OrderableCpanelVersionEnum",
-              "description": "This license version",
-              "fullType": "license.OrderableCpanelVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/cpanel/new"
-    },
-    {
-      "description": "Order a new license on a given Ip with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.OrderableCpanelVersionEnum",
-              "description": "This license version",
-              "fullType": "license.OrderableCpanelVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.OrderableCpanelVersionEnum",
-              "description": "This license version",
-              "fullType": "license.OrderableCpanelVersionEnum",
-              "name": "version",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/license/cpanel/new/{duration}"
-    },
-    {
       "description": "List available options for this service",
       "operations": [
         {
@@ -18254,6 +18118,142 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/license/cpanel/{serviceName}/upgrade/{duration}"
+    },
+    {
+      "description": "Order a new license on a given Ip with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'new' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderableCpanelVersionEnum",
+              "description": "This license version",
+              "fullType": "license.OrderableCpanelVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/cpanel/new"
+    },
+    {
+      "description": "Order a new license on a given Ip with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderableCpanelVersionEnum",
+              "description": "This license version",
+              "fullType": "license.OrderableCpanelVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderableCpanelVersionEnum",
+              "description": "This license version",
+              "fullType": "license.OrderableCpanelVersionEnum",
+              "name": "version",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/license/cpanel/new/{duration}"
     },
     {
       "description": "Order a new license on a given Ip with some given options",
@@ -18543,310 +18543,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/license/plesk"
-    },
-    {
-      "description": "Order a new license on a given Ip with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'new' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "license.OrderableAntivirusEnum",
-              "description": "The antivirus to enable on this Plesk license",
-              "fullType": "license.OrderableAntivirusEnum",
-              "name": "antivirus",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.PleskApplicationSetEnum",
-              "description": "Wanted application set",
-              "fullType": "license.PleskApplicationSetEnum",
-              "name": "applicationSet",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.OrderablePleskDomainNumberEnum",
-              "description": "This license domain number",
-              "fullType": "license.OrderablePleskDomainNumberEnum",
-              "name": "domainNumber",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderablePleskLanguagePackEnum",
-              "description": "The amount of language pack numbers to include in this licences",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "name": "languagePackNumber",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "powerpack current activation state on your license",
-              "fullType": "boolean",
-              "name": "powerpack",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Reseller management option activation",
-              "fullType": "boolean",
-              "name": "resellerManagement",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.PleskVersionEnum",
-              "description": "This license version",
-              "fullType": "license.PleskVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "WordpressToolkit option activation",
-              "fullType": "boolean",
-              "name": "wordpressToolkit",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/plesk/new"
-    },
-    {
-      "description": "Order a new license on a given Ip with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderableAntivirusEnum",
-              "description": "The antivirus to enable on this Plesk license",
-              "fullType": "license.OrderableAntivirusEnum",
-              "name": "antivirus",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.PleskApplicationSetEnum",
-              "description": "Wanted application set",
-              "fullType": "license.PleskApplicationSetEnum",
-              "name": "applicationSet",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.OrderablePleskDomainNumberEnum",
-              "description": "This license domain number",
-              "fullType": "license.OrderablePleskDomainNumberEnum",
-              "name": "domainNumber",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderablePleskLanguagePackEnum",
-              "description": "The amount of language pack numbers to include in this licences",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "name": "languagePackNumber",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "powerpack current activation state on your license",
-              "fullType": "boolean",
-              "name": "powerpack",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Reseller management option activation",
-              "fullType": "boolean",
-              "name": "resellerManagement",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.PleskVersionEnum",
-              "description": "This license version",
-              "fullType": "license.PleskVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "WordpressToolkit option activation",
-              "fullType": "boolean",
-              "name": "wordpressToolkit",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "license.OrderableAntivirusEnum",
-              "description": "The antivirus to enable on this Plesk license",
-              "fullType": "license.OrderableAntivirusEnum",
-              "name": "antivirus",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.PleskApplicationSetEnum",
-              "description": "Wanted application set",
-              "fullType": "license.PleskApplicationSetEnum",
-              "name": "applicationSet",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.OrderablePleskDomainNumberEnum",
-              "description": "This license domain number",
-              "fullType": "license.OrderablePleskDomainNumberEnum",
-              "name": "domainNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderablePleskLanguagePackEnum",
-              "description": "The amount of language pack numbers to include in this licences",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "name": "languagePackNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "powerpack current activation state on your license",
-              "fullType": "boolean",
-              "name": "powerpack",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Reseller management option activation",
-              "fullType": "boolean",
-              "name": "resellerManagement",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.PleskVersionEnum",
-              "description": "This license version",
-              "fullType": "license.PleskVersionEnum",
-              "name": "version",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "WordpressToolkit option activation",
-              "fullType": "boolean",
-              "name": "wordpressToolkit",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/license/plesk/new/{duration}"
     },
     {
       "description": "List available options for this service",
@@ -19179,23 +18875,6 @@ export const schema: Schema = {
       "path": "/order/license/plesk/{serviceName}/upgrade/{duration}"
     },
     {
-      "description": "Operations about the LICENSE service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/sqlserver"
-    },
-    {
       "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
@@ -19208,26 +18887,90 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "license.OrderableAntivirusEnum",
+              "description": "The antivirus to enable on this Plesk license",
+              "fullType": "license.OrderableAntivirusEnum",
+              "name": "antivirus",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskApplicationSetEnum",
+              "description": "Wanted application set",
+              "fullType": "license.PleskApplicationSetEnum",
+              "name": "applicationSet",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderablePleskDomainNumberEnum",
+              "description": "This license domain number",
+              "fullType": "license.OrderablePleskDomainNumberEnum",
+              "name": "domainNumber",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "description": "Ip on which this license would be installed",
               "fullType": "ipv4",
               "name": "ip",
               "paramType": "query",
               "required": true
             },
             {
-              "dataType": "license.SqlServerVersionEnum",
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
+              "name": "powerpack",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Reseller management option activation",
+              "fullType": "boolean",
+              "name": "resellerManagement",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskVersionEnum",
               "description": "This license version",
-              "fullType": "license.SqlServerVersionEnum",
+              "fullType": "license.PleskVersionEnum",
               "name": "version",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "WordpressToolkit option activation",
+              "fullType": "boolean",
+              "name": "wordpressToolkit",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
         }
       ],
-      "path": "/order/license/sqlserver/new"
+      "path": "/order/license/plesk/new"
     },
     {
       "description": "Order a new license on a given Ip with some given options",
@@ -19250,20 +18993,84 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "license.OrderableAntivirusEnum",
+              "description": "The antivirus to enable on this Plesk license",
+              "fullType": "license.OrderableAntivirusEnum",
+              "name": "antivirus",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskApplicationSetEnum",
+              "description": "Wanted application set",
+              "fullType": "license.PleskApplicationSetEnum",
+              "name": "applicationSet",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderablePleskDomainNumberEnum",
+              "description": "This license domain number",
+              "fullType": "license.OrderablePleskDomainNumberEnum",
+              "name": "domainNumber",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "description": "Ip on which this license would be installed",
               "fullType": "ipv4",
               "name": "ip",
               "paramType": "query",
               "required": true
             },
             {
-              "dataType": "license.SqlServerVersionEnum",
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
+              "name": "powerpack",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Reseller management option activation",
+              "fullType": "boolean",
+              "name": "resellerManagement",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskVersionEnum",
               "description": "This license version",
-              "fullType": "license.SqlServerVersionEnum",
+              "fullType": "license.PleskVersionEnum",
               "name": "version",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "WordpressToolkit option activation",
+              "fullType": "boolean",
+              "name": "wordpressToolkit",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "order.Order"
@@ -19278,20 +19085,84 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "license.OrderableAntivirusEnum",
+              "description": "The antivirus to enable on this Plesk license",
+              "fullType": "license.OrderableAntivirusEnum",
+              "name": "antivirus",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskApplicationSetEnum",
+              "description": "Wanted application set",
+              "fullType": "license.PleskApplicationSetEnum",
+              "name": "applicationSet",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderablePleskDomainNumberEnum",
+              "description": "This license domain number",
+              "fullType": "license.OrderablePleskDomainNumberEnum",
+              "name": "domainNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "description": "Ip on which this license would be installed",
               "fullType": "ipv4",
               "name": "ip",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "license.SqlServerVersionEnum",
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
+              "name": "powerpack",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Reseller management option activation",
+              "fullType": "boolean",
+              "name": "resellerManagement",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskVersionEnum",
               "description": "This license version",
-              "fullType": "license.SqlServerVersionEnum",
+              "fullType": "license.PleskVersionEnum",
               "name": "version",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "WordpressToolkit option activation",
+              "fullType": "boolean",
+              "name": "wordpressToolkit",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -19305,7 +19176,24 @@ export const schema: Schema = {
           "responseType": "order.Order"
         }
       ],
-      "path": "/order/license/sqlserver/new/{duration}"
+      "path": "/order/license/plesk/new/{duration}"
+    },
+    {
+      "description": "Operations about the LICENSE service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/sqlserver"
     },
     {
       "description": "List available options for this service",
@@ -19446,6 +19334,118 @@ export const schema: Schema = {
       "path": "/order/license/sqlserver/{serviceName}/upgrade/{duration}"
     },
     {
+      "description": "Order a new license on a given Ip with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'new' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.SqlServerVersionEnum",
+              "description": "This license version",
+              "fullType": "license.SqlServerVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/sqlserver/new"
+    },
+    {
+      "description": "Order a new license on a given Ip with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.SqlServerVersionEnum",
+              "description": "This license version",
+              "fullType": "license.SqlServerVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "license.SqlServerVersionEnum",
+              "description": "This license version",
+              "fullType": "license.SqlServerVersionEnum",
+              "name": "version",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/license/sqlserver/new/{duration}"
+    },
+    {
       "description": "Operations about the LICENSE service",
       "operations": [
         {
@@ -19461,6 +19461,144 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/license/virtuozzo"
+    },
+    {
+      "description": "List available options for this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/virtuozzo/{serviceName}"
+    },
+    {
+      "description": "Upgrade this license with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'upgrade' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "description": "How much container is this license able to manage ...",
+              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "name": "containerNumber",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/virtuozzo/{serviceName}/upgrade"
+    },
+    {
+      "description": "Upgrade this license with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "description": "How much container is this license able to manage ...",
+              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "name": "containerNumber",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "description": "How much container is this license able to manage ...",
+              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "name": "containerNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/license/virtuozzo/{serviceName}/upgrade/{duration}"
     },
     {
       "description": "Order a new license on a given Ip with some given options",
@@ -19623,144 +19761,6 @@ export const schema: Schema = {
       "path": "/order/license/virtuozzo/new/{duration}"
     },
     {
-      "description": "List available options for this service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed options",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your Virtuozzo license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/virtuozzo/{serviceName}"
-    },
-    {
-      "description": "Upgrade this license with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'upgrade' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your Virtuozzo license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "description": "How much container is this license able to manage ...",
-              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "name": "containerNumber",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/virtuozzo/{serviceName}/upgrade"
-    },
-    {
-      "description": "Upgrade this license with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your Virtuozzo license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "description": "How much container is this license able to manage ...",
-              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "name": "containerNumber",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "description": "How much container is this license able to manage ...",
-              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "name": "containerNumber",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your Virtuozzo license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/license/virtuozzo/{serviceName}/upgrade/{duration}"
-    },
-    {
       "description": "Operations about the LICENSE service",
       "operations": [
         {
@@ -19776,166 +19776,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/license/windows"
-    },
-    {
-      "description": "Order a new license on a given Ip with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'new' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsSqlVersionEnum",
-              "description": "The SQL Server version to enable on this license Windows license",
-              "fullType": "license.WindowsSqlVersionEnum",
-              "name": "sqlVersion",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsOsVersionEnum",
-              "description": "This license version",
-              "fullType": "license.WindowsOsVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/windows/new"
-    },
-    {
-      "description": "Order a new license on a given Ip with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsSqlVersionEnum",
-              "description": "The SQL Server version to enable on this license Windows license",
-              "fullType": "license.WindowsSqlVersionEnum",
-              "name": "sqlVersion",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsOsVersionEnum",
-              "description": "This license version",
-              "fullType": "license.WindowsOsVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsSqlVersionEnum",
-              "description": "The SQL Server version to enable on this license Windows license",
-              "fullType": "license.WindowsSqlVersionEnum",
-              "name": "sqlVersion",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsOsVersionEnum",
-              "description": "This license version",
-              "fullType": "license.WindowsOsVersionEnum",
-              "name": "version",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/license/windows/new/{duration}"
     },
     {
       "description": "List available options for this service",
@@ -20100,23 +19940,6 @@ export const schema: Schema = {
       "path": "/order/license/windows/{serviceName}/upgrade/{duration}"
     },
     {
-      "description": "Operations about the LICENSE service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/worklight"
-    },
-    {
       "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
@@ -20137,17 +19960,25 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "boolean",
-              "description": "Does your company have less than 1000 potential users",
-              "fullType": "boolean",
-              "name": "lessThan1000Users",
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
               "paramType": "query",
-              "required": true
+              "required": false
             },
             {
-              "dataType": "license.WorkLightVersionEnum",
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "The SQL Server version to enable on this license Windows license",
+              "fullType": "license.WindowsSqlVersionEnum",
+              "name": "sqlVersion",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsOsVersionEnum",
               "description": "This license version",
-              "fullType": "license.WorkLightVersionEnum",
+              "fullType": "license.WindowsOsVersionEnum",
               "name": "version",
               "paramType": "query",
               "required": true
@@ -20156,7 +19987,7 @@ export const schema: Schema = {
           "responseType": "string[]"
         }
       ],
-      "path": "/order/license/worklight/new"
+      "path": "/order/license/windows/new"
     },
     {
       "description": "Order a new license on a given Ip with some given options",
@@ -20187,17 +20018,25 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "boolean",
-              "description": "Does your company have less than 1000 potential users",
-              "fullType": "boolean",
-              "name": "lessThan1000Users",
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
               "paramType": "query",
-              "required": true
+              "required": false
             },
             {
-              "dataType": "license.WorkLightVersionEnum",
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "The SQL Server version to enable on this license Windows license",
+              "fullType": "license.WindowsSqlVersionEnum",
+              "name": "sqlVersion",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsOsVersionEnum",
               "description": "This license version",
-              "fullType": "license.WorkLightVersionEnum",
+              "fullType": "license.WindowsOsVersionEnum",
               "name": "version",
               "paramType": "query",
               "required": true
@@ -20223,17 +20062,25 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "boolean",
-              "description": "Does your company have less than 1000 potential users",
-              "fullType": "boolean",
-              "name": "lessThan1000Users",
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
-              "dataType": "license.WorkLightVersionEnum",
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "The SQL Server version to enable on this license Windows license",
+              "fullType": "license.WindowsSqlVersionEnum",
+              "name": "sqlVersion",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsOsVersionEnum",
               "description": "This license version",
-              "fullType": "license.WorkLightVersionEnum",
+              "fullType": "license.WindowsOsVersionEnum",
               "name": "version",
               "paramType": "body",
               "required": true
@@ -20250,7 +20097,24 @@ export const schema: Schema = {
           "responseType": "order.Order"
         }
       ],
-      "path": "/order/license/worklight/new/{duration}"
+      "path": "/order/license/windows/new/{duration}"
+    },
+    {
+      "description": "Operations about the LICENSE service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/worklight"
     },
     {
       "description": "List available options for this service",
@@ -20391,24 +20255,7 @@ export const schema: Schema = {
       "path": "/order/license/worklight/{serviceName}/upgrade/{duration}"
     },
     {
-      "description": "Operations about the OVERTHEBOX service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/overTheBox"
-    },
-    {
-      "description": "Subscribe to overTheBox service",
+      "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
@@ -20420,37 +20267,37 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The id of the device",
-              "fullType": "string",
-              "name": "deviceId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Offer name",
-              "fullType": "string",
-              "name": "offer",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
               "paramType": "query",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "An optional voucher",
-              "fullType": "string",
-              "name": "voucher",
+              "dataType": "boolean",
+              "description": "Does your company have less than 1000 potential users",
+              "fullType": "boolean",
+              "name": "lessThan1000Users",
               "paramType": "query",
-              "required": false
+              "required": true
+            },
+            {
+              "dataType": "license.WorkLightVersionEnum",
+              "description": "This license version",
+              "fullType": "license.WorkLightVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
             }
           ],
           "responseType": "string[]"
         }
       ],
-      "path": "/order/overTheBox/new"
+      "path": "/order/license/worklight/new"
     },
     {
-      "description": "Subscribe to overTheBox service",
+      "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
           "apiStatus": {
@@ -20470,28 +20317,28 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "The id of the device",
-              "fullType": "string",
-              "name": "deviceId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Offer name",
-              "fullType": "string",
-              "name": "offer",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
               "paramType": "query",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "An optional voucher",
-              "fullType": "string",
-              "name": "voucher",
+              "dataType": "boolean",
+              "description": "Does your company have less than 1000 potential users",
+              "fullType": "boolean",
+              "name": "lessThan1000Users",
               "paramType": "query",
-              "required": false
+              "required": true
+            },
+            {
+              "dataType": "license.WorkLightVersionEnum",
+              "description": "This license version",
+              "fullType": "license.WorkLightVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
             }
           ],
           "responseType": "order.Order"
@@ -20506,28 +20353,28 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The id of the device",
-              "fullType": "string",
-              "name": "deviceId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Offer name",
-              "fullType": "string",
-              "name": "offer",
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "string",
-              "description": "An optional voucher",
-              "fullType": "string",
-              "name": "voucher",
+              "dataType": "boolean",
+              "description": "Does your company have less than 1000 potential users",
+              "fullType": "boolean",
+              "name": "lessThan1000Users",
               "paramType": "body",
-              "required": false
+              "required": true
+            },
+            {
+              "dataType": "license.WorkLightVersionEnum",
+              "description": "This license version",
+              "fullType": "license.WorkLightVersionEnum",
+              "name": "version",
+              "paramType": "body",
+              "required": true
             },
             {
               "dataType": "string",
@@ -20541,7 +20388,24 @@ export const schema: Schema = {
           "responseType": "order.Order"
         }
       ],
-      "path": "/order/overTheBox/new/{duration}"
+      "path": "/order/license/worklight/new/{duration}"
+    },
+    {
+      "description": "Operations about the OVERTHEBOX service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/overTheBox"
     },
     {
       "description": "List available options for this service",
@@ -20696,7 +20560,7 @@ export const schema: Schema = {
       "path": "/order/overTheBox/{serviceName}/migrate"
     },
     {
-      "description": "Order router vpn",
+      "description": "Subscribe to overTheBox service",
       "operations": [
         {
           "apiStatus": {
@@ -20709,20 +20573,36 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The name of your vrack",
+              "description": "The id of the device",
               "fullType": "string",
-              "name": "vrack",
+              "name": "deviceId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Offer name",
+              "fullType": "string",
+              "name": "offer",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "An optional voucher",
+              "fullType": "string",
+              "name": "voucher",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
         }
       ],
-      "path": "/order/router/new"
+      "path": "/order/overTheBox/new"
     },
     {
-      "description": "Order router vpn",
+      "description": "Subscribe to overTheBox service",
       "operations": [
         {
           "apiStatus": {
@@ -20743,11 +20623,27 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The name of your vrack",
+              "description": "The id of the device",
               "fullType": "string",
-              "name": "vrack",
+              "name": "deviceId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Offer name",
+              "fullType": "string",
+              "name": "offer",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "An optional voucher",
+              "fullType": "string",
+              "name": "voucher",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "order.Order"
@@ -20763,11 +20659,27 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The name of your vrack",
+              "description": "The id of the device",
               "fullType": "string",
-              "name": "vrack",
+              "name": "deviceId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Offer name",
+              "fullType": "string",
+              "name": "offer",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "An optional voucher",
+              "fullType": "string",
+              "name": "voucher",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -20781,7 +20693,7 @@ export const schema: Schema = {
           "responseType": "order.Order"
         }
       ],
-      "path": "/order/router/new/{duration}"
+      "path": "/order/overTheBox/new/{duration}"
     },
     {
       "description": "Create an order for a new office tenant",
@@ -20937,52 +20849,6 @@ export const schema: Schema = {
       "path": "/order/sms"
     },
     {
-      "description": "Create and credit a new SMS Account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Sms credit quantity",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Sms credit quantity",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/sms/new"
-    },
-    {
       "description": "List available options for this service",
       "operations": [
         {
@@ -21071,151 +20937,7 @@ export const schema: Schema = {
       "path": "/order/sms/{serviceName}/credits"
     },
     {
-      "description": "Operations about the VOIP service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/telephony"
-    },
-    {
-      "description": "Operations about the VOIP service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/telephony/lines"
-    },
-    {
-      "description": "List available options for this service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed options",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Your line number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/telephony/lines/{serviceName}"
-    },
-    {
-      "description": "Add extra simultaneous lines for a specifical line",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-08-09T10:00:00+01:00",
-            "deprecatedDate": "2018-02-09T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/telephony/lines/{serviceName}/updateSimultaneousChannels",
-            "value": "DEPRECATED"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Your line number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your billingAccount",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The quantity of extra simultaneous lines to add",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2018-08-09T10:00:00+01:00",
-            "deprecatedDate": "2018-02-09T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/telephony/lines/{serviceName}/updateSimultaneousChannels",
-            "value": "DEPRECATED"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your billingAccount",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The quantity of extra simultaneous lines to add",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Your line number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/telephony/lines/{serviceName}/addSimultaneousLines"
-    },
-    {
-      "description": "Order a phone for this specific line",
+      "description": "Create and credit a new SMS Account",
       "operations": [
         {
           "apiStatus": {
@@ -21227,126 +20949,8 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Your line number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The hardware you want to order for this specific line",
-              "fullType": "string",
-              "name": "hardware",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Use /supply/mondialRelay entry point to specify a relay point and ignore shipping contact address information entry.",
-              "fullType": "string",
-              "name": "mondialRelayId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Retractation rights if set",
-              "fullType": "boolean",
-              "name": "retractation",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Shipping contact information id from /me entry point",
-              "fullType": "string",
-              "name": "shippingContactId",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The hardware you want to order for this specific line",
-              "fullType": "string",
-              "name": "hardware",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Use /supply/mondialRelay entry point to specify a relay point and ignore shipping contact address information entry.",
-              "fullType": "string",
-              "name": "mondialRelayId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Retractation rights if set",
-              "fullType": "boolean",
-              "name": "retractation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Shipping contact information id from /me entry point",
-              "fullType": "string",
-              "name": "shippingContactId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Your line number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/telephony/lines/{serviceName}/hardware"
-    },
-    {
-      "description": "Update extra simultaneous channels for a specifical service to the requested amount",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Your line number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
               "dataType": "long",
-              "description": "The quantity of total simultaneous channels requested",
+              "description": "Sms credit quantity",
               "fullType": "long",
               "name": "quantity",
               "paramType": "query",
@@ -21366,139 +20970,9 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "The quantity of total simultaneous channels requested",
+              "description": "Sms credit quantity",
               "fullType": "long",
               "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Your line number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/telephony/lines/{serviceName}/updateSimultaneousChannels"
-    },
-    {
-      "description": "Purchase a new billing account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/telephony/new"
-    },
-    {
-      "description": "Purchase spare phone",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Spare phone brand model",
-              "fullType": "string",
-              "name": "brand",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Use /supply/mondialRelay entry point to specify a relay point and ignore shipping contact address information entry.",
-              "fullType": "string",
-              "name": "mondialRelayId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Number of phone quantity",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Shipping contact information id from /me entry point",
-              "fullType": "long",
-              "name": "shippingContactId",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Spare phone brand model",
-              "fullType": "string",
-              "name": "brand",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Use /supply/mondialRelay entry point to specify a relay point and ignore shipping contact address information entry.",
-              "fullType": "string",
-              "name": "mondialRelayId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Number of phone quantity",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Shipping contact information id from /me entry point",
-              "fullType": "long",
-              "name": "shippingContactId",
               "paramType": "body",
               "required": true
             }
@@ -21506,7 +20980,7 @@ export const schema: Schema = {
           "responseType": "order.Order"
         }
       ],
-      "path": "/order/telephony/spare/new"
+      "path": "/order/sms/new"
     },
     {
       "description": "Operations about the VOIP service",
@@ -21523,289 +20997,7 @@ export const schema: Schema = {
           "responseType": "string[]"
         }
       ],
-      "path": "/order/telephony/trunks"
-    },
-    {
-      "description": "List available options for this service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed options",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Your trunk number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/telephony/trunks/{serviceName}"
-    },
-    {
-      "description": "Add extra simultaneous lines for a specifical line",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-08-09T10:00:00+01:00",
-            "deprecatedDate": "2018-02-09T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/telephony/trunks/{serviceName}/updateSimultaneousChannels",
-            "value": "DEPRECATED"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Your trunk number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your billingAccount",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The quantity of extra simultaneous lines to add",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2018-08-09T10:00:00+01:00",
-            "deprecatedDate": "2018-02-09T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/telephony/trunks/{serviceName}/updateSimultaneousChannels",
-            "value": "DEPRECATED"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your billingAccount",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The quantity of extra simultaneous lines to add",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Your trunk number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/telephony/trunks/{serviceName}/addSimultaneousLines"
-    },
-    {
-      "description": "Order a phone for this specific line",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Your trunk number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The hardware you want to order for this specific line",
-              "fullType": "string",
-              "name": "hardware",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Use /supply/mondialRelay entry point to specify a relay point and ignore shipping contact address information entry.",
-              "fullType": "string",
-              "name": "mondialRelayId",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Retractation rights if set",
-              "fullType": "boolean",
-              "name": "retractation",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Shipping contact information id from /me entry point",
-              "fullType": "string",
-              "name": "shippingContactId",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The hardware you want to order for this specific line",
-              "fullType": "string",
-              "name": "hardware",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Use /supply/mondialRelay entry point to specify a relay point and ignore shipping contact address information entry.",
-              "fullType": "string",
-              "name": "mondialRelayId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Retractation rights if set",
-              "fullType": "boolean",
-              "name": "retractation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Shipping contact information id from /me entry point",
-              "fullType": "string",
-              "name": "shippingContactId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Your trunk number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/telephony/trunks/{serviceName}/hardware"
-    },
-    {
-      "description": "Update extra simultaneous channels for a specifical service to the requested amount",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Your trunk number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The quantity of total simultaneous channels requested",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "The quantity of total simultaneous channels requested",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Your trunk number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/telephony/trunks/{serviceName}/updateSimultaneousChannels"
+      "path": "/order/telephony"
     },
     {
       "description": "List available options for this service",
@@ -23820,6 +23012,726 @@ export const schema: Schema = {
       "path": "/order/telephony/{billingAccount}/securityDeposit"
     },
     {
+      "description": "Operations about the VOIP service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/telephony/lines"
+    },
+    {
+      "description": "List available options for this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Your line number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/telephony/lines/{serviceName}"
+    },
+    {
+      "description": "Add extra simultaneous lines for a specifical line",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-08-09T10:00:00+01:00",
+            "deprecatedDate": "2018-02-09T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/telephony/lines/{serviceName}/updateSimultaneousChannels",
+            "value": "DEPRECATED"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Your line number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The quantity of extra simultaneous lines to add",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "deletionDate": "2018-08-09T10:00:00+01:00",
+            "deprecatedDate": "2018-02-09T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/telephony/lines/{serviceName}/updateSimultaneousChannels",
+            "value": "DEPRECATED"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The quantity of extra simultaneous lines to add",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your line number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/telephony/lines/{serviceName}/addSimultaneousLines"
+    },
+    {
+      "description": "Order a phone for this specific line",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Your line number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The hardware you want to order for this specific line",
+              "fullType": "string",
+              "name": "hardware",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Use /supply/mondialRelay entry point to specify a relay point and ignore shipping contact address information entry.",
+              "fullType": "string",
+              "name": "mondialRelayId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Retractation rights if set",
+              "fullType": "boolean",
+              "name": "retractation",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Shipping contact information id from /me entry point",
+              "fullType": "string",
+              "name": "shippingContactId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The hardware you want to order for this specific line",
+              "fullType": "string",
+              "name": "hardware",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Use /supply/mondialRelay entry point to specify a relay point and ignore shipping contact address information entry.",
+              "fullType": "string",
+              "name": "mondialRelayId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Retractation rights if set",
+              "fullType": "boolean",
+              "name": "retractation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Shipping contact information id from /me entry point",
+              "fullType": "string",
+              "name": "shippingContactId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Your line number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/telephony/lines/{serviceName}/hardware"
+    },
+    {
+      "description": "Update extra simultaneous channels for a specifical service to the requested amount",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Your line number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The quantity of total simultaneous channels requested",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The quantity of total simultaneous channels requested",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your line number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/telephony/lines/{serviceName}/updateSimultaneousChannels"
+    },
+    {
+      "description": "Purchase a new billing account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/telephony/new"
+    },
+    {
+      "description": "Purchase spare phone",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Spare phone brand model",
+              "fullType": "string",
+              "name": "brand",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Use /supply/mondialRelay entry point to specify a relay point and ignore shipping contact address information entry.",
+              "fullType": "string",
+              "name": "mondialRelayId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Number of phone quantity",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Shipping contact information id from /me entry point",
+              "fullType": "long",
+              "name": "shippingContactId",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Spare phone brand model",
+              "fullType": "string",
+              "name": "brand",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Use /supply/mondialRelay entry point to specify a relay point and ignore shipping contact address information entry.",
+              "fullType": "string",
+              "name": "mondialRelayId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Number of phone quantity",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Shipping contact information id from /me entry point",
+              "fullType": "long",
+              "name": "shippingContactId",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/telephony/spare/new"
+    },
+    {
+      "description": "Operations about the VOIP service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/telephony/trunks"
+    },
+    {
+      "description": "List available options for this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Your trunk number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/telephony/trunks/{serviceName}"
+    },
+    {
+      "description": "Add extra simultaneous lines for a specifical line",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-08-09T10:00:00+01:00",
+            "deprecatedDate": "2018-02-09T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/telephony/trunks/{serviceName}/updateSimultaneousChannels",
+            "value": "DEPRECATED"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Your trunk number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The quantity of extra simultaneous lines to add",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "deletionDate": "2018-08-09T10:00:00+01:00",
+            "deprecatedDate": "2018-02-09T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/telephony/trunks/{serviceName}/updateSimultaneousChannels",
+            "value": "DEPRECATED"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The quantity of extra simultaneous lines to add",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your trunk number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/telephony/trunks/{serviceName}/addSimultaneousLines"
+    },
+    {
+      "description": "Order a phone for this specific line",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Your trunk number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The hardware you want to order for this specific line",
+              "fullType": "string",
+              "name": "hardware",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Use /supply/mondialRelay entry point to specify a relay point and ignore shipping contact address information entry.",
+              "fullType": "string",
+              "name": "mondialRelayId",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Retractation rights if set",
+              "fullType": "boolean",
+              "name": "retractation",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Shipping contact information id from /me entry point",
+              "fullType": "string",
+              "name": "shippingContactId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The hardware you want to order for this specific line",
+              "fullType": "string",
+              "name": "hardware",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Use /supply/mondialRelay entry point to specify a relay point and ignore shipping contact address information entry.",
+              "fullType": "string",
+              "name": "mondialRelayId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Retractation rights if set",
+              "fullType": "boolean",
+              "name": "retractation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Shipping contact information id from /me entry point",
+              "fullType": "string",
+              "name": "shippingContactId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Your trunk number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/telephony/trunks/{serviceName}/hardware"
+    },
+    {
+      "description": "Update extra simultaneous channels for a specifical service to the requested amount",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Your trunk number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The quantity of total simultaneous channels requested",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The quantity of total simultaneous channels requested",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your trunk number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/telephony/trunks/{serviceName}/updateSimultaneousChannels"
+    },
+    {
       "description": "Operations about the DEDICATED-OPTION service",
       "operations": [
         {
@@ -24737,135 +24649,6 @@ export const schema: Schema = {
           "responseType": "string[]"
         }
       ],
-      "path": "/order/upgrade/licensePlesk"
-    },
-    {
-      "description": "Listing offers /order/upgrade/licensePlesk",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Retrieve available offers to upgrade your service to",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal ID of your Plesk license service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.cart.GenericProductDefinition[]"
-        }
-      ],
-      "path": "/order/upgrade/licensePlesk/{serviceName}"
-    },
-    {
-      "description": "Listing offers /order/upgrade/licensePlesk/#serviceName#",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get a provisional order for the selected upgrade of your service",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Plan code of the offer you want to upgrade to",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal ID of your Plesk license service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity you want to upgrade to",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.upgrade.OperationAndOrder"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Perform the requested upgrade of your service",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "boolean",
-              "description": "Indicates that order will be automatically paid with preferred payment method",
-              "fullType": "boolean",
-              "name": "autoPayWithPreferredPaymentMethod",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "Quantity you want to upgrade to",
-              "fullType": "long",
-              "name": "quantity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Plan code of the offer you want to upgrade to",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal ID of your Plesk license service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.upgrade.OperationAndOrder"
-        }
-      ],
-      "path": "/order/upgrade/licensePlesk/{serviceName}/{planCode}"
-    },
-    {
-      "description": "Operations about the LICENSE service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
       "path": "/order/upgrade/licensecPanel"
     },
     {
@@ -24979,6 +24762,135 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/upgrade/licensecPanel/{serviceName}/{planCode}"
+    },
+    {
+      "description": "Operations about the LICENSE service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/upgrade/licensePlesk"
+    },
+    {
+      "description": "Listing offers /order/upgrade/licensePlesk",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve available offers to upgrade your service to",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal ID of your Plesk license service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        }
+      ],
+      "path": "/order/upgrade/licensePlesk/{serviceName}"
+    },
+    {
+      "description": "Listing offers /order/upgrade/licensePlesk/#serviceName#",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a provisional order for the selected upgrade of your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal ID of your Plesk license service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.upgrade.OperationAndOrder"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Perform the requested upgrade of your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "Indicates that order will be automatically paid with preferred payment method",
+              "fullType": "boolean",
+              "name": "autoPayWithPreferredPaymentMethod",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal ID of your Plesk license service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.upgrade.OperationAndOrder"
+        }
+      ],
+      "path": "/order/upgrade/licensePlesk/{serviceName}/{planCode}"
     },
     {
       "description": "Operations about the DBAAS-LOGS service",
@@ -27387,6 +27299,35 @@ export const schema: Schema = {
       "path": "/order/vrack"
     },
     {
+      "description": "List available options for this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2017-07-27T00:00:00+01:00",
+            "deprecatedDate": "2017-06-27T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/order/cart/{cartId}/vrack",
+            "value": "DEPRECATED"
+          },
+          "description": "Get allowed options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your vrack",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/vrack/{serviceName}"
+    },
+    {
       "description": "Order new vrack",
       "operations": [
         {
@@ -27437,35 +27378,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/vrack/new"
-    },
-    {
-      "description": "List available options for this service",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2017-07-27T00:00:00+01:00",
-            "deprecatedDate": "2017-06-27T00:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/order/cart/{cartId}/vrack",
-            "value": "DEPRECATED"
-          },
-          "description": "Get allowed options",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your vrack",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/vrack/{serviceName}"
     },
     {
       "description": "Purchase spare modem",

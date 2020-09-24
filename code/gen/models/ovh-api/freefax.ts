@@ -23,23 +23,6 @@ export const schema: Schema = {
       "path": "/freefax"
     },
     {
-      "description": "Get the credit balance and the remaining pages available for all our freefax",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the credit balance and the remaining pages available for all our freefax",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "freefax.BalanceInformations"
-        }
-      ],
-      "path": "/freefax/credits"
-    },
-    {
       "description": "Freefax properties",
       "operations": [
         {
@@ -369,6 +352,23 @@ export const schema: Schema = {
         }
       ],
       "path": "/freefax/{serviceName}/voicemail/voicemailNumbers"
+    },
+    {
+      "description": "Get the credit balance and the remaining pages available for all our freefax",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the credit balance and the remaining pages available for all our freefax",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "freefax.BalanceInformations"
+        }
+      ],
+      "path": "/freefax/credits"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",

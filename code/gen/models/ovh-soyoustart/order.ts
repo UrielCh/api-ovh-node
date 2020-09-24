@@ -2440,142 +2440,6 @@ export const schema: Schema = {
       "path": "/order/license/cpanel"
     },
     {
-      "description": "Order a new license on a given Ip with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'new' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.OrderableCpanelVersionEnum",
-              "description": "This license version",
-              "fullType": "license.OrderableCpanelVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/cpanel/new"
-    },
-    {
-      "description": "Order a new license on a given Ip with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.OrderableCpanelVersionEnum",
-              "description": "This license version",
-              "fullType": "license.OrderableCpanelVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.OrderableCpanelVersionEnum",
-              "description": "This license version",
-              "fullType": "license.OrderableCpanelVersionEnum",
-              "name": "version",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/license/cpanel/new/{duration}"
-    },
-    {
       "description": "List available options for this service",
       "operations": [
         {
@@ -2742,6 +2606,142 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "license.OrderableCpanelVersionEnum",
+              "description": "This license version",
+              "fullType": "license.OrderableCpanelVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/cpanel/new"
+    },
+    {
+      "description": "Order a new license on a given Ip with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderableCpanelVersionEnum",
+              "description": "This license version",
+              "fullType": "license.OrderableCpanelVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderableCpanelVersionEnum",
+              "description": "This license version",
+              "fullType": "license.OrderableCpanelVersionEnum",
+              "name": "version",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/license/cpanel/new/{duration}"
+    },
+    {
+      "description": "Order a new license on a given Ip with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'new' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "license.OrderableDirectAdminVersionEnum",
               "description": "This license version",
               "fullType": "license.OrderableDirectAdminVersionEnum",
@@ -2865,310 +2865,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/license/plesk"
-    },
-    {
-      "description": "Order a new license on a given Ip with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'new' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "license.OrderableAntivirusEnum",
-              "description": "The antivirus to enable on this Plesk license",
-              "fullType": "license.OrderableAntivirusEnum",
-              "name": "antivirus",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.PleskApplicationSetEnum",
-              "description": "Wanted application set",
-              "fullType": "license.PleskApplicationSetEnum",
-              "name": "applicationSet",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.OrderablePleskDomainNumberEnum",
-              "description": "This license domain number",
-              "fullType": "license.OrderablePleskDomainNumberEnum",
-              "name": "domainNumber",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderablePleskLanguagePackEnum",
-              "description": "The amount of language pack numbers to include in this licences",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "name": "languagePackNumber",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "powerpack current activation state on your license",
-              "fullType": "boolean",
-              "name": "powerpack",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Reseller management option activation",
-              "fullType": "boolean",
-              "name": "resellerManagement",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.PleskVersionEnum",
-              "description": "This license version",
-              "fullType": "license.PleskVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "WordpressToolkit option activation",
-              "fullType": "boolean",
-              "name": "wordpressToolkit",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/plesk/new"
-    },
-    {
-      "description": "Order a new license on a given Ip with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderableAntivirusEnum",
-              "description": "The antivirus to enable on this Plesk license",
-              "fullType": "license.OrderableAntivirusEnum",
-              "name": "antivirus",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.PleskApplicationSetEnum",
-              "description": "Wanted application set",
-              "fullType": "license.PleskApplicationSetEnum",
-              "name": "applicationSet",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.OrderablePleskDomainNumberEnum",
-              "description": "This license domain number",
-              "fullType": "license.OrderablePleskDomainNumberEnum",
-              "name": "domainNumber",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderablePleskLanguagePackEnum",
-              "description": "The amount of language pack numbers to include in this licences",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "name": "languagePackNumber",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "powerpack current activation state on your license",
-              "fullType": "boolean",
-              "name": "powerpack",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Reseller management option activation",
-              "fullType": "boolean",
-              "name": "resellerManagement",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.PleskVersionEnum",
-              "description": "This license version",
-              "fullType": "license.PleskVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "WordpressToolkit option activation",
-              "fullType": "boolean",
-              "name": "wordpressToolkit",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "license.OrderableAntivirusEnum",
-              "description": "The antivirus to enable on this Plesk license",
-              "fullType": "license.OrderableAntivirusEnum",
-              "name": "antivirus",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.PleskApplicationSetEnum",
-              "description": "Wanted application set",
-              "fullType": "license.PleskApplicationSetEnum",
-              "name": "applicationSet",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.OrderablePleskDomainNumberEnum",
-              "description": "This license domain number",
-              "fullType": "license.OrderablePleskDomainNumberEnum",
-              "name": "domainNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderablePleskLanguagePackEnum",
-              "description": "The amount of language pack numbers to include in this licences",
-              "fullType": "license.OrderablePleskLanguagePackEnum",
-              "name": "languagePackNumber",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "powerpack current activation state on your license",
-              "fullType": "boolean",
-              "name": "powerpack",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Reseller management option activation",
-              "fullType": "boolean",
-              "name": "resellerManagement",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.PleskVersionEnum",
-              "description": "This license version",
-              "fullType": "license.PleskVersionEnum",
-              "name": "version",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "WordpressToolkit option activation",
-              "fullType": "boolean",
-              "name": "wordpressToolkit",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/license/plesk/new/{duration}"
     },
     {
       "description": "List available options for this service",
@@ -3501,23 +3197,6 @@ export const schema: Schema = {
       "path": "/order/license/plesk/{serviceName}/upgrade/{duration}"
     },
     {
-      "description": "Operations about the LICENSE service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/sqlserver"
-    },
-    {
       "description": "Order a new license on a given Ip with some given options",
       "operations": [
         {
@@ -3530,26 +3209,90 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "license.OrderableAntivirusEnum",
+              "description": "The antivirus to enable on this Plesk license",
+              "fullType": "license.OrderableAntivirusEnum",
+              "name": "antivirus",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskApplicationSetEnum",
+              "description": "Wanted application set",
+              "fullType": "license.PleskApplicationSetEnum",
+              "name": "applicationSet",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderablePleskDomainNumberEnum",
+              "description": "This license domain number",
+              "fullType": "license.OrderablePleskDomainNumberEnum",
+              "name": "domainNumber",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "description": "Ip on which this license would be installed",
               "fullType": "ipv4",
               "name": "ip",
               "paramType": "query",
               "required": true
             },
             {
-              "dataType": "license.SqlServerVersionEnum",
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
+              "name": "powerpack",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Reseller management option activation",
+              "fullType": "boolean",
+              "name": "resellerManagement",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskVersionEnum",
               "description": "This license version",
-              "fullType": "license.SqlServerVersionEnum",
+              "fullType": "license.PleskVersionEnum",
               "name": "version",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "WordpressToolkit option activation",
+              "fullType": "boolean",
+              "name": "wordpressToolkit",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "string[]"
         }
       ],
-      "path": "/order/license/sqlserver/new"
+      "path": "/order/license/plesk/new"
     },
     {
       "description": "Order a new license on a given Ip with some given options",
@@ -3572,20 +3315,84 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "license.OrderableAntivirusEnum",
+              "description": "The antivirus to enable on this Plesk license",
+              "fullType": "license.OrderableAntivirusEnum",
+              "name": "antivirus",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskApplicationSetEnum",
+              "description": "Wanted application set",
+              "fullType": "license.PleskApplicationSetEnum",
+              "name": "applicationSet",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderablePleskDomainNumberEnum",
+              "description": "This license domain number",
+              "fullType": "license.OrderablePleskDomainNumberEnum",
+              "name": "domainNumber",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "description": "Ip on which this license would be installed",
               "fullType": "ipv4",
               "name": "ip",
               "paramType": "query",
               "required": true
             },
             {
-              "dataType": "license.SqlServerVersionEnum",
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
+              "name": "powerpack",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Reseller management option activation",
+              "fullType": "boolean",
+              "name": "resellerManagement",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskVersionEnum",
               "description": "This license version",
-              "fullType": "license.SqlServerVersionEnum",
+              "fullType": "license.PleskVersionEnum",
               "name": "version",
               "paramType": "query",
               "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "WordpressToolkit option activation",
+              "fullType": "boolean",
+              "name": "wordpressToolkit",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "order.Order"
@@ -3600,20 +3407,84 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "license.OrderableAntivirusEnum",
+              "description": "The antivirus to enable on this Plesk license",
+              "fullType": "license.OrderableAntivirusEnum",
+              "name": "antivirus",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskApplicationSetEnum",
+              "description": "Wanted application set",
+              "fullType": "license.PleskApplicationSetEnum",
+              "name": "applicationSet",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.OrderablePleskDomainNumberEnum",
+              "description": "This license domain number",
+              "fullType": "license.OrderablePleskDomainNumberEnum",
+              "name": "domainNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "description": "Ip on which this license would be installed",
               "fullType": "ipv4",
               "name": "ip",
               "paramType": "body",
               "required": true
             },
             {
-              "dataType": "license.SqlServerVersionEnum",
+              "dataType": "license.OrderablePleskLanguagePackEnum",
+              "description": "The amount of language pack numbers to include in this licences",
+              "fullType": "license.OrderablePleskLanguagePackEnum",
+              "name": "languagePackNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "powerpack current activation state on your license",
+              "fullType": "boolean",
+              "name": "powerpack",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Reseller management option activation",
+              "fullType": "boolean",
+              "name": "resellerManagement",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.PleskVersionEnum",
               "description": "This license version",
-              "fullType": "license.SqlServerVersionEnum",
+              "fullType": "license.PleskVersionEnum",
               "name": "version",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "WordpressToolkit option activation",
+              "fullType": "boolean",
+              "name": "wordpressToolkit",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -3627,7 +3498,24 @@ export const schema: Schema = {
           "responseType": "order.Order"
         }
       ],
-      "path": "/order/license/sqlserver/new/{duration}"
+      "path": "/order/license/plesk/new/{duration}"
+    },
+    {
+      "description": "Operations about the LICENSE service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/sqlserver"
     },
     {
       "description": "List available options for this service",
@@ -3768,6 +3656,118 @@ export const schema: Schema = {
       "path": "/order/license/sqlserver/{serviceName}/upgrade/{duration}"
     },
     {
+      "description": "Order a new license on a given Ip with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'new' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.SqlServerVersionEnum",
+              "description": "This license version",
+              "fullType": "license.SqlServerVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/sqlserver/new"
+    },
+    {
+      "description": "Order a new license on a given Ip with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.SqlServerVersionEnum",
+              "description": "This license version",
+              "fullType": "license.SqlServerVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "license.SqlServerVersionEnum",
+              "description": "This license version",
+              "fullType": "license.SqlServerVersionEnum",
+              "name": "version",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/license/sqlserver/new/{duration}"
+    },
+    {
       "description": "Operations about the LICENSE service",
       "operations": [
         {
@@ -3783,6 +3783,144 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/license/virtuozzo"
+    },
+    {
+      "description": "List available options for this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/virtuozzo/{serviceName}"
+    },
+    {
+      "description": "Upgrade this license with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'upgrade' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "description": "How much container is this license able to manage ...",
+              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "name": "containerNumber",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/virtuozzo/{serviceName}/upgrade"
+    },
+    {
+      "description": "Upgrade this license with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "description": "How much container is this license able to manage ...",
+              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "name": "containerNumber",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "description": "How much container is this license able to manage ...",
+              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
+              "name": "containerNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Virtuozzo license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/license/virtuozzo/{serviceName}/upgrade/{duration}"
     },
     {
       "description": "Order a new license on a given Ip with some given options",
@@ -3945,144 +4083,6 @@ export const schema: Schema = {
       "path": "/order/license/virtuozzo/new/{duration}"
     },
     {
-      "description": "List available options for this service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed options",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your Virtuozzo license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/virtuozzo/{serviceName}"
-    },
-    {
-      "description": "Upgrade this license with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'upgrade' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your Virtuozzo license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "description": "How much container is this license able to manage ...",
-              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "name": "containerNumber",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/virtuozzo/{serviceName}/upgrade"
-    },
-    {
-      "description": "Upgrade this license with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your Virtuozzo license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "description": "How much container is this license able to manage ...",
-              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "name": "containerNumber",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "description": "How much container is this license able to manage ...",
-              "fullType": "license.OrderableVirtuozzoContainerNumberEnum",
-              "name": "containerNumber",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your Virtuozzo license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/license/virtuozzo/{serviceName}/upgrade/{duration}"
-    },
-    {
       "description": "Operations about the LICENSE service",
       "operations": [
         {
@@ -4098,166 +4098,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/license/windows"
-    },
-    {
-      "description": "Order a new license on a given Ip with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get allowed durations for 'new' option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsSqlVersionEnum",
-              "description": "The SQL Server version to enable on this license Windows license",
-              "fullType": "license.WindowsSqlVersionEnum",
-              "name": "sqlVersion",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsOsVersionEnum",
-              "description": "This license version",
-              "fullType": "license.WindowsOsVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/order/license/windows/new"
-    },
-    {
-      "description": "Order a new license on a given Ip with some given options",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get prices and contracts information",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsSqlVersionEnum",
-              "description": "The SQL Server version to enable on this license Windows license",
-              "fullType": "license.WindowsSqlVersionEnum",
-              "name": "sqlVersion",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsOsVersionEnum",
-              "description": "This license version",
-              "fullType": "license.WindowsOsVersionEnum",
-              "name": "version",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create order",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "license.LicenseTypeEnum",
-              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
-              "fullType": "license.LicenseTypeEnum",
-              "name": "serviceType",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsSqlVersionEnum",
-              "description": "The SQL Server version to enable on this license Windows license",
-              "fullType": "license.WindowsSqlVersionEnum",
-              "name": "sqlVersion",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "license.WindowsOsVersionEnum",
-              "description": "This license version",
-              "fullType": "license.WindowsOsVersionEnum",
-              "name": "version",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Duration",
-              "fullType": "string",
-              "name": "duration",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "order.Order"
-        }
-      ],
-      "path": "/order/license/windows/new/{duration}"
     },
     {
       "description": "List available options for this service",
@@ -4420,6 +4260,166 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/license/windows/{serviceName}/upgrade/{duration}"
+    },
+    {
+      "description": "Order a new license on a given Ip with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get allowed durations for 'new' option",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "The SQL Server version to enable on this license Windows license",
+              "fullType": "license.WindowsSqlVersionEnum",
+              "name": "sqlVersion",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsOsVersionEnum",
+              "description": "This license version",
+              "fullType": "license.WindowsOsVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/license/windows/new"
+    },
+    {
+      "description": "Order a new license on a given Ip with some given options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get prices and contracts information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "The SQL Server version to enable on this license Windows license",
+              "fullType": "license.WindowsSqlVersionEnum",
+              "name": "sqlVersion",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsOsVersionEnum",
+              "description": "This license version",
+              "fullType": "license.WindowsOsVersionEnum",
+              "name": "version",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Ip on which this license would be installed (for dedicated your main server Ip)",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "license.LicenseTypeEnum",
+              "description": "# DEPRECATED # The kind of service on which this license will be used # Will not be used, keeped only for compatibility #",
+              "fullType": "license.LicenseTypeEnum",
+              "name": "serviceType",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsSqlVersionEnum",
+              "description": "The SQL Server version to enable on this license Windows license",
+              "fullType": "license.WindowsSqlVersionEnum",
+              "name": "sqlVersion",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "license.WindowsOsVersionEnum",
+              "description": "This license version",
+              "fullType": "license.WindowsOsVersionEnum",
+              "name": "version",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration",
+              "fullType": "string",
+              "name": "duration",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Order"
+        }
+      ],
+      "path": "/order/license/windows/new/{duration}"
     },
     {
       "description": "Operations about the VEEAMCC service",

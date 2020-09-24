@@ -23,1206 +23,6 @@ export const schema: Schema = {
       "path": "/telephony"
     },
     {
-      "description": "Get all available accessories",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get all available accessories",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Phone brand",
-              "fullType": "string",
-              "name": "brand",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "telephony.NumberCountryEnum",
-              "description": "The country",
-              "fullType": "telephony.NumberCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "telephony.AccessoryOffer[]"
-        }
-      ],
-      "path": "/telephony/accessories"
-    },
-    {
-      "description": "Operations about the VOIP service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/telephony/aliases"
-    },
-    {
-      "description": "Telephony service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Your line number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "telephony.TelephonyGenericService"
-        }
-      ],
-      "path": "/telephony/aliases/{serviceName}"
-    },
-    {
-      "description": "Change the contacts of this service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Launch a contact change procedure",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The contact to set as admin contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactAdmin",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The contact to set as billing contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The contact to set as tech contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Your line number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/telephony/aliases/{serviceName}/changeContact"
-    },
-    {
-      "description": "Details about a Service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Your line number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "services.Service"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "services.Service",
-              "description": "New object properties",
-              "fullType": "services.Service",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Your line number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/telephony/aliases/{serviceName}/serviceInfos"
-    },
-    {
-      "description": "Get all available SIP domains by country",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get all available SIP domains by country",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "telephony.SipDomainProductTypeEnum",
-              "description": "Product type",
-              "fullType": "telephony.SipDomainProductTypeEnum",
-              "name": "type",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "telephony.DefaultSipDomains[]"
-        }
-      ],
-      "path": "/telephony/availableDefaultSipDomains"
-    },
-    {
-      "description": "Get current order ids",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get current order ids",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/telephony/currentOrderIds"
-    },
-    {
-      "description": "Get all zip codes compatible for a number",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get all zip codes compatible for a number",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "telephony.NumberCountryEnum",
-              "description": "The country of the city",
-              "fullType": "telephony.NumberCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The number (can be a range terminated by XXXX)",
-              "fullType": "string",
-              "name": "number",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/telephony/directories/availableZipCodes"
-    },
-    {
-      "description": "Get city informations from a zip code",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get city informations from a zip code",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "telephony.NumberCountryEnum",
-              "description": "The country of the city",
-              "fullType": "telephony.NumberCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The zip code of the city",
-              "fullType": "string",
-              "name": "zipCode",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "telephony.City[]"
-        }
-      ],
-      "path": "/telephony/directories/cities"
-    },
-    {
-      "description": "Get all available fax offer compatible",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get all available fax offer compatible",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "telephony.NumberCountryEnum",
-              "description": "The country",
-              "fullType": "telephony.NumberCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "telephony.LineOffer[]"
-        }
-      ],
-      "path": "/telephony/fax/offers"
-    },
-    {
-      "description": "Get all available phone brands compatible with lines",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get all available phone brands compatible with lines",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "telephony.NumberCountryEnum",
-              "description": "The country",
-              "fullType": "telephony.NumberCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The selected offer",
-              "fullType": "string",
-              "name": "offer",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "telephony.LinePhone[]"
-        }
-      ],
-      "path": "/telephony/line/offer/phones"
-    },
-    {
-      "description": "Get all available line offer compatible",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get all available line offer compatible",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "telephony.NumberCountryEnum",
-              "description": "The country",
-              "fullType": "telephony.NumberCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "telephony.LineOffer[]"
-        }
-      ],
-      "path": "/telephony/line/offers"
-    },
-    {
-      "description": "Operations about the VOIP service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/telephony/lines"
-    },
-    {
-      "description": "Telephony service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Your line number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "telephony.TelephonyGenericService"
-        }
-      ],
-      "path": "/telephony/lines/{serviceName}"
-    },
-    {
-      "description": "Change the contacts of this service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Launch a contact change procedure",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The contact to set as admin contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactAdmin",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The contact to set as billing contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The contact to set as tech contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Your line number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/telephony/lines/{serviceName}/changeContact"
-    },
-    {
-      "description": "Details about a Service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Your line number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "services.Service"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "services.Service",
-              "description": "New object properties",
-              "fullType": "services.Service",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Your line number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/telephony/lines/{serviceName}/serviceInfos"
-    },
-    {
-      "description": "Get all available geographic zone with some details, from a country",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get all available geographic zone with some details, from a country",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Enter a part of a city name or a zip for specific zne returns",
-              "fullType": "string",
-              "name": "axiom",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "telephony.NumberCountryEnum",
-              "description": "The country",
-              "fullType": "telephony.NumberCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "telephony.NumberDetailedZone[]"
-        }
-      ],
-      "path": "/telephony/number/detailedZones"
-    },
-    {
-      "description": "Get all available special range from a country",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get all available special range from a country",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "telephony.NumberCountryEnum",
-              "description": "The country",
-              "fullType": "telephony.NumberCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/telephony/number/ranges"
-    },
-    {
-      "description": "Get all available specific number from a country",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get all available specific number from a country",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "telephony.NumberCountryEnum",
-              "description": "The country",
-              "fullType": "telephony.NumberCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The range (special number)",
-              "fullType": "string",
-              "name": "range",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "telephony.NumberTypeEnum",
-              "description": "The type of number",
-              "fullType": "telephony.NumberTypeEnum",
-              "name": "type",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The zone (geographic number)",
-              "fullType": "string",
-              "name": "zone",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "telephony.SpecificNumber[]"
-        }
-      ],
-      "path": "/telephony/number/specificNumbers"
-    },
-    {
-      "description": "Get all available geographic zone from a country",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get all available geographic zone from a country",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Enter a part of a city name or a zip for specific zne returns",
-              "fullType": "string",
-              "name": "axiom",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "telephony.NumberCountryEnum",
-              "description": "The country",
-              "fullType": "telephony.NumberCountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/telephony/number/zones"
-    },
-    {
-      "description": "Search a service with its domain, to get its billing account and type",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Search a service with its domain, to get its billing account and type",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Filter the value of  property (like)",
-              "fullType": "string",
-              "name": "axiom",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "telephony.TelephonySearchService[]"
-        }
-      ],
-      "path": "/telephony/searchServices"
-    },
-    {
-      "description": "Get all available SIP domains by country",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get all available SIP domains by country",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "telephony.NumberCountryEnum",
-              "description": "Country",
-              "fullType": "telephony.NumberCountryEnum",
-              "name": "country",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "SIP domain to set",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "telephony.SipDomainProductTypeEnum",
-              "description": "Product type",
-              "fullType": "telephony.SipDomainProductTypeEnum",
-              "name": "type",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/telephony/setDefaultSipDomain"
-    },
-    {
-      "description": "List the telephony.Sound objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Sounds attached to this telephony account",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "long[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create a new sound",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Sound description",
-              "fullType": "string",
-              "name": "description",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Sound filename",
-              "fullType": "string",
-              "name": "filename",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "telephony.Sound"
-        }
-      ],
-      "path": "/telephony/sounds"
-    },
-    {
-      "description": "Sounds attached to this telephony account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete the sound",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Sound ID",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Sound ID",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "telephony.Sound"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "telephony.Sound",
-              "description": "New object properties",
-              "fullType": "telephony.Sound",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Sound ID",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/telephony/sounds/{id}"
-    },
-    {
-      "description": "Operations about the VOIP service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/telephony/spare"
-    },
-    {
-      "description": "Get all available spare brands",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get all available spare brands",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/telephony/spare/brands"
-    },
-    {
-      "description": "Spare properties",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete the spare as if it was not belonging to OVH anymore",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your spare",
-              "fullType": "string",
-              "name": "spare",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your spare",
-              "fullType": "string",
-              "name": "spare",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "spare.telephony.TelephonySpare"
-        }
-      ],
-      "path": "/telephony/spare/{spare}"
-    },
-    {
-      "description": "compatibleReplacement operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Return the list of phone domains compatible to be replaced",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your spare",
-              "fullType": "string",
-              "name": "spare",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/telephony/spare/{spare}/compatibleReplacement"
-    },
-    {
-      "description": "replace operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Replace the phone by its spare. The broken phone became a spare if it was bought. An RMA is created if the broken phone is under securitydeposit.",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The phone to replace by the spare",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "Public ip of the phone",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your spare",
-              "fullType": "string",
-              "name": "spare",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/telephony/spare/{spare}/replace"
-    },
-    {
-      "description": "Details about a Service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your spare",
-              "fullType": "string",
-              "name": "spare",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "services.Service"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "services.Service",
-              "description": "New object properties",
-              "fullType": "services.Service",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your spare",
-              "fullType": "string",
-              "name": "spare",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/telephony/spare/{spare}/serviceInfos"
-    },
-    {
-      "description": "Operations about the VOIP service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/telephony/trunks"
-    },
-    {
-      "description": "Telephony service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Your trunk number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "telephony.TelephonyGenericService"
-        }
-      ],
-      "path": "/telephony/trunks/{serviceName}"
-    },
-    {
-      "description": "Change the contacts of this service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Launch a contact change procedure",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The contact to set as admin contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactAdmin",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The contact to set as billing contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactBilling",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The contact to set as tech contact",
-              "fullType": "coreTypes.AccountId:string",
-              "name": "contactTech",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Your trunk number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/telephony/trunks/{serviceName}/changeContact"
-    },
-    {
-      "description": "Details about a Service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Your trunk number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "services.Service"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "services.Service",
-              "description": "New object properties",
-              "fullType": "services.Service",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Your trunk number",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/telephony/trunks/{serviceName}/serviceInfos"
-    },
-    {
       "description": "Billing Account",
       "operations": [
         {
@@ -1593,6 +393,32 @@ export const schema: Schema = {
       "path": "/telephony/{billingAccount}/billingAccountSite"
     },
     {
+      "description": "cancelTermination operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Cancel the billing account termination",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/cancelTermination"
+    },
+    {
       "description": "canTransferSecurityDeposit operations",
       "operations": [
         {
@@ -1625,32 +451,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/telephony/{billingAccount}/canTransferSecurityDeposit"
-    },
-    {
-      "description": "cancelTermination operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Cancel the billing account termination",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your billingAccount",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/telephony/{billingAccount}/cancelTermination"
     },
     {
       "description": "List the telephony.CarrierSip objects",
@@ -9353,6 +8153,40 @@ export const schema: Schema = {
       "path": "/telephony/{billingAccount}/line/{serviceName}/calls/{id}/whisper"
     },
     {
+      "description": "cancelConvertToNumber operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Cancel a scheduled conversion to number",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/line/{serviceName}/cancelConvertToNumber"
+    },
+    {
       "description": "canChangePassword operations",
       "operations": [
         {
@@ -9388,40 +8222,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/telephony/{billingAccount}/line/{serviceName}/canChangePassword"
-    },
-    {
-      "description": "cancelConvertToNumber operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Cancel a scheduled conversion to number",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your billingAccount",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/telephony/{billingAccount}/line/{serviceName}/cancelConvertToNumber"
     },
     {
       "description": "changePassword operations",
@@ -19406,6 +18206,40 @@ export const schema: Schema = {
       "path": "/telephony/{billingAccount}/rsva/{serviceName}/currentRateCode"
     },
     {
+      "description": "scheduledRateCode operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "New scheduled rate code related to this sva",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.DetailedRateCodeInformation"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/rsva/{serviceName}/scheduledRateCode"
+    },
+    {
       "description": "scheduleRateCode operations",
       "operations": [
         {
@@ -19446,40 +18280,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/telephony/{billingAccount}/rsva/{serviceName}/scheduleRateCode"
-    },
-    {
-      "description": "scheduledRateCode operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "New scheduled rate code related to this sva",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of your billingAccount",
-              "fullType": "string",
-              "name": "billingAccount",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "telephony.DetailedRateCodeInformation"
-        }
-      ],
-      "path": "/telephony/{billingAccount}/rsva/{serviceName}/scheduledRateCode"
     },
     {
       "description": "List the telephony.Scheduler objects",
@@ -23350,6 +22150,1206 @@ export const schema: Schema = {
         }
       ],
       "path": "/telephony/{billingAccount}/vxml/{serviceName}/settings/logs"
+    },
+    {
+      "description": "Get all available accessories",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all available accessories",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Phone brand",
+              "fullType": "string",
+              "name": "brand",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "telephony.NumberCountryEnum",
+              "description": "The country",
+              "fullType": "telephony.NumberCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.AccessoryOffer[]"
+        }
+      ],
+      "path": "/telephony/accessories"
+    },
+    {
+      "description": "Operations about the VOIP service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/telephony/aliases"
+    },
+    {
+      "description": "Telephony service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Your line number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.TelephonyGenericService"
+        }
+      ],
+      "path": "/telephony/aliases/{serviceName}"
+    },
+    {
+      "description": "Change the contacts of this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Launch a contact change procedure",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "contactAdmin",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "contactBilling",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "contactTech",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Your line number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/telephony/aliases/{serviceName}/changeContact"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Your line number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your line number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/telephony/aliases/{serviceName}/serviceInfos"
+    },
+    {
+      "description": "Get all available SIP domains by country",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all available SIP domains by country",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "telephony.SipDomainProductTypeEnum",
+              "description": "Product type",
+              "fullType": "telephony.SipDomainProductTypeEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.DefaultSipDomains[]"
+        }
+      ],
+      "path": "/telephony/availableDefaultSipDomains"
+    },
+    {
+      "description": "Get current order ids",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get current order ids",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/telephony/currentOrderIds"
+    },
+    {
+      "description": "Get all zip codes compatible for a number",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all zip codes compatible for a number",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "telephony.NumberCountryEnum",
+              "description": "The country of the city",
+              "fullType": "telephony.NumberCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The number (can be a range terminated by XXXX)",
+              "fullType": "string",
+              "name": "number",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/telephony/directories/availableZipCodes"
+    },
+    {
+      "description": "Get city informations from a zip code",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get city informations from a zip code",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "telephony.NumberCountryEnum",
+              "description": "The country of the city",
+              "fullType": "telephony.NumberCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The zip code of the city",
+              "fullType": "string",
+              "name": "zipCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.City[]"
+        }
+      ],
+      "path": "/telephony/directories/cities"
+    },
+    {
+      "description": "Get all available fax offer compatible",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all available fax offer compatible",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "telephony.NumberCountryEnum",
+              "description": "The country",
+              "fullType": "telephony.NumberCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.LineOffer[]"
+        }
+      ],
+      "path": "/telephony/fax/offers"
+    },
+    {
+      "description": "Get all available phone brands compatible with lines",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all available phone brands compatible with lines",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "telephony.NumberCountryEnum",
+              "description": "The country",
+              "fullType": "telephony.NumberCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The selected offer",
+              "fullType": "string",
+              "name": "offer",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.LinePhone[]"
+        }
+      ],
+      "path": "/telephony/line/offer/phones"
+    },
+    {
+      "description": "Get all available line offer compatible",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all available line offer compatible",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "telephony.NumberCountryEnum",
+              "description": "The country",
+              "fullType": "telephony.NumberCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.LineOffer[]"
+        }
+      ],
+      "path": "/telephony/line/offers"
+    },
+    {
+      "description": "Operations about the VOIP service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/telephony/lines"
+    },
+    {
+      "description": "Telephony service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Your line number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.TelephonyGenericService"
+        }
+      ],
+      "path": "/telephony/lines/{serviceName}"
+    },
+    {
+      "description": "Change the contacts of this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Launch a contact change procedure",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "contactAdmin",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "contactBilling",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "contactTech",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Your line number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/telephony/lines/{serviceName}/changeContact"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Your line number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your line number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/telephony/lines/{serviceName}/serviceInfos"
+    },
+    {
+      "description": "Get all available geographic zone with some details, from a country",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all available geographic zone with some details, from a country",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Enter a part of a city name or a zip for specific zne returns",
+              "fullType": "string",
+              "name": "axiom",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "telephony.NumberCountryEnum",
+              "description": "The country",
+              "fullType": "telephony.NumberCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.NumberDetailedZone[]"
+        }
+      ],
+      "path": "/telephony/number/detailedZones"
+    },
+    {
+      "description": "Get all available special range from a country",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all available special range from a country",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "telephony.NumberCountryEnum",
+              "description": "The country",
+              "fullType": "telephony.NumberCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/telephony/number/ranges"
+    },
+    {
+      "description": "Get all available specific number from a country",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all available specific number from a country",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "telephony.NumberCountryEnum",
+              "description": "The country",
+              "fullType": "telephony.NumberCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The range (special number)",
+              "fullType": "string",
+              "name": "range",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "telephony.NumberTypeEnum",
+              "description": "The type of number",
+              "fullType": "telephony.NumberTypeEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The zone (geographic number)",
+              "fullType": "string",
+              "name": "zone",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "telephony.SpecificNumber[]"
+        }
+      ],
+      "path": "/telephony/number/specificNumbers"
+    },
+    {
+      "description": "Get all available geographic zone from a country",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all available geographic zone from a country",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Enter a part of a city name or a zip for specific zne returns",
+              "fullType": "string",
+              "name": "axiom",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "telephony.NumberCountryEnum",
+              "description": "The country",
+              "fullType": "telephony.NumberCountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/telephony/number/zones"
+    },
+    {
+      "description": "Search a service with its domain, to get its billing account and type",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Search a service with its domain, to get its billing account and type",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Filter the value of  property (like)",
+              "fullType": "string",
+              "name": "axiom",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.TelephonySearchService[]"
+        }
+      ],
+      "path": "/telephony/searchServices"
+    },
+    {
+      "description": "Get all available SIP domains by country",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all available SIP domains by country",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "telephony.NumberCountryEnum",
+              "description": "Country",
+              "fullType": "telephony.NumberCountryEnum",
+              "name": "country",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "SIP domain to set",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "telephony.SipDomainProductTypeEnum",
+              "description": "Product type",
+              "fullType": "telephony.SipDomainProductTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/telephony/setDefaultSipDomain"
+    },
+    {
+      "description": "List the telephony.Sound objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Sounds attached to this telephony account",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a new sound",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Sound description",
+              "fullType": "string",
+              "name": "description",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Sound filename",
+              "fullType": "string",
+              "name": "filename",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.Sound"
+        }
+      ],
+      "path": "/telephony/sounds"
+    },
+    {
+      "description": "Sounds attached to this telephony account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete the sound",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Sound ID",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Sound ID",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.Sound"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "telephony.Sound",
+              "description": "New object properties",
+              "fullType": "telephony.Sound",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Sound ID",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/telephony/sounds/{id}"
+    },
+    {
+      "description": "Operations about the VOIP service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/telephony/spare"
+    },
+    {
+      "description": "Spare properties",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete the spare as if it was not belonging to OVH anymore",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "spare.telephony.TelephonySpare"
+        }
+      ],
+      "path": "/telephony/spare/{spare}"
+    },
+    {
+      "description": "compatibleReplacement operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return the list of phone domains compatible to be replaced",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/telephony/spare/{spare}/compatibleReplacement"
+    },
+    {
+      "description": "replace operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Replace the phone by its spare. The broken phone became a spare if it was bought. An RMA is created if the broken phone is under securitydeposit.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The phone to replace by the spare",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "Public ip of the phone",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/telephony/spare/{spare}/replace"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/telephony/spare/{spare}/serviceInfos"
+    },
+    {
+      "description": "Get all available spare brands",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all available spare brands",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/telephony/spare/brands"
+    },
+    {
+      "description": "Operations about the VOIP service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/telephony/trunks"
+    },
+    {
+      "description": "Telephony service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Your trunk number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.TelephonyGenericService"
+        }
+      ],
+      "path": "/telephony/trunks/{serviceName}"
+    },
+    {
+      "description": "Change the contacts of this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Launch a contact change procedure",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The contact to set as admin contact",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "contactAdmin",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The contact to set as billing contact",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "contactBilling",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The contact to set as tech contact",
+              "fullType": "coreTypes.AccountId:string",
+              "name": "contactTech",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Your trunk number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/telephony/trunks/{serviceName}/changeContact"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Your trunk number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your trunk number",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/telephony/trunks/{serviceName}/serviceInfos"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",

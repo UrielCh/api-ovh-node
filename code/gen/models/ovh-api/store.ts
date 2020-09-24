@@ -394,32 +394,6 @@ export const schema: Schema = {
       "path": "/store/document"
     },
     {
-      "description": "MarketPlaceDocument",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Add CORS support on your container",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Allow this origin",
-              "fullType": "string",
-              "name": "origin",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/store/document/cors"
-    },
-    {
       "description": "MarketPlaceDocument.documentId",
       "operations": [
         {
@@ -464,6 +438,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/store/document/{documentId}"
+    },
+    {
+      "description": "MarketPlaceDocument",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Add CORS support on your container",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Allow this origin",
+              "fullType": "string",
+              "name": "origin",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/store/document/cors"
     },
     {
       "description": "MarketPlacePartner.search",

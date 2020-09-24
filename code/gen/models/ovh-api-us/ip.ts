@@ -56,946 +56,6 @@ export const schema: Schema = {
       "path": "/ip"
     },
     {
-      "description": "Operations about the IP service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/ip/loadBalancing"
-    },
-    {
-      "description": "Your load balancing IP",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ip.LoadBalancingIp"
-        }
-      ],
-      "path": "/ip/loadBalancing/{serviceName}"
-    },
-    {
-      "description": "allowedBackends operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of backends you can attach to your IP",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ip[]"
-        }
-      ],
-      "path": "/ip/loadBalancing/{serviceName}/allowedBackends"
-    },
-    {
-      "description": "List the ip.LoadBalancingBackendIp objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Backends for this IP load balancing",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ipv4[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add a new backend on your IP load balancing",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "IP of your backend",
-              "fullType": "ipv4",
-              "name": "ipBackend",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "ip.LoadBalancingBackendProbeEnum",
-              "description": "The type of probe used",
-              "fullType": "ip.LoadBalancingBackendProbeEnum",
-              "name": "probe",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Weight of the backend on its zone, must be between 1 and 100",
-              "fullType": "long",
-              "name": "weight",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ip.LoadBalancingTask"
-        }
-      ],
-      "path": "/ip/loadBalancing/{serviceName}/backend"
-    },
-    {
-      "description": "Backends attached to your IP load balancing",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Remove a backend IP",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "IP of your backend",
-              "fullType": "ipv4",
-              "name": "backend",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ip.LoadBalancingTask"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "IP of your backend",
-              "fullType": "ipv4",
-              "name": "backend",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ip.LoadBalancingBackendIp"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ip.LoadBalancingBackendIp",
-              "description": "New object properties",
-              "fullType": "ip.LoadBalancingBackendIp",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "IP of your backend",
-              "fullType": "ipv4",
-              "name": "backend",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/ip/loadBalancing/{serviceName}/backend/{backend}"
-    },
-    {
-      "description": "backupState operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Set or unset the backend as a backup of another backend. Requests will be directed to the backup only if the main backend is in probe fail",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "boolean",
-              "description": "Set or unset the backend as backup. mainBackendIp is optional in case of unset",
-              "fullType": "boolean",
-              "name": "backupStateSet",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "ip",
-              "description": "Main backend ip, must be in the same zone as the backup",
-              "fullType": "ip",
-              "name": "mainBackendIp",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "ipv4",
-              "description": "IP of your backend",
-              "fullType": "ipv4",
-              "name": "backend",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ip.LoadBalancingTask"
-        }
-      ],
-      "path": "/ip/loadBalancing/{serviceName}/backend/{backend}/backupState"
-    },
-    {
-      "description": "setWeight operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Set the weight of a backend. For instance, if backend A has a weight of 8 and backup B was a weight of 16, backend B will receive twice more connections as backend A. Backends must be on the same POP for the weight parameter to take effect between them.",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "weight of the backend, must be between 1 and 100, default is 8",
-              "fullType": "long",
-              "name": "weight",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": "IP of your backend",
-              "fullType": "ipv4",
-              "name": "backend",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ip.LoadBalancingTask"
-        }
-      ],
-      "path": "/ip/loadBalancing/{serviceName}/backend/{backend}/setWeight"
-    },
-    {
-      "description": "importCustomSsl operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Import your own ssl certificate on your IP load balancing. Ssl option is needed to use this url.",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "text",
-              "description": "certificate",
-              "fullType": "text",
-              "name": "certificate",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "text",
-              "description": "certificate chain",
-              "fullType": "text",
-              "name": "chain",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "text",
-              "description": "certificate key",
-              "fullType": "text",
-              "name": "key",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ip.LoadBalancingTask"
-        }
-      ],
-      "path": "/ip/loadBalancing/{serviceName}/importCustomSsl"
-    },
-    {
-      "description": "internalNatIp operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Ip subnet used by OVH to nat requests on your ip lb to your backends. You must ensure that your backends are not part of a network that overlap with this one.",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ip.LoadBalancingZoneEnum",
-              "description": "one of your ip loadbalancing's zone",
-              "fullType": "ip.LoadBalancingZoneEnum",
-              "name": "zone",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "ipBlock"
-        }
-      ],
-      "path": "/ip/loadBalancing/{serviceName}/internalNatIp"
-    },
-    {
-      "description": "List the portsRedirection objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get all srcPort",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ip.LoadBalancingAdditionalPortEnum[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add a new port redirection",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ip.LoadBalancingIp.LoadBalancingPort",
-              "description": "The port you want to redirect to",
-              "fullType": "ip.LoadBalancingIp.LoadBalancingPort",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ip.LoadBalancingTask"
-        }
-      ],
-      "path": "/ip/loadBalancing/{serviceName}/portsRedirection"
-    },
-    {
-      "description": "Port redirections",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete a port redirection",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ip.LoadBalancingAdditionalPortEnum",
-              "description": "The port you want to redirect from",
-              "fullType": "ip.LoadBalancingAdditionalPortEnum",
-              "name": "srcPort",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ip.LoadBalancingTask"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the value for the given srcPort",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ip.LoadBalancingAdditionalPortEnum",
-              "description": "The port you want to redirect from",
-              "fullType": "ip.LoadBalancingAdditionalPortEnum",
-              "name": "srcPort",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ip.LoadBalancingIp.LoadBalancingPort"
-        }
-      ],
-      "path": "/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}"
-    },
-    {
-      "description": "probeIp operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Ip subnet used to send probes to your backends",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ip.LoadBalancingZoneEnum",
-              "description": "one of your ip loadbalancing's zone",
-              "fullType": "ip.LoadBalancingZoneEnum",
-              "name": "zone",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "ipBlock[]"
-        }
-      ],
-      "path": "/ip/loadBalancing/{serviceName}/probeIp"
-    },
-    {
-      "description": "restoreSsl operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Restore OVH' ssl certificate on your IP load balancing. Ssl option is needed to use this url. (A DCV mail will be sent to postmaster@your-domain.abc)",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ip.LoadBalancingTask"
-        }
-      ],
-      "path": "/ip/loadBalancing/{serviceName}/restoreSsl"
-    },
-    {
-      "description": "Details about a Service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "services.Service"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "services.Service",
-              "description": "New object properties",
-              "fullType": "services.Service",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/ip/loadBalancing/{serviceName}/serviceInfos"
-    },
-    {
-      "description": "stickiness operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Set Stickiness type. 'ipSource' will stick clients to a backend by their source ip, 'cookie' will stick them by inserting a cookie, 'none' is to set no stickiness",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ip.LoadBalancingStickinessEnum",
-              "description": "The stickiness you want on your IP LoadBalancing",
-              "fullType": "ip.LoadBalancingStickinessEnum",
-              "name": "stickiness",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ip.LoadBalancingTask"
-        }
-      ],
-      "path": "/ip/loadBalancing/{serviceName}/stickiness"
-    },
-    {
-      "description": "switchToIplbNextGenerationApi operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Switch to ipLoadbalancing next-gen API. Benefits : additionnals probes, DDOS protection.",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ipLoadbalancing.Task.Task"
-        }
-      ],
-      "path": "/ip/loadBalancing/{serviceName}/switchToIplbNextGenerationApi"
-    },
-    {
-      "description": "List the ip.LoadBalancingTask objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Task list associated with this IP",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/ip/loadBalancing/{serviceName}/task"
-    },
-    {
-      "description": "List of tasks associated with your IP load balancing",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP load balancing",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Identifier of your task",
-              "fullType": "long",
-              "name": "taskId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ip.LoadBalancingTask"
-        }
-      ],
-      "path": "/ip/loadBalancing/{serviceName}/task/{taskId}"
-    },
-    {
-      "description": "Operations about the IP service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/ip/service"
-    },
-    {
-      "description": "Your IP linked to service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP services",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "ip.ServiceIp"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ip.ServiceIp",
-              "description": "New object properties",
-              "fullType": "ip.ServiceIp",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP services",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/ip/service/{serviceName}"
-    },
-    {
-      "description": "Confirm termination of your service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Confirm termination of your service",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Commentary about your termination request",
-              "fullType": "string",
-              "name": "commentary",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "service.TerminationFutureUseEnum",
-              "description": "What next after your termination request",
-              "fullType": "service.TerminationFutureUseEnum",
-              "name": "futureUse",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "service.TerminationReasonEnum",
-              "description": "Reason of your termination request",
-              "fullType": "service.TerminationReasonEnum",
-              "name": "reason",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The termination token sent by mail to the admin contact",
-              "fullType": "string",
-              "name": "token",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP services",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string"
-        }
-      ],
-      "path": "/ip/service/{serviceName}/confirmTermination"
-    },
-    {
-      "description": "Details about a non-expiring Service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP services",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "services.NonExpiringService"
-        }
-      ],
-      "path": "/ip/service/{serviceName}/serviceInfos"
-    },
-    {
-      "description": "Terminate your service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Terminate your service",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your IP services",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string"
-        }
-      ],
-      "path": "/ip/service/{serviceName}/terminate"
-    },
-    {
       "description": "Your IP",
       "operations": [
         {
@@ -3381,6 +2441,946 @@ export const schema: Schema = {
         }
       ],
       "path": "/ip/{ip}/terminate"
+    },
+    {
+      "description": "Operations about the IP service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/ip/loadBalancing"
+    },
+    {
+      "description": "Your load balancing IP",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.LoadBalancingIp"
+        }
+      ],
+      "path": "/ip/loadBalancing/{serviceName}"
+    },
+    {
+      "description": "allowedBackends operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of backends you can attach to your IP",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip[]"
+        }
+      ],
+      "path": "/ip/loadBalancing/{serviceName}/allowedBackends"
+    },
+    {
+      "description": "List the ip.LoadBalancingBackendIp objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Backends for this IP load balancing",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipv4[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a new backend on your IP load balancing",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "IP of your backend",
+              "fullType": "ipv4",
+              "name": "ipBackend",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ip.LoadBalancingBackendProbeEnum",
+              "description": "The type of probe used",
+              "fullType": "ip.LoadBalancingBackendProbeEnum",
+              "name": "probe",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Weight of the backend on its zone, must be between 1 and 100",
+              "fullType": "long",
+              "name": "weight",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.LoadBalancingTask"
+        }
+      ],
+      "path": "/ip/loadBalancing/{serviceName}/backend"
+    },
+    {
+      "description": "Backends attached to your IP load balancing",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove a backend IP",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "IP of your backend",
+              "fullType": "ipv4",
+              "name": "backend",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.LoadBalancingTask"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "IP of your backend",
+              "fullType": "ipv4",
+              "name": "backend",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.LoadBalancingBackendIp"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ip.LoadBalancingBackendIp",
+              "description": "New object properties",
+              "fullType": "ip.LoadBalancingBackendIp",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "IP of your backend",
+              "fullType": "ipv4",
+              "name": "backend",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/ip/loadBalancing/{serviceName}/backend/{backend}"
+    },
+    {
+      "description": "backupState operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Set or unset the backend as a backup of another backend. Requests will be directed to the backup only if the main backend is in probe fail",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "Set or unset the backend as backup. mainBackendIp is optional in case of unset",
+              "fullType": "boolean",
+              "name": "backupStateSet",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ip",
+              "description": "Main backend ip, must be in the same zone as the backup",
+              "fullType": "ip",
+              "name": "mainBackendIp",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "ipv4",
+              "description": "IP of your backend",
+              "fullType": "ipv4",
+              "name": "backend",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.LoadBalancingTask"
+        }
+      ],
+      "path": "/ip/loadBalancing/{serviceName}/backend/{backend}/backupState"
+    },
+    {
+      "description": "setWeight operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Set the weight of a backend. For instance, if backend A has a weight of 8 and backup B was a weight of 16, backend B will receive twice more connections as backend A. Backends must be on the same POP for the weight parameter to take effect between them.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "weight of the backend, must be between 1 and 100, default is 8",
+              "fullType": "long",
+              "name": "weight",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "IP of your backend",
+              "fullType": "ipv4",
+              "name": "backend",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.LoadBalancingTask"
+        }
+      ],
+      "path": "/ip/loadBalancing/{serviceName}/backend/{backend}/setWeight"
+    },
+    {
+      "description": "importCustomSsl operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Import your own ssl certificate on your IP load balancing. Ssl option is needed to use this url.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "text",
+              "description": "certificate",
+              "fullType": "text",
+              "name": "certificate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "text",
+              "description": "certificate chain",
+              "fullType": "text",
+              "name": "chain",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "text",
+              "description": "certificate key",
+              "fullType": "text",
+              "name": "key",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.LoadBalancingTask"
+        }
+      ],
+      "path": "/ip/loadBalancing/{serviceName}/importCustomSsl"
+    },
+    {
+      "description": "internalNatIp operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Ip subnet used by OVH to nat requests on your ip lb to your backends. You must ensure that your backends are not part of a network that overlap with this one.",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ip.LoadBalancingZoneEnum",
+              "description": "one of your ip loadbalancing's zone",
+              "fullType": "ip.LoadBalancingZoneEnum",
+              "name": "zone",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "ipBlock"
+        }
+      ],
+      "path": "/ip/loadBalancing/{serviceName}/internalNatIp"
+    },
+    {
+      "description": "List the portsRedirection objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all srcPort",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.LoadBalancingAdditionalPortEnum[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a new port redirection",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ip.LoadBalancingIp.LoadBalancingPort",
+              "description": "The port you want to redirect to",
+              "fullType": "ip.LoadBalancingIp.LoadBalancingPort",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.LoadBalancingTask"
+        }
+      ],
+      "path": "/ip/loadBalancing/{serviceName}/portsRedirection"
+    },
+    {
+      "description": "Port redirections",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete a port redirection",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ip.LoadBalancingAdditionalPortEnum",
+              "description": "The port you want to redirect from",
+              "fullType": "ip.LoadBalancingAdditionalPortEnum",
+              "name": "srcPort",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.LoadBalancingTask"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the value for the given srcPort",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ip.LoadBalancingAdditionalPortEnum",
+              "description": "The port you want to redirect from",
+              "fullType": "ip.LoadBalancingAdditionalPortEnum",
+              "name": "srcPort",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.LoadBalancingIp.LoadBalancingPort"
+        }
+      ],
+      "path": "/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}"
+    },
+    {
+      "description": "probeIp operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Ip subnet used to send probes to your backends",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ip.LoadBalancingZoneEnum",
+              "description": "one of your ip loadbalancing's zone",
+              "fullType": "ip.LoadBalancingZoneEnum",
+              "name": "zone",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "ipBlock[]"
+        }
+      ],
+      "path": "/ip/loadBalancing/{serviceName}/probeIp"
+    },
+    {
+      "description": "restoreSsl operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Restore OVH' ssl certificate on your IP load balancing. Ssl option is needed to use this url. (A DCV mail will be sent to postmaster@your-domain.abc)",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.LoadBalancingTask"
+        }
+      ],
+      "path": "/ip/loadBalancing/{serviceName}/restoreSsl"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/ip/loadBalancing/{serviceName}/serviceInfos"
+    },
+    {
+      "description": "stickiness operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Set Stickiness type. 'ipSource' will stick clients to a backend by their source ip, 'cookie' will stick them by inserting a cookie, 'none' is to set no stickiness",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ip.LoadBalancingStickinessEnum",
+              "description": "The stickiness you want on your IP LoadBalancing",
+              "fullType": "ip.LoadBalancingStickinessEnum",
+              "name": "stickiness",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.LoadBalancingTask"
+        }
+      ],
+      "path": "/ip/loadBalancing/{serviceName}/stickiness"
+    },
+    {
+      "description": "switchToIplbNextGenerationApi operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Switch to ipLoadbalancing next-gen API. Benefits : additionnals probes, DDOS protection.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipLoadbalancing.Task.Task"
+        }
+      ],
+      "path": "/ip/loadBalancing/{serviceName}/switchToIplbNextGenerationApi"
+    },
+    {
+      "description": "List the ip.LoadBalancingTask objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Task list associated with this IP",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/ip/loadBalancing/{serviceName}/task"
+    },
+    {
+      "description": "List of tasks associated with your IP load balancing",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP load balancing",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Identifier of your task",
+              "fullType": "long",
+              "name": "taskId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.LoadBalancingTask"
+        }
+      ],
+      "path": "/ip/loadBalancing/{serviceName}/task/{taskId}"
+    },
+    {
+      "description": "Operations about the IP service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/ip/service"
+    },
+    {
+      "description": "Your IP linked to service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP services",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.ServiceIp"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ip.ServiceIp",
+              "description": "New object properties",
+              "fullType": "ip.ServiceIp",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP services",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/ip/service/{serviceName}"
+    },
+    {
+      "description": "Confirm termination of your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Confirm termination of your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Commentary about your termination request",
+              "fullType": "string",
+              "name": "commentary",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "service.TerminationFutureUseEnum",
+              "description": "What next after your termination request",
+              "fullType": "service.TerminationFutureUseEnum",
+              "name": "futureUse",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "service.TerminationReasonEnum",
+              "description": "Reason of your termination request",
+              "fullType": "service.TerminationReasonEnum",
+              "name": "reason",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The termination token sent by mail to the admin contact",
+              "fullType": "string",
+              "name": "token",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP services",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/ip/service/{serviceName}/confirmTermination"
+    },
+    {
+      "description": "Details about a non-expiring Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP services",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.NonExpiringService"
+        }
+      ],
+      "path": "/ip/service/{serviceName}/serviceInfos"
+    },
+    {
+      "description": "Terminate your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Terminate your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your IP services",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/ip/service/{serviceName}/terminate"
     }
   ],
   "basePath": "https://api.us.ovhcloud.com/1.0",

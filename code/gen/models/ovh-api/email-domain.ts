@@ -23,758 +23,6 @@ export const schema: Schema = {
       "path": "/email/domain"
     },
     {
-      "description": "List the email.domain.AccountDelegated objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delegated emails",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Name of email address",
-              "fullType": "string",
-              "name": "accountName",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of email address",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/email/domain/delegatedAccount"
-    },
-    {
-      "description": "Account List",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.domain.AccountDelegated"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "email.domain.AccountDelegated",
-              "description": "New object properties",
-              "fullType": "email.domain.AccountDelegated",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/email/domain/delegatedAccount/{email}"
-    },
-    {
-      "description": "changePassword operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Change mailbox password (length : [9;30], no space at begin and end, no accent)",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "password",
-              "description": "New password",
-              "fullType": "password",
-              "name": "password",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.domain.TaskPop"
-        }
-      ],
-      "path": "/email/domain/delegatedAccount/{email}/changePassword"
-    },
-    {
-      "description": "List the email.domain.Filter objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get filters",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create new filter for account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "domain.DomainFilterActionEnum",
-              "description": "Action of filter",
-              "fullType": "domain.DomainFilterActionEnum",
-              "name": "action",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Action parameter of filter",
-              "fullType": "string",
-              "name": "actionParam",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "If true filter is active",
-              "fullType": "boolean",
-              "name": "active",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Header to be filtered",
-              "fullType": "string",
-              "name": "header",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Filter name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "domain.DomainFilterOperandEnum",
-              "description": "Rule of filter",
-              "fullType": "domain.DomainFilterOperandEnum",
-              "name": "operand",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Priority of filter",
-              "fullType": "long",
-              "name": "priority",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Rule parameter of filter",
-              "fullType": "string",
-              "name": "value",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.domain.TaskFilter"
-        }
-      ],
-      "path": "/email/domain/delegatedAccount/{email}/filter"
-    },
-    {
-      "description": "Filter List",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete an existing filter",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Filter name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.domain.TaskFilter[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Filter name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.domain.Filter"
-        }
-      ],
-      "path": "/email/domain/delegatedAccount/{email}/filter/{name}"
-    },
-    {
-      "description": "changeActivity operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Change filter activity",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "boolean",
-              "description": "New activity",
-              "fullType": "boolean",
-              "name": "activity",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Filter name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.domain.TaskFilter"
-        }
-      ],
-      "path": "/email/domain/delegatedAccount/{email}/filter/{name}/changeActivity"
-    },
-    {
-      "description": "changePriority operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Change filter priority",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "New priority",
-              "fullType": "long",
-              "name": "priority",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Filter name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.domain.TaskFilter"
-        }
-      ],
-      "path": "/email/domain/delegatedAccount/{email}/filter/{name}/changePriority"
-    },
-    {
-      "description": "List the email.domain.Rule objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get rules",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Filter name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "long[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create new rule for filter",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Header to be filtered",
-              "fullType": "string",
-              "name": "header",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "domain.DomainFilterOperandEnum",
-              "description": "Rule of filter",
-              "fullType": "domain.DomainFilterOperandEnum",
-              "name": "operand",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Rule parameter of filter",
-              "fullType": "string",
-              "name": "value",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Filter name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.domain.TaskFilter"
-        }
-      ],
-      "path": "/email/domain/delegatedAccount/{email}/filter/{name}/rule"
-    },
-    {
-      "description": "Rule List",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete an existing filter",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Filter name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.domain.TaskFilter[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Filter name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.domain.Rule"
-        }
-      ],
-      "path": "/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}"
-    },
-    {
-      "description": "Responder of account",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete an existing responder in server",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.domain.TaskSpecialAccount"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.domain.ResponderAccount"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create new responder in server",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Content of responder",
-              "fullType": "string",
-              "name": "content",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "If true, emails will be copy to emailToCopy address",
-              "fullType": "boolean",
-              "name": "copy",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Account where copy emails",
-              "fullType": "string",
-              "name": "copyTo",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Date of start responder",
-              "fullType": "datetime",
-              "name": "from",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Date of end responder",
-              "fullType": "datetime",
-              "name": "to",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "email.domain.TaskSpecialAccount"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "email.domain.ResponderAccount",
-              "description": "New object properties",
-              "fullType": "email.domain.ResponderAccount",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/email/domain/delegatedAccount/{email}/responder"
-    },
-    {
-      "description": "updateUsage operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Update usage of account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/email/domain/delegatedAccount/{email}/updateUsage"
-    },
-    {
-      "description": "usage operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "usage of account",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Email",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "domain.DomainUsageAccountStruct"
-        }
-      ],
-      "path": "/email/domain/delegatedAccount/{email}/usage"
-    },
-    {
-      "description": "Get limits of mailing list",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get limits of mailing list",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "boolean",
-              "description": "If true, messages are moderate",
-              "fullType": "boolean",
-              "name": "moderatorMessage",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "domain.DomainMlLimits"
-        }
-      ],
-      "path": "/email/domain/mailingListLimits"
-    },
-    {
       "description": "Domain service",
       "operations": [
         {
@@ -3873,6 +3121,758 @@ export const schema: Schema = {
         }
       ],
       "path": "/email/domain/{domain}/terminate"
+    },
+    {
+      "description": "List the email.domain.AccountDelegated objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delegated emails",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of email address",
+              "fullType": "string",
+              "name": "accountName",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of email address",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/email/domain/delegatedAccount"
+    },
+    {
+      "description": "Account List",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.AccountDelegated"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "email.domain.AccountDelegated",
+              "description": "New object properties",
+              "fullType": "email.domain.AccountDelegated",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/email/domain/delegatedAccount/{email}"
+    },
+    {
+      "description": "changePassword operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change mailbox password (length : [9;30], no space at begin and end, no accent)",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "password",
+              "description": "New password",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskPop"
+        }
+      ],
+      "path": "/email/domain/delegatedAccount/{email}/changePassword"
+    },
+    {
+      "description": "List the email.domain.Filter objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get filters",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create new filter for account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "domain.DomainFilterActionEnum",
+              "description": "Action of filter",
+              "fullType": "domain.DomainFilterActionEnum",
+              "name": "action",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Action parameter of filter",
+              "fullType": "string",
+              "name": "actionParam",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "If true filter is active",
+              "fullType": "boolean",
+              "name": "active",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Header to be filtered",
+              "fullType": "string",
+              "name": "header",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "domain.DomainFilterOperandEnum",
+              "description": "Rule of filter",
+              "fullType": "domain.DomainFilterOperandEnum",
+              "name": "operand",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Priority of filter",
+              "fullType": "long",
+              "name": "priority",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Rule parameter of filter",
+              "fullType": "string",
+              "name": "value",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskFilter"
+        }
+      ],
+      "path": "/email/domain/delegatedAccount/{email}/filter"
+    },
+    {
+      "description": "Filter List",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete an existing filter",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskFilter[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.Filter"
+        }
+      ],
+      "path": "/email/domain/delegatedAccount/{email}/filter/{name}"
+    },
+    {
+      "description": "changeActivity operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change filter activity",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "New activity",
+              "fullType": "boolean",
+              "name": "activity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskFilter"
+        }
+      ],
+      "path": "/email/domain/delegatedAccount/{email}/filter/{name}/changeActivity"
+    },
+    {
+      "description": "changePriority operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change filter priority",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "New priority",
+              "fullType": "long",
+              "name": "priority",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskFilter"
+        }
+      ],
+      "path": "/email/domain/delegatedAccount/{email}/filter/{name}/changePriority"
+    },
+    {
+      "description": "List the email.domain.Rule objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get rules",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create new rule for filter",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Header to be filtered",
+              "fullType": "string",
+              "name": "header",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "domain.DomainFilterOperandEnum",
+              "description": "Rule of filter",
+              "fullType": "domain.DomainFilterOperandEnum",
+              "name": "operand",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Rule parameter of filter",
+              "fullType": "string",
+              "name": "value",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskFilter"
+        }
+      ],
+      "path": "/email/domain/delegatedAccount/{email}/filter/{name}/rule"
+    },
+    {
+      "description": "Rule List",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete an existing filter",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskFilter[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.Rule"
+        }
+      ],
+      "path": "/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}"
+    },
+    {
+      "description": "Responder of account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete an existing responder in server",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskSpecialAccount"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.ResponderAccount"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create new responder in server",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Content of responder",
+              "fullType": "string",
+              "name": "content",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "If true, emails will be copy to emailToCopy address",
+              "fullType": "boolean",
+              "name": "copy",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Account where copy emails",
+              "fullType": "string",
+              "name": "copyTo",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Date of start responder",
+              "fullType": "datetime",
+              "name": "from",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Date of end responder",
+              "fullType": "datetime",
+              "name": "to",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "email.domain.TaskSpecialAccount"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "email.domain.ResponderAccount",
+              "description": "New object properties",
+              "fullType": "email.domain.ResponderAccount",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/email/domain/delegatedAccount/{email}/responder"
+    },
+    {
+      "description": "updateUsage operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update usage of account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/email/domain/delegatedAccount/{email}/updateUsage"
+    },
+    {
+      "description": "usage operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "usage of account",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Email",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "domain.DomainUsageAccountStruct"
+        }
+      ],
+      "path": "/email/domain/delegatedAccount/{email}/usage"
+    },
+    {
+      "description": "Get limits of mailing list",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get limits of mailing list",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "If true, messages are moderate",
+              "fullType": "boolean",
+              "name": "moderatorMessage",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "domain.DomainMlLimits"
+        }
+      ],
+      "path": "/email/domain/mailingListLimits"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",

@@ -23,984 +23,6 @@ export const schema: Schema = {
       "path": "/xdsl"
     },
     {
-      "description": "Get the cities from a zipCode",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-01-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/cities",
-            "value": "DEPRECATED"
-          },
-          "description": "Get the cities from a zipCode",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The zipCode of the city",
-              "fullType": "string",
-              "name": "zipCode",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.eligibility.City[]"
-        }
-      ],
-      "path": "/xdsl/eligibility/cities"
-    },
-    {
-      "description": "Get the active lines at given address",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/lines",
-            "value": "DEPRECATED"
-          },
-          "description": "Get the active lines at given address",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "xdsl.eligibility.City",
-              "description": "The information about the city",
-              "fullType": "xdsl.eligibility.City",
-              "name": "city",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The contact name first three letters",
-              "fullType": "string",
-              "name": "contactName",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "xdsl.eligibility.Street",
-              "description": "The information about the street",
-              "fullType": "xdsl.eligibility.Street",
-              "name": "street",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The number in the street",
-              "fullType": "string",
-              "name": "streetNumber",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Line>"
-        }
-      ],
-      "path": "/xdsl/eligibility/lines/active"
-    },
-    {
-      "description": "Get the inactive lines at given address",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/lines",
-            "value": "DEPRECATED"
-          },
-          "description": "Get the inactive lines at given address",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "xdsl.eligibility.City",
-              "description": "The information about the city",
-              "fullType": "xdsl.eligibility.City",
-              "name": "city",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The contact name first three letters",
-              "fullType": "string",
-              "name": "contactName",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "xdsl.eligibility.Street",
-              "description": "The information about the street",
-              "fullType": "xdsl.eligibility.Street",
-              "name": "street",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The number in the street",
-              "fullType": "string",
-              "name": "streetNumber",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Line>"
-        }
-      ],
-      "path": "/xdsl/eligibility/lines/inactive"
-    },
-    {
-      "description": "Search for meeting time slot",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/meetings",
-            "value": "DEPRECATED"
-          },
-          "description": "Search for meeting time slot",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The eligibility test id",
-              "fullType": "string",
-              "name": "eligibilityId",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The choosen offer label",
-              "fullType": "string",
-              "name": "offerLabel",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.AsyncTask<xdsl.eligibility.MeetingSlots>"
-        }
-      ],
-      "path": "/xdsl/eligibility/meetings"
-    },
-    {
-      "description": "Get all buildings for a specific address",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/buildings",
-            "value": "DEPRECATED"
-          },
-          "description": "Get all buildings for a specific address",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Unique identifier of the street (you can get it with POST /xdsl/eligibility/search/streets)",
-              "fullType": "string",
-              "name": "streetCode",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Street number",
-              "fullType": "string",
-              "name": "streetNumber",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Building>"
-        }
-      ],
-      "path": "/xdsl/eligibility/search/buildings"
-    },
-    {
-      "description": "Get all localities linked to a zip code",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/cities",
-            "value": "DEPRECATED"
-          },
-          "description": "Get all localities linked to a zip code",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Zip code",
-              "fullType": "string",
-              "name": "zipCode",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.City>"
-        }
-      ],
-      "path": "/xdsl/eligibility/search/cities"
-    },
-    {
-      "description": "Get all street linked to a locality",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/streets",
-            "value": "DEPRECATED"
-          },
-          "description": "Get all street linked to a locality",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "French INSEE identifier (you can get it with POST /xdsl/eligibility/search/cities)",
-              "fullType": "string",
-              "name": "inseeCode",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.FiberStreet>"
-        }
-      ],
-      "path": "/xdsl/eligibility/search/fiberStreets"
-    },
-    {
-      "description": "Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/streetNumbers",
-            "value": "DEPRECATED"
-          },
-          "description": "Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Street code",
-              "fullType": "string",
-              "name": "streetCode",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.AsyncTaskArray<string>"
-        }
-      ],
-      "path": "/xdsl/eligibility/search/streetNumbers"
-    },
-    {
-      "description": "Get the streets from a city inseeCode and partial street name",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2019-01-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/search/streets",
-            "value": "DEPRECATED"
-          },
-          "description": "Get the streets from a city inseeCode and partial street name",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The inseeCode of the city",
-              "fullType": "string",
-              "name": "inseeCode",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The partial name to match against the name of the street",
-              "fullType": "string",
-              "name": "partialName",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.eligibility.Street[]"
-        }
-      ],
-      "path": "/xdsl/eligibility/streets"
-    },
-    {
-      "description": "Get an eligibility by its id",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/test",
-            "value": "DEPRECATED"
-          },
-          "description": "Get an eligibility by its id",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The eligibility id",
-              "fullType": "string",
-              "name": "id",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.eligibility.Eligibility"
-        }
-      ],
-      "path": "/xdsl/eligibility/test"
-    },
-    {
-      "description": "Do an eligibility for an address, if no line exist",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/test/address",
-            "value": "DEPRECATED"
-          },
-          "description": "Do an eligibility for an address, if no line exist",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "xdsl.eligibility.Address",
-              "description": "The address",
-              "fullType": "xdsl.eligibility.Address",
-              "name": "address",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.AsyncTask<xdsl.eligibility.Eligibility>"
-        }
-      ],
-      "path": "/xdsl/eligibility/test/address"
-    },
-    {
-      "description": "Perform a fiber eligibility for a building",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/test/building",
-            "value": "DEPRECATED"
-          },
-          "description": "Perform a fiber eligibility for a building",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Unique identifier of the building (you can get it with POST /xdsl/eligibility/search/buildings)",
-              "fullType": "string",
-              "name": "building",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.AsyncTask<xdsl.eligibility.FiberEligibility>"
-        }
-      ],
-      "path": "/xdsl/eligibility/test/fiber/building"
-    },
-    {
-      "description": "Do an eligibility for a line",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2018-11-15T12:00:00+01:00",
-            "deprecatedDate": "2018-10-15T12:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/connectivity/eligibility/test/line",
-            "value": "DEPRECATED"
-          },
-          "description": "Do an eligibility for a line",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The line number",
-              "fullType": "string",
-              "name": "lineNumber",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "xdsl.eligibility.LandlineStatusEnum",
-              "description": "The line status",
-              "fullType": "xdsl.eligibility.LandlineStatusEnum",
-              "name": "lineStatus",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.AsyncTask<xdsl.eligibility.Eligibility>"
-        }
-      ],
-      "path": "/xdsl/eligibility/test/line"
-    },
-    {
-      "description": "Operations about the XDSL service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/xdsl/email/pro"
-    },
-    {
-      "description": "XDSL Email Pro",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete the email",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The email address if the XDSL Email Pro",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The email address if the XDSL Email Pro",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.xdslEmailPro"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "xdsl.xdslEmailPro",
-              "description": "New object properties",
-              "fullType": "xdsl.xdslEmailPro",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The email address if the XDSL Email Pro",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/xdsl/email/pro/{email}"
-    },
-    {
-      "description": "changePassword operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Change the email password",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "password",
-              "description": "New email password",
-              "fullType": "password",
-              "name": "password",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The email address if the XDSL Email Pro",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.email.pro.Task"
-        }
-      ],
-      "path": "/xdsl/email/pro/{email}/changePassword"
-    },
-    {
-      "description": "List the xdsl.Incident objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of incidents",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of creationDate property (>)",
-              "fullType": "datetime",
-              "name": "creationDate",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Filter the value of endDate property (<)",
-              "fullType": "datetime",
-              "name": "endDate",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/xdsl/incidents"
-    },
-    {
-      "description": "Detected incident",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "ID of the incident",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.Incident"
-        }
-      ],
-      "path": "/xdsl/incidents/{id}"
-    },
-    {
-      "description": "Operations about the XDSL service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/xdsl/spare"
-    },
-    {
-      "description": "Get all available spare brands",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get all available spare brands",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/xdsl/spare/brands"
-    },
-    {
-      "description": "Spare properties",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete the spare as if it was not belonging to OVH anymore",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your spare",
-              "fullType": "string",
-              "name": "spare",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your spare",
-              "fullType": "string",
-              "name": "spare",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "spare.xdsl.XdslSpare"
-        }
-      ],
-      "path": "/xdsl/spare/{spare}"
-    },
-    {
-      "description": "compatibleReplacement operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Return the list of brand compatible to be replaced",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your spare",
-              "fullType": "string",
-              "name": "spare",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/xdsl/spare/{spare}/compatibleReplacement"
-    },
-    {
-      "description": "replace operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Replace the modem by its spare",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The modem to replace by the spare",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your spare",
-              "fullType": "string",
-              "name": "spare",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/xdsl/spare/{spare}/replace"
-    },
-    {
-      "description": "returnMerchandise operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Return the broken equipment in instantRefund",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your spare",
-              "fullType": "string",
-              "name": "spare",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/xdsl/spare/{spare}/returnMerchandise"
-    },
-    {
-      "description": "Details about a Service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your spare",
-              "fullType": "string",
-              "name": "spare",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "services.Service"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "services.Service",
-              "description": "New object properties",
-              "fullType": "services.Service",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The internal name of your spare",
-              "fullType": "string",
-              "name": "spare",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/xdsl/spare/{spare}/serviceInfos"
-    },
-    {
-      "description": "List the xdsl.TemplateModem objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "List of TemplateModem",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Create new Modem Template from existing modem",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Modem Template name (only alphanumeric characters)",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The access name with the config you want to duplicate",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.TemplateModem"
-        }
-      ],
-      "path": "/xdsl/templateModem"
-    },
-    {
-      "description": "Modem Template",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Delete this Modem Template",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Name of the Modem Template",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Name of the Modem Template",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "xdsl.TemplateModem"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "xdsl.TemplateModem",
-              "description": "New object properties",
-              "fullType": "xdsl.TemplateModem",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Name of the Modem Template",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/xdsl/templateModem/{name}"
-    },
-    {
       "description": "XDSL Access",
       "operations": [
         {
@@ -4546,6 +3568,984 @@ export const schema: Schema = {
         }
       ],
       "path": "/xdsl/{serviceName}/updateInvalidOrMissingRio"
+    },
+    {
+      "description": "Get the cities from a zipCode",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2019-01-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/search/cities",
+            "value": "DEPRECATED"
+          },
+          "description": "Get the cities from a zipCode",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The zipCode of the city",
+              "fullType": "string",
+              "name": "zipCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.eligibility.City[]"
+        }
+      ],
+      "path": "/xdsl/eligibility/cities"
+    },
+    {
+      "description": "Get the active lines at given address",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/search/lines",
+            "value": "DEPRECATED"
+          },
+          "description": "Get the active lines at given address",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "xdsl.eligibility.City",
+              "description": "The information about the city",
+              "fullType": "xdsl.eligibility.City",
+              "name": "city",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The contact name first three letters",
+              "fullType": "string",
+              "name": "contactName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "xdsl.eligibility.Street",
+              "description": "The information about the street",
+              "fullType": "xdsl.eligibility.Street",
+              "name": "street",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The number in the street",
+              "fullType": "string",
+              "name": "streetNumber",
+              "paramType": "body",
+              "required": false
+            }
+          ],
+          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Line>"
+        }
+      ],
+      "path": "/xdsl/eligibility/lines/active"
+    },
+    {
+      "description": "Get the inactive lines at given address",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/search/lines",
+            "value": "DEPRECATED"
+          },
+          "description": "Get the inactive lines at given address",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "xdsl.eligibility.City",
+              "description": "The information about the city",
+              "fullType": "xdsl.eligibility.City",
+              "name": "city",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The contact name first three letters",
+              "fullType": "string",
+              "name": "contactName",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "xdsl.eligibility.Street",
+              "description": "The information about the street",
+              "fullType": "xdsl.eligibility.Street",
+              "name": "street",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The number in the street",
+              "fullType": "string",
+              "name": "streetNumber",
+              "paramType": "body",
+              "required": false
+            }
+          ],
+          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Line>"
+        }
+      ],
+      "path": "/xdsl/eligibility/lines/inactive"
+    },
+    {
+      "description": "Search for meeting time slot",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/search/meetings",
+            "value": "DEPRECATED"
+          },
+          "description": "Search for meeting time slot",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The eligibility test id",
+              "fullType": "string",
+              "name": "eligibilityId",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The choosen offer label",
+              "fullType": "string",
+              "name": "offerLabel",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.AsyncTask<xdsl.eligibility.MeetingSlots>"
+        }
+      ],
+      "path": "/xdsl/eligibility/meetings"
+    },
+    {
+      "description": "Get all buildings for a specific address",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/search/buildings",
+            "value": "DEPRECATED"
+          },
+          "description": "Get all buildings for a specific address",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Unique identifier of the street (you can get it with POST /xdsl/eligibility/search/streets)",
+              "fullType": "string",
+              "name": "streetCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Street number",
+              "fullType": "string",
+              "name": "streetNumber",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.Building>"
+        }
+      ],
+      "path": "/xdsl/eligibility/search/buildings"
+    },
+    {
+      "description": "Get all localities linked to a zip code",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/search/cities",
+            "value": "DEPRECATED"
+          },
+          "description": "Get all localities linked to a zip code",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Zip code",
+              "fullType": "string",
+              "name": "zipCode",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.City>"
+        }
+      ],
+      "path": "/xdsl/eligibility/search/cities"
+    },
+    {
+      "description": "Get all street linked to a locality",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/search/streets",
+            "value": "DEPRECATED"
+          },
+          "description": "Get all street linked to a locality",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "French INSEE identifier (you can get it with POST /xdsl/eligibility/search/cities)",
+              "fullType": "string",
+              "name": "inseeCode",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.AsyncTaskArray<xdsl.eligibility.FiberStreet>"
+        }
+      ],
+      "path": "/xdsl/eligibility/search/fiberStreets"
+    },
+    {
+      "description": "Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/search/streetNumbers",
+            "value": "DEPRECATED"
+          },
+          "description": "Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Street code",
+              "fullType": "string",
+              "name": "streetCode",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.AsyncTaskArray<string>"
+        }
+      ],
+      "path": "/xdsl/eligibility/search/streetNumbers"
+    },
+    {
+      "description": "Get the streets from a city inseeCode and partial street name",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2019-01-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/search/streets",
+            "value": "DEPRECATED"
+          },
+          "description": "Get the streets from a city inseeCode and partial street name",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The inseeCode of the city",
+              "fullType": "string",
+              "name": "inseeCode",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The partial name to match against the name of the street",
+              "fullType": "string",
+              "name": "partialName",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.eligibility.Street[]"
+        }
+      ],
+      "path": "/xdsl/eligibility/streets"
+    },
+    {
+      "description": "Get an eligibility by its id",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/test",
+            "value": "DEPRECATED"
+          },
+          "description": "Get an eligibility by its id",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The eligibility id",
+              "fullType": "string",
+              "name": "id",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.eligibility.Eligibility"
+        }
+      ],
+      "path": "/xdsl/eligibility/test"
+    },
+    {
+      "description": "Do an eligibility for an address, if no line exist",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/test/address",
+            "value": "DEPRECATED"
+          },
+          "description": "Do an eligibility for an address, if no line exist",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "xdsl.eligibility.Address",
+              "description": "The address",
+              "fullType": "xdsl.eligibility.Address",
+              "name": "address",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.AsyncTask<xdsl.eligibility.Eligibility>"
+        }
+      ],
+      "path": "/xdsl/eligibility/test/address"
+    },
+    {
+      "description": "Perform a fiber eligibility for a building",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/test/building",
+            "value": "DEPRECATED"
+          },
+          "description": "Perform a fiber eligibility for a building",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Unique identifier of the building (you can get it with POST /xdsl/eligibility/search/buildings)",
+              "fullType": "string",
+              "name": "building",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.AsyncTask<xdsl.eligibility.FiberEligibility>"
+        }
+      ],
+      "path": "/xdsl/eligibility/test/fiber/building"
+    },
+    {
+      "description": "Do an eligibility for a line",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2018-11-15T12:00:00+01:00",
+            "deprecatedDate": "2018-10-15T12:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/connectivity/eligibility/test/line",
+            "value": "DEPRECATED"
+          },
+          "description": "Do an eligibility for a line",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The line number",
+              "fullType": "string",
+              "name": "lineNumber",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "xdsl.eligibility.LandlineStatusEnum",
+              "description": "The line status",
+              "fullType": "xdsl.eligibility.LandlineStatusEnum",
+              "name": "lineStatus",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.AsyncTask<xdsl.eligibility.Eligibility>"
+        }
+      ],
+      "path": "/xdsl/eligibility/test/line"
+    },
+    {
+      "description": "Operations about the XDSL service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/xdsl/email/pro"
+    },
+    {
+      "description": "XDSL Email Pro",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete the email",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The email address if the XDSL Email Pro",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The email address if the XDSL Email Pro",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.xdslEmailPro"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "xdsl.xdslEmailPro",
+              "description": "New object properties",
+              "fullType": "xdsl.xdslEmailPro",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The email address if the XDSL Email Pro",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/xdsl/email/pro/{email}"
+    },
+    {
+      "description": "changePassword operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change the email password",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "password",
+              "description": "New email password",
+              "fullType": "password",
+              "name": "password",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The email address if the XDSL Email Pro",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.email.pro.Task"
+        }
+      ],
+      "path": "/xdsl/email/pro/{email}/changePassword"
+    },
+    {
+      "description": "List the xdsl.Incident objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of incidents",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of creationDate property (>)",
+              "fullType": "datetime",
+              "name": "creationDate",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Filter the value of endDate property (<)",
+              "fullType": "datetime",
+              "name": "endDate",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/xdsl/incidents"
+    },
+    {
+      "description": "Detected incident",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "ID of the incident",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.Incident"
+        }
+      ],
+      "path": "/xdsl/incidents/{id}"
+    },
+    {
+      "description": "Operations about the XDSL service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/xdsl/spare"
+    },
+    {
+      "description": "Spare properties",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete the spare as if it was not belonging to OVH anymore",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "spare.xdsl.XdslSpare"
+        }
+      ],
+      "path": "/xdsl/spare/{spare}"
+    },
+    {
+      "description": "compatibleReplacement operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return the list of brand compatible to be replaced",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/xdsl/spare/{spare}/compatibleReplacement"
+    },
+    {
+      "description": "replace operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Replace the modem by its spare",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The modem to replace by the spare",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/xdsl/spare/{spare}/replace"
+    },
+    {
+      "description": "returnMerchandise operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return the broken equipment in instantRefund",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/xdsl/spare/{spare}/returnMerchandise"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your spare",
+              "fullType": "string",
+              "name": "spare",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/xdsl/spare/{spare}/serviceInfos"
+    },
+    {
+      "description": "Get all available spare brands",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all available spare brands",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/xdsl/spare/brands"
+    },
+    {
+      "description": "List the xdsl.TemplateModem objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List of TemplateModem",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create new Modem Template from existing modem",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Modem Template name (only alphanumeric characters)",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The access name with the config you want to duplicate",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.TemplateModem"
+        }
+      ],
+      "path": "/xdsl/templateModem"
+    },
+    {
+      "description": "Modem Template",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete this Modem Template",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of the Modem Template",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of the Modem Template",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "xdsl.TemplateModem"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "xdsl.TemplateModem",
+              "description": "New object properties",
+              "fullType": "xdsl.TemplateModem",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name of the Modem Template",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/xdsl/templateModem/{name}"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",

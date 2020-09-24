@@ -23,32 +23,6 @@ export const schema: Schema = {
       "path": "/license/virtuozzo"
     },
     {
-      "description": "Get the orderable Virtuozzo versions",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the orderable Virtuozzo versions",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Your license Ip",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "license.VirtuozzoOrderConfiguration[]"
-        }
-      ],
-      "path": "/license/virtuozzo/orderableVersions"
-    },
-    {
       "description": "Your Virtuozzo license",
       "operations": [
         {
@@ -503,6 +477,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/license/virtuozzo/{serviceName}/terminate"
+    },
+    {
+      "description": "Get the orderable Virtuozzo versions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the orderable Virtuozzo versions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Your license Ip",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "license.VirtuozzoOrderConfiguration[]"
+        }
+      ],
+      "path": "/license/virtuozzo/orderableVersions"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",

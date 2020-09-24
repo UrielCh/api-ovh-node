@@ -6,42 +6,6 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "All available countries for an ovh company and an ovh subsidiary",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "All available countries for an ovh company and an ovh subsidiary",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "nichandle.OvhCompanyEnum",
-              "description": null,
-              "fullType": "nichandle.OvhCompanyEnum",
-              "name": "ovhCompany",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": null,
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.CountryEnum[]",
-          "responseType": "nichandle.CountryEnum[]"
-        }
-      ],
-      "path": "/newAccount/countries"
-    },
-    {
       "description": "Create a new OVH identifier",
       "operations": [
         {
@@ -290,6 +254,106 @@ export const schema: Schema = {
       "path": "/newAccount/area"
     },
     {
+      "description": "Returns the contracts that governs the creation of an OVH identifier",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns the contracts that governs the creation of an OVH identifier",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhCompanyEnum",
+              "description": null,
+              "fullType": "nichandle.OvhCompanyEnum",
+              "name": "company",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": null,
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "subsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "order.Contract[]",
+          "responseType": "order.Contract[]"
+        }
+      ],
+      "path": "/newAccount/contracts"
+    },
+    {
+      "description": "All available corporation types for a given country",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "All available corporation types for a given country",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.CountryEnum",
+              "description": null,
+              "fullType": "nichandle.CountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "string[]",
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/newAccount/corporationType"
+    },
+    {
+      "description": "All available countries for an ovh company and an ovh subsidiary",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "All available countries for an ovh company and an ovh subsidiary",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhCompanyEnum",
+              "description": null,
+              "fullType": "nichandle.OvhCompanyEnum",
+              "name": "ovhCompany",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": null,
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "resellerOnly": false,
+          "responseFullType": "nichandle.CountryEnum[]",
+          "responseType": "nichandle.CountryEnum[]"
+        }
+      ],
+      "path": "/newAccount/countries"
+    },
+    {
       "description": "Give all the rules to follow in order to create an OVH identifier",
       "operations": [
         {
@@ -340,34 +404,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/newAccount/creationRules"
-    },
-    {
-      "description": "All available corporation types for a given country",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "All available corporation types for a given country",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": null,
-              "fullType": "nichandle.CountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/newAccount/corporationType"
     },
     {
       "description": "All available legal forms for a given country",
@@ -624,42 +660,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/newAccount/rules"
-    },
-    {
-      "description": "Returns the contracts that governs the creation of an OVH identifier",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns the contracts that governs the creation of an OVH identifier",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "nichandle.OvhCompanyEnum",
-              "description": null,
-              "fullType": "nichandle.OvhCompanyEnum",
-              "name": "company",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": null,
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "subsidiary",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "order.Contract[]",
-          "responseType": "order.Contract[]"
-        }
-      ],
-      "path": "/newAccount/contracts"
     }
   ],
   "basePath": "https://ca.api.soyoustart.com/1.0",

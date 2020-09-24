@@ -23,306 +23,6 @@ export const schema: Schema = {
       "path": "/dedicatedCloud"
     },
     {
-      "description": "List the dedicatedCloud.CommercialRange objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of commercial Ranges available in a Dedicated Cloud",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/dedicatedCloud/commercialRange"
-    },
-    {
-      "description": "The commercial ranges actually available in your Private Cloud",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The name of this commercial range",
-              "fullType": "string",
-              "name": "commercialRangeName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicatedCloud.CommercialRange"
-        }
-      ],
-      "path": "/dedicatedCloud/commercialRange/{commercialRangeName}"
-    },
-    {
-      "description": "List the dedicatedCloud.PccZone objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of locations available in a Dedicated Cloud",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/dedicatedCloud/location"
-    },
-    {
-      "description": "PccZones actually available in Private Cloud",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Name of pccZone",
-              "fullType": "string",
-              "name": "pccZone",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicatedCloud.PccZone"
-        }
-      ],
-      "path": "/dedicatedCloud/location/{pccZone}"
-    },
-    {
-      "description": "List the dedicatedCloud.HostProfile objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Offered host profile",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Name of pccZone",
-              "fullType": "string",
-              "name": "pccZone",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/dedicatedCloud/location/{pccZone}/hostProfile"
-    },
-    {
-      "description": "Host profiles actually available in Private Cloud",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of Host profile",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Name of pccZone",
-              "fullType": "string",
-              "name": "pccZone",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicatedCloud.HostProfile"
-        }
-      ],
-      "path": "/dedicatedCloud/location/{pccZone}/hostProfile/{id}"
-    },
-    {
-      "description": "List the dedicatedCloud.Os objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Offered hypervisor version",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Name of pccZone",
-              "fullType": "string",
-              "name": "pccZone",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/dedicatedCloud/location/{pccZone}/hypervisor"
-    },
-    {
-      "description": "Hypervisors actually available in Private Cloud",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Name of pccZone",
-              "fullType": "string",
-              "name": "pccZone",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Short name of hypervisor",
-              "fullType": "string",
-              "name": "shortName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicatedCloud.Os"
-        }
-      ],
-      "path": "/dedicatedCloud/location/{pccZone}/hypervisor/{shortName}"
-    },
-    {
-      "description": "host operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Available host stock",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Name of pccZone",
-              "fullType": "string",
-              "name": "pccZone",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Minimum reference year",
-              "fullType": "long",
-              "name": "minYear",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "dedicatedCloud.HostStockProfile[]"
-        }
-      ],
-      "path": "/dedicatedCloud/location/{pccZone}/stock/host"
-    },
-    {
-      "description": "pcc operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Available PCC stock",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Name of pccZone",
-              "fullType": "string",
-              "name": "pccZone",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicatedCloud.PccStockProfile[]"
-        }
-      ],
-      "path": "/dedicatedCloud/location/{pccZone}/stock/pcc"
-    },
-    {
-      "description": "zpool operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Available zpool stock",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Name of pccZone",
-              "fullType": "string",
-              "name": "pccZone",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Profile filter",
-              "fullType": "string",
-              "name": "profileFilter",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "dedicatedCloud.ZpoolStockProfile[]"
-        }
-      ],
-      "path": "/dedicatedCloud/location/{pccZone}/stock/zpool"
-    },
-    {
       "description": "Private Cloud",
       "operations": [
         {
@@ -2967,6 +2667,74 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/resetTaskState"
     },
     {
+      "description": "orderableFilerProfiles operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available filers in a given Private Cloud Datacenter",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.filer.Profile[]"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles"
+    },
+    {
+      "description": "orderableHostProfiles operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available hosts in a given Private Cloud Datacenter",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.host.Profile[]"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles"
+    },
+    {
       "description": "orderNewFilerHourly operations",
       "operations": [
         {
@@ -3057,74 +2825,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly"
-    },
-    {
-      "description": "orderableFilerProfiles operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available filers in a given Private Cloud Datacenter",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "datacenterId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicatedCloud.filer.Profile[]"
-        }
-      ],
-      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles"
-    },
-    {
-      "description": "orderableHostProfiles operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available hosts in a given Private Cloud Datacenter",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "datacenterId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicatedCloud.host.Profile[]"
-        }
-      ],
-      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles"
     },
     {
       "description": "Private management gateway deployed in your Private Cloud to block all public access",
@@ -5764,6 +5464,32 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/nsx/enable"
     },
     {
+      "description": "orderableIpCountries operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the countries you can select in /order/dedicatedCloud/{serviceName}/ip",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.IpCountriesEnum[]"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/orderableIpCountries"
+    },
+    {
       "description": "orderNewFilerHourly operations",
       "operations": [
         {
@@ -5796,32 +5522,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/orderNewFilerHourly"
-    },
-    {
-      "description": "orderableIpCountries operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the countries you can select in /order/dedicatedCloud/{serviceName}/ip",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicatedCloud.IpCountriesEnum[]"
-        }
-      ],
-      "path": "/dedicatedCloud/{serviceName}/orderableIpCountries"
     },
     {
       "description": "passwordPolicy operations",
@@ -8233,6 +7933,306 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/vrops/enable"
+    },
+    {
+      "description": "List the dedicatedCloud.CommercialRange objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of commercial Ranges available in a Dedicated Cloud",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/dedicatedCloud/commercialRange"
+    },
+    {
+      "description": "The commercial ranges actually available in your Private Cloud",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of this commercial range",
+              "fullType": "string",
+              "name": "commercialRangeName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.CommercialRange"
+        }
+      ],
+      "path": "/dedicatedCloud/commercialRange/{commercialRangeName}"
+    },
+    {
+      "description": "List the dedicatedCloud.PccZone objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of locations available in a Dedicated Cloud",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/dedicatedCloud/location"
+    },
+    {
+      "description": "PccZones actually available in Private Cloud",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of pccZone",
+              "fullType": "string",
+              "name": "pccZone",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.PccZone"
+        }
+      ],
+      "path": "/dedicatedCloud/location/{pccZone}"
+    },
+    {
+      "description": "List the dedicatedCloud.HostProfile objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Offered host profile",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of pccZone",
+              "fullType": "string",
+              "name": "pccZone",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/dedicatedCloud/location/{pccZone}/hostProfile"
+    },
+    {
+      "description": "Host profiles actually available in Private Cloud",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of Host profile",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name of pccZone",
+              "fullType": "string",
+              "name": "pccZone",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.HostProfile"
+        }
+      ],
+      "path": "/dedicatedCloud/location/{pccZone}/hostProfile/{id}"
+    },
+    {
+      "description": "List the dedicatedCloud.Os objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Offered hypervisor version",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of pccZone",
+              "fullType": "string",
+              "name": "pccZone",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/dedicatedCloud/location/{pccZone}/hypervisor"
+    },
+    {
+      "description": "Hypervisors actually available in Private Cloud",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of pccZone",
+              "fullType": "string",
+              "name": "pccZone",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Short name of hypervisor",
+              "fullType": "string",
+              "name": "shortName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Os"
+        }
+      ],
+      "path": "/dedicatedCloud/location/{pccZone}/hypervisor/{shortName}"
+    },
+    {
+      "description": "host operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Available host stock",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of pccZone",
+              "fullType": "string",
+              "name": "pccZone",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Minimum reference year",
+              "fullType": "long",
+              "name": "minYear",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "dedicatedCloud.HostStockProfile[]"
+        }
+      ],
+      "path": "/dedicatedCloud/location/{pccZone}/stock/host"
+    },
+    {
+      "description": "pcc operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Available PCC stock",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of pccZone",
+              "fullType": "string",
+              "name": "pccZone",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.PccStockProfile[]"
+        }
+      ],
+      "path": "/dedicatedCloud/location/{pccZone}/stock/pcc"
+    },
+    {
+      "description": "zpool operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Available zpool stock",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of pccZone",
+              "fullType": "string",
+              "name": "pccZone",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Profile filter",
+              "fullType": "string",
+              "name": "profileFilter",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "dedicatedCloud.ZpoolStockProfile[]"
+        }
+      ],
+      "path": "/dedicatedCloud/location/{pccZone}/stock/zpool"
     }
   ],
   "basePath": "https://api.us.ovhcloud.com/1.0",

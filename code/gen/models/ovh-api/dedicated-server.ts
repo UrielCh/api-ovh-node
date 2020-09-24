@@ -23,175 +23,6 @@ export const schema: Schema = {
       "path": "/dedicated/server"
     },
     {
-      "description": "List the availability of dedicated server",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "List the availability of dedicated server",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "The subsidiary company where the availability is requested",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The kind of hardware which is requested",
-              "fullType": "string",
-              "name": "hardware",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "dedicated.Availabilities[]"
-        }
-      ],
-      "path": "/dedicated/server/availabilities"
-    },
-    {
-      "description": "List the availability of dedicated server (RAW)",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List the availability of dedicated server",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [],
-          "responseType": "dedicated.AvailabilitiesRaw[]"
-        }
-      ],
-      "path": "/dedicated/server/availabilities/raw"
-    },
-    {
-      "description": "List the availability of dedicated server",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "List the availability of dedicated server",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The names of datacenters separated by commas",
-              "fullType": "string",
-              "name": "datacenters",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "If true, all datacenters are returned except those listed in datacenters parameter",
-              "fullType": "boolean",
-              "name": "excludeDatacenters",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The name of the memory hardware part",
-              "fullType": "string",
-              "name": "memory",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The plan code in which the hardware is involved",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The name of the base hardware",
-              "fullType": "string",
-              "name": "server",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "The name of the storage hardware part",
-              "fullType": "string",
-              "name": "storage",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "dedicated.DatacenterAvailability[]"
-        }
-      ],
-      "path": "/dedicated/server/datacenter/availabilities"
-    },
-    {
-      "description": "List the operating systems available for a specified hardware reference",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List the os available for a specified hardware reference",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Hardware reference requested",
-              "fullType": "string",
-              "name": "hardware",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.OsAvailabilitiesEnum[]"
-        }
-      ],
-      "path": "/dedicated/server/osAvailabilities"
-    },
-    {
-      "description": "Get a VirtualNetworkInterface details",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get VirtualNetworkInterface details",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "VirtualNetworkInterface uuid",
-              "fullType": "uuid",
-              "name": "uuid",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dedicated.virtualNetworkInterface.VirtualNetworkInterface"
-        }
-      ],
-      "path": "/dedicated/server/virtualNetworkInterface/{uuid}"
-    },
-    {
       "description": "Server informations",
       "operations": [
         {
@@ -5525,6 +5356,175 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicated/server/{serviceName}/vrack/{vrack}/mrtg"
+    },
+    {
+      "description": "List the availability of dedicated server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List the availability of dedicated server",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "The subsidiary company where the availability is requested",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The kind of hardware which is requested",
+              "fullType": "string",
+              "name": "hardware",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "dedicated.Availabilities[]"
+        }
+      ],
+      "path": "/dedicated/server/availabilities"
+    },
+    {
+      "description": "List the availability of dedicated server (RAW)",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List the availability of dedicated server",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [],
+          "responseType": "dedicated.AvailabilitiesRaw[]"
+        }
+      ],
+      "path": "/dedicated/server/availabilities/raw"
+    },
+    {
+      "description": "List the availability of dedicated server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List the availability of dedicated server",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The names of datacenters separated by commas",
+              "fullType": "string",
+              "name": "datacenters",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "If true, all datacenters are returned except those listed in datacenters parameter",
+              "fullType": "boolean",
+              "name": "excludeDatacenters",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of the memory hardware part",
+              "fullType": "string",
+              "name": "memory",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The plan code in which the hardware is involved",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of the base hardware",
+              "fullType": "string",
+              "name": "server",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of the storage hardware part",
+              "fullType": "string",
+              "name": "storage",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "dedicated.DatacenterAvailability[]"
+        }
+      ],
+      "path": "/dedicated/server/datacenter/availabilities"
+    },
+    {
+      "description": "List the operating systems available for a specified hardware reference",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List the os available for a specified hardware reference",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Hardware reference requested",
+              "fullType": "string",
+              "name": "hardware",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.OsAvailabilitiesEnum[]"
+        }
+      ],
+      "path": "/dedicated/server/osAvailabilities"
+    },
+    {
+      "description": "Get a VirtualNetworkInterface details",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get VirtualNetworkInterface details",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "VirtualNetworkInterface uuid",
+              "fullType": "uuid",
+              "name": "uuid",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.virtualNetworkInterface.VirtualNetworkInterface"
+        }
+      ],
+      "path": "/dedicated/server/virtualNetworkInterface/{uuid}"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
@@ -6137,6 +6137,13 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "gpu": {
+          "canBeNull": true,
+          "description": "Name of the gpu hardware part",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "memory": {
           "canBeNull": true,
           "description": "Name of the memory hardware part",
@@ -6161,6 +6168,13 @@ export const schema: Schema = {
         "storage": {
           "canBeNull": true,
           "description": "Name of the storage hardware part",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "systemStorage": {
+          "canBeNull": true,
+          "description": "Name of the system storage hardware part",
           "readOnly": false,
           "required": false,
           "type": "string"

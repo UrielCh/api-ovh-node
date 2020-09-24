@@ -23,49 +23,6 @@ export const schema: Schema = {
       "path": "/cdn/dedicated"
     },
     {
-      "description": "List the cdnanycast.Pop objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of CDN Pops",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/cdn/dedicated/pops"
-    },
-    {
-      "description": "CDN Pop",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Name of the pop",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "cdnanycast.Pop"
-        }
-      ],
-      "path": "/cdn/dedicated/pops/{name}"
-    },
-    {
       "description": "Anycast IP of a CDN customer",
       "operations": [
         {
@@ -1335,6 +1292,49 @@ export const schema: Schema = {
         }
       ],
       "path": "/cdn/dedicated/{serviceName}/ssl/update"
+    },
+    {
+      "description": "List the cdnanycast.Pop objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of CDN Pops",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/cdn/dedicated/pops"
+    },
+    {
+      "description": "CDN Pop",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of the pop",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cdnanycast.Pop"
+        }
+      ],
+      "path": "/cdn/dedicated/pops/{name}"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",

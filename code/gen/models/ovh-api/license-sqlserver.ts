@@ -23,32 +23,6 @@ export const schema: Schema = {
       "path": "/license/sqlserver"
     },
     {
-      "description": "Get the orderable Sql Server versions",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the orderable Sql Server versions",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Your license Ip",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "license.SqlServerOrderConfiguration[]"
-        }
-      ],
-      "path": "/license/sqlserver/orderableVersions"
-    },
-    {
       "description": "Your SQL Server license",
       "operations": [
         {
@@ -286,6 +260,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/license/sqlserver/{serviceName}/terminate"
+    },
+    {
+      "description": "Get the orderable Sql Server versions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the orderable Sql Server versions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Your license Ip",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "license.SqlServerOrderConfiguration[]"
+        }
+      ],
+      "path": "/license/sqlserver/orderableVersions"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",

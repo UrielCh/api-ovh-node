@@ -23,40 +23,6 @@ export const schema: Schema = {
       "path": "/cluster/hadoop"
     },
     {
-      "description": "Get informations about the order of one cluster",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get informations about the order of one cluster",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "cluster.hadoop.OrderInformations"
-        }
-      ],
-      "path": "/cluster/hadoop/orderInformations"
-    },
-    {
-      "description": "Get the orderable node profiles and their characteristics",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the orderable node profiles and their characteristics",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "cluster.hadoop.NodeBillingProfile[]"
-        }
-      ],
-      "path": "/cluster/hadoop/orderableNodeProfiles"
-    },
-    {
       "description": "Managed Hadoop Cluster",
       "operations": [
         {
@@ -758,6 +724,32 @@ export const schema: Schema = {
       "path": "/cluster/hadoop/{serviceName}/nodeConsumptions"
     },
     {
+      "description": "orderableNodeProfiles operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List of orderable Node profiles",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your cluster",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/cluster/hadoop/{serviceName}/orderableNodeProfiles"
+    },
+    {
       "description": "orderNewNodeHourly operations",
       "operations": [
         {
@@ -790,32 +782,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/orderNewNodeHourly"
-    },
-    {
-      "description": "orderableNodeProfiles operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List of orderable Node profiles",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The internal name of your cluster",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/cluster/hadoop/{serviceName}/orderableNodeProfiles"
     },
     {
       "description": "restart operations",
@@ -1368,6 +1334,40 @@ export const schema: Schema = {
         }
       ],
       "path": "/cluster/hadoop/{serviceName}/user/{username}/resetPassword"
+    },
+    {
+      "description": "Get the orderable node profiles and their characteristics",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the orderable node profiles and their characteristics",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "cluster.hadoop.NodeBillingProfile[]"
+        }
+      ],
+      "path": "/cluster/hadoop/orderableNodeProfiles"
+    },
+    {
+      "description": "Get informations about the order of one cluster",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about the order of one cluster",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "cluster.hadoop.OrderInformations"
+        }
+      ],
+      "path": "/cluster/hadoop/orderInformations"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",

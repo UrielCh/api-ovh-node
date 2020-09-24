@@ -6925,35 +6925,6 @@ export interface Order {
             }
         };
     }
-    router: {
-        new: {
-            /**
-             * Get allowed durations for 'new' option
-             * GET /order/router/new
-             */
-            $get(params: { vrack: string }): Promise<string[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            $(duration: string): {
-                /**
-                 * Get prices and contracts information
-                 * GET /order/router/new/{duration}
-                 */
-                $get(params: { vrack: string }): Promise<order.Order>;
-                /**
-                 * Create order
-                 * POST /order/router/new/{duration}
-                 */
-                $post(params: { vrack: string }): Promise<order.Order>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            };
-        }
-    }
     saas: {
         csp2: {
             new: {

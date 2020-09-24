@@ -2769,170 +2769,6 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Create multiple instances",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "cloud.ProjectInstanceBulkCreation",
-              "description": "Request Body",
-              "fullType": "cloud.ProjectInstanceBulkCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "cloud.instance.Instance[]"
-        }
-      ],
-      "path": "/cloud/project/{serviceName}/instance/bulk"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the detail of a group",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Instance region",
-              "fullType": "string",
-              "name": "region",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "cloud.instancegroup.InstanceGroup[]"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Create a group",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "cloud.ProjectInstanceGroupCreation",
-              "description": "Request Body",
-              "fullType": "cloud.ProjectInstanceGroupCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "cloud.instancegroup.InstanceGroup"
-        }
-      ],
-      "path": "/cloud/project/{serviceName}/instance/group"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete a group",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Group ID",
-              "fullType": "string",
-              "name": "groupId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get all groups",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Group ID",
-              "fullType": "string",
-              "name": "groupId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Instance region",
-              "fullType": "string",
-              "name": "region",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "cloud.instancegroup.InstanceGroup"
-        }
-      ],
-      "path": "/cloud/project/{serviceName}/instance/group/{groupId}"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
           "description": "Delete an instance",
           "httpMethod": "DELETE",
           "noAuthentication": false,
@@ -3627,6 +3463,170 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/vnc"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create multiple instances",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectInstanceBulkCreation",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectInstanceBulkCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.instance.Instance[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/instance/bulk"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the detail of a group",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Instance region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "cloud.instancegroup.InstanceGroup[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a group",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectInstanceGroupCreation",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectInstanceGroupCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.instancegroup.InstanceGroup"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/instance/group"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete a group",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Group ID",
+              "fullType": "string",
+              "name": "groupId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get all groups",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Group ID",
+              "fullType": "string",
+              "name": "groupId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Instance region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "cloud.instancegroup.InstanceGroup"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/instance/group/{groupId}"
     },
     {
       "description": "",
@@ -4485,35 +4485,6 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/kube"
     },
     {
-      "description": "List Kubernetes available regions",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2020-10-01T00:00:00+00:00",
-            "deprecatedDate": "2020-06-10T00:00:00+00:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/cloud/project/{serviceName}/capabilities/kube/regions",
-            "value": "DEPRECATED"
-          },
-          "description": "List Kubernetes available regions",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "cloud.kube.RegionEnum[]"
-        }
-      ],
-      "path": "/cloud/project/{serviceName}/kube/regions"
-    },
-    {
       "description": "Manage your clusters",
       "operations": [
         {
@@ -5216,6 +5187,35 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/updatePolicy"
+    },
+    {
+      "description": "List Kubernetes available regions",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-06-10T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/capabilities/kube/regions",
+            "value": "DEPRECATED"
+          },
+          "description": "List Kubernetes available regions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.RegionEnum[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/regions"
     },
     {
       "description": "Manage labs on your Cloud Project",
@@ -7350,55 +7350,6 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "deletionDate": "2016-11-25T10:00:00+01:00",
-            "deprecatedDate": "2016-08-25T10:00:00+01:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/cloud/project/{serviceName}/storage/access",
-            "value": "DEPRECATED"
-          },
-          "description": "Access to storage API",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "cloud.storage.ContainerAccess"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Access to storage API",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "cloud.storage.ContainerAccess"
-        }
-      ],
-      "path": "/cloud/project/{serviceName}/storage/access"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
@@ -7691,6 +7642,55 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/storage/{containerId}/user"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2016-11-25T10:00:00+01:00",
+            "deprecatedDate": "2016-08-25T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/storage/access",
+            "value": "DEPRECATED"
+          },
+          "description": "Access to storage API",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.storage.ContainerAccess"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Access to storage API",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.storage.ContainerAccess"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/storage/access"
     },
     {
       "description": "Terminate your service",
@@ -8405,102 +8405,6 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get volume snapshots",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Snapshots region",
-              "fullType": "string",
-              "name": "region",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "cloud.volume.Snapshot[]"
-        }
-      ],
-      "path": "/cloud/project/{serviceName}/volume/snapshot"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete a volume snapshot",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Snapshot ID",
-              "fullType": "string",
-              "name": "snapshotId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get volume snapshot details",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Snapshot ID",
-              "fullType": "string",
-              "name": "snapshotId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "cloud.volume.Snapshot"
-        }
-      ],
-      "path": "/cloud/project/{serviceName}/volume/snapshot/{snapshotId}"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
           "description": "Delete a volume",
           "httpMethod": "DELETE",
           "noAuthentication": false,
@@ -8753,6 +8657,102 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/volume/{volumeId}/upsize"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get volume snapshots",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Snapshots region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "cloud.volume.Snapshot[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/volume/snapshot"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete a volume snapshot",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Snapshot ID",
+              "fullType": "string",
+              "name": "snapshotId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get volume snapshot details",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Snapshot ID",
+              "fullType": "string",
+              "name": "snapshotId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.volume.Snapshot"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/volume/snapshot/{snapshotId}"
     },
     {
       "description": "Manage the vRack on your Cloud Project",

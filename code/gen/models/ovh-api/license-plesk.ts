@@ -23,32 +23,6 @@ export const schema: Schema = {
       "path": "/license/plesk"
     },
     {
-      "description": "Get the orderable Plesk versions and their associated compatibilities",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the orderable Plesk versions and their associated compatibilities",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Your license Ip",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "license.PleskOrderConfiguration[]"
-        }
-      ],
-      "path": "/license/plesk/orderableVersions"
-    },
-    {
       "description": "Your Plesk license",
       "operations": [
         {
@@ -495,6 +469,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/license/plesk/{serviceName}/terminate"
+    },
+    {
+      "description": "Get the orderable Plesk versions and their associated compatibilities",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the orderable Plesk versions and their associated compatibilities",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Your license Ip",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "license.PleskOrderConfiguration[]"
+        }
+      ],
+      "path": "/license/plesk/orderableVersions"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",

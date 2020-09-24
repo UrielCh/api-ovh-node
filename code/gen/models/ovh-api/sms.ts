@@ -23,222 +23,6 @@ export const schema: Schema = {
       "path": "/sms"
     },
     {
-      "description": "Get the encoding, length and number of SMS parts of a text message",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the encoding, length and number of SMS parts of a text message",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "text",
-              "description": "The message to send",
-              "fullType": "text",
-              "name": "message",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "Do not display STOP clause in the message, this requires that this is not an advertising message",
-              "fullType": "boolean",
-              "name": "noStopClause",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "sms.TypeSenderEnum",
-              "description": "Sender type that will be used to send the message",
-              "fullType": "sms.TypeSenderEnum",
-              "name": "senderType",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "sms.JobEstimate"
-        }
-      ],
-      "path": "/sms/estimate"
-    },
-    {
-      "description": "Get informations about the given ptt code",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get informations about the given ptt code",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "The premium transaction tracking code",
-              "fullType": "long",
-              "name": "ptt",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "sms.PttDetails"
-        }
-      ],
-      "path": "/sms/ptts"
-    },
-    {
-      "description": "Get the prices and credits to send a SMS towards given country",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the prices and credits to send a SMS towards given country",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "sms.CountryEnum",
-              "description": "Country prices to send SMS",
-              "fullType": "sms.CountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "sms.DestinationRates"
-        }
-      ],
-      "path": "/sms/rates/destinations"
-    },
-    {
-      "description": "Get the prices and credits of all the SMS packs with informations about the destination country",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the prices and credits of all the SMS packs with informations about the destination country",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "sms.CountryEnum",
-              "description": "Destination country",
-              "fullType": "sms.CountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "sms.PackDetails[]"
-        }
-      ],
-      "path": "/sms/rates/packs"
-    },
-    {
-      "description": "Operations about the VOIP service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/sms/virtualNumbers"
-    },
-    {
-      "description": "Virtual numbers",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Your virtual number",
-              "fullType": "string",
-              "name": "number",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "sms.VirtualNumberGenericService"
-        }
-      ],
-      "path": "/sms/virtualNumbers/{number}"
-    },
-    {
-      "description": "Details about a Service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Your virtual number",
-              "fullType": "string",
-              "name": "number",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "services.Service"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "services.Service",
-              "description": "New object properties",
-              "fullType": "services.Service",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Your virtual number",
-              "fullType": "string",
-              "name": "number",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/sms/virtualNumbers/{number}/serviceInfos"
-    },
-    {
       "description": "SMS details",
       "operations": [
         {
@@ -4613,6 +4397,222 @@ export const schema: Schema = {
         }
       ],
       "path": "/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}/hlr"
+    },
+    {
+      "description": "Get the encoding, length and number of SMS parts of a text message",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the encoding, length and number of SMS parts of a text message",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "text",
+              "description": "The message to send",
+              "fullType": "text",
+              "name": "message",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Do not display STOP clause in the message, this requires that this is not an advertising message",
+              "fullType": "boolean",
+              "name": "noStopClause",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "sms.TypeSenderEnum",
+              "description": "Sender type that will be used to send the message",
+              "fullType": "sms.TypeSenderEnum",
+              "name": "senderType",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "sms.JobEstimate"
+        }
+      ],
+      "path": "/sms/estimate"
+    },
+    {
+      "description": "Get informations about the given ptt code",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get informations about the given ptt code",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The premium transaction tracking code",
+              "fullType": "long",
+              "name": "ptt",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "sms.PttDetails"
+        }
+      ],
+      "path": "/sms/ptts"
+    },
+    {
+      "description": "Get the prices and credits to send a SMS towards given country",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the prices and credits to send a SMS towards given country",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "sms.CountryEnum",
+              "description": "Country prices to send SMS",
+              "fullType": "sms.CountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "sms.DestinationRates"
+        }
+      ],
+      "path": "/sms/rates/destinations"
+    },
+    {
+      "description": "Get the prices and credits of all the SMS packs with informations about the destination country",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the prices and credits of all the SMS packs with informations about the destination country",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "sms.CountryEnum",
+              "description": "Destination country",
+              "fullType": "sms.CountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "sms.PackDetails[]"
+        }
+      ],
+      "path": "/sms/rates/packs"
+    },
+    {
+      "description": "Operations about the VOIP service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/sms/virtualNumbers"
+    },
+    {
+      "description": "Virtual numbers",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Your virtual number",
+              "fullType": "string",
+              "name": "number",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "sms.VirtualNumberGenericService"
+        }
+      ],
+      "path": "/sms/virtualNumbers/{number}"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Your virtual number",
+              "fullType": "string",
+              "name": "number",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Your virtual number",
+              "fullType": "string",
+              "name": "number",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/sms/virtualNumbers/{number}/serviceInfos"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",

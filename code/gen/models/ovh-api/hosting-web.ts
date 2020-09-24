@@ -23,321 +23,6 @@ export const schema: Schema = {
       "path": "/hosting/web"
     },
     {
-      "description": "Find hosting service linked to a domain",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Find hosting service linked to a domain",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Domain used into web hosting attached Domains",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/hosting/web/attachedDomain"
-    },
-    {
-      "description": "Get available offer",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get available offer",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Domain you want to add or upgrade a hosting",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "hosting.web.OfferEnum[]"
-        }
-      ],
-      "path": "/hosting/web/availableOffer"
-    },
-    {
-      "description": "Get current incident",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get current incident",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/hosting/web/incident"
-    },
-    {
-      "description": "Get list of directories associated to a local SEO offer and a country",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get list of directories associated to a local SEO offer and a country",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "hosting.web.localSeo.location.CountryEnum",
-              "description": "Country of the location",
-              "fullType": "hosting.web.localSeo.location.CountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "hosting.web.localSeo.location.OfferEnum",
-              "description": "Local SEO offer",
-              "fullType": "hosting.web.localSeo.location.OfferEnum",
-              "name": "offer",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "hosting.web.localSeo.DirectoriesList"
-        }
-      ],
-      "path": "/hosting/web/localSeo/directoriesList"
-    },
-    {
-      "description": "Check email availability for a local SEO order",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Check email availability for a local SEO order",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The email address to check",
-              "fullType": "string",
-              "name": "email",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "hosting.web.localSeo.EmailAvailability"
-        }
-      ],
-      "path": "/hosting/web/localSeo/emailAvailability"
-    },
-    {
-      "description": "Check visibility of a location",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Check visibility of a location",
-          "httpMethod": "POST",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "hosting.web.localSeo.location.CountryEnum",
-              "description": "Country of the location",
-              "fullType": "hosting.web.localSeo.location.CountryEnum",
-              "name": "country",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Name of the location",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Address line 1 of the location",
-              "fullType": "string",
-              "name": "street",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Zipcode of the location",
-              "fullType": "string",
-              "name": "zip",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "hosting.web.localSeo.VisibilityCheckResponse"
-        }
-      ],
-      "path": "/hosting/web/localSeo/visibilityCheck"
-    },
-    {
-      "description": "Get the result of a visibility check",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the result of a visibility check",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Get the result only for one directory",
-              "fullType": "string",
-              "name": "directory",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id of the check",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Token received when requesting the check",
-              "fullType": "string",
-              "name": "token",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "hosting.web.localSeo.VisibilityCheckResultResponse[]"
-        }
-      ],
-      "path": "/hosting/web/localSeo/visibilityCheckResult"
-    },
-    {
-      "description": "List the hosting.web.ModuleList objects",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "IDs of all modules available",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "boolean",
-              "description": "Filter the value of active property (=)",
-              "fullType": "boolean",
-              "name": "active",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "hosting.web.module.BranchEnum",
-              "description": "Filter the value of branch property (=)",
-              "fullType": "hosting.web.module.BranchEnum",
-              "name": "branch",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Filter the value of latest property (=)",
-              "fullType": "boolean",
-              "name": "latest",
-              "paramType": "query",
-              "required": false
-            }
-          ],
-          "responseType": "long[]"
-        }
-      ],
-      "path": "/hosting/web/moduleList"
-    },
-    {
-      "description": "A module specifically packaged by OVH",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "The ID of the module",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "hosting.web.ModuleList"
-        }
-      ],
-      "path": "/hosting/web/moduleList/{id}"
-    },
-    {
-      "description": "Get offer capabilities",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get offer capabilities",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "hosting.web.OfferCapabilitiesEnum",
-              "description": "Describe offer capabilities",
-              "fullType": "hosting.web.OfferCapabilitiesEnum",
-              "name": "offer",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "hosting.web.Capabilities"
-        }
-      ],
-      "path": "/hosting/web/offerCapabilities"
-    },
-    {
       "description": "Web Hosting",
       "operations": [
         {
@@ -5397,6 +5082,321 @@ export const schema: Schema = {
         }
       ],
       "path": "/hosting/web/{serviceName}/userLogsToken"
+    },
+    {
+      "description": "Find hosting service linked to a domain",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Find hosting service linked to a domain",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain used into web hosting attached Domains",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/hosting/web/attachedDomain"
+    },
+    {
+      "description": "Get available offer",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get available offer",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain you want to add or upgrade a hosting",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.web.OfferEnum[]"
+        }
+      ],
+      "path": "/hosting/web/availableOffer"
+    },
+    {
+      "description": "Get current incident",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get current incident",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/hosting/web/incident"
+    },
+    {
+      "description": "Get list of directories associated to a local SEO offer and a country",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get list of directories associated to a local SEO offer and a country",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "hosting.web.localSeo.location.CountryEnum",
+              "description": "Country of the location",
+              "fullType": "hosting.web.localSeo.location.CountryEnum",
+              "name": "country",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "hosting.web.localSeo.location.OfferEnum",
+              "description": "Local SEO offer",
+              "fullType": "hosting.web.localSeo.location.OfferEnum",
+              "name": "offer",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.web.localSeo.DirectoriesList"
+        }
+      ],
+      "path": "/hosting/web/localSeo/directoriesList"
+    },
+    {
+      "description": "Check email availability for a local SEO order",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Check email availability for a local SEO order",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The email address to check",
+              "fullType": "string",
+              "name": "email",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.web.localSeo.EmailAvailability"
+        }
+      ],
+      "path": "/hosting/web/localSeo/emailAvailability"
+    },
+    {
+      "description": "Check visibility of a location",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Check visibility of a location",
+          "httpMethod": "POST",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "hosting.web.localSeo.location.CountryEnum",
+              "description": "Country of the location",
+              "fullType": "hosting.web.localSeo.location.CountryEnum",
+              "name": "country",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name of the location",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Address line 1 of the location",
+              "fullType": "string",
+              "name": "street",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Zipcode of the location",
+              "fullType": "string",
+              "name": "zip",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.web.localSeo.VisibilityCheckResponse"
+        }
+      ],
+      "path": "/hosting/web/localSeo/visibilityCheck"
+    },
+    {
+      "description": "Get the result of a visibility check",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the result of a visibility check",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Get the result only for one directory",
+              "fullType": "string",
+              "name": "directory",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the check",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Token received when requesting the check",
+              "fullType": "string",
+              "name": "token",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.web.localSeo.VisibilityCheckResultResponse[]"
+        }
+      ],
+      "path": "/hosting/web/localSeo/visibilityCheckResult"
+    },
+    {
+      "description": "List the hosting.web.ModuleList objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "IDs of all modules available",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "Filter the value of active property (=)",
+              "fullType": "boolean",
+              "name": "active",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "hosting.web.module.BranchEnum",
+              "description": "Filter the value of branch property (=)",
+              "fullType": "hosting.web.module.BranchEnum",
+              "name": "branch",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "Filter the value of latest property (=)",
+              "fullType": "boolean",
+              "name": "latest",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/hosting/web/moduleList"
+    },
+    {
+      "description": "A module specifically packaged by OVH",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The ID of the module",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.web.ModuleList"
+        }
+      ],
+      "path": "/hosting/web/moduleList/{id}"
+    },
+    {
+      "description": "Get offer capabilities",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get offer capabilities",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "hosting.web.OfferCapabilitiesEnum",
+              "description": "Describe offer capabilities",
+              "fullType": "hosting.web.OfferCapabilitiesEnum",
+              "name": "offer",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.web.Capabilities"
+        }
+      ],
+      "path": "/hosting/web/offerCapabilities"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",

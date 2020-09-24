@@ -30,49 +30,6 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "List the /cloud flavors available for the Docker PaaS slaves",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/caas/containers/slaves/flavors"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Inspect the argument slave flavor",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "flavor id",
-              "fullType": "string",
-              "name": "flavorId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "docker.slave.flavor"
-        }
-      ],
-      "path": "/caas/containers/slaves/flavors/{flavorId}"
-    },
-    {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
           "description": "Inspect the argument stack",
           "httpMethod": "GET",
           "noAuthentication": false,
@@ -637,6 +594,49 @@ export const schema: Schema = {
         }
       ],
       "path": "/caas/containers/{serviceName}/ssl"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List the /cloud flavors available for the Docker PaaS slaves",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/caas/containers/slaves/flavors"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Inspect the argument slave flavor",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "flavor id",
+              "fullType": "string",
+              "name": "flavorId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "docker.slave.flavor"
+        }
+      ],
+      "path": "/caas/containers/slaves/flavors/{flavorId}"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",

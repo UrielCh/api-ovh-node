@@ -23,102 +23,6 @@ export const schema: Schema = {
       "path": "/msServices"
     },
     {
-      "description": "Operations about the SHAREPOINT service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "List available services",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/msServices/sharepoint"
-    },
-    {
-      "description": "Sharepoint service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Sharepoint customer's service",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "msServices.SharepointServiceInfo"
-        }
-      ],
-      "path": "/msServices/sharepoint/{domain}"
-    },
-    {
-      "description": "Details about a Service",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Sharepoint customer's service",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "services.Service"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "services.Service",
-              "description": "New object properties",
-              "fullType": "services.Service",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Sharepoint customer's service",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/msServices/sharepoint/{domain}/serviceInfos"
-    },
-    {
       "description": "Active Directory organizational unit",
       "operations": [
         {
@@ -1669,6 +1573,102 @@ export const schema: Schema = {
         }
       ],
       "path": "/msServices/{serviceName}/upnSuffix/{suffix}"
+    },
+    {
+      "description": "Operations about the SHAREPOINT service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/msServices/sharepoint"
+    },
+    {
+      "description": "Sharepoint service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Sharepoint customer's service",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "msServices.SharepointServiceInfo"
+        }
+      ],
+      "path": "/msServices/sharepoint/{domain}"
+    },
+    {
+      "description": "Details about a Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Sharepoint customer's service",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.Service",
+              "description": "New object properties",
+              "fullType": "services.Service",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Sharepoint customer's service",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/msServices/sharepoint/{domain}/serviceInfos"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",

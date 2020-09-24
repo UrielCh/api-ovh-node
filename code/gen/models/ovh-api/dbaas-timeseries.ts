@@ -23,23 +23,6 @@ export const schema: Schema = {
       "path": "/dbaas/timeseries"
     },
     {
-      "description": "Regions",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get available regions",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "paas.timeseries.Region[]"
-        }
-      ],
-      "path": "/dbaas/timeseries/region"
-    },
-    {
       "description": "Timeseries project",
       "operations": [
         {
@@ -628,6 +611,23 @@ export const schema: Schema = {
         }
       ],
       "path": "/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}"
+    },
+    {
+      "description": "Regions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get available regions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "paas.timeseries.Region[]"
+        }
+      ],
+      "path": "/dbaas/timeseries/region"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",

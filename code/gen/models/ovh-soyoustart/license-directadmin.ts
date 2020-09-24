@@ -23,32 +23,6 @@ export const schema: Schema = {
       "path": "/license/directadmin"
     },
     {
-      "description": "Get the orderable DirectAdmin versions",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the orderable DirectAdmin versions",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Your license Ip",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "license.DirectAdminOrderConfiguration[]"
-        }
-      ],
-      "path": "/license/directadmin/orderableVersions"
-    },
-    {
       "description": "Your DirectAdmin license",
       "operations": [
         {
@@ -441,6 +415,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/license/directadmin/{serviceName}/terminate"
+    },
+    {
+      "description": "Get the orderable DirectAdmin versions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the orderable DirectAdmin versions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Your license Ip",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "license.DirectAdminOrderConfiguration[]"
+        }
+      ],
+      "path": "/license/directadmin/orderableVersions"
     }
   ],
   "basePath": "https://eu.api.soyoustart.com/1.0",

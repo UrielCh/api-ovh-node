@@ -124,10 +124,12 @@ export namespace dedicated {
     export interface DatacenterAvailability {
         datacenters: dedicated.AvailabilityDatacenter[];
         fqn: string;
+        gpu?: string;
         memory?: string;
         planCode: string;
         server: string;
         storage?: string;
+        systemStorage?: string;
     }
     /**
      * ovh datacenter

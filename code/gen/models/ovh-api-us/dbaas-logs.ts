@@ -23,138 +23,6 @@ export const schema: Schema = {
       "path": "/dbaas/logs"
     },
     {
-      "description": "Engines",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns the list of available input engines",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "uuid[]"
-        }
-      ],
-      "path": "/dbaas/logs/input/engine"
-    },
-    {
-      "description": "Engine",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns details of specified input engine",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Engine ID",
-              "fullType": "uuid",
-              "name": "engineId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Engine"
-        }
-      ],
-      "path": "/dbaas/logs/input/engine/{engineId}"
-    },
-    {
-      "description": "Input engine helpers",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Return the list of available helpers for the given input engine",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Engine ID",
-              "fullType": "uuid",
-              "name": "engineId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "uuid[]"
-        }
-      ],
-      "path": "/dbaas/logs/input/engine/{engineId}/helper"
-    },
-    {
-      "description": "Input engine helpers",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns details of specified input engine helper",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Engine ID",
-              "fullType": "uuid",
-              "name": "engineId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Helper ID",
-              "fullType": "uuid",
-              "name": "helperId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Helper"
-        }
-      ],
-      "path": "/dbaas/logs/input/engine/{engineId}/helper/{helperId}"
-    },
-    {
-      "description": "Offer",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2020-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}",
-            "value": "DEPRECATED"
-          },
-          "description": "Display specified offer",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Reference",
-              "fullType": "string",
-              "name": "reference",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.PublicOffer"
-        }
-      ],
-      "path": "/dbaas/logs/offer/{reference}"
-    },
-    {
       "description": "Operations about the DBAAS-LOGS service",
       "operations": [
         {
@@ -3408,6 +3276,84 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission"
     },
     {
+      "description": "RolePermission",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove specified permission",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Permission ID",
+              "fullType": "uuid",
+              "name": "permissionId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Role ID",
+              "fullType": "uuid",
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns details of specified permission",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Permission ID",
+              "fullType": "uuid",
+              "name": "permissionId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Role ID",
+              "fullType": "uuid",
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Permission"
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}"
+    },
+    {
       "description": "RolePermissionAlias",
       "operations": [
         {
@@ -3570,84 +3516,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/stream"
-    },
-    {
-      "description": "RolePermission",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Remove specified permission",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Permission ID",
-              "fullType": "uuid",
-              "name": "permissionId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Role ID",
-              "fullType": "uuid",
-              "name": "roleId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Returns details of specified permission",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Permission ID",
-              "fullType": "uuid",
-              "name": "permissionId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Role ID",
-              "fullType": "uuid",
-              "name": "roleId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Permission"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}"
     },
     {
       "description": "Details about a Service",
@@ -3875,6 +3743,138 @@ export const schema: Schema = {
         }
       ],
       "path": "/dbaas/logs/{serviceName}/user/changePassword"
+    },
+    {
+      "description": "Engines",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns the list of available input engines",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "uuid[]"
+        }
+      ],
+      "path": "/dbaas/logs/input/engine"
+    },
+    {
+      "description": "Engine",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns details of specified input engine",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Engine ID",
+              "fullType": "uuid",
+              "name": "engineId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Engine"
+        }
+      ],
+      "path": "/dbaas/logs/input/engine/{engineId}"
+    },
+    {
+      "description": "Input engine helpers",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return the list of available helpers for the given input engine",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Engine ID",
+              "fullType": "uuid",
+              "name": "engineId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]"
+        }
+      ],
+      "path": "/dbaas/logs/input/engine/{engineId}/helper"
+    },
+    {
+      "description": "Input engine helpers",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns details of specified input engine helper",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Engine ID",
+              "fullType": "uuid",
+              "name": "engineId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Helper ID",
+              "fullType": "uuid",
+              "name": "helperId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Helper"
+        }
+      ],
+      "path": "/dbaas/logs/input/engine/{engineId}/helper/{helperId}"
+    },
+    {
+      "description": "Offer",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2020-06-01T00:00:00+00:00",
+            "deprecatedDate": "2020-04-08T17:41:02+02:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dbaas/logs/{serviceName}",
+            "value": "DEPRECATED"
+          },
+          "description": "Display specified offer",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Reference",
+              "fullType": "string",
+              "name": "reference",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.PublicOffer"
+        }
+      ],
+      "path": "/dbaas/logs/offer/{reference}"
     }
   ],
   "basePath": "https://api.us.ovhcloud.com/1.0",

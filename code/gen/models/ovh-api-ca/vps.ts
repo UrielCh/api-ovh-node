@@ -23,74 +23,6 @@ export const schema: Schema = {
       "path": "/vps"
     },
     {
-      "description": "Missing description",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List all the datacenters for a specific country",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "nichandle.CountryEnum",
-              "description": "Country targeted",
-              "fullType": "nichandle.CountryEnum",
-              "name": "country",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/vps/datacenter"
-    },
-    {
-      "description": "",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List datacenters with priority and stock status",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "VPS OS selection in order api",
-              "fullType": "string",
-              "name": "os",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "Subsidiary to sort datacenters",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "VPS plan code from order api",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "vps.order.rule.Datacenters"
-        }
-      ],
-      "path": "/vps/order/rule/datacenter"
-    },
-    {
       "description": "VPS Virtual Machine",
       "operations": [
         {
@@ -2491,6 +2423,52 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/veeam"
     },
     {
+      "description": "Currently restored backup",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Creates a VPS.Task that will unmount the backup",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vps.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vps.veeam.RestoredBackup"
+        }
+      ],
+      "path": "/vps/{serviceName}/veeam/restoredBackup"
+    },
+    {
       "description": "List the vps.veeam.RestorePoint objects",
       "operations": [
         {
@@ -2617,50 +2595,72 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/veeam/restorePoints/{id}/restore"
     },
     {
-      "description": "Currently restored backup",
+      "description": "Missing description",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Creates a VPS.Task that will unmount the backup",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
+          "description": "List all the datacenters for a specific country",
+          "httpMethod": "GET",
+          "noAuthentication": true,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "The internal name of your VPS offer",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "dataType": "nichandle.CountryEnum",
+              "description": "Country targeted",
+              "fullType": "nichandle.CountryEnum",
+              "name": "country",
+              "paramType": "query",
               "required": true
             }
           ],
-          "responseType": "vps.Task"
-        },
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/vps/datacenter"
+    },
+    {
+      "description": "",
+      "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "List datacenters with priority and stock status",
           "httpMethod": "GET",
-          "noAuthentication": false,
+          "noAuthentication": true,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The internal name of your VPS offer",
+              "description": "VPS OS selection in order api",
               "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
+              "name": "os",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary to sort datacenters",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "VPS plan code from order api",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
               "required": true
             }
           ],
-          "responseType": "vps.veeam.RestoredBackup"
+          "responseType": "vps.order.rule.Datacenters"
         }
       ],
-      "path": "/vps/{serviceName}/veeam/restoredBackup"
+      "path": "/vps/order/rule/datacenter"
     }
   ],
   "basePath": "https://ca.api.ovh.com/1.0",

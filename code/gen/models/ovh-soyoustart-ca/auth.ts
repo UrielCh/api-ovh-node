@@ -6,25 +6,6 @@ export const schema: Schema = {
   "apiVersion": "1.0",
   "apis": [
     {
-      "description": "Get the current credential details",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the current credential details",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "api.Credential",
-          "responseType": "api.Credential"
-        }
-      ],
-      "path": "/auth/currentCredential"
-    },
-    {
       "description": "Operations with credentials",
       "operations": [
         {
@@ -59,6 +40,44 @@ export const schema: Schema = {
         }
       ],
       "path": "/auth/credential"
+    },
+    {
+      "description": "Get the current credential details",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the current credential details",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "api.Credential",
+          "responseType": "api.Credential"
+        }
+      ],
+      "path": "/auth/currentCredential"
+    },
+    {
+      "description": "Details about the current authentication",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Details about the current authentication",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "resellerOnly": false,
+          "responseFullType": "auth.Details",
+          "responseType": "auth.Details"
+        }
+      ],
+      "path": "/auth/details"
     },
     {
       "description": "Expire current credential",
@@ -97,25 +116,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/auth/time"
-    },
-    {
-      "description": "Details about the current authentication",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Details about the current authentication",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "auth.Details",
-          "responseType": "auth.Details"
-        }
-      ],
-      "path": "/auth/details"
     }
   ],
   "basePath": "https://ca.api.soyoustart.com/1.0",

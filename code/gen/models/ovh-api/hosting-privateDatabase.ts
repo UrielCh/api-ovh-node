@@ -23,32 +23,6 @@ export const schema: Schema = {
       "path": "/hosting/privateDatabase"
     },
     {
-      "description": "Get available order capacitie",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get available order capacitie",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "hosting.PrivateDatabase.OfferEnum",
-              "description": "Offer available order capacities to choose",
-              "fullType": "hosting.PrivateDatabase.OfferEnum",
-              "name": "offer",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "hosting.PrivateDatabase.AvailableOrderCapacities"
-        }
-      ],
-      "path": "/hosting/privateDatabase/availableOrderCapacities"
-    },
-    {
       "description": "Private database",
       "operations": [
         {
@@ -2030,6 +2004,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/hosting/privateDatabase/{serviceName}/whitelist/{ip}"
+    },
+    {
+      "description": "Get available order capacitie",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get available order capacitie",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "hosting.PrivateDatabase.OfferEnum",
+              "description": "Offer available order capacities to choose",
+              "fullType": "hosting.PrivateDatabase.OfferEnum",
+              "name": "offer",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.PrivateDatabase.AvailableOrderCapacities"
+        }
+      ],
+      "path": "/hosting/privateDatabase/availableOrderCapacities"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",

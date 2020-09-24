@@ -23,48 +23,6 @@ export const schema: Schema = {
       "path": "/vps"
     },
     {
-      "description": "",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "List datacenters with priority and stock status",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "VPS OS selection in order api",
-              "fullType": "string",
-              "name": "os",
-              "paramType": "query",
-              "required": false
-            },
-            {
-              "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": "Subsidiary to sort datacenters",
-              "fullType": "nichandle.OvhSubsidiaryEnum",
-              "name": "ovhSubsidiary",
-              "paramType": "query",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "VPS plan code from order api",
-              "fullType": "string",
-              "name": "planCode",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "vps.order.rule.Datacenters"
-        }
-      ],
-      "path": "/vps/order/rule/datacenter"
-    },
-    {
       "description": "VPS Virtual Machine",
       "operations": [
         {
@@ -1674,6 +1632,48 @@ export const schema: Schema = {
         }
       ],
       "path": "/vps/{serviceName}/terminate"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List datacenters with priority and stock status",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "VPS OS selection in order api",
+              "fullType": "string",
+              "name": "os",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary to sort datacenters",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "VPS plan code from order api",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "vps.order.rule.Datacenters"
+        }
+      ],
+      "path": "/vps/order/rule/datacenter"
     }
   ],
   "basePath": "https://api.us.ovhcloud.com/1.0",

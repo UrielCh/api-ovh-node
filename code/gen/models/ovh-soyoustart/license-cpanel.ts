@@ -23,32 +23,6 @@ export const schema: Schema = {
       "path": "/license/cpanel"
     },
     {
-      "description": "Get the orderable CPanel versions",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get the orderable CPanel versions",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipv4",
-              "description": "Your license Ip",
-              "fullType": "ipv4",
-              "name": "ip",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "license.CpanelOrderConfiguration[]"
-        }
-      ],
-      "path": "/license/cpanel/orderableVersions"
-    },
-    {
       "description": "Your Cpanel license",
       "operations": [
         {
@@ -407,6 +381,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/license/cpanel/{serviceName}/terminate"
+    },
+    {
+      "description": "Get the orderable CPanel versions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the orderable CPanel versions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipv4",
+              "description": "Your license Ip",
+              "fullType": "ipv4",
+              "name": "ip",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "license.CpanelOrderConfiguration[]"
+        }
+      ],
+      "path": "/license/cpanel/orderableVersions"
     }
   ],
   "basePath": "https://eu.api.soyoustart.com/1.0",

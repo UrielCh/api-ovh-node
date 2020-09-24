@@ -23,49 +23,6 @@ export const schema: Schema = {
       "path": "/sslGateway"
     },
     {
-      "description": "List of zone available for an SSL Gateway",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "List of zone available for an SSL Gateway",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [],
-          "responseType": "string[]"
-        }
-      ],
-      "path": "/sslGateway/availableZones"
-    },
-    {
-      "description": "Check domain eligibility. Return list of eligible IP(s) for this domain.",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Check domain eligibility. Return list of eligible IP(s) for this domain.",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "domain to check eligibility for SSL Gateway offer",
-              "fullType": "string",
-              "name": "domain",
-              "paramType": "query",
-              "required": true
-            }
-          ],
-          "responseType": "sslGateway.EligibilityStatus"
-        }
-      ],
-      "path": "/sslGateway/eligibility"
-    },
-    {
       "description": "Your SSL Gateway",
       "operations": [
         {
@@ -699,6 +656,49 @@ export const schema: Schema = {
         }
       ],
       "path": "/sslGateway/{serviceName}/terminate"
+    },
+    {
+      "description": "List of zone available for an SSL Gateway",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List of zone available for an SSL Gateway",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/sslGateway/availableZones"
+    },
+    {
+      "description": "Check domain eligibility. Return list of eligible IP(s) for this domain.",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Check domain eligibility. Return list of eligible IP(s) for this domain.",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "domain to check eligibility for SSL Gateway offer",
+              "fullType": "string",
+              "name": "domain",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "sslGateway.EligibilityStatus"
+        }
+      ],
+      "path": "/sslGateway/eligibility"
     }
   ],
   "basePath": "https://ca.api.ovh.com/1.0",

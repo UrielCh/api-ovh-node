@@ -1482,56 +1482,6 @@ export const schema: Schema = {
       "path": "/me/bill"
     },
     {
-      "description": "Exports a bundle of invoices",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Exports a bundle of invoices",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "billing.ArchiveTypeEnum",
-              "description": "The file type of the archive",
-              "fullType": "billing.ArchiveTypeEnum",
-              "name": "archiveType",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "datetime",
-              "description": "End interval of the export",
-              "fullType": "datetime",
-              "name": "endDate",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string[]",
-              "description": "A list of ids to export",
-              "fullType": "string[]",
-              "name": "ids",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Start interval of the export",
-              "fullType": "datetime",
-              "name": "startDate",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/bill/export"
-    },
-    {
       "description": "Details about a Bill",
       "operations": [
         {
@@ -1796,6 +1746,56 @@ export const schema: Schema = {
         }
       ],
       "path": "/me/bill/{billId}/payment"
+    },
+    {
+      "description": "Exports a bundle of invoices",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Exports a bundle of invoices",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "billing.ArchiveTypeEnum",
+              "description": "The file type of the archive",
+              "fullType": "billing.ArchiveTypeEnum",
+              "name": "archiveType",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "End interval of the export",
+              "fullType": "datetime",
+              "name": "endDate",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string[]",
+              "description": "A list of ids to export",
+              "fullType": "string[]",
+              "name": "ids",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Start interval of the export",
+              "fullType": "datetime",
+              "name": "startDate",
+              "paramType": "body",
+              "required": false
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/bill/export"
     },
     {
       "description": "Manage billing groups",
@@ -3599,32 +3599,6 @@ export const schema: Schema = {
       "path": "/me/document"
     },
     {
-      "description": "Add CORS support on your container",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Add CORS support on your container",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Allow this origin",
-              "fullType": "string",
-              "name": "origin",
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/document/cors"
-    },
-    {
       "description": "List of documents added on your account",
       "operations": [
         {
@@ -3696,6 +3670,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/me/document/{id}"
+    },
+    {
+      "description": "Add CORS support on your container",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add CORS support on your container",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Allow this origin",
+              "fullType": "string",
+              "name": "origin",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/document/cors"
     },
     {
       "description": "Balance of the fidelity account",
@@ -5803,48 +5803,6 @@ export const schema: Schema = {
       "path": "/me/order/{orderId}/pay"
     },
     {
-      "description": "payWithRegisteredPaymentMean operations",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Pay with an already registered payment mean",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "billing.ReusablePaymentMeanEnum",
-              "description": "The registered payment mean you want to use",
-              "fullType": "billing.ReusablePaymentMeanEnum",
-              "name": "paymentMean",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id of registered payment mean, mandatory for bankAccount, creditCard and paypal",
-              "fullType": "long",
-              "name": "paymentMeanId",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "long",
-              "description": "",
-              "fullType": "long",
-              "name": "orderId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/order/{orderId}/payWithRegisteredPaymentMean"
-    },
-    {
       "description": "Details about a payment",
       "operations": [
         {
@@ -5921,6 +5879,48 @@ export const schema: Schema = {
         }
       ],
       "path": "/me/order/{orderId}/paymentMethods"
+    },
+    {
+      "description": "payWithRegisteredPaymentMean operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Pay with an already registered payment mean",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "billing.ReusablePaymentMeanEnum",
+              "description": "The registered payment mean you want to use",
+              "fullType": "billing.ReusablePaymentMeanEnum",
+              "name": "paymentMean",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of registered payment mean, mandatory for bankAccount, creditCard and paypal",
+              "fullType": "long",
+              "name": "paymentMeanId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/order/{orderId}/payWithRegisteredPaymentMean"
     },
     {
       "description": "Details about a Refund",
@@ -7278,56 +7278,6 @@ export const schema: Schema = {
       "path": "/me/refund"
     },
     {
-      "description": "Exports a bundle of refunds",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Exports a bundle of refunds",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "billing.ArchiveTypeEnum",
-              "description": "The file type of the archive",
-              "fullType": "billing.ArchiveTypeEnum",
-              "name": "archiveType",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "datetime",
-              "description": "End interval of the export",
-              "fullType": "datetime",
-              "name": "endDate",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string[]",
-              "description": "A list of ids to export",
-              "fullType": "string[]",
-              "name": "ids",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "datetime",
-              "description": "Start interval of the export",
-              "fullType": "datetime",
-              "name": "startDate",
-              "paramType": "body",
-              "required": false
-            }
-          ],
-          "responseType": "void"
-        }
-      ],
-      "path": "/me/refund/export"
-    },
-    {
       "description": "Details about a Refund",
       "operations": [
         {
@@ -7438,6 +7388,56 @@ export const schema: Schema = {
         }
       ],
       "path": "/me/refund/{refundId}/payment"
+    },
+    {
+      "description": "Exports a bundle of refunds",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Exports a bundle of refunds",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "billing.ArchiveTypeEnum",
+              "description": "The file type of the archive",
+              "fullType": "billing.ArchiveTypeEnum",
+              "name": "archiveType",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "datetime",
+              "description": "End interval of the export",
+              "fullType": "datetime",
+              "name": "endDate",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string[]",
+              "description": "A list of ids to export",
+              "fullType": "string[]",
+              "name": "ids",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "datetime",
+              "description": "Start interval of the export",
+              "fullType": "datetime",
+              "name": "startDate",
+              "paramType": "body",
+              "required": false
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/refund/export"
     },
     {
       "description": "List the billing.SlaOperation objects",

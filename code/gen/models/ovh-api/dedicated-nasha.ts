@@ -23,23 +23,6 @@ export const schema: Schema = {
       "path": "/dedicated/nasha"
     },
     {
-      "description": "Get availabilities of nasha offer",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get availabilities of nasha offer",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [],
-          "responseType": "dedicated.NasHAAvailabilities[]"
-        }
-      ],
-      "path": "/dedicated/nasha/availabilities"
-    },
-    {
       "description": "Storage nas HA",
       "operations": [
         {
@@ -1393,6 +1376,23 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicated/nasha/{serviceName}/vrack"
+    },
+    {
+      "description": "Get availabilities of nasha offer",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get availabilities of nasha offer",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "dedicated.NasHAAvailabilities[]"
+        }
+      ],
+      "path": "/dedicated/nasha/availabilities"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
