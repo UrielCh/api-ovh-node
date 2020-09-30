@@ -211,7 +211,8 @@ async function cleanMultiSite(webHosting?: string) {
     }
 }
 
-program.version('1.0.0');
+const { version } = require('./package.json');
+program.version(version);
 
 program.command('cleanMultiSite [webHosting]')
     .description('delete unused multiSite from webHosting, if non defile, process all web hosting')

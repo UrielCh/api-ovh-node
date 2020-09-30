@@ -246,7 +246,8 @@ async function main(source: string, dest: string) {
   }
 }
 
-program.version('0.0.1');
+const { version } = require('./package.json');
+program.version(version);
 program.description('Migrate IP from source to destination, source can be any failover ip or service, if omit paral list available values');
 program.option('-c, --cache <cacheFile>', 'cache cert in file');
 program.arguments('[source] [destination]')
