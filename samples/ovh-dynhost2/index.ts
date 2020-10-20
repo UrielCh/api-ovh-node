@@ -213,12 +213,16 @@ async function main() {
             console.error(`${chalk.green(subDomain)}.${chalk.yellow(service)} do not exists creating it now.`);
             await recordApi.$post({ ip, subDomain });
             console.log(`Sucess ${chalk.green(subDomain)}.${chalk.yellow(service)} have IP: ${chalk.yellow(ip)}`);
+            await api.zone.$(service).refresh.$post();
+            console.log(`Refresh ${chalk.yellow(service)} Done`);
         } else {
             const old = await recordApi.$(subid[0]).$get();
             if (old.ip != ip) {
                 console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('from')} ${chalk.yellow(old.ip)} ${chalk.whiteBright('to')} ${chalk.yellow(ip)}`);
                 await recordApi.$(subid[0]).$put({ ip });
                 console.log(`Updating ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.green('done')}.`);
+                await api.zone.$(service).refresh.$post();
+                console.log(`Refresh ${chalk.yellow(service)} Done`);
             } else {
                 console.log(`No change ${chalk.green(subDomain)}.${chalk.yellow(service)} ${chalk.whiteBright('Keep IP')} ${chalk.yellow(old.ip)}`);
             }

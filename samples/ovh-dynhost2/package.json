@@ -1,6 +1,6 @@
 {
   "name": "ovh-dynhost2",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "Update a Ovh DynHost",
   "main": "index.js",
   "keywords": [
@@ -33,7 +33,7 @@
     "node-libcurl": "^2.2.0"
   },
   "devDependencies": {
-    "@types/node": "^14.11.1",
+    "@types/node": "^14.11.11",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.3"
   },
