@@ -32,6 +32,40 @@ export const schema: Schema = {
       "path": "/cloud/order"
     },
     {
+      "description": "Product availability",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get product availability",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "OVH subsidiary",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code filter",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "cloud.order.rule.Availability"
+        }
+      ],
+      "path": "/cloud/order/rule/availability"
+    },
+    {
       "description": "Operations about the PUBLICCLOUD service",
       "operations": [
         {
@@ -3668,6 +3702,146 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/role/{roleId}"
+    },
+    {
+      "description": "Manage your S3 credentials",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List your S3 credentials",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.user.S3Credentials[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a new S3 credentials for an user",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.user.S3CredentialsWithSecret"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/user/{userId}/s3Credentials"
+    },
+    {
+      "description": "Manage your S3 credentials",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete an S3 credential",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Access",
+              "fullType": "string",
+              "name": "access",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get details about an S3 credential",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Access",
+              "fullType": "string",
+              "name": "access",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.user.S3Credentials"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/user/{userId}/s3Credentials/{access}"
     },
     {
       "description": "Missing description",
@@ -8507,6 +8681,75 @@ export const schema: Schema = {
       "id": "StatusEnum",
       "namespace": "cloud.order"
     },
+    "cloud.order.rule.Availability": {
+      "description": "Public Cloud products availability",
+      "id": "Availability",
+      "namespace": "cloud.order.rule",
+      "properties": {
+        "plans": {
+          "canBeNull": false,
+          "description": "Plan availability",
+          "fullType": "cloud.order.rule.AvailabilityPlan[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.order.rule.AvailabilityPlan[]"
+        },
+        "products": {
+          "canBeNull": false,
+          "description": "Product availability",
+          "fullType": "cloud.order.rule.AvailabilityProduct[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.order.rule.AvailabilityProduct[]"
+        }
+      }
+    },
+    "cloud.order.rule.AvailabilityPlan": {
+      "description": "Public Cloud plan availability",
+      "id": "AvailabilityPlan",
+      "namespace": "cloud.order.rule",
+      "properties": {
+        "code": {
+          "canBeNull": false,
+          "description": "Plan code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "regions": {
+          "canBeNull": false,
+          "description": "Plan is available on those regions",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.order.rule.AvailabilityProduct": {
+      "description": "Public Cloud product availability",
+      "id": "AvailabilityProduct",
+      "namespace": "cloud.order.rule",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Product name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "regions": {
+          "canBeNull": false,
+          "description": "Product is available on those regions",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
     "cloud.project.ProjectStatus": {
       "description": "Possible values for project status",
       "enum": [
@@ -9825,6 +10068,76 @@ export const schema: Schema = {
       "id": "RoleEnum",
       "namespace": "cloud.user"
     },
+    "cloud.user.S3Credentials": {
+      "description": "S3Credentials",
+      "id": "S3Credentials",
+      "namespace": "cloud.user",
+      "properties": {
+        "access": {
+          "canBeNull": false,
+          "description": "S3 Access key",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "tenantId": {
+          "canBeNull": false,
+          "description": "Tenant id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "userId": {
+          "canBeNull": false,
+          "description": "User id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.user.S3CredentialsWithSecret": {
+      "description": "S3CredentialsWithSecret",
+      "id": "S3CredentialsWithSecret",
+      "namespace": "cloud.user",
+      "properties": {
+        "access": {
+          "canBeNull": false,
+          "description": "S3 Access key",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "secret": {
+          "canBeNull": false,
+          "description": "S3 Access key secret",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
+        "tenantId": {
+          "canBeNull": false,
+          "description": "Tenant id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "userId": {
+          "canBeNull": false,
+          "description": "User id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "cloud.user.User": {
       "description": "User",
       "id": "User",
@@ -10151,6 +10464,38 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "VolumeTypeEnum",
       "namespace": "cloud.volume"
+    },
+    "nichandle.OvhSubsidiaryEnum": {
+      "description": "OVH subsidiaries",
+      "enum": [
+        "CZ",
+        "DE",
+        "ES",
+        "EU",
+        "FI",
+        "FR",
+        "GB",
+        "IE",
+        "IT",
+        "LT",
+        "MA",
+        "NL",
+        "PL",
+        "PT",
+        "SN",
+        "TN",
+        "ASIA",
+        "AU",
+        "CA",
+        "QC",
+        "SG",
+        "WE",
+        "WS",
+        "US"
+      ],
+      "enumType": "string",
+      "id": "OvhSubsidiaryEnum",
+      "namespace": "nichandle"
     },
     "service.RenewType": {
       "description": "Map a possible renew for a specific service",

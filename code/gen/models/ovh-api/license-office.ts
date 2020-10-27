@@ -1064,6 +1064,14 @@ export const schema: Schema = {
           "required": false,
           "type": "phoneNumber"
         },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Internal service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "serviceType": {
           "canBeNull": false,
           "description": "Tenant's service type",

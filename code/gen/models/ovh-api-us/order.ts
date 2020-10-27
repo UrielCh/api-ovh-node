@@ -7653,6 +7653,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "managementFees": {
+          "canBeNull": true,
+          "description": "Describes the management cost of a range of Dedicated Cloud",
+          "fullType": "order.catalog.pcc.managementFees[]",
+          "readOnly": false,
+          "required": false,
+          "type": "order.catalog.pcc.managementFees[]"
+        },
         "orderable": {
           "canBeNull": false,
           "description": "Describes if a Private Cloud can be ordered on a Datacenter",
@@ -8145,6 +8153,29 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "order.catalog.pcc.managementFees": {
+      "description": "Describes the management cost of a range of Dedicated Cloud",
+      "id": "managementFees",
+      "namespace": "order.catalog.pcc",
+      "properties": {
+        "planCode": {
+          "canBeNull": false,
+          "description": "Plan Code",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "upgradableTo": {
+          "canBeNull": false,
+          "description": "List of available range upgrades",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         }
       }
     },

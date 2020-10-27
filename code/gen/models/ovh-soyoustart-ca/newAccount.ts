@@ -19,7 +19,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "address",
               "paramType": "body",
@@ -27,7 +27,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "area",
               "paramType": "body",
@@ -35,7 +35,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "birthCity",
               "paramType": "body",
@@ -43,7 +43,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "birthDay",
               "paramType": "body",
@@ -51,7 +51,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "city",
               "paramType": "body",
@@ -59,7 +59,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "companyNationalIdentificationNumber",
               "paramType": "body",
@@ -67,7 +67,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "corporationType",
               "paramType": "body",
@@ -75,7 +75,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.CountryEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.CountryEnum",
               "name": "country",
               "paramType": "body",
@@ -83,7 +83,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "email",
               "paramType": "body",
@@ -91,7 +91,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "fax",
               "paramType": "body",
@@ -99,7 +99,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "firstname",
               "paramType": "body",
@@ -107,7 +107,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "italianSDI",
               "paramType": "body",
@@ -115,7 +115,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.LanguageEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.LanguageEnum",
               "name": "language",
               "paramType": "body",
@@ -123,7 +123,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.LegalFormEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.LegalFormEnum",
               "name": "legalform",
               "paramType": "body",
@@ -131,7 +131,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "name",
               "paramType": "body",
@@ -139,7 +139,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "nationalIdentificationNumber",
               "paramType": "body",
@@ -147,7 +147,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "organisation",
               "paramType": "body",
@@ -155,7 +155,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.OvhCompanyEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.OvhCompanyEnum",
               "name": "ovhCompany",
               "paramType": "body",
@@ -163,7 +163,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.OvhSubsidiaryEnum",
               "name": "ovhSubsidiary",
               "paramType": "body",
@@ -171,7 +171,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "phone",
               "paramType": "body",
@@ -179,7 +179,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.CountryEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.CountryEnum",
               "name": "phoneCountry",
               "paramType": "body",
@@ -187,7 +187,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.GenderEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.GenderEnum",
               "name": "sex",
               "paramType": "body",
@@ -195,7 +195,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "spareEmail",
               "paramType": "body",
@@ -203,7 +203,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "vat",
               "paramType": "body",
@@ -211,15 +211,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "zip",
               "paramType": "body",
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.NewAccountAndToken",
           "responseType": "nichandle.NewAccountAndToken"
         }
       ],
@@ -239,15 +237,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "nichandle.CountryEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.CountryEnum",
               "name": "country",
               "paramType": "query",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -267,7 +263,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "nichandle.OvhCompanyEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.OvhCompanyEnum",
               "name": "company",
               "paramType": "query",
@@ -275,15 +271,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.OvhSubsidiaryEnum",
               "name": "subsidiary",
               "paramType": "query",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Contract[]",
           "responseType": "order.Contract[]"
         }
       ],
@@ -303,15 +297,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "nichandle.CountryEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.CountryEnum",
               "name": "country",
               "paramType": "query",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -331,7 +323,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "nichandle.OvhCompanyEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.OvhCompanyEnum",
               "name": "ovhCompany",
               "paramType": "query",
@@ -339,15 +331,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.OvhSubsidiaryEnum",
               "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.CountryEnum[]",
           "responseType": "nichandle.CountryEnum[]"
         }
       ],
@@ -367,7 +357,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "nichandle.CountryEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.CountryEnum",
               "name": "country",
               "paramType": "query",
@@ -375,7 +365,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.LegalFormEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.LegalFormEnum",
               "name": "legalform",
               "paramType": "query",
@@ -383,7 +373,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.OvhCompanyEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.OvhCompanyEnum",
               "name": "ovhCompany",
               "paramType": "query",
@@ -391,15 +381,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.OvhSubsidiaryEnum",
               "name": "ovhSubsidiary",
               "paramType": "query",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.CreationRules",
           "responseType": "nichandle.CreationRules"
         }
       ],
@@ -419,15 +407,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "nichandle.CountryEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.CountryEnum",
               "name": "country",
               "paramType": "query",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -447,7 +433,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "nichandle.CreationRulesActionEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.CreationRulesActionEnum",
               "name": "action",
               "paramType": "body",
@@ -455,7 +441,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "address",
               "paramType": "body",
@@ -463,7 +449,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "area",
               "paramType": "body",
@@ -471,7 +457,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "birthCity",
               "paramType": "body",
@@ -479,7 +465,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "birthDay",
               "paramType": "body",
@@ -487,7 +473,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "city",
               "paramType": "body",
@@ -495,7 +481,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "companyNationalIdentificationNumber",
               "paramType": "body",
@@ -503,7 +489,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "corporationType",
               "paramType": "body",
@@ -511,7 +497,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.CountryEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.CountryEnum",
               "name": "country",
               "paramType": "body",
@@ -519,7 +505,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "email",
               "paramType": "body",
@@ -527,7 +513,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "fax",
               "paramType": "body",
@@ -535,7 +521,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "firstname",
               "paramType": "body",
@@ -543,7 +529,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "italianSDI",
               "paramType": "body",
@@ -551,7 +537,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.LanguageEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.LanguageEnum",
               "name": "language",
               "paramType": "body",
@@ -559,7 +545,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.LegalFormEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.LegalFormEnum",
               "name": "legalform",
               "paramType": "body",
@@ -567,7 +553,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "name",
               "paramType": "body",
@@ -575,7 +561,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "nationalIdentificationNumber",
               "paramType": "body",
@@ -583,7 +569,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "organisation",
               "paramType": "body",
@@ -591,7 +577,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.OvhCompanyEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.OvhCompanyEnum",
               "name": "ovhCompany",
               "paramType": "body",
@@ -599,7 +585,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.OvhSubsidiaryEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.OvhSubsidiaryEnum",
               "name": "ovhSubsidiary",
               "paramType": "body",
@@ -607,7 +593,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "phone",
               "paramType": "body",
@@ -615,7 +601,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.CountryEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.CountryEnum",
               "name": "phoneCountry",
               "paramType": "body",
@@ -623,7 +609,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.GenderEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.GenderEnum",
               "name": "sex",
               "paramType": "body",
@@ -631,7 +617,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "spareEmail",
               "paramType": "body",
@@ -639,7 +625,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "vat",
               "paramType": "body",
@@ -647,15 +633,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "zip",
               "paramType": "body",
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.CreationRule[]",
           "responseType": "nichandle.CreationRule[]"
         }
       ],
@@ -934,36 +918,50 @@ export const schema: Schema = {
         "defaultValue": {
           "canBeNull": true,
           "description": "Default value of the field",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "examples": {
           "canBeNull": true,
           "description": "Examples of values for the fields",
+          "readOnly": false,
+          "required": false,
           "type": "string[]"
         },
         "fieldName": {
           "canBeNull": true,
           "description": "Name of the field",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "in": {
           "canBeNull": true,
           "description": "List of allowed values for the field",
+          "readOnly": false,
+          "required": false,
           "type": "string[]"
         },
         "mandatory": {
           "canBeNull": false,
           "description": "Whether the field is mandatory",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "prefix": {
           "canBeNull": true,
           "description": "Prefix of the field value",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "regularExpression": {
           "canBeNull": true,
           "description": "Regular expression to validate the field value",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -975,127 +973,152 @@ export const schema: Schema = {
       "properties": {
         "address": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "area": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "birthCity": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "birthDay": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "city": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "companyNationalIdentificationNumber": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "corporationType": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "country": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "email": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "fax": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "firstname": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "italianSDI": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "language": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "legalform": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "name": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "nationalIdentificationNumber": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "organisation": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "ovhCompany": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "ovhSubsidiary": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "phone": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "phoneCountry": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "sex": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "spareEmail": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "vat": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         },
         "zip": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.CreationRule"
         }
       }
@@ -1168,12 +1191,14 @@ export const schema: Schema = {
       "properties": {
         "consumerKey": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "ovhIdentifier": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -1228,17 +1253,20 @@ export const schema: Schema = {
       "properties": {
         "content": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "text"
         },
         "name": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "url": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }

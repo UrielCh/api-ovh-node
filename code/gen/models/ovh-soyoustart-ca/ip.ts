@@ -50,8 +50,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ipBlock[]",
           "responseType": "ipBlock[]"
         }
       ],
@@ -71,15 +69,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.Ip",
           "responseType": "ip.Ip"
         },
         {
@@ -95,21 +91,18 @@ export const schema: Schema = {
               "dataType": "ip.Ip",
               "description": "New object properties",
               "fullType": "ip.Ip",
-              "name": null,
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -129,7 +122,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -144,8 +137,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ipv4[]",
           "responseType": "ipv4[]"
         }
       ],
@@ -165,7 +156,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -180,8 +171,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.BlockedIp",
           "responseType": "ip.BlockedIp"
         }
       ],
@@ -201,7 +190,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -216,8 +205,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -237,7 +224,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -252,8 +239,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ipv4[]",
           "responseType": "ipv4[]"
         }
       ],
@@ -273,7 +258,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -288,8 +273,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.ArpBlockedIp",
           "responseType": "ip.ArpBlockedIp"
         }
       ],
@@ -309,7 +292,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -324,8 +307,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -353,15 +334,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.IpTask",
           "responseType": "ip.IpTask"
         }
       ],
@@ -381,15 +360,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ipv4[]",
           "responseType": "ipv4[]"
         }
       ],
@@ -409,7 +386,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -417,15 +394,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipv4",
-              "description": null,
+              "description": "",
               "fullType": "ipv4",
               "name": "ipOnGame",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.GameMitigation",
           "responseType": "ip.GameMitigation"
         },
         {
@@ -441,13 +416,12 @@ export const schema: Schema = {
               "dataType": "ip.GameMitigation",
               "description": "New object properties",
               "fullType": "ip.GameMitigation",
-              "name": null,
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -455,15 +429,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipv4",
-              "description": null,
+              "description": "",
               "fullType": "ipv4",
               "name": "ipOnGame",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -483,7 +455,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -491,15 +463,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipv4",
-              "description": null,
+              "description": "",
               "fullType": "ipv4",
               "name": "ipOnGame",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         },
         {
@@ -529,7 +499,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -537,15 +507,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipv4",
-              "description": null,
+              "description": "",
               "fullType": "ipv4",
               "name": "ipOnGame",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.GameMitigationRule",
           "responseType": "ip.GameMitigationRule"
         }
       ],
@@ -554,44 +522,6 @@ export const schema: Schema = {
     {
       "description": "Rule on ip:ports",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "ID of the rule",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipBlock",
-              "description": null,
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ipv4",
-              "description": null,
-              "fullType": "ipv4",
-              "name": "ipOnGame",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "ip.GameMitigationRule",
-          "responseType": "ip.GameMitigationRule"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -611,7 +541,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -619,15 +549,49 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipv4",
-              "description": null,
+              "description": "",
               "fullType": "ipv4",
               "name": "ipOnGame",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.GameMitigationRule",
+          "responseType": "ip.GameMitigationRule"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "ID of the rule",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipBlock",
+              "description": "",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ipv4",
+              "description": "",
+              "fullType": "ipv4",
+              "name": "ipOnGame",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "responseType": "ip.GameMitigationRule"
         }
       ],
@@ -647,7 +611,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -662,8 +626,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -683,7 +645,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -698,8 +660,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -719,7 +679,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -734,8 +694,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -755,7 +713,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -770,8 +728,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -791,7 +747,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -806,8 +762,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -827,7 +781,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -842,8 +796,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -863,7 +815,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -878,8 +830,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -899,7 +849,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -914,8 +864,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -935,15 +883,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.IpMigrationToken",
           "responseType": "ip.IpMigrationToken"
         },
         {
@@ -965,15 +911,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.IpMigrationToken",
           "responseType": "ip.IpMigrationToken"
         }
       ],
@@ -993,15 +937,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.Destinations",
           "responseType": "ip.Destinations"
         },
         {
@@ -1031,15 +973,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.IpTask",
           "responseType": "ip.IpTask"
         }
       ],
@@ -1059,15 +999,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.IpTask",
           "responseType": "ip.IpTask"
         }
       ],
@@ -1087,7 +1025,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -1110,8 +1048,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -1139,15 +1075,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.Antiphishing",
           "responseType": "ip.Antiphishing"
         }
       ],
@@ -1167,15 +1101,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip[]",
           "responseType": "ip[]"
         },
         {
@@ -1189,7 +1121,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ip",
-              "description": null,
+              "description": "",
               "fullType": "ip",
               "name": "ipReverse",
               "paramType": "body",
@@ -1197,7 +1129,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "reverse",
               "paramType": "body",
@@ -1205,15 +1137,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.ReverseIp",
           "responseType": "ip.ReverseIp"
         }
       ],
@@ -1227,43 +1157,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "ipBlock",
-              "description": null,
-              "fullType": "ipBlock",
-              "name": "ip",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "ip",
-              "description": null,
-              "fullType": "ip",
-              "name": "ipReverse",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "ip.ReverseIp",
-          "responseType": "ip.ReverseIp"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
           "description": "Delete a reverse on one IP",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -1271,16 +1171,42 @@ export const schema: Schema = {
             },
             {
               "dataType": "ip",
-              "description": null,
+              "description": "",
               "fullType": "ip",
               "name": "ipReverse",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ip",
+              "description": "",
+              "fullType": "ip",
+              "name": "ipReverse",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ip.ReverseIp"
         }
       ],
       "path": "/ip/{ip}/reverse/{ipReverse}"
@@ -1299,15 +1225,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.RipeInfos",
           "responseType": "ip.RipeInfos"
         },
         {
@@ -1323,21 +1247,18 @@ export const schema: Schema = {
               "dataType": "ip.RipeInfos",
               "description": "New object properties",
               "fullType": "ip.RipeInfos",
-              "name": null,
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -1357,7 +1278,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -1372,8 +1293,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ipv4[]",
           "responseType": "ipv4[]"
         }
       ],
@@ -1393,7 +1312,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -1408,8 +1327,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.SpamIp",
           "responseType": "ip.SpamIp"
         }
       ],
@@ -1429,7 +1346,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -1460,8 +1377,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.SpamStats[]",
           "responseType": "ip.SpamStats[]"
         }
       ],
@@ -1481,7 +1396,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -1496,8 +1411,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.SpamIp",
           "responseType": "ip.SpamIp"
         }
       ],
@@ -1517,7 +1430,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -1540,8 +1453,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -1561,7 +1472,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
@@ -1576,8 +1487,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.IpTask",
           "responseType": "ip.IpTask"
         }
       ],
@@ -1600,15 +1509,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": null,
+              "description": "",
               "fullType": "ipBlock",
               "name": "ip",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.IpTask",
           "responseType": "ip.IpTask"
         }
       ],
@@ -1626,8 +1533,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -1654,8 +1559,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "ip.ServiceIp",
           "responseType": "ip.ServiceIp"
         },
         {
@@ -1671,7 +1574,6 @@ export const schema: Schema = {
               "dataType": "ip.ServiceIp",
               "description": "New object properties",
               "fullType": "ip.ServiceIp",
-              "name": null,
               "paramType": "body",
               "required": true
             },
@@ -1684,8 +1586,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -1744,8 +1644,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string",
           "responseType": "string"
         }
       ],
@@ -1772,8 +1670,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "services.NonExpiringService",
           "responseType": "services.NonExpiringService"
         }
       ],
@@ -1800,8 +1696,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string",
           "responseType": "string"
         }
       ],
@@ -1821,11 +1715,15 @@ export const schema: Schema = {
         "from": {
           "canBeNull": false,
           "description": "Start point of the range",
+          "readOnly": false,
+          "required": false,
           "type": "T"
         },
         "to": {
           "canBeNull": false,
           "description": "End point of the range",
+          "readOnly": false,
+          "required": false,
           "type": "T"
         }
       }
@@ -2108,6 +2006,7 @@ export const schema: Schema = {
           "description": "Date of the event",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -2115,6 +2014,7 @@ export const schema: Schema = {
           "description": "Internal ID of the phishing entry",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "ipOnAntiphishing": {
@@ -2122,6 +2022,7 @@ export const schema: Schema = {
           "description": "IP address hosting the phishing URL",
           "fullType": "ipv4",
           "readOnly": true,
+          "required": false,
           "type": "ipv4"
         },
         "state": {
@@ -2129,6 +2030,7 @@ export const schema: Schema = {
           "description": "Current state of the phishing",
           "fullType": "ip.AntiphishingStateEnum",
           "readOnly": true,
+          "required": false,
           "type": "ip.AntiphishingStateEnum"
         },
         "urlPhishing": {
@@ -2136,6 +2038,7 @@ export const schema: Schema = {
           "description": "Phishing URL",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -2162,6 +2065,7 @@ export const schema: Schema = {
           "description": "The last blocking date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "ipBlocked": {
@@ -2169,6 +2073,7 @@ export const schema: Schema = {
           "description": "your IP",
           "fullType": "ipv4",
           "readOnly": true,
+          "required": false,
           "type": "ipv4"
         },
         "logs": {
@@ -2176,6 +2081,7 @@ export const schema: Schema = {
           "description": "ARP logs",
           "fullType": "text",
           "readOnly": true,
+          "required": false,
           "type": "text"
         },
         "state": {
@@ -2183,6 +2089,7 @@ export const schema: Schema = {
           "description": "this IP address state",
           "fullType": "ip.ArpStateEnum",
           "readOnly": true,
+          "required": false,
           "type": "ip.ArpStateEnum"
         },
         "time": {
@@ -2190,6 +2097,7 @@ export const schema: Schema = {
           "description": "Time (in seconds) remaining before you can request your IP to be unblocked",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2214,6 +2122,7 @@ export const schema: Schema = {
           "description": "The last blocking date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "ipBlocked": {
@@ -2221,6 +2130,7 @@ export const schema: Schema = {
           "description": "your IP",
           "fullType": "ipv4",
           "readOnly": true,
+          "required": false,
           "type": "ipv4"
         },
         "logs": {
@@ -2228,6 +2138,7 @@ export const schema: Schema = {
           "description": "Logs",
           "fullType": "text",
           "readOnly": true,
+          "required": false,
           "type": "text"
         },
         "state": {
@@ -2235,6 +2146,7 @@ export const schema: Schema = {
           "description": "this IP address state",
           "fullType": "ip.BlockedIpStateEnum",
           "readOnly": true,
+          "required": false,
           "type": "ip.BlockedIpStateEnum"
         },
         "time": {
@@ -2242,6 +2154,7 @@ export const schema: Schema = {
           "description": "Time (in seconds) remaining before you can request your IP to be unblocked",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2264,11 +2177,15 @@ export const schema: Schema = {
         "nexthop": {
           "canBeNull": true,
           "description": "Nexthops available on this service",
+          "readOnly": false,
+          "required": false,
           "type": "string[]"
         },
         "service": {
           "canBeNull": false,
           "description": "Service destination",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -2281,31 +2198,43 @@ export const schema: Schema = {
         "cloudProject": {
           "canBeNull": true,
           "description": "list of public cloud projects",
+          "readOnly": false,
+          "required": false,
           "type": "ip.Destination[]"
         },
         "dedicatedCloud": {
           "canBeNull": true,
           "description": "list of dedicated clouds",
+          "readOnly": false,
+          "required": false,
           "type": "ip.Destination[]"
         },
         "dedicatedServer": {
           "canBeNull": true,
           "description": "list of dedicated servers",
+          "readOnly": false,
+          "required": false,
           "type": "ip.Destination[]"
         },
         "hostingReseller": {
           "canBeNull": true,
           "description": "list of hosting reseller services",
+          "readOnly": false,
+          "required": false,
           "type": "ip.Destination[]"
         },
         "ipLoadbalancing": {
           "canBeNull": true,
           "description": "list of load balancing services",
+          "readOnly": false,
+          "required": false,
           "type": "ip.Destination[]"
         },
         "vps": {
           "canBeNull": true,
           "description": "list of vps",
+          "readOnly": false,
+          "required": false,
           "type": "ip.Destination[]"
         }
       }
@@ -2320,20 +2249,21 @@ export const schema: Schema = {
           "description": "Firewall mode : in UDP, only allow traffic matching your rules (as well as established traffic). If not enabled, traffic to ports not defined in your rules will be permited. TCP traffic is unaffected by this.",
           "fullType": "boolean",
           "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "ipOnGame": {
           "canBeNull": false,
-          "description": null,
           "fullType": "ipv4",
           "readOnly": true,
+          "required": false,
           "type": "ipv4"
         },
         "state": {
           "canBeNull": false,
-          "description": null,
           "fullType": "ip.GameMitigationStateEnum",
           "readOnly": true,
+          "required": false,
           "type": "ip.GameMitigationStateEnum"
         }
       }
@@ -2348,20 +2278,21 @@ export const schema: Schema = {
           "description": "ID of the rule",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "ports": {
           "canBeNull": false,
-          "description": null,
           "fullType": "complexType.Range<long>",
           "readOnly": true,
+          "required": false,
           "type": "complexType.Range<long>"
         },
         "protocol": {
           "canBeNull": false,
-          "description": null,
           "fullType": "ip.GameMitigationRuleProtocolEnum",
           "readOnly": true,
+          "required": false,
           "type": "ip.GameMitigationRuleProtocolEnum"
         },
         "state": {
@@ -2369,6 +2300,7 @@ export const schema: Schema = {
           "description": "Current state of your rule",
           "fullType": "ip.GameMitigationRuleStateEnum",
           "readOnly": true,
+          "required": false,
           "type": "ip.GameMitigationRuleStateEnum"
         }
       }
@@ -2423,16 +2355,16 @@ export const schema: Schema = {
       "properties": {
         "canBeTerminated": {
           "canBeNull": false,
-          "description": null,
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "country": {
           "canBeNull": true,
-          "description": null,
           "fullType": "coreTypes.CountryEnum",
           "readOnly": true,
+          "required": false,
           "type": "coreTypes.CountryEnum"
         },
         "description": {
@@ -2440,13 +2372,14 @@ export const schema: Schema = {
           "description": "Custom description on your ip",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "ip": {
           "canBeNull": false,
-          "description": null,
           "fullType": "ipBlock",
           "readOnly": true,
+          "required": false,
           "type": "ipBlock"
         },
         "organisationId": {
@@ -2454,6 +2387,7 @@ export const schema: Schema = {
           "description": "IP block organisation Id",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "routedTo": {
@@ -2461,13 +2395,14 @@ export const schema: Schema = {
           "description": "Routage information",
           "fullType": "ip.RoutedTo",
           "readOnly": true,
+          "required": false,
           "type": "ip.RoutedTo"
         },
         "type": {
           "canBeNull": false,
-          "description": null,
           "fullType": "ip.IpTypeEnum",
           "readOnly": true,
+          "required": false,
           "type": "ip.IpTypeEnum"
         }
       }
@@ -2482,6 +2417,7 @@ export const schema: Schema = {
           "description": "destination customer ID",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "token": {
@@ -2489,6 +2425,7 @@ export const schema: Schema = {
           "description": "migration token",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -2503,6 +2440,7 @@ export const schema: Schema = {
           "description": "Details of this task",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "destination": {
@@ -2510,6 +2448,7 @@ export const schema: Schema = {
           "description": "Destination for moveFloatingIp tasks",
           "fullType": "ip.RoutedTo",
           "readOnly": true,
+          "required": false,
           "type": "ip.RoutedTo"
         },
         "doneDate": {
@@ -2517,6 +2456,7 @@ export const schema: Schema = {
           "description": "Completion date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "function": {
@@ -2524,6 +2464,7 @@ export const schema: Schema = {
           "description": "Function name",
           "fullType": "ip.TaskFunctionEnum",
           "readOnly": true,
+          "required": false,
           "type": "ip.TaskFunctionEnum"
         },
         "lastUpdate": {
@@ -2531,6 +2472,7 @@ export const schema: Schema = {
           "description": "last update",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "startDate": {
@@ -2538,6 +2480,7 @@ export const schema: Schema = {
           "description": "Task Creation date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
@@ -2545,6 +2488,7 @@ export const schema: Schema = {
           "description": "Task status",
           "fullType": "ip.TaskStatusEnum",
           "readOnly": true,
+          "required": false,
           "type": "ip.TaskStatusEnum"
         },
         "taskId": {
@@ -2552,6 +2496,7 @@ export const schema: Schema = {
           "description": "the id of the task",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2590,6 +2535,7 @@ export const schema: Schema = {
           "description": "End of the attack",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "idAttack": {
@@ -2597,6 +2543,7 @@ export const schema: Schema = {
           "description": "Internal id of your attack",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "ipAttack": {
@@ -2604,6 +2551,7 @@ export const schema: Schema = {
           "description": "Your ip",
           "fullType": "ipv4",
           "readOnly": true,
+          "required": false,
           "type": "ipv4"
         },
         "startDate": {
@@ -2611,6 +2559,7 @@ export const schema: Schema = {
           "description": "Start of the attack",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -2623,16 +2572,22 @@ export const schema: Schema = {
         "in": {
           "canBeNull": true,
           "description": "Traffic in",
+          "readOnly": false,
+          "required": false,
           "type": "ip.MitigationTraffic"
         },
         "out": {
           "canBeNull": true,
           "description": "Traffic out",
+          "readOnly": false,
+          "required": false,
           "type": "ip.MitigationTraffic"
         },
         "timestamp": {
           "canBeNull": false,
           "description": "Traffic timestamp",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         }
       }
@@ -2645,11 +2600,15 @@ export const schema: Schema = {
         "bps": {
           "canBeNull": false,
           "description": "Bits per second",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "pps": {
           "canBeNull": false,
           "description": "Paquets per second",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         }
       }
@@ -2661,16 +2620,16 @@ export const schema: Schema = {
       "properties": {
         "ipReverse": {
           "canBeNull": false,
-          "description": null,
           "fullType": "ip",
           "readOnly": true,
+          "required": false,
           "type": "ip"
         },
         "reverse": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -2682,16 +2641,16 @@ export const schema: Schema = {
       "properties": {
         "description": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "netname": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -2704,6 +2663,8 @@ export const schema: Schema = {
         "serviceName": {
           "canBeNull": true,
           "description": "Service where ip is routed to",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -2715,16 +2676,16 @@ export const schema: Schema = {
       "properties": {
         "canBeTerminated": {
           "canBeNull": false,
-          "description": null,
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "country": {
           "canBeNull": true,
-          "description": null,
           "fullType": "coreTypes.CountryEnum",
           "readOnly": true,
+          "required": false,
           "type": "coreTypes.CountryEnum"
         },
         "description": {
@@ -2732,13 +2693,14 @@ export const schema: Schema = {
           "description": "Custom description on your ip",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "ip": {
           "canBeNull": false,
-          "description": null,
           "fullType": "ipBlock",
           "readOnly": true,
+          "required": false,
           "type": "ipBlock"
         },
         "organisationId": {
@@ -2746,6 +2708,7 @@ export const schema: Schema = {
           "description": "IP block organisation Id",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "routedTo": {
@@ -2753,13 +2716,14 @@ export const schema: Schema = {
           "description": "Routage information",
           "fullType": "ip.RoutedTo",
           "readOnly": true,
+          "required": false,
           "type": "ip.RoutedTo"
         },
         "type": {
           "canBeNull": false,
-          "description": null,
           "fullType": "ip.IpTypeEnum",
           "readOnly": true,
+          "required": false,
           "type": "ip.IpTypeEnum"
         }
       }
@@ -2774,6 +2738,7 @@ export const schema: Schema = {
           "description": "Last date the ip was blocked",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "ipSpamming": {
@@ -2781,6 +2746,7 @@ export const schema: Schema = {
           "description": "IP address which is sending spam",
           "fullType": "ipv4",
           "readOnly": true,
+          "required": false,
           "type": "ipv4"
         },
         "state": {
@@ -2788,6 +2754,7 @@ export const schema: Schema = {
           "description": "Current state of the ip",
           "fullType": "ip.SpamStateEnum",
           "readOnly": true,
+          "required": false,
           "type": "ip.SpamStateEnum"
         },
         "time": {
@@ -2795,6 +2762,7 @@ export const schema: Schema = {
           "description": "Time (in seconds) while the IP will be blocked",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -2818,26 +2786,36 @@ export const schema: Schema = {
         "averageSpamscore": {
           "canBeNull": true,
           "description": "Average spam score.",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "detectedSpams": {
           "canBeNull": true,
           "description": "Detailed list of the spams",
+          "readOnly": false,
+          "required": false,
           "type": "ip.SpamTarget[]"
         },
         "numberOfSpams": {
           "canBeNull": false,
           "description": "Number of spams sent",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "timestamp": {
           "canBeNull": false,
           "description": "Time when the IP address was blocked",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "total": {
           "canBeNull": false,
           "description": "Number of emails sent",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         }
       }
@@ -2850,21 +2828,29 @@ export const schema: Schema = {
         "date": {
           "canBeNull": false,
           "description": "Timestamp when the email was sent",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "destinationIp": {
           "canBeNull": false,
           "description": "IP address of the target",
+          "readOnly": false,
+          "required": false,
           "type": "ipv4"
         },
         "messageId": {
           "canBeNull": false,
           "description": "The message-id of the email",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "spamscore": {
           "canBeNull": false,
           "description": "Spam score for the email",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         }
       }
@@ -2897,7 +2883,6 @@ export const schema: Schema = {
       "namespace": "ip"
     },
     "service.StateEnum": {
-      "description": "",
       "enum": [
         "expired",
         "inCreation",
@@ -2951,51 +2936,51 @@ export const schema: Schema = {
       "properties": {
         "contactAdmin": {
           "canBeNull": false,
-          "description": null,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
-          "description": null,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
-          "description": null,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "creation": {
           "canBeNull": false,
-          "description": null,
           "fullType": "date",
           "readOnly": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "serviceId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "status": {
           "canBeNull": false,
-          "description": null,
           "fullType": "service.StateEnum",
           "readOnly": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

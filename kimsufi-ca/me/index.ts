@@ -338,6 +338,7 @@ export namespace billing {
     export interface OrderDetail {
         cancelled: boolean;
         description: string;
+        detailType?: orderOrderDetailTypeEnum;
         domain: string;
         orderDetailId: number;
         quantity: string;
@@ -530,6 +531,26 @@ export namespace billing {
             type?: billing.order.associatedObject.TypeEnum;
         }
         /**
+         * All data needed to use a payment mean
+         * interface fullName: billing.order.AvailablePaymentMean.AvailablePaymentMean
+         */
+        export interface AvailablePaymentMean {
+            fields?: billing.order.AvailablePaymentMeanField[];
+            integration: billing.order.PaymentMeanIntegrationEnum;
+            name: string;
+            url?: string;
+        }
+        /**
+         * All fields needed for a payment mean integration
+         * interface fullName: billing.order.AvailablePaymentMeanField.AvailablePaymentMeanField
+         */
+        export interface AvailablePaymentMeanField {
+            key: string;
+            options?: string[];
+            type: billing.order.PaymentMeanFieldTypeEnum;
+            value?: string;
+        }
+        /**
          * Detailed consumption's retrieval information
          * interface fullName: billing.order.ConsumptionDetails.ConsumptionDetails
          */
@@ -574,6 +595,16 @@ export namespace billing {
             subType?: string;
             url: string;
         }
+        /**
+         * Field type of a payment mean
+         * type fullname: billing.order.PaymentMeanFieldTypeEnum
+         */
+        export type PaymentMeanFieldTypeEnum = "hidden" | "select" | "text"
+        /**
+         * Integration payment mean type
+         * type fullname: billing.order.PaymentMeanIntegrationEnum
+         */
+        export type PaymentMeanIntegrationEnum = "GET_FORM" | "POST_FORM" | "REDIRECT"
         /**
          * TODO
          * interface fullName: billing.order.PaymentMeans.PaymentMeans
@@ -1721,6 +1752,11 @@ export namespace order {
      * type fullname: order.CurrencyCodeEnum
      */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    /**
+     * Product type of item in order
+     * type fullname: order.OrderDetailTypeEnum
+     */
+    export type OrderDetailTypeEnum = "ACCESSORY" | "CAUTION" | "CHOOSED" | "CONSUMPTION" | "CREATION" | "DELIVERY" | "DURATION" | "GIFT" | "INSTALLATION" | "LICENSE" | "MUTE" | "OTHER" | "OUTPLAN" | "QUANTITY" | "REFUND" | "RENEW" | "SPECIAL" | "SWITCH" | "TRANSFER" | "VOUCHER"
     /**
      * Price with it's currency and textual representation
      * interface fullName: order.Price.Price
@@ -4371,4 +4407,5 @@ export interface Me {
  * Extra Alias to bypass relativer namespace colitions
  */
 type orderPrice = order.Price;
+type orderOrderDetailTypeEnum = order.OrderDetailTypeEnum;
 type paymentmethodIntegrationType = payment.method.IntegrationType;

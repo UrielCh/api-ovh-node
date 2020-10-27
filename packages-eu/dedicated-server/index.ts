@@ -218,6 +218,11 @@ export namespace dedicated {
          */
         export type AccessTypeEnum = "DIRECTADMIN_PANEL" | "PLESK_PANEL" | "PROXMOX_PANEL" | "RDP" | "SQL_SERVER" | "SSH" | "WEB_PANEL"
         /**
+         * Addon family
+         * type fullname: dedicated.server.AddonFamilyEnum
+         */
+        export type AddonFamilyEnum = "memory" | "storage"
+        /**
          * Monitoring alert language
          * type fullname: dedicated.server.AlertLanguageEnum
          */
@@ -329,6 +334,14 @@ export namespace dedicated {
          * type fullname: dedicated.server.BandwidthvRackTypeEnum
          */
         export type BandwidthvRackTypeEnum = "included" | "standard"
+        /**
+         * Dedicated server addon.
+         * interface fullName: dedicated.server.BillingAddon.BillingAddon
+         */
+        export interface BillingAddon {
+            family: dedicated.server.AddonFamilyEnum;
+            planCode: string;
+        }
         /**
          * SGX PRMRR value enum
          * type fullname: dedicated.server.BiosSettingsSgxPrmrrEnum
@@ -752,13 +765,37 @@ export namespace dedicated {
             vrack?: dedicated.server.BandwidthvRackDetails;
         }
         /**
+         * A structure describing OVH Link Aggregation available modes
+         * interface fullName: dedicated.server.OlaAvailableModes.OlaAvailableModes
+         */
+        export interface OlaAvailableModes {
+            default: boolean;
+            interfaces: dedicated.server.OlaInterface[];
+            name: string;
+        }
+        /**
          * A structure describing OVH Link Aggregation available modes for this dedicated server
          * interface fullName: dedicated.server.OlaDetails.OlaDetails
          */
         export interface OlaDetails {
             available: boolean;
+            availableModes: dedicated.server.OlaAvailableModes[];
             supportedModes?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum[];
         }
+        /**
+         * A structure describing OVH Link Aggregation interface configuration
+         * interface fullName: dedicated.server.OlaInterface.OlaInterface
+         */
+        export interface OlaInterface {
+            aggregation: boolean;
+            count: number;
+            type: dedicated.server.OlaInterfaceModeEnum;
+        }
+        /**
+         * An enum describing OVH Link Aggregation interface types
+         * type fullname: dedicated.server.OlaInterfaceModeEnum
+         */
+        export type OlaInterfaceModeEnum = "public" | "vrack"
         /**
          * Information about the options of a dedicated server
          * interface fullName: dedicated.server.Option.Option

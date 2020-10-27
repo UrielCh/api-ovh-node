@@ -17,8 +17,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -45,8 +43,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "veeamCloudConnect.Account",
           "responseType": "veeamCloudConnect.Account"
         }
       ],
@@ -73,8 +69,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         },
         {
@@ -95,8 +89,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "veeamCloudConnect.Task[]",
           "responseType": "veeamCloudConnect.Task[]"
         }
       ],
@@ -105,36 +97,6 @@ export const schema: Schema = {
     {
       "description": "Veeam Backup Repository",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "The inventory name of your backup repository",
-              "fullType": "string",
-              "name": "inventoryName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Domain of the service",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "veeamCloudConnect.BackupRepository",
-          "responseType": "veeamCloudConnect.BackupRepository"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -161,9 +123,35 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "veeamCloudConnect.Task[]",
           "responseType": "veeamCloudConnect.Task[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The inventory name of your backup repository",
+              "fullType": "string",
+              "name": "inventoryName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "veeamCloudConnect.BackupRepository"
         }
       ],
       "path": "/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}"
@@ -205,8 +193,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "veeamCloudConnect.Task[]",
           "responseType": "veeamCloudConnect.Task[]"
         }
       ],
@@ -233,8 +219,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "veeamCloudConnect.offerCapabilities",
           "responseType": "veeamCloudConnect.offerCapabilities"
         }
       ],
@@ -261,8 +245,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "veeamCloudConnect.Offer[]",
           "responseType": "veeamCloudConnect.Offer[]"
         }
       ],
@@ -289,8 +271,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "veeamCloudConnect.Task",
           "responseType": "veeamCloudConnect.Task"
         }
       ],
@@ -317,8 +297,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "services.Service",
           "responseType": "services.Service"
         },
         {
@@ -334,7 +312,6 @@ export const schema: Schema = {
               "dataType": "services.Service",
               "description": "New object properties",
               "fullType": "services.Service",
-              "name": null,
               "paramType": "body",
               "required": true
             },
@@ -347,8 +324,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -391,8 +366,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -420,15 +393,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "taskId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "veeamCloudConnect.Task",
           "responseType": "veeamCloudConnect.Task"
         }
       ],
@@ -447,12 +418,14 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "T"
         }
       }
@@ -465,26 +438,36 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         }
       }
@@ -505,7 +488,6 @@ export const schema: Schema = {
       "namespace": "service"
     },
     "service.StateEnum": {
-      "description": "",
       "enum": [
         "expired",
         "inCreation",
@@ -527,55 +509,56 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
-          "description": null,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
-          "description": null,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
-          "description": null,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "creation": {
           "canBeNull": false,
-          "description": null,
           "fullType": "date",
           "readOnly": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
           "canBeNull": true,
-          "description": null,
           "fullType": "date",
           "readOnly": true,
+          "required": false,
           "type": "date"
         },
         "expiration": {
           "canBeNull": false,
-          "description": null,
           "fullType": "date",
           "readOnly": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -583,6 +566,7 @@ export const schema: Schema = {
           "description": "All the possible renew period of your service in month",
           "fullType": "long[]",
           "readOnly": true,
+          "required": false,
           "type": "long[]"
         },
         "renew": {
@@ -590,27 +574,28 @@ export const schema: Schema = {
           "description": "Way of handling the renew",
           "fullType": "service.RenewType",
           "readOnly": false,
+          "required": false,
           "type": "service.RenewType"
         },
         "renewalType": {
           "canBeNull": false,
-          "description": null,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "status": {
           "canBeNull": false,
-          "description": null,
           "fullType": "service.StateEnum",
           "readOnly": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }
@@ -625,6 +610,7 @@ export const schema: Schema = {
           "description": "Datacenter where your Cloud is physically located",
           "fullType": "veeamCloudConnect.Location",
           "readOnly": true,
+          "required": false,
           "type": "veeamCloudConnect.Location"
         },
         "productOffer": {
@@ -632,6 +618,7 @@ export const schema: Schema = {
           "description": "The commercial offer linked to your veeam cloud connect",
           "fullType": "veeamCloudConnect.Offer",
           "readOnly": true,
+          "required": false,
           "type": "veeamCloudConnect.Offer"
         },
         "serviceName": {
@@ -639,6 +626,7 @@ export const schema: Schema = {
           "description": "Your login in the Veeam Cloud Connect interface",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "vmCount": {
@@ -646,6 +634,7 @@ export const schema: Schema = {
           "description": "Backuped VMs quantity on your account",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -660,6 +649,7 @@ export const schema: Schema = {
           "description": "The inventory name of your backup repository",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "quota": {
@@ -667,6 +657,7 @@ export const schema: Schema = {
           "description": "The quota allowed on this Backup repository",
           "fullType": "complexType.UnitAndValue<long>",
           "readOnly": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         },
         "quotaUsed": {
@@ -674,6 +665,7 @@ export const schema: Schema = {
           "description": "The quota used on this Backup repository",
           "fullType": "complexType.UnitAndValue<long>",
           "readOnly": true,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         },
         "replicationZone": {
@@ -681,6 +673,7 @@ export const schema: Schema = {
           "description": "The replication zone of your repository",
           "fullType": "veeamCloudConnect.Location",
           "readOnly": true,
+          "required": false,
           "type": "veeamCloudConnect.Location"
         },
         "state": {
@@ -688,6 +681,7 @@ export const schema: Schema = {
           "description": "The state of your backup repository",
           "fullType": "veeamCloudConnect.BackupRepositoryStateEnum",
           "readOnly": true,
+          "required": false,
           "type": "veeamCloudConnect.BackupRepositoryStateEnum"
         },
         "usage": {
@@ -695,6 +689,7 @@ export const schema: Schema = {
           "description": "The usage in percent of this backup repository",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -746,6 +741,7 @@ export const schema: Schema = {
           "description": "Done task date and time",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "name": {
@@ -753,6 +749,7 @@ export const schema: Schema = {
           "description": "Task name",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "progress": {
@@ -760,6 +757,7 @@ export const schema: Schema = {
           "description": "Current progress",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "startDate": {
@@ -767,6 +765,7 @@ export const schema: Schema = {
           "description": "Start task date and time",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "state": {
@@ -774,13 +773,14 @@ export const schema: Schema = {
           "description": "Current Task state",
           "fullType": "veeamCloudConnect.TaskStateEnum",
           "readOnly": true,
+          "required": false,
           "type": "veeamCloudConnect.TaskStateEnum"
         },
         "taskId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -811,41 +811,57 @@ export const schema: Schema = {
         "defaultQuota": {
           "canBeNull": false,
           "description": "Default quota applied on new repositories in GB",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "maxQuota": {
           "canBeNull": false,
           "description": "Maximum quota you can apply on your repositories in GB",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "maxStoragesCount": {
           "canBeNull": false,
           "description": "Max number of repositories you can add on your account",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "minimumUsage": {
           "canBeNull": false,
           "description": "Required usage on all repositories to add a new one (percent)",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "multiStorages": {
           "canBeNull": false,
           "description": "Is account allowed to add new repositories",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "replication": {
           "canBeNull": false,
           "description": "Are data replicated over two storages",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "vmCapacity": {
           "canBeNull": false,
           "description": "Included storage per vm",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "wanAccelerator": {
           "canBeNull": false,
           "description": "Is wan accelerator enabled",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         }
       }

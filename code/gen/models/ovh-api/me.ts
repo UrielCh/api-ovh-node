@@ -8302,6 +8302,105 @@ export const schema: Schema = {
       "path": "/me/supportLevel"
     },
     {
+      "description": "Manage customer tags",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve customer tags list",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Activate customer tag",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "me.tag.Creation",
+              "description": "Request Body",
+              "fullType": "me.tag.Creation",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "me.tag.Tag"
+        }
+      ],
+      "path": "/me/tag"
+    },
+    {
+      "description": "Manage customer tags",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a customer tag",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Tag",
+              "fullType": "string",
+              "name": "tag",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "me.tag.Tag"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve a customer tag",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Tag",
+              "fullType": "string",
+              "name": "tag",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "me.tag.Tag"
+        }
+      ],
+      "path": "/me/tag/{tag}"
+    },
+    {
+      "description": "Available tags",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve all available tags",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "me.tag.AvailableTag[]"
+        }
+      ],
+      "path": "/me/tag/available"
+    },
+    {
       "description": "List the nichandle.contactChange.Task objects",
       "operations": [
         {
@@ -10575,6 +10674,13 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "detailType": {
+          "canBeNull": true,
+          "fullType": "order.OrderDetailTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.OrderDetailTypeEnum"
+        },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
@@ -11694,6 +11800,68 @@ export const schema: Schema = {
         }
       }
     },
+    "billing.order.AvailablePaymentMean": {
+      "description": "All data needed to use a payment mean",
+      "id": "AvailablePaymentMean",
+      "namespace": "billing.order",
+      "properties": {
+        "fields": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "billing.order.AvailablePaymentMeanField[]"
+        },
+        "integration": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "billing.order.PaymentMeanIntegrationEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "billing.order.AvailablePaymentMeanField": {
+      "description": "All fields needed for a payment mean integration",
+      "id": "AvailablePaymentMeanField",
+      "namespace": "billing.order",
+      "properties": {
+        "key": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "options": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "type": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "billing.order.PaymentMeanFieldTypeEnum"
+        },
+        "value": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "billing.order.ConsumptionDetails": {
       "description": "Detailed consumption's retrieval information",
       "id": "ConsumptionDetails",
@@ -11842,6 +12010,28 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "billing.order.PaymentMeanFieldTypeEnum": {
+      "description": "Field type of a payment mean",
+      "enum": [
+        "hidden",
+        "select",
+        "text"
+      ],
+      "enumType": "string",
+      "id": "PaymentMeanFieldTypeEnum",
+      "namespace": "billing.order"
+    },
+    "billing.order.PaymentMeanIntegrationEnum": {
+      "description": "Integration payment mean type",
+      "enum": [
+        "GET_FORM",
+        "POST_FORM",
+        "REDIRECT"
+      ],
+      "enumType": "string",
+      "id": "PaymentMeanIntegrationEnum",
+      "namespace": "billing.order"
     },
     "billing.order.PaymentMeans": {
       "description": "TODO",
@@ -16094,6 +16284,225 @@ export const schema: Schema = {
       "id": "ValidationTypeEnum",
       "namespace": "me.paymentMean"
     },
+    "me.tag.AvailableTag": {
+      "description": "Available tag configuration object for creation",
+      "id": "AvailableTag",
+      "namespace": "me.tag",
+      "properties": {
+        "keys": {
+          "canBeNull": false,
+          "description": "Tag configuration keys",
+          "fullType": "me.tag.TagKey[]",
+          "readOnly": true,
+          "required": false,
+          "type": "me.tag.TagKey[]"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Tag name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "me.tag.Creation": {
+      "description": "Tag creation payload",
+      "id": "Creation",
+      "namespace": "me.tag",
+      "properties": {
+        "reason": {
+          "canBeNull": true,
+          "description": "Reason",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "tagName": {
+          "canBeNull": false,
+          "description": "Tag name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "me.tag.StatusEnum": {
+      "description": "Tag status",
+      "enum": [
+        "CREATED",
+        "CREATING",
+        "DELETED",
+        "DELETING",
+        "MODERATING",
+        "REFUSED",
+        "REFUSING",
+        "REVOCATING",
+        "WAIT_MODERATION",
+        "WAIT_REVOCATION"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "me.tag"
+    },
+    "me.tag.Tag": {
+      "description": "Tag",
+      "id": "Tag",
+      "namespace": "me.tag",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "customerCode": {
+          "canBeNull": false,
+          "description": "Customer code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "expirationDate": {
+          "canBeNull": true,
+          "description": "Expiration date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "extra": {
+          "canBeNull": true,
+          "description": "Extra data",
+          "fullType": "me.tag.TagExtra",
+          "readOnly": true,
+          "required": false,
+          "type": "me.tag.TagExtra"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Tag Status",
+          "fullType": "me.tag.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.tag.StatusEnum"
+        },
+        "tag": {
+          "canBeNull": false,
+          "description": "Tag name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "me.tag.TagExtra": {
+      "description": "Tag Extra",
+      "id": "TagExtra",
+      "namespace": "me.tag",
+      "properties": {
+        "exemption": {
+          "canBeNull": true,
+          "description": "Tax exemption",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "me.tag.TagKey": {
+      "description": "Tag configuration key",
+      "id": "TagKey",
+      "namespace": "me.tag",
+      "properties": {
+        "enum": {
+          "canBeNull": true,
+          "description": "Enum values",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "key": {
+          "canBeNull": false,
+          "description": "Tag key name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "maxLength": {
+          "canBeNull": true,
+          "description": "Maximum length for a text",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minValue": {
+          "canBeNull": true,
+          "description": "Minimum value for a number",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "optional": {
+          "canBeNull": false,
+          "description": "Tag key optional",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "pattern": {
+          "canBeNull": true,
+          "description": "Tag value regex pattern",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Tag key type",
+          "fullType": "me.tag.tagKey.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.tag.tagKey.TypeEnum"
+        }
+      }
+    },
+    "me.tag.tagKey.TypeEnum": {
+      "description": "Tag key type",
+      "enum": [
+        "ARRAY",
+        "DATE",
+        "ENUM",
+        "INTEGER",
+        "TEXT",
+        "VARCHAR"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "me.tag.tagKey"
+    },
     "nichandle.Authentication.Certificate": {
       "description": "X509 Certificate",
       "id": "Certificate",
@@ -18402,6 +18811,34 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "CurrencyCodeEnum",
+      "namespace": "order"
+    },
+    "order.OrderDetailTypeEnum": {
+      "description": "Product type of item in order",
+      "enum": [
+        "ACCESSORY",
+        "CAUTION",
+        "CHOOSED",
+        "CONSUMPTION",
+        "CREATION",
+        "DELIVERY",
+        "DURATION",
+        "GIFT",
+        "INSTALLATION",
+        "LICENSE",
+        "MUTE",
+        "OTHER",
+        "OUTPLAN",
+        "QUANTITY",
+        "REFUND",
+        "RENEW",
+        "SPECIAL",
+        "SWITCH",
+        "TRANSFER",
+        "VOUCHER"
+      ],
+      "enumType": "string",
+      "id": "OrderDetailTypeEnum",
       "namespace": "order"
     },
     "order.Price": {

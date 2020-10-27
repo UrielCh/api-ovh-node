@@ -9993,6 +9993,13 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "detailType": {
+          "canBeNull": true,
+          "fullType": "order.OrderDetailTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.OrderDetailTypeEnum"
+        },
         "domain": {
           "canBeNull": false,
           "fullType": "string",
@@ -10763,6 +10770,68 @@ export const schema: Schema = {
         }
       }
     },
+    "billing.order.AvailablePaymentMean": {
+      "description": "All data needed to use a payment mean",
+      "id": "AvailablePaymentMean",
+      "namespace": "billing.order",
+      "properties": {
+        "fields": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "billing.order.AvailablePaymentMeanField[]"
+        },
+        "integration": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "billing.order.PaymentMeanIntegrationEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "billing.order.AvailablePaymentMeanField": {
+      "description": "All fields needed for a payment mean integration",
+      "id": "AvailablePaymentMeanField",
+      "namespace": "billing.order",
+      "properties": {
+        "key": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "options": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "type": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "billing.order.PaymentMeanFieldTypeEnum"
+        },
+        "value": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "billing.order.ConsumptionDetails": {
       "description": "Detailed consumption's retrieval information",
       "id": "ConsumptionDetails",
@@ -10911,6 +10980,28 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "billing.order.PaymentMeanFieldTypeEnum": {
+      "description": "Field type of a payment mean",
+      "enum": [
+        "hidden",
+        "select",
+        "text"
+      ],
+      "enumType": "string",
+      "id": "PaymentMeanFieldTypeEnum",
+      "namespace": "billing.order"
+    },
+    "billing.order.PaymentMeanIntegrationEnum": {
+      "description": "Integration payment mean type",
+      "enum": [
+        "GET_FORM",
+        "POST_FORM",
+        "REDIRECT"
+      ],
+      "enumType": "string",
+      "id": "PaymentMeanIntegrationEnum",
+      "namespace": "billing.order"
     },
     "billing.order.PaymentMeans": {
       "description": "TODO",
@@ -15834,6 +15925,34 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "CurrencyCodeEnum",
+      "namespace": "order"
+    },
+    "order.OrderDetailTypeEnum": {
+      "description": "Product type of item in order",
+      "enum": [
+        "ACCESSORY",
+        "CAUTION",
+        "CHOOSED",
+        "CONSUMPTION",
+        "CREATION",
+        "DELIVERY",
+        "DURATION",
+        "GIFT",
+        "INSTALLATION",
+        "LICENSE",
+        "MUTE",
+        "OTHER",
+        "OUTPLAN",
+        "QUANTITY",
+        "REFUND",
+        "RENEW",
+        "SPECIAL",
+        "SWITCH",
+        "TRANSFER",
+        "VOUCHER"
+      ],
+      "enumType": "string",
+      "id": "OrderDetailTypeEnum",
       "namespace": "order"
     },
     "order.Price": {

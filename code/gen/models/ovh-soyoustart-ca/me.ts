@@ -17,8 +17,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.Nichandle",
           "responseType": "nichandle.Nichandle"
         },
         {
@@ -34,13 +32,10 @@ export const schema: Schema = {
               "dataType": "nichandle.Nichandle",
               "description": "New object properties",
               "fullType": "nichandle.Nichandle",
-              "name": null,
               "paramType": "body",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -54,12 +49,21 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Delete this Two-Factor",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
           "description": "Get this object properties",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.accessRestriction.SOTPAccount",
           "responseType": "nichandle.accessRestriction.SOTPAccount"
         },
         {
@@ -71,22 +75,7 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.accessRestriction.SOTPSecret",
           "responseType": "nichandle.accessRestriction.SOTPSecret"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete this Two-Factor",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
         }
       ],
       "path": "/me/accessRestriction/backupCode"
@@ -112,8 +101,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -140,8 +127,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -168,8 +153,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.accessRestriction.SOTPValidate",
           "responseType": "nichandle.accessRestriction.SOTPValidate"
         }
       ],
@@ -187,8 +170,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.DeveloperModeRestriction",
           "responseType": "nichandle.DeveloperModeRestriction"
         },
         {
@@ -204,13 +185,10 @@ export const schema: Schema = {
               "dataType": "nichandle.DeveloperModeRestriction",
               "description": "New object properties",
               "fullType": "nichandle.DeveloperModeRestriction",
-              "name": null,
               "paramType": "body",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -228,8 +206,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         },
         {
@@ -266,8 +242,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -276,58 +250,6 @@ export const schema: Schema = {
     {
       "description": "List of all IP Restrictions",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.IpRestriction",
-          "responseType": "nichandle.IpRestriction"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.IpRestriction",
-              "description": "New object properties",
-              "fullType": "nichandle.IpRestriction",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -346,8 +268,53 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "nichandle.IpRestriction"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.IpRestriction",
+              "description": "New object properties",
+              "fullType": "nichandle.IpRestriction",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "responseType": "void"
         }
       ],
@@ -365,8 +332,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.IpRestrictionDefaultRule",
           "responseType": "nichandle.IpRestrictionDefaultRule"
         },
         {
@@ -382,13 +347,10 @@ export const schema: Schema = {
               "dataType": "nichandle.IpRestrictionDefaultRule",
               "description": "New object properties",
               "fullType": "nichandle.IpRestrictionDefaultRule",
-              "name": null,
               "paramType": "body",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -406,8 +368,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         },
         {
@@ -428,8 +388,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.accessRestriction.SmsSecret",
           "responseType": "nichandle.accessRestriction.SmsSecret"
         }
       ],
@@ -438,58 +396,6 @@ export const schema: Schema = {
     {
       "description": "Sms Two-Factor Authentication",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.accessRestriction.SmsAccount",
-          "responseType": "nichandle.accessRestriction.SmsAccount"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.accessRestriction.SmsAccount",
-              "description": "New object properties",
-              "fullType": "nichandle.accessRestriction.SmsAccount",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -508,8 +414,53 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "nichandle.accessRestriction.SmsAccount"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.accessRestriction.SmsAccount",
+              "description": "New object properties",
+              "fullType": "nichandle.accessRestriction.SmsAccount",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "responseType": "void"
         }
       ],
@@ -544,8 +495,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -580,8 +529,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -608,8 +555,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.accessRestriction.SmsCode",
           "responseType": "nichandle.accessRestriction.SmsCode"
         }
       ],
@@ -644,8 +589,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -663,8 +606,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         },
         {
@@ -676,8 +617,6 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.accessRestriction.TOTPSecret",
           "responseType": "nichandle.accessRestriction.TOTPSecret"
         }
       ],
@@ -686,58 +625,6 @@ export const schema: Schema = {
     {
       "description": "TOTP Two-Factor Authentication",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.accessRestriction.TOTPAccount",
-          "responseType": "nichandle.accessRestriction.TOTPAccount"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.accessRestriction.TOTPAccount",
-              "description": "New object properties",
-              "fullType": "nichandle.accessRestriction.TOTPAccount",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -756,8 +643,53 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "nichandle.accessRestriction.TOTPAccount"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.accessRestriction.TOTPAccount",
+              "description": "New object properties",
+              "fullType": "nichandle.accessRestriction.TOTPAccount",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "responseType": "void"
         }
       ],
@@ -792,8 +724,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -828,8 +758,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -864,8 +792,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -883,8 +809,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         },
         {
@@ -896,8 +820,6 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.accessRestriction.U2FRegisterChallenge",
           "responseType": "nichandle.accessRestriction.U2FRegisterChallenge"
         }
       ],
@@ -906,58 +828,6 @@ export const schema: Schema = {
     {
       "description": "U2F Two-Factor Authentication",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.accessRestriction.U2FAccount",
-          "responseType": "nichandle.accessRestriction.U2FAccount"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.accessRestriction.U2FAccount",
-              "description": "New object properties",
-              "fullType": "nichandle.accessRestriction.U2FAccount",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "The Id of the restriction",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -976,8 +846,53 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "nichandle.accessRestriction.U2FAccount"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.accessRestriction.U2FAccount",
+              "description": "New object properties",
+              "fullType": "nichandle.accessRestriction.U2FAccount",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The Id of the restriction",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "responseType": "void"
         }
       ],
@@ -1004,8 +919,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.accessRestriction.U2FSignChallenge",
           "responseType": "nichandle.accessRestriction.U2FSignChallenge"
         }
       ],
@@ -1025,7 +938,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "clientData",
               "paramType": "body",
@@ -1033,7 +946,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "password",
-              "description": null,
+              "description": "",
               "fullType": "password",
               "name": "signatureData",
               "paramType": "body",
@@ -1048,8 +961,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -1069,7 +980,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "clientData",
               "paramType": "body",
@@ -1077,7 +988,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "password",
-              "description": null,
+              "description": "",
               "fullType": "password",
               "name": "signatureData",
               "paramType": "body",
@@ -1092,8 +1003,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -1113,7 +1022,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "clientData",
               "paramType": "body",
@@ -1121,7 +1030,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "password",
-              "description": null,
+              "description": "",
               "fullType": "password",
               "name": "registrationData",
               "paramType": "body",
@@ -1136,8 +1045,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -1172,8 +1079,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -1200,8 +1105,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "agreements.ContractAgreement",
           "responseType": "agreements.ContractAgreement"
         }
       ],
@@ -1228,8 +1131,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string",
           "responseType": "string"
         }
       ],
@@ -1256,8 +1157,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "agreements.Contract",
           "responseType": "agreements.Contract"
         }
       ],
@@ -1275,8 +1174,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -1290,44 +1187,40 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "applicationId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "api.Application",
-          "responseType": "api.Application"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
           "description": "Remove this application. It will revoke all credential belonging to this application.",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "applicationId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "applicationId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "api.Application"
         }
       ],
       "path": "/me/api/application/{applicationId}"
@@ -1361,8 +1254,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -1376,21 +1267,39 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
+          "description": "Remove this credential",
+          "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "credentialId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "api.Credential",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "credentialId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "responseType": "api.Credential"
         },
         {
@@ -1406,43 +1315,18 @@ export const schema: Schema = {
               "dataType": "api.Credential",
               "description": "New object properties",
               "fullType": "api.Credential",
-              "name": null,
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "credentialId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Remove this credential",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": null,
-              "fullType": "long",
-              "name": "credentialId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -1462,15 +1346,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "credentialId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "api.Application",
           "responseType": "api.Application"
         }
       ],
@@ -1488,31 +1370,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.NicAutorenewInfos",
           "responseType": "nichandle.NicAutorenewInfos"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.NicAutorenewInfos",
-              "description": "New object properties",
-              "fullType": "nichandle.NicAutorenewInfos",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
         },
         {
           "apiStatus": {
@@ -1532,8 +1390,25 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.NicAutorenewInfos",
+              "description": "New object properties",
+              "fullType": "nichandle.NicAutorenewInfos",
+              "paramType": "body",
+              "required": true
+            }
+          ],
           "responseType": "void"
         }
       ],
@@ -1551,8 +1426,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "billing.AutomaticPaymentMean",
           "responseType": "billing.AutomaticPaymentMean"
         }
       ],
@@ -1603,8 +1476,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -1624,15 +1495,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Bill",
           "responseType": "billing.Bill"
         }
       ],
@@ -1652,15 +1521,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "debt.Debt",
           "responseType": "debt.Debt"
         }
       ],
@@ -1680,7 +1547,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
@@ -1695,8 +1562,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -1716,7 +1581,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
@@ -1724,15 +1589,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "operationId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "debt.Operation",
           "responseType": "debt.Operation"
         }
       ],
@@ -1752,7 +1615,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
@@ -1760,15 +1623,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "operationId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "debt.entry.AssociatedObject",
           "responseType": "debt.entry.AssociatedObject"
         }
       ],
@@ -1788,15 +1649,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Order",
           "responseType": "billing.Order"
         }
       ],
@@ -1816,15 +1675,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -1844,7 +1701,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billDetailId",
               "paramType": "path",
@@ -1852,15 +1709,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.BillDetail",
           "responseType": "billing.BillDetail"
         }
       ],
@@ -1880,15 +1735,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Payment",
           "responseType": "billing.Payment"
         }
       ],
@@ -1939,8 +1792,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -1967,8 +1818,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -1995,8 +1844,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.emailChange.Task",
           "responseType": "nichandle.emailChange.Task"
         }
       ],
@@ -2014,8 +1861,6 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -2033,8 +1878,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "me.consent.Campaign[]",
           "responseType": "me.consent.Campaign[]"
         }
       ],
@@ -2061,8 +1904,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "me.consent.Campaign",
           "responseType": "me.consent.Campaign"
         }
       ],
@@ -2089,8 +1930,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "me.consent.Consent",
           "responseType": "me.consent.Consent"
         },
         {
@@ -2119,8 +1958,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -2138,8 +1975,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         },
         {
@@ -2312,8 +2147,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "contact.Contact",
           "responseType": "contact.Contact"
         }
       ],
@@ -2340,8 +2173,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "contact.Contact",
           "responseType": "contact.Contact"
         },
         {
@@ -2522,8 +2353,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "contact.Contact",
           "responseType": "contact.Contact"
         }
       ],
@@ -2550,8 +2379,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "contact.FieldInformation[]",
           "responseType": "contact.FieldInformation[]"
         }
       ],
@@ -2569,8 +2396,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "debt.Balance",
           "responseType": "debt.Balance"
         }
       ],
@@ -2588,8 +2413,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -2609,15 +2432,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "debtId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "debt.Debt",
           "responseType": "debt.Debt"
         }
       ],
@@ -2637,7 +2458,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "debtId",
               "paramType": "path",
@@ -2652,8 +2473,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -2673,7 +2492,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "debtId",
               "paramType": "path",
@@ -2681,15 +2500,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "operationId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "debt.Operation",
           "responseType": "debt.Operation"
         }
       ],
@@ -2709,7 +2526,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "debtId",
               "paramType": "path",
@@ -2717,15 +2534,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "operationId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "debt.entry.AssociatedObject",
           "responseType": "debt.entry.AssociatedObject"
         }
       ],
@@ -2745,15 +2560,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "debtId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Order",
           "responseType": "billing.Order"
         }
       ],
@@ -2771,8 +2584,6 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "billing.Order",
           "responseType": "billing.Order"
         }
       ],
@@ -2815,8 +2626,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -2836,15 +2645,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "depositId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Deposit",
           "responseType": "billing.Deposit"
         }
       ],
@@ -2864,15 +2671,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "depositId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -2892,7 +2697,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "depositDetailId",
               "paramType": "path",
@@ -2900,15 +2705,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "depositId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.DepositDetail",
           "responseType": "billing.DepositDetail"
         }
       ],
@@ -2928,15 +2731,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "depositId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -2956,7 +2757,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
@@ -2964,15 +2765,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "depositId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Bill",
           "responseType": "billing.Bill"
         }
       ],
@@ -2992,7 +2791,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
@@ -3000,15 +2799,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "depositId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "debt.Debt",
           "responseType": "debt.Debt"
         }
       ],
@@ -3028,7 +2825,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
@@ -3036,7 +2833,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "depositId",
               "paramType": "path",
@@ -3051,8 +2848,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -3072,7 +2867,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
@@ -3080,7 +2875,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "depositId",
               "paramType": "path",
@@ -3088,15 +2883,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "operationId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "debt.Operation",
           "responseType": "debt.Operation"
         }
       ],
@@ -3116,7 +2909,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
@@ -3124,7 +2917,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "depositId",
               "paramType": "path",
@@ -3132,15 +2925,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "operationId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "debt.entry.AssociatedObject",
           "responseType": "debt.entry.AssociatedObject"
         }
       ],
@@ -3160,7 +2951,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
@@ -3168,15 +2959,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "depositId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Order",
           "responseType": "billing.Order"
         }
       ],
@@ -3196,7 +2985,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
@@ -3204,15 +2993,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "depositId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -3232,7 +3019,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billDetailId",
               "paramType": "path",
@@ -3240,7 +3027,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
@@ -3248,15 +3035,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "depositId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.BillDetail",
           "responseType": "billing.BillDetail"
         }
       ],
@@ -3276,7 +3061,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "billId",
               "paramType": "path",
@@ -3284,15 +3069,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "depositId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Payment",
           "responseType": "billing.Payment"
         }
       ],
@@ -3312,15 +3095,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "depositId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Payment",
           "responseType": "billing.Payment"
         }
       ],
@@ -3338,8 +3119,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         },
         {
@@ -3368,8 +3147,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.document.Document",
           "responseType": "nichandle.document.Document"
         }
       ],
@@ -3378,58 +3155,6 @@ export const schema: Schema = {
     {
       "description": "List of documents added on your account",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Document id",
-              "fullType": "string",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.document.Document",
-          "responseType": "nichandle.document.Document"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.document.Document",
-              "description": "New object properties",
-              "fullType": "nichandle.document.Document",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Document id",
-              "fullType": "string",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -3448,8 +3173,53 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Document id",
+              "fullType": "string",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "nichandle.document.Document"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.document.Document",
+              "description": "New object properties",
+              "fullType": "nichandle.document.Document",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Document id",
+              "fullType": "string",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "responseType": "void"
         }
       ],
@@ -3476,8 +3246,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -3495,8 +3263,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "billing.FidelityAccount",
           "responseType": "billing.FidelityAccount"
         },
         {
@@ -3512,13 +3278,10 @@ export const schema: Schema = {
               "dataType": "billing.FidelityAccount",
               "description": "New object properties",
               "fullType": "billing.FidelityAccount",
-              "name": null,
               "paramType": "body",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -3545,8 +3308,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Order",
           "responseType": "billing.Order"
         }
       ],
@@ -3581,8 +3342,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -3602,15 +3361,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "movementId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.FidelityMovement",
           "responseType": "billing.FidelityMovement"
         }
       ],
@@ -3628,8 +3385,6 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "geolocation.ContinentCountryLocation",
           "responseType": "geolocation.ContinentCountryLocation"
         }
       ],
@@ -3647,8 +3402,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         },
         {
@@ -3685,8 +3438,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.Authentication.Group",
           "responseType": "nichandle.Authentication.Group"
         }
       ],
@@ -3695,28 +3446,6 @@ export const schema: Schema = {
     {
       "description": "A group linked to this account",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Group's name",
-              "fullType": "string",
-              "name": "group",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.Authentication.Group",
-          "responseType": "nichandle.Authentication.Group"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -3735,9 +3464,27 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Group's name",
+              "fullType": "string",
+              "name": "group",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "nichandle.Authentication.Group"
         },
         {
           "apiStatus": {
@@ -3773,8 +3520,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -3792,8 +3537,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         },
         {
@@ -3846,8 +3589,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -3856,28 +3597,6 @@ export const schema: Schema = {
     {
       "description": "A user linked to this account",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "User's login",
-              "fullType": "string",
-              "name": "user",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.User",
-          "responseType": "nichandle.User"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -3896,9 +3615,27 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "User's login",
+              "fullType": "string",
+              "name": "user",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "nichandle.User"
         },
         {
           "apiStatus": {
@@ -3942,8 +3679,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -3970,8 +3705,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -3998,8 +3731,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -4017,8 +3748,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         },
         {
@@ -4040,7 +3769,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "dedicated.TemplateOsLanguageEnum",
-              "description": null,
+              "description": "",
               "fullType": "dedicated.TemplateOsLanguageEnum",
               "name": "defaultLanguage",
               "paramType": "body",
@@ -4055,8 +3784,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -4065,58 +3792,6 @@ export const schema: Schema = {
     {
       "description": "Available installation templates",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.installationTemplate.Templates",
-          "responseType": "dedicated.installationTemplate.Templates"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.installationTemplate.Templates",
-              "description": "New object properties",
-              "fullType": "dedicated.installationTemplate.Templates",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -4135,8 +3810,53 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.installationTemplate.Templates"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.installationTemplate.Templates",
+              "description": "New object properties",
+              "fullType": "dedicated.installationTemplate.Templates",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "responseType": "void"
         }
       ],
@@ -4163,8 +3883,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -4191,8 +3909,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         },
         {
@@ -4229,8 +3945,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -4239,74 +3953,6 @@ export const schema: Schema = {
     {
       "description": "Partitioning schemes available on this template",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.installationTemplate.templatePartitioningSchemes",
-          "responseType": "dedicated.installationTemplate.templatePartitioningSchemes"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.installationTemplate.templatePartitioningSchemes",
-              "description": "New object properties",
-              "fullType": "dedicated.installationTemplate.templatePartitioningSchemes",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -4333,8 +3979,69 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.installationTemplate.templatePartitioningSchemes"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.installationTemplate.templatePartitioningSchemes",
+              "description": "New object properties",
+              "fullType": "dedicated.installationTemplate.templatePartitioningSchemes",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "responseType": "void"
         }
       ],
@@ -4369,8 +4076,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         },
         {
@@ -4431,8 +4136,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -4441,90 +4144,6 @@ export const schema: Schema = {
     {
       "description": "Hardware RAID defined in this partitioning scheme",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Hardware RAID name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.installationTemplate.hardwareRaid",
-          "responseType": "dedicated.installationTemplate.hardwareRaid"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.installationTemplate.hardwareRaid",
-              "description": "New object properties",
-              "fullType": "dedicated.installationTemplate.hardwareRaid",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Hardware RAID name",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -4559,8 +4178,85 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Hardware RAID name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.installationTemplate.hardwareRaid"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.installationTemplate.hardwareRaid",
+              "description": "New object properties",
+              "fullType": "dedicated.installationTemplate.hardwareRaid",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Hardware RAID name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "responseType": "void"
         }
       ],
@@ -4595,8 +4291,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         },
         {
@@ -4626,7 +4320,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "raid",
               "paramType": "body",
@@ -4642,7 +4336,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "step",
               "paramType": "body",
@@ -4650,7 +4344,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "dedicated.TemplatePartitionTypeEnum",
-              "description": null,
+              "description": "",
               "fullType": "dedicated.TemplatePartitionTypeEnum",
               "name": "type",
               "paramType": "body",
@@ -4681,8 +4375,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -4691,90 +4383,6 @@ export const schema: Schema = {
     {
       "description": " Partitions defined in this partitioning scheme",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "partition mount point",
-              "fullType": "string",
-              "name": "mountpoint",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.installationTemplate.templatePartitions",
-          "responseType": "dedicated.installationTemplate.templatePartitions"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dedicated.installationTemplate.templatePartitions",
-              "description": "New object properties",
-              "fullType": "dedicated.installationTemplate.templatePartitions",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "partition mount point",
-              "fullType": "string",
-              "name": "mountpoint",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "name of this partitioning scheme",
-              "fullType": "string",
-              "name": "schemeName",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "This template name",
-              "fullType": "string",
-              "name": "templateName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -4809,8 +4417,85 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "partition mount point",
+              "fullType": "string",
+              "name": "mountpoint",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.installationTemplate.templatePartitions"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dedicated.installationTemplate.templatePartitions",
+              "description": "New object properties",
+              "fullType": "dedicated.installationTemplate.templatePartitions",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "partition mount point",
+              "fullType": "string",
+              "name": "mountpoint",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "name of this partitioning scheme",
+              "fullType": "string",
+              "name": "schemeName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "This template name",
+              "fullType": "string",
+              "name": "templateName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "responseType": "void"
         }
       ],
@@ -4828,8 +4513,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         },
         {
@@ -4843,7 +4526,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "abuse_mailbox",
               "paramType": "body",
@@ -4851,7 +4534,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "address",
               "paramType": "body",
@@ -4859,7 +4542,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "city",
               "paramType": "body",
@@ -4867,7 +4550,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.CountryEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.CountryEnum",
               "name": "country",
               "paramType": "body",
@@ -4875,7 +4558,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "firstname",
               "paramType": "body",
@@ -4883,7 +4566,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "lastname",
               "paramType": "body",
@@ -4891,7 +4574,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "phoneNumber",
-              "description": null,
+              "description": "",
               "fullType": "phoneNumber",
               "name": "phone",
               "paramType": "body",
@@ -4899,7 +4582,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "nichandle.IpRegistryEnum",
-              "description": null,
+              "description": "",
               "fullType": "nichandle.IpRegistryEnum",
               "name": "registry",
               "paramType": "body",
@@ -4907,7 +4590,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "state",
               "paramType": "body",
@@ -4915,15 +4598,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "zip",
               "paramType": "body",
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -4937,21 +4618,39 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
+          "description": "Delete this organisation",
+          "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "organisationId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.Ipv4Org",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "organisationId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "responseType": "nichandle.Ipv4Org"
         },
         {
@@ -4967,43 +4666,18 @@ export const schema: Schema = {
               "dataType": "nichandle.Ipv4Org",
               "description": "New object properties",
               "fullType": "nichandle.Ipv4Org",
-              "name": null,
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "organisationId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Delete this organisation",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": null,
-              "fullType": "string",
-              "name": "organisationId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -5021,8 +4695,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         },
         {
@@ -5059,8 +4731,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.ipxe",
           "responseType": "nichandle.ipxe"
         }
       ],
@@ -5069,28 +4739,6 @@ export const schema: Schema = {
     {
       "description": "Customer IPXE scripts",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Name of this script",
-              "fullType": "string",
-              "name": "name",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.ipxe",
-          "responseType": "nichandle.ipxe"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -5109,9 +4757,27 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of this script",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "nichandle.ipxe"
         }
       ],
       "path": "/me/ipxeScript/{name}"
@@ -5128,8 +4794,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -5164,8 +4828,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -5183,8 +4845,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -5211,8 +4871,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.emailNotification",
           "responseType": "nichandle.emailNotification"
         }
       ],
@@ -5247,8 +4905,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -5268,15 +4924,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Order",
           "responseType": "billing.Order"
         }
       ],
@@ -5296,15 +4950,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.order.AssociatedObject",
           "responseType": "billing.order.AssociatedObject"
         }
       ],
@@ -5324,15 +4976,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.order.RegisteredPaymentMean[]",
           "responseType": "billing.order.RegisteredPaymentMean[]"
         }
       ],
@@ -5352,15 +5002,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Bill",
           "responseType": "billing.Bill"
         }
       ],
@@ -5380,7 +5028,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
@@ -5395,8 +5043,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.order.ConsumptionDetails",
           "responseType": "billing.order.ConsumptionDetails"
         }
       ],
@@ -5416,15 +5062,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "debt.Debt",
           "responseType": "debt.Debt"
         }
       ],
@@ -5444,7 +5088,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
@@ -5459,8 +5103,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -5480,7 +5122,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "operationId",
               "paramType": "path",
@@ -5488,15 +5130,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "debt.Operation",
           "responseType": "debt.Operation"
         }
       ],
@@ -5516,7 +5156,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "operationId",
               "paramType": "path",
@@ -5524,15 +5164,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "debt.entry.AssociatedObject",
           "responseType": "debt.entry.AssociatedObject"
         }
       ],
@@ -5552,15 +5190,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Order",
           "responseType": "billing.Order"
         }
       ],
@@ -5580,15 +5216,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -5608,7 +5242,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderDetailId",
               "paramType": "path",
@@ -5616,15 +5250,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.OrderDetail",
           "responseType": "billing.OrderDetail"
         }
       ],
@@ -5644,7 +5276,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderDetailId",
               "paramType": "path",
@@ -5652,15 +5284,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.ItemDetail",
           "responseType": "billing.ItemDetail"
         }
       ],
@@ -5680,15 +5310,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.order.FollowUp[]",
           "responseType": "billing.order.FollowUp[]"
         }
       ],
@@ -5716,15 +5344,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -5744,15 +5370,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Payment",
           "responseType": "billing.Payment"
         }
       ],
@@ -5772,15 +5396,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.order.PaymentMeans",
           "responseType": "billing.order.PaymentMeans"
         }
       ],
@@ -5800,15 +5422,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.order.PaymentMethods",
           "responseType": "billing.order.PaymentMethods"
         }
       ],
@@ -5844,15 +5464,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -5872,15 +5490,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Refund",
           "responseType": "billing.Refund"
         }
       ],
@@ -5916,15 +5532,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -5944,15 +5558,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "orderId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.order.OrderStatusEnum",
           "responseType": "billing.order.OrderStatusEnum"
         }
       ],
@@ -5970,8 +5582,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -5991,15 +5601,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "ovhAccountId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.OvhAccount",
           "responseType": "billing.OvhAccount"
         },
         {
@@ -6015,21 +5623,18 @@ export const schema: Schema = {
               "dataType": "billing.OvhAccount",
               "description": "New object properties",
               "fullType": "billing.OvhAccount",
-              "name": null,
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "ovhAccountId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -6057,15 +5662,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "ovhAccountId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Order",
           "responseType": "billing.Order"
         }
       ],
@@ -6085,7 +5688,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "ovhAccountId",
               "paramType": "path",
@@ -6108,8 +5711,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -6129,7 +5730,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "movementId",
               "paramType": "path",
@@ -6137,15 +5738,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "ovhAccountId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Movement",
           "responseType": "billing.Movement"
         }
       ],
@@ -6181,15 +5780,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "ovhAccountId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Order",
           "responseType": "billing.Order"
         }
       ],
@@ -6224,8 +5821,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -6243,8 +5838,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "me.payment.method.AvailablePaymentMethod[]",
           "responseType": "me.payment.method.AvailablePaymentMethod[]"
         }
       ],
@@ -6279,8 +5872,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         },
         {
@@ -6341,8 +5932,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "me.payment.method.Register.ValidationResult",
           "responseType": "me.payment.method.Register.ValidationResult"
         }
       ],
@@ -6351,6 +5940,26 @@ export const schema: Schema = {
     {
       "description": "Manage payment method",
       "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Cancel one payment method",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Payment method ID",
+              "fullType": "long",
+              "name": "paymentMethodId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "me.payment.method.PaymentMethod"
+        },
         {
           "apiStatus": {
             "description": "Beta version",
@@ -6369,8 +5978,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "me.payment.method.PaymentMethod",
           "responseType": "me.payment.method.PaymentMethod"
         },
         {
@@ -6407,31 +6014,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.PaymentMethod",
           "responseType": "billing.PaymentMethod"
-        },
-        {
-          "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
-          },
-          "description": "Cancel one payment method",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Payment method ID",
-              "fullType": "long",
-              "name": "paymentMethodId",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "me.payment.method.PaymentMethod",
-          "responseType": "me.payment.method.PaymentMethod"
         }
       ],
       "path": "/me/payment/method/{paymentMethodId}"
@@ -6465,8 +6048,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "me.payment.method.PaymentMethod",
           "responseType": "me.payment.method.PaymentMethod"
         }
       ],
@@ -6525,8 +6106,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "me.payment.method.PaymentMethod",
           "responseType": "me.payment.method.PaymentMethod"
         }
       ],
@@ -6561,8 +6140,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -6589,8 +6166,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "me.payment.method.Transaction",
           "responseType": "me.payment.method.Transaction"
         }
       ],
@@ -6617,8 +6192,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         },
         {
@@ -6679,8 +6252,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.PaymentMeanValidation",
           "responseType": "billing.PaymentMeanValidation"
         }
       ],
@@ -6689,58 +6260,6 @@ export const schema: Schema = {
     {
       "description": "SEPA bank account info",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.BankAccount",
-          "responseType": "billing.BankAccount"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "billing.BankAccount",
-              "description": "New object properties",
-              "fullType": "billing.BankAccount",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -6759,8 +6278,53 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "billing.BankAccount"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "billing.BankAccount",
+              "description": "New object properties",
+              "fullType": "billing.BankAccount",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "responseType": "void"
         }
       ],
@@ -6795,8 +6359,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -6823,8 +6385,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -6842,8 +6402,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         },
         {
@@ -6880,8 +6438,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.PaymentMeanValidation",
           "responseType": "billing.PaymentMeanValidation"
         }
       ],
@@ -6890,58 +6446,6 @@ export const schema: Schema = {
     {
       "description": "Credit card informations",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.CreditCard",
-          "responseType": "billing.CreditCard"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "billing.CreditCard",
-              "description": "New object properties",
-              "fullType": "billing.CreditCard",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -6960,8 +6464,53 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "billing.CreditCard"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "billing.CreditCard",
+              "description": "New object properties",
+              "fullType": "billing.CreditCard",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "responseType": "void"
         }
       ],
@@ -6996,8 +6545,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -7024,8 +6571,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -7043,8 +6588,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -7064,15 +6607,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.DeferredPaymentAccount",
           "responseType": "billing.DeferredPaymentAccount"
         },
         {
@@ -7088,21 +6629,18 @@ export const schema: Schema = {
               "dataType": "billing.DeferredPaymentAccount",
               "description": "New object properties",
               "fullType": "billing.DeferredPaymentAccount",
-              "name": null,
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -7122,15 +6660,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -7148,8 +6684,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         },
         {
@@ -7186,8 +6720,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.PaymentMeanValidation",
           "responseType": "billing.PaymentMeanValidation"
         }
       ],
@@ -7196,58 +6728,6 @@ export const schema: Schema = {
     {
       "description": "Paypal account info",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Paypal",
-          "responseType": "billing.Paypal"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "billing.Paypal",
-              "description": "New object properties",
-              "fullType": "billing.Paypal",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Id of the object",
-              "fullType": "long",
-              "name": "id",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -7266,8 +6746,53 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "billing.Paypal"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "billing.Paypal",
+              "description": "New object properties",
+              "fullType": "billing.Paypal",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "responseType": "void"
         }
       ],
@@ -7302,8 +6827,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -7330,8 +6853,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -7382,8 +6903,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -7401,8 +6920,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -7429,8 +6946,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.SlaOperation",
           "responseType": "billing.SlaOperation"
         }
       ],
@@ -7457,8 +6972,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -7485,8 +6998,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "boolean",
           "responseType": "boolean"
         }
       ],
@@ -7513,8 +7024,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.SlaOperationService[]",
           "responseType": "billing.SlaOperationService[]"
         }
       ],
@@ -7541,8 +7050,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string",
           "responseType": "string"
         }
       ],
@@ -7560,8 +7067,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         },
         {
@@ -7590,8 +7095,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -7600,58 +7103,6 @@ export const schema: Schema = {
     {
       "description": "Customer public SSH key, can be used for rescue netboot or server access after reinstallation",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Name of this public SSH key",
-              "fullType": "string",
-              "name": "keyName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.sshKey",
-          "responseType": "nichandle.sshKey"
-        },
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Alter this object properties",
-          "httpMethod": "PUT",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "nichandle.sshKey",
-              "description": "New object properties",
-              "fullType": "nichandle.sshKey",
-              "name": null,
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Name of this public SSH key",
-              "fullType": "string",
-              "name": "keyName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "void",
-          "responseType": "void"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -7670,8 +7121,53 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of this public SSH key",
+              "fullType": "string",
+              "name": "keyName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "nichandle.sshKey"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.sshKey",
+              "description": "New object properties",
+              "fullType": "nichandle.sshKey",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Name of this public SSH key",
+              "fullType": "string",
+              "name": "keyName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
           "responseType": "void"
         }
       ],
@@ -7689,8 +7185,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         },
         {
@@ -7711,8 +7205,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long",
           "responseType": "long"
         }
       ],
@@ -7739,8 +7231,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.SubAccount",
           "responseType": "nichandle.SubAccount"
         },
         {
@@ -7756,7 +7246,6 @@ export const schema: Schema = {
               "dataType": "nichandle.SubAccount",
               "description": "New object properties",
               "fullType": "nichandle.SubAccount",
-              "name": null,
               "paramType": "body",
               "required": true
             },
@@ -7769,8 +7258,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -7797,8 +7284,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.SubAccountConsumerKey",
           "responseType": "nichandle.SubAccountConsumerKey"
         }
       ],
@@ -7816,8 +7301,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -7844,8 +7327,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.Subscription",
           "responseType": "nichandle.Subscription"
         },
         {
@@ -7861,7 +7342,6 @@ export const schema: Schema = {
               "dataType": "nichandle.Subscription",
               "description": "New object properties",
               "fullType": "nichandle.Subscription",
-              "name": null,
               "paramType": "body",
               "required": true
             },
@@ -7874,8 +7354,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -7918,8 +7396,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -7939,15 +7415,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.contactChange.Task",
           "responseType": "nichandle.contactChange.Task"
         }
       ],
@@ -7975,15 +7449,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -8011,15 +7483,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -8039,15 +7509,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -8090,8 +7558,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -8118,8 +7584,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.DomainTask",
           "responseType": "nichandle.DomainTask"
         }
       ],
@@ -8146,8 +7610,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -8174,8 +7636,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -8210,8 +7670,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.DomainTaskArgument",
           "responseType": "nichandle.DomainTaskArgument"
         },
         {
@@ -8227,7 +7685,6 @@ export const schema: Schema = {
               "dataType": "nichandle.DomainTaskArgument",
               "description": "New object properties",
               "fullType": "nichandle.DomainTaskArgument",
-              "name": null,
               "paramType": "body",
               "required": true
             },
@@ -8248,8 +7705,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -8276,8 +7731,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -8304,8 +7757,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.DomainTaskProgressBar",
           "responseType": "nichandle.DomainTaskProgressBar"
         }
       ],
@@ -8332,8 +7783,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -8360,8 +7809,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -8381,15 +7828,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.emailChange.Task",
           "responseType": "nichandle.emailChange.Task"
         }
       ],
@@ -8417,15 +7862,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -8453,15 +7896,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": null,
+              "description": "",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -8488,8 +7929,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "nichandle.VoucherStatus",
           "responseType": "nichandle.VoucherStatus"
         }
       ],
@@ -8532,8 +7971,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -8553,15 +7990,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "withdrawalId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Withdrawal",
           "responseType": "billing.Withdrawal"
         }
       ],
@@ -8581,15 +8016,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "withdrawalId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -8609,7 +8042,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "withdrawalDetailId",
               "paramType": "path",
@@ -8617,15 +8050,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "withdrawalId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.WithdrawalDetail",
           "responseType": "billing.WithdrawalDetail"
         }
       ],
@@ -8645,15 +8076,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "withdrawalId",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "billing.Payment",
           "responseType": "billing.Payment"
         }
       ],
@@ -8684,6 +8113,7 @@ export const schema: Schema = {
           "description": "Is this contract currently active or not ?",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "date": {
@@ -8691,6 +8121,7 @@ export const schema: Schema = {
           "description": "Date the contract was created on",
           "fullType": "date",
           "readOnly": true,
+          "required": false,
           "type": "date"
         },
         "name": {
@@ -8698,6 +8129,7 @@ export const schema: Schema = {
           "description": "Name of of the contract",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "pdf": {
@@ -8705,6 +8137,7 @@ export const schema: Schema = {
           "description": "URL you can download the contract at",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "text": {
@@ -8712,6 +8145,7 @@ export const schema: Schema = {
           "description": "Full text of the contract",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -8726,6 +8160,7 @@ export const schema: Schema = {
           "description": "State of the agreement",
           "fullType": "agreements.AgreementStateEnum",
           "readOnly": true,
+          "required": false,
           "type": "agreements.AgreementStateEnum"
         },
         "contractId": {
@@ -8733,6 +8168,7 @@ export const schema: Schema = {
           "description": "Id of the agreed contract",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "date": {
@@ -8740,6 +8176,7 @@ export const schema: Schema = {
           "description": "Date the agreed contract was effective",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -8747,6 +8184,7 @@ export const schema: Schema = {
           "description": "Id of the contract",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -8758,37 +8196,37 @@ export const schema: Schema = {
       "properties": {
         "applicationId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "applicationKey": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "description": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "name": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "status": {
           "canBeNull": false,
-          "description": null,
           "fullType": "api.ApplicationStatusEnum",
           "readOnly": true,
+          "required": false,
           "type": "api.ApplicationStatusEnum"
         }
       }
@@ -8815,41 +8253,42 @@ export const schema: Schema = {
           "description": "If defined, list of ip blocks which are allowed to call API with this credential",
           "fullType": "ipBlock[]",
           "readOnly": false,
+          "required": false,
           "type": "ipBlock[]"
         },
         "applicationId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "creation": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "credentialId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "expiration": {
           "canBeNull": true,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "lastUse": {
           "canBeNull": true,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "ovhSupport": {
@@ -8857,20 +8296,21 @@ export const schema: Schema = {
           "description": "States whether this credential has been created by yourself or by the OVH support team",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "rules": {
           "canBeNull": false,
-          "description": null,
           "fullType": "auth.AccessRule[]",
           "readOnly": true,
+          "required": false,
           "type": "auth.AccessRule[]"
         },
         "status": {
           "canBeNull": false,
-          "description": null,
           "fullType": "auth.CredentialStateEnum",
           "readOnly": true,
+          "required": false,
           "type": "auth.CredentialStateEnum"
         }
       }
@@ -8882,12 +8322,14 @@ export const schema: Schema = {
       "properties": {
         "method": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "http.MethodEnum"
         },
         "path": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -8922,21 +8364,29 @@ export const schema: Schema = {
         "bankAccount": {
           "canBeNull": false,
           "description": "Bank Account",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "creditCard": {
           "canBeNull": false,
           "description": "Credit Card",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "deferredPaymentAccount": {
           "canBeNull": false,
           "description": "Deferred invoice payment account for authorized customers",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "paypal": {
           "canBeNull": false,
           "description": "Paypal account",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -8948,23 +8398,23 @@ export const schema: Schema = {
       "properties": {
         "bic": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "creationDate": {
           "canBeNull": false,
-          "description": null,
           "fullType": "date",
           "readOnly": true,
+          "required": false,
           "type": "date"
         },
         "defaultPaymentMean": {
           "canBeNull": false,
-          "description": null,
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "description": {
@@ -8972,13 +8422,14 @@ export const schema: Schema = {
           "description": "Custom description of this account",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "iban": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "icon": {
@@ -8986,55 +8437,56 @@ export const schema: Schema = {
           "description": "Payment method type icon",
           "fullType": "billing.paymentMethod.IconData",
           "readOnly": true,
+          "required": false,
           "type": "billing.paymentMethod.IconData"
         },
         "id": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "mandateSignatureDate": {
           "canBeNull": true,
-          "description": null,
           "fullType": "date",
           "readOnly": true,
+          "required": false,
           "type": "date"
         },
         "ownerAddress": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "ownerName": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "state": {
           "canBeNull": false,
-          "description": null,
           "fullType": "billing.BankAccountStateEnum",
           "readOnly": true,
+          "required": false,
           "type": "billing.BankAccountStateEnum"
         },
         "uniqueReference": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "validationDocumentLink": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -9057,72 +8509,72 @@ export const schema: Schema = {
       "properties": {
         "billId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "category": {
           "canBeNull": false,
-          "description": null,
           "fullType": "billing.CategoryEnum",
           "readOnly": true,
+          "required": false,
           "type": "billing.CategoryEnum"
         },
         "date": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "orderId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "password": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "pdfUrl": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "priceWithTax": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "priceWithoutTax": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "tax": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "url": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -9134,58 +8586,58 @@ export const schema: Schema = {
       "properties": {
         "billDetailId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "description": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "domain": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "periodEnd": {
           "canBeNull": true,
-          "description": null,
           "fullType": "date",
           "readOnly": true,
+          "required": false,
           "type": "date"
         },
         "periodStart": {
           "canBeNull": true,
-          "description": null,
           "fullType": "date",
           "readOnly": true,
+          "required": false,
           "type": "date"
         },
         "quantity": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "totalPrice": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "unitPrice": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -9215,6 +8667,7 @@ export const schema: Schema = {
           "description": "Amount applied from the balance",
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "balanceName": {
@@ -9222,6 +8675,7 @@ export const schema: Schema = {
           "description": "Credit balance name",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -9233,9 +8687,9 @@ export const schema: Schema = {
       "properties": {
         "defaultPaymentMean": {
           "canBeNull": false,
-          "description": null,
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "description": {
@@ -9243,13 +8697,14 @@ export const schema: Schema = {
           "description": "Custom description of this account",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "expirationDate": {
           "canBeNull": false,
-          "description": null,
           "fullType": "date",
           "readOnly": true,
+          "required": false,
           "type": "date"
         },
         "icon": {
@@ -9257,27 +8712,28 @@ export const schema: Schema = {
           "description": "Payment method type icon",
           "fullType": "billing.paymentMethod.IconData",
           "readOnly": true,
+          "required": false,
           "type": "billing.paymentMethod.IconData"
         },
         "id": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "number": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "state": {
           "canBeNull": false,
-          "description": null,
           "fullType": "billing.CreditCardStateEnum",
           "readOnly": true,
+          "required": false,
           "type": "billing.CreditCardStateEnum"
         },
         "threeDsValidated": {
@@ -9285,13 +8741,14 @@ export const schema: Schema = {
           "description": "True if this credit card has been registered with a successful 3DSecure challenge",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "type": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -9314,16 +8771,16 @@ export const schema: Schema = {
       "properties": {
         "creationDate": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "defaultPaymentMean": {
           "canBeNull": false,
-          "description": null,
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "description": {
@@ -9331,6 +8788,7 @@ export const schema: Schema = {
           "description": "Custom description of this account",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "icon": {
@@ -9338,13 +8796,14 @@ export const schema: Schema = {
           "description": "Payment method type icon",
           "fullType": "billing.paymentMethod.IconData",
           "readOnly": true,
+          "required": false,
           "type": "billing.paymentMethod.IconData"
         },
         "id": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "label": {
@@ -9352,13 +8811,14 @@ export const schema: Schema = {
           "description": "Deferred account type",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "state": {
           "canBeNull": false,
-          "description": null,
           "fullType": "billing.DeferredPaymentAccountStatusEnum",
           "readOnly": true,
+          "required": false,
           "type": "billing.DeferredPaymentAccountStatusEnum"
         }
       }
@@ -9379,58 +8839,58 @@ export const schema: Schema = {
       "properties": {
         "amount": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "date": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "depositId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "orderId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "password": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "paymentInfo": {
           "canBeNull": true,
-          "description": null,
           "fullType": "debt.associatedObject.PaymentInfo",
           "readOnly": true,
+          "required": false,
           "type": "debt.associatedObject.PaymentInfo"
         },
         "pdfUrl": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "url": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -9442,44 +8902,44 @@ export const schema: Schema = {
       "properties": {
         "depositDetailId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "description": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "domain": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "quantity": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "totalPrice": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "unitPrice": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -9491,37 +8951,37 @@ export const schema: Schema = {
       "properties": {
         "alertThreshold": {
           "canBeNull": true,
-          "description": null,
           "fullType": "long",
           "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "balance": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "canBeCredited": {
           "canBeNull": false,
-          "description": null,
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "lastUpdate": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "openDate": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -9533,58 +8993,58 @@ export const schema: Schema = {
       "properties": {
         "amount": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "balance": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "date": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "movementId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "operation": {
           "canBeNull": false,
-          "description": null,
           "fullType": "billing.fidelityAccount.OperationEnum",
           "readOnly": true,
+          "required": false,
           "type": "billing.fidelityAccount.OperationEnum"
         },
         "order": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "previousBalance": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -9596,9 +9056,9 @@ export const schema: Schema = {
       "properties": {
         "order": {
           "canBeNull": false,
-          "description": null,
           "fullType": "billing.ItemDetail.Order",
           "readOnly": true,
+          "required": false,
           "type": "billing.ItemDetail.Order"
         }
       }
@@ -9611,16 +9071,22 @@ export const schema: Schema = {
         "action": {
           "canBeNull": true,
           "description": "The meaning of this order detail",
+          "readOnly": false,
+          "required": false,
           "type": "billing.ItemDetail.OrderActionEnum"
         },
         "configurations": {
           "canBeNull": false,
           "description": "Configurations chosen during the order",
+          "readOnly": false,
+          "required": false,
           "type": "billing.ItemDetail.OrderConfiguration[]"
         },
         "plan": {
           "canBeNull": false,
           "description": "Plan from /order/cart",
+          "readOnly": false,
+          "required": false,
           "type": "billing.ItemDetail.OrderPlan"
         }
       }
@@ -9645,11 +9111,15 @@ export const schema: Schema = {
         "label": {
           "canBeNull": false,
           "description": "Label of the configuration",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
           "description": "Value of the configuration",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -9662,26 +9132,36 @@ export const schema: Schema = {
         "code": {
           "canBeNull": true,
           "description": "Plan code used when ordering through /order/cart",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "duration": {
           "canBeNull": true,
           "description": "Duration chosen when ordering through /order/cart (ISO 8601)",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "pricingMode": {
           "canBeNull": true,
           "description": "Pricing mode used when ordering through /order/cart",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "product": {
           "canBeNull": false,
           "description": "Product from /order/cart",
+          "readOnly": false,
+          "required": false,
           "type": "billing.ItemDetail.OrderPlanProduct"
         },
         "quantity": {
           "canBeNull": true,
           "description": "Quantity ordered",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         }
       }
@@ -9694,6 +9174,8 @@ export const schema: Schema = {
         "name": {
           "canBeNull": true,
           "description": "Name of the product used when ordering through /order/cart",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -9705,58 +9187,58 @@ export const schema: Schema = {
       "properties": {
         "amount": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "balance": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "date": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "movementId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "operation": {
           "canBeNull": false,
-          "description": null,
           "fullType": "billing.ovhAccount.OperationEnum",
           "readOnly": true,
+          "required": false,
           "type": "billing.ovhAccount.OperationEnum"
         },
         "order": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "previousBalance": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -9768,72 +9250,72 @@ export const schema: Schema = {
       "properties": {
         "date": {
           "canBeNull": true,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "expirationDate": {
           "canBeNull": true,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "orderId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "password": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "pdfUrl": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "priceWithTax": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "priceWithoutTax": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "retractionDate": {
           "canBeNull": true,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "tax": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "url": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -9845,51 +9327,58 @@ export const schema: Schema = {
       "properties": {
         "cancelled": {
           "canBeNull": false,
-          "description": null,
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "description": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
+        },
+        "detailType": {
+          "canBeNull": true,
+          "fullType": "order.OrderDetailTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.OrderDetailTypeEnum"
         },
         "domain": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "orderDetailId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "quantity": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "totalPrice": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "unitPrice": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -9901,51 +9390,51 @@ export const schema: Schema = {
       "properties": {
         "alertThreshold": {
           "canBeNull": true,
-          "description": null,
           "fullType": "long",
           "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "balance": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "canBeCredited": {
           "canBeNull": false,
-          "description": null,
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "isActive": {
           "canBeNull": false,
-          "description": null,
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "lastUpdate": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "openDate": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "ovhAccountId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -9957,23 +9446,23 @@ export const schema: Schema = {
       "properties": {
         "paymentDate": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "paymentIdentifier": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "paymentType": {
           "canBeNull": false,
-          "description": null,
           "fullType": "billing.PaymentMeanEnum",
           "readOnly": true,
+          "required": false,
           "type": "billing.PaymentMeanEnum"
         }
       }
@@ -10017,22 +9506,26 @@ export const schema: Schema = {
       "properties": {
         "id": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "submitUrl": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "url": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "validationType": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "billing.PaymentMeanValidationType"
         }
       }
@@ -10056,46 +9549,64 @@ export const schema: Schema = {
         "billingContactId": {
           "canBeNull": false,
           "description": "Billing contact ID",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "creationDate": {
           "canBeNull": false,
           "description": "Creation date of the payment method",
+          "readOnly": false,
+          "required": false,
           "type": "date"
         },
         "default": {
           "canBeNull": true,
           "description": "Is this payment method set as the default one",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "description": {
           "canBeNull": false,
           "description": "Customer personalized description",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "id": {
           "canBeNull": false,
           "description": "Payment method id",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "paymentSubType": {
           "canBeNull": true,
           "description": "Payment sub type",
+          "readOnly": false,
+          "required": false,
           "type": "billing.paymentMethod.PaymentSubTypeEnum"
         },
         "paymentType": {
           "canBeNull": false,
           "description": "Payment type",
+          "readOnly": false,
+          "required": false,
           "type": "billing.paymentMethod.PaymentTypeEnum"
         },
         "publicLabel": {
           "canBeNull": false,
           "description": "Public payment method label",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "status": {
           "canBeNull": false,
           "description": "Payment method status enum",
+          "readOnly": false,
+          "required": false,
           "type": "billing.paymentMethod.StatusEnum"
         }
       }
@@ -10107,23 +9618,23 @@ export const schema: Schema = {
       "properties": {
         "agreementId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "creationDate": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "defaultPaymentMean": {
           "canBeNull": false,
-          "description": null,
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "description": {
@@ -10131,13 +9642,14 @@ export const schema: Schema = {
           "description": "Custom description of this account",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "email": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "icon": {
@@ -10145,20 +9657,21 @@ export const schema: Schema = {
           "description": "Payment method type icon",
           "fullType": "billing.paymentMethod.IconData",
           "readOnly": true,
+          "required": false,
           "type": "billing.paymentMethod.IconData"
         },
         "id": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "state": {
           "canBeNull": false,
-          "description": null,
           "fullType": "billing.PaypalStateEnum",
           "readOnly": true,
+          "required": false,
           "type": "billing.PaypalStateEnum"
         }
       }
@@ -10180,72 +9693,72 @@ export const schema: Schema = {
       "properties": {
         "date": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "orderId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "originalBillId": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "password": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "pdfUrl": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "priceWithTax": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "priceWithoutTax": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "refundId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "tax": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "url": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -10277,6 +9790,7 @@ export const schema: Schema = {
           "description": "Date of the event that led to SLA",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
@@ -10284,6 +9798,7 @@ export const schema: Schema = {
           "description": "Description of the SLA operation for this incident",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "endDate": {
@@ -10291,6 +9806,7 @@ export const schema: Schema = {
           "description": "Date of the end of the SLA",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -10298,6 +9814,7 @@ export const schema: Schema = {
           "description": "SLA identifier",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "name": {
@@ -10305,6 +9822,7 @@ export const schema: Schema = {
           "description": "Sla operation name",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "startDate": {
@@ -10312,6 +9830,7 @@ export const schema: Schema = {
           "description": "Date of the start of the SLA",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -10324,21 +9843,29 @@ export const schema: Schema = {
         "description": {
           "canBeNull": false,
           "description": "Service description",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "serviceName": {
           "canBeNull": false,
           "description": "Impacted service name",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "slaApplication": {
           "canBeNull": false,
           "description": "SLA plan application",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "slaPlan": {
           "canBeNull": false,
           "description": "SLA plan description",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -10350,30 +9877,30 @@ export const schema: Schema = {
       "properties": {
         "balance": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "lastUpdate": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "openDate": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "voucherAccountId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -10385,58 +9912,58 @@ export const schema: Schema = {
       "properties": {
         "amount": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "balance": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "date": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "movementId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "operation": {
           "canBeNull": false,
-          "description": null,
           "fullType": "billing.voucherAccount.OperationEnum",
           "readOnly": true,
+          "required": false,
           "type": "billing.voucherAccount.OperationEnum"
         },
         "order": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "previousBalance": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -10448,58 +9975,58 @@ export const schema: Schema = {
       "properties": {
         "amount": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "country": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "date": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "orderId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "password": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "pdfUrl": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "url": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "withdrawalId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -10511,44 +10038,44 @@ export const schema: Schema = {
       "properties": {
         "description": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "domain": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "quantity": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "totalPrice": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "unitPrice": {
           "canBeNull": false,
-          "description": null,
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "withdrawalDetailId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -10577,13 +10104,77 @@ export const schema: Schema = {
       "properties": {
         "id": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "type": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "billing.order.associatedObject.TypeEnum"
+        }
+      }
+    },
+    "billing.order.AvailablePaymentMean": {
+      "description": "All data needed to use a payment mean",
+      "id": "AvailablePaymentMean",
+      "namespace": "billing.order",
+      "properties": {
+        "fields": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "billing.order.AvailablePaymentMeanField[]"
+        },
+        "integration": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "billing.order.PaymentMeanIntegrationEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "billing.order.AvailablePaymentMeanField": {
+      "description": "All fields needed for a payment mean integration",
+      "id": "AvailablePaymentMeanField",
+      "namespace": "billing.order",
+      "properties": {
+        "key": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "options": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "type": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "billing.order.PaymentMeanFieldTypeEnum"
+        },
+        "value": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         }
       }
     },
@@ -10595,26 +10186,36 @@ export const schema: Schema = {
         "fileFormat": {
           "canBeNull": true,
           "description": "Format of the file",
+          "readOnly": false,
+          "required": false,
           "type": "consumption.ConsumptionExportFormatsEnum"
         },
         "fileURL": {
           "canBeNull": true,
           "description": "Temporary URL to download detailed consumption",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "message": {
           "canBeNull": true,
           "description": "Request's state description",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "taskId": {
           "canBeNull": false,
           "description": "Consumption details export task's identifier",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "taskStatus": {
           "canBeNull": false,
           "description": "Consumption details export task's status",
+          "readOnly": false,
+          "required": false,
           "type": "consumption.ConsumptionExportTaskStatusEnum"
         }
       }
@@ -10627,16 +10228,22 @@ export const schema: Schema = {
         "history": {
           "canBeNull": false,
           "description": "Step history of order follow-up",
+          "readOnly": false,
+          "required": false,
           "type": "billing.order.followUp.History[]"
         },
         "status": {
           "canBeNull": false,
           "description": "Step status of order follow-up",
+          "readOnly": false,
+          "required": false,
           "type": "billing.order.followUp.StatusEnum"
         },
         "step": {
           "canBeNull": false,
           "description": "Step of order follow-up",
+          "readOnly": false,
+          "required": false,
           "type": "billing.order.followUp.StepEnum"
         }
       }
@@ -10665,6 +10272,8 @@ export const schema: Schema = {
         "id": {
           "canBeNull": false,
           "description": "ID of payment method for pay this order",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         }
       }
@@ -10676,40 +10285,69 @@ export const schema: Schema = {
       "properties": {
         "fee": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "double"
         },
         "htmlForm": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "text"
         },
         "httpMethod": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "logo": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "parameters": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "billing.order.paymentMean.HttpParameter[]"
         },
         "subType": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "url": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
+    },
+    "billing.order.PaymentMeanFieldTypeEnum": {
+      "description": "Field type of a payment mean",
+      "enum": [
+        "hidden",
+        "select",
+        "text"
+      ],
+      "enumType": "string",
+      "id": "PaymentMeanFieldTypeEnum",
+      "namespace": "billing.order"
+    },
+    "billing.order.PaymentMeanIntegrationEnum": {
+      "description": "Integration payment mean type",
+      "enum": [
+        "GET_FORM",
+        "POST_FORM",
+        "REDIRECT"
+      ],
+      "enumType": "string",
+      "id": "PaymentMeanIntegrationEnum",
+      "namespace": "billing.order"
     },
     "billing.order.PaymentMeans": {
       "description": "TODO",
@@ -10718,42 +10356,50 @@ export const schema: Schema = {
       "properties": {
         "creditCard": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "billing.order.PaymentMean[]"
         },
         "edinar": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "billing.order.PaymentMean[]"
         },
         "fidelityPoints": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "billing.order.PaymentMean[]"
         },
         "ideal": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "billing.order.PaymentMean[]"
         },
         "multibanco": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "billing.order.PaymentMean[]"
         },
         "ovhAccount": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "billing.order.PaymentMean[]"
         },
         "paypal": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "billing.order.PaymentMean[]"
         },
         "promotion": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "billing.order.PaymentMean[]"
         }
       }
@@ -10766,11 +10412,15 @@ export const schema: Schema = {
         "available": {
           "canBeNull": false,
           "description": "Payment method available on this order",
+          "readOnly": false,
+          "required": false,
           "type": "payment.method.AvailablePaymentMethod[]"
         },
         "registered": {
           "canBeNull": false,
           "description": "IDs of registered payment method usable on this order",
+          "readOnly": false,
+          "required": false,
           "type": "long[]"
         }
       }
@@ -10782,7 +10432,8 @@ export const schema: Schema = {
       "properties": {
         "paymentMean": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "billing.ReusablePaymentMeanEnum"
         }
       }
@@ -10822,16 +10473,22 @@ export const schema: Schema = {
         "date": {
           "canBeNull": false,
           "description": "History date of order follow-up",
+          "readOnly": false,
+          "required": false,
           "type": "datetime"
         },
         "description": {
           "canBeNull": false,
           "description": "History description of order follow-up",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "label": {
           "canBeNull": false,
           "description": "History label of order follow-up",
+          "readOnly": false,
+          "required": false,
           "type": "billing.order.followUp.HistoryStatusEnum"
         }
       }
@@ -10888,17 +10545,20 @@ export const schema: Schema = {
       "properties": {
         "choice": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "billing.order.paymentMean.HttpParameterChoice[]"
         },
         "name": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -10910,12 +10570,14 @@ export const schema: Schema = {
       "properties": {
         "name": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -10943,11 +10605,15 @@ export const schema: Schema = {
         "data": {
           "canBeNull": true,
           "description": "Icon in base64",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "name": {
           "canBeNull": true,
           "description": "Icon name",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -11021,12 +10687,14 @@ export const schema: Schema = {
       "properties": {
         "key": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "T"
         }
       }
@@ -11041,12 +10709,14 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "T"
         }
       }
@@ -11082,6 +10752,7 @@ export const schema: Schema = {
           "description": "City",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "country": {
@@ -11089,6 +10760,7 @@ export const schema: Schema = {
           "description": "Country",
           "fullType": "nichandle.CountryEnum",
           "readOnly": false,
+          "required": false,
           "type": "nichandle.CountryEnum"
         },
         "line1": {
@@ -11096,6 +10768,7 @@ export const schema: Schema = {
           "description": "First line of the address",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "line2": {
@@ -11103,6 +10776,7 @@ export const schema: Schema = {
           "description": "Second line of the address",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "line3": {
@@ -11110,6 +10784,7 @@ export const schema: Schema = {
           "description": "Third line of the address",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "otherDetails": {
@@ -11117,6 +10792,7 @@ export const schema: Schema = {
           "description": "Others details",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "province": {
@@ -11124,6 +10800,7 @@ export const schema: Schema = {
           "description": "Province name",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "zip": {
@@ -11131,6 +10808,7 @@ export const schema: Schema = {
           "description": "Zipcode",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -11145,6 +10823,7 @@ export const schema: Schema = {
           "description": "Address for this contact",
           "fullType": "contact.Address",
           "readOnly": false,
+          "required": false,
           "type": "contact.Address"
         },
         "birthCity": {
@@ -11152,6 +10831,7 @@ export const schema: Schema = {
           "description": "Birth city",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "birthCountry": {
@@ -11159,6 +10839,7 @@ export const schema: Schema = {
           "description": "Birth Country",
           "fullType": "nichandle.CountryEnum",
           "readOnly": false,
+          "required": false,
           "type": "nichandle.CountryEnum"
         },
         "birthDay": {
@@ -11166,6 +10847,7 @@ export const schema: Schema = {
           "description": "Birth date",
           "fullType": "date",
           "readOnly": false,
+          "required": false,
           "type": "date"
         },
         "birthZip": {
@@ -11173,6 +10855,7 @@ export const schema: Schema = {
           "description": "Birth Zipcode",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "cellPhone": {
@@ -11180,6 +10863,7 @@ export const schema: Schema = {
           "description": "Cellphone number",
           "fullType": "phoneNumber",
           "readOnly": false,
+          "required": false,
           "type": "phoneNumber"
         },
         "companyNationalIdentificationNumber": {
@@ -11187,6 +10871,7 @@ export const schema: Schema = {
           "description": "National identification number of your company",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "email": {
@@ -11194,6 +10879,7 @@ export const schema: Schema = {
           "description": "Email address",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "fax": {
@@ -11201,6 +10887,7 @@ export const schema: Schema = {
           "description": "Fax number",
           "fullType": "phoneNumber",
           "readOnly": false,
+          "required": false,
           "type": "phoneNumber"
         },
         "firstName": {
@@ -11208,6 +10895,7 @@ export const schema: Schema = {
           "description": "First name",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "gender": {
@@ -11215,6 +10903,7 @@ export const schema: Schema = {
           "description": "Gender",
           "fullType": "nichandle.GenderEnum",
           "readOnly": false,
+          "required": false,
           "type": "nichandle.GenderEnum"
         },
         "id": {
@@ -11222,6 +10911,7 @@ export const schema: Schema = {
           "description": "Contact Identifier",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "language": {
@@ -11229,6 +10919,7 @@ export const schema: Schema = {
           "description": "Language",
           "fullType": "nichandle.LanguageEnum",
           "readOnly": false,
+          "required": false,
           "type": "nichandle.LanguageEnum"
         },
         "lastName": {
@@ -11236,6 +10927,7 @@ export const schema: Schema = {
           "description": "Last name",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "legalForm": {
@@ -11243,6 +10935,7 @@ export const schema: Schema = {
           "description": "Legal form of the contact",
           "fullType": "nichandle.LegalFormEnum",
           "readOnly": false,
+          "required": false,
           "type": "nichandle.LegalFormEnum"
         },
         "nationalIdentificationNumber": {
@@ -11250,6 +10943,7 @@ export const schema: Schema = {
           "description": "National identification number of the contact",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "nationality": {
@@ -11257,6 +10951,7 @@ export const schema: Schema = {
           "description": "Nationality",
           "fullType": "nichandle.CountryEnum",
           "readOnly": false,
+          "required": false,
           "type": "nichandle.CountryEnum"
         },
         "organisationName": {
@@ -11264,6 +10959,7 @@ export const schema: Schema = {
           "description": "Organisation name",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "organisationType": {
@@ -11271,6 +10967,7 @@ export const schema: Schema = {
           "description": "Organisation type",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "phone": {
@@ -11278,6 +10975,7 @@ export const schema: Schema = {
           "description": "Telephone number",
           "fullType": "phoneNumber",
           "readOnly": false,
+          "required": false,
           "type": "phoneNumber"
         },
         "spareEmail": {
@@ -11285,6 +10983,7 @@ export const schema: Schema = {
           "description": "Spare email address",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "vat": {
@@ -11292,6 +10991,7 @@ export const schema: Schema = {
           "description": "VAT number",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -11306,6 +11006,7 @@ export const schema: Schema = {
           "description": "Name of the field concerned by restrictions",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "mandatory": {
@@ -11313,6 +11014,7 @@ export const schema: Schema = {
           "description": "Indicates if the field is mandatory when editing",
           "fullType": "boolean",
           "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "readOnly": {
@@ -11320,6 +11022,7 @@ export const schema: Schema = {
           "description": "Indicates if the field can't be edited",
           "fullType": "boolean",
           "readOnly": false,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -11614,9 +11317,9 @@ export const schema: Schema = {
       "properties": {
         "active": {
           "canBeNull": false,
-          "description": null,
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "dueAmount": {
@@ -11624,6 +11327,7 @@ export const schema: Schema = {
           "description": "Amount of debts the account has",
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "pendingAmount": {
@@ -11631,6 +11335,7 @@ export const schema: Schema = {
           "description": "Amount currently being processed",
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "todoAmount": {
@@ -11638,6 +11343,7 @@ export const schema: Schema = {
           "description": "Reserved amount awaiting payment",
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "unmaturedAmount": {
@@ -11645,6 +11351,7 @@ export const schema: Schema = {
           "description": "Unmatured amount for deferred payment term",
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -11659,6 +11366,7 @@ export const schema: Schema = {
           "description": "Original amount of the debt",
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "date": {
@@ -11666,13 +11374,14 @@ export const schema: Schema = {
           "description": "Date the debt was created on",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "debtId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "dueAmount": {
@@ -11680,6 +11389,7 @@ export const schema: Schema = {
           "description": "Amount you still owe for that debt",
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "dueDate": {
@@ -11687,6 +11397,7 @@ export const schema: Schema = {
           "description": "If specified, the debt will not be recovered before that date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "orderId": {
@@ -11694,6 +11405,7 @@ export const schema: Schema = {
           "description": "The order the debt relates to",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "pendingAmount": {
@@ -11701,6 +11413,7 @@ export const schema: Schema = {
           "description": "Amount currently being processed",
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "status": {
@@ -11708,6 +11421,7 @@ export const schema: Schema = {
           "description": "Status of a debt",
           "fullType": "debt.entry.StatusDebtOrderEnum",
           "readOnly": true,
+          "required": false,
           "type": "debt.entry.StatusDebtOrderEnum"
         },
         "todoAmount": {
@@ -11715,6 +11429,7 @@ export const schema: Schema = {
           "description": "Reserved amount awaiting payment",
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "unmaturedAmount": {
@@ -11722,6 +11437,7 @@ export const schema: Schema = {
           "description": "Unmatured amount for deferred payment term",
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -11736,6 +11452,7 @@ export const schema: Schema = {
           "description": "Amount of the operation",
           "fullType": "order.Price",
           "readOnly": true,
+          "required": false,
           "type": "order.Price"
         },
         "date": {
@@ -11743,6 +11460,7 @@ export const schema: Schema = {
           "description": "Date the operation took place on",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "depositOrderId": {
@@ -11750,13 +11468,14 @@ export const schema: Schema = {
           "description": "Order id associated to the deposit",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "operationId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "status": {
@@ -11764,6 +11483,7 @@ export const schema: Schema = {
           "description": "Status of the operation",
           "fullType": "debt.entry.StatusEnum",
           "readOnly": true,
+          "required": false,
           "type": "debt.entry.StatusEnum"
         },
         "type": {
@@ -11771,6 +11491,7 @@ export const schema: Schema = {
           "description": "Type of movement this operation represents",
           "fullType": "debt.entry.OperationEnum",
           "readOnly": true,
+          "required": false,
           "type": "debt.entry.OperationEnum"
         }
       }
@@ -11783,16 +11504,22 @@ export const schema: Schema = {
         "description": {
           "canBeNull": true,
           "description": "Optional customer description",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "paymentType": {
           "canBeNull": false,
           "description": "Payment mean used for this debt operation",
+          "readOnly": false,
+          "required": false,
           "type": "billing.PaymentMeanEnum"
         },
         "publicLabel": {
           "canBeNull": true,
           "description": "Public payment mean label",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -11819,22 +11546,26 @@ export const schema: Schema = {
       "properties": {
         "id": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "paymentInfo": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "debt.associatedObject.PaymentInfo"
         },
         "subId": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "type": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "debt.associatedObject.TypeEnum"
         }
       }
@@ -11993,36 +11724,49 @@ export const schema: Schema = {
         "changeLog": {
           "canBeNull": true,
           "description": "Template change log details",
+          "readOnly": false,
+          "required": false,
           "type": "text"
         },
         "customHostname": {
           "canBeNull": true,
           "description": "Set up the server using the provided hostname instead of the default hostname",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "postInstallationScriptLink": {
           "canBeNull": true,
           "description": "Indicate the URL where your postinstall customisation script is located",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "postInstallationScriptReturn": {
           "canBeNull": true,
           "description": "indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is \"loh1Xee7eo OK OK OK UGh8Ang1Gu",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "rating": {
           "canBeNull": true,
-          "description": "",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "sshKeyName": {
           "canBeNull": true,
           "description": "Name of the ssh key that should be installed. Password login will be disabled",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "useDistributionKernel": {
           "canBeNull": true,
           "description": "Use the distribution's native kernel instead of the recommended OVH Kernel",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -12074,6 +11818,7 @@ export const schema: Schema = {
           "description": "list of all language available for this template",
           "fullType": "dedicated.TemplateOsLanguageEnum[]",
           "readOnly": true,
+          "required": false,
           "type": "dedicated.TemplateOsLanguageEnum[]"
         },
         "beta": {
@@ -12081,6 +11826,7 @@ export const schema: Schema = {
           "description": "This distribution is new, and although tested and functional, may still display odd behaviour",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "bitFormat": {
@@ -12088,6 +11834,7 @@ export const schema: Schema = {
           "description": "this template  bit format",
           "fullType": "dedicated.server.BitFormatEnum",
           "readOnly": true,
+          "required": false,
           "type": "dedicated.server.BitFormatEnum"
         },
         "category": {
@@ -12095,6 +11842,7 @@ export const schema: Schema = {
           "description": "category of this template (informative only)",
           "fullType": "dedicated.TemplateOsUsageEnum",
           "readOnly": true,
+          "required": false,
           "type": "dedicated.TemplateOsUsageEnum"
         },
         "customization": {
@@ -12102,6 +11850,7 @@ export const schema: Schema = {
           "description": "Customizable template properties ",
           "fullType": "dedicated.TemplateOsProperties",
           "readOnly": false,
+          "required": false,
           "type": "dedicated.TemplateOsProperties"
         },
         "defaultLanguage": {
@@ -12109,6 +11858,7 @@ export const schema: Schema = {
           "description": "the default language of this template",
           "fullType": "dedicated.TemplateOsLanguageEnum",
           "readOnly": false,
+          "required": false,
           "type": "dedicated.TemplateOsLanguageEnum"
         },
         "deprecated": {
@@ -12116,6 +11866,7 @@ export const schema: Schema = {
           "description": "is this distribution deprecated",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "description": {
@@ -12123,6 +11874,7 @@ export const schema: Schema = {
           "description": "information about this template",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "distribution": {
@@ -12130,6 +11882,7 @@ export const schema: Schema = {
           "description": "the distribution this template is based on",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "family": {
@@ -12137,6 +11890,7 @@ export const schema: Schema = {
           "description": "this template family type",
           "fullType": "dedicated.TemplateOsTypeEnum",
           "readOnly": true,
+          "required": false,
           "type": "dedicated.TemplateOsTypeEnum"
         },
         "filesystems": {
@@ -12144,6 +11898,7 @@ export const schema: Schema = {
           "description": "list of all filesystems  available for this template",
           "fullType": "dedicated.TemplateOsFileSystemEnum[]",
           "readOnly": true,
+          "required": false,
           "type": "dedicated.TemplateOsFileSystemEnum[]"
         },
         "hardRaidConfiguration": {
@@ -12151,6 +11906,7 @@ export const schema: Schema = {
           "description": "This distribution supports hardware raid configuration through the OVH API",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "lastModification": {
@@ -12158,6 +11914,7 @@ export const schema: Schema = {
           "description": "Date of last modification of the base image",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "lvmReady": {
@@ -12165,6 +11922,7 @@ export const schema: Schema = {
           "description": "This distribution supports Logical Volumes (Linux LVM)",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "supportsDistributionKernel": {
@@ -12172,6 +11930,7 @@ export const schema: Schema = {
           "description": "This distribution supports installation using the distribution's native kernel instead of the recommended OVH kernel",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "supportsGptLabel": {
@@ -12179,6 +11938,7 @@ export const schema: Schema = {
           "description": "This distribution supports the GUID Partition Table (GPT), providing up to 128 partitions that can have more than 2 TB",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "supportsRTM": {
@@ -12186,6 +11946,7 @@ export const schema: Schema = {
           "description": "This distribution supports RTM software",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "supportsSqlServer": {
@@ -12193,6 +11954,7 @@ export const schema: Schema = {
           "description": "This distribution supports the microsoft SQL server",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "supportsUEFI": {
@@ -12200,6 +11962,7 @@ export const schema: Schema = {
           "description": "This distribution supports UEFI setup",
           "fullType": "dedicated.server.SupportsUEFIEnum",
           "readOnly": true,
+          "required": false,
           "type": "dedicated.server.SupportsUEFIEnum"
         },
         "templateName": {
@@ -12207,6 +11970,7 @@ export const schema: Schema = {
           "description": "This template name",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -12221,6 +11985,7 @@ export const schema: Schema = {
           "description": "Disk list",
           "fullType": "string[]",
           "readOnly": false,
+          "required": false,
           "type": "string[]"
         },
         "mode": {
@@ -12228,6 +11993,7 @@ export const schema: Schema = {
           "description": "RAID mode",
           "fullType": "dedicated.TemplateOsHardwareRaidEnum",
           "readOnly": false,
+          "required": false,
           "type": "dedicated.TemplateOsHardwareRaidEnum"
         },
         "name": {
@@ -12235,6 +12001,7 @@ export const schema: Schema = {
           "description": "Hardware RAID name",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "step": {
@@ -12242,6 +12009,7 @@ export const schema: Schema = {
           "description": "Specifies the creation order of the hardware RAID",
           "fullType": "long",
           "readOnly": false,
+          "required": false,
           "type": "long"
         }
       }
@@ -12256,6 +12024,7 @@ export const schema: Schema = {
           "description": "name of this partitioning scheme",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "priority": {
@@ -12263,6 +12032,7 @@ export const schema: Schema = {
           "description": "on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications)",
           "fullType": "long",
           "readOnly": false,
+          "required": false,
           "type": "long"
         }
       }
@@ -12277,6 +12047,7 @@ export const schema: Schema = {
           "description": "Partition filesytem",
           "fullType": "dedicated.TemplateOsFileSystemEnum",
           "readOnly": false,
+          "required": false,
           "type": "dedicated.TemplateOsFileSystemEnum"
         },
         "mountpoint": {
@@ -12284,6 +12055,7 @@ export const schema: Schema = {
           "description": "partition mount point",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "order": {
@@ -12291,6 +12063,7 @@ export const schema: Schema = {
           "description": "specifies the creation order of the partition on the disk",
           "fullType": "long",
           "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "raid": {
@@ -12298,6 +12071,7 @@ export const schema: Schema = {
           "description": "raid partition type",
           "fullType": "dedicated.server.PartitionRaidEnum",
           "readOnly": false,
+          "required": false,
           "type": "dedicated.server.PartitionRaidEnum"
         },
         "size": {
@@ -12305,13 +12079,14 @@ export const schema: Schema = {
           "description": "size of partition in Mb, 0 => rest of the space",
           "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         },
         "type": {
           "canBeNull": false,
-          "description": null,
           "fullType": "dedicated.TemplatePartitionTypeEnum",
           "readOnly": false,
+          "required": false,
           "type": "dedicated.TemplatePartitionTypeEnum"
         },
         "volumeName": {
@@ -12319,6 +12094,7 @@ export const schema: Schema = {
           "description": "The volume name needed for proxmox distribution",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -12437,16 +12213,22 @@ export const schema: Schema = {
         "description": {
           "canBeNull": false,
           "description": "Description of the step",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "executionDuration": {
           "canBeNull": false,
           "description": "Execution time of the step",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "step": {
           "canBeNull": false,
           "description": "Name of the step",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -12461,6 +12243,7 @@ export const schema: Schema = {
           "description": "Continent",
           "fullType": "coreTypes.ContinentEnum",
           "readOnly": true,
+          "required": false,
           "type": "coreTypes.ContinentEnum"
         },
         "countryCode": {
@@ -12468,6 +12251,7 @@ export const schema: Schema = {
           "description": "Country iso code",
           "fullType": "coreTypes.CountryEnum",
           "readOnly": true,
+          "required": false,
           "type": "coreTypes.CountryEnum"
         },
         "ip": {
@@ -12475,6 +12259,7 @@ export const schema: Schema = {
           "description": "The IP address processed, the user's origin one",
           "fullType": "ip",
           "readOnly": true,
+          "required": false,
           "type": "ip"
         }
       }
@@ -12491,6 +12276,104 @@ export const schema: Schema = {
       "id": "MethodEnum",
       "namespace": "http"
     },
+    "me.Migration": {
+      "description": "Country Migration",
+      "id": "Migration",
+      "namespace": "me",
+      "properties": {
+        "from": {
+          "canBeNull": false,
+          "description": "Billing country to migrate from",
+          "fullType": "nichandle.OvhSubsidiaryEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "nichandle.OvhSubsidiaryEnum"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Migration Id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Migration status",
+          "fullType": "me.migration.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.migration.StatusEnum"
+        },
+        "steps": {
+          "canBeNull": true,
+          "description": "Migration steps",
+          "fullType": "me.migration.Step[]",
+          "readOnly": true,
+          "required": false,
+          "type": "me.migration.Step[]"
+        },
+        "to": {
+          "canBeNull": false,
+          "description": "Billing country to migrate to",
+          "fullType": "nichandle.OvhSubsidiaryEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "nichandle.OvhSubsidiaryEnum"
+        }
+      }
+    },
+    "me.agreements.AgreementStatusEnum": {
+      "description": "State of the agreement",
+      "enum": [
+        "obsolete",
+        "todo",
+        "ko",
+        "ok"
+      ],
+      "enumType": "string",
+      "id": "AgreementStatusEnum",
+      "namespace": "me.agreements"
+    },
+    "me.agreements.ContractAgreement": {
+      "description": "Contract Agreement",
+      "id": "ContractAgreement",
+      "namespace": "me.agreements",
+      "properties": {
+        "agreed": {
+          "canBeNull": false,
+          "description": "State of the agreement",
+          "fullType": "me.agreements.AgreementStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.agreements.AgreementStatusEnum"
+        },
+        "contractId": {
+          "canBeNull": false,
+          "description": "Contract ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "date": {
+          "canBeNull": false,
+          "description": "Date of creation if the agreement is not signed. Date of signature if the agreement is signed",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Contract Agreement ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "me.consent.Campaign": {
       "description": "Consent campaign",
       "id": "Campaign",
@@ -12501,6 +12384,7 @@ export const schema: Schema = {
           "description": "Campaign description",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -12508,6 +12392,7 @@ export const schema: Schema = {
           "description": "Campaign name",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "type": {
@@ -12515,6 +12400,7 @@ export const schema: Schema = {
           "description": "Campaign type",
           "fullType": "me.consent.CampaignTypeEnum",
           "readOnly": true,
+          "required": false,
           "type": "me.consent.CampaignTypeEnum"
         }
       }
@@ -12539,6 +12425,7 @@ export const schema: Schema = {
           "description": "Campaign name",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "history": {
@@ -12546,6 +12433,7 @@ export const schema: Schema = {
           "description": "Consent decisions history for this campaign",
           "fullType": "me.consent.Decision[]",
           "readOnly": true,
+          "required": false,
           "type": "me.consent.Decision[]"
         },
         "type": {
@@ -12553,6 +12441,7 @@ export const schema: Schema = {
           "description": "Campaign type",
           "fullType": "me.consent.CampaignTypeEnum",
           "readOnly": true,
+          "required": false,
           "type": "me.consent.CampaignTypeEnum"
         },
         "value": {
@@ -12560,6 +12449,7 @@ export const schema: Schema = {
           "description": "Current consent value",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -12574,6 +12464,7 @@ export const schema: Schema = {
           "description": "Consent decision datetime",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "value": {
@@ -12581,9 +12472,217 @@ export const schema: Schema = {
           "description": "Consent decision value",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         }
       }
+    },
+    "me.migration.Contract": {
+      "description": "contract",
+      "id": "Contract",
+      "namespace": "me.migration",
+      "properties": {
+        "active": {
+          "canBeNull": false,
+          "description": "Status",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "date": {
+          "canBeNull": false,
+          "description": "Date",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "pdf": {
+          "canBeNull": false,
+          "description": "PDF URL",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "text": {
+          "canBeNull": false,
+          "description": "Text of the contract",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "me.migration.StatusEnum": {
+      "description": "Status of the migration",
+      "enum": [
+        "CANCELED",
+        "CHECKED",
+        "DOING",
+        "MIGRATED",
+        "TO_CHECK",
+        "TODO"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "me.migration"
+    },
+    "me.migration.Step": {
+      "description": "Country Migration Step",
+      "id": "Step",
+      "namespace": "me.migration",
+      "properties": {
+        "contracts": {
+          "canBeNull": true,
+          "description": "Contracts data",
+          "fullType": "me.migration.step.Contracts",
+          "readOnly": true,
+          "required": false,
+          "type": "me.migration.step.Contracts"
+        },
+        "debt": {
+          "canBeNull": true,
+          "description": "Debt data",
+          "fullType": "me.migration.step.Debt",
+          "readOnly": true,
+          "required": false,
+          "type": "me.migration.step.Debt"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Migration step name",
+          "fullType": "me.migration.step.NameEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.migration.step.NameEnum"
+        },
+        "orders": {
+          "canBeNull": true,
+          "description": "Orders data",
+          "fullType": "me.migration.step.Orders",
+          "readOnly": true,
+          "required": false,
+          "type": "me.migration.step.Orders"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Billing step status",
+          "fullType": "me.migration.step.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.migration.step.StatusEnum"
+        }
+      }
+    },
+    "me.migration.step.Contracts": {
+      "description": "Country Migration step contracts data",
+      "id": "Contracts",
+      "namespace": "me.migration.step",
+      "properties": {
+        "agreements": {
+          "canBeNull": false,
+          "description": "Array of contract agreements to accept",
+          "fullType": "me.agreements.ContractAgreement[]",
+          "readOnly": true,
+          "required": false,
+          "type": "me.agreements.ContractAgreement[]"
+        }
+      }
+    },
+    "me.migration.step.Debt": {
+      "description": "Country Migration step debt data",
+      "id": "Debt",
+      "namespace": "me.migration.step",
+      "properties": {
+        "balanceAmount": {
+          "canBeNull": true,
+          "description": "Balance amount",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "ovhAccountAmount": {
+          "canBeNull": true,
+          "description": "OVH Account amount",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
+    },
+    "me.migration.step.NameEnum": {
+      "description": "Name of the migration step",
+      "enum": [
+        "ORDERS",
+        "DEBT",
+        "NIC",
+        "CONTRACTS"
+      ],
+      "enumType": "string",
+      "id": "NameEnum",
+      "namespace": "me.migration.step"
+    },
+    "me.migration.step.Orders": {
+      "description": "Country Migration step orders data",
+      "id": "Orders",
+      "namespace": "me.migration.step",
+      "properties": {
+        "pendingOperations": {
+          "canBeNull": false,
+          "description": "Whether there is pending operations",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "pendingPromotions": {
+          "canBeNull": false,
+          "description": "Whether there is pending promotions",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "pendingSubscriptions": {
+          "canBeNull": false,
+          "description": "Whether there is pending subscriptions",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "me.migration.step.StatusEnum": {
+      "description": "Status of the migration step",
+      "enum": [
+        "OK",
+        "PENDING"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "me.migration.step"
     },
     "me.payment.method.AvailablePaymentMethod": {
       "description": "Available payment method object",
@@ -12595,6 +12694,7 @@ export const schema: Schema = {
           "description": "Payment method type icon",
           "fullType": "me.payment.method.Icon",
           "readOnly": false,
+          "required": false,
           "type": "me.payment.method.Icon"
         },
         "integration": {
@@ -12602,6 +12702,7 @@ export const schema: Schema = {
           "description": "Payment method integration type",
           "fullType": "payment.method.IntegrationType",
           "readOnly": false,
+          "required": false,
           "type": "payment.method.IntegrationType"
         },
         "oneshot": {
@@ -12609,6 +12710,7 @@ export const schema: Schema = {
           "description": "Payment method type is possible to pay in oneshot mode ?",
           "fullType": "boolean",
           "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "paymentType": {
@@ -12616,6 +12718,7 @@ export const schema: Schema = {
           "description": "Payment method type",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "registerable": {
@@ -12623,6 +12726,7 @@ export const schema: Schema = {
           "description": "Payment method type is registerable ?",
           "fullType": "boolean",
           "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "registerableWithTransaction": {
@@ -12630,6 +12734,7 @@ export const schema: Schema = {
           "description": "Payment method type is registerable with the possibility to pay in same time an order ?",
           "fullType": "boolean",
           "readOnly": false,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -12644,6 +12749,7 @@ export const schema: Schema = {
           "description": "URL when customer cancels the action",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "error": {
@@ -12651,6 +12757,7 @@ export const schema: Schema = {
           "description": "URL when registration encounters an error",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "failure": {
@@ -12658,6 +12765,7 @@ export const schema: Schema = {
           "description": "URL when registration failed",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "pending": {
@@ -12665,6 +12773,7 @@ export const schema: Schema = {
           "description": "URL when payment method is in validation",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "success": {
@@ -12672,6 +12781,7 @@ export const schema: Schema = {
           "description": "URL when payment method registration success",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -12686,6 +12796,7 @@ export const schema: Schema = {
           "description": "Icon in base64",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -12693,6 +12804,7 @@ export const schema: Schema = {
           "description": "Icon name",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -12707,6 +12819,7 @@ export const schema: Schema = {
           "description": "Associated billing contact ID",
           "fullType": "long",
           "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "creationDate": {
@@ -12714,6 +12827,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": false,
+          "required": false,
           "type": "datetime"
         },
         "default": {
@@ -12721,6 +12835,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "boolean",
           "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "description": {
@@ -12728,6 +12843,7 @@ export const schema: Schema = {
           "description": "Custom customer description",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "expirationDate": {
@@ -12735,6 +12851,7 @@ export const schema: Schema = {
           "description": "Expiration date",
           "fullType": "datetime",
           "readOnly": false,
+          "required": false,
           "type": "datetime"
         },
         "icon": {
@@ -12742,6 +12859,7 @@ export const schema: Schema = {
           "description": "Payment method type icon",
           "fullType": "me.payment.method.Icon",
           "readOnly": false,
+          "required": false,
           "type": "me.payment.method.Icon"
         },
         "label": {
@@ -12749,6 +12867,7 @@ export const schema: Schema = {
           "description": "Payment method public label",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "lastUpdate": {
@@ -12756,6 +12875,7 @@ export const schema: Schema = {
           "description": "Last update date",
           "fullType": "datetime",
           "readOnly": false,
+          "required": false,
           "type": "datetime"
         },
         "paymentMeanId": {
@@ -12763,6 +12883,7 @@ export const schema: Schema = {
           "description": "Payment mean ID associated to this payment method",
           "fullType": "long",
           "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "paymentMethodId": {
@@ -12770,6 +12891,7 @@ export const schema: Schema = {
           "description": "Payment method ID",
           "fullType": "long",
           "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "paymentSubType": {
@@ -12777,6 +12899,7 @@ export const schema: Schema = {
           "description": "Payment method sub-type",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "paymentType": {
@@ -12784,6 +12907,7 @@ export const schema: Schema = {
           "description": "Payment method type",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -12791,6 +12915,7 @@ export const schema: Schema = {
           "description": "Payment method status",
           "fullType": "me.payment.method.PaymentMethod.Status",
           "readOnly": false,
+          "required": false,
           "type": "me.payment.method.PaymentMethod.Status"
         }
       }
@@ -12822,6 +12947,7 @@ export const schema: Schema = {
           "description": "Form session ID",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "merchantId": {
@@ -12829,6 +12955,7 @@ export const schema: Schema = {
           "description": "Merchant ID",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "organizationId": {
@@ -12836,6 +12963,7 @@ export const schema: Schema = {
           "description": "Organization ID",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "paymentMethodId": {
@@ -12843,6 +12971,7 @@ export const schema: Schema = {
           "description": "Register new payment method ID",
           "fullType": "long",
           "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "url": {
@@ -12850,6 +12979,7 @@ export const schema: Schema = {
           "description": "Register validation URL",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "validationType": {
@@ -12857,6 +12987,7 @@ export const schema: Schema = {
           "description": "Register validation type",
           "fullType": "payment.method.IntegrationType",
           "readOnly": false,
+          "required": false,
           "type": "payment.method.IntegrationType"
         }
       }
@@ -12871,6 +13002,7 @@ export const schema: Schema = {
           "description": "Transaction amount",
           "fullType": "order.Price",
           "readOnly": false,
+          "required": false,
           "type": "order.Price"
         },
         "creationDate": {
@@ -12878,6 +13010,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": false,
+          "required": false,
           "type": "datetime"
         },
         "status": {
@@ -12885,6 +13018,7 @@ export const schema: Schema = {
           "description": "Transaction status",
           "fullType": "me.payment.method.Transaction.Status",
           "readOnly": false,
+          "required": false,
           "type": "me.payment.method.Transaction.Status"
         },
         "transactionId": {
@@ -12892,6 +13026,7 @@ export const schema: Schema = {
           "description": "Transaction ID",
           "fullType": "long",
           "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "type": {
@@ -12899,6 +13034,7 @@ export const schema: Schema = {
           "description": "Transaction type",
           "fullType": "me.payment.method.Transaction.Type",
           "readOnly": false,
+          "required": false,
           "type": "me.payment.method.Transaction.Type"
         }
       }
@@ -12939,6 +13075,7 @@ export const schema: Schema = {
           "description": "Certificate's expiration",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "subject": {
@@ -12946,6 +13083,7 @@ export const schema: Schema = {
           "description": "Certificate's subject",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -12960,6 +13098,7 @@ export const schema: Schema = {
           "description": "Creation date of this group",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "defaultGroup": {
@@ -12967,6 +13106,7 @@ export const schema: Schema = {
           "description": "True if it is an default group. This kind of group can't be edited or deleted",
           "fullType": "boolean",
           "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "description": {
@@ -12974,6 +13114,7 @@ export const schema: Schema = {
           "description": "Group's description",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "lastUpdate": {
@@ -12981,6 +13122,7 @@ export const schema: Schema = {
           "description": "Last update of this group",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "name": {
@@ -12988,6 +13130,7 @@ export const schema: Schema = {
           "description": "Group's name",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "role": {
@@ -12995,6 +13138,7 @@ export const schema: Schema = {
           "description": "Group's role",
           "fullType": "nichandle.Authentication.RoleEnum",
           "readOnly": false,
+          "required": false,
           "type": "nichandle.Authentication.RoleEnum"
         }
       }
@@ -13009,6 +13153,7 @@ export const schema: Schema = {
           "description": "Creation date of the identity provider",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "groupAttributeName": {
@@ -13016,6 +13161,7 @@ export const schema: Schema = {
           "description": "SAML Group attribute name",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "idpSigningCertificate": {
@@ -13023,6 +13169,7 @@ export const schema: Schema = {
           "description": "IdP's signing certificate",
           "fullType": "nichandle.Authentication.Certificate",
           "readOnly": true,
+          "required": false,
           "type": "nichandle.Authentication.Certificate"
         },
         "lastUpdate": {
@@ -13030,6 +13177,7 @@ export const schema: Schema = {
           "description": "Last update of the identity provider",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "ssoServiceUrl": {
@@ -13037,6 +13185,7 @@ export const schema: Schema = {
           "description": "IdP's Single Sign On Service Url",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -13322,11 +13471,15 @@ export const schema: Schema = {
         "code": {
           "canBeNull": false,
           "description": "Currency code",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "symbol": {
           "canBeNull": false,
           "description": "Currency symbol",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -13341,6 +13494,7 @@ export const schema: Schema = {
           "description": "Allow login on your account on a development version of the Manager",
           "fullType": "boolean",
           "readOnly": false,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -13355,6 +13509,7 @@ export const schema: Schema = {
           "description": "Can accelerate the task",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "canCancel": {
@@ -13362,6 +13517,7 @@ export const schema: Schema = {
           "description": "Can cancel the task",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "canRelaunch": {
@@ -13369,6 +13525,7 @@ export const schema: Schema = {
           "description": "Can relaunch the task",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "comment": {
@@ -13376,6 +13533,7 @@ export const schema: Schema = {
           "description": "Comment about the task",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "creationDate": {
@@ -13383,6 +13541,7 @@ export const schema: Schema = {
           "description": "Creation date of the task",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "domain": {
@@ -13390,6 +13549,7 @@ export const schema: Schema = {
           "description": "Domain of the task",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "doneDate": {
@@ -13397,6 +13557,7 @@ export const schema: Schema = {
           "description": "Done date of the task",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "function": {
@@ -13404,6 +13565,7 @@ export const schema: Schema = {
           "description": "Function of the task",
           "fullType": "domain.NicOperationFunctionEnum",
           "readOnly": true,
+          "required": false,
           "type": "domain.NicOperationFunctionEnum"
         },
         "id": {
@@ -13411,6 +13573,7 @@ export const schema: Schema = {
           "description": "Id of the task",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "lastUpdate": {
@@ -13418,6 +13581,7 @@ export const schema: Schema = {
           "description": "Last update date of the task",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
@@ -13425,6 +13589,7 @@ export const schema: Schema = {
           "description": "Status of the task",
           "fullType": "domain.OperationStatusEnum",
           "readOnly": true,
+          "required": false,
           "type": "domain.OperationStatusEnum"
         },
         "todoDate": {
@@ -13432,6 +13597,7 @@ export const schema: Schema = {
           "description": "Todo date of the task",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -13446,6 +13612,7 @@ export const schema: Schema = {
           "description": "List of accepted formats",
           "fullType": "domain.DocumentFormatsEnum[]",
           "readOnly": true,
+          "required": false,
           "type": "domain.DocumentFormatsEnum[]"
         },
         "acceptedValues": {
@@ -13453,6 +13620,7 @@ export const schema: Schema = {
           "description": "List of accepted values",
           "fullType": "string[]",
           "readOnly": true,
+          "required": false,
           "type": "string[]"
         },
         "description": {
@@ -13460,6 +13628,7 @@ export const schema: Schema = {
           "description": "Description of the argument",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "fields": {
@@ -13467,6 +13636,7 @@ export const schema: Schema = {
           "description": "List of impacted field names",
           "fullType": "xander.ContactFieldEnum[]",
           "readOnly": true,
+          "required": false,
           "type": "xander.ContactFieldEnum[]"
         },
         "key": {
@@ -13474,6 +13644,7 @@ export const schema: Schema = {
           "description": "Key of the argument",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "maximumSize": {
@@ -13481,6 +13652,7 @@ export const schema: Schema = {
           "description": "Maximum of the content length that you can send",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "minimumSize": {
@@ -13488,6 +13660,7 @@ export const schema: Schema = {
           "description": "Minimum of the content length that you can send",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "readOnly": {
@@ -13495,6 +13668,7 @@ export const schema: Schema = {
           "description": "True if the argument is in read only",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "template": {
@@ -13502,6 +13676,7 @@ export const schema: Schema = {
           "description": "Template of the content",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "type": {
@@ -13509,6 +13684,7 @@ export const schema: Schema = {
           "description": "Type of the argument",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "value": {
@@ -13516,6 +13692,7 @@ export const schema: Schema = {
           "description": "Value of the argument",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -13530,6 +13707,7 @@ export const schema: Schema = {
           "description": "Current step of the operation",
           "fullType": "domain.OperationStep",
           "readOnly": true,
+          "required": false,
           "type": "domain.OperationStep"
         },
         "expectedDoneDate": {
@@ -13537,6 +13715,7 @@ export const schema: Schema = {
           "description": "The estimated end date of the task",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "followUpSteps": {
@@ -13544,6 +13723,7 @@ export const schema: Schema = {
           "description": "all the steps of operation",
           "fullType": "domain.OperationStep[]",
           "readOnly": true,
+          "required": false,
           "type": "domain.OperationStep[]"
         },
         "lastUpdateDate": {
@@ -13551,6 +13731,7 @@ export const schema: Schema = {
           "description": "The last update date of the task",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "progress": {
@@ -13558,6 +13739,7 @@ export const schema: Schema = {
           "description": "Progress percentage of the task",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "taskActions": {
@@ -13565,6 +13747,7 @@ export const schema: Schema = {
           "description": "Action possible on task",
           "fullType": "domain.OperationActionEnum[]",
           "readOnly": true,
+          "required": false,
           "type": "domain.OperationActionEnum[]"
         },
         "taskStatus": {
@@ -13572,6 +13755,7 @@ export const schema: Schema = {
           "description": "The status of the task",
           "fullType": "domain.OperationStatusEnum",
           "readOnly": true,
+          "required": false,
           "type": "domain.OperationStatusEnum"
         }
       }
@@ -13606,6 +13790,7 @@ export const schema: Schema = {
           "description": "The Id of the restriction",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "ip": {
@@ -13613,6 +13798,7 @@ export const schema: Schema = {
           "description": "An IP range where we will apply the rule",
           "fullType": "ipBlock",
           "readOnly": true,
+          "required": false,
           "type": "ipBlock"
         },
         "rule": {
@@ -13620,6 +13806,7 @@ export const schema: Schema = {
           "description": "Accept or deny IP access",
           "fullType": "nichandle.accessRestriction.IpRestrictionRuleEnum",
           "readOnly": false,
+          "required": false,
           "type": "nichandle.accessRestriction.IpRestrictionRuleEnum"
         },
         "warning": {
@@ -13627,6 +13814,7 @@ export const schema: Schema = {
           "description": "Send an email if someone try to access with this IP address",
           "fullType": "boolean",
           "readOnly": false,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -13641,6 +13829,7 @@ export const schema: Schema = {
           "description": "Accept or deny access",
           "fullType": "nichandle.accessRestriction.IpRestrictionRuleEnum",
           "readOnly": false,
+          "required": false,
           "type": "nichandle.accessRestriction.IpRestrictionRuleEnum"
         },
         "warning": {
@@ -13648,6 +13837,7 @@ export const schema: Schema = {
           "description": "Send an email if someone try to access",
           "fullType": "boolean",
           "readOnly": false,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -13659,79 +13849,79 @@ export const schema: Schema = {
       "properties": {
         "abuse_mailbox": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "address": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "city": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "country": {
           "canBeNull": false,
-          "description": null,
           "fullType": "nichandle.CountryEnum",
           "readOnly": false,
+          "required": false,
           "type": "nichandle.CountryEnum"
         },
         "firstname": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "lastname": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "organisationId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "phone": {
           "canBeNull": false,
-          "description": null,
           "fullType": "phoneNumber",
           "readOnly": false,
+          "required": false,
           "type": "phoneNumber"
         },
         "registry": {
           "canBeNull": false,
-          "description": null,
           "fullType": "nichandle.IpRegistryEnum",
           "readOnly": true,
+          "required": false,
           "type": "nichandle.IpRegistryEnum"
         },
         "state": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "zip": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -13787,6 +13977,7 @@ export const schema: Schema = {
           "description": "This preference key",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "value": {
@@ -13794,6 +13985,7 @@ export const schema: Schema = {
           "description": "This preference value",
           "fullType": "text",
           "readOnly": false,
+          "required": false,
           "type": "text"
         }
       }
@@ -13808,6 +14000,7 @@ export const schema: Schema = {
           "description": "Renewal active or not",
           "fullType": "boolean",
           "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "lastRenew": {
@@ -13815,6 +14008,7 @@ export const schema: Schema = {
           "description": "give the last renew",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "renewDay": {
@@ -13822,6 +14016,7 @@ export const schema: Schema = {
           "description": "give the renewal day",
           "fullType": "long",
           "readOnly": false,
+          "required": false,
           "type": "long"
         }
       }
@@ -13833,58 +14028,58 @@ export const schema: Schema = {
       "properties": {
         "address": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "area": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "birthCity": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "birthDay": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "city": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "companyNationalIdentificationNumber": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "corporationType": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "country": {
           "canBeNull": false,
-          "description": null,
           "fullType": "nichandle.CountryEnum",
           "readOnly": false,
+          "required": false,
           "type": "nichandle.CountryEnum"
         },
         "currency": {
@@ -13892,6 +14087,7 @@ export const schema: Schema = {
           "description": "Customer currency",
           "fullType": "nichandle.Currency",
           "readOnly": true,
+          "required": false,
           "type": "nichandle.Currency"
         },
         "customerCode": {
@@ -13899,139 +14095,140 @@ export const schema: Schema = {
           "description": "Your customer code (a numerical value used for identification when contacting support via phone call)",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "email": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "fax": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "firstname": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "italianSDI": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "language": {
           "canBeNull": true,
-          "description": null,
           "fullType": "nichandle.LanguageEnum",
           "readOnly": false,
+          "required": false,
           "type": "nichandle.LanguageEnum"
         },
         "legalform": {
           "canBeNull": false,
-          "description": null,
           "fullType": "nichandle.LegalFormEnum",
           "readOnly": false,
+          "required": false,
           "type": "nichandle.LegalFormEnum"
         },
         "name": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "nationalIdentificationNumber": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "nichandle": {
           "canBeNull": false,
-          "description": null,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "organisation": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "ovhCompany": {
           "canBeNull": false,
-          "description": null,
           "fullType": "nichandle.OvhCompanyEnum",
           "readOnly": true,
+          "required": false,
           "type": "nichandle.OvhCompanyEnum"
         },
         "ovhSubsidiary": {
           "canBeNull": false,
-          "description": null,
           "fullType": "nichandle.OvhSubsidiaryEnum",
           "readOnly": true,
+          "required": false,
           "type": "nichandle.OvhSubsidiaryEnum"
         },
         "phone": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "phoneCountry": {
           "canBeNull": true,
-          "description": null,
           "fullType": "nichandle.CountryEnum",
           "readOnly": false,
+          "required": false,
           "type": "nichandle.CountryEnum"
         },
         "sex": {
           "canBeNull": true,
-          "description": null,
           "fullType": "nichandle.GenderEnum",
           "readOnly": false,
+          "required": false,
           "type": "nichandle.GenderEnum"
         },
         "spareEmail": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "state": {
           "canBeNull": false,
-          "description": null,
           "fullType": "nichandle.StateEnum",
           "readOnly": true,
+          "required": false,
           "type": "nichandle.StateEnum"
         },
         "vat": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "zip": {
           "canBeNull": true,
-          "description": null,
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -14046,6 +14243,7 @@ export const schema: Schema = {
           "description": "Receive notification for abuse reports",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "creationDate": {
@@ -14053,6 +14251,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "phoneNumber": {
@@ -14060,6 +14259,7 @@ export const schema: Schema = {
           "description": "The phone number you want to receive notification on",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -14067,6 +14267,7 @@ export const schema: Schema = {
           "description": "Status of your notification",
           "fullType": "nichandle.NotificationStatusEnum",
           "readOnly": true,
+          "required": false,
           "type": "nichandle.NotificationStatusEnum"
         },
         "updateDate": {
@@ -14074,6 +14275,7 @@ export const schema: Schema = {
           "description": "Last update date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -14105,25 +14307,8 @@ export const schema: Schema = {
         "ASIA",
         "AU",
         "CA",
-        "CZ",
-        "DE",
-        "ES",
-        "EU",
-        "FI",
-        "FR",
-        "GB",
-        "IE",
-        "IT",
-        "LT",
-        "MA",
-        "NL",
-        "PL",
-        "PT",
         "QC",
         "SG",
-        "SN",
-        "TN",
-        "US",
         "WE",
         "WS"
       ],
@@ -14151,6 +14336,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
@@ -14158,6 +14344,7 @@ export const schema: Schema = {
           "description": "This sub-account description",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -14165,6 +14352,7 @@ export const schema: Schema = {
           "description": "This sub-account id",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         }
       }
@@ -14177,6 +14365,8 @@ export const schema: Schema = {
         "consumerKey": {
           "canBeNull": false,
           "description": "The consumer key",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -14191,6 +14381,7 @@ export const schema: Schema = {
           "description": "Determine whether you are registered or not",
           "fullType": "boolean",
           "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "type": {
@@ -14198,6 +14389,7 @@ export const schema: Schema = {
           "description": "The type of subscription",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -14212,6 +14404,7 @@ export const schema: Schema = {
           "description": "Creation date of this user",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
@@ -14219,6 +14412,7 @@ export const schema: Schema = {
           "description": "User's description",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "email": {
@@ -14226,6 +14420,7 @@ export const schema: Schema = {
           "description": "User's email",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "group": {
@@ -14233,6 +14428,7 @@ export const schema: Schema = {
           "description": "User's group",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "lastUpdate": {
@@ -14240,6 +14436,7 @@ export const schema: Schema = {
           "description": "Last update of this user",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "login": {
@@ -14247,6 +14444,7 @@ export const schema: Schema = {
           "description": "User's login suffix",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "passwordLastUpdate": {
@@ -14254,6 +14452,7 @@ export const schema: Schema = {
           "description": "When the user changed his password for the last time",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
@@ -14261,6 +14460,7 @@ export const schema: Schema = {
           "description": "Current user's status",
           "fullType": "nichandle.UserStatus",
           "readOnly": true,
+          "required": false,
           "type": "nichandle.UserStatus"
         }
       }
@@ -14284,6 +14484,8 @@ export const schema: Schema = {
         "validity": {
           "canBeNull": false,
           "description": "Is voucher valid",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -14308,6 +14510,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "lastUsedDate": {
@@ -14315,6 +14518,7 @@ export const schema: Schema = {
           "description": "Last used date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "remaining": {
@@ -14322,6 +14526,7 @@ export const schema: Schema = {
           "description": "Number of remaining codes",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "status": {
@@ -14329,6 +14534,7 @@ export const schema: Schema = {
           "description": "Status of this account",
           "fullType": "nichandle.accessRestriction.SOTPStatusEnum",
           "readOnly": true,
+          "required": false,
           "type": "nichandle.accessRestriction.SOTPStatusEnum"
         }
       }
@@ -14340,7 +14546,8 @@ export const schema: Schema = {
       "properties": {
         "codes": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string[]"
         }
       }
@@ -14364,7 +14571,8 @@ export const schema: Schema = {
       "properties": {
         "remainingCodes": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "long"
         }
       }
@@ -14379,6 +14587,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
@@ -14386,6 +14595,7 @@ export const schema: Schema = {
           "description": "Description of this phone",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -14393,6 +14603,7 @@ export const schema: Schema = {
           "description": "The Id of the restriction",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "lastUsedDate": {
@@ -14400,6 +14611,7 @@ export const schema: Schema = {
           "description": "Last used date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "phoneNumber": {
@@ -14407,6 +14619,7 @@ export const schema: Schema = {
           "description": "Associated phone number",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -14414,6 +14627,7 @@ export const schema: Schema = {
           "description": "Status of this account",
           "fullType": "nichandle.accessRestriction.SmsStatusEnum",
           "readOnly": true,
+          "required": false,
           "type": "nichandle.accessRestriction.SmsStatusEnum"
         }
       }
@@ -14425,7 +14639,8 @@ export const schema: Schema = {
       "properties": {
         "challenge": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -14437,12 +14652,14 @@ export const schema: Schema = {
       "properties": {
         "id": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "remainingTry": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "long"
         }
       }
@@ -14469,6 +14686,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
@@ -14476,6 +14694,7 @@ export const schema: Schema = {
           "description": "Description of this TOTP",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -14483,6 +14702,7 @@ export const schema: Schema = {
           "description": "The Id of the restriction",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "lastUsedDate": {
@@ -14490,6 +14710,7 @@ export const schema: Schema = {
           "description": "Last used date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
@@ -14497,6 +14718,7 @@ export const schema: Schema = {
           "description": "Status of this account",
           "fullType": "nichandle.accessRestriction.TOTPStatusEnum",
           "readOnly": true,
+          "required": false,
           "type": "nichandle.accessRestriction.TOTPStatusEnum"
         }
       }
@@ -14508,17 +14730,20 @@ export const schema: Schema = {
       "properties": {
         "id": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "qrcodeHelper": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "password"
         },
         "secret": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "password"
         }
       }
@@ -14545,6 +14770,7 @@ export const schema: Schema = {
           "description": "Creation date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "description": {
@@ -14552,6 +14778,7 @@ export const schema: Schema = {
           "description": "Description of this U2F key",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -14559,6 +14786,7 @@ export const schema: Schema = {
           "description": "The Id of the restriction",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "lastUsedDate": {
@@ -14566,6 +14794,7 @@ export const schema: Schema = {
           "description": "Last used date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "status": {
@@ -14573,6 +14802,7 @@ export const schema: Schema = {
           "description": "Status of this account",
           "fullType": "nichandle.accessRestriction.U2FStatusEnum",
           "readOnly": true,
+          "required": false,
           "type": "nichandle.accessRestriction.U2FStatusEnum"
         }
       }
@@ -14584,17 +14814,20 @@ export const schema: Schema = {
       "properties": {
         "applicationId": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "id": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "request": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.accessRestriction.U2FRegistrationRequest"
         }
       }
@@ -14606,12 +14839,14 @@ export const schema: Schema = {
       "properties": {
         "challenge": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "version": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -14623,12 +14858,14 @@ export const schema: Schema = {
       "properties": {
         "applicationId": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "request": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "nichandle.accessRestriction.U2FSignRequest"
         }
       }
@@ -14640,17 +14877,20 @@ export const schema: Schema = {
       "properties": {
         "challenge": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "keyHandle": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "version": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -14716,6 +14956,7 @@ export const schema: Schema = {
           "description": "Account who asked the contact change",
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "contactTypes": {
@@ -14723,6 +14964,7 @@ export const schema: Schema = {
           "description": "Contacts to be changed",
           "fullType": "nichandle.changeContact.ContactTypeEnum[]",
           "readOnly": true,
+          "required": false,
           "type": "nichandle.changeContact.ContactTypeEnum[]"
         },
         "dateDone": {
@@ -14730,6 +14972,7 @@ export const schema: Schema = {
           "description": "Date at which the contact change has been finished",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "dateRequest": {
@@ -14737,6 +14980,7 @@ export const schema: Schema = {
           "description": "Date at which the request has been made",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "fromAccount": {
@@ -14744,13 +14988,14 @@ export const schema: Schema = {
           "description": "Account to change contact from",
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "id": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "serviceDomain": {
@@ -14758,6 +15003,7 @@ export const schema: Schema = {
           "description": "The service on which the task runs",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "state": {
@@ -14765,6 +15011,7 @@ export const schema: Schema = {
           "description": "Current state of the request",
           "fullType": "nichandle.changeContact.TaskStateEnum",
           "readOnly": true,
+          "required": false,
           "type": "nichandle.changeContact.TaskStateEnum"
         },
         "toAccount": {
@@ -14772,6 +15019,7 @@ export const schema: Schema = {
           "description": "Account to change contact to",
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -14786,6 +15034,7 @@ export const schema: Schema = {
           "description": "Document creation",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "expirationDate": {
@@ -14793,6 +15042,7 @@ export const schema: Schema = {
           "description": "Document expiration",
           "fullType": "datetime",
           "readOnly": false,
+          "required": false,
           "type": "datetime"
         },
         "getUrl": {
@@ -14800,6 +15050,7 @@ export const schema: Schema = {
           "description": "URL used to get document",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "id": {
@@ -14807,6 +15058,7 @@ export const schema: Schema = {
           "description": "Document id",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "name": {
@@ -14814,6 +15066,7 @@ export const schema: Schema = {
           "description": "Document name",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "putUrl": {
@@ -14821,6 +15074,7 @@ export const schema: Schema = {
           "description": "URL used to put document",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "size": {
@@ -14828,6 +15082,7 @@ export const schema: Schema = {
           "description": "Document size (in bytes)",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "tags": {
@@ -14835,6 +15090,7 @@ export const schema: Schema = {
           "description": "Document tags",
           "fullType": "complexType.SafeKeyValue<string>[]",
           "readOnly": true,
+          "required": false,
           "type": "complexType.SafeKeyValue<string>[]"
         },
         "validationDate": {
@@ -14842,6 +15098,7 @@ export const schema: Schema = {
           "description": "Document validation",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -14856,6 +15113,7 @@ export const schema: Schema = {
           "description": "End date of that request",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "dateRequest": {
@@ -14863,13 +15121,14 @@ export const schema: Schema = {
           "description": "Creation date of that request",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "newEmail": {
@@ -14877,6 +15136,7 @@ export const schema: Schema = {
           "description": "The email address to change for",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "state": {
@@ -14884,6 +15144,7 @@ export const schema: Schema = {
           "description": "Current state of the request",
           "fullType": "nichandle.changeEmail.TaskStateEnum",
           "readOnly": true,
+          "required": false,
           "type": "nichandle.changeEmail.TaskStateEnum"
         }
       }
@@ -14898,6 +15159,7 @@ export const schema: Schema = {
           "description": "This email body",
           "fullType": "text",
           "readOnly": true,
+          "required": false,
           "type": "text"
         },
         "date": {
@@ -14905,6 +15167,7 @@ export const schema: Schema = {
           "description": "This email date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "id": {
@@ -14912,6 +15175,7 @@ export const schema: Schema = {
           "description": "This email Id",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "subject": {
@@ -14919,6 +15183,7 @@ export const schema: Schema = {
           "description": "This email subject",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -14933,6 +15198,7 @@ export const schema: Schema = {
           "description": "Name of this script",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "script": {
@@ -14940,6 +15206,7 @@ export const schema: Schema = {
           "description": "Content of your IPXE script",
           "fullType": "text",
           "readOnly": true,
+          "required": false,
           "type": "text"
         }
       }
@@ -14954,6 +15221,7 @@ export const schema: Schema = {
           "description": "True when this public SSH key is used for rescue mode and reinstallations",
           "fullType": "boolean",
           "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "key": {
@@ -14961,6 +15229,7 @@ export const schema: Schema = {
           "description": "ASCII encoded public SSH key",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "keyName": {
@@ -14968,12 +15237,13 @@ export const schema: Schema = {
           "description": "Name of this public SSH key",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
     },
     "order.CurrencyCodeEnum": {
-      "description": "",
+      "description": "Currency code",
       "enum": [
         "AUD",
         "CAD",
@@ -14994,24 +15264,61 @@ export const schema: Schema = {
       "id": "CurrencyCodeEnum",
       "namespace": "order"
     },
+    "order.OrderDetailTypeEnum": {
+      "description": "Product type of item in order",
+      "enum": [
+        "ACCESSORY",
+        "CAUTION",
+        "CHOOSED",
+        "CONSUMPTION",
+        "CREATION",
+        "DELIVERY",
+        "DURATION",
+        "GIFT",
+        "INSTALLATION",
+        "LICENSE",
+        "MUTE",
+        "OTHER",
+        "OUTPLAN",
+        "QUANTITY",
+        "REFUND",
+        "RENEW",
+        "SPECIAL",
+        "SWITCH",
+        "TRANSFER",
+        "VOUCHER"
+      ],
+      "enumType": "string",
+      "id": "OrderDetailTypeEnum",
+      "namespace": "order"
+    },
     "order.Price": {
-      "description": "Price with it's currency and textual representation",
+      "description": "Price with its currency and textual representation",
       "id": "Price",
       "namespace": "order",
       "properties": {
         "currencyCode": {
           "canBeNull": false,
-          "description": null,
+          "description": "Currency code",
+          "fullType": "order.CurrencyCodeEnum",
+          "readOnly": true,
+          "required": false,
           "type": "order.CurrencyCodeEnum"
         },
         "text": {
           "canBeNull": false,
-          "description": null,
+          "description": "Textual representation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "description": null,
+          "description": "The effective price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
           "type": "double"
         }
       }
@@ -15024,31 +15331,43 @@ export const schema: Schema = {
         "icon": {
           "canBeNull": false,
           "description": "Payment method type icon",
+          "readOnly": false,
+          "required": false,
           "type": "payment.method.Icon"
         },
         "integration": {
           "canBeNull": false,
           "description": "Graphical payment integration to use",
+          "readOnly": false,
+          "required": false,
           "type": "payment.method.IntegrationType"
         },
         "oneshot": {
           "canBeNull": false,
           "description": "Payment method type is possible to pay in oneshot mode ?",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "paymentType": {
           "canBeNull": false,
           "description": "Payment method type",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "registerable": {
           "canBeNull": false,
           "description": "Payment method type is registerable ?",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "registerableWithTransaction": {
           "canBeNull": false,
           "description": "Payment method type is registerable with the possibility to pay in same time an order ?",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -15061,11 +15380,15 @@ export const schema: Schema = {
         "data": {
           "canBeNull": true,
           "description": "Icon data in base64",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "name": {
           "canBeNull": true,
           "description": "Icon name",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }

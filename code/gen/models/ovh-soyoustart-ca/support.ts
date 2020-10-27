@@ -90,8 +90,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -118,8 +116,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "support.Ticket",
           "responseType": "support.Ticket"
         }
       ],
@@ -146,8 +142,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "boolean",
           "responseType": "boolean"
         }
       ],
@@ -174,8 +168,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -202,8 +194,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "support.Message[]",
           "responseType": "support.Message[]"
         }
       ],
@@ -238,8 +228,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -274,8 +262,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -318,8 +304,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -394,8 +378,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "support.NewMessageInfo",
           "responseType": "support.NewMessageInfo"
         }
       ],
@@ -412,31 +394,43 @@ export const schema: Schema = {
         "body": {
           "canBeNull": false,
           "description": "Message body",
+          "readOnly": false,
+          "required": false,
           "type": "text"
         },
         "creationDate": {
           "canBeNull": false,
           "description": "Message creation date",
+          "readOnly": false,
+          "required": false,
           "type": "datetime"
         },
         "from": {
           "canBeNull": false,
           "description": "Message sender type",
+          "readOnly": false,
+          "required": false,
           "type": "support.MessageSenderEnum"
         },
         "messageId": {
           "canBeNull": false,
           "description": "Message identifier",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "ticketId": {
           "canBeNull": false,
           "description": "Ticket identifier",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "updateDate": {
           "canBeNull": false,
           "description": "Message last update date",
+          "readOnly": false,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -459,16 +453,22 @@ export const schema: Schema = {
         "messageId": {
           "canBeNull": false,
           "description": "Message identifier",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "ticketId": {
           "canBeNull": false,
           "description": "Ticket identifier",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "ticketNumber": {
           "canBeNull": false,
           "description": "Ticket external number",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         }
       }
@@ -481,71 +481,99 @@ export const schema: Schema = {
         "accountId": {
           "canBeNull": false,
           "description": "Customer account identifier",
+          "readOnly": false,
+          "required": false,
           "type": "coreTypes.AccountId:string"
         },
         "canBeClosed": {
           "canBeNull": false,
           "description": "Can this ticket be closed or not",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "category": {
           "canBeNull": true,
           "description": "Ticket request category",
+          "readOnly": false,
+          "required": false,
           "type": "support.TicketCategoryEnum"
         },
         "creationDate": {
           "canBeNull": false,
           "description": "Ticket creation date",
+          "readOnly": false,
+          "required": false,
           "type": "datetime"
         },
         "lastMessageFrom": {
           "canBeNull": false,
           "description": "Sender type of last message",
+          "readOnly": false,
+          "required": false,
           "type": "support.MessageSenderEnum"
         },
         "product": {
           "canBeNull": true,
           "description": "Product service concerned by ticket",
+          "readOnly": false,
+          "required": false,
           "type": "support.TicketProductEnum"
         },
         "score": {
           "canBeNull": false,
           "description": "Ticket score",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "serviceName": {
           "canBeNull": true,
           "description": "Name of service concerned by ticket",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "state": {
           "canBeNull": false,
           "description": "State of ticket",
+          "readOnly": false,
+          "required": false,
           "type": "support.TicketStatusEnum"
         },
         "subject": {
           "canBeNull": false,
           "description": "Ticket subject",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "ticketId": {
           "canBeNull": false,
           "description": "Ticket identifier",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "ticketNumber": {
           "canBeNull": false,
           "description": "Ticket external number",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "type": {
           "canBeNull": false,
           "description": "Ticket type",
+          "readOnly": false,
+          "required": false,
           "type": "support.TicketTypeEnum"
         },
         "updateDate": {
           "canBeNull": false,
           "description": "Ticket last update date",
+          "readOnly": false,
+          "required": false,
           "type": "datetime"
         }
       }

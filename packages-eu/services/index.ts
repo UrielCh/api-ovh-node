@@ -290,6 +290,111 @@ export namespace services {
             route?: services.expanded.Route;
             serviceId: number;
         }
+        /**
+         * Technical information of a baremetal service
+         * interface fullName: services.expanded.TechnicalDetails.TechnicalDetails
+         */
+        export interface TechnicalDetails {
+            baremetalServers?: services.expanded.technical.BaremetalServer;
+        }
+        export namespace technical {
+            /**
+             * Technical information on baremetal service
+             * interface fullName: services.expanded.technical.BaremetalServer.BaremetalServer
+             */
+            export interface BaremetalServer {
+                bandwidth?: services.expanded.technical.baremetalServer.Bandwidth;
+                memory?: services.expanded.technical.baremetalServer.Memory;
+                server?: services.expanded.technical.baremetalServer.Server;
+                storage?: services.expanded.technical.baremetalServer.Storage;
+                vrack?: services.expanded.technical.baremetalServer.Vrack;
+            }
+            export namespace baremetalServer {
+                /**
+                 * Technical information on bandwidth of a baremetal service
+                 * interface fullName: services.expanded.technical.baremetalServer.Bandwidth.Bandwidth
+                 */
+                export interface Bandwidth {
+                    burst: number;
+                    guaranteed: boolean;
+                    level: number;
+                    limit: number;
+                }
+                /**
+                 * Technical information on memory of a baremetal service
+                 * interface fullName: services.expanded.technical.baremetalServer.Memory.Memory
+                 */
+                export interface Memory {
+                    ecc: boolean;
+                    frequency: number;
+                    ramType: string;
+                    size: number;
+                }
+                /**
+                 * Technical information of a baremetal server service
+                 * interface fullName: services.expanded.technical.baremetalServer.Server.Server
+                 */
+                export interface Server {
+                    cpu: services.expanded.technical.baremetalServer.server.Cpu;
+                    frame: services.expanded.technical.baremetalServer.server.Frame;
+                    range: string;
+                }
+                /**
+                 * Technical information of storage of a baremetal service
+                 * interface fullName: services.expanded.technical.baremetalServer.Storage.Storage
+                 */
+                export interface Storage {
+                    disks: services.expanded.technical.baremetalServer.storage.Disk[];
+                    raid: string;
+                }
+                /**
+                 * Technical information of vrack of a baremetal service
+                 * interface fullName: services.expanded.technical.baremetalServer.Vrack.Vrack
+                 */
+                export interface Vrack {
+                    burst: number;
+                    guaranteed: boolean;
+                    level: number;
+                    limit: number;
+                }
+                export namespace server {
+                    /**
+                     * Technical information on cpu of a baremetal server service
+                     * interface fullName: services.expanded.technical.baremetalServer.server.Cpu.Cpu
+                     */
+                    export interface Cpu {
+                        boost: number;
+                        brand: string;
+                        cores: number;
+                        frequency: number;
+                        model: string;
+                        score: number;
+                        threads: number;
+                    }
+                    /**
+                     * Technical information on frame of a baremetal server service
+                     * interface fullName: services.expanded.technical.baremetalServer.server.Frame.Frame
+                     */
+                    export interface Frame {
+                        model: string;
+                        size: string;
+                    }
+                }
+                export namespace storage {
+                    /**
+                     * Technical information of storage disk of a baremetal service
+                     * interface fullName: services.expanded.technical.baremetalServer.storage.Disk.Disk
+                     */
+                    export interface Disk {
+                        capacity: number;
+                        interface: string;
+                        number: number;
+                        specs: string;
+                        technology: string;
+                    }
+                }
+            }
+        }
     }
     export namespace form {
         /**

@@ -34,8 +34,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "auth.Credential",
           "responseType": "auth.Credential"
         }
       ],
@@ -53,8 +51,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "api.Credential",
           "responseType": "api.Credential"
         }
       ],
@@ -72,8 +68,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "auth.Details",
           "responseType": "auth.Details"
         }
       ],
@@ -91,8 +85,6 @@ export const schema: Schema = {
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -110,8 +102,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "long",
           "responseType": "long"
         }
       ],
@@ -130,41 +120,42 @@ export const schema: Schema = {
           "description": "If defined, list of ip blocks which are allowed to call API with this credential",
           "fullType": "ipBlock[]",
           "readOnly": false,
+          "required": false,
           "type": "ipBlock[]"
         },
         "applicationId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "creation": {
           "canBeNull": false,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "credentialId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "expiration": {
           "canBeNull": true,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "lastUse": {
           "canBeNull": true,
-          "description": null,
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "ovhSupport": {
@@ -172,20 +163,21 @@ export const schema: Schema = {
           "description": "States whether this credential has been created by yourself or by the OVH support team",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "rules": {
           "canBeNull": false,
-          "description": null,
           "fullType": "auth.AccessRule[]",
           "readOnly": true,
+          "required": false,
           "type": "auth.AccessRule[]"
         },
         "status": {
           "canBeNull": false,
-          "description": null,
           "fullType": "auth.CredentialStateEnum",
           "readOnly": true,
+          "required": false,
           "type": "auth.CredentialStateEnum"
         }
       }
@@ -197,12 +189,14 @@ export const schema: Schema = {
       "properties": {
         "method": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "http.MethodEnum"
         },
         "path": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -214,17 +208,20 @@ export const schema: Schema = {
       "properties": {
         "consumerKey": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "state": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "auth.CredentialStateEnum"
         },
         "validationUrl": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -249,21 +246,29 @@ export const schema: Schema = {
         "description": {
           "canBeNull": true,
           "description": "Description",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "method": {
           "canBeNull": false,
           "description": "Authentication method",
+          "readOnly": false,
+          "required": false,
           "type": "auth.MethodEnum"
         },
         "roles": {
           "canBeNull": true,
           "description": "Roles",
+          "readOnly": false,
+          "required": false,
           "type": "string[]"
         },
         "user": {
           "canBeNull": true,
           "description": "Username",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }

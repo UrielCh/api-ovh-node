@@ -7577,6 +7577,32 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve OVH Cloud Connect catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/ovhCloudConnect"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
@@ -19894,6 +19920,7 @@ export const schema: Schema = {
         "PERFORMANCE_3",
         "PERFORMANCE_4",
         "PERSO",
+        "POWER_BETA_1",
         "PRO",
         "START"
       ],
@@ -23333,6 +23360,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "managementFees": {
+          "canBeNull": true,
+          "description": "Describes the management cost of a range of Dedicated Cloud",
+          "fullType": "order.catalog.pcc.managementFees[]",
+          "readOnly": false,
+          "required": false,
+          "type": "order.catalog.pcc.managementFees[]"
+        },
         "orderable": {
           "canBeNull": false,
           "description": "Describes if a Private Cloud can be ordered on a Datacenter",
@@ -23825,6 +23860,29 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "order.catalog.pcc.managementFees": {
+      "description": "Describes the management cost of a range of Dedicated Cloud",
+      "id": "managementFees",
+      "namespace": "order.catalog.pcc",
+      "properties": {
+        "planCode": {
+          "canBeNull": false,
+          "description": "Plan Code",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "upgradableTo": {
+          "canBeNull": false,
+          "description": "List of available range upgrades",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
         }
       }
     },

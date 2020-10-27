@@ -1271,6 +1271,32 @@ export namespace cloud {
          * type fullname: cloud.order.StatusEnum
          */
         export type StatusEnum = "unpaid" | "delivering" | "delivered" | "unknown"
+        export namespace rule {
+            /**
+             * Public Cloud products availability
+             * interface fullName: cloud.order.rule.Availability.Availability
+             */
+            export interface Availability {
+                plans: cloud.order.rule.AvailabilityPlan[];
+                products: cloud.order.rule.AvailabilityProduct[];
+            }
+            /**
+             * Public Cloud plan availability
+             * interface fullName: cloud.order.rule.AvailabilityPlan.AvailabilityPlan
+             */
+            export interface AvailabilityPlan {
+                code: string;
+                regions: string[];
+            }
+            /**
+             * Public Cloud product availability
+             * interface fullName: cloud.order.rule.AvailabilityProduct.AvailabilityProduct
+             */
+            export interface AvailabilityProduct {
+                name: string;
+                regions: string[];
+            }
+        }
     }
     export namespace project {
         /**
@@ -1660,6 +1686,25 @@ export namespace cloud {
          */
         export type RoleEnum = "admin" | "authentication" | "administrator" | "compute_operator" | "infrastructure_supervisor" | "network_security_operator" | "network_operator" | "backup_operator" | "image_operator" | "volume_operator" | "objectstore_operator" | "ai_training_operator"
         /**
+         * S3Credentials
+         * interface fullName: cloud.user.S3Credentials.S3Credentials
+         */
+        export interface S3Credentials {
+            access: string;
+            tenantId: string;
+            userId: string;
+        }
+        /**
+         * S3CredentialsWithSecret
+         * interface fullName: cloud.user.S3CredentialsWithSecret.S3CredentialsWithSecret
+         */
+        export interface S3CredentialsWithSecret {
+            access: string;
+            secret: string;
+            tenantId: string;
+            userId: string;
+        }
+        /**
          * User
          * interface fullName: cloud.user.User.User
          */
@@ -1734,6 +1779,13 @@ export namespace cloud {
          */
         export type VolumeTypeEnum = "classic" | "high-speed"
     }
+}
+export namespace nichandle {
+    /**
+     * OVH subsidiaries
+     * type fullname: nichandle.OvhSubsidiaryEnum
+     */
+    export type OvhSubsidiaryEnum = "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "SN" | "TN" | "ASIA" | "AU" | "CA" | "QC" | "SG" | "WE" | "WS" | "US"
 }
 export namespace service {
     /**
@@ -1810,6 +1862,19 @@ export interface Cloud {
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        rule: {
+            availability: {
+                /**
+                 * Get product availability
+                 * GET /cloud/order/rule/availability
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum, planCode?: string }): Promise<cloud.order.rule.Availability>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+        }
     }
     project: {
         /**
@@ -2812,6 +2877,38 @@ export interface Cloud {
                              * GET /cloud/project/{serviceName}/user/{userId}/role/{roleId}
                              */
                             $get(): Promise<cloud.role.Role>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        };
+                    }
+                    s3Credentials: {
+                        /**
+                         * List your S3 credentials
+                         * GET /cloud/project/{serviceName}/user/{userId}/s3Credentials
+                         */
+                        $get(): Promise<cloud.user.S3Credentials[]>;
+                        /**
+                         * Create a new S3 credentials for an user
+                         * POST /cloud/project/{serviceName}/user/{userId}/s3Credentials
+                         */
+                        $post(): Promise<cloud.user.S3CredentialsWithSecret>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(access: string): {
+                            /**
+                             * Delete an S3 credential
+                             * DELETE /cloud/project/{serviceName}/user/{userId}/s3Credentials/{access}
+                             */
+                            $delete(): Promise<void>;
+                            /**
+                             * Get details about an S3 credential
+                             * GET /cloud/project/{serviceName}/user/{userId}/s3Credentials/{access}
+                             */
+                            $get(): Promise<cloud.user.S3Credentials>;
                             /**
                              * Controle cache
                              */

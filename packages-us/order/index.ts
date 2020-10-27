@@ -392,6 +392,7 @@ export namespace order {
                 defaultHypervisor: string;
                 hypervisors: order.catalog.pcc.Hypervisor[];
                 mainPlan: string;
+                managementFees?: order.catalog.pcc.managementFees[];
                 orderable: boolean;
                 orderableOptions: boolean;
                 orderableResources: boolean;
@@ -510,6 +511,14 @@ export namespace order {
             export interface StorageSpecifications {
                 size: complexType.UnitAndValue<number>;
                 type: string;
+            }
+            /**
+             * Describes the management cost of a range of Dedicated Cloud
+             * interface fullName: order.catalog.pcc.managementFees.managementFees
+             */
+            export interface managementFees {
+                planCode: string;
+                upgradableTo: string[];
             }
         }
         export namespace publik {

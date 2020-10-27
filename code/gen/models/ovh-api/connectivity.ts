@@ -1314,6 +1314,7 @@ export const schema: Schema = {
       "description": "Offer product type",
       "enum": [
         "ADSL",
+        "FTTE",
         "FTTH",
         "SDSL",
         "VDSL"

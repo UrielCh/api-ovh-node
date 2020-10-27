@@ -1513,10 +1513,12 @@ export namespace telephony {
     export interface OvhPabxMenu {
         greetSound?: number;
         greetSoundTts?: number;
+        interDigitTimeout: number;
         invalidSound?: number;
         invalidSoundTts?: number;
         menuId: number;
         name: string;
+        timeout: number;
     }
     /**
      * IVR menu entry
@@ -6274,7 +6276,7 @@ export interface Telephony {
                      * Create a new menu
                      * POST /telephony/{billingAccount}/ovhPabx/{serviceName}/menu
                      */
-                    $post(params: { greetSound?: number, greetSoundTts?: number, invalidSound?: number, invalidSoundTts?: number, name: string }): Promise<telephony.OvhPabxMenu>;
+                    $post(params: { greetSound?: number, greetSoundTts?: number, interDigitTimeout?: number, invalidSound?: number, invalidSoundTts?: number, name: string, timeout?: number }): Promise<telephony.OvhPabxMenu>;
                     /**
                      * Controle cache
                      */
@@ -6294,7 +6296,7 @@ export interface Telephony {
                          * Alter this object properties
                          * PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}
                          */
-                        $put(params?: { greetSound?: number, greetSoundTts?: number, invalidSound?: number, invalidSoundTts?: number, menuId?: number, name?: string }): Promise<void>;
+                        $put(params?: { greetSound?: number, greetSoundTts?: number, interDigitTimeout?: number, invalidSound?: number, invalidSoundTts?: number, menuId?: number, name?: string, timeout?: number }): Promise<void>;
                         /**
                          * Controle cache
                          */

@@ -17,8 +17,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -45,8 +43,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.installationTemplate.Templates",
           "responseType": "dedicated.installationTemplate.Templates"
         }
       ],
@@ -73,8 +69,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -109,8 +103,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.installationTemplate.templatePartitioningSchemes",
           "responseType": "dedicated.installationTemplate.templatePartitioningSchemes"
         }
       ],
@@ -145,8 +137,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -189,8 +179,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.installationTemplate.hardwareRaid",
           "responseType": "dedicated.installationTemplate.hardwareRaid"
         }
       ],
@@ -225,8 +213,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -269,8 +255,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "dedicated.installationTemplate.templatePartitions",
           "responseType": "dedicated.installationTemplate.templatePartitions"
         }
       ],
@@ -289,12 +273,14 @@ export const schema: Schema = {
       "properties": {
         "unit": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "T"
         }
       }
@@ -383,36 +369,49 @@ export const schema: Schema = {
         "changeLog": {
           "canBeNull": true,
           "description": "Template change log details",
+          "readOnly": false,
+          "required": false,
           "type": "text"
         },
         "customHostname": {
           "canBeNull": true,
           "description": "Set up the server using the provided hostname instead of the default hostname",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "postInstallationScriptLink": {
           "canBeNull": true,
           "description": "Indicate the URL where your postinstall customisation script is located",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "postInstallationScriptReturn": {
           "canBeNull": true,
           "description": "indicate the string returned by your postinstall customisation script on successful execution. Advice: your script should return a unique validation string in case of succes. A good example is \"loh1Xee7eo OK OK OK UGh8Ang1Gu",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "rating": {
           "canBeNull": true,
-          "description": "",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "sshKeyName": {
           "canBeNull": true,
           "description": "Name of the ssh key that should be installed. Password login will be disabled",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "useDistributionKernel": {
           "canBeNull": true,
           "description": "Use the distribution's native kernel instead of the recommended OVH Kernel",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         }
       }
@@ -464,6 +463,7 @@ export const schema: Schema = {
           "description": "list of all language available for this template",
           "fullType": "dedicated.TemplateOsLanguageEnum[]",
           "readOnly": true,
+          "required": false,
           "type": "dedicated.TemplateOsLanguageEnum[]"
         },
         "beta": {
@@ -471,6 +471,7 @@ export const schema: Schema = {
           "description": "This distribution is new, and although tested and functional, may still display odd behaviour",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "bitFormat": {
@@ -478,6 +479,7 @@ export const schema: Schema = {
           "description": "this template  bit format",
           "fullType": "dedicated.server.BitFormatEnum",
           "readOnly": true,
+          "required": false,
           "type": "dedicated.server.BitFormatEnum"
         },
         "category": {
@@ -485,6 +487,7 @@ export const schema: Schema = {
           "description": "category of this template (informative only)",
           "fullType": "dedicated.TemplateOsUsageEnum",
           "readOnly": true,
+          "required": false,
           "type": "dedicated.TemplateOsUsageEnum"
         },
         "customization": {
@@ -492,6 +495,7 @@ export const schema: Schema = {
           "description": "Customizable template properties ",
           "fullType": "dedicated.TemplateOsProperties",
           "readOnly": false,
+          "required": false,
           "type": "dedicated.TemplateOsProperties"
         },
         "defaultLanguage": {
@@ -499,6 +503,7 @@ export const schema: Schema = {
           "description": "the default language of this template",
           "fullType": "dedicated.TemplateOsLanguageEnum",
           "readOnly": false,
+          "required": false,
           "type": "dedicated.TemplateOsLanguageEnum"
         },
         "deprecated": {
@@ -506,6 +511,7 @@ export const schema: Schema = {
           "description": "is this distribution deprecated",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "description": {
@@ -513,6 +519,7 @@ export const schema: Schema = {
           "description": "information about this template",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "distribution": {
@@ -520,6 +527,7 @@ export const schema: Schema = {
           "description": "the distribution this template is based on",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "family": {
@@ -527,6 +535,7 @@ export const schema: Schema = {
           "description": "this template family type",
           "fullType": "dedicated.TemplateOsTypeEnum",
           "readOnly": true,
+          "required": false,
           "type": "dedicated.TemplateOsTypeEnum"
         },
         "filesystems": {
@@ -534,6 +543,7 @@ export const schema: Schema = {
           "description": "list of all filesystems  available for this template",
           "fullType": "dedicated.TemplateOsFileSystemEnum[]",
           "readOnly": true,
+          "required": false,
           "type": "dedicated.TemplateOsFileSystemEnum[]"
         },
         "hardRaidConfiguration": {
@@ -541,6 +551,7 @@ export const schema: Schema = {
           "description": "This distribution supports hardware raid configuration through the OVH API",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "lastModification": {
@@ -548,6 +559,7 @@ export const schema: Schema = {
           "description": "Date of last modification of the base image",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "lvmReady": {
@@ -555,6 +567,7 @@ export const schema: Schema = {
           "description": "This distribution supports Logical Volumes (Linux LVM)",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "supportsDistributionKernel": {
@@ -562,6 +575,7 @@ export const schema: Schema = {
           "description": "This distribution supports installation using the distribution's native kernel instead of the recommended OVH kernel",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "supportsGptLabel": {
@@ -569,6 +583,7 @@ export const schema: Schema = {
           "description": "This distribution supports the GUID Partition Table (GPT), providing up to 128 partitions that can have more than 2 TB",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "supportsRTM": {
@@ -576,6 +591,7 @@ export const schema: Schema = {
           "description": "This distribution supports RTM software",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "supportsSqlServer": {
@@ -583,6 +599,7 @@ export const schema: Schema = {
           "description": "This distribution supports the microsoft SQL server",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "supportsUEFI": {
@@ -590,6 +607,7 @@ export const schema: Schema = {
           "description": "This distribution supports UEFI setup",
           "fullType": "dedicated.server.SupportsUEFIEnum",
           "readOnly": true,
+          "required": false,
           "type": "dedicated.server.SupportsUEFIEnum"
         },
         "templateName": {
@@ -597,6 +615,7 @@ export const schema: Schema = {
           "description": "This template name",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -611,6 +630,7 @@ export const schema: Schema = {
           "description": "Disk list",
           "fullType": "string[]",
           "readOnly": false,
+          "required": false,
           "type": "string[]"
         },
         "mode": {
@@ -618,6 +638,7 @@ export const schema: Schema = {
           "description": "RAID mode",
           "fullType": "dedicated.TemplateOsHardwareRaidEnum",
           "readOnly": false,
+          "required": false,
           "type": "dedicated.TemplateOsHardwareRaidEnum"
         },
         "name": {
@@ -625,6 +646,7 @@ export const schema: Schema = {
           "description": "Hardware RAID name",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "step": {
@@ -632,6 +654,7 @@ export const schema: Schema = {
           "description": "Specifies the creation order of the hardware RAID",
           "fullType": "long",
           "readOnly": false,
+          "required": false,
           "type": "long"
         }
       }
@@ -646,6 +669,7 @@ export const schema: Schema = {
           "description": "name of this partitioning scheme",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "priority": {
@@ -653,6 +677,7 @@ export const schema: Schema = {
           "description": "on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications)",
           "fullType": "long",
           "readOnly": false,
+          "required": false,
           "type": "long"
         }
       }
@@ -667,6 +692,7 @@ export const schema: Schema = {
           "description": "Partition filesytem",
           "fullType": "dedicated.TemplateOsFileSystemEnum",
           "readOnly": false,
+          "required": false,
           "type": "dedicated.TemplateOsFileSystemEnum"
         },
         "mountpoint": {
@@ -674,6 +700,7 @@ export const schema: Schema = {
           "description": "partition mount point",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "order": {
@@ -681,6 +708,7 @@ export const schema: Schema = {
           "description": "specifies the creation order of the partition on the disk",
           "fullType": "long",
           "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "raid": {
@@ -688,6 +716,7 @@ export const schema: Schema = {
           "description": "raid partition type",
           "fullType": "dedicated.server.PartitionRaidEnum",
           "readOnly": false,
+          "required": false,
           "type": "dedicated.server.PartitionRaidEnum"
         },
         "size": {
@@ -695,13 +724,14 @@ export const schema: Schema = {
           "description": "size of partition in Mb, 0 => rest of the space",
           "fullType": "complexType.UnitAndValue<long>",
           "readOnly": false,
+          "required": false,
           "type": "complexType.UnitAndValue<long>"
         },
         "type": {
           "canBeNull": false,
-          "description": null,
           "fullType": "dedicated.TemplatePartitionTypeEnum",
           "readOnly": false,
+          "required": false,
           "type": "dedicated.TemplatePartitionTypeEnum"
         },
         "volumeName": {
@@ -709,6 +739,7 @@ export const schema: Schema = {
           "description": "The volume name needed for proxmox distribution",
           "fullType": "string",
           "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }

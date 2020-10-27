@@ -338,6 +338,7 @@ export namespace billing {
     export interface OrderDetail {
         cancelled: boolean;
         description: string;
+        detailType?: orderOrderDetailTypeEnum;
         domain: string;
         orderDetailId: number;
         quantity: string;
@@ -620,6 +621,26 @@ export namespace billing {
             type?: billing.order.associatedObject.TypeEnum;
         }
         /**
+         * All data needed to use a payment mean
+         * interface fullName: billing.order.AvailablePaymentMean.AvailablePaymentMean
+         */
+        export interface AvailablePaymentMean {
+            fields?: billing.order.AvailablePaymentMeanField[];
+            integration: billing.order.PaymentMeanIntegrationEnum;
+            name: string;
+            url?: string;
+        }
+        /**
+         * All fields needed for a payment mean integration
+         * interface fullName: billing.order.AvailablePaymentMeanField.AvailablePaymentMeanField
+         */
+        export interface AvailablePaymentMeanField {
+            key: string;
+            options?: string[];
+            type: billing.order.PaymentMeanFieldTypeEnum;
+            value?: string;
+        }
+        /**
          * Detailed consumption's retrieval information
          * interface fullName: billing.order.ConsumptionDetails.ConsumptionDetails
          */
@@ -664,6 +685,16 @@ export namespace billing {
             subType?: string;
             url: string;
         }
+        /**
+         * Field type of a payment mean
+         * type fullname: billing.order.PaymentMeanFieldTypeEnum
+         */
+        export type PaymentMeanFieldTypeEnum = "hidden" | "select" | "text"
+        /**
+         * Integration payment mean type
+         * type fullname: billing.order.PaymentMeanIntegrationEnum
+         */
+        export type PaymentMeanIntegrationEnum = "GET_FORM" | "POST_FORM" | "REDIRECT"
         /**
          * TODO
          * interface fullName: billing.order.PaymentMeans.PaymentMeans
@@ -1758,6 +1789,69 @@ export namespace me {
          */
         export type ValidationTypeEnum = "creditAccount" | "documentToSend" | "simpleValidation"
     }
+    export namespace tag {
+        /**
+         * Available tag configuration object for creation
+         * interface fullName: me.tag.AvailableTag.AvailableTag
+         */
+        export interface AvailableTag {
+            keys: me.tag.TagKey[];
+            name: string;
+        }
+        /**
+         * Tag creation payload
+         * interface fullName: me.tag.Creation.Creation
+         */
+        export interface Creation {
+            reason?: string;
+            tagName: string;
+        }
+        /**
+         * Tag status
+         * type fullname: me.tag.StatusEnum
+         */
+        export type StatusEnum = "CREATED" | "CREATING" | "DELETED" | "DELETING" | "MODERATING" | "REFUSED" | "REFUSING" | "REVOCATING" | "WAIT_MODERATION" | "WAIT_REVOCATION"
+        /**
+         * Tag
+         * interface fullName: me.tag.Tag.Tag
+         */
+        export interface Tag {
+            creationDate: string;
+            customerCode: string;
+            expirationDate?: string;
+            extra?: me.tag.TagExtra;
+            lastUpdate: string;
+            status: me.tag.StatusEnum;
+            tag: string;
+        }
+        /**
+         * Tag Extra
+         * interface fullName: me.tag.TagExtra.TagExtra
+         */
+        export interface TagExtra {
+            exemption?: string;
+        }
+        /**
+         * Tag configuration key
+         * interface fullName: me.tag.TagKey.TagKey
+         */
+        export interface TagKey {
+            enum?: string[];
+            key: string;
+            maxLength?: number;
+            minValue?: number;
+            optional: boolean;
+            pattern?: string;
+            type: me.tag.tagKey.TypeEnum;
+        }
+        export namespace tagKey {
+            /**
+             * Tag key type
+             * type fullname: me.tag.tagKey.TypeEnum
+             */
+            export type TypeEnum = "ARRAY" | "DATE" | "ENUM" | "INTEGER" | "TEXT" | "VARCHAR"
+        }
+    }
 }
 export namespace nichandle {
     export namespace Authentication {
@@ -2321,6 +2415,11 @@ export namespace order {
      * type fullname: order.CurrencyCodeEnum
      */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    /**
+     * Product type of item in order
+     * type fullname: order.OrderDetailTypeEnum
+     */
+    export type OrderDetailTypeEnum = "ACCESSORY" | "CAUTION" | "CHOOSED" | "CONSUMPTION" | "CREATION" | "DELIVERY" | "DURATION" | "GIFT" | "INSTALLATION" | "LICENSE" | "MUTE" | "OTHER" | "OUTPLAN" | "QUANTITY" | "REFUND" | "RENEW" | "SPECIAL" | "SWITCH" | "TRANSFER" | "VOUCHER"
     /**
      * Price with its currency and textual representation
      * interface fullName: order.Price.Price
@@ -4944,6 +5043,49 @@ export interface Me {
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
+    tag: {
+        /**
+         * Retrieve customer tags list
+         * GET /me/tag
+         */
+        $get(): Promise<string[]>;
+        /**
+         * Activate customer tag
+         * POST /me/tag
+         */
+        $post(params: { reason?: string, tagName: string }): Promise<me.tag.Tag>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        available: {
+            /**
+             * Retrieve all available tags
+             * GET /me/tag/available
+             */
+            $get(): Promise<me.tag.AvailableTag[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        $(tag: string): {
+            /**
+             * Delete a customer tag
+             * DELETE /me/tag/{tag}
+             */
+            $delete(): Promise<me.tag.Tag>;
+            /**
+             * Retrieve a customer tag
+             * GET /me/tag/{tag}
+             */
+            $get(): Promise<me.tag.Tag>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        };
+    }
     task: {
         contactChange: {
             /**
@@ -5222,4 +5364,5 @@ export interface Me {
  * Extra Alias to bypass relativer namespace colitions
  */
 type orderPrice = order.Price;
+type orderOrderDetailTypeEnum = order.OrderDetailTypeEnum;
 type paymentmethodIntegrationType = payment.method.IntegrationType;

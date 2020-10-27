@@ -446,7 +446,7 @@ export namespace xdsl {
      * Possible DSL technologies
      * type fullname: xdsl.DslTypeEnum
      */
-    export type DslTypeEnum = "adsl" | "ftth" | "sdsl" | "vdsl"
+    export type DslTypeEnum = "adsl" | "ftte" | "ftth" | "sdsl" | "vdsl"
     /**
      * Profile on the DSLAM
      * interface fullName: xdsl.DslamLineProfile.DslamLineProfile

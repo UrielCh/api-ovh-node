@@ -1087,6 +1087,14 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "boolean",
+              "description": "If asked, RTM will be installed on your VPS",
+              "fullType": "boolean",
+              "name": "installRTM",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
               "description": "SSH key name to pre-install on your VPS (name from /me/sshKey)",
               "fullType": "string",
@@ -1674,6 +1682,40 @@ export const schema: Schema = {
         }
       ],
       "path": "/vps/order/rule/datacenter"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List OS choices with status",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "VPS datacenter",
+              "fullType": "string",
+              "name": "datacenter",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "VPS OS selection in order api",
+              "fullType": "string",
+              "name": "os",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "vps.order.rule.OSChoices"
+        }
+      ],
+      "path": "/vps/order/rule/osChoices"
     }
   ],
   "basePath": "https://api.us.ovhcloud.com/1.0",
@@ -3701,6 +3743,52 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "vps.order.rule.Datacenter[]"
+        }
+      }
+    },
+    "vps.order.rule.OSChoice": {
+      "description": "OS choice rules",
+      "id": "OSChoice",
+      "namespace": "vps.order.rule",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "fullType": "vps.order.rule.OSChoiceStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "vps.order.rule.OSChoiceStatusEnum"
+        }
+      }
+    },
+    "vps.order.rule.OSChoiceStatusEnum": {
+      "description": "Possible values for OS choice status",
+      "enum": [
+        "unavailable",
+        "available",
+        "checked-by-default"
+      ],
+      "enumType": "string",
+      "id": "OSChoiceStatusEnum",
+      "namespace": "vps.order.rule"
+    },
+    "vps.order.rule.OSChoices": {
+      "description": "OS choices rules",
+      "id": "OSChoices",
+      "namespace": "vps.order.rule",
+      "properties": {
+        "choices": {
+          "canBeNull": false,
+          "fullType": "vps.order.rule.OSChoice[]",
+          "readOnly": true,
+          "required": false,
+          "type": "vps.order.rule.OSChoice[]"
         }
       }
     },

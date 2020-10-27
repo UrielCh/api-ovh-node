@@ -404,6 +404,40 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/attachedDomain/{domain}/restart"
     },
     {
+      "description": "availableConfigurations operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List configurations available for current hosting",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "hosting.web.configuration.LanguageEnum",
+              "description": "Filter on language name",
+              "fullType": "hosting.web.configuration.LanguageEnum",
+              "name": "language",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "hosting.web.configuration.VersionEnum[]"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/availableConfigurations"
+    },
+    {
       "description": "List the hosting.web.boostHistory objects",
       "operations": [
         {
@@ -632,6 +666,59 @@ export const schema: Schema = {
         }
       ],
       "path": "/hosting/web/{serviceName}/changeContact"
+    },
+    {
+      "description": "The Configuration of an hosting Power offer",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.web.configuration"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "hosting.web.configuration",
+              "description": "New object properties",
+              "fullType": "hosting.web.configuration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/configuration"
     },
     {
       "description": "Confirm termination of your service",
@@ -3093,6 +3180,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Whether to delete ALL dependencies installed with the module. This includes the module's database tables, with their data. Defaults (False) to keep dependencies.",
+              "fullType": "boolean",
+              "name": "purgeData",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "hosting.web.task"
@@ -5991,6 +6086,7 @@ export const schema: Schema = {
         "PERFORMANCE_3",
         "PERFORMANCE_4",
         "PERSO",
+        "POWER_BETA_1",
         "PRO",
         "START",
         "business",
@@ -6024,6 +6120,7 @@ export const schema: Schema = {
         "perf2014x4",
         "perso2010",
         "perso2014",
+        "powerBeta1",
         "premium",
         "pro2010",
         "pro2014",
@@ -6053,6 +6150,7 @@ export const schema: Schema = {
         "PERFORMANCE_3",
         "PERFORMANCE_4",
         "PERSO",
+        "POWER_BETA_1",
         "PRO",
         "START"
       ],
@@ -6730,6 +6828,116 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "StatusEnum",
       "namespace": "hosting.web.cdn"
+    },
+    "hosting.web.configuration": {
+      "description": "The Configuration of an hosting Power offer",
+      "id": "configuration",
+      "namespace": "hosting.web",
+      "properties": {
+        "appEnv": {
+          "canBeNull": false,
+          "description": "Application environment",
+          "fullType": "hosting.web.configuration.EnvEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "hosting.web.configuration.EnvEnum"
+        },
+        "entryPoint": {
+          "canBeNull": true,
+          "description": "Application launch script",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Id of the current configuration",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "language": {
+          "canBeNull": false,
+          "description": "language chosen for the current hosting",
+          "fullType": "hosting.web.configuration.LanguageEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "hosting.web.configuration.LanguageEnum"
+        },
+        "publicDir": {
+          "canBeNull": true,
+          "description": "Directory of the application",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of current configuration",
+          "fullType": "hosting.web.configuration.StateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "hosting.web.configuration.StateEnum"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "version of the language chosen for the current hosting",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "hosting.web.configuration.EnvEnum": {
+      "description": "Configuration env enum",
+      "enum": [
+        "development",
+        "production"
+      ],
+      "enumType": "string",
+      "id": "EnvEnum",
+      "namespace": "hosting.web.configuration"
+    },
+    "hosting.web.configuration.LanguageEnum": {
+      "description": "Configuration languages enum",
+      "enum": [
+        "nodejs",
+        "python",
+        "ruby"
+      ],
+      "enumType": "string",
+      "id": "LanguageEnum",
+      "namespace": "hosting.web.configuration"
+    },
+    "hosting.web.configuration.StateEnum": {
+      "description": "Configuration state enum",
+      "enum": [
+        "created",
+        "creating",
+        "deleting",
+        "updating"
+      ],
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "hosting.web.configuration"
+    },
+    "hosting.web.configuration.VersionEnum": {
+      "description": "Configuration language versions enum",
+      "enum": [
+        "nodejs-12",
+        "nodejs-14",
+        "python-3.7",
+        "python-3.8",
+        "ruby-2.6",
+        "ruby-2.7"
+      ],
+      "enumType": "string",
+      "id": "VersionEnum",
+      "namespace": "hosting.web.configuration"
     },
     "hosting.web.cron": {
       "description": "Hosting crons",

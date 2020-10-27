@@ -17,8 +17,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -45,8 +43,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "license.windows.Windows",
           "responseType": "license.windows.Windows"
         },
         {
@@ -62,7 +58,6 @@ export const schema: Schema = {
               "dataType": "license.windows.Windows",
               "description": "New object properties",
               "fullType": "license.windows.Windows",
-              "name": null,
               "paramType": "body",
               "required": true
             },
@@ -75,8 +70,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -135,8 +128,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string",
           "responseType": "string"
         }
       ],
@@ -163,8 +154,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "license.OptionLabel[]",
           "responseType": "license.OptionLabel[]"
         }
       ],
@@ -173,36 +162,6 @@ export const schema: Schema = {
     {
       "description": "Your License options",
       "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get this object properties",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "license.OptionLabel",
-              "description": "This option designation",
-              "fullType": "license.OptionLabel",
-              "name": "label",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "The name of your Windows license",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "resellerOnly": false,
-          "responseFullType": "license.Option",
-          "responseType": "license.Option"
-        },
         {
           "apiStatus": {
             "description": "Stable production version",
@@ -229,9 +188,35 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "license.Task",
           "responseType": "license.Task"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "license.OptionLabel",
+              "description": "This option designation",
+              "fullType": "license.OptionLabel",
+              "name": "label",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your Windows license",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "license.Option"
         }
       ],
       "path": "/license/windows/{serviceName}/option/{label}"
@@ -257,8 +242,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "services.Service",
           "responseType": "services.Service"
         },
         {
@@ -274,7 +257,6 @@ export const schema: Schema = {
               "dataType": "services.Service",
               "description": "New object properties",
               "fullType": "services.Service",
-              "name": null,
               "paramType": "body",
               "required": true
             },
@@ -287,8 +269,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "void",
           "responseType": "void"
         }
       ],
@@ -331,8 +311,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "license.Task",
           "responseType": "license.Task"
         }
       ],
@@ -375,8 +353,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "long[]",
           "responseType": "long[]"
         }
       ],
@@ -411,8 +387,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "license.Task",
           "responseType": "license.Task"
         }
       ],
@@ -439,8 +413,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string",
           "responseType": "string"
         }
       ],
@@ -467,8 +439,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "license.WindowsOrderConfiguration[]",
           "responseType": "license.WindowsOrderConfiguration[]"
         }
       ],
@@ -521,6 +491,7 @@ export const schema: Schema = {
           "description": "Quantity or corresponding label of the designated option enabled on your license",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "canBeDeleted": {
@@ -528,6 +499,7 @@ export const schema: Schema = {
           "description": "Specifies whether this option can be released or not",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "expirationDate": {
@@ -535,6 +507,7 @@ export const schema: Schema = {
           "description": "This option expiration date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "label": {
@@ -542,6 +515,7 @@ export const schema: Schema = {
           "description": "This option designation",
           "fullType": "license.OptionLabel",
           "readOnly": true,
+          "required": false,
           "type": "license.OptionLabel"
         },
         "version": {
@@ -549,6 +523,7 @@ export const schema: Schema = {
           "description": "This option related version",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         }
       }
@@ -576,12 +551,14 @@ export const schema: Schema = {
       "properties": {
         "compliantSql": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "license.WindowsSqlVersionEnum[]"
         },
         "version": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "license.WindowsOsVersionEnum"
         }
       }
@@ -608,6 +585,7 @@ export const schema: Schema = {
           "description": "This Task description",
           "fullType": "license.ActionType",
           "readOnly": true,
+          "required": false,
           "type": "license.ActionType"
         },
         "doneDate": {
@@ -615,6 +593,7 @@ export const schema: Schema = {
           "description": "When was this Task done",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "lastUpdate": {
@@ -622,6 +601,7 @@ export const schema: Schema = {
           "description": "The last time this Task was updated",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "name": {
@@ -629,6 +609,7 @@ export const schema: Schema = {
           "description": "This Task name",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -636,6 +617,7 @@ export const schema: Schema = {
           "description": "Current Taks status",
           "fullType": "license.TaskStateEnum",
           "readOnly": true,
+          "required": false,
           "type": "license.TaskStateEnum"
         },
         "taskId": {
@@ -643,6 +625,7 @@ export const schema: Schema = {
           "description": "This Task id",
           "fullType": "long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "todoDate": {
@@ -650,6 +633,7 @@ export const schema: Schema = {
           "description": "When was this Task created",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         }
       }
@@ -674,12 +658,14 @@ export const schema: Schema = {
       "properties": {
         "orderableVersions": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "license.OrderableWindowsCompatibilityInfos[]"
         },
         "serviceType": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "license.LicenseTypeEnum"
         }
       }
@@ -1006,6 +992,7 @@ export const schema: Schema = {
           "description": "This license creation date",
           "fullType": "datetime",
           "readOnly": true,
+          "required": false,
           "type": "datetime"
         },
         "deleteAtExpiration": {
@@ -1013,6 +1000,7 @@ export const schema: Schema = {
           "description": "Shall we delete this on expiration ?",
           "fullType": "boolean",
           "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "domain": {
@@ -1020,6 +1008,7 @@ export const schema: Schema = {
           "description": "The internal name of your license",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "ip": {
@@ -1027,6 +1016,7 @@ export const schema: Schema = {
           "description": "The ip on which this license is attached",
           "fullType": "ipv4",
           "readOnly": true,
+          "required": false,
           "type": "ipv4"
         },
         "licenseId": {
@@ -1034,6 +1024,7 @@ export const schema: Schema = {
           "description": "The license id on license provider side",
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "status": {
@@ -1041,6 +1032,7 @@ export const schema: Schema = {
           "description": "This license state",
           "fullType": "license.StateEnum",
           "readOnly": true,
+          "required": false,
           "type": "license.StateEnum"
         },
         "version": {
@@ -1048,6 +1040,7 @@ export const schema: Schema = {
           "description": "This license version",
           "fullType": "license.WindowsOsVersionEnum",
           "readOnly": true,
+          "required": false,
           "type": "license.WindowsOsVersionEnum"
         }
       }
@@ -1060,26 +1053,36 @@ export const schema: Schema = {
         "automatic": {
           "canBeNull": false,
           "description": "The service is automatically renewed",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "deleteAtExpiration": {
           "canBeNull": false,
           "description": "The service will be deleted at expiration",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "forced": {
           "canBeNull": false,
           "description": "The service forced to be renewed",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "manualPayment": {
           "canBeNull": true,
           "description": "The service needs to be manually renewed and paid",
+          "readOnly": false,
+          "required": false,
           "type": "boolean"
         },
         "period": {
           "canBeNull": true,
           "description": "period of renew in month",
+          "readOnly": false,
+          "required": false,
           "type": "long"
         }
       }
@@ -1100,7 +1103,6 @@ export const schema: Schema = {
       "namespace": "service"
     },
     "service.StateEnum": {
-      "description": "",
       "enum": [
         "expired",
         "inCreation",
@@ -1157,55 +1159,56 @@ export const schema: Schema = {
           "description": "Indicates that the service can be set up to be deleted at expiration",
           "fullType": "boolean",
           "readOnly": true,
+          "required": false,
           "type": "boolean"
         },
         "contactAdmin": {
           "canBeNull": false,
-          "description": null,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "contactBilling": {
           "canBeNull": false,
-          "description": null,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "contactTech": {
           "canBeNull": false,
-          "description": null,
           "fullType": "coreTypes.AccountId:string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "creation": {
           "canBeNull": false,
-          "description": null,
           "fullType": "date",
           "readOnly": true,
+          "required": false,
           "type": "date"
         },
         "domain": {
           "canBeNull": false,
-          "description": null,
           "fullType": "string",
           "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "engagedUpTo": {
           "canBeNull": true,
-          "description": null,
           "fullType": "date",
           "readOnly": true,
+          "required": false,
           "type": "date"
         },
         "expiration": {
           "canBeNull": false,
-          "description": null,
           "fullType": "date",
           "readOnly": true,
+          "required": false,
           "type": "date"
         },
         "possibleRenewPeriod": {
@@ -1213,6 +1216,7 @@ export const schema: Schema = {
           "description": "All the possible renew period of your service in month",
           "fullType": "long[]",
           "readOnly": true,
+          "required": false,
           "type": "long[]"
         },
         "renew": {
@@ -1220,27 +1224,28 @@ export const schema: Schema = {
           "description": "Way of handling the renew",
           "fullType": "service.RenewType",
           "readOnly": false,
+          "required": false,
           "type": "service.RenewType"
         },
         "renewalType": {
           "canBeNull": false,
-          "description": null,
           "fullType": "service.RenewalTypeEnum",
           "readOnly": true,
+          "required": false,
           "type": "service.RenewalTypeEnum"
         },
         "serviceId": {
           "canBeNull": false,
-          "description": null,
           "fullType": "coreTypes.ServiceId:long",
           "readOnly": true,
+          "required": false,
           "type": "long"
         },
         "status": {
           "canBeNull": false,
-          "description": null,
           "fullType": "service.StateEnum",
           "readOnly": true,
+          "required": false,
           "type": "service.StateEnum"
         }
       }

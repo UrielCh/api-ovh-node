@@ -218,7 +218,7 @@ export namespace hosting {
          * Hosting's offer
          * type fullname: hosting.web.OfferEnum
          */
-        export type OfferEnum = "CLOUDWEB_1" | "CLOUDWEB_2" | "CLOUDWEB_3" | "KS" | "PERFORMANCE_1" | "PERFORMANCE_2" | "PERFORMANCE_3" | "PERFORMANCE_4" | "PERSO" | "PRO" | "START"
+        export type OfferEnum = "CLOUDWEB_1" | "CLOUDWEB_2" | "CLOUDWEB_3" | "KS" | "PERFORMANCE_1" | "PERFORMANCE_2" | "PERFORMANCE_3" | "PERFORMANCE_4" | "PERSO" | "POWER_BETA_1" | "PRO" | "START"
         export namespace database {
             /**
              * Sql perso's offer enum
@@ -828,6 +828,7 @@ export namespace order {
                 defaultHypervisor: string;
                 hypervisors: order.catalog.pcc.Hypervisor[];
                 mainPlan: string;
+                managementFees?: order.catalog.pcc.managementFees[];
                 orderable: boolean;
                 orderableOptions: boolean;
                 orderableResources: boolean;
@@ -946,6 +947,14 @@ export namespace order {
             export interface StorageSpecifications {
                 size: complexType.UnitAndValue<number>;
                 type: string;
+            }
+            /**
+             * Describes the management cost of a range of Dedicated Cloud
+             * interface fullName: order.catalog.pcc.managementFees.managementFees
+             */
+            export interface managementFees {
+                planCode: string;
+                upgradableTo: string[];
             }
         }
         export namespace privateCloud {
@@ -3408,6 +3417,17 @@ export interface Order {
                 /**
                  * Retrieve Enterprise Cloud Databases catalog
                  * GET /order/catalog/public/enterpriseCloudDatabases
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            ovhCloudConnect: {
+                /**
+                 * Retrieve OVH Cloud Connect catalog
+                 * GET /order/catalog/public/ovhCloudConnect
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**

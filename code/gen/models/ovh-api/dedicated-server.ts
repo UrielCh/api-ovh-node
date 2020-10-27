@@ -6545,6 +6545,16 @@ export const schema: Schema = {
       "id": "AccessTypeEnum",
       "namespace": "dedicated.server"
     },
+    "dedicated.server.AddonFamilyEnum": {
+      "description": "Addon family",
+      "enum": [
+        "memory",
+        "storage"
+      ],
+      "enumType": "string",
+      "id": "AddonFamilyEnum",
+      "namespace": "dedicated.server"
+    },
     "dedicated.server.AlertLanguageEnum": {
       "description": "Monitoring alert language",
       "enum": [
@@ -6903,6 +6913,27 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "BandwidthvRackTypeEnum",
       "namespace": "dedicated.server"
+    },
+    "dedicated.server.BillingAddon": {
+      "description": "Dedicated server addon.",
+      "id": "BillingAddon",
+      "namespace": "dedicated.server",
+      "properties": {
+        "family": {
+          "canBeNull": false,
+          "description": "Addon family",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.AddonFamilyEnum"
+        },
+        "planCode": {
+          "canBeNull": false,
+          "description": "Plan code to order",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
     },
     "dedicated.server.BiosSettingsSgxPrmrrEnum": {
       "description": "SGX PRMRR value enum",
@@ -8355,6 +8386,34 @@ export const schema: Schema = {
         }
       }
     },
+    "dedicated.server.OlaAvailableModes": {
+      "description": "A structure describing OVH Link Aggregation available modes",
+      "id": "OlaAvailableModes",
+      "namespace": "dedicated.server",
+      "properties": {
+        "default": {
+          "canBeNull": false,
+          "description": "Is it the default configuration of the server",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "interfaces": {
+          "canBeNull": false,
+          "description": "Interface layout",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.OlaInterface[]"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Mode name",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "dedicated.server.OlaDetails": {
       "description": "A structure describing OVH Link Aggregation available modes for this dedicated server",
       "id": "OlaDetails",
@@ -8367,14 +8426,59 @@ export const schema: Schema = {
           "required": false,
           "type": "boolean"
         },
+        "availableModes": {
+          "canBeNull": false,
+          "description": "What modes are supported",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.OlaAvailableModes[]"
+        },
         "supportedModes": {
           "canBeNull": true,
-          "description": "What modes are supported",
+          "description": "(DEPRECATED) What modes are supported",
           "readOnly": false,
           "required": false,
           "type": "dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum[]"
         }
       }
+    },
+    "dedicated.server.OlaInterface": {
+      "description": "A structure describing OVH Link Aggregation interface configuration",
+      "id": "OlaInterface",
+      "namespace": "dedicated.server",
+      "properties": {
+        "aggregation": {
+          "canBeNull": false,
+          "description": "Interface aggregation status",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "count": {
+          "canBeNull": false,
+          "description": "Interface count",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Interface mode",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.server.OlaInterfaceModeEnum"
+        }
+      }
+    },
+    "dedicated.server.OlaInterfaceModeEnum": {
+      "description": "An enum describing OVH Link Aggregation interface types",
+      "enum": [
+        "public",
+        "vrack"
+      ],
+      "enumType": "string",
+      "id": "OlaInterfaceModeEnum",
+      "namespace": "dedicated.server"
     },
     "dedicated.server.Option": {
       "description": "Information about the options of a dedicated server",

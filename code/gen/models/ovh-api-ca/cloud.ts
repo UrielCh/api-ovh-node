@@ -158,6 +158,40 @@ export const schema: Schema = {
       "path": "/cloud/order"
     },
     {
+      "description": "Product availability",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get product availability",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "OVH subsidiary",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code filter",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "cloud.order.rule.Availability"
+        }
+      ],
+      "path": "/cloud/order/rule/availability"
+    },
+    {
       "description": "Get services prices",
       "operations": [
         {
@@ -7560,6 +7594,146 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/user/{userId}/role/{roleId}"
     },
     {
+      "description": "Manage your S3 credentials",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List your S3 credentials",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.user.S3Credentials[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a new S3 credentials for an user",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.user.S3CredentialsWithSecret"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/user/{userId}/s3Credentials"
+    },
+    {
+      "description": "Manage your S3 credentials",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete an S3 credential",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Access",
+              "fullType": "string",
+              "name": "access",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get details about an S3 credential",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Access",
+              "fullType": "string",
+              "name": "access",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "User ID",
+              "fullType": "long",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.user.S3Credentials"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/user/{userId}/s3Credentials/{access}"
+    },
+    {
       "description": "Missing description",
       "operations": [
         {
@@ -9427,7 +9601,7 @@ export const schema: Schema = {
         },
         "nodepool": {
           "canBeNull": true,
-          "description": "Nodepool to init with cluster creation (this facultative parameter is experimental)",
+          "description": "Nodepool to init with cluster creation",
           "fullType": "cloud.ProjectKubeCreationNodePool",
           "readOnly": false,
           "required": false,
@@ -9456,6 +9630,14 @@ export const schema: Schema = {
       "id": "ProjectKubeCreationNodePool",
       "namespace": "cloud",
       "properties": {
+        "antiAffinity": {
+          "canBeNull": true,
+          "description": "Enable anti affinity groups for nodes in the pool",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "desiredNodes": {
           "canBeNull": true,
           "description": "Number of nodes to instantiate (1 by default)",
@@ -9487,6 +9669,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "long"
+        },
+        "monthlyBilled": {
+          "canBeNull": true,
+          "description": "Enable monthly billing for nodes in the pool",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "name": {
           "canBeNull": true,
@@ -9541,6 +9731,14 @@ export const schema: Schema = {
       "id": "ProjectKubeNodePoolCreation",
       "namespace": "cloud",
       "properties": {
+        "antiAffinity": {
+          "canBeNull": true,
+          "description": "Enable anti affinity groups for nodes in the pool",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "desiredNodes": {
           "canBeNull": true,
           "description": "Number of nodes to instantiate (1 by default)",
@@ -9572,6 +9770,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "long"
+        },
+        "monthlyBilled": {
+          "canBeNull": true,
+          "description": "Enable monthly billing for nodes in the pool",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "name": {
           "canBeNull": true,
@@ -13726,6 +13932,14 @@ export const schema: Schema = {
       "id": "NodePool",
       "namespace": "cloud.kube",
       "properties": {
+        "antiAffinity": {
+          "canBeNull": false,
+          "description": "Enable anti affinity groups for nodes in the pool",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "availableNodes": {
           "canBeNull": false,
           "description": "Number of nodes which are actually ready in the pool",
@@ -13789,6 +14003,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "monthlyBilled": {
+          "canBeNull": false,
+          "description": "Enable monthly billing on all nodes in the pool",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "name": {
           "canBeNull": false,
@@ -14398,6 +14620,75 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "StatusEnum",
       "namespace": "cloud.order"
+    },
+    "cloud.order.rule.Availability": {
+      "description": "Public Cloud products availability",
+      "id": "Availability",
+      "namespace": "cloud.order.rule",
+      "properties": {
+        "plans": {
+          "canBeNull": false,
+          "description": "Plan availability",
+          "fullType": "cloud.order.rule.AvailabilityPlan[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.order.rule.AvailabilityPlan[]"
+        },
+        "products": {
+          "canBeNull": false,
+          "description": "Product availability",
+          "fullType": "cloud.order.rule.AvailabilityProduct[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.order.rule.AvailabilityProduct[]"
+        }
+      }
+    },
+    "cloud.order.rule.AvailabilityPlan": {
+      "description": "Public Cloud plan availability",
+      "id": "AvailabilityPlan",
+      "namespace": "cloud.order.rule",
+      "properties": {
+        "code": {
+          "canBeNull": false,
+          "description": "Plan code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "regions": {
+          "canBeNull": false,
+          "description": "Plan is available on those regions",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.order.rule.AvailabilityProduct": {
+      "description": "Public Cloud product availability",
+      "id": "AvailabilityProduct",
+      "namespace": "cloud.order.rule",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Product name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "regions": {
+          "canBeNull": false,
+          "description": "Product is available on those regions",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        }
+      }
     },
     "cloud.project.BandwidthStorageUsage": {
       "description": "Usage information for current month on your project",
@@ -15973,164 +16264,6 @@ export const schema: Schema = {
         }
       }
     },
-    "cloud.project.ai.training.Data": {
-      "description": "Training Platform Data Object",
-      "id": "Data",
-      "namespace": "cloud.project.ai.training",
-      "properties": {
-        "account": {
-          "canBeNull": false,
-          "description": "Account ID that own the data",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "container": {
-          "canBeNull": false,
-          "description": "Public Cloud Storage container to attach",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "containerRegion": {
-          "canBeNull": false,
-          "description": "Public Cloud Storage Region",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "created": {
-          "canBeNull": false,
-          "description": "Data creation date",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Data id",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "name": {
-          "canBeNull": true,
-          "description": "Data name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "pullDate": {
-          "canBeNull": true,
-          "description": "Date of the last pull sync",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "pullStatus": {
-          "canBeNull": true,
-          "description": "Pull Sync Status",
-          "fullType": "cloud.project.ai.training.DataSyncStatusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.ai.training.DataSyncStatusEnum"
-        },
-        "pushDate": {
-          "canBeNull": true,
-          "description": "Date of the last push sync",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "pushStatus": {
-          "canBeNull": true,
-          "description": "Push Sync Status",
-          "fullType": "cloud.project.ai.training.DataSyncStatusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.ai.training.DataSyncStatusEnum"
-        },
-        "region": {
-          "canBeNull": false,
-          "description": "Region of the data",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "user": {
-          "canBeNull": false,
-          "description": "User name that own the data",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "cloud.project.ai.training.DataSpec": {
-      "description": "Training Platform Data Spec Object",
-      "id": "DataSpec",
-      "namespace": "cloud.project.ai.training",
-      "properties": {
-        "container": {
-          "canBeNull": false,
-          "description": "Public Cloud Storage container to attach",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "containerRegion": {
-          "canBeNull": false,
-          "description": "Public Cloud Storage Region",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "name": {
-          "canBeNull": false,
-          "description": "Data name",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "region": {
-          "canBeNull": false,
-          "description": "Region of the data",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        },
-        "sync": {
-          "canBeNull": false,
-          "description": "Sync the data with Object Storage just after the data is created",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "user": {
-          "canBeNull": false,
-          "description": "User that own the data",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        }
-      }
-    },
     "cloud.project.ai.training.DataSyncDirectionEnum": {
       "description": "Data Sync Direction",
       "enum": [
@@ -16140,21 +16273,6 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "DataSyncDirectionEnum",
       "namespace": "cloud.project.ai.training"
-    },
-    "cloud.project.ai.training.DataSyncRequest": {
-      "description": "Training Platform Data Sync Request Object",
-      "id": "DataSyncRequest",
-      "namespace": "cloud.project.ai.training",
-      "properties": {
-        "direction": {
-          "canBeNull": false,
-          "description": "Direction of the sync",
-          "fullType": "cloud.project.ai.training.DataSyncDirectionEnum",
-          "readOnly": false,
-          "required": true,
-          "type": "cloud.project.ai.training.DataSyncDirectionEnum"
-        }
-      }
     },
     "cloud.project.ai.training.DataSyncStatusEnum": {
       "description": "Data Sync Direction",
@@ -16219,37 +16337,13 @@ export const schema: Schema = {
       "id": "Job",
       "namespace": "cloud.project.ai.training",
       "properties": {
-        "accessUrl": {
-          "canBeNull": true,
-          "description": "Job access url",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "command": {
-          "canBeNull": false,
-          "description": "Job command",
-          "fullType": "string[]",
-          "readOnly": true,
-          "required": false,
-          "type": "string[]"
-        },
-        "created": {
+        "createdAt": {
           "canBeNull": false,
           "description": "Job creation date",
           "fullType": "datetime",
           "readOnly": true,
           "required": false,
           "type": "datetime"
-        },
-        "data": {
-          "canBeNull": false,
-          "description": "Job Data linked",
-          "fullType": "string[]",
-          "readOnly": true,
-          "required": false,
-          "type": "string[]"
         },
         "id": {
           "canBeNull": false,
@@ -16259,63 +16353,31 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
-        "image": {
-          "canBeNull": false,
-          "description": "Job docker image",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "name": {
-          "canBeNull": false,
-          "description": "Job name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "region": {
-          "canBeNull": false,
-          "description": "Region of the job",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "resourceUsageUrl": {
+        "partner": {
           "canBeNull": true,
-          "description": "Job resource usage url",
-          "fullType": "string",
+          "description": "Job Partner information",
+          "fullType": "cloud.project.ai.training.JobPartner",
           "readOnly": true,
           "required": false,
-          "type": "string"
+          "type": "cloud.project.ai.training.JobPartner"
         },
-        "resources": {
+        "spec": {
           "canBeNull": false,
-          "description": "Job resources",
-          "fullType": "cloud.project.ai.training.JobResource",
+          "description": "Job specifications",
+          "fullType": "cloud.project.ai.training.JobSpec",
           "readOnly": true,
           "required": false,
-          "type": "cloud.project.ai.training.JobResource"
+          "type": "cloud.project.ai.training.JobSpec"
         },
-        "state": {
+        "status": {
           "canBeNull": false,
           "description": "Job status",
-          "fullType": "cloud.project.ai.training.JobStatusEnum",
+          "fullType": "cloud.project.ai.training.JobStatus",
           "readOnly": true,
           "required": false,
-          "type": "cloud.project.ai.training.JobStatusEnum"
+          "type": "cloud.project.ai.training.JobStatus"
         },
-        "totalRuntime": {
-          "canBeNull": true,
-          "description": "Job Total runtime in second",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "updatedOn": {
+        "updatedAt": {
           "canBeNull": false,
           "description": "Job update date",
           "fullType": "datetime",
@@ -16325,10 +16387,33 @@ export const schema: Schema = {
         },
         "user": {
           "canBeNull": false,
-          "description": "User name that own the Job",
+          "description": "Job user owner",
           "fullType": "string",
           "readOnly": true,
           "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.ai.training.JobEnv": {
+      "description": "Training Platform Job Env Object",
+      "id": "JobEnv",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the environment variable to set inside the job",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Value of the environment variable to set inside the job",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
           "type": "string"
         }
       }
@@ -16356,6 +16441,29 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.ai.training.JobPartner": {
+      "description": "Training Platform Job Partner Object",
+      "id": "JobPartner",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "flavor": {
+          "canBeNull": false,
+          "description": "Partner flavor",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Partner name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "cloud.project.ai.training.JobResource": {
       "description": "Training Platform Job Resource Object",
       "id": "JobResource",
@@ -16377,40 +16485,48 @@ export const schema: Schema = {
       "namespace": "cloud.project.ai.training",
       "properties": {
         "command": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Job command",
           "fullType": "string[]",
           "readOnly": false,
           "required": false,
           "type": "string[]"
         },
-        "data": {
-          "canBeNull": false,
-          "description": "Job Data linked",
-          "fullType": "string[]",
+        "defaultHttpPort": {
+          "canBeNull": true,
+          "description": "Port use as the default one to access http service inside job",
+          "fullType": "long",
           "readOnly": false,
           "required": false,
-          "type": "string[]"
+          "type": "long"
+        },
+        "env": {
+          "canBeNull": true,
+          "description": "List of environment variable to be set inside job",
+          "fullType": "cloud.project.ai.training.JobEnv[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.training.JobEnv[]"
         },
         "image": {
           "canBeNull": false,
-          "description": "Job docker image",
+          "description": "Job image",
           "fullType": "string",
           "readOnly": false,
           "required": true,
           "type": "string"
         },
         "name": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Job name",
           "fullType": "string",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "string"
         },
         "region": {
           "canBeNull": false,
-          "description": "Region of the job",
+          "description": "Host region of the job",
           "fullType": "string",
           "readOnly": false,
           "required": true,
@@ -16424,9 +16540,159 @@ export const schema: Schema = {
           "required": true,
           "type": "cloud.project.ai.training.JobResource"
         },
-        "user": {
+        "shutdown": {
+          "canBeNull": true,
+          "description": "Shutdown strategy (if any)",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "timeout": {
+          "canBeNull": true,
+          "description": "Maximum time to spend before killing the job",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "volumes": {
+          "canBeNull": true,
+          "description": "Job Data linked",
+          "fullType": "cloud.project.ai.training.JobVolume[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.ai.training.JobVolume[]"
+        }
+      }
+    },
+    "cloud.project.ai.training.JobStateEnum": {
+      "description": "State of the job",
+      "enum": [
+        "QUEUED",
+        "PENDING",
+        "SYNCING",
+        "RUNNING",
+        "FAILED",
+        "ERROR",
+        "DONE",
+        "INTERRUPTED"
+      ],
+      "enumType": "string",
+      "id": "JobStateEnum",
+      "namespace": "cloud.project.ai.training"
+    },
+    "cloud.project.ai.training.JobStatus": {
+      "description": "Training Platform Job Status Object",
+      "id": "JobStatus",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "duration": {
+          "canBeNull": true,
+          "description": "Duration of the job",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "infos": {
+          "canBeNull": true,
+          "description": "Infos about the job",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "ip": {
+          "canBeNull": true,
+          "description": "IP of the job",
+          "fullType": "ip",
+          "readOnly": true,
+          "required": false,
+          "type": "ip"
+        },
+        "jobUrl": {
+          "canBeNull": true,
+          "description": "Job access url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "monitoringUrl": {
+          "canBeNull": true,
+          "description": "Job resource usage url",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "queuedAt": {
+          "canBeNull": true,
+          "description": "Date when the job was queued",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "startedAt": {
+          "canBeNull": true,
+          "description": "Date when the job was started",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "state": {
+          "canBeNull": true,
+          "description": "State of the job",
+          "fullType": "cloud.project.ai.training.JobStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.training.JobStateEnum"
+        },
+        "stoppedAt": {
+          "canBeNull": true,
+          "description": "Date when the job was stop",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "cloud.project.ai.training.JobVolume": {
+      "description": "Training Platform Job Volume Object",
+      "id": "JobVolume",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "container": {
           "canBeNull": false,
-          "description": "User that spawn the job",
+          "description": "Public Cloud Storage container to attach",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "mountPath": {
+          "canBeNull": false,
+          "description": "Path where to mount the data inside the job",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "permission": {
+          "canBeNull": false,
+          "description": "Permissions to use on the mounted volume",
+          "fullType": "cloud.project.ai.training.JobVolumePermissionEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.ai.training.JobVolumePermissionEnum"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Public Cloud Storage Region",
           "fullType": "string",
           "readOnly": false,
           "required": true,
@@ -16434,20 +16700,14 @@ export const schema: Schema = {
         }
       }
     },
-    "cloud.project.ai.training.JobStatusEnum": {
-      "description": "Status of the job",
+    "cloud.project.ai.training.JobVolumePermissionEnum": {
+      "description": "Permissions to apply on the job volume",
       "enum": [
-        "CANCELLED",
-        "CANCELLING",
-        "FAILED",
-        "INTERRUPTED",
-        "SUCCEEDED",
-        "QUEUING",
-        "QUEUED",
-        "RUNNING"
+        "RW",
+        "RO"
       ],
       "enumType": "string",
-      "id": "JobStatusEnum",
+      "id": "JobVolumePermissionEnum",
       "namespace": "cloud.project.ai.training"
     },
     "cloud.project.ai.training.LogLine": {
@@ -16533,14 +16793,6 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
-        "consoleUrl": {
-          "canBeNull": false,
-          "description": "Region Console Url",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
         "documentationUrl": {
           "canBeNull": false,
           "description": "Documentation Url",
@@ -16552,6 +16804,14 @@ export const schema: Schema = {
         "id": {
           "canBeNull": false,
           "description": "Region id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "registryUrl": {
+          "canBeNull": false,
+          "description": "Region Registry Url",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -16572,13 +16832,21 @@ export const schema: Schema = {
       "id": "Registry",
       "namespace": "cloud.project.ai.training",
       "properties": {
-        "custom": {
+        "createdAt": {
           "canBeNull": false,
-          "description": "True if user have a registry attached",
-          "fullType": "boolean",
+          "description": "Registry creation date",
+          "fullType": "datetime",
           "readOnly": true,
           "required": false,
-          "type": "boolean"
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Registry Id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "password": {
           "canBeNull": true,
@@ -16588,6 +16856,22 @@ export const schema: Schema = {
           "required": true,
           "type": "password"
         },
+        "region": {
+          "canBeNull": false,
+          "description": "Region where the registry is available",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "updatedAt": {
+          "canBeNull": false,
+          "description": "Registry update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
         "url": {
           "canBeNull": true,
           "description": "Docker registry URL",
@@ -16596,26 +16880,20 @@ export const schema: Schema = {
           "required": true,
           "type": "string"
         },
+        "user": {
+          "canBeNull": false,
+          "description": "Registry user creator",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "username": {
           "canBeNull": true,
           "description": "Docker registry username",
           "fullType": "string",
           "readOnly": false,
           "required": true,
-          "type": "string"
-        }
-      }
-    },
-    "cloud.project.ai.training.RegistryResponse": {
-      "description": "Registry attachment response",
-      "id": "RegistryResponse",
-      "namespace": "cloud.project.ai.training",
-      "properties": {
-        "message": {
-          "canBeNull": false,
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
           "type": "string"
         }
       }
@@ -18699,6 +18977,76 @@ export const schema: Schema = {
       "id": "RoleEnum",
       "namespace": "cloud.user"
     },
+    "cloud.user.S3Credentials": {
+      "description": "S3Credentials",
+      "id": "S3Credentials",
+      "namespace": "cloud.user",
+      "properties": {
+        "access": {
+          "canBeNull": false,
+          "description": "S3 Access key",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "tenantId": {
+          "canBeNull": false,
+          "description": "Tenant id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "userId": {
+          "canBeNull": false,
+          "description": "User id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.user.S3CredentialsWithSecret": {
+      "description": "S3CredentialsWithSecret",
+      "id": "S3CredentialsWithSecret",
+      "namespace": "cloud.user",
+      "properties": {
+        "access": {
+          "canBeNull": false,
+          "description": "S3 Access key",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "secret": {
+          "canBeNull": false,
+          "description": "S3 Access key secret",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        },
+        "tenantId": {
+          "canBeNull": false,
+          "description": "Tenant id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "userId": {
+          "canBeNull": false,
+          "description": "User id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "cloud.user.User": {
       "description": "User",
       "id": "User",
@@ -19054,25 +19402,8 @@ export const schema: Schema = {
         "ASIA",
         "AU",
         "CA",
-        "CZ",
-        "DE",
-        "ES",
-        "EU",
-        "FI",
-        "FR",
-        "GB",
-        "IE",
-        "IT",
-        "LT",
-        "MA",
-        "NL",
-        "PL",
-        "PT",
         "QC",
         "SG",
-        "SN",
-        "TN",
-        "US",
         "WE",
         "WS"
       ],

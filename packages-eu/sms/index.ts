@@ -99,6 +99,84 @@ export namespace sms {
         support: sms.SupportEnum;
     }
     /**
+     * Batch of SMS to send
+     * interface fullName: sms.Batch.Batch
+     */
+    export interface Batch {
+        accountID: number;
+        createdAt: string;
+        errors: sms.BatchError[];
+        estimatedCredits: number;
+        finishedAt?: string;
+        from?: string;
+        id: string;
+        message: string;
+        name: string;
+        processedRecords: number;
+        receivers?: string[];
+        sentAt?: string;
+        slotID?: string;
+        startedAt?: string;
+        status: sms.BatchStatusEnum;
+        totalRecords: number;
+        updatedAt: string;
+    }
+    /**
+     * SMS classes
+     * type fullname: sms.BatchClassEnum
+     */
+    export type BatchClassEnum = "FLASH" | "PHONE" | "SIM"
+    /**
+     * Batch error details
+     * interface fullName: sms.BatchError.BatchError
+     */
+    export interface BatchError {
+        message: string;
+        receiver: string;
+    }
+    /**
+     * Params to create a batch
+     * interface fullName: sms.BatchParams.BatchParams
+     */
+    export interface BatchParams {
+        class: sms.BatchClassEnum;
+        deferred: string;
+        from: string;
+        message: string;
+        name: string;
+        noStop: boolean;
+        senderForResponse: boolean;
+        slotID: string;
+        tag: string;
+        to: string[];
+    }
+    /**
+     * Batch's statistics
+     * interface fullName: sms.BatchStatistics.BatchStatistics
+     */
+    export interface BatchStatistics {
+        credits: number;
+        delivered: number;
+        estimatedCredits: number;
+        failed: number;
+        id: string;
+        pending: number;
+        sent: number;
+        stoplisted: number;
+    }
+    /**
+     * Batch statuses
+     * type fullname: sms.BatchStatusEnum
+     */
+    export type BatchStatusEnum = "PENDING" | "INSERTING" | "INSERTED" | "COMPLETED" | "TO_CANCEL" | "CANCELING" | "CANCELED" | "FAILED"
+    /**
+     * Params to update a batch
+     * interface fullName: sms.BatchUpdateParams.BatchUpdateParams
+     */
+    export interface BatchUpdateParams {
+        name: string;
+    }
+    /**
      * SMS blacklist
      * interface fullName: sms.Blacklist.Blacklist
      */
@@ -136,7 +214,7 @@ export namespace sms {
      * All country suffixes accessible for sms services and "all" available
      * type fullname: sms.CountryEnum
      */
-    export type CountryEnum = "ag" | "ai" | "all" | "an" | "ar" | "at" | "au" | "aw" | "ba" | "bb" | "be" | "bg" | "bh" | "bm" | "bo" | "br" | "bz" | "ch" | "cl" | "cn" | "co" | "cr" | "cu" | "cy" | "cz" | "de" | "dk" | "dm" | "dz" | "ec" | "ee" | "eg" | "es" | "fi" | "fr" | "gb" | "gd" | "gp" | "gr" | "gy" | "hk" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "in" | "is" | "it" | "jm" | "jo" | "jp" | "kr" | "kw" | "ky" | "lb" | "lc" | "lt" | "lu" | "lv" | "ma" | "me" | "mq" | "ms" | "mt" | "my" | "nc" | "ng" | "nl" | "no" | "nz" | "pa" | "pe" | "pf" | "ph" | "pk" | "pl" | "pt" | "py" | "re" | "ro" | "rs" | "ru" | "sa" | "se" | "sg" | "si" | "sk" | "sr" | "tc" | "th" | "tn" | "tr" | "tt" | "tw" | "ua" | "uy" | "vc" | "ve" | "vg" | "vn" | "za"
+    export type CountryEnum = "ad" | "ae" | "af" | "ag" | "ai" | "al" | "all" | "am" | "an" | "ao" | "ar" | "at" | "au" | "aw" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bm" | "bn" | "bo" | "br" | "bs" | "bt" | "bw" | "by" | "bz" | "ca" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cu" | "cv" | "cy" | "cz" | "de" | "dk" | "dm" | "dz" | "ec" | "ee" | "eg" | "es" | "et" | "fi" | "fj" | "fk" | "fo" | "fr" | "ga" | "gb" | "gd" | "ge" | "gf" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gt" | "gu" | "gw" | "gy" | "hk" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "in" | "io" | "iq" | "ir" | "is" | "it" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "km" | "kn" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "md" | "me" | "mg" | "mk" | "ml" | "mn" | "mo" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "ng" | "ni" | "nl" | "no" | "np" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "ps" | "pt" | "py" | "qa" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "si" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "st" | "sv" | "sy" | "sz" | "tc" | "td" | "tg" | "th" | "tj" | "tl" | "tm" | "tn" | "to" | "tr" | "tt" | "tw" | "tz" | "ua" | "ug" | "us" | "uy" | "uz" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "ws" | "ye" | "yt" | "za" | "zm" | "zw"
     /**
      * Rates of a given destination
      * interface fullName: sms.DestinationRates.DestinationRates
@@ -241,10 +319,11 @@ export namespace sms {
         parts: number;
     }
     /**
-     * Sms history of sms outgoing sent
+     * Sent SMS
      * interface fullName: sms.Outgoing.Outgoing
      */
     export interface Outgoing {
+        batchID?: string;
         creationDatetime: string;
         credits: number;
         deliveredAt?: string;
@@ -743,6 +822,60 @@ export interface Sms {
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        batches: {
+            /**
+             * Get batches list
+             * GET /sms/{serviceName}/batches
+             */
+            $get(): Promise<sms.Batch[]>;
+            /**
+             * Create a batch
+             * POST /sms/{serviceName}/batches
+             */
+            $post(params: { class?: sms.BatchClassEnum, deferred?: string, from?: string, message: string, name?: string, noStop?: boolean, senderForResponse?: boolean, slotID?: string, tag?: string, to?: string[] }): Promise<sms.Batch>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(id: string): {
+                /**
+                 * Get a batch
+                 * GET /sms/{serviceName}/batches/{id}
+                 */
+                $get(): Promise<sms.Batch>;
+                /**
+                 * Update a batch
+                 * PUT /sms/{serviceName}/batches/{id}
+                 */
+                $put(params: { name: string }): Promise<sms.Batch>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                cancel: {
+                    /**
+                     * Cancel a deferred batch (no SMS must have been sent)
+                     * POST /sms/{serviceName}/batches/{id}/cancel
+                     */
+                    $post(): Promise<sms.Batch>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                statistics: {
+                    /**
+                     * Batch's statistics
+                     * GET /sms/{serviceName}/batches/{id}/statistics
+                     */
+                    $get(): Promise<sms.BatchStatistics>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            };
+        }
         blacklists: {
             /**
              * Numbers blacklisted associated to the sms account
@@ -891,22 +1024,22 @@ export interface Sms {
         }
         outgoing: {
             /**
-             * Sms sent associated to the sms account
+             * Get SMS list
              * GET /sms/{serviceName}/outgoing
              */
-            $get(params?: { creationDatetime_from?: string, creationDatetime_to?: string, deliveryReceipt?: number, differedDelivery?: number, ptt?: number, receiver?: string, sender?: string, tag?: string }): Promise<number[]>;
+            $get(params?: { batchID?: string, creationDatetime_from?: string, creationDatetime_to?: string, deliveryReceipt?: number, differedDelivery?: number, ptt?: number, receiver?: string, sender?: string, tag?: string }): Promise<number[]>;
             /**
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(id: number): {
                 /**
-                 * Delete the sms outgoing history given
+                 * Delete outgoing SMS from history
                  * DELETE /sms/{serviceName}/outgoing/{id}
                  */
                 $delete(): Promise<void>;
                 /**
-                 * Get this object properties
+                 * Get SMS details
                  * GET /sms/{serviceName}/outgoing/{id}
                  */
                 $get(): Promise<sms.Outgoing>;

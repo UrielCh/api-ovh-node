@@ -278,6 +278,22 @@ export namespace email {
             mailinglist: string;
         }
         /**
+         * Change redirection
+         * interface fullName: email.domain.RedirectionChangeRedirectionCreation.RedirectionChangeRedirectionCreation
+         */
+        export interface RedirectionChangeRedirectionCreation {
+            to: string;
+        }
+        /**
+         * Create redirection
+         * interface fullName: email.domain.RedirectionCreation.RedirectionCreation
+         */
+        export interface RedirectionCreation {
+            from: string;
+            localCopy: boolean;
+            to: string;
+        }
+        /**
          * Global Redirection
          * interface fullName: email.domain.RedirectionGlobal.RedirectionGlobal
          */
@@ -372,7 +388,7 @@ export namespace email {
             action: domainDomainSpecialAccountActionEnum;
             date: string;
             domain: string;
-            id: number;
+            id: string;
             type: domainDomainSpecialAccountTypeEnum;
         }
     }
@@ -1323,12 +1339,12 @@ export interface Email {
                      * Get redirection tasks
                      * GET /email/domain/{domain}/task/redirection
                      */
-                    $get(params?: { account?: string }): Promise<number[]>;
+                    $get(params?: { account?: string }): Promise<string[]>;
                     /**
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(id: number): {
+                    $(id: string): {
                         /**
                          * Get this object properties
                          * GET /email/domain/{domain}/task/redirection/{id}

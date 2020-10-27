@@ -789,6 +789,7 @@ export namespace dedicatedCloud {
         generation: dedicatedCloudGenerationEnum;
         location: string;
         managementInterface: dedicatedCloudManagementInterfaceEnum;
+        productReference: dedicatedCloudproductReferenceEnum;
         serviceName: string;
         servicePackName?: string;
         spla: boolean;
@@ -998,6 +999,11 @@ export namespace dedicatedCloud {
         uppercaseLetterMandatory: boolean;
         validityPeriod: number;
     }
+    /**
+     * The reference universe information for your Dedicated Cloud
+     * type fullname: dedicatedCloud.productReferenceEnum
+     */
+    export type productReferenceEnum = "EPCC" | "MBM"
     /**
      * All vCenter upgrade possibility
      * type fullname: dedicatedCloud.releaseEnum
@@ -1461,7 +1467,7 @@ export interface DedicatedCloud {
          * Alter this object properties
          * PUT /dedicatedCloud/{serviceName}
          */
-        $put(params?: { advancedSecurity?: boolean, bandwidth?: string, billingType?: dedicatedCloudBillingTypeEnum, certifiedInterfaceUrl?: string, commercialRange?: string, description?: string, generation?: dedicatedCloudGenerationEnum, location?: string, managementInterface?: dedicatedCloudManagementInterfaceEnum, serviceName?: string, servicePackName?: string, spla?: boolean, sslV3?: boolean, state?: dedicatedCloudStateEnum, userAccessPolicy?: dedicatedCloudUserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloudUserLogoutPolicyEnum, userSessionTimeout?: number, vScopeUrl?: string, version?: dedicatedCloudVersion, webInterfaceUrl?: string }): Promise<dedicatedCloud.Task>;
+        $put(params?: { advancedSecurity?: boolean, bandwidth?: string, billingType?: dedicatedCloudBillingTypeEnum, certifiedInterfaceUrl?: string, commercialRange?: string, description?: string, generation?: dedicatedCloudGenerationEnum, location?: string, managementInterface?: dedicatedCloudManagementInterfaceEnum, productReference?: dedicatedCloudproductReferenceEnum, serviceName?: string, servicePackName?: string, spla?: boolean, sslV3?: boolean, state?: dedicatedCloudStateEnum, userAccessPolicy?: dedicatedCloudUserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloudUserLogoutPolicyEnum, userSessionTimeout?: number, vScopeUrl?: string, version?: dedicatedCloudVersion, webInterfaceUrl?: string }): Promise<dedicatedCloud.Task>;
         /**
          * Controle cache
          */
@@ -3170,6 +3176,17 @@ export interface DedicatedCloud {
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
+                confirmPhoneNumber: {
+                    /**
+                     * Confirm phone number for user
+                     * POST /dedicatedCloud/{serviceName}/user/{userId}/confirmPhoneNumber
+                     */
+                    $post(params: { token: string }): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
                 disable: {
                     /**
                      * Disable the given Private Cloud user 
@@ -3562,6 +3579,7 @@ type dedicatedCloudclusterAutoScaleModeEnum = dedicatedCloud.cluster.AutoScaleMo
 type dedicatedCloudBillingTypeEnum = dedicatedCloud.BillingTypeEnum;
 type dedicatedCloudGenerationEnum = dedicatedCloud.GenerationEnum;
 type dedicatedCloudManagementInterfaceEnum = dedicatedCloud.ManagementInterfaceEnum;
+type dedicatedCloudproductReferenceEnum = dedicatedCloud.productReferenceEnum;
 type dedicatedCloudStateEnum = dedicatedCloud.StateEnum;
 type dedicatedCloudUserAccessPolicyEnum = dedicatedCloud.UserAccessPolicyEnum;
 type dedicatedCloudUserLogoutPolicyEnum = dedicatedCloud.UserLogoutPolicyEnum;

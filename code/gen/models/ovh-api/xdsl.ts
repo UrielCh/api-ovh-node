@@ -6404,6 +6404,7 @@ export const schema: Schema = {
       "description": "Possible DSL technologies",
       "enum": [
         "adsl",
+        "ftte",
         "ftth",
         "sdsl",
         "vdsl"

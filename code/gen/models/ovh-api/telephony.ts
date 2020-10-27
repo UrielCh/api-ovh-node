@@ -15913,6 +15913,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
+              "description": "The timeout in milliseconds before considering the DTMF entry as done",
+              "fullType": "long",
+              "name": "interDigitTimeout",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
               "description": "The id of the OvhPabxSound played when the caller uses an invalid DTMF",
               "fullType": "long",
               "name": "invalidSound",
@@ -15934,6 +15942,14 @@ export const schema: Schema = {
               "name": "name",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The timeout in milliseconds before ending the menu when no DTMF is received",
+              "fullType": "long",
+              "name": "timeout",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -30033,6 +30049,14 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "interDigitTimeout": {
+          "canBeNull": false,
+          "description": "The timeout in milliseconds before considering the DTMF entry as done",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
         "invalidSound": {
           "canBeNull": true,
           "description": "The id of the OvhPabxSound played when the caller uses an invalid DTMF",
@@ -30063,6 +30087,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "timeout": {
+          "canBeNull": false,
+          "description": "The timeout in milliseconds before ending the menu when no DTMF is received",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },

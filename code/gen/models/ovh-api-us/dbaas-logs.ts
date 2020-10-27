@@ -192,9 +192,9 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "dbaas.logs.ClusterAllowedNetworks",
+              "dataType": "dbaas.logs.ClusterUpdate",
               "description": "Request Body",
-              "fullType": "dbaas.logs.ClusterAllowedNetworks",
+              "fullType": "dbaas.logs.ClusterUpdate",
               "paramType": "body",
               "required": true
             },
@@ -219,165 +219,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}"
-    },
-    {
-      "description": "Cluster allowed networks",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2020-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}",
-            "value": "DEPRECATED"
-          },
-          "description": "List all the network ID allowed to contact given cluster",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Cluster ID",
-              "fullType": "uuid",
-              "name": "clusterId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "uuid[]"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2020-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}",
-            "value": "DEPRECATED"
-          },
-          "description": "Allow an IP to contact cluster",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.ClusterAllowedNetworkCreation",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.ClusterAllowedNetworkCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Cluster ID",
-              "fullType": "uuid",
-              "name": "clusterId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork"
-    },
-    {
-      "description": "Cluster allowed networks",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2020-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}",
-            "value": "DEPRECATED"
-          },
-          "description": "Remove the specified IP from the list of allowed networks",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Allowed network ID",
-              "fullType": "uuid",
-              "name": "allowedNetworkId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Cluster ID",
-              "fullType": "uuid",
-              "name": "clusterId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2020-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns details of an allowed network",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Allowed network ID",
-              "fullType": "uuid",
-              "name": "allowedNetworkId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Cluster ID",
-              "fullType": "uuid",
-              "name": "clusterId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.ClusterAllowedNetwork"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}"
     },
     {
       "description": "Cluster available retentions",
@@ -638,165 +479,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/dbaas/logs/{serviceName}/input/{inputId}/action"
-    },
-    {
-      "description": "InputAllowedNetworks",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2020-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}",
-            "value": "DEPRECATED"
-          },
-          "description": "List all network ID allowed to join input",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Input ID",
-              "fullType": "uuid",
-              "name": "inputId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "uuid[]"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2020-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}",
-            "value": "DEPRECATED"
-          },
-          "description": "Allow an ip to join input",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "dbaas.logs.InputAllowedNetworkCreation",
-              "description": "Request Body",
-              "fullType": "dbaas.logs.InputAllowedNetworkCreation",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Input ID",
-              "fullType": "uuid",
-              "name": "inputId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork"
-    },
-    {
-      "description": "InputAllowedNetwork",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2020-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}",
-            "value": "DEPRECATED"
-          },
-          "description": "Remove the specified IP from the list of allowed networks",
-          "httpMethod": "DELETE",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Allowed network ID",
-              "fullType": "uuid",
-              "name": "allowedNetworkId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Input ID",
-              "fullType": "uuid",
-              "name": "inputId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        },
-        {
-          "apiStatus": {
-            "deletionDate": "2020-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}",
-            "value": "DEPRECATED"
-          },
-          "description": "List all network ID allowed to join input",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Allowed network ID",
-              "fullType": "uuid",
-              "name": "allowedNetworkId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "uuid",
-              "description": "Input ID",
-              "fullType": "uuid",
-              "name": "inputId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.AllowedNetwork"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}"
     },
     {
       "description": "InputConfigtest",
@@ -1201,35 +883,6 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/metrics"
     },
     {
-      "description": "ServiceOffer",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2020-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns the subscribed offer",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Offer"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/offer"
-    },
-    {
       "description": "Operations",
       "operations": [
         {
@@ -1288,109 +941,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/dbaas/logs/{serviceName}/operation/{operationId}"
-    },
-    {
-      "description": "ServiceOptions",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2020-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns the subscribed additional options",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "uuid[]"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/option"
-    },
-    {
-      "description": "ServiceOption",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2020-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns details of a subscribed option",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Option ID",
-              "fullType": "uuid",
-              "name": "optionId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Option"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/option/{optionId}"
-    },
-    {
-      "description": "ServiceOption",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2020-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}",
-            "value": "DEPRECATED"
-          },
-          "description": "Remove the specified subscribed option",
-          "httpMethod": "POST",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "uuid",
-              "description": "Option ID",
-              "fullType": "uuid",
-              "name": "optionId",
-              "paramType": "path",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Operation"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/option/{optionId}/terminate"
     },
     {
       "description": "Aliases",
@@ -2004,9 +1554,125 @@ export const schema: Schema = {
             }
           ],
           "responseType": "uuid[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Register a new Kibana instance",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation"
         }
       ],
       "path": "/dbaas/logs/{serviceName}/output/elasticsearch/kibana"
+    },
+    {
+      "description": "Kibana instances",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove specified Kibana instance",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Kibana ID",
+              "fullType": "uuid",
+              "name": "kibanaId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns specified Kibana instance",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Kibana ID",
+              "fullType": "uuid",
+              "name": "kibanaId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Kibana"
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/kibana/{kibanaId}"
+    },
+    {
+      "description": "KibanaUrls",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Returns the list of urls of specified Kibana",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Kibana ID",
+              "fullType": "uuid",
+              "name": "kibanaId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Url[]"
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/output/elasticsearch/kibana/{kibanaId}/url"
     },
     {
       "description": "Dashboards",
@@ -2873,35 +2539,6 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/url"
     },
     {
-      "description": "ServiceQuota",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2020-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}",
-            "value": "DEPRECATED"
-          },
-          "description": "Returns the overall quota limits",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Service name",
-              "fullType": "string",
-              "name": "serviceName",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.Quota"
-        }
-      ],
-      "path": "/dbaas/logs/{serviceName}/quota"
-    },
-    {
       "description": "Roles",
       "operations": [
         {
@@ -3477,6 +3114,47 @@ export const schema: Schema = {
       "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/index"
     },
     {
+      "description": "RolePermissionKibana",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Append a kibana permission to role",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "dbaas.logs.RolePermissionKibanaCreation",
+              "description": "Request Body",
+              "fullType": "dbaas.logs.RolePermissionKibanaCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Role ID",
+              "fullType": "uuid",
+              "name": "roleId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dbaas.logs.Operation"
+        }
+      ],
+      "path": "/dbaas/logs/{serviceName}/role/{roleId}/permission/kibana"
+    },
+    {
       "description": "RolePermissionIndex",
       "operations": [
         {
@@ -3846,35 +3524,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/dbaas/logs/input/engine/{engineId}/helper/{helperId}"
-    },
-    {
-      "description": "Offer",
-      "operations": [
-        {
-          "apiStatus": {
-            "deletionDate": "2020-06-01T00:00:00+00:00",
-            "deprecatedDate": "2020-04-08T17:41:02+02:00",
-            "description": "Deprecated, will be removed",
-            "replacement": "/dbaas/logs/{serviceName}",
-            "value": "DEPRECATED"
-          },
-          "description": "Display specified offer",
-          "httpMethod": "GET",
-          "noAuthentication": false,
-          "parameters": [
-            {
-              "dataType": "string",
-              "description": "Reference",
-              "fullType": "string",
-              "name": "reference",
-              "paramType": "path",
-              "required": true
-            }
-          ],
-          "responseType": "dbaas.logs.PublicOffer"
-        }
-      ],
-      "path": "/dbaas/logs/offer/{reference}"
     }
   ],
   "basePath": "https://api.us.ovhcloud.com/1.0",
@@ -3932,14 +3581,6 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Associated DBaaS Logs option",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
         "updatedAt": {
           "canBeNull": true,
           "description": "Input last update",
@@ -3947,29 +3588,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "datetime"
-        }
-      }
-    },
-    "dbaas.logs.AllowedNetwork": {
-      "description": "Network allowed to join input",
-      "id": "AllowedNetwork",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "allowedNetworkId": {
-          "canBeNull": false,
-          "description": "Network ID",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
-        "network": {
-          "canBeNull": false,
-          "description": "IP block",
-          "fullType": "ipBlock",
-          "readOnly": true,
-          "required": false,
-          "type": "ipBlock"
         }
       }
     },
@@ -4173,94 +3791,6 @@ export const schema: Schema = {
         }
       }
     },
-    "dbaas.logs.ClusterAllowedNetwork": {
-      "description": "Cluster allowed network",
-      "id": "ClusterAllowedNetwork",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "allowedNetworkId": {
-          "canBeNull": false,
-          "description": "Network ID",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
-        "flowType": {
-          "canBeNull": false,
-          "description": "Flow type",
-          "fullType": "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum"
-        },
-        "network": {
-          "canBeNull": false,
-          "description": "IP block",
-          "fullType": "ipBlock",
-          "readOnly": true,
-          "required": false,
-          "type": "ipBlock"
-        }
-      }
-    },
-    "dbaas.logs.ClusterAllowedNetworkCreation": {
-      "description": "Missing description",
-      "id": "ClusterAllowedNetworkCreation",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "flowType": {
-          "canBeNull": false,
-          "description": "Flow type",
-          "fullType": "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum",
-          "readOnly": false,
-          "required": false,
-          "type": "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum"
-        },
-        "network": {
-          "canBeNull": false,
-          "description": "IP block",
-          "fullType": "ipBlock",
-          "readOnly": false,
-          "required": false,
-          "type": "ipBlock"
-        }
-      }
-    },
-    "dbaas.logs.ClusterAllowedNetworkFlowTypeEnum": {
-      "description": "Possible values for ClusterAllowedNetworkFlowTypeEnum",
-      "enum": [
-        "QUERY",
-        "DIRECT_INPUT",
-        "ALL"
-      ],
-      "enumType": "string",
-      "id": "ClusterAllowedNetworkFlowTypeEnum",
-      "namespace": "dbaas.logs"
-    },
-    "dbaas.logs.ClusterAllowedNetworks": {
-      "description": "Cluster allowed networks",
-      "id": "ClusterAllowedNetworks",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "directInputAllowedNetworks": {
-          "canBeNull": true,
-          "description": "Allowed networks for DIRECT_INPUT flow type",
-          "fullType": "ipBlock[]",
-          "readOnly": false,
-          "required": false,
-          "type": "ipBlock[]"
-        },
-        "queryAllowedNetworks": {
-          "canBeNull": true,
-          "description": "Allowed networks for QUERY flow type",
-          "fullType": "ipBlock[]",
-          "readOnly": false,
-          "required": false,
-          "type": "ipBlock[]"
-        }
-      }
-    },
     "dbaas.logs.ClusterClusterTypeEnum": {
       "description": "Possible values for ClusterClusterTypeEnum",
       "enum": [
@@ -4316,6 +3846,29 @@ export const schema: Schema = {
         }
       }
     },
+    "dbaas.logs.ClusterUpdate": {
+      "description": "Cluster allowed networks",
+      "id": "ClusterUpdate",
+      "namespace": "dbaas.logs",
+      "properties": {
+        "directInputAllowedNetworks": {
+          "canBeNull": true,
+          "description": "Allowed networks for DIRECT_INPUT flow type",
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
+        },
+        "queryAllowedNetworks": {
+          "canBeNull": true,
+          "description": "Allowed networks for QUERY flow type",
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
+        }
+      }
+    },
     "dbaas.logs.Dashboard": {
       "description": "Graylog dashboard",
       "id": "Dashboard",
@@ -4361,14 +3914,6 @@ export const schema: Schema = {
           "required": false,
           "type": "boolean"
         },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Associated DBaaS Logs option",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
         "title": {
           "canBeNull": false,
           "description": "Dashboard description",
@@ -4399,14 +3944,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "uuid"
-        },
-        "isDeprecated": {
-          "canBeNull": false,
-          "description": "Indicates if engine will soon not be supported",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
         },
         "name": {
           "canBeNull": false,
@@ -4642,14 +4179,6 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Associated DBaaS Logs option",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
         "updatedAt": {
           "canBeNull": true,
           "description": "Index last update",
@@ -4737,14 +4266,6 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Associated DBaaS Logs option",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
         "publicAddress": {
           "canBeNull": false,
           "description": "Input IP address",
@@ -4752,14 +4273,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
-        },
-        "singleInstanceEnabled": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Force only one instance",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
         },
         "sslCertificate": {
           "canBeNull": false,
@@ -4840,21 +4353,6 @@ export const schema: Schema = {
       "id": "InputActionTypeEnum",
       "namespace": "dbaas.logs"
     },
-    "dbaas.logs.InputAllowedNetworkCreation": {
-      "description": "Missing description",
-      "id": "InputAllowedNetworkCreation",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "network": {
-          "canBeNull": false,
-          "description": "IP block",
-          "fullType": "ipBlock",
-          "readOnly": false,
-          "required": false,
-          "type": "ipBlock"
-        }
-      }
-    },
     "dbaas.logs.InputConfigurationFlowggerUpdate": {
       "description": "Missing description",
       "id": "InputConfigurationFlowggerUpdate",
@@ -4922,14 +4420,6 @@ export const schema: Schema = {
           "required": false,
           "type": "ipBlock[]"
         },
-        "autoSelectOption": {
-          "canBeNull": true,
-          "description": "DEPRECATED: If set, automatically selects a compatible option",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
         "description": {
           "canBeNull": false,
           "description": "Description",
@@ -4961,22 +4451,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "long"
-        },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Option ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": false,
-          "type": "uuid"
-        },
-        "singleInstanceEnabled": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Indicate if input have only a single instance",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
         },
         "streamId": {
           "canBeNull": false,
@@ -5052,22 +4526,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "long"
-        },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Option ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": false,
-          "type": "uuid"
-        },
-        "singleInstanceEnabled": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Indicate if input have only a single instance",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
         },
         "streamId": {
           "canBeNull": false,
@@ -5196,133 +4654,6 @@ export const schema: Schema = {
         }
       }
     },
-    "dbaas.logs.Offer": {
-      "description": "DBaaS Logs offer",
-      "id": "Offer",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "curNbAlias": {
-          "canBeNull": false,
-          "description": "Current number of alias booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "curNbDashboard": {
-          "canBeNull": false,
-          "description": "Current number of dashboard booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "curNbIndex": {
-          "canBeNull": false,
-          "description": "Current number of index booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "curNbInput": {
-          "canBeNull": false,
-          "description": "Current number of input booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "curNbRole": {
-          "canBeNull": false,
-          "description": "Current number of role booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "curNbStream": {
-          "canBeNull": false,
-          "description": "Current number of stream booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "esStorage": {
-          "canBeNull": true,
-          "description": "Number of GB stored per month included",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbAlias": {
-          "canBeNull": false,
-          "description": "Maximum number of alias allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbDashboard": {
-          "canBeNull": false,
-          "description": "Maximum number of dashboard allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbIndex": {
-          "canBeNull": false,
-          "description": "Maximum number of index allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbInput": {
-          "canBeNull": false,
-          "description": "Maximum number of input allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbRole": {
-          "canBeNull": false,
-          "description": "Maximum number of role allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbStream": {
-          "canBeNull": false,
-          "description": "Maximum number of stream allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "reference": {
-          "canBeNull": false,
-          "description": "Option unique reference",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "retention": {
-          "canBeNull": true,
-          "description": "Data retention in hours",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        }
-      }
-    },
     "dbaas.logs.Operation": {
       "description": "Asynchronous operation",
       "id": "Operation",
@@ -5371,14 +4702,6 @@ export const schema: Schema = {
         "operationId": {
           "canBeNull": false,
           "description": "Operation ID",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Option used",
           "fullType": "uuid",
           "readOnly": true,
           "required": false,
@@ -5434,180 +4757,11 @@ export const schema: Schema = {
       "id": "OperationStateEnum",
       "namespace": "dbaas.logs"
     },
-    "dbaas.logs.Option": {
-      "description": "DBaaS Logs option",
-      "id": "Option",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "createdAt": {
-          "canBeNull": false,
-          "description": "Service creation",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "curNbAlias": {
-          "canBeNull": false,
-          "description": "Current number of alias booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "curNbDashboard": {
-          "canBeNull": false,
-          "description": "Current number of dashboard booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "curNbIndex": {
-          "canBeNull": false,
-          "description": "Current number of index booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "curNbInput": {
-          "canBeNull": false,
-          "description": "Current number of input booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "curNbRole": {
-          "canBeNull": false,
-          "description": "Current number of role booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "curNbStream": {
-          "canBeNull": false,
-          "description": "Current number of stream booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "indexSize": {
-          "canBeNull": true,
-          "description": "Index size in bytes",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbAlias": {
-          "canBeNull": false,
-          "description": "Maximum number of alias allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbDashboard": {
-          "canBeNull": false,
-          "description": "Maximum number of dashboard allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbIndex": {
-          "canBeNull": false,
-          "description": "Maximum number of index allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbInput": {
-          "canBeNull": false,
-          "description": "Maximum number of input allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbRole": {
-          "canBeNull": false,
-          "description": "Maximum number of role allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbStream": {
-          "canBeNull": false,
-          "description": "Maximum number of stream allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "optionId": {
-          "canBeNull": false,
-          "description": "Option ID",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
-        "reference": {
-          "canBeNull": false,
-          "description": "Option unique reference",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "state": {
-          "canBeNull": false,
-          "description": "Option state",
-          "fullType": "dbaas.logs.OptionStateEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "dbaas.logs.OptionStateEnum"
-        },
-        "updatedAt": {
-          "canBeNull": true,
-          "description": "Service last update",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        }
-      }
-    },
-    "dbaas.logs.OptionStateEnum": {
-      "description": "Possible values for OptionStateEnum",
-      "enum": [
-        "ENABLED",
-        "DISABLED"
-      ],
-      "enumType": "string",
-      "id": "OptionStateEnum",
-      "namespace": "dbaas.logs"
-    },
     "dbaas.logs.OutputElasticsearchAliasCreation": {
       "description": "Missing description",
       "id": "OutputElasticsearchAliasCreation",
       "namespace": "dbaas.logs",
       "properties": {
-        "autoSelectOption": {
-          "canBeNull": true,
-          "description": "DEPRECATED: If set, automatically selects a compatible option",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
         "description": {
           "canBeNull": false,
           "description": "Description",
@@ -5615,14 +4769,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
-        },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Option ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": false,
-          "type": "uuid"
         },
         "suffix": {
           "canBeNull": false,
@@ -5676,14 +4822,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
-        },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Option ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": false,
-          "type": "uuid"
         }
       }
     },
@@ -5695,14 +4833,6 @@ export const schema: Schema = {
         "alertNotifyEnabled": {
           "canBeNull": true,
           "description": "If set, notify when size is near 80, 90 or 100 % of its maximum capacity",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
-        "autoSelectOption": {
-          "canBeNull": true,
-          "description": "DEPRECATED: If set, automatically selects a compatible option",
           "fullType": "boolean",
           "readOnly": false,
           "required": false,
@@ -5723,14 +4853,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "long"
-        },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Option ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": false,
-          "type": "uuid"
         },
         "suffix": {
           "canBeNull": false,
@@ -5770,14 +4892,6 @@ export const schema: Schema = {
       "id": "OutputGraylogDashboardCreation",
       "namespace": "dbaas.logs",
       "properties": {
-        "autoSelectOption": {
-          "canBeNull": true,
-          "description": "DEPRECATED: If set, automatically selects a compatible option",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
         "description": {
           "canBeNull": false,
           "description": "Description",
@@ -5785,14 +4899,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
-        },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Option ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": false,
-          "type": "uuid"
         },
         "title": {
           "canBeNull": false,
@@ -5809,14 +4915,6 @@ export const schema: Schema = {
       "id": "OutputGraylogDashboardDuplicateCreation",
       "namespace": "dbaas.logs",
       "properties": {
-        "autoSelectOption": {
-          "canBeNull": true,
-          "description": "DEPRECATED: If set, automatically selects a compatible option",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
         "description": {
           "canBeNull": false,
           "description": "Description",
@@ -5824,14 +4922,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
-        },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Option ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": false,
-          "type": "uuid"
         },
         "streamId": {
           "canBeNull": true,
@@ -5863,14 +4953,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
-        },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Option ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": false,
-          "type": "uuid"
         },
         "title": {
           "canBeNull": false,
@@ -6093,14 +5175,6 @@ export const schema: Schema = {
       "id": "OutputGraylogStreamCreation",
       "namespace": "dbaas.logs",
       "properties": {
-        "autoSelectOption": {
-          "canBeNull": true,
-          "description": "DEPRECATED: If set, automatically selects a compatible option",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
         "coldStorageCompression": {
           "canBeNull": true,
           "description": "Cold storage compression",
@@ -6180,14 +5254,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "boolean"
-        },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Option ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": false,
-          "type": "uuid"
         },
         "parentStreamId": {
           "canBeNull": true,
@@ -6355,14 +5421,6 @@ export const schema: Schema = {
           "required": false,
           "type": "boolean"
         },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Option ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": false,
-          "type": "uuid"
-        },
         "pauseIndexingOnMaxSize": {
           "canBeNull": true,
           "description": "If set, pause indexing when maximum size is reach",
@@ -6462,180 +5520,6 @@ export const schema: Schema = {
       "id": "PermissionTypeEnum",
       "namespace": "dbaas.logs"
     },
-    "dbaas.logs.PublicOffer": {
-      "description": "DBaaS Logs offer",
-      "id": "PublicOffer",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "esStorage": {
-          "canBeNull": false,
-          "description": "Number of GB stored per month included",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbAlias": {
-          "canBeNull": false,
-          "description": "Maximum number of alias allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbDashboard": {
-          "canBeNull": false,
-          "description": "Maximum number of dashboard allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbIndex": {
-          "canBeNull": false,
-          "description": "Maximum number of index allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbInput": {
-          "canBeNull": false,
-          "description": "Maximum number of input allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbRole": {
-          "canBeNull": false,
-          "description": "Maximum number of role allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbStream": {
-          "canBeNull": false,
-          "description": "Maximum number of stream allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "reference": {
-          "canBeNull": false,
-          "description": "Option unique reference",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "dbaas.logs.Quota": {
-      "description": "DBaaS Logs quota",
-      "id": "Quota",
-      "namespace": "dbaas.logs",
-      "properties": {
-        "curNbAlias": {
-          "canBeNull": false,
-          "description": "Current number of alias booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "curNbDashboard": {
-          "canBeNull": false,
-          "description": "Current number of dashboard booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "curNbIndex": {
-          "canBeNull": false,
-          "description": "Current number of index booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "curNbInput": {
-          "canBeNull": false,
-          "description": "Current number of input booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "curNbRole": {
-          "canBeNull": false,
-          "description": "Current number of role booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "curNbStream": {
-          "canBeNull": false,
-          "description": "Current number of stream booked",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbAlias": {
-          "canBeNull": false,
-          "description": "Maximum number of alias allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbDashboard": {
-          "canBeNull": false,
-          "description": "Maximum number of dashboard allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbIndex": {
-          "canBeNull": false,
-          "description": "Maximum number of index allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbInput": {
-          "canBeNull": false,
-          "description": "Maximum number of input allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbRole": {
-          "canBeNull": false,
-          "description": "Maximum number of role allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "maxNbStream": {
-          "canBeNull": false,
-          "description": "Maximum number of stream allowed",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        }
-      }
-    },
     "dbaas.logs.Role": {
       "description": "Role",
       "id": "Role",
@@ -6665,14 +5549,6 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Associated DBaaS Logs option",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
         "roleId": {
           "canBeNull": false,
           "description": "Role ID",
@@ -6696,14 +5572,6 @@ export const schema: Schema = {
       "id": "RoleCreation",
       "namespace": "dbaas.logs",
       "properties": {
-        "autoSelectOption": {
-          "canBeNull": true,
-          "description": "DEPRECATED: If set, automatically selects a compatible option",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
-        },
         "description": {
           "canBeNull": false,
           "description": "Description",
@@ -6719,14 +5587,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
-        },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Option ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": false,
-          "type": "uuid"
         }
       }
     },
@@ -6887,14 +5747,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
-        },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Option ID",
-          "fullType": "uuid",
-          "readOnly": false,
-          "required": false,
-          "type": "uuid"
         }
       }
     },
@@ -6918,14 +5770,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
-        },
-        "isCapped": {
-          "canBeNull": false,
-          "description": "DEPRECATED: Is capped plan enabled?",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
         },
         "serviceName": {
           "canBeNull": false,
@@ -7128,14 +5972,6 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
-        },
-        "optionId": {
-          "canBeNull": true,
-          "description": "DEPRECATED: Associated DBaaS Logs option ID",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
         },
         "parentStreamId": {
           "canBeNull": true,
@@ -7578,14 +6414,6 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
-        },
-        "isCapped": {
-          "canBeNull": true,
-          "description": "DEPRECATED: If set, block indexation when plan's limit is reached",
-          "fullType": "boolean",
-          "readOnly": false,
-          "required": false,
-          "type": "boolean"
         }
       }
     },

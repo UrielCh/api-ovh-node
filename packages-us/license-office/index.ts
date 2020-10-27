@@ -68,6 +68,7 @@ export namespace license {
             firstName: string;
             lastName: string;
             phone: string;
+            serviceName: string;
             serviceType: license.office.ServiceTypeEnum;
             status: license.office.ServiceStateEnum;
             zipCode: string;
@@ -210,7 +211,7 @@ export interface License {
              * Alter this object properties
              * PUT /license/office/{serviceName}
              */
-            $put(params?: { address?: string, city?: string, creationDate?: string, displayName?: string, firstName?: string, lastName?: string, phone?: string, serviceType?: license.office.ServiceTypeEnum, status?: license.office.ServiceStateEnum, zipCode?: string }): Promise<void>;
+            $put(params?: { address?: string, city?: string, creationDate?: string, displayName?: string, firstName?: string, lastName?: string, phone?: string, serviceName?: string, serviceType?: license.office.ServiceTypeEnum, status?: license.office.ServiceStateEnum, zipCode?: string }): Promise<void>;
             /**
              * Controle cache
              */

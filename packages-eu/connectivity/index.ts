@@ -209,7 +209,7 @@ export namespace connectivity {
          * Offer product type
          * type fullname: connectivity.eligibility.OfferProductTypeEnum
          */
-        export type OfferProductTypeEnum = "ADSL" | "FTTH" | "SDSL" | "VDSL"
+        export type OfferProductTypeEnum = "ADSL" | "FTTE" | "FTTH" | "SDSL" | "VDSL"
         /**
          * Offer product unbundling type
          * type fullname: connectivity.eligibility.OfferProductUnbundlingTypeEnum

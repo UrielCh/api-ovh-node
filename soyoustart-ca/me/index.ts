@@ -338,6 +338,7 @@ export namespace billing {
     export interface OrderDetail {
         cancelled: boolean;
         description: string;
+        detailType?: orderOrderDetailTypeEnum;
         domain: string;
         orderDetailId: number;
         quantity: string;
@@ -530,6 +531,26 @@ export namespace billing {
             type?: billing.order.associatedObject.TypeEnum;
         }
         /**
+         * All data needed to use a payment mean
+         * interface fullName: billing.order.AvailablePaymentMean.AvailablePaymentMean
+         */
+        export interface AvailablePaymentMean {
+            fields?: billing.order.AvailablePaymentMeanField[];
+            integration: billing.order.PaymentMeanIntegrationEnum;
+            name: string;
+            url?: string;
+        }
+        /**
+         * All fields needed for a payment mean integration
+         * interface fullName: billing.order.AvailablePaymentMeanField.AvailablePaymentMeanField
+         */
+        export interface AvailablePaymentMeanField {
+            key: string;
+            options?: string[];
+            type: billing.order.PaymentMeanFieldTypeEnum;
+            value?: string;
+        }
+        /**
          * Detailed consumption's retrieval information
          * interface fullName: billing.order.ConsumptionDetails.ConsumptionDetails
          */
@@ -574,6 +595,16 @@ export namespace billing {
             subType?: string;
             url: string;
         }
+        /**
+         * Field type of a payment mean
+         * type fullname: billing.order.PaymentMeanFieldTypeEnum
+         */
+        export type PaymentMeanFieldTypeEnum = "hidden" | "select" | "text"
+        /**
+         * Integration payment mean type
+         * type fullname: billing.order.PaymentMeanIntegrationEnum
+         */
+        export type PaymentMeanIntegrationEnum = "GET_FORM" | "POST_FORM" | "REDIRECT"
         /**
          * TODO
          * interface fullName: billing.order.PaymentMeans.PaymentMeans
@@ -1051,6 +1082,34 @@ export namespace http {
     export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
 export namespace me {
+    /**
+     * Country Migration
+     * interface fullName: me.Migration.Migration
+     */
+    export interface Migration {
+        from: nichandle.OvhSubsidiaryEnum;
+        id: number;
+        status: me.migration.StatusEnum;
+        steps?: me.migration.Step[];
+        to: nichandle.OvhSubsidiaryEnum;
+    }
+    export namespace agreements {
+        /**
+         * State of the agreement
+         * type fullname: me.agreements.AgreementStatusEnum
+         */
+        export type AgreementStatusEnum = "obsolete" | "todo" | "ko" | "ok"
+        /**
+         * Contract Agreement
+         * interface fullName: me.agreements.ContractAgreement.ContractAgreement
+         */
+        export interface ContractAgreement {
+            agreed: me.agreements.AgreementStatusEnum;
+            contractId: number;
+            date: string;
+            id: number;
+        }
+    }
     export namespace consent {
         /**
          * Consent campaign
@@ -1083,6 +1142,72 @@ export namespace me {
         export interface Decision {
             timestamp: string;
             value: boolean;
+        }
+    }
+    export namespace migration {
+        /**
+         * contract
+         * interface fullName: me.migration.Contract.Contract
+         */
+        export interface Contract {
+            active: boolean;
+            date: string;
+            id: number;
+            name: string;
+            pdf: string;
+            text: string;
+        }
+        /**
+         * Status of the migration
+         * type fullname: me.migration.StatusEnum
+         */
+        export type StatusEnum = "CANCELED" | "CHECKED" | "DOING" | "MIGRATED" | "TO_CHECK" | "TODO"
+        /**
+         * Country Migration Step
+         * interface fullName: me.migration.Step.Step
+         */
+        export interface Step {
+            contracts?: me.migration.step.Contracts;
+            debt?: me.migration.step.Debt;
+            name: me.migration.step.NameEnum;
+            orders?: me.migration.step.Orders;
+            status: me.migration.step.StatusEnum;
+        }
+        export namespace step {
+            /**
+             * Country Migration step contracts data
+             * interface fullName: me.migration.step.Contracts.Contracts
+             */
+            export interface Contracts {
+                agreements: me.agreements.ContractAgreement[];
+            }
+            /**
+             * Country Migration step debt data
+             * interface fullName: me.migration.step.Debt.Debt
+             */
+            export interface Debt {
+                balanceAmount?: orderPrice;
+                ovhAccountAmount?: orderPrice;
+            }
+            /**
+             * Name of the migration step
+             * type fullname: me.migration.step.NameEnum
+             */
+            export type NameEnum = "ORDERS" | "DEBT" | "NIC" | "CONTRACTS"
+            /**
+             * Country Migration step orders data
+             * interface fullName: me.migration.step.Orders.Orders
+             */
+            export interface Orders {
+                pendingOperations: boolean;
+                pendingPromotions: boolean;
+                pendingSubscriptions: boolean;
+            }
+            /**
+             * Status of the migration step
+             * type fullname: me.migration.step.StatusEnum
+             */
+            export type StatusEnum = "OK" | "PENDING"
         }
     }
     export namespace payment {
@@ -1418,7 +1543,7 @@ export namespace nichandle {
      * OVH subsidiaries
      * type fullname: nichandle.OvhSubsidiaryEnum
      */
-    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
+    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "QC" | "SG" | "WE" | "WS"
     /**
      * Permission given on the account
      * type fullname: nichandle.RoleEnum
@@ -1718,11 +1843,17 @@ export namespace nichandle {
 }
 export namespace order {
     /**
+     * Currency code
      * type fullname: order.CurrencyCodeEnum
      */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
-     * Price with it's currency and textual representation
+     * Product type of item in order
+     * type fullname: order.OrderDetailTypeEnum
+     */
+    export type OrderDetailTypeEnum = "ACCESSORY" | "CAUTION" | "CHOOSED" | "CONSUMPTION" | "CREATION" | "DELIVERY" | "DURATION" | "GIFT" | "INSTALLATION" | "LICENSE" | "MUTE" | "OTHER" | "OUTPLAN" | "QUANTITY" | "REFUND" | "RENEW" | "SPECIAL" | "SWITCH" | "TRANSFER" | "VOUCHER"
+    /**
+     * Price with its currency and textual representation
      * interface fullName: order.Price.Price
      */
     export interface Price {
@@ -4371,4 +4502,5 @@ export interface Me {
  * Extra Alias to bypass relativer namespace colitions
  */
 type orderPrice = order.Price;
+type orderOrderDetailTypeEnum = order.OrderDetailTypeEnum;
 type paymentmethodIntegrationType = payment.method.IntegrationType;

@@ -17,8 +17,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -45,8 +43,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -73,23 +69,25 @@ export const schema: Schema = {
       "properties": {
         "content": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "text"
         },
         "name": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "url": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
     },
     "order.CurrencyCodeEnum": {
-      "description": "",
       "enum": [
         "AUD",
         "CAD",
@@ -117,27 +115,32 @@ export const schema: Schema = {
       "properties": {
         "contracts": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.Contract[]"
         },
         "details": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.OrderDetail[]"
         },
         "orderId": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "prices": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.OrderPrices"
         },
         "url": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -149,32 +152,38 @@ export const schema: Schema = {
       "properties": {
         "description": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "detailType": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.OrderDetailTypeEnum"
         },
         "domain": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "quantity": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "totalPrice": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.Price"
         },
         "unitPrice": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -214,17 +223,20 @@ export const schema: Schema = {
       "properties": {
         "tax": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.Price"
         },
         "withTax": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.Price"
         },
         "withoutTax": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -236,17 +248,20 @@ export const schema: Schema = {
       "properties": {
         "currencyCode": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.CurrencyCodeEnum"
         },
         "text": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "double"
         }
       }

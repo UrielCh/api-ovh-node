@@ -559,6 +559,26 @@ export namespace vps {
             export interface Datacenters {
                 datacenters: vps.order.rule.Datacenter[];
             }
+            /**
+             * OS choice rules
+             * interface fullName: vps.order.rule.OSChoice.OSChoice
+             */
+            export interface OSChoice {
+                name: string;
+                status: vps.order.rule.OSChoiceStatusEnum;
+            }
+            /**
+             * Possible values for OS choice status
+             * type fullname: vps.order.rule.OSChoiceStatusEnum
+             */
+            export type OSChoiceStatusEnum = "unavailable" | "available" | "checked-by-default"
+            /**
+             * OS choices rules
+             * interface fullName: vps.order.rule.OSChoices.OSChoices
+             */
+            export interface OSChoices {
+                choices: vps.order.rule.OSChoice[];
+            }
         }
     }
     export namespace veeam {
@@ -639,6 +659,17 @@ export interface Vps {
                  * GET /vps/order/rule/datacenter
                  */
                 $get(params: { os?: string, ovhSubsidiary: nichandle.OvhSubsidiaryEnum, planCode: string }): Promise<vps.order.rule.Datacenters>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            osChoices: {
+                /**
+                 * List OS choices with status
+                 * GET /vps/order/rule/osChoices
+                 */
+                $get(params: { datacenter: string, os: string }): Promise<vps.order.rule.OSChoices>;
                 /**
                  * Controle cache
                  */
@@ -1115,7 +1146,7 @@ export interface Vps {
              * Reinstall the virtual server
              * POST /vps/{serviceName}/rebuild
              */
-            $post(params: { doNotSendPassword?: boolean, imageId: string, sshKey?: string }): Promise<vps.Task>;
+            $post(params: { doNotSendPassword?: boolean, imageId: string, installRTM?: boolean, sshKey?: string }): Promise<vps.Task>;
             /**
              * Controle cache
              */

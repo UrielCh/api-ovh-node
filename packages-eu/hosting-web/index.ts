@@ -168,12 +168,12 @@ export namespace hosting {
          * Hosting's offer
          * type fullname: hosting.web.OfferCapabilitiesEnum
          */
-        export type OfferCapabilitiesEnum = "1000gp" | "20gp" | "240gp" | "240pack" | "240plan" | "300gp" | "60gp" | "720pack" | "720plan" | "90pack" | "90plan" | "CLOUDWEB_1" | "CLOUDWEB_2" | "CLOUDWEB_3" | "KS" | "PERFORMANCE_1" | "PERFORMANCE_2" | "PERFORMANCE_3" | "PERFORMANCE_4" | "PERSO" | "PRO" | "START" | "business" | "cloudweb1" | "cloudweb2" | "cloudweb3" | "cloudwebbetax1" | "depro2012" | "deprol2012" | "deproxl2012" | "deproxxl2012" | "destart2012" | "destartl2012" | "destartxl2012" | "domainpack" | "itbusiness2012" | "itperso2012" | "itpremium2012" | "kimsufi2015" | "mailpack" | "mailplan" | "mediapack" | "mediaplan" | "ovhpro1To" | "ovhpro2To" | "ovhpro5To" | "paas2014beta" | "perf2014x1" | "perf2014x2" | "perf2014x3" | "perf2014x4" | "perso2010" | "perso2014" | "premium" | "pro2010" | "pro2014" | "start10g" | "start10m" | "start1g" | "start1ges" | "start1m" | "start5g" | "starter" | "xxlpack" | "xxlplan"
+        export type OfferCapabilitiesEnum = "1000gp" | "20gp" | "240gp" | "240pack" | "240plan" | "300gp" | "60gp" | "720pack" | "720plan" | "90pack" | "90plan" | "CLOUDWEB_1" | "CLOUDWEB_2" | "CLOUDWEB_3" | "KS" | "PERFORMANCE_1" | "PERFORMANCE_2" | "PERFORMANCE_3" | "PERFORMANCE_4" | "PERSO" | "POWER_BETA_1" | "PRO" | "START" | "business" | "cloudweb1" | "cloudweb2" | "cloudweb3" | "cloudwebbetax1" | "depro2012" | "deprol2012" | "deproxl2012" | "deproxxl2012" | "destart2012" | "destartl2012" | "destartxl2012" | "domainpack" | "itbusiness2012" | "itperso2012" | "itpremium2012" | "kimsufi2015" | "mailpack" | "mailplan" | "mediapack" | "mediaplan" | "ovhpro1To" | "ovhpro2To" | "ovhpro5To" | "paas2014beta" | "perf2014x1" | "perf2014x2" | "perf2014x3" | "perf2014x4" | "perso2010" | "perso2014" | "powerBeta1" | "premium" | "pro2010" | "pro2014" | "start10g" | "start10m" | "start1g" | "start1ges" | "start1m" | "start5g" | "starter" | "xxlpack" | "xxlplan"
         /**
          * Hosting's offer
          * type fullname: hosting.web.OfferEnum
          */
-        export type OfferEnum = "CLOUDWEB_1" | "CLOUDWEB_2" | "CLOUDWEB_3" | "KS" | "PERFORMANCE_1" | "PERFORMANCE_2" | "PERFORMANCE_3" | "PERFORMANCE_4" | "PERSO" | "PRO" | "START"
+        export type OfferEnum = "CLOUDWEB_1" | "CLOUDWEB_2" | "CLOUDWEB_3" | "KS" | "PERFORMANCE_1" | "PERFORMANCE_2" | "PERFORMANCE_3" | "PERFORMANCE_4" | "PERSO" | "POWER_BETA_1" | "PRO" | "START"
         /**
          * Hosting's OS
          * type fullname: hosting.web.OperatingSystemEnum
@@ -353,6 +353,41 @@ export namespace hosting {
              * type fullname: hosting.web.cdn.StatusEnum
              */
             export type StatusEnum = "created" | "creating" | "deleting" | "flushing"
+        }
+        /**
+         * The Configuration of an hosting Power offer
+         * interface fullName: hosting.web.configuration.configuration
+         */
+        export interface configuration {
+            appEnv: hosting.web.configuration.EnvEnum;
+            entryPoint?: string;
+            id: number;
+            language: hosting.web.configuration.LanguageEnum;
+            publicDir?: string;
+            status: hosting.web.configuration.StateEnum;
+            version: string;
+        }
+        export namespace configuration {
+            /**
+             * Configuration env enum
+             * type fullname: hosting.web.configuration.EnvEnum
+             */
+            export type EnvEnum = "development" | "production"
+            /**
+             * Configuration languages enum
+             * type fullname: hosting.web.configuration.LanguageEnum
+             */
+            export type LanguageEnum = "nodejs" | "python" | "ruby"
+            /**
+             * Configuration state enum
+             * type fullname: hosting.web.configuration.StateEnum
+             */
+            export type StateEnum = "created" | "creating" | "deleting" | "updating"
+            /**
+             * Configuration language versions enum
+             * type fullname: hosting.web.configuration.VersionEnum
+             */
+            export type VersionEnum = "nodejs-12" | "nodejs-14" | "python-3.7" | "python-3.8" | "ruby-2.6" | "ruby-2.7"
         }
         /**
          * Hosting crons
@@ -1399,6 +1434,17 @@ export interface Hosting {
                     }
                 };
             }
+            availableConfigurations: {
+                /**
+                 * List configurations available for current hosting
+                 * GET /hosting/web/{serviceName}/availableConfigurations
+                 */
+                $get(params?: { language?: hosting.web.configuration.LanguageEnum }): Promise<hosting.web.configuration.VersionEnum[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             boostHistory: {
                 /**
                  * History of your hosting boost
@@ -1471,6 +1517,22 @@ export interface Hosting {
                  * POST /hosting/web/{serviceName}/changeContact
                  */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            configuration: {
+                /**
+                 * Get this object properties
+                 * GET /hosting/web/{serviceName}/configuration
+                 */
+                $get(): Promise<hosting.web.configuration>;
+                /**
+                 * Alter this object properties
+                 * PUT /hosting/web/{serviceName}/configuration
+                 */
+                $put(params?: { appEnv?: hosting.web.configuration.EnvEnum, entryPoint?: string, id?: number, language?: hosting.web.configuration.LanguageEnum, publicDir?: string, status?: hosting.web.configuration.StateEnum, version?: string }): Promise<void>;
                 /**
                  * Controle cache
                  */
@@ -2102,7 +2164,7 @@ export interface Hosting {
                      * Delete a module installed
                      * DELETE /hosting/web/{serviceName}/module/{id}
                      */
-                    $delete(): Promise<hosting.web.task>;
+                    $delete(params?: { purgeData?: boolean }): Promise<hosting.web.task>;
                     /**
                      * Get this object properties
                      * GET /hosting/web/{serviceName}/module/{id}

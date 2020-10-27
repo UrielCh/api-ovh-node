@@ -615,7 +615,7 @@ export namespace xdsl {
      * Possible DSL technologies
      * type fullname: xdsl.DslTypeEnum
      */
-    export type DslTypeEnum = "adsl" | "ftth" | "sdsl" | "vdsl"
+    export type DslTypeEnum = "adsl" | "ftte" | "ftth" | "sdsl" | "vdsl"
     /**
      * interface fullName: xdsl.LineSectionLength.LineSectionLength
      */
@@ -811,6 +811,17 @@ export interface Pack {
                      * POST /pack/xdsl/{packName}/addressMove/offers
                      */
                     $post(params: { eligibilityReference: string }): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.MoveOfferResponse>>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                servicesToDelete: {
+                    /**
+                     * Calculate services to delete with new offer and options
+                     * POST /pack/xdsl/{packName}/addressMove/servicesToDelete
+                     */
+                    $post(params: { eligibilityReference: string, offerName: string, options?: pack.xdsl.migration.OfferOption[] }): Promise<pack.xdsl.migration.SubServiceToDelete[]>;
                     /**
                      * Controle cache
                      */

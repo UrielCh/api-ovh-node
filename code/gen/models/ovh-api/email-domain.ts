@@ -2293,8 +2293,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get redirections",
           "httpMethod": "GET",
@@ -2329,34 +2329,17 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Create new redirection in server",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Name of redirection",
-              "fullType": "string",
-              "name": "from",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "boolean",
-              "description": "If true keep a local copy",
-              "fullType": "boolean",
-              "name": "localCopy",
-              "paramType": "body",
-              "required": true
-            },
-            {
-              "dataType": "string",
-              "description": "Target of account",
-              "fullType": "string",
-              "name": "to",
+              "dataType": "email.domain.RedirectionCreation",
+              "description": "Request Body",
+              "fullType": "email.domain.RedirectionCreation",
               "paramType": "body",
               "required": true
             },
@@ -2375,12 +2358,12 @@ export const schema: Schema = {
       "path": "/email/domain/{domain}/redirection"
     },
     {
-      "description": "Global Redirection",
+      "description": "List the email.domain.RedirectionGlobal objects",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Delete an existing redirection in server",
           "httpMethod": "DELETE",
@@ -2396,7 +2379,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "",
+              "description": "Id",
               "fullType": "string",
               "name": "id",
               "paramType": "path",
@@ -2407,8 +2390,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -2424,7 +2407,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "",
+              "description": "Id",
               "fullType": "string",
               "name": "id",
               "paramType": "path",
@@ -2441,18 +2424,17 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Change redirection",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Target of account",
-              "fullType": "string",
-              "name": "to",
+              "dataType": "email.domain.RedirectionChangeRedirectionCreation",
+              "description": "Request Body",
+              "fullType": "email.domain.RedirectionChangeRedirectionCreation",
               "paramType": "body",
               "required": true
             },
@@ -2466,7 +2448,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "",
+              "description": "Id",
               "fullType": "string",
               "name": "id",
               "paramType": "path",
@@ -2965,8 +2947,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get redirection tasks",
           "httpMethod": "GET",
@@ -2989,18 +2971,18 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "responseType": "long[]"
+          "responseType": "string[]"
         }
       ],
       "path": "/email/domain/{domain}/task/redirection"
     },
     {
-      "description": "Task special account List",
+      "description": "List the email.domain.TaskSpecialAccount objects",
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Alpha version",
+            "value": "ALPHA"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -3015,9 +2997,9 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "long",
-              "description": "Id of task",
-              "fullType": "long",
+              "dataType": "string",
+              "description": "Id",
+              "fullType": "string",
               "name": "id",
               "paramType": "path",
               "required": true
@@ -4849,6 +4831,52 @@ export const schema: Schema = {
         }
       }
     },
+    "email.domain.RedirectionChangeRedirectionCreation": {
+      "description": "Change redirection",
+      "id": "RedirectionChangeRedirectionCreation",
+      "namespace": "email.domain",
+      "properties": {
+        "to": {
+          "canBeNull": false,
+          "description": "Target of account",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "email.domain.RedirectionCreation": {
+      "description": "Create redirection",
+      "id": "RedirectionCreation",
+      "namespace": "email.domain",
+      "properties": {
+        "from": {
+          "canBeNull": false,
+          "description": "Name of redirection",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "localCopy": {
+          "canBeNull": false,
+          "description": "If true keep a local copy",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "to": {
+          "canBeNull": false,
+          "description": "Target of account",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
     "email.domain.RedirectionGlobal": {
       "description": "Global Redirection",
       "id": "RedirectionGlobal",
@@ -4856,6 +4884,7 @@ export const schema: Schema = {
       "properties": {
         "from": {
           "canBeNull": false,
+          "description": "Name of redirection",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -4863,6 +4892,7 @@ export const schema: Schema = {
         },
         "id": {
           "canBeNull": false,
+          "description": "Id of redirection",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -4870,6 +4900,7 @@ export const schema: Schema = {
         },
         "to": {
           "canBeNull": false,
+          "description": "Target of redirection",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -5236,10 +5267,10 @@ export const schema: Schema = {
         "id": {
           "canBeNull": false,
           "description": "Id of task",
-          "fullType": "long",
+          "fullType": "string",
           "readOnly": true,
           "required": false,
-          "type": "long"
+          "type": "string"
         },
         "type": {
           "canBeNull": false,

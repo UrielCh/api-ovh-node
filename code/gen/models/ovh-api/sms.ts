@@ -76,6 +76,196 @@ export const schema: Schema = {
       "path": "/sms/{serviceName}"
     },
     {
+      "description": "Manage SMS batches",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get batches list",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "sms.Batch[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a batch",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "sms.BatchParams",
+              "description": "Request Body",
+              "fullType": "sms.BatchParams",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "sms.Batch"
+        }
+      ],
+      "path": "/sms/{serviceName}/batches"
+    },
+    {
+      "description": "Manage SMS batches",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get a batch",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "sms.Batch"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update a batch",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "sms.BatchUpdateParams",
+              "description": "Request Body",
+              "fullType": "sms.BatchUpdateParams",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "sms.Batch"
+        }
+      ],
+      "path": "/sms/{serviceName}/batches/{id}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Cancel a deferred batch (no SMS must have been sent)",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "sms.Batch"
+        }
+      ],
+      "path": "/sms/{serviceName}/batches/{id}/cancel"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Batch's statistics",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Id",
+              "fullType": "uuid",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your SMS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "sms.BatchStatistics"
+        }
+      ],
+      "path": "/sms/{serviceName}/batches/{id}/statistics"
+    },
+    {
       "description": "List the sms.Blacklist objects",
       "operations": [
         {
@@ -750,14 +940,14 @@ export const schema: Schema = {
       "path": "/sms/{serviceName}/jobs/{id}"
     },
     {
-      "description": "List the sms.Outgoing objects",
+      "description": "Sent SMSs associated to SMS account",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Sms sent associated to the sms account",
+          "description": "Get SMS list",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -770,8 +960,16 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "uuid",
+              "description": "Filter on batch id property (=)",
+              "fullType": "uuid",
+              "name": "batchID",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "datetime",
-              "description": "Filter the value of creationDatetime property (>=)",
+              "description": "Filter on creationDatetime property (>=)",
               "fullType": "datetime",
               "name": "creationDatetime.from",
               "paramType": "query",
@@ -779,7 +977,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "datetime",
-              "description": "Filter the value of creationDatetime property (<=)",
+              "description": "Filter on creationDatetime property (<=)",
               "fullType": "datetime",
               "name": "creationDatetime.to",
               "paramType": "query",
@@ -787,7 +985,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Filter the value of deliveryReceipt property (=)",
+              "description": "Filter on deliveryReceipt property (=)",
               "fullType": "long",
               "name": "deliveryReceipt",
               "paramType": "query",
@@ -795,7 +993,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Filter the value of differedDelivery property (=)",
+              "description": "Filter on differedDelivery property (=)",
               "fullType": "long",
               "name": "differedDelivery",
               "paramType": "query",
@@ -803,7 +1001,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Filter the value of ptt property (=)",
+              "description": "Filter on ptt property (=)",
               "fullType": "long",
               "name": "ptt",
               "paramType": "query",
@@ -811,7 +1009,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of receiver property (=)",
+              "description": "Filter on receiver property (=)",
               "fullType": "string",
               "name": "receiver",
               "paramType": "query",
@@ -819,7 +1017,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of sender property (=)",
+              "description": "Filter on sender property (=)",
               "fullType": "string",
               "name": "sender",
               "paramType": "query",
@@ -827,7 +1025,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Filter the value of tag property (=)",
+              "description": "Filter on tag property (=)",
               "fullType": "string",
               "name": "tag",
               "paramType": "query",
@@ -840,20 +1038,20 @@ export const schema: Schema = {
       "path": "/sms/{serviceName}/outgoing"
     },
     {
-      "description": "Sms history of sms outgoing sent",
+      "description": "Sent SMSs associated to SMS account",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Delete the sms outgoing history given",
+          "description": "Delete outgoing SMS from history",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -875,13 +1073,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get SMS details",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -4989,6 +5187,372 @@ export const schema: Schema = {
         }
       }
     },
+    "sms.Batch": {
+      "description": "Batch of SMS to send",
+      "id": "Batch",
+      "namespace": "sms",
+      "properties": {
+        "accountID": {
+          "canBeNull": false,
+          "description": "SMS account ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Creation datetime",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "errors": {
+          "canBeNull": false,
+          "description": "Details on error(s) on the batch, if any",
+          "fullType": "sms.BatchError[]",
+          "readOnly": true,
+          "required": false,
+          "type": "sms.BatchError[]"
+        },
+        "estimatedCredits": {
+          "canBeNull": false,
+          "description": "The estimated cost of the batch in credits",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "finishedAt": {
+          "canBeNull": true,
+          "description": "Datetime when the batch finished processing SMSs",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "from": {
+          "canBeNull": true,
+          "description": "SMS sender",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Batch ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "message": {
+          "canBeNull": false,
+          "description": "SMS message",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Batch name",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        },
+        "processedRecords": {
+          "canBeNull": false,
+          "description": "Number of processed records in this batch",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "receivers": {
+          "canBeNull": true,
+          "description": "SMS receivers list",
+          "fullType": "phoneNumber[]",
+          "readOnly": true,
+          "required": false,
+          "type": "phoneNumber[]"
+        },
+        "sentAt": {
+          "canBeNull": true,
+          "description": "Datetime when the SMSs of the batch are sent (based on deferred time if exists)",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "slotID": {
+          "canBeNull": true,
+          "description": "Slot ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "startedAt": {
+          "canBeNull": true,
+          "description": "Datetime when the batch started processing SMSs",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Batch status",
+          "fullType": "sms.BatchStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "sms.BatchStatusEnum"
+        },
+        "totalRecords": {
+          "canBeNull": false,
+          "description": "Total number of records in this batch",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "updatedAt": {
+          "canBeNull": false,
+          "description": "Last update datetime",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "sms.BatchClassEnum": {
+      "description": "SMS classes",
+      "enum": [
+        "FLASH",
+        "PHONE",
+        "SIM"
+      ],
+      "enumType": "string",
+      "id": "BatchClassEnum",
+      "namespace": "sms"
+    },
+    "sms.BatchError": {
+      "description": "Batch error details",
+      "id": "BatchError",
+      "namespace": "sms",
+      "properties": {
+        "message": {
+          "canBeNull": false,
+          "description": "Error message",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "receiver": {
+          "canBeNull": false,
+          "description": "Receiver that triggered the error",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "sms.BatchParams": {
+      "description": "Params to create a batch",
+      "id": "BatchParams",
+      "namespace": "sms",
+      "properties": {
+        "class": {
+          "canBeNull": false,
+          "description": "SMS class",
+          "fullType": "sms.BatchClassEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "sms.BatchClassEnum"
+        },
+        "deferred": {
+          "canBeNull": false,
+          "description": "SMS deferred sending date",
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "from": {
+          "canBeNull": false,
+          "description": "SMS sender. Either \"from\" or \"senderForResponse\" must be passed",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "message": {
+          "canBeNull": false,
+          "description": "SMS message",
+          "fullType": "text",
+          "readOnly": false,
+          "required": true,
+          "type": "text"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Batch name",
+          "fullType": "text",
+          "readOnly": false,
+          "required": false,
+          "type": "text"
+        },
+        "noStop": {
+          "canBeNull": false,
+          "description": "STOP clause not needed",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "senderForResponse": {
+          "canBeNull": false,
+          "description": "Ask to compute a sender that allows response. Either \"from\" or \"senderForResponse\" must be passed",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "slotID": {
+          "canBeNull": false,
+          "description": "SMS receivers slot ID. Either \"to\" or \"slotID\" must be passed",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "tag": {
+          "canBeNull": false,
+          "description": "SMS tag",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "to": {
+          "canBeNull": false,
+          "description": "SMS receivers list. Either \"to\" or \"slotID\" must be passed",
+          "fullType": "phoneNumber[]",
+          "readOnly": false,
+          "required": false,
+          "type": "phoneNumber[]"
+        }
+      }
+    },
+    "sms.BatchStatistics": {
+      "description": "Batch's statistics",
+      "id": "BatchStatistics",
+      "namespace": "sms",
+      "properties": {
+        "credits": {
+          "canBeNull": false,
+          "description": "The cost of the batch in credits, computed during batch processing",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "delivered": {
+          "canBeNull": false,
+          "description": "Number of SMS that are delivered",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "estimatedCredits": {
+          "canBeNull": false,
+          "description": "The estimated cost of the batch in credits, computed before batch processing",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "failed": {
+          "canBeNull": false,
+          "description": "Number of SMS in error",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Batch ID",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "pending": {
+          "canBeNull": false,
+          "description": "Number of SMS that are in pending status",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sent": {
+          "canBeNull": false,
+          "description": "Number of SMS that are sent to the broker",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "stoplisted": {
+          "canBeNull": false,
+          "description": "Number of SMS that received a STOP by the receiver",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "sms.BatchStatusEnum": {
+      "description": "Batch statuses",
+      "enum": [
+        "PENDING",
+        "INSERTING",
+        "INSERTED",
+        "COMPLETED",
+        "TO_CANCEL",
+        "CANCELING",
+        "CANCELED",
+        "FAILED"
+      ],
+      "enumType": "string",
+      "id": "BatchStatusEnum",
+      "namespace": "sms"
+    },
+    "sms.BatchUpdateParams": {
+      "description": "Params to update a batch",
+      "id": "BatchUpdateParams",
+      "namespace": "sms",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Batch name",
+          "fullType": "text",
+          "readOnly": false,
+          "required": true,
+          "type": "text"
+        }
+      }
+    },
     "sms.Blacklist": {
       "description": "SMS blacklist",
       "id": "Blacklist",
@@ -5091,29 +5655,53 @@ export const schema: Schema = {
     "sms.CountryEnum": {
       "description": "All country suffixes accessible for sms services and \"all\" available",
       "enum": [
+        "ad",
+        "ae",
+        "af",
         "ag",
         "ai",
+        "al",
         "all",
+        "am",
         "an",
+        "ao",
         "ar",
         "at",
         "au",
         "aw",
+        "az",
         "ba",
         "bb",
+        "bd",
         "be",
+        "bf",
         "bg",
         "bh",
+        "bi",
+        "bj",
         "bm",
+        "bn",
         "bo",
         "br",
+        "bs",
+        "bt",
+        "bw",
+        "by",
         "bz",
+        "ca",
+        "cd",
+        "cf",
+        "cg",
         "ch",
+        "ci",
+        "ck",
         "cl",
+        "cm",
         "cn",
         "co",
         "cr",
         "cu",
+        "cv",
         "cy",
         "cz",
         "de",
@@ -5124,12 +5712,28 @@ export const schema: Schema = {
         "ee",
         "eg",
         "es",
+        "et",
         "fi",
+        "fj",
+        "fk",
+        "fo",
         "fr",
+        "ga",
         "gb",
         "gd",
+        "ge",
+        "gf",
+        "gh",
+        "gi",
+        "gl",
+        "gm",
+        "gn",
         "gp",
+        "gq",
         "gr",
+        "gt",
+        "gu",
+        "gw",
         "gy",
         "hk",
         "hn",
@@ -5140,61 +5744,125 @@ export const schema: Schema = {
         "ie",
         "il",
         "in",
+        "io",
+        "iq",
+        "ir",
         "is",
         "it",
         "jm",
         "jo",
         "jp",
+        "ke",
+        "kg",
+        "kh",
+        "km",
+        "kn",
         "kr",
         "kw",
         "ky",
+        "kz",
+        "la",
         "lb",
         "lc",
+        "li",
+        "lk",
+        "lr",
+        "ls",
         "lt",
         "lu",
         "lv",
+        "ly",
         "ma",
+        "md",
         "me",
+        "mg",
+        "mk",
+        "ml",
+        "mn",
+        "mo",
         "mq",
+        "mr",
         "ms",
         "mt",
+        "mu",
+        "mv",
+        "mw",
+        "mx",
         "my",
+        "mz",
+        "na",
         "nc",
+        "ne",
         "ng",
+        "ni",
         "nl",
         "no",
+        "np",
         "nz",
+        "om",
         "pa",
         "pe",
         "pf",
+        "pg",
         "ph",
         "pk",
         "pl",
+        "ps",
         "pt",
         "py",
+        "qa",
         "re",
         "ro",
         "rs",
         "ru",
+        "rw",
         "sa",
+        "sb",
+        "sc",
+        "sd",
         "se",
         "sg",
         "si",
         "sk",
+        "sl",
+        "sm",
+        "sn",
+        "so",
         "sr",
+        "st",
+        "sv",
+        "sy",
+        "sz",
         "tc",
+        "td",
+        "tg",
         "th",
+        "tj",
+        "tl",
+        "tm",
         "tn",
+        "to",
         "tr",
         "tt",
         "tw",
+        "tz",
         "ua",
+        "ug",
+        "us",
         "uy",
+        "uz",
         "vc",
         "ve",
         "vg",
+        "vi",
         "vn",
-        "za"
+        "vu",
+        "ws",
+        "ye",
+        "yt",
+        "za",
+        "zm",
+        "zw"
       ],
       "enumType": "string",
       "id": "CountryEnum",
@@ -5623,12 +6291,21 @@ export const schema: Schema = {
       }
     },
     "sms.Outgoing": {
-      "description": "Sms history of sms outgoing sent",
+      "description": "Sent SMS",
       "id": "Outgoing",
       "namespace": "sms",
       "properties": {
+        "batchID": {
+          "canBeNull": true,
+          "description": "ID of batch linked to the SMS",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
         "creationDatetime": {
           "canBeNull": false,
+          "description": "Creation datetime",
           "fullType": "datetime",
           "readOnly": true,
           "required": false,
@@ -5636,6 +6313,7 @@ export const schema: Schema = {
         },
         "credits": {
           "canBeNull": false,
+          "description": "Spent credits",
           "fullType": "double",
           "readOnly": true,
           "required": false,
@@ -5643,6 +6321,7 @@ export const schema: Schema = {
         },
         "deliveredAt": {
           "canBeNull": true,
+          "description": "Delivering datetime",
           "fullType": "datetime",
           "readOnly": true,
           "required": false,
@@ -5650,6 +6329,7 @@ export const schema: Schema = {
         },
         "deliveryReceipt": {
           "canBeNull": false,
+          "description": "Delivery receipt from operator",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -5657,6 +6337,7 @@ export const schema: Schema = {
         },
         "differedDelivery": {
           "canBeNull": false,
+          "description": "Delay before SMS sending",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -5664,6 +6345,7 @@ export const schema: Schema = {
         },
         "id": {
           "canBeNull": false,
+          "description": "Identifier",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -5671,6 +6353,7 @@ export const schema: Schema = {
         },
         "message": {
           "canBeNull": false,
+          "description": "SMS message",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -5678,6 +6361,7 @@ export const schema: Schema = {
         },
         "messageLength": {
           "canBeNull": false,
+          "description": "SMS message length",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -5685,6 +6369,7 @@ export const schema: Schema = {
         },
         "numberOfSms": {
           "canBeNull": false,
+          "description": "SMS message's number of parts",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -5692,6 +6377,7 @@ export const schema: Schema = {
         },
         "ptt": {
           "canBeNull": false,
+          "description": "Code representing SMS state",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -5699,6 +6385,7 @@ export const schema: Schema = {
         },
         "receiver": {
           "canBeNull": false,
+          "description": "SMS receiver",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -5706,6 +6393,7 @@ export const schema: Schema = {
         },
         "sender": {
           "canBeNull": false,
+          "description": "SMS sender",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -5713,6 +6401,7 @@ export const schema: Schema = {
         },
         "sentAt": {
           "canBeNull": true,
+          "description": "Sending datetime",
           "fullType": "datetime",
           "readOnly": true,
           "required": false,
@@ -5720,6 +6409,7 @@ export const schema: Schema = {
         },
         "tag": {
           "canBeNull": false,
+          "description": "Customer label to categorize SMSs",
           "fullType": "string",
           "readOnly": true,
           "required": false,

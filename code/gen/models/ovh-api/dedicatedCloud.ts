@@ -6782,6 +6782,48 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/changeProperties"
     },
     {
+      "description": "confirmPhoneNumber operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Confirm phone number for user",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "password",
+              "description": "Token sent by SMS",
+              "fullType": "password",
+              "name": "token",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "userId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Task"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/user/{userId}/confirmPhoneNumber"
+    },
+    {
       "description": "disable operations",
       "operations": [
         {
@@ -11910,6 +11952,14 @@ export const schema: Schema = {
           "required": false,
           "type": "dedicatedCloud.ManagementInterfaceEnum"
         },
+        "productReference": {
+          "canBeNull": false,
+          "description": "The reference universe information for your Dedicated Cloud",
+          "fullType": "dedicatedCloud.productReferenceEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicatedCloud.productReferenceEnum"
+        },
         "serviceName": {
           "canBeNull": false,
           "description": "Service name of your Private Cloud",
@@ -12606,6 +12656,16 @@ export const schema: Schema = {
           "type": "long"
         }
       }
+    },
+    "dedicatedCloud.productReferenceEnum": {
+      "description": "The reference universe information for your Dedicated Cloud",
+      "enum": [
+        "EPCC",
+        "MBM"
+      ],
+      "enumType": "string",
+      "id": "productReferenceEnum",
+      "namespace": "dedicatedCloud"
     },
     "dedicatedCloud.releaseEnum": {
       "description": "All vCenter upgrade possibility",

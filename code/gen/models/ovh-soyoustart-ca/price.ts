@@ -26,8 +26,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Price",
           "responseType": "order.Price"
         }
       ],
@@ -54,8 +52,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Price",
           "responseType": "order.Price"
         }
       ],
@@ -82,8 +78,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Price",
           "responseType": "order.Price"
         }
       ],
@@ -110,8 +104,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Price",
           "responseType": "order.Price"
         }
       ],
@@ -121,7 +113,6 @@ export const schema: Schema = {
   "basePath": "https://ca.api.soyoustart.com/1.0",
   "models": {
     "order.CurrencyCodeEnum": {
-      "description": "",
       "enum": [
         "AUD",
         "CAD",
@@ -149,17 +140,20 @@ export const schema: Schema = {
       "properties": {
         "currencyCode": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.CurrencyCodeEnum"
         },
         "text": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "double"
         }
       }

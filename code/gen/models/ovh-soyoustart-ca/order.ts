@@ -17,8 +17,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -45,8 +43,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -81,8 +77,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -125,8 +119,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -163,8 +155,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -199,8 +189,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -243,8 +231,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -281,8 +267,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -317,8 +301,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -361,8 +343,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -399,8 +379,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -435,8 +413,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -479,8 +455,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -517,8 +491,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -577,8 +549,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -645,8 +615,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -707,8 +675,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -751,8 +717,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -803,8 +767,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -849,8 +811,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -877,8 +837,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -913,8 +871,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -943,8 +899,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -979,8 +933,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -1023,8 +975,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -1061,8 +1011,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -1097,8 +1045,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -1141,8 +1087,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -1179,8 +1123,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -1215,8 +1157,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -1259,8 +1199,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -1297,8 +1235,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -1316,8 +1252,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -1344,8 +1278,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -1380,8 +1312,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -1424,8 +1354,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -1462,8 +1390,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -1506,8 +1432,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -1558,8 +1482,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -1604,8 +1526,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -1648,8 +1568,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -1700,8 +1618,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -1746,8 +1662,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -1765,8 +1679,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -1793,8 +1705,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -1893,8 +1803,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -2001,8 +1909,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -2103,8 +2009,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -2203,8 +2107,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -2311,8 +2213,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -2413,8 +2313,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -2432,8 +2330,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -2460,8 +2356,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -2496,8 +2390,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -2540,8 +2432,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -2578,8 +2468,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -2614,8 +2502,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -2658,8 +2544,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -2696,8 +2580,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -2715,8 +2597,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -2743,8 +2623,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -2779,8 +2657,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -2823,8 +2699,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -2861,8 +2735,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -2913,8 +2785,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -2973,8 +2843,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -3027,8 +2895,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -3046,8 +2912,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -3074,8 +2938,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -3118,8 +2980,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -3170,8 +3030,6 @@ export const schema: Schema = {
               "required": false
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -3216,8 +3074,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -3268,8 +3124,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -3328,8 +3182,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -3382,8 +3234,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -3401,8 +3251,6 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -3422,15 +3270,13 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -3450,7 +3296,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3465,8 +3311,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "string[]",
           "responseType": "string[]"
         }
       ],
@@ -3494,7 +3338,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -3509,8 +3353,6 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         },
         {
@@ -3540,15 +3382,13 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": null,
+              "description": "",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
               "required": true
             }
           ],
-          "resellerOnly": false,
-          "responseFullType": "order.Order",
           "responseType": "order.Order"
         }
       ],
@@ -5110,6 +4950,21 @@ export const schema: Schema = {
       "id": "WindowsSqlVersionEnum",
       "namespace": "license"
     },
+    "nichandle.OvhSubsidiaryEnum": {
+      "description": "OVH subsidiaries",
+      "enum": [
+        "ASIA",
+        "AU",
+        "CA",
+        "QC",
+        "SG",
+        "WE",
+        "WS"
+      ],
+      "enumType": "string",
+      "id": "OvhSubsidiaryEnum",
+      "namespace": "nichandle"
+    },
     "order.Contract": {
       "description": "A contract",
       "id": "Contract",
@@ -5117,23 +4972,26 @@ export const schema: Schema = {
       "properties": {
         "content": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "text"
         },
         "name": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "url": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
     },
     "order.CurrencyCodeEnum": {
-      "description": "",
+      "description": "Currency code",
       "enum": [
         "AUD",
         "CAD",
@@ -5161,27 +5019,32 @@ export const schema: Schema = {
       "properties": {
         "contracts": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.Contract[]"
         },
         "details": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.OrderDetail[]"
         },
         "orderId": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "prices": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.OrderPrices"
         },
         "url": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         }
       }
@@ -5193,32 +5056,38 @@ export const schema: Schema = {
       "properties": {
         "description": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "detailType": {
           "canBeNull": true,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.OrderDetailTypeEnum"
         },
         "domain": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "quantity": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "long"
         },
         "totalPrice": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.Price"
         },
         "unitPrice": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.Price"
         }
       }
@@ -5258,39 +5127,51 @@ export const schema: Schema = {
       "properties": {
         "tax": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.Price"
         },
         "withTax": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.Price"
         },
         "withoutTax": {
           "canBeNull": false,
-          "description": null,
+          "readOnly": false,
+          "required": false,
           "type": "order.Price"
         }
       }
     },
     "order.Price": {
-      "description": "Price with it's currency and textual representation",
+      "description": "Price with its currency and textual representation",
       "id": "Price",
       "namespace": "order",
       "properties": {
         "currencyCode": {
           "canBeNull": false,
-          "description": null,
+          "description": "Currency code",
+          "fullType": "order.CurrencyCodeEnum",
+          "readOnly": true,
+          "required": false,
           "type": "order.CurrencyCodeEnum"
         },
         "text": {
           "canBeNull": false,
-          "description": null,
+          "description": "Textual representation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "description": null,
+          "description": "The effective price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
           "type": "double"
         }
       }

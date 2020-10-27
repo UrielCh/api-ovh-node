@@ -17,16 +17,7 @@ export namespace dbaas {
             isEditable: boolean;
             isShareable: boolean;
             name: string;
-            optionId?: string;
             updatedAt?: string;
-        }
-        /**
-         * Network allowed to join input
-         * interface fullName: dbaas.logs.AllowedNetwork.AllowedNetwork
-         */
-        export interface AllowedNetwork {
-            allowedNetworkId: string;
-            network: string;
         }
         /**
          * Stream archive
@@ -73,36 +64,6 @@ export namespace dbaas {
             region: dbaas.logs.ClusterRegionEnum;
         }
         /**
-         * Cluster allowed network
-         * interface fullName: dbaas.logs.ClusterAllowedNetwork.ClusterAllowedNetwork
-         */
-        export interface ClusterAllowedNetwork {
-            allowedNetworkId: string;
-            flowType: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum;
-            network: string;
-        }
-        /**
-         * Missing description
-         * interface fullName: dbaas.logs.ClusterAllowedNetworkCreation.ClusterAllowedNetworkCreation
-         */
-        export interface ClusterAllowedNetworkCreation {
-            flowType: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum;
-            network: string;
-        }
-        /**
-         * Possible values for ClusterAllowedNetworkFlowTypeEnum
-         * type fullname: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum
-         */
-        export type ClusterAllowedNetworkFlowTypeEnum = "QUERY" | "DIRECT_INPUT" | "ALL"
-        /**
-         * Cluster allowed networks
-         * interface fullName: dbaas.logs.ClusterAllowedNetworks.ClusterAllowedNetworks
-         */
-        export interface ClusterAllowedNetworks {
-            directInputAllowedNetworks?: string[];
-            queryAllowedNetworks?: string[];
-        }
-        /**
          * Possible values for ClusterClusterTypeEnum
          * type fullname: dbaas.logs.ClusterClusterTypeEnum
          */
@@ -122,6 +83,14 @@ export namespace dbaas {
             retentionId: string;
         }
         /**
+         * Cluster allowed networks
+         * interface fullName: dbaas.logs.ClusterUpdate.ClusterUpdate
+         */
+        export interface ClusterUpdate {
+            directInputAllowedNetworks?: string[];
+            queryAllowedNetworks?: string[];
+        }
+        /**
          * Graylog dashboard
          * interface fullName: dbaas.logs.Dashboard.Dashboard
          */
@@ -131,7 +100,6 @@ export namespace dbaas {
             description: string;
             isEditable: boolean;
             isShareable: boolean;
-            optionId?: string;
             title: string;
             updatedAt?: string;
         }
@@ -141,7 +109,6 @@ export namespace dbaas {
          */
         export interface Engine {
             engineId: string;
-            isDeprecated: boolean;
             name: dbaas.logs.EngineNameEnum;
             version: string;
         }
@@ -206,7 +173,6 @@ export namespace dbaas {
             maxSize: number;
             name: string;
             nbShard?: number;
-            optionId?: string;
             updatedAt?: string;
         }
         /**
@@ -223,9 +189,7 @@ export namespace dbaas {
             inputId: string;
             isRestartRequired: boolean;
             nbInstance?: number;
-            optionId?: string;
             publicAddress: string;
-            singleInstanceEnabled?: boolean;
             sslCertificate: string;
             status: dbaas.logs.InputStatusEnum;
             streamId: string;
@@ -245,13 +209,6 @@ export namespace dbaas {
          * type fullname: dbaas.logs.InputActionTypeEnum
          */
         export type InputActionTypeEnum = "END" | "LOG" | "START" | "TEST" | "DESTROY" | "RESTART"
-        /**
-         * Missing description
-         * interface fullName: dbaas.logs.InputAllowedNetworkCreation.InputAllowedNetworkCreation
-         */
-        export interface InputAllowedNetworkCreation {
-            network: string;
-        }
         /**
          * Missing description
          * interface fullName: dbaas.logs.InputConfigurationFlowggerUpdate.InputConfigurationFlowggerUpdate
@@ -275,13 +232,10 @@ export namespace dbaas {
          */
         export interface InputCreation {
             allowedNetworks?: string[];
-            autoSelectOption?: boolean;
             description: string;
             engineId: string;
             exposedPort?: string;
             nbInstance?: number;
-            optionId?: string;
-            singleInstanceEnabled?: boolean;
             streamId: string;
             title: string;
         }
@@ -300,8 +254,6 @@ export namespace dbaas {
             engineId: string;
             exposedPort?: string;
             nbInstance?: number;
-            optionId?: string;
-            singleInstanceEnabled?: boolean;
             streamId: string;
             title: string;
         }
@@ -335,27 +287,6 @@ export namespace dbaas {
             username: string;
         }
         /**
-         * DBaaS Logs offer
-         * interface fullName: dbaas.logs.Offer.Offer
-         */
-        export interface Offer {
-            curNbAlias: number;
-            curNbDashboard: number;
-            curNbIndex: number;
-            curNbInput: number;
-            curNbRole: number;
-            curNbStream: number;
-            esStorage?: number;
-            maxNbAlias: number;
-            maxNbDashboard: number;
-            maxNbIndex: number;
-            maxNbInput: number;
-            maxNbRole: number;
-            maxNbStream: number;
-            reference: string;
-            retention?: number;
-        }
-        /**
          * Asynchronous operation
          * interface fullName: dbaas.logs.Operation.Operation
          */
@@ -366,7 +297,6 @@ export namespace dbaas {
             indexId?: string;
             inputId?: string;
             operationId: string;
-            optionId?: string;
             roleId?: string;
             state: dbaas.logs.OperationStateEnum;
             streamId?: string;
@@ -378,42 +308,11 @@ export namespace dbaas {
          */
         export type OperationStateEnum = "PENDING" | "RECEIVED" | "STARTED" | "SUCCESS" | "FAILURE" | "REVOKED" | "RETRY" | "RUNNING"
         /**
-         * DBaaS Logs option
-         * interface fullName: dbaas.logs.Option.Option
-         */
-        export interface Option {
-            createdAt: string;
-            curNbAlias: number;
-            curNbDashboard: number;
-            curNbIndex: number;
-            curNbInput: number;
-            curNbRole: number;
-            curNbStream: number;
-            indexSize?: number;
-            maxNbAlias: number;
-            maxNbDashboard: number;
-            maxNbIndex: number;
-            maxNbInput: number;
-            maxNbRole: number;
-            maxNbStream: number;
-            optionId: string;
-            reference: string;
-            state: dbaas.logs.OptionStateEnum;
-            updatedAt?: string;
-        }
-        /**
-         * Possible values for OptionStateEnum
-         * type fullname: dbaas.logs.OptionStateEnum
-         */
-        export type OptionStateEnum = "ENABLED" | "DISABLED"
-        /**
          * Missing description
          * interface fullName: dbaas.logs.OutputElasticsearchAliasCreation.OutputElasticsearchAliasCreation
          */
         export interface OutputElasticsearchAliasCreation {
-            autoSelectOption?: boolean;
             description: string;
-            optionId?: string;
             suffix: string;
         }
         /**
@@ -436,7 +335,6 @@ export namespace dbaas {
          */
         export interface OutputElasticsearchAliasUpdate {
             description: string;
-            optionId?: string;
         }
         /**
          * Missing description
@@ -444,10 +342,8 @@ export namespace dbaas {
          */
         export interface OutputElasticsearchIndexCreation {
             alertNotifyEnabled?: boolean;
-            autoSelectOption?: boolean;
             description: string;
             nbShard?: number;
-            optionId?: string;
             suffix: string;
         }
         /**
@@ -463,9 +359,7 @@ export namespace dbaas {
          * interface fullName: dbaas.logs.OutputGraylogDashboardCreation.OutputGraylogDashboardCreation
          */
         export interface OutputGraylogDashboardCreation {
-            autoSelectOption?: boolean;
             description: string;
-            optionId?: string;
             title: string;
         }
         /**
@@ -473,9 +367,7 @@ export namespace dbaas {
          * interface fullName: dbaas.logs.OutputGraylogDashboardDuplicateCreation.OutputGraylogDashboardDuplicateCreation
          */
         export interface OutputGraylogDashboardDuplicateCreation {
-            autoSelectOption?: boolean;
             description: string;
-            optionId?: string;
             streamId?: string;
             title: string;
         }
@@ -485,7 +377,6 @@ export namespace dbaas {
          */
         export interface OutputGraylogDashboardUpdate {
             description: string;
-            optionId?: string;
             title: string;
         }
         /**
@@ -529,7 +420,6 @@ export namespace dbaas {
          * interface fullName: dbaas.logs.OutputGraylogStreamCreation.OutputGraylogStreamCreation
          */
         export interface OutputGraylogStreamCreation {
-            autoSelectOption?: boolean;
             coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum;
             coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum;
             coldStorageEnabled?: boolean;
@@ -540,7 +430,6 @@ export namespace dbaas {
             indexingEnabled?: boolean;
             indexingMaxSize?: number;
             indexingNotifyEnabled?: boolean;
-            optionId?: string;
             parentStreamId?: string;
             pauseIndexingOnMaxSize?: boolean;
             retentionId?: string;
@@ -572,7 +461,6 @@ export namespace dbaas {
             indexingEnabled?: boolean;
             indexingMaxSize?: number;
             indexingNotifyEnabled?: boolean;
-            optionId?: string;
             pauseIndexingOnMaxSize?: boolean;
             title: string;
             webSocketEnabled?: boolean;
@@ -596,38 +484,6 @@ export namespace dbaas {
          */
         export type PermissionTypeEnum = "READ_ONLY" | "READ_WRITE"
         /**
-         * DBaaS Logs offer
-         * interface fullName: dbaas.logs.PublicOffer.PublicOffer
-         */
-        export interface PublicOffer {
-            esStorage: number;
-            maxNbAlias: number;
-            maxNbDashboard: number;
-            maxNbIndex: number;
-            maxNbInput: number;
-            maxNbRole: number;
-            maxNbStream: number;
-            reference: string;
-        }
-        /**
-         * DBaaS Logs quota
-         * interface fullName: dbaas.logs.Quota.Quota
-         */
-        export interface Quota {
-            curNbAlias: number;
-            curNbDashboard: number;
-            curNbIndex: number;
-            curNbInput: number;
-            curNbRole: number;
-            curNbStream: number;
-            maxNbAlias: number;
-            maxNbDashboard: number;
-            maxNbIndex: number;
-            maxNbInput: number;
-            maxNbRole: number;
-            maxNbStream: number;
-        }
-        /**
          * Role
          * interface fullName: dbaas.logs.Role.Role
          */
@@ -635,7 +491,6 @@ export namespace dbaas {
             createdAt: string;
             description: string;
             name: string;
-            optionId?: string;
             roleId: string;
             updatedAt?: string;
         }
@@ -644,10 +499,8 @@ export namespace dbaas {
          * interface fullName: dbaas.logs.RoleCreation.RoleCreation
          */
         export interface RoleCreation {
-            autoSelectOption?: boolean;
             description: string;
             name: string;
-            optionId?: string;
         }
         /**
          * Missing description
@@ -709,7 +562,6 @@ export namespace dbaas {
         export interface RoleUpdate {
             description: string;
             name: string;
-            optionId?: string;
         }
         /**
          * Service
@@ -718,7 +570,6 @@ export namespace dbaas {
         export interface Service {
             createdAt: string;
             displayName?: string;
-            isCapped: boolean;
             serviceName: string;
             state?: dbaas.logs.ServiceStateEnum;
             updatedAt?: string;
@@ -758,7 +609,6 @@ export namespace dbaas {
             isShareable: boolean;
             nbAlertCondition: number;
             nbArchive: number;
-            optionId?: string;
             parentStreamId?: string;
             pauseIndexingOnMaxSize?: boolean;
             retentionId: string;
@@ -875,7 +725,6 @@ export namespace dbaas {
          */
         export interface Update {
             displayName?: string;
-            isCapped?: boolean;
         }
         /**
          * Web address
@@ -1010,19 +859,6 @@ export interface Dbaas {
                 };
             }
         }
-        offer: {
-            $(reference: string): {
-                /**
-                 * Display specified offer
-                 * GET /dbaas/logs/offer/{reference}
-                 */
-                $get(): Promise<dbaas.logs.PublicOffer>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            };
-        }
         $(serviceName: string): {
             /**
              * Returns the service object of connected identity.
@@ -1033,7 +869,7 @@ export interface Dbaas {
              * Update the service properties
              * PUT /dbaas/logs/{serviceName}
              */
-            $put(params?: { displayName?: string, isCapped?: boolean }): Promise<dbaas.logs.Operation>;
+            $put(params?: { displayName?: string }): Promise<dbaas.logs.Operation>;
             /**
              * Controle cache
              */
@@ -1074,38 +910,6 @@ export interface Dbaas {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    allowedNetwork: {
-                        /**
-                         * List all the network ID allowed to contact given cluster
-                         * GET /dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork
-                         */
-                        $get(): Promise<string[]>;
-                        /**
-                         * Allow an IP to contact cluster
-                         * POST /dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork
-                         */
-                        $post(params?: { flowType?: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum, network?: string }): Promise<dbaas.logs.Operation>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        $(allowedNetworkId: string): {
-                            /**
-                             * Remove the specified IP from the list of allowed networks
-                             * DELETE /dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}
-                             */
-                            $delete(): Promise<dbaas.logs.Operation>;
-                            /**
-                             * Returns details of an allowed network
-                             * GET /dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}
-                             */
-                            $get(): Promise<dbaas.logs.ClusterAllowedNetwork>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        };
-                    }
                     retention: {
                         /**
                          * List all the retention ID available for a given cluster
@@ -1140,7 +944,7 @@ export interface Dbaas {
                  * Register a new input object
                  * POST /dbaas/logs/{serviceName}/input
                  */
-                $post(params?: { allowedNetworks?: string[], autoSelectOption?: boolean, description?: string, engineId?: string, exposedPort?: string, nbInstance?: number, optionId?: string, singleInstanceEnabled?: boolean, streamId?: string, title?: string }): Promise<dbaas.logs.Operation>;
+                $post(params?: { allowedNetworks?: string[], description?: string, engineId?: string, exposedPort?: string, nbInstance?: number, streamId?: string, title?: string }): Promise<dbaas.logs.Operation>;
                 /**
                  * Controle cache
                  */
@@ -1160,7 +964,7 @@ export interface Dbaas {
                      * Update information of specified input object
                      * PUT /dbaas/logs/{serviceName}/input/{inputId}
                      */
-                    $put(params?: { allowedNetworks?: string[], description?: string, engineId?: string, exposedPort?: string, nbInstance?: number, optionId?: string, singleInstanceEnabled?: boolean, streamId?: string, title?: string }): Promise<dbaas.logs.Operation>;
+                    $put(params?: { allowedNetworks?: string[], description?: string, engineId?: string, exposedPort?: string, nbInstance?: number, streamId?: string, title?: string }): Promise<dbaas.logs.Operation>;
                     /**
                      * Controle cache
                      */
@@ -1175,38 +979,6 @@ export interface Dbaas {
                          * Controle cache
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    }
-                    allowedNetwork: {
-                        /**
-                         * List all network ID allowed to join input
-                         * GET /dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork
-                         */
-                        $get(): Promise<string[]>;
-                        /**
-                         * Allow an ip to join input
-                         * POST /dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork
-                         */
-                        $post(params?: { network?: string }): Promise<dbaas.logs.Operation>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        $(allowedNetworkId: string): {
-                            /**
-                             * Remove the specified IP from the list of allowed networks
-                             * DELETE /dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}
-                             */
-                            $delete(): Promise<dbaas.logs.Operation>;
-                            /**
-                             * List all network ID allowed to join input
-                             * GET /dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}
-                             */
-                            $get(): Promise<dbaas.logs.AllowedNetwork>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        };
                     }
                     configtest: {
                         /**
@@ -1334,17 +1106,6 @@ export interface Dbaas {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
-            offer: {
-                /**
-                 * Returns the subscribed offer
-                 * GET /dbaas/logs/{serviceName}/offer
-                 */
-                $get(): Promise<dbaas.logs.Offer>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
             operation: {
                 /**
                  * Latest operations
@@ -1367,39 +1128,6 @@ export interface Dbaas {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
-            option: {
-                /**
-                 * Returns the subscribed additional options
-                 * GET /dbaas/logs/{serviceName}/option
-                 */
-                $get(): Promise<string[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                $(optionId: string): {
-                    /**
-                     * Returns details of a subscribed option
-                     * GET /dbaas/logs/{serviceName}/option/{optionId}
-                     */
-                    $get(): Promise<dbaas.logs.Option>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    terminate: {
-                        /**
-                         * Remove the specified subscribed option
-                         * POST /dbaas/logs/{serviceName}/option/{optionId}/terminate
-                         */
-                        $post(): Promise<dbaas.logs.Operation>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    }
-                };
-            }
             output: {
                 elasticsearch: {
                     alias: {
@@ -1412,7 +1140,7 @@ export interface Dbaas {
                          * Register a new elasticsearch alias
                          * POST /dbaas/logs/{serviceName}/output/elasticsearch/alias
                          */
-                        $post(params?: { autoSelectOption?: boolean, description?: string, optionId?: string, suffix?: string }): Promise<dbaas.logs.Operation>;
+                        $post(params?: { description?: string, suffix?: string }): Promise<dbaas.logs.Operation>;
                         /**
                          * Controle cache
                          */
@@ -1432,7 +1160,7 @@ export interface Dbaas {
                              * Update specified elasticsearch alias
                              * PUT /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}
                              */
-                            $put(params?: { description?: string, optionId?: string }): Promise<dbaas.logs.Operation>;
+                            $put(params?: { description?: string }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */
@@ -1516,7 +1244,7 @@ export interface Dbaas {
                          * Register a new elasticsearch index
                          * POST /dbaas/logs/{serviceName}/output/elasticsearch/index
                          */
-                        $post(params?: { alertNotifyEnabled?: boolean, autoSelectOption?: boolean, description?: string, nbShard?: number, optionId?: string, suffix?: string }): Promise<dbaas.logs.Operation>;
+                        $post(params?: { alertNotifyEnabled?: boolean, description?: string, nbShard?: number, suffix?: string }): Promise<dbaas.logs.Operation>;
                         /**
                          * Controle cache
                          */
@@ -1561,9 +1289,41 @@ export interface Dbaas {
                          */
                         $get(): Promise<string[]>;
                         /**
+                         * Register a new Kibana instance
+                         * POST /dbaas/logs/{serviceName}/output/elasticsearch/kibana
+                         */
+                        $post(): Promise<dbaas.logs.Operation>;
+                        /**
                          * Controle cache
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(kibanaId: string): {
+                            /**
+                             * Remove specified Kibana instance
+                             * DELETE /dbaas/logs/{serviceName}/output/elasticsearch/kibana/{kibanaId}
+                             */
+                            $delete(): Promise<dbaas.logs.Operation>;
+                            /**
+                             * Returns specified Kibana instance
+                             * GET /dbaas/logs/{serviceName}/output/elasticsearch/kibana/{kibanaId}
+                             */
+                            $get(): Promise<dbaas.logs.Kibana>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            url: {
+                                /**
+                                 * Returns the list of urls of specified Kibana
+                                 * GET /dbaas/logs/{serviceName}/output/elasticsearch/kibana/{kibanaId}/url
+                                 */
+                                $get(): Promise<dbaas.logs.Url[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        };
                     }
                 }
                 graylog: {
@@ -1577,7 +1337,7 @@ export interface Dbaas {
                          * Register a new graylog dashboard
                          * POST /dbaas/logs/{serviceName}/output/graylog/dashboard
                          */
-                        $post(params?: { autoSelectOption?: boolean, description?: string, optionId?: string, title?: string }): Promise<dbaas.logs.Operation>;
+                        $post(params?: { description?: string, title?: string }): Promise<dbaas.logs.Operation>;
                         /**
                          * Controle cache
                          */
@@ -1597,7 +1357,7 @@ export interface Dbaas {
                              * Update information of specified graylog dashboard
                              * PUT /dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}
                              */
-                            $put(params?: { description?: string, optionId?: string, title?: string }): Promise<dbaas.logs.Operation>;
+                            $put(params?: { description?: string, title?: string }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */
@@ -1607,7 +1367,7 @@ export interface Dbaas {
                                  * Copy all widgets from specified dashboard to a new one
                                  * POST /dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/duplicate
                                  */
-                                $post(params?: { autoSelectOption?: boolean, description?: string, optionId?: string, streamId?: string, title?: string }): Promise<dbaas.logs.Operation>;
+                                $post(params?: { description?: string, streamId?: string, title?: string }): Promise<dbaas.logs.Operation>;
                                 /**
                                  * Controle cache
                                  */
@@ -1636,7 +1396,7 @@ export interface Dbaas {
                          * Register a new graylog stream
                          * POST /dbaas/logs/{serviceName}/output/graylog/stream
                          */
-                        $post(params?: { autoSelectOption?: boolean, coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description?: string, indexingEnabled?: boolean, indexingMaxSize?: number, indexingNotifyEnabled?: boolean, optionId?: string, parentStreamId?: string, pauseIndexingOnMaxSize?: boolean, retentionId?: string, title?: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
+                        $post(params?: { coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description?: string, indexingEnabled?: boolean, indexingMaxSize?: number, indexingNotifyEnabled?: boolean, parentStreamId?: string, pauseIndexingOnMaxSize?: boolean, retentionId?: string, title?: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
                         /**
                          * Controle cache
                          */
@@ -1656,7 +1416,7 @@ export interface Dbaas {
                              * Update information of specified graylog stream
                              * PUT /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}
                              */
-                            $put(params?: { coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description?: string, indexingEnabled?: boolean, indexingMaxSize?: number, indexingNotifyEnabled?: boolean, optionId?: string, pauseIndexingOnMaxSize?: boolean, title?: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
+                            $put(params?: { coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description?: string, indexingEnabled?: boolean, indexingMaxSize?: number, indexingNotifyEnabled?: boolean, pauseIndexingOnMaxSize?: boolean, title?: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */
@@ -1778,17 +1538,6 @@ export interface Dbaas {
                     }
                 }
             }
-            quota: {
-                /**
-                 * Returns the overall quota limits
-                 * GET /dbaas/logs/{serviceName}/quota
-                 */
-                $get(): Promise<dbaas.logs.Quota>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
             role: {
                 /**
                  * Returns the list of roles
@@ -1799,7 +1548,7 @@ export interface Dbaas {
                  * Register a new role
                  * POST /dbaas/logs/{serviceName}/role
                  */
-                $post(params?: { autoSelectOption?: boolean, description?: string, name?: string, optionId?: string }): Promise<dbaas.logs.Operation>;
+                $post(params?: { description?: string, name?: string }): Promise<dbaas.logs.Operation>;
                 /**
                  * Controle cache
                  */
@@ -1819,7 +1568,7 @@ export interface Dbaas {
                      * Update information of specified role
                      * PUT /dbaas/logs/{serviceName}/role/{roleId}
                      */
-                    $put(params?: { description?: string, name?: string, optionId?: string }): Promise<dbaas.logs.Operation>;
+                    $put(params?: { description?: string, name?: string }): Promise<dbaas.logs.Operation>;
                     /**
                      * Controle cache
                      */
@@ -1899,6 +1648,17 @@ export interface Dbaas {
                              * POST /dbaas/logs/{serviceName}/role/{roleId}/permission/index
                              */
                             $post(params?: { indexId?: string, permissionType?: dbaas.logs.PermissionTypeEnum }): Promise<dbaas.logs.Operation>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        kibana: {
+                            /**
+                             * Append a kibana permission to role
+                             * POST /dbaas/logs/{serviceName}/role/{roleId}/permission/kibana
+                             */
+                            $post(params?: { kibanaId?: string, permissionType?: dbaas.logs.PermissionTypeEnum }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */

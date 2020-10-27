@@ -1530,6 +1530,371 @@ export const schema: Schema = {
         }
       }
     },
+    "services.expanded.TechnicalDetails": {
+      "description": "Technical information of a baremetal service",
+      "id": "TechnicalDetails",
+      "namespace": "services.expanded",
+      "properties": {
+        "baremetalServers": {
+          "canBeNull": true,
+          "fullType": "services.expanded.technical.BaremetalServer",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.BaremetalServer"
+        }
+      }
+    },
+    "services.expanded.technical.BaremetalServer": {
+      "description": "Technical information on baremetal service",
+      "id": "BaremetalServer",
+      "namespace": "services.expanded.technical",
+      "properties": {
+        "bandwidth": {
+          "canBeNull": true,
+          "description": "Technical information on server bandwidth",
+          "fullType": "services.expanded.technical.baremetalServer.Bandwidth",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.Bandwidth"
+        },
+        "memory": {
+          "canBeNull": true,
+          "description": "Technical information on server memory",
+          "fullType": "services.expanded.technical.baremetalServer.Memory",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.Memory"
+        },
+        "server": {
+          "canBeNull": true,
+          "description": "Technical information on server type",
+          "fullType": "services.expanded.technical.baremetalServer.Server",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.Server"
+        },
+        "storage": {
+          "canBeNull": true,
+          "description": "Technical information on server storage",
+          "fullType": "services.expanded.technical.baremetalServer.Storage",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.Storage"
+        },
+        "vrack": {
+          "canBeNull": true,
+          "description": "Technical information on server vrack",
+          "fullType": "services.expanded.technical.baremetalServer.Vrack",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.Vrack"
+        }
+      }
+    },
+    "services.expanded.technical.baremetalServer.Bandwidth": {
+      "description": "Technical information on bandwidth of a baremetal service",
+      "id": "Bandwidth",
+      "namespace": "services.expanded.technical.baremetalServer",
+      "properties": {
+        "burst": {
+          "canBeNull": false,
+          "description": "Bandwidth burst",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "guaranteed": {
+          "canBeNull": false,
+          "description": "Guaranteed bandwith of the server",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "level": {
+          "canBeNull": false,
+          "description": "Level width of Band",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "limit": {
+          "canBeNull": false,
+          "description": "Bandwidth limit",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "services.expanded.technical.baremetalServer.Memory": {
+      "description": "Technical information on memory of a baremetal service",
+      "id": "Memory",
+      "namespace": "services.expanded.technical.baremetalServer",
+      "properties": {
+        "ecc": {
+          "canBeNull": false,
+          "description": "Is ECC feature is enabled on memory",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "frequency": {
+          "canBeNull": false,
+          "description": "Memory frequency",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "ramType": {
+          "canBeNull": false,
+          "description": "Type of memory",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Memory size",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "services.expanded.technical.baremetalServer.Server": {
+      "description": "Technical information of a baremetal server service",
+      "id": "Server",
+      "namespace": "services.expanded.technical.baremetalServer",
+      "properties": {
+        "cpu": {
+          "canBeNull": false,
+          "description": "Server Cpu",
+          "fullType": "services.expanded.technical.baremetalServer.server.Cpu",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.server.Cpu"
+        },
+        "frame": {
+          "canBeNull": false,
+          "description": "Server frame",
+          "fullType": "services.expanded.technical.baremetalServer.server.Frame",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.server.Frame"
+        },
+        "range": {
+          "canBeNull": false,
+          "description": "Server's range",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "services.expanded.technical.baremetalServer.Storage": {
+      "description": "Technical information of storage of a baremetal service",
+      "id": "Storage",
+      "namespace": "services.expanded.technical.baremetalServer",
+      "properties": {
+        "disks": {
+          "canBeNull": false,
+          "description": "List of storage disks",
+          "fullType": "services.expanded.technical.baremetalServer.storage.Disk[]",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.storage.Disk[]"
+        },
+        "raid": {
+          "canBeNull": false,
+          "description": "Storage raid type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "services.expanded.technical.baremetalServer.Vrack": {
+      "description": "Technical information of vrack of a baremetal service",
+      "id": "Vrack",
+      "namespace": "services.expanded.technical.baremetalServer",
+      "properties": {
+        "burst": {
+          "canBeNull": false,
+          "description": "Bandwidth burst",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "guaranteed": {
+          "canBeNull": false,
+          "description": "Guaranteed bandwith on the Vrack",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "level": {
+          "canBeNull": false,
+          "description": "Level width of Band",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "limit": {
+          "canBeNull": false,
+          "description": "Bandwidth limit",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "services.expanded.technical.baremetalServer.server.Cpu": {
+      "description": "Technical information on cpu of a baremetal server service",
+      "id": "Cpu",
+      "namespace": "services.expanded.technical.baremetalServer.server",
+      "properties": {
+        "boost": {
+          "canBeNull": false,
+          "description": "Server Cpu boost",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "brand": {
+          "canBeNull": false,
+          "description": "Server Cpu brand name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "cores": {
+          "canBeNull": false,
+          "description": "Cpu number of cores",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "frequency": {
+          "canBeNull": false,
+          "description": "Server",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "model": {
+          "canBeNull": false,
+          "description": "Server Cpu model name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "score": {
+          "canBeNull": false,
+          "description": "Score of cpu",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "threads": {
+          "canBeNull": false,
+          "description": "Server Cpu number of threads",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "services.expanded.technical.baremetalServer.server.Frame": {
+      "description": "Technical information on frame of a baremetal server service",
+      "id": "Frame",
+      "namespace": "services.expanded.technical.baremetalServer.server",
+      "properties": {
+        "model": {
+          "canBeNull": false,
+          "description": "Server rack Model",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Server rack size",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "services.expanded.technical.baremetalServer.storage.Disk": {
+      "description": "Technical information of storage disk of a baremetal service",
+      "id": "Disk",
+      "namespace": "services.expanded.technical.baremetalServer.storage",
+      "properties": {
+        "capacity": {
+          "canBeNull": false,
+          "description": "Maximum disk capacity",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "interface": {
+          "canBeNull": false,
+          "description": "Interface identifier",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "number": {
+          "canBeNull": false,
+          "description": "Number of interfaces",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "specs": {
+          "canBeNull": false,
+          "description": "Form factor of the hardware",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "technology": {
+          "canBeNull": false,
+          "description": "Type of disk",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "services.form.Answer": {
       "description": "Answer to a form",
       "id": "Answer",

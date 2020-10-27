@@ -377,10 +377,12 @@ export namespace cloud {
      * interface fullName: cloud.ProjectKubeCreationNodePool.ProjectKubeCreationNodePool
      */
     export interface ProjectKubeCreationNodePool {
+        antiAffinity?: boolean;
         desiredNodes?: number;
         flavorName?: string;
         maxNodes?: number;
         minNodes?: number;
+        monthlyBilled?: boolean;
         name?: string;
     }
     /**
@@ -403,10 +405,12 @@ export namespace cloud {
      * interface fullName: cloud.ProjectKubeNodePoolCreation.ProjectKubeNodePoolCreation
      */
     export interface ProjectKubeNodePoolCreation {
+        antiAffinity?: boolean;
         desiredNodes?: number;
         flavorName: string;
         maxNodes?: number;
         minNodes?: number;
+        monthlyBilled?: boolean;
         name?: string;
     }
     /**
@@ -1627,6 +1631,7 @@ export namespace cloud {
          * interface fullName: cloud.kube.NodePool.NodePool
          */
         export interface NodePool {
+            antiAffinity: boolean;
             availableNodes: number;
             createdAt: string;
             currentNodes: number;
@@ -1635,6 +1640,7 @@ export namespace cloud {
             id: string;
             maxNodes: number;
             minNodes: number;
+            monthlyBilled: boolean;
             name: string;
             projectId: string;
             sizeStatus: cloud.kube.NodePoolSizeStatusEnum;
@@ -1834,6 +1840,32 @@ export namespace cloud {
          * type fullname: cloud.order.StatusEnum
          */
         export type StatusEnum = "unpaid" | "delivering" | "delivered" | "unknown"
+        export namespace rule {
+            /**
+             * Public Cloud products availability
+             * interface fullName: cloud.order.rule.Availability.Availability
+             */
+            export interface Availability {
+                plans: cloud.order.rule.AvailabilityPlan[];
+                products: cloud.order.rule.AvailabilityProduct[];
+            }
+            /**
+             * Public Cloud plan availability
+             * interface fullName: cloud.order.rule.AvailabilityPlan.AvailabilityPlan
+             */
+            export interface AvailabilityPlan {
+                code: string;
+                regions: string[];
+            }
+            /**
+             * Public Cloud product availability
+             * interface fullName: cloud.order.rule.AvailabilityProduct.AvailabilityProduct
+             */
+            export interface AvailabilityProduct {
+                name: string;
+                regions: string[];
+            }
+        }
     }
     export namespace project {
         /**
@@ -2298,47 +2330,10 @@ export namespace cloud {
                     authorized: boolean;
                 }
                 /**
-                 * Training Platform Data Object
-                 * interface fullName: cloud.project.ai.training.Data.Data
-                 */
-                export interface Data {
-                    account: string;
-                    container: string;
-                    containerRegion: string;
-                    created: string;
-                    id: string;
-                    name?: string;
-                    pullDate?: string;
-                    pullStatus?: cloud.project.ai.training.DataSyncStatusEnum;
-                    pushDate?: string;
-                    pushStatus?: cloud.project.ai.training.DataSyncStatusEnum;
-                    region: string;
-                    user: string;
-                }
-                /**
-                 * Training Platform Data Spec Object
-                 * interface fullName: cloud.project.ai.training.DataSpec.DataSpec
-                 */
-                export interface DataSpec {
-                    container: string;
-                    containerRegion: string;
-                    name: string;
-                    region: string;
-                    sync: boolean;
-                    user: string;
-                }
-                /**
                  * Data Sync Direction
                  * type fullname: cloud.project.ai.training.DataSyncDirectionEnum
                  */
                 export type DataSyncDirectionEnum = "from-object-storage" | "to-object-storage"
-                /**
-                 * Training Platform Data Sync Request Object
-                 * interface fullName: cloud.project.ai.training.DataSyncRequest.DataSyncRequest
-                 */
-                export interface DataSyncRequest {
-                    direction: cloud.project.ai.training.DataSyncDirectionEnum;
-                }
                 /**
                  * Data Sync Direction
                  * type fullname: cloud.project.ai.training.DataSyncStatusEnum
@@ -2365,20 +2360,21 @@ export namespace cloud {
                  * interface fullName: cloud.project.ai.training.Job.Job
                  */
                 export interface Job {
-                    accessUrl?: string;
-                    command: string[];
-                    created: string;
-                    data: string[];
+                    createdAt: string;
                     id: string;
-                    image: string;
-                    name: string;
-                    region: string;
-                    resourceUsageUrl?: string;
-                    resources: cloud.project.ai.training.JobResource;
-                    state: cloud.project.ai.training.JobStatusEnum;
-                    totalRuntime?: number;
-                    updatedOn: string;
+                    partner?: cloud.project.ai.training.JobPartner;
+                    spec: cloud.project.ai.training.JobSpec;
+                    status: cloud.project.ai.training.JobStatus;
+                    updatedAt: string;
                     user: string;
+                }
+                /**
+                 * Training Platform Job Env Object
+                 * interface fullName: cloud.project.ai.training.JobEnv.JobEnv
+                 */
+                export interface JobEnv {
+                    name: string;
+                    value: string;
                 }
                 /**
                  * Job Logs
@@ -2387,6 +2383,14 @@ export namespace cloud {
                 export interface JobLogs {
                     lastActivity?: string;
                     logs: cloud.project.ai.training.LogLine[];
+                }
+                /**
+                 * Training Platform Job Partner Object
+                 * interface fullName: cloud.project.ai.training.JobPartner.JobPartner
+                 */
+                export interface JobPartner {
+                    flavor: string;
+                    name: string;
                 }
                 /**
                  * Training Platform Job Resource Object
@@ -2400,19 +2404,52 @@ export namespace cloud {
                  * interface fullName: cloud.project.ai.training.JobSpec.JobSpec
                  */
                 export interface JobSpec {
-                    command: string[];
-                    data: string[];
+                    command?: string[];
+                    defaultHttpPort?: number;
+                    env?: cloud.project.ai.training.JobEnv[];
                     image: string;
-                    name?: string;
+                    name: string;
                     region: string;
                     resources: cloud.project.ai.training.JobResource;
-                    user: string;
+                    shutdown?: string;
+                    timeout?: number;
+                    volumes?: cloud.project.ai.training.JobVolume[];
                 }
                 /**
-                 * Status of the job
-                 * type fullname: cloud.project.ai.training.JobStatusEnum
+                 * State of the job
+                 * type fullname: cloud.project.ai.training.JobStateEnum
                  */
-                export type JobStatusEnum = "CANCELLED" | "CANCELLING" | "FAILED" | "INTERRUPTED" | "SUCCEEDED" | "QUEUING" | "QUEUED" | "RUNNING"
+                export type JobStateEnum = "QUEUED" | "PENDING" | "SYNCING" | "RUNNING" | "FAILED" | "ERROR" | "DONE" | "INTERRUPTED"
+                /**
+                 * Training Platform Job Status Object
+                 * interface fullName: cloud.project.ai.training.JobStatus.JobStatus
+                 */
+                export interface JobStatus {
+                    duration?: number;
+                    infos?: string;
+                    ip?: string;
+                    jobUrl?: string;
+                    monitoringUrl?: string;
+                    queuedAt?: string;
+                    startedAt?: string;
+                    state?: cloud.project.ai.training.JobStateEnum;
+                    stoppedAt?: string;
+                }
+                /**
+                 * Training Platform Job Volume Object
+                 * interface fullName: cloud.project.ai.training.JobVolume.JobVolume
+                 */
+                export interface JobVolume {
+                    container: string;
+                    mountPath: string;
+                    permission: cloud.project.ai.training.JobVolumePermissionEnum;
+                    region: string;
+                }
+                /**
+                 * Permissions to apply on the job volume
+                 * type fullname: cloud.project.ai.training.JobVolumePermissionEnum
+                 */
+                export type JobVolumePermissionEnum = "RW" | "RO"
                 /**
                  * Log line
                  * interface fullName: cloud.project.ai.training.LogLine.LogLine
@@ -2438,9 +2475,9 @@ export namespace cloud {
                  */
                 export interface Region {
                     cliInstallUrl: string;
-                    consoleUrl: string;
                     documentationUrl: string;
                     id: string;
+                    registryUrl: string;
                     version: string;
                 }
                 /**
@@ -2448,17 +2485,14 @@ export namespace cloud {
                  * interface fullName: cloud.project.ai.training.Registry.Registry
                  */
                 export interface Registry {
-                    custom: boolean;
+                    createdAt: string;
+                    id: string;
                     password: string;
+                    region: string;
+                    updatedAt: string;
                     url: string;
+                    user: string;
                     username: string;
-                }
-                /**
-                 * Registry attachment response
-                 * interface fullName: cloud.project.ai.training.RegistryResponse.RegistryResponse
-                 */
-                export interface RegistryResponse {
-                    message: string;
                 }
             }
         }
@@ -3185,6 +3219,25 @@ export namespace cloud {
          */
         export type RoleEnum = "admin" | "authentication" | "administrator" | "compute_operator" | "infrastructure_supervisor" | "network_security_operator" | "network_operator" | "backup_operator" | "image_operator" | "volume_operator" | "objectstore_operator" | "ai_training_operator"
         /**
+         * S3Credentials
+         * interface fullName: cloud.user.S3Credentials.S3Credentials
+         */
+        export interface S3Credentials {
+            access: string;
+            tenantId: string;
+            userId: string;
+        }
+        /**
+         * S3CredentialsWithSecret
+         * interface fullName: cloud.user.S3CredentialsWithSecret.S3CredentialsWithSecret
+         */
+        export interface S3CredentialsWithSecret {
+            access: string;
+            secret: string;
+            tenantId: string;
+            userId: string;
+        }
+        /**
          * User
          * interface fullName: cloud.user.User.User
          */
@@ -3275,7 +3328,7 @@ export namespace nichandle {
      * OVH subsidiaries
      * type fullname: nichandle.OvhSubsidiaryEnum
      */
-    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
+    export type OvhSubsidiaryEnum = "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "SN" | "TN"
 }
 export namespace order {
     /**
@@ -3411,6 +3464,19 @@ export interface Cloud {
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        rule: {
+            availability: {
+                /**
+                 * Get product availability
+                 * GET /cloud/order/rule/availability
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum, planCode?: string }): Promise<cloud.order.rule.Availability>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+        }
     }
     price: {
         /**
@@ -4705,7 +4771,7 @@ export interface Cloud {
                          * Create a nodepool on your cluster
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/nodepool
                          */
-                        $post(params: { desiredNodes?: number, flavorName: string, maxNodes?: number, minNodes?: number, name?: string }): Promise<cloud.kube.NodePool>;
+                        $post(params: { antiAffinity?: boolean, desiredNodes?: number, flavorName: string, maxNodes?: number, minNodes?: number, monthlyBilled?: boolean, name?: string }): Promise<cloud.kube.NodePool>;
                         /**
                          * Controle cache
                          */
@@ -5548,6 +5614,38 @@ export interface Cloud {
                              * GET /cloud/project/{serviceName}/user/{userId}/role/{roleId}
                              */
                             $get(): Promise<cloud.role.Role>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        };
+                    }
+                    s3Credentials: {
+                        /**
+                         * List your S3 credentials
+                         * GET /cloud/project/{serviceName}/user/{userId}/s3Credentials
+                         */
+                        $get(): Promise<cloud.user.S3Credentials[]>;
+                        /**
+                         * Create a new S3 credentials for an user
+                         * POST /cloud/project/{serviceName}/user/{userId}/s3Credentials
+                         */
+                        $post(): Promise<cloud.user.S3CredentialsWithSecret>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(access: string): {
+                            /**
+                             * Delete an S3 credential
+                             * DELETE /cloud/project/{serviceName}/user/{userId}/s3Credentials/{access}
+                             */
+                            $delete(): Promise<void>;
+                            /**
+                             * Get details about an S3 credential
+                             * GET /cloud/project/{serviceName}/user/{userId}/s3Credentials/{access}
+                             */
+                            $get(): Promise<cloud.user.S3Credentials>;
                             /**
                              * Controle cache
                              */

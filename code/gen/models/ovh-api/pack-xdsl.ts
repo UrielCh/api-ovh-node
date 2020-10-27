@@ -208,7 +208,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Building reference for FTTH offers",
+              "description": "Building reference for FTTH and FTTE offers",
               "fullType": "string",
               "name": "buildingReference",
               "paramType": "body",
@@ -290,7 +290,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Building reference for FTTH offers",
+              "description": "Building reference for FTTH and FTTE offers",
               "fullType": "string",
               "name": "buildingReference",
               "paramType": "body",
@@ -471,6 +471,56 @@ export const schema: Schema = {
         }
       ],
       "path": "/pack/xdsl/{packName}/addressMove/offers"
+    },
+    {
+      "description": "servicesToDelete operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Calculate services to delete with new offer and options",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Eligibility reference",
+              "fullType": "string",
+              "name": "eligibilityReference",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Reference of the new offer",
+              "fullType": "string",
+              "name": "offerName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "pack.xdsl.migration.OfferOption[]",
+              "description": "Options wanted in the new offer",
+              "fullType": "pack.xdsl.migration.OfferOption[]",
+              "name": "options",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your pack",
+              "fullType": "string",
+              "name": "packName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "pack.xdsl.migration.SubServiceToDelete[]"
+        }
+      ],
+      "path": "/pack/xdsl/{packName}/addressMove/servicesToDelete"
     },
     {
       "description": "canCancelResiliation operations",
@@ -1586,7 +1636,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Building reference for FTTH offers",
+              "description": "Building reference for FTTH and FTTE offers",
               "fullType": "string",
               "name": "buildingReference",
               "paramType": "body",
@@ -1708,7 +1758,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Building reference for FTTH offers",
+              "description": "Building reference for FTTH and FTTE offers",
               "fullType": "string",
               "name": "buildingReference",
               "paramType": "body",
@@ -5104,6 +5154,7 @@ export const schema: Schema = {
       "description": "Possible DSL technologies",
       "enum": [
         "adsl",
+        "ftte",
         "ftth",
         "sdsl",
         "vdsl"
