@@ -156,7 +156,7 @@ class DynHost {
             const appKey = this.engine.appKey;
             const appSecret = this.engine.appSecret;
             const consumerKey = this.engine.consumerKey;
-            console.log(`digester: ${appKey}:${appSecret}:${consumerKey}`);
+            console.log(`Reuse this credential with: --credential ${appKey}:${appSecret}:${consumerKey}`);
         }
     }
 
