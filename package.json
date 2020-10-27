@@ -41,7 +41,7 @@
     "bootstrap": "lerna bootstrap --concurrency=1 --ignore-scripts --force-local",
     "bootstrap2": "lerna bootstrap --mutex file:/tmp/.npm-mutex --force-local",
     "build": "lerna run build",
-    "do-publish": "npm run clean && npm run install-all && npm run bootstrap && npm run clean-cache && lerna publish patch"
+    "do-publish": "npm run clean && npm run install-all && npm run bootstrap && npm run clean-cache && lerna publish patch --yes"
   },
   "dependencies": {},
   "name": "api-ovh-node"
