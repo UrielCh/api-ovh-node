@@ -1539,6 +1539,14 @@ export namespace cloud {
     }
     export namespace kube {
         /**
+         * Managed Kubernetes Audit Logs
+         * interface fullName: cloud.kube.AuditLogs.AuditLogs
+         */
+        export interface AuditLogs {
+            expirationDate: string;
+            url: string;
+        }
+        /**
          * Managed Kubernetes cluster description
          * interface fullName: cloud.kube.Cluster.Cluster
          */
@@ -1561,7 +1569,7 @@ export namespace cloud {
          * Enum values for available regions when creating a cluster
          * type fullname: cloud.kube.ClusterCreationRegionEnum
          */
-        export type ClusterCreationRegionEnum = "GRA5" | "GRA7" | "BHS5" | "SBG5"
+        export type ClusterCreationRegionEnum = "GRA5" | "GRA7" | "BHS5" | "SBG5" | "WAW1" | "SGP1" | "SYD1"
         /**
          * Enum values for Status
          * type fullname: cloud.kube.ClusterStatus
@@ -1677,7 +1685,7 @@ export namespace cloud {
          * Enum values for available regions
          * type fullname: cloud.kube.RegionEnum
          */
-        export type RegionEnum = "GRA5" | "GRA7" | "BHS5" | "SBG5"
+        export type RegionEnum = "GRA5" | "GRA7" | "BHS5" | "SBG5" | "WAW1" | "SGP1" | "SYD1"
         /**
          * Enum values for worker nodes reset policy
          * type fullname: cloud.kube.ResetWorkerNodesPolicy
@@ -1717,7 +1725,7 @@ export namespace cloud {
          * List of available versions for upgrade
          * type fullname: cloud.kube.UpgradeVersionEnum
          */
-        export type UpgradeVersionEnum = "1.14" | "1.15" | "1.16" | "1.17" | "1.18"
+        export type UpgradeVersionEnum = "1.15" | "1.16" | "1.17" | "1.18" | "1.19"
         /**
          * List of available versions for installation
          * type fullname: cloud.kube.Version
@@ -1727,7 +1735,7 @@ export namespace cloud {
          * List of available versions for installation
          * type fullname: cloud.kube.VersionEnum
          */
-        export type VersionEnum = "1.15" | "1.16" | "1.17" | "1.18"
+        export type VersionEnum = "1.16" | "1.17" | "1.18" | "1.19"
     }
     export namespace migration {
         /**
@@ -1775,6 +1783,7 @@ export namespace cloud {
          * interface fullName: cloud.network.NetworkRegion.NetworkRegion
          */
         export interface NetworkRegion {
+            openstackId?: string;
             region: string;
             status: cloud.network.NetworkRegionStatusEnum;
         }
@@ -1951,6 +1960,7 @@ export namespace cloud {
         export interface LoadBalancer {
             address: cloud.project.loadbalancer.Address;
             configuration: cloud.project.loadbalancer.ConfigurationVersion;
+            createdAt: string;
             description?: string;
             egressAddress: cloud.project.loadbalancer.Addresses;
             id: string;
@@ -2330,16 +2340,6 @@ export namespace cloud {
                     authorized: boolean;
                 }
                 /**
-                 * Data Sync Direction
-                 * type fullname: cloud.project.ai.training.DataSyncDirectionEnum
-                 */
-                export type DataSyncDirectionEnum = "from-object-storage" | "to-object-storage"
-                /**
-                 * Data Sync Direction
-                 * type fullname: cloud.project.ai.training.DataSyncStatusEnum
-                 */
-                export type DataSyncStatusEnum = "running" | "pending" | "error" | "done"
-                /**
                  * Training Platform Data Object
                  * interface fullName: cloud.project.ai.training.Features.Features
                  */
@@ -2419,13 +2419,14 @@ export namespace cloud {
                  * State of the job
                  * type fullname: cloud.project.ai.training.JobStateEnum
                  */
-                export type JobStateEnum = "QUEUED" | "PENDING" | "SYNCING" | "RUNNING" | "FAILED" | "ERROR" | "DONE" | "INTERRUPTED"
+                export type JobStateEnum = "QUEUED" | "PENDING" | "INITIALIZING" | "FINALIZING" | "RUNNING" | "TIMEOUT" | "FAILED" | "ERROR" | "DONE" | "INTERRUPTED" | "INTERRUPTING"
                 /**
                  * Training Platform Job Status Object
                  * interface fullName: cloud.project.ai.training.JobStatus.JobStatus
                  */
                 export interface JobStatus {
                     duration?: number;
+                    history: cloud.project.ai.training.JobStatusHistory[];
                     infos?: string;
                     ip?: string;
                     jobUrl?: string;
@@ -2434,6 +2435,14 @@ export namespace cloud {
                     startedAt?: string;
                     state?: cloud.project.ai.training.JobStateEnum;
                     stoppedAt?: string;
+                }
+                /**
+                 * Training Platform Job Status History Object
+                 * interface fullName: cloud.project.ai.training.JobStatusHistory.JobStatusHistory
+                 */
+                export interface JobStatusHistory {
+                    date: string;
+                    state: cloud.project.ai.training.JobStateEnum;
                 }
                 /**
                  * Training Platform Job Volume Object
@@ -2796,8 +2805,18 @@ export namespace cloud {
                 backends: cloud.project.loadbalancer.BackendSelector[];
                 mode?: cloud.project.loadbalancer.frontend.ModeEnum;
                 name: string;
-                port: number;
+                port?: number;
+                portRanges?: cloud.project.loadbalancer.PortRange[];
+                ports?: number[];
                 whitelist: string[];
+            }
+            /**
+             * A port range
+             * interface fullName: cloud.project.loadbalancer.PortRange.PortRange
+             */
+            export interface PortRange {
+                end: number;
+                start: number;
             }
             /**
              * Region information
@@ -3245,6 +3264,7 @@ export namespace cloud {
             creationDate: string;
             description: string;
             id: number;
+            openstackId?: string;
             roles: cloud.role.Role[];
             status: cloud.user.UserStatusEnum;
             username: string;
@@ -3257,6 +3277,7 @@ export namespace cloud {
             creationDate: string;
             description: string;
             id: number;
+            openstackId?: string;
             password: string;
             roles: cloud.role.Role[];
             status: cloud.user.UserStatusEnum;
@@ -3627,6 +3648,63 @@ export interface Cloud {
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     }
+                    training: {
+                        feature: {
+                            /**
+                             * List Training Platform available features
+                             * GET /cloud/project/{serviceName}/ai/capabilities/training/feature
+                             */
+                            $get(): Promise<cloud.project.ai.training.Features>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        presetImage: {
+                            /**
+                             * List Training Platform Preset Model Images
+                             * GET /cloud/project/{serviceName}/ai/capabilities/training/presetImage
+                             */
+                            $get(): Promise<cloud.project.ai.training.PresetImage[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        region: {
+                            /**
+                             * List Region
+                             * GET /cloud/project/{serviceName}/ai/capabilities/training/region
+                             */
+                            $get(): Promise<cloud.project.ai.training.Region[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(region: string): {
+                                /**
+                                 * Get Region Information
+                                 * GET /cloud/project/{serviceName}/ai/capabilities/training/region/{region}
+                                 */
+                                $get(): Promise<cloud.project.ai.training.Region>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                gpu: {
+                                    /**
+                                     * List Available GPU Topology and the max available gpu
+                                     * GET /cloud/project/{serviceName}/ai/capabilities/training/region/{region}/gpu
+                                     */
+                                    $get(): Promise<cloud.project.ai.training.Gpu[]>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                }
+                            };
+                        }
+                    }
                 }
                 serving: {
                     /**
@@ -3765,6 +3843,105 @@ export interface Cloud {
                             };
                         }
                     };
+                }
+                training: {
+                    authorization: {
+                        /**
+                         * Get authorization status
+                         * GET /cloud/project/{serviceName}/ai/training/authorization
+                         */
+                        $get(): Promise<cloud.project.ai.training.AuthorizationStatus>;
+                        /**
+                         * Authorization of Training Platform service by allowing access to your object storage containers
+                         * POST /cloud/project/{serviceName}/ai/training/authorization
+                         */
+                        $post(): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    job: {
+                        /**
+                         * List jobs
+                         * GET /cloud/project/{serviceName}/ai/training/job
+                         */
+                        $get(): Promise<cloud.project.ai.training.Job[]>;
+                        /**
+                         * Create a new job
+                         * POST /cloud/project/{serviceName}/ai/training/job
+                         */
+                        $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.training.JobEnv[], image: string, name?: string, region: string, resources: cloud.project.ai.training.JobResource, shutdown?: string, timeout?: number, volumes?: cloud.project.ai.training.JobVolume[] }): Promise<cloud.project.ai.training.Job>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(jobId: string): {
+                            /**
+                             * Get job information
+                             * GET /cloud/project/{serviceName}/ai/training/job/{jobId}
+                             */
+                            $get(): Promise<cloud.project.ai.training.Job>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            kill: {
+                                /**
+                                 * Kill a Training Platform job
+                                 * POST /cloud/project/{serviceName}/ai/training/job/{jobId}/kill
+                                 */
+                                $post(): Promise<void>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            logs: {
+                                /**
+                                 * Get the logs of a job
+                                 * GET /cloud/project/{serviceName}/ai/training/job/{jobId}/logs
+                                 */
+                                $get(): Promise<cloud.project.ai.training.JobLogs>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        };
+                    }
+                    registry: {
+                        /**
+                         * List registry
+                         * GET /cloud/project/{serviceName}/ai/training/registry
+                         */
+                        $get(): Promise<cloud.project.ai.training.Registry[]>;
+                        /**
+                         * Create a new docker registry
+                         * POST /cloud/project/{serviceName}/ai/training/registry
+                         */
+                        $post(params: { createdAt?: string, id?: string, password: string, region: string, updatedAt?: string, url: string, user?: string, username: string }): Promise<cloud.project.ai.training.Registry>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(registryId: string): {
+                            /**
+                             * Detach the current registry
+                             * DELETE /cloud/project/{serviceName}/ai/training/registry/{registryId}
+                             */
+                            $delete(): Promise<void>;
+                            /**
+                             * Get registry information
+                             * GET /cloud/project/{serviceName}/ai/training/registry/{registryId}
+                             */
+                            $get(): Promise<cloud.project.ai.training.Registry>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        };
+                    }
                 }
             }
             alerting: {
@@ -4707,6 +4884,38 @@ export interface Cloud {
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
+                    ipRestrictions: {
+                        /**
+                         * List your ip restrictions on your cluster
+                         * GET /cloud/project/{serviceName}/kube/{kubeId}/ipRestrictions
+                         */
+                        $get(): Promise<string[]>;
+                        /**
+                         * Append a list of ip restrictions on your cluster
+                         * POST /cloud/project/{serviceName}/kube/{kubeId}/ipRestrictions
+                         */
+                        $post(params?: { ips?: string[] }): Promise<string[]>;
+                        /**
+                         * Remove the current list and add a list of ip restrictions on your cluster
+                         * PUT /cloud/project/{serviceName}/kube/{kubeId}/ipRestrictions
+                         */
+                        $put(params?: { ips?: string[] }): Promise<string[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(ip: string): {
+                            /**
+                             * Delete an ip restriction from your cluster
+                             * DELETE /cloud/project/{serviceName}/kube/{kubeId}/ipRestrictions/{ip}
+                             */
+                            $delete(): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        };
+                    }
                     kubeconfig: {
                         /**
                          * Generate kubeconfig file
@@ -4912,7 +5121,7 @@ export interface Cloud {
                      * Update a load balancer
                      * PUT /cloud/project/{serviceName}/loadbalancer/{loadBalancerId}
                      */
-                    $put(params?: { address?: cloud.project.loadbalancer.Address, configuration?: cloud.project.loadbalancer.ConfigurationVersion, description?: string, egressAddress?: cloud.project.loadbalancer.Addresses, id?: string, name?: string, region?: string, status?: cloud.project.loadbalancer.StatusEnum }): Promise<cloud.project.LoadBalancer>;
+                    $put(params?: { address?: cloud.project.loadbalancer.Address, configuration?: cloud.project.loadbalancer.ConfigurationVersion, createdAt?: string, description?: string, egressAddress?: cloud.project.loadbalancer.Addresses, id?: string, name?: string, region?: string, status?: cloud.project.loadbalancer.StatusEnum }): Promise<cloud.project.LoadBalancer>;
                     /**
                      * Controle cache
                      */

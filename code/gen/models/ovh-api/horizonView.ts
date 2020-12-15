@@ -1781,7 +1781,7 @@ export const schema: Schema = {
         },
         "privateCloudName": {
           "canBeNull": false,
-          "description": "Your Horizon Private Cloud ",
+          "description": "Your Horizon Dedicated Cloud ",
           "fullType": "string",
           "readOnly": true,
           "required": false,

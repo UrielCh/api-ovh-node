@@ -4872,16 +4872,6 @@ export const schema: Schema = {
       "id": "OperationStateEnum",
       "namespace": "dbaas.logs"
     },
-    "dbaas.logs.OptionStateEnum": {
-      "description": "Possible values for OptionStateEnum",
-      "enum": [
-        "ENABLED",
-        "DISABLED"
-      ],
-      "enumType": "string",
-      "id": "OptionStateEnum",
-      "namespace": "dbaas.logs"
-    },
     "dbaas.logs.OutputElasticsearchAliasCreation": {
       "description": "Missing description",
       "id": "OutputElasticsearchAliasCreation",
@@ -5896,6 +5886,22 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "isClusterOwner": {
+          "canBeNull": false,
+          "description": "If set, can perform extra action on cluster",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "plan": {
+          "canBeNull": false,
+          "description": "Service plan",
+          "fullType": "dbaas.logs.ServicePlanEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dbaas.logs.ServicePlanEnum"
+        },
         "serviceName": {
           "canBeNull": false,
           "description": "Service name",
@@ -5905,7 +5911,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "state": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Service state",
           "fullType": "dbaas.logs.ServiceStateEnum",
           "readOnly": true,
@@ -5952,6 +5958,16 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "dbaas.logs.ServicePlanEnum": {
+      "description": "Possible values for ServicePlanEnum",
+      "enum": [
+        "STANDARD",
+        "ENTERPRISE"
+      ],
+      "enumType": "string",
+      "id": "ServicePlanEnum",
+      "namespace": "dbaas.logs"
     },
     "dbaas.logs.ServiceStateEnum": {
       "description": "Possible values for ServiceStateEnum",

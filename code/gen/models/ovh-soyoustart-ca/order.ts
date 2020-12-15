@@ -4950,21 +4950,6 @@ export const schema: Schema = {
       "id": "WindowsSqlVersionEnum",
       "namespace": "license"
     },
-    "nichandle.OvhSubsidiaryEnum": {
-      "description": "OVH subsidiaries",
-      "enum": [
-        "ASIA",
-        "AU",
-        "CA",
-        "QC",
-        "SG",
-        "WE",
-        "WS"
-      ],
-      "enumType": "string",
-      "id": "OvhSubsidiaryEnum",
-      "namespace": "nichandle"
-    },
     "order.Contract": {
       "description": "A contract",
       "id": "Contract",
@@ -4991,7 +4976,6 @@ export const schema: Schema = {
       }
     },
     "order.CurrencyCodeEnum": {
-      "description": "Currency code",
       "enum": [
         "AUD",
         "CAD",
@@ -5146,31 +5130,25 @@ export const schema: Schema = {
       }
     },
     "order.Price": {
-      "description": "Price with its currency and textual representation",
+      "description": "Price with it's currency and textual representation",
       "id": "Price",
       "namespace": "order",
       "properties": {
         "currencyCode": {
           "canBeNull": false,
-          "description": "Currency code",
-          "fullType": "order.CurrencyCodeEnum",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "order.CurrencyCodeEnum"
         },
         "text": {
           "canBeNull": false,
-          "description": "Textual representation",
-          "fullType": "string",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "description": "The effective price",
-          "fullType": "double",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "double"
         }

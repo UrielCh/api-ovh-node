@@ -1290,7 +1290,7 @@ export const schema: Schema = {
       "path": "/order/dedicatedCloud/{serviceName}"
     },
     {
-      "description": "Order additional bandwidth in your Private Cloud",
+      "description": "Order additional bandwidth for your Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -1327,7 +1327,7 @@ export const schema: Schema = {
       "path": "/order/dedicatedCloud/{serviceName}/additionalBandwidth"
     },
     {
-      "description": "Order additional bandwidth in your Private Cloud",
+      "description": "Order additional bandwidth for your Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -1435,7 +1435,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Private Cloud)",
+              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Dedicated Cloud)",
               "fullType": "long",
               "name": "datacenterId",
               "paramType": "query",
@@ -1496,7 +1496,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Private Cloud)",
+              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Dedicated Cloud)",
               "fullType": "long",
               "name": "datacenterId",
               "paramType": "query",
@@ -1535,7 +1535,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Private Cloud)",
+              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Dedicated Cloud)",
               "fullType": "long",
               "name": "datacenterId",
               "paramType": "body",
@@ -1749,7 +1749,7 @@ export const schema: Schema = {
       "path": "/order/dedicatedCloud/{serviceName}/host/{duration}"
     },
     {
-      "description": "Order an IP block for your Private Cloud",
+      "description": "Order an IP block for your Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -1826,7 +1826,7 @@ export const schema: Schema = {
       "path": "/order/dedicatedCloud/{serviceName}/ip"
     },
     {
-      "description": "Order an IP block for your Private Cloud",
+      "description": "Order an IP block for your Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -1990,7 +1990,7 @@ export const schema: Schema = {
       "path": "/order/dedicatedCloud/{serviceName}/ip/{duration}"
     },
     {
-      "description": "Enable windows templates (SPLA) in your Private Cloud",
+      "description": "Enable windows templates (SPLA) in your Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -2066,7 +2066,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "The id of a particular ressource you want to upgrade in your Private Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
+              "description": "The id of a particular ressource you want to upgrade in your Dedicated Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
               "fullType": "long",
               "name": "upgradedRessourceId",
               "paramType": "query",
@@ -2127,7 +2127,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "The id of a particular ressource you want to upgrade in your Private Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
+              "description": "The id of a particular ressource you want to upgrade in your Dedicated Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
               "fullType": "long",
               "name": "upgradedRessourceId",
               "paramType": "query",
@@ -2166,7 +2166,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "The id of a particular ressource you want to upgrade in your Private Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
+              "description": "The id of a particular ressource you want to upgrade in your Dedicated Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
               "fullType": "long",
               "name": "upgradedRessourceId",
               "paramType": "body",
@@ -2243,7 +2243,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ip",
-              "description": "An avaiable ip from one of your Private Cloud public IP blocks",
+              "description": "An avaiable ip from one of your Dedicated Cloud public IP blocks",
               "fullType": "ip",
               "name": "firstPublicIpAddress",
               "paramType": "query",
@@ -2251,7 +2251,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ip",
-              "description": "Another avaiable ip from one of your Private Cloud public IP blocks",
+              "description": "Another avaiable ip from one of your Dedicated Cloud public IP blocks",
               "fullType": "ip",
               "name": "secondPublicIpAddress",
               "paramType": "query",
@@ -2282,7 +2282,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ip",
-              "description": "An avaiable ip from one of your Private Cloud public IP blocks",
+              "description": "An avaiable ip from one of your Dedicated Cloud public IP blocks",
               "fullType": "ip",
               "name": "firstPublicIpAddress",
               "paramType": "body",
@@ -2290,7 +2290,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ip",
-              "description": "Another avaiable ip from one of your Private Cloud public IP blocks",
+              "description": "Another avaiable ip from one of your Dedicated Cloud public IP blocks",
               "fullType": "ip",
               "name": "secondPublicIpAddress",
               "paramType": "body",

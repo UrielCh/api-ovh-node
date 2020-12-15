@@ -290,6 +290,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "Building identifier, \"null\" if no identifier is available",
+              "fullType": "string",
+              "name": "building",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "Building reference for FTTH and FTTE offers",
               "fullType": "string",
               "name": "buildingReference",
@@ -301,6 +309,14 @@ export const schema: Schema = {
               "description": "Customer contact phone number",
               "fullType": "string",
               "name": "contactPhone",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Door identifier, \"null\" if no identifier is available",
+              "fullType": "string",
+              "name": "door",
               "paramType": "body",
               "required": false
             },
@@ -407,6 +423,14 @@ export const schema: Schema = {
               "name": "productCode",
               "paramType": "body",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Residence identifier, \"null\" if no identifier is available",
+              "fullType": "string",
+              "name": "residence",
+              "paramType": "body",
+              "required": false
             },
             {
               "dataType": "string",
@@ -4650,6 +4674,13 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "pack.xdsl.addressMove.Price"
+        },
+        "promotion": {
+          "canBeNull": true,
+          "description": "Promotion, if available",
+          "readOnly": false,
+          "required": false,
+          "type": "pack.xdsl.migrationAndAddressMove.Promotion"
         }
       }
     },
@@ -4769,6 +4800,13 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "order.Price"
+        },
+        "promotion": {
+          "canBeNull": true,
+          "description": "Promotion, if available",
+          "readOnly": false,
+          "required": false,
+          "type": "pack.xdsl.migrationAndAddressMove.Promotion"
         },
         "subServicesToDelete": {
           "canBeNull": false,
@@ -4916,6 +4954,69 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "pack.xdsl.ServiceNameEnum"
+        }
+      }
+    },
+    "pack.xdsl.migrationAndAddressMove.Promotion": {
+      "description": "Migration or address move offer promotion",
+      "id": "Promotion",
+      "namespace": "pack.xdsl.migrationAndAddressMove",
+      "properties": {
+        "endDate": {
+          "canBeNull": true,
+          "description": "Promotion end date, if applicable",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Identifier of the promotion",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "installFee": {
+          "canBeNull": false,
+          "description": "Details of the promotion for the install fee",
+          "readOnly": false,
+          "required": false,
+          "type": "pack.xdsl.migrationAndAddressMove.PromotionDetails"
+        },
+        "startDate": {
+          "canBeNull": true,
+          "description": "Promotion start date, if applicable",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "subscription": {
+          "canBeNull": false,
+          "description": "Details of the promotion for the subscription",
+          "readOnly": false,
+          "required": false,
+          "type": "pack.xdsl.migrationAndAddressMove.PromotionDetails"
+        }
+      }
+    },
+    "pack.xdsl.migrationAndAddressMove.PromotionDetails": {
+      "description": "Migration or address move offer promotion details",
+      "id": "PromotionDetails",
+      "namespace": "pack.xdsl.migrationAndAddressMove",
+      "properties": {
+        "discount": {
+          "canBeNull": false,
+          "description": "Promotion discount",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Price"
+        },
+        "duration": {
+          "canBeNull": true,
+          "description": "Duration of the promotion, if applicable (only for recurrent billing)",
+          "readOnly": false,
+          "required": false,
+          "type": "duration"
         }
       }
     },

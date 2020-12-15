@@ -491,7 +491,7 @@ export namespace order {
             domain: string;
         }
         /**
-         * Unit corresponding to a duration range
+         * Unit that correspond to a duration range
          * type fullname: order.cart.DurationUnitEnum
          */
         export type DurationUnitEnum = "month" | "day" | "none"
@@ -603,7 +603,7 @@ export namespace order {
          * Capacity of a pricing (type)
          * type fullname: order.cart.GenericProductPricingCapacitiesEnum
          */
-        export type GenericProductPricingCapacitiesEnum = "installation" | "renew" | "upgrade" | "downgrade" | "detach"
+        export type GenericProductPricingCapacitiesEnum = "installation" | "renew" | "upgrade" | "downgrade" | "detach" | "dynamic"
         /**
          * Strategy of a Pricing
          * type fullname: order.cart.GenericProductPricingStrategyEnum
@@ -798,7 +798,7 @@ export namespace order {
         }
         export namespace pcc {
             /**
-             * Describe a Private Cloud commercial catalog
+             * Describe a Dedicated Cloud commercial catalog
              * interface fullName: order.catalog.pcc.Catalog.Catalog
              */
             export interface Catalog {
@@ -809,7 +809,7 @@ export namespace order {
                 plans: order.catalog.ProductPlan[];
             }
             /**
-             * Describes the Commercial Range of a Private Cloud
+             * Describes the Commercial Range of a Dedicated Cloud
              * interface fullName: order.catalog.pcc.CommercialRange.CommercialRange
              */
             export interface CommercialRange {
@@ -818,7 +818,7 @@ export namespace order {
                 name: string;
             }
             /**
-             * Describes a Private Cloud Datacenter
+             * Describes a Dedicated Cloud Datacenter
              * interface fullName: order.catalog.pcc.Datacenter.Datacenter
              */
             export interface Datacenter {
@@ -828,7 +828,7 @@ export namespace order {
                 defaultHypervisor: string;
                 hypervisors: order.catalog.pcc.Hypervisor[];
                 mainPlan: string;
-                managementFees?: order.catalog.pcc.managementFees[];
+                managementFees?: order.catalog.pcc.managementFees;
                 orderable: boolean;
                 orderableOptions: boolean;
                 orderableResources: boolean;
@@ -837,7 +837,7 @@ export namespace order {
                 zoneName: string;
             }
             /**
-             * Describes a Private Cloud Host
+             * Describes a Dedicated Cloud Host
              * interface fullName: order.catalog.pcc.Host.Host
              */
             export interface Host {
@@ -849,7 +849,7 @@ export namespace order {
                 storagesPack: string[];
             }
             /**
-             * Describes a Private Cloud Host CPU
+             * Describes a Dedicated Cloud Host CPU
              * interface fullName: order.catalog.pcc.HostCpuSpecifications.HostCpuSpecifications
              */
             export interface HostCpuSpecifications {
@@ -861,14 +861,14 @@ export namespace order {
                 threads: number;
             }
             /**
-             * Describes a Private Cloud Host Memory
+             * Describes a Dedicated Cloud Host Memory
              * interface fullName: order.catalog.pcc.HostMemorySpecifications.HostMemorySpecifications
              */
             export interface HostMemorySpecifications {
                 ram: complexType.UnitAndValue<number>;
             }
             /**
-             * Describes a Private Cloud Host Network
+             * Describes a Dedicated Cloud Host Network
              * interface fullName: order.catalog.pcc.HostNetworkSpecifications.HostNetworkSpecifications
              */
             export interface HostNetworkSpecifications {
@@ -876,7 +876,7 @@ export namespace order {
                 speed: complexType.UnitAndValue<number>;
             }
             /**
-             * Describes a Private Cloud Host Hardware
+             * Describes a Dedicated Cloud Host Hardware
              * interface fullName: order.catalog.pcc.HostSpecifications.HostSpecifications
              */
             export interface HostSpecifications {
@@ -885,7 +885,7 @@ export namespace order {
                 network: order.catalog.pcc.HostNetworkSpecifications[];
             }
             /**
-             * Describes a Private Cloud Hypervisor
+             * Describes a Dedicated Cloud Hypervisor
              * interface fullName: order.catalog.pcc.Hypervisor.Hypervisor
              */
             export interface Hypervisor {
@@ -899,7 +899,7 @@ export namespace order {
                 type: string;
             }
             /**
-             * Describes a Private Cloud Option
+             * Describes a Dedicated Cloud Option
              * interface fullName: order.catalog.pcc.Option.Option
              */
             export interface Option {
@@ -911,7 +911,7 @@ export namespace order {
                 type: string;
             }
             /**
-             * Describes a Private Cloud Service Pack
+             * Describes a Dedicated Cloud Service Pack
              * interface fullName: order.catalog.pcc.ServicePack.ServicePack
              */
             export interface ServicePack {
@@ -921,7 +921,7 @@ export namespace order {
                 upgradableTo: string[];
             }
             /**
-             * Describes a Private Cloud service pack option
+             * Describes a Dedicated Cloud service pack option
              * interface fullName: order.catalog.pcc.ServicePackOption.ServicePackOption
              */
             export interface ServicePackOption {
@@ -930,7 +930,7 @@ export namespace order {
                 type: string;
             }
             /**
-             * Describes a Private Cloud Storage
+             * Describes a Dedicated Cloud Storage
              * interface fullName: order.catalog.pcc.Storage.Storage
              */
             export interface Storage {
@@ -941,7 +941,7 @@ export namespace order {
                 specifications: order.catalog.pcc.StorageSpecifications;
             }
             /**
-             * Describes a Private Cloud Storage
+             * Describes a Dedicated Cloud Storage
              * interface fullName: order.catalog.pcc.StorageSpecifications.StorageSpecifications
              */
             export interface StorageSpecifications {
@@ -959,7 +959,7 @@ export namespace order {
         }
         export namespace privateCloud {
             /**
-             * Describes capabilities of a Private Cloud type of service
+             * Describes capabilities of a Dedicated Cloud type of service
              * interface fullName: order.catalog.privateCloud.Capabilities.Capabilities
              */
             export interface Capabilities {
@@ -984,7 +984,7 @@ export namespace order {
                 default: order.catalog.privateCloud.Capabilities;
             }
             /**
-             * Describe a Private Cloud commercial catalog
+             * Describe a Dedicated Cloud commercial catalog
              * interface fullName: order.catalog.privateCloud.Catalog.Catalog
              */
             export interface Catalog {
@@ -997,7 +997,7 @@ export namespace order {
                 zones: order.catalog.privateCloud.ZonesListing;
             }
             /**
-             * Describe a Private Cloud zone
+             * Describe a Dedicated Cloud zone
              * interface fullName: order.catalog.privateCloud.Zone.Zone
              */
             export interface Zone {
@@ -2419,12 +2419,12 @@ export interface Order {
             }
             privateCloudReseller: {
                 /**
-                 * Get informations about Private Cloud Reseller offers
+                 * Get informations about Dedicated Cloud Reseller offers
                  * GET /order/cart/{cartId}/privateCloudReseller
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 /**
-                 * Post a new Private Cloud Reseller item in your cart
+                 * Post a new Dedicated Cloud Reseller item in your cart
                  * POST /order/cart/{cartId}/privateCloudReseller
                  */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -2434,12 +2434,12 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Private Cloud Reseller options
+                     * Get informations about Dedicated Cloud Reseller options
                      * GET /order/cart/{cartId}/privateCloudReseller/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
-                     * Post a new Private Cloud Reseller option in your cart
+                     * Post a new Dedicated Cloud Reseller option in your cart
                      * POST /order/cart/{cartId}/privateCloudReseller/options
                      */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -2451,12 +2451,12 @@ export interface Order {
             }
             privateCloudResellerEnterprise: {
                 /**
-                 * Get informations about Private Cloud Reseller Enterprise offers
+                 * Get informations about Dedicated Cloud Reseller Enterprise offers
                  * GET /order/cart/{cartId}/privateCloudResellerEnterprise
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 /**
-                 * Post a new Private Cloud Reseller Enterprise item in your cart
+                 * Post a new Dedicated Cloud Reseller Enterprise item in your cart
                  * POST /order/cart/{cartId}/privateCloudResellerEnterprise
                  */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -2466,12 +2466,12 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about Private Cloud Reseller Enterprise options
+                     * Get informations about Dedicated Cloud Reseller Enterprise options
                      * GET /order/cart/{cartId}/privateCloudResellerEnterprise/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
                     /**
-                     * Post a new Private Cloud Reseller Enterprise option in your cart
+                     * Post a new Dedicated Cloud Reseller Enterprise option in your cart
                      * POST /order/cart/{cartId}/privateCloudResellerEnterprise/options
                      */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -2909,12 +2909,12 @@ export interface Order {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(serviceName: string): {
                 /**
-                 * Get informations about additional Private Cloud offer for your service
+                 * Get informations about additional Dedicated Cloud offer for your service
                  * GET /order/cartServiceOption/privateCloud/{serviceName}
                  */
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 /**
-                 * Post an additional Private Cloud option in your cart
+                 * Post an additional Dedicated Cloud option in your cart
                  * POST /order/cartServiceOption/privateCloud/{serviceName}
                  */
                 $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -2936,12 +2936,12 @@ export interface Order {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(serviceName: string): {
                 /**
-                 * Get informations about additional Private Cloud offer for your service
+                 * Get informations about additional Dedicated Cloud offer for your service
                  * GET /order/cartServiceOption/privateCloudEnterprise/{serviceName}
                  */
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 /**
-                 * Post an additional Private Cloud option in your cart
+                 * Post an additional Dedicated Cloud option in your cart
                  * POST /order/cartServiceOption/privateCloudEnterprise/{serviceName}
                  */
                 $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -2963,12 +2963,12 @@ export interface Order {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(serviceName: string): {
                 /**
-                 * Get informations about additional Private Cloud offer for your service
+                 * Get informations about additional Dedicated Cloud offer for your service
                  * GET /order/cartServiceOption/privateCloudReseller/{serviceName}
                  */
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 /**
-                 * Post an additional Private Cloud option in your cart
+                 * Post an additional Dedicated Cloud option in your cart
                  * POST /order/cartServiceOption/privateCloudReseller/{serviceName}
                  */
                 $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -2990,12 +2990,12 @@ export interface Order {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(serviceName: string): {
                 /**
-                 * Get informations about additional Private Cloud Enterprise offer for your service
+                 * Get informations about additional Dedicated Cloud Enterprise offer for your service
                  * GET /order/cartServiceOption/privateCloudResellerEnterprise/{serviceName}
                  */
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 /**
-                 * Post an additional Private Cloud Enterprise option in your cart
+                 * Post an additional Dedicated Cloud Enterprise option in your cart
                  * POST /order/cartServiceOption/privateCloudResellerEnterprise/{serviceName}
                  */
                 $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
@@ -3281,7 +3281,7 @@ export interface Order {
             }
             privateCloud: {
                 /**
-                 * Retrieve information of Private Cloud catalog
+                 * Retrieve information of Dedicated Cloud catalog
                  * GET /order/catalog/formatted/privateCloud
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.pcc.Catalog>;
@@ -3292,7 +3292,7 @@ export interface Order {
             }
             privateCloudCDI: {
                 /**
-                 * Retrieve information of Private Cloud CDI catalog
+                 * Retrieve information of Dedicated Cloud CDI catalog
                  * GET /order/catalog/formatted/privateCloudCDI
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.privateCloud.Catalog>;
@@ -3303,7 +3303,7 @@ export interface Order {
             }
             privateCloudDC: {
                 /**
-                 * Retrieve information of Private Cloud Dedicated Cloud catalog
+                 * Retrieve information of Dedicated Cloud catalog
                  * GET /order/catalog/formatted/privateCloudDC
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.privateCloud.Catalog>;
@@ -3314,7 +3314,7 @@ export interface Order {
             }
             privateCloudEnterprise: {
                 /**
-                 * Retrieve information of Hosted Private Cloud Enterprise catalog
+                 * Retrieve information of Hosted Dedicated Cloud Enterprise catalog
                  * GET /order/catalog/formatted/privateCloudEnterprise
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.pcc.Catalog>;
@@ -3325,7 +3325,7 @@ export interface Order {
             }
             privateCloudReseller: {
                 /**
-                 * Retrieve information of Private Cloud Reseller catalog
+                 * Retrieve information of Dedicated Cloud Reseller catalog
                  * GET /order/catalog/formatted/privateCloudReseller
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.pcc.Catalog>;
@@ -3336,7 +3336,7 @@ export interface Order {
             }
             privateCloudResellerEnterprise: {
                 /**
-                 * Retrieve information of Private Cloud Reseller Enterprise catalog
+                 * Retrieve information of Dedicated Cloud Reseller Enterprise catalog
                  * GET /order/catalog/formatted/privateCloudResellerEnterprise
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.pcc.Catalog>;
@@ -3347,7 +3347,7 @@ export interface Order {
             }
             privateCloudSDDC: {
                 /**
-                 * Retrieve information of Private Cloud SDDC catalog
+                 * Retrieve information of Dedicated Cloud SDDC catalog
                  * GET /order/catalog/formatted/privateCloudSDDC
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.privateCloud.Catalog>;
@@ -3424,6 +3424,17 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            logs: {
+                /**
+                 * Retrieve Logs catalog
+                 * GET /order/catalog/public/logs
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             ovhCloudConnect: {
                 /**
                  * Retrieve OVH Cloud Connect catalog
@@ -3437,7 +3448,7 @@ export interface Order {
             }
             privateCloud: {
                 /**
-                 * Retrieve Private Cloud catalog
+                 * Retrieve Dedicated Cloud catalog
                  * GET /order/catalog/public/privateCloud
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;

@@ -1206,6 +1206,7 @@ export namespace cloud {
          * interface fullName: cloud.network.NetworkRegion.NetworkRegion
          */
         export interface NetworkRegion {
+            openstackId?: string;
             region: string;
             status: cloud.network.NetworkRegionStatusEnum;
         }
@@ -1712,6 +1713,7 @@ export namespace cloud {
             creationDate: string;
             description: string;
             id: number;
+            openstackId?: string;
             roles: cloud.role.Role[];
             status: cloud.user.UserStatusEnum;
             username: string;
@@ -1724,6 +1726,7 @@ export namespace cloud {
             creationDate: string;
             description: string;
             id: number;
+            openstackId?: string;
             password: string;
             roles: cloud.role.Role[];
             status: cloud.user.UserStatusEnum;

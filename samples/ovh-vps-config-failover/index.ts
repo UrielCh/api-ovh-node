@@ -35,10 +35,10 @@ function extendIPCCIDR(ips: string[]) {
  * @param i 
  * 
  */
-function ipPos2Alias(ip: string, i: number): string{
+function ipPos2Alias(ip: string, i: number): string {
   if (!_option.verbose)
     return `${i}`;
-  return ip.split('.').map(i=>Number(i).toString(16).padStart(2, '0')).join('');
+  return ip.split('.').map(i => Number(i).toString(16).padStart(2, '0')).join('');
 }
 
 /**
@@ -49,7 +49,7 @@ function ipPos2Alias(ip: string, i: number): string{
 async function displayConf(iface: string, ipFo: string[], distrib?: DistName) {
   if (!distrib)
     distrib = await identDist();
-    
+
   if (distrib === 'debian') {
     const confs = ipFo.map((ip, i) => {
       const alias = `${iface}:${ipPos2Alias(ip, i)}`;
@@ -76,7 +76,7 @@ NETMASK="255.255.255.255"
 BROADCAST="${ip}"
 ONBOOT=yes   
 `;
-      return {alias, content};
+      return { alias, content };
     });
     for (const conf of confs) {
       await writeFile(`ifcfg-${conf.alias}`, conf.content, { mode: 0o644 });
@@ -100,13 +100,13 @@ async function identDist(): Promise<DistName> {
   return 'debian';
 }
 
-async function detectNetwork(options: Option): Promise<{mainIP: string, iface: string}> {
+async function detectNetwork(options: Option): Promise<{ mainIP: string, iface: string }> {
   const networks = networkInterfaces()
   if (!networks)
     throw 'os.networkInterfaces() failed';
   let ifaces = Object.keys(networks).filter((iface: string) => iface !== 'lo').filter((iface: string) => !~iface.indexOf(':'));
   if (ifaces.length != 1 && options.interface) {
-    ifaces = [ options.interface ];
+    ifaces = [options.interface];
   }
   if (ifaces.length != 1) {
     throw Error(`Your host looks to have more than one non localhost interface. [${ifaces.join(',')}] Sorry can not deal with that. use -i param to git the rigth value.`);
@@ -120,29 +120,33 @@ async function detectNetwork(options: Option): Promise<{mainIP: string, iface: s
   if (!mainIP)
     throw `No ${iface} has no IPv4`;
   console.log(`Your main IP is ${mainIP}`)
-  return {mainIP, iface};
+  return { mainIP, iface };
 }
-
 
 let _option: Option = {};
 
-async function genAllFailover(options: Option) {  
-  _option = options;
-  const { iface } = await detectNetwork(options);
-  const accessRules: string = `GET /ip, GET /ip/*`;
-  let ovh = new Ovh({ accessRules, certCache: _option.cert });
-  const apis = {
-    ip: ApiIp(ovh),
+async function genAllFailover(options: Option) {
+  try {
+    _option = options;
+    const { iface } = await detectNetwork(options);
+    const accessRules: string = `GET /ip, GET /ip/*`;
+    let ovh = new Ovh({ accessRules, certCache: _option.cert });
+    const apis = {
+      ip: ApiIp(ovh),
+    }
+    let ipFo = await apis.ip.$get({ type: 'failover' });
+    ipFo = extendIPCCIDR(ipFo);
+    console.log(`TOTAL FailOver: ${ipFo.length}`);
+    await displayConf(iface, ipFo);
+  } catch (e) {
+    console.error(e.message);
+    process.exit(1);
   }
-  let ipFo = await apis.ip.$get({type: 'failover'});
-  ipFo = extendIPCCIDR(ipFo);
-  console.log(`TOTAL FailOver: ${ipFo.length}`);
-  await displayConf(iface, ipFo);
 }
 
 async function genFailover(options: Option) {
   _option = options;
-  const {mainIP, iface} = await detectNetwork(options);
+  const { mainIP, iface } = await detectNetwork(options);
 
   // search hostname in /etc/hosts
   const hosts = await readFile('/etc/hosts', 'utf8');

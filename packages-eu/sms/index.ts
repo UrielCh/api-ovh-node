@@ -177,6 +177,11 @@ export namespace sms {
         name: string;
     }
     /**
+     * Countries where we sell SMS credits
+     * type fullname: sms.BillingCountryEnum
+     */
+    export type BillingCountryEnum = "es" | "fr" | "gb" | "ie" | "it" | "pl"
+    /**
      * SMS blacklist
      * interface fullName: sms.Blacklist.Blacklist
      */
@@ -350,6 +355,9 @@ export namespace sms {
         creditPrice: order.Price;
         creditQuantityMax?: number;
         creditQuantityMin: number;
+        discountCreditPrice?: order.Price;
+        discountPercentage?: number;
+        discountSmsPrice?: order.Price;
         smsPrice: order.Price;
         smsQuantityMax?: number;
         smsQuantityMin: number;
@@ -751,7 +759,7 @@ export interface Sms {
              * Get the prices and credits to send a SMS towards given country
              * GET /sms/rates/destinations
              */
-            $get(params: { country: sms.CountryEnum }): Promise<sms.DestinationRates>;
+            $get(params: { billingCountry?: sms.BillingCountryEnum, country: sms.CountryEnum }): Promise<sms.DestinationRates>;
             /**
              * Controle cache
              */
@@ -762,7 +770,7 @@ export interface Sms {
              * Get the prices and credits of all the SMS packs with informations about the destination country
              * GET /sms/rates/packs
              */
-            $get(params: { country: sms.CountryEnum }): Promise<sms.PackDetails[]>;
+            $get(params: { billingCountry?: sms.BillingCountryEnum, country: sms.CountryEnum }): Promise<sms.PackDetails[]>;
             /**
              * Controle cache
              */

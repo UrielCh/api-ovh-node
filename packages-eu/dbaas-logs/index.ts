@@ -331,11 +331,6 @@ export namespace dbaas {
          */
         export type OperationStateEnum = "PENDING" | "RECEIVED" | "STARTED" | "SUCCESS" | "FAILURE" | "REVOKED" | "RETRY" | "RUNNING"
         /**
-         * Possible values for OptionStateEnum
-         * type fullname: dbaas.logs.OptionStateEnum
-         */
-        export type OptionStateEnum = "ENABLED" | "DISABLED"
-        /**
          * Missing description
          * interface fullName: dbaas.logs.OutputElasticsearchAliasCreation.OutputElasticsearchAliasCreation
          */
@@ -598,8 +593,10 @@ export namespace dbaas {
         export interface Service {
             createdAt: string;
             displayName?: string;
+            isClusterOwner: boolean;
+            plan: dbaas.logs.ServicePlanEnum;
             serviceName: string;
-            state?: dbaas.logs.ServiceStateEnum;
+            state: dbaas.logs.ServiceStateEnum;
             updatedAt?: string;
             username: string;
         }
@@ -611,6 +608,11 @@ export namespace dbaas {
             host: string;
             token: string;
         }
+        /**
+         * Possible values for ServicePlanEnum
+         * type fullname: dbaas.logs.ServicePlanEnum
+         */
+        export type ServicePlanEnum = "STANDARD" | "ENTERPRISE"
         /**
          * Possible values for ServiceStateEnum
          * type fullname: dbaas.logs.ServiceStateEnum

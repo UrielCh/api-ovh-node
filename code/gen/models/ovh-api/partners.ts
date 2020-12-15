@@ -1411,7 +1411,7 @@ export const schema: Schema = {
         },
         "privateCloud": {
           "canBeNull": false,
-          "description": "Private Cloud",
+          "description": "Dedicated Cloud",
           "fullType": "boolean",
           "readOnly": false,
           "required": false,

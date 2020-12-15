@@ -4677,8 +4677,16 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "sms.BillingCountryEnum",
+              "description": "Country where you buy credits",
+              "fullType": "sms.BillingCountryEnum",
+              "name": "billingCountry",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "sms.CountryEnum",
-              "description": "Country prices to send SMS",
+              "description": "Country where you send SMS",
               "fullType": "sms.CountryEnum",
               "name": "country",
               "paramType": "query",
@@ -4703,8 +4711,16 @@ export const schema: Schema = {
           "noAuthentication": true,
           "parameters": [
             {
+              "dataType": "sms.BillingCountryEnum",
+              "description": "Country where you buy credits",
+              "fullType": "sms.BillingCountryEnum",
+              "name": "billingCountry",
+              "paramType": "query",
+              "required": false
+            },
+            {
               "dataType": "sms.CountryEnum",
-              "description": "Destination country",
+              "description": "Country where you send SMS",
               "fullType": "sms.CountryEnum",
               "name": "country",
               "paramType": "query",
@@ -5552,6 +5568,20 @@ export const schema: Schema = {
           "type": "text"
         }
       }
+    },
+    "sms.BillingCountryEnum": {
+      "description": "Countries where we sell SMS credits",
+      "enum": [
+        "es",
+        "fr",
+        "gb",
+        "ie",
+        "it",
+        "pl"
+      ],
+      "enumType": "string",
+      "id": "BillingCountryEnum",
+      "namespace": "sms"
     },
     "sms.Blacklist": {
       "description": "SMS blacklist",
@@ -6464,6 +6494,27 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "long"
+        },
+        "discountCreditPrice": {
+          "canBeNull": true,
+          "description": "Price of one credit, during a promotional event",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Price"
+        },
+        "discountPercentage": {
+          "canBeNull": true,
+          "description": "Percentage applied as part of a promotional event",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "discountSmsPrice": {
+          "canBeNull": true,
+          "description": "Price of one SMS, during a promotional event",
+          "readOnly": false,
+          "required": false,
+          "type": "order.Price"
         },
         "smsPrice": {
           "canBeNull": false,

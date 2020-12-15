@@ -1172,17 +1172,6 @@ export namespace http {
     export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
 export namespace me {
-    /**
-     * Country Migration
-     * interface fullName: me.Migration.Migration
-     */
-    export interface Migration {
-        from: nichandle.OvhSubsidiaryEnum;
-        id: number;
-        status: me.migration.StatusEnum;
-        steps?: me.migration.Step[];
-        to: nichandle.OvhSubsidiaryEnum;
-    }
     export namespace SupportLevel {
         /**
          * Support level of an account
@@ -1196,23 +1185,6 @@ export namespace me {
          * type fullname: me.SupportLevel.LevelTypeEnum
          */
         export type LevelTypeEnum = "standard" | "premium" | "premium-accredited" | "business" | "enterprise"
-    }
-    export namespace agreements {
-        /**
-         * State of the agreement
-         * type fullname: me.agreements.AgreementStatusEnum
-         */
-        export type AgreementStatusEnum = "obsolete" | "todo" | "ko" | "ok"
-        /**
-         * Contract Agreement
-         * interface fullName: me.agreements.ContractAgreement.ContractAgreement
-         */
-        export interface ContractAgreement {
-            agreed: me.agreements.AgreementStatusEnum;
-            contractId: number;
-            date: string;
-            id: number;
-        }
     }
     export namespace billing {
         export namespace group {
@@ -1422,72 +1394,6 @@ export namespace me {
                 inputCode: string;
                 serviceId: number;
             }
-        }
-    }
-    export namespace migration {
-        /**
-         * contract
-         * interface fullName: me.migration.Contract.Contract
-         */
-        export interface Contract {
-            active: boolean;
-            date: string;
-            id: number;
-            name: string;
-            pdf: string;
-            text: string;
-        }
-        /**
-         * Status of the migration
-         * type fullname: me.migration.StatusEnum
-         */
-        export type StatusEnum = "CANCELED" | "CHECKED" | "DOING" | "MIGRATED" | "TO_CHECK" | "TODO"
-        /**
-         * Country Migration Step
-         * interface fullName: me.migration.Step.Step
-         */
-        export interface Step {
-            contracts?: me.migration.step.Contracts;
-            debt?: me.migration.step.Debt;
-            name: me.migration.step.NameEnum;
-            orders?: me.migration.step.Orders;
-            status: me.migration.step.StatusEnum;
-        }
-        export namespace step {
-            /**
-             * Country Migration step contracts data
-             * interface fullName: me.migration.step.Contracts.Contracts
-             */
-            export interface Contracts {
-                agreements: me.agreements.ContractAgreement[];
-            }
-            /**
-             * Country Migration step debt data
-             * interface fullName: me.migration.step.Debt.Debt
-             */
-            export interface Debt {
-                balanceAmount?: orderPrice;
-                ovhAccountAmount?: orderPrice;
-            }
-            /**
-             * Name of the migration step
-             * type fullname: me.migration.step.NameEnum
-             */
-            export type NameEnum = "ORDERS" | "DEBT" | "NIC" | "CONTRACTS"
-            /**
-             * Country Migration step orders data
-             * interface fullName: me.migration.step.Orders.Orders
-             */
-            export interface Orders {
-                pendingOperations: boolean;
-                pendingPromotions: boolean;
-                pendingSubscriptions: boolean;
-            }
-            /**
-             * Status of the migration step
-             * type fullname: me.migration.step.StatusEnum
-             */
-            export type StatusEnum = "OK" | "PENDING"
         }
     }
     export namespace partnerLevel {
@@ -4534,7 +4440,7 @@ export interface Me {
                      * Challenge your payment method
                      * POST /me/payment/method/{paymentMethodId}/challenge
                      */
-                    $post(params: { challenge: string }): Promise<me.payment.PaymentMethod>;
+                    $post(params: { challenge: string }): Promise<void>;
                     /**
                      * Controle cache
                      */

@@ -1366,6 +1366,951 @@ export const schema: Schema = {
       "path": "/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/unmute"
     },
     {
+      "description": "List the telephony.ConferenceRoom objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List your conferences rooms for this number",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a new conference room on your conference service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The room number (a random number will be generated if not specified)",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.ConferenceRoom"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms"
+    },
+    {
+      "description": "Conference room",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.ConferenceRoom"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "telephony.ConferenceRoom",
+              "description": "New object properties",
+              "fullType": "telephony.ConferenceRoom",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}"
+    },
+    {
+      "description": "List the telephony.ConferenceHistory objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List your past conferences for this room",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/histories"
+    },
+    {
+      "description": "List past conferences on your number",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.ConferenceHistory"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/histories/{id}"
+    },
+    {
+      "description": "lock operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Lock the conference room",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.Task"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/lock"
+    },
+    {
+      "description": "List the telephony.ConferenceParticipants objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Current participants of the conference room",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants"
+    },
+    {
+      "description": "Conference service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.ConferenceParticipants"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}"
+    },
+    {
+      "description": "deaf operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Make a participant deaf in your conference room",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.Task"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/deaf"
+    },
+    {
+      "description": "energy operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change a participant level of audio transmission",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The value of energy level",
+              "fullType": "long",
+              "name": "value",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.Task"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/energy"
+    },
+    {
+      "description": "kick operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Eject a participant from your conference room",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.Task"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/kick"
+    },
+    {
+      "description": "mute operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Mute a participant in your conference room",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.Task"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/mute"
+    },
+    {
+      "description": "undeaf operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Make a participant undeaf your conference room",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.Task"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/undeaf"
+    },
+    {
+      "description": "unmute operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Unmute a participant in your conference room",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.Task"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/unmute"
+    },
+    {
+      "description": "unlock operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Unlock the conference room",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.Task"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/unlock"
+    },
+    {
+      "description": "List the telephony.ConferenceWebAccess objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List your conference room  web access",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add a public web access to your conference",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "telephony.ConferenceWebAccessTypeEnum",
+              "description": "The type of the conference web access : read or write",
+              "fullType": "telephony.ConferenceWebAccessTypeEnum",
+              "name": "type",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.ConferenceWebAccess"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/webAccess"
+    },
+    {
+      "description": "List public web access of your conference",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete a public web access to your conference",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Id of the object",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "The conference room number",
+              "fullType": "long",
+              "name": "roomNumber",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.ConferenceWebAccess"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/webAccess/{id}"
+    },
+    {
+      "description": "roomsStats operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get realtime statistics about all rooms of your conference number",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The name of your billingAccount",
+              "fullType": "string",
+              "name": "billingAccount",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "telephony.ConferenceRoomsStatistics"
+        }
+      ],
+      "path": "/telephony/{billingAccount}/conference/{serviceName}/roomsStats"
+    },
+    {
       "description": "Conference properties",
       "operations": [
         {
@@ -1442,7 +2387,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Lock the conference room",
+          "description": "Unlock the conference room",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -25689,7 +26634,7 @@ export const schema: Schema = {
         },
         "floor": {
           "canBeNull": false,
-          "description": "Whether or not the participant is active in the room",
+          "description": "Whether the participant is active in the room",
           "fullType": "boolean",
           "readOnly": true,
           "required": false,
@@ -25697,7 +26642,7 @@ export const schema: Schema = {
         },
         "hear": {
           "canBeNull": false,
-          "description": "Whether or not the participant can hear the conference",
+          "description": "Whether the participant can hear the conference",
           "fullType": "boolean",
           "readOnly": true,
           "required": false,
@@ -25713,7 +26658,7 @@ export const schema: Schema = {
         },
         "speak": {
           "canBeNull": false,
-          "description": "Whether or not the participant can talk in the conference",
+          "description": "Whether the participant can talk in the conference",
           "fullType": "boolean",
           "readOnly": true,
           "required": false,
@@ -25721,7 +26666,7 @@ export const schema: Schema = {
         },
         "talking": {
           "canBeNull": false,
-          "description": "Whether or not the participant is talking",
+          "description": "Whether the participant is talking",
           "fullType": "boolean",
           "readOnly": true,
           "required": false,
@@ -25736,7 +26681,7 @@ export const schema: Schema = {
       "properties": {
         "announceFile": {
           "canBeNull": false,
-          "description": "Whether or not announce file is played before entrance",
+          "description": "Whether announce file is played before entrance",
           "fullType": "boolean",
           "readOnly": false,
           "required": false,
@@ -25760,7 +26705,7 @@ export const schema: Schema = {
         },
         "anonymousRejection": {
           "canBeNull": false,
-          "description": "Whether or not anonmyous participants are allowed",
+          "description": "Whether anonymous participants are allowed",
           "fullType": "boolean",
           "readOnly": false,
           "required": false,
@@ -25768,7 +26713,7 @@ export const schema: Schema = {
         },
         "enterMuted": {
           "canBeNull": false,
-          "description": "Whether or not participants enter conference room muted",
+          "description": "Whether participants enter conference room muted",
           "fullType": "boolean",
           "readOnly": false,
           "required": false,
@@ -25793,14 +26738,14 @@ export const schema: Schema = {
         "pin": {
           "canBeNull": false,
           "description": "The conference pin number",
-          "fullType": "string",
+          "fullType": "password",
           "readOnly": false,
           "required": false,
-          "type": "string"
+          "type": "password"
         },
         "recordStatus": {
           "canBeNull": false,
-          "description": "Whether or not conference is recorded",
+          "description": "Whether conference is recorded",
           "fullType": "boolean",
           "readOnly": false,
           "required": false,
@@ -25822,6 +26767,14 @@ export const schema: Schema = {
           "required": false,
           "type": "telephony.ConferenceReportStatusEnum"
         },
+        "roomNumber": {
+          "canBeNull": false,
+          "description": "The conference room number",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "whiteLabelReport": {
           "canBeNull": false,
           "description": "True if you want to receive a white-labelled mail report of your conference",
@@ -25842,6 +26795,153 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ConferenceReportStatusEnum",
       "namespace": "telephony"
+    },
+    "telephony.ConferenceRoom": {
+      "description": "Conference room",
+      "id": "ConferenceRoom",
+      "namespace": "telephony",
+      "properties": {
+        "announceFile": {
+          "canBeNull": false,
+          "description": "Whether announce file is played before entrance",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "announceFilename": {
+          "canBeNull": true,
+          "description": "The announce file name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "announceSoundId": {
+          "canBeNull": true,
+          "description": "The announce sound id",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "anonymousRejection": {
+          "canBeNull": false,
+          "description": "Whether anonymous participants are allowed",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "enterMuted": {
+          "canBeNull": false,
+          "description": "Whether participants enter conference room muted",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "eventsChannel": {
+          "canBeNull": false,
+          "description": "The events channel hash",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "expirationDate": {
+          "canBeNull": true,
+          "description": "The expiration date of the conference room.",
+          "fullType": "datetime",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "language": {
+          "canBeNull": false,
+          "description": "The conference sounds language",
+          "fullType": "telephony.ConferenceLanguageEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "telephony.ConferenceLanguageEnum"
+        },
+        "pin": {
+          "canBeNull": false,
+          "description": "The conference pin number",
+          "fullType": "password",
+          "readOnly": false,
+          "required": false,
+          "type": "password"
+        },
+        "recordStatus": {
+          "canBeNull": false,
+          "description": "Whether conference is recorded",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "reportEmail": {
+          "canBeNull": true,
+          "description": "The email address to send conference report to",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "reportStatus": {
+          "canBeNull": false,
+          "description": "The status of the reporting",
+          "fullType": "telephony.ConferenceReportStatusEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "telephony.ConferenceReportStatusEnum"
+        },
+        "roomNumber": {
+          "canBeNull": false,
+          "description": "The conference room number",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "whiteLabelReport": {
+          "canBeNull": false,
+          "description": "True if you want to receive a white-labelled mail report of your conference",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "telephony.ConferenceRoomsStatistics": {
+      "description": "Get realtime statistics about all rooms of your conference number",
+      "id": "ConferenceRoomsStatistics",
+      "namespace": "telephony",
+      "properties": {
+        "activeRoomsCount": {
+          "canBeNull": false,
+          "description": "The total numbers of rooms currently active in the conference number",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "participantsCount": {
+          "canBeNull": false,
+          "description": "The total number of unique participants in the conference number (aggregated from all rooms)",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "roomsCount": {
+          "canBeNull": false,
+          "description": "The number of rooms available in the conference number",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
     },
     "telephony.ConferenceWebAccess": {
       "description": "List public web access of your conference",

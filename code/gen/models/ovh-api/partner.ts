@@ -22,7 +22,7 @@ export const schema: Schema = {
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
-          "responseType": "partner.Partner"
+          "responseType": "partner2.Partner"
         },
         {
           "apiStatus": {
@@ -34,9 +34,9 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "partner.Partner",
+              "dataType": "partner2.Partner",
               "description": "Request Body",
-              "fullType": "partner.Partner",
+              "fullType": "partner2.Partner",
               "paramType": "body",
               "required": true
             }
@@ -45,23 +45,6 @@ export const schema: Schema = {
         }
       ],
       "path": "/partner"
-    },
-    {
-      "description": "Partner form schema",
-      "operations": [
-        {
-          "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
-          },
-          "description": "Get partner form schema",
-          "httpMethod": "GET",
-          "noAuthentication": true,
-          "parameters": [],
-          "responseType": "partner.form.Schema"
-        }
-      ],
-      "path": "/partner/form/schema"
     }
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
@@ -328,7 +311,7 @@ export const schema: Schema = {
       "id": "CountryEnum",
       "namespace": "nichandle"
     },
-    "partner.AcceptanceStatusEnum": {
+    "partner2.AcceptanceStatusEnum": {
       "description": "Acceptance status",
       "enum": [
         "Open",
@@ -341,27 +324,35 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "AcceptanceStatusEnum",
-      "namespace": "partner"
+      "namespace": "partner2"
     },
-    "partner.Account": {
+    "partner2.Account": {
       "description": "Account Entity",
       "id": "Account",
-      "namespace": "partner",
+      "namespace": "partner2",
       "properties": {
         "city": {
-          "canBeNull": false,
-          "description": "Account City",
+          "canBeNull": true,
+          "description": "DEPRECATED - Account City",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
+        "companyTurnover": {
+          "canBeNull": true,
+          "description": "Company turnover (in euros)",
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
+        },
         "country": {
-          "canBeNull": false,
-          "description": "Account Country",
+          "canBeNull": true,
+          "description": "DEPRECATED - Account Country",
           "fullType": "nichandle.CountryEnum",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "nichandle.CountryEnum"
         },
         "name": {
@@ -371,10 +362,34 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "string"
+        },
+        "numberOfEmployees": {
+          "canBeNull": true,
+          "description": "Number of employees",
+          "fullType": "partner2.employeesNumberEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "partner2.employeesNumberEnum"
+        },
+        "partnerType": {
+          "canBeNull": true,
+          "description": "Partner Type",
+          "fullType": "partner2.partnerTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "partner2.partnerTypeEnum"
+        },
+        "yearEstablished": {
+          "canBeNull": true,
+          "description": "In what year was your company established?",
+          "fullType": "date",
+          "readOnly": false,
+          "required": false,
+          "type": "date"
         }
       }
     },
-    "partner.AreaOfExpertiseEnum": {
+    "partner2.AreaOfExpertiseEnum": {
       "description": "Area of expertise",
       "enum": [
         "HPC",
@@ -392,12 +407,12 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "AreaOfExpertiseEnum",
-      "namespace": "partner"
+      "namespace": "partner2"
     },
-    "partner.Contact": {
+    "partner2.Contact": {
       "description": "Contact Entity",
       "id": "Contact",
-      "namespace": "partner",
+      "namespace": "partner2",
       "properties": {
         "email": {
           "canBeNull": false,
@@ -413,6 +428,14 @@ export const schema: Schema = {
           "fullType": "string",
           "readOnly": false,
           "required": true,
+          "type": "string"
+        },
+        "jobTitle": {
+          "canBeNull": true,
+          "description": "Contact Job Title",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
           "type": "string"
         },
         "lastName": {
@@ -434,69 +457,132 @@ export const schema: Schema = {
         "position": {
           "canBeNull": false,
           "description": "Contact Position",
-          "fullType": "partner.PositionEnum",
+          "fullType": "partner2.PositionEnum",
           "readOnly": false,
           "required": true,
-          "type": "partner.PositionEnum"
+          "type": "partner2.PositionEnum"
         }
       }
     },
-    "partner.Partner": {
+    "partner2.Partner": {
       "description": "Partner Entity",
       "id": "Partner",
-      "namespace": "partner",
+      "namespace": "partner2",
       "properties": {
         "acceptanceStatus": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Acceptance Status",
-          "fullType": "partner.AcceptanceStatusEnum",
+          "fullType": "partner2.AcceptanceStatusEnum",
           "readOnly": true,
           "required": false,
-          "type": "partner.AcceptanceStatusEnum"
+          "type": "partner2.AcceptanceStatusEnum"
         },
         "account": {
           "canBeNull": false,
           "description": "Account",
-          "fullType": "partner.Account",
+          "fullType": "partner2.Account",
           "readOnly": false,
           "required": true,
-          "type": "partner.Account"
+          "type": "partner2.Account"
         },
         "areaOfExpertise": {
-          "canBeNull": false,
-          "description": "Area of Expertise",
-          "fullType": "partner.AreaOfExpertiseEnum[]",
+          "canBeNull": true,
+          "description": "DEPRECATED - Area of Expertise",
+          "fullType": "partner2.AreaOfExpertiseEnum[]",
           "readOnly": false,
-          "required": true,
-          "type": "partner.AreaOfExpertiseEnum[]"
+          "required": false,
+          "type": "partner2.AreaOfExpertiseEnum[]"
         },
         "contact": {
           "canBeNull": false,
           "description": "Contact",
-          "fullType": "partner.Contact",
+          "fullType": "partner2.Contact",
           "readOnly": false,
           "required": true,
-          "type": "partner.Contact"
+          "type": "partner2.Contact"
         },
         "partnersProgramReason": {
-          "canBeNull": false,
-          "description": "Why you want to take part in OVH's Partners Program",
+          "canBeNull": true,
+          "description": "DEPRECATED - Why you want to take part in OVH's Partners Program",
           "fullType": "string",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "string"
         },
-        "salesProjection": {
+        "partnership": {
           "canBeNull": false,
-          "description": "Sales Projection (in euros)",
+          "description": " How the PartnerShip will Growth",
+          "fullType": "partner2.PartnerShip",
+          "readOnly": false,
+          "required": false,
+          "type": "partner2.PartnerShip"
+        },
+        "salesProjection": {
+          "canBeNull": true,
+          "description": "DEPRECATED - Sales Projection (in euros) ",
           "fullType": "double",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "double"
         }
       }
     },
-    "partner.PositionEnum": {
+    "partner2.PartnerShip": {
+      "description": "Partner ship evolution",
+      "id": "PartnerShip",
+      "namespace": "partner2",
+      "properties": {
+        "areaOfExpertise": {
+          "canBeNull": true,
+          "description": "Area of Expertise",
+          "fullType": "partner2.AreaOfExpertiseEnum[]",
+          "readOnly": false,
+          "required": false,
+          "type": "partner2.AreaOfExpertiseEnum[]"
+        },
+        "emailCommunication": {
+          "canBeNull": false,
+          "description": "GDPR - email/communication opt in",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "partnersProgramReason": {
+          "canBeNull": true,
+          "description": "Why you want to take part in OVH's Partners Program",
+          "fullType": "text",
+          "readOnly": false,
+          "required": false,
+          "type": "text"
+        },
+        "salesGrowthOpportunities": {
+          "canBeNull": true,
+          "description": "OVHcloud sales growth opportunities",
+          "fullType": "text",
+          "readOnly": false,
+          "required": false,
+          "type": "text"
+        },
+        "salesProjection": {
+          "canBeNull": false,
+          "description": "Sales projection (in euros)",
+          "fullType": "double",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
+        },
+        "supportAgreementStatement": {
+          "canBeNull": false,
+          "description": "Support agreement statement",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "partner2.PositionEnum": {
       "description": "Job positions",
       "enum": [
         "ITSysAdmin",
@@ -514,316 +600,47 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "PositionEnum",
-      "namespace": "partner"
+      "namespace": "partner2"
     },
-    "partner.form.Field": {
-      "description": "Field",
-      "id": "Field",
-      "namespace": "partner.form",
-      "properties": {
-        "fieldConfig": {
-          "canBeNull": false,
-          "description": "Configuration of the field",
-          "fullType": "partner.form.field.Config",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.field.Config"
-        }
-      }
+    "partner2.employeesNumberEnum": {
+      "description": "employeesNumber",
+      "enum": [
+        "1Or2",
+        "3To5",
+        "6To9",
+        "10To19",
+        "20To49",
+        "50To99",
+        "100To199",
+        "200To249",
+        "250To499",
+        "500to999",
+        "1000to1999",
+        "2000to4999",
+        "5000to9999",
+        "over10000"
+      ],
+      "enumType": "string",
+      "id": "employeesNumberEnum",
+      "namespace": "partner2"
     },
-    "partner.form.Schema": {
-      "description": "Partner Form Schema",
-      "id": "Schema",
-      "namespace": "partner.form",
-      "properties": {
-        "account": {
-          "canBeNull": false,
-          "description": "Account",
-          "fullType": "partner.form.schema.Account",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.schema.Account"
-        },
-        "areaOfExpertise": {
-          "canBeNull": false,
-          "description": "Area of expertise",
-          "fullType": "partner.form.schema.AreaOfExpertise",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.schema.AreaOfExpertise"
-        },
-        "contact": {
-          "canBeNull": false,
-          "description": "Contact",
-          "fullType": "partner.form.schema.Contact",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.schema.Contact"
-        },
-        "partnersProgramReason": {
-          "canBeNull": false,
-          "description": "Why you want to take part in OVH's Partners Program",
-          "fullType": "partner.form.Field",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.Field"
-        },
-        "salesProjection": {
-          "canBeNull": false,
-          "description": "Sales projection (in euros)",
-          "fullType": "partner.form.Field",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.Field"
-        }
-      }
-    },
-    "partner.form.field.Config": {
-      "description": "Field configuration",
-      "id": "Config",
-      "namespace": "partner.form.field",
-      "properties": {
-        "label": {
-          "canBeNull": false,
-          "description": "Field label",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "section": {
-          "canBeNull": false,
-          "description": "Section on the website",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "type": {
-          "canBeNull": false,
-          "description": "Field type",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "partner.form.schema.Account": {
-      "description": "Partner account schema",
-      "id": "Account",
-      "namespace": "partner.form.schema",
-      "properties": {
-        "city": {
-          "canBeNull": false,
-          "description": "Configuration of the city field",
-          "fullType": "partner.form.Field",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.Field"
-        },
-        "country": {
-          "canBeNull": false,
-          "description": "Configuration of the country field",
-          "fullType": "partner.form.schema.account.Country",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.schema.account.Country"
-        },
-        "name": {
-          "canBeNull": false,
-          "description": "Configuration of the name field",
-          "fullType": "partner.form.Field",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.Field"
-        }
-      }
-    },
-    "partner.form.schema.AreaOfExpertise": {
-      "description": "Partner area of expertise",
-      "id": "AreaOfExpertise",
-      "namespace": "partner.form.schema",
-      "properties": {
-        "fieldConfig": {
-          "canBeNull": false,
-          "description": "Configuration of the field",
-          "fullType": "partner.form.field.Config",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.field.Config"
-        },
-        "options": {
-          "canBeNull": false,
-          "description": "Options for area of expertise",
-          "fullType": "partner.form.schema.areaOfExpertise.Option[]",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.schema.areaOfExpertise.Option[]"
-        }
-      }
-    },
-    "partner.form.schema.Contact": {
-      "description": "Partner contact schema",
-      "id": "Contact",
-      "namespace": "partner.form.schema",
-      "properties": {
-        "email": {
-          "canBeNull": false,
-          "description": "Configuration of the email field",
-          "fullType": "partner.form.Field",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.Field"
-        },
-        "firstName": {
-          "canBeNull": false,
-          "description": "Configuration of the firstName field",
-          "fullType": "partner.form.Field",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.Field"
-        },
-        "lastName": {
-          "canBeNull": false,
-          "description": "Configuration of the lastName field",
-          "fullType": "partner.form.Field",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.Field"
-        },
-        "phone": {
-          "canBeNull": false,
-          "description": "Configuration of the phone field",
-          "fullType": "partner.form.Field",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.Field"
-        },
-        "position": {
-          "canBeNull": false,
-          "description": "Configuration of the position field",
-          "fullType": "partner.form.schema.contact.Position",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.schema.contact.Position"
-        }
-      }
-    },
-    "partner.form.schema.account.Country": {
-      "description": "Partner account country",
-      "id": "Country",
-      "namespace": "partner.form.schema.account",
-      "properties": {
-        "fieldConfig": {
-          "canBeNull": false,
-          "description": "Configuration of the country field",
-          "fullType": "partner.form.field.Config",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.field.Config"
-        },
-        "options": {
-          "canBeNull": false,
-          "description": "Options for country",
-          "fullType": "partner.form.schema.account.country.Option[]",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.schema.account.country.Option[]"
-        }
-      }
-    },
-    "partner.form.schema.account.country.Option": {
-      "description": "Partner country options",
-      "id": "Option",
-      "namespace": "partner.form.schema.account.country",
-      "properties": {
-        "text": {
-          "canBeNull": false,
-          "description": "Option text",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "value": {
-          "canBeNull": false,
-          "description": "Option value",
-          "fullType": "nichandle.CountryEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "nichandle.CountryEnum"
-        }
-      }
-    },
-    "partner.form.schema.areaOfExpertise.Option": {
-      "description": "Partner area of expertise option",
-      "id": "Option",
-      "namespace": "partner.form.schema.areaOfExpertise",
-      "properties": {
-        "text": {
-          "canBeNull": false,
-          "description": "Option text",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "value": {
-          "canBeNull": false,
-          "description": "Option value",
-          "fullType": "partner.AreaOfExpertiseEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.AreaOfExpertiseEnum"
-        }
-      }
-    },
-    "partner.form.schema.contact.Position": {
-      "description": "Partner contact position",
-      "id": "Position",
-      "namespace": "partner.form.schema.contact",
-      "properties": {
-        "fieldConfig": {
-          "canBeNull": false,
-          "description": "Configuration of the position field",
-          "fullType": "partner.form.field.Config",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.field.Config"
-        },
-        "options": {
-          "canBeNull": false,
-          "description": "Options for position",
-          "fullType": "partner.form.schema.contact.position.Option[]",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.form.schema.contact.position.Option[]"
-        }
-      }
-    },
-    "partner.form.schema.contact.position.Option": {
-      "description": "Partner position options",
-      "id": "Option",
-      "namespace": "partner.form.schema.contact.position",
-      "properties": {
-        "text": {
-          "canBeNull": false,
-          "description": "Option text",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "value": {
-          "canBeNull": false,
-          "description": "Option value",
-          "fullType": "partner.PositionEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "partner.PositionEnum"
-        }
-      }
+    "partner2.partnerTypeEnum": {
+      "description": "partner type",
+      "enum": [
+        "valueAddedReseller",
+        "systemsIntegrator",
+        "iaasProvider",
+        "managedServiceProvider",
+        "softwareEditor",
+        "consultingCompany",
+        "trainingCompany",
+        "webAgency",
+        "telecomOperators",
+        "other"
+      ],
+      "enumType": "string",
+      "id": "partnerTypeEnum",
+      "namespace": "partner2"
     }
   },
   "resourcePath": "/partner"

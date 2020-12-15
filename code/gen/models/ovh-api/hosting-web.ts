@@ -532,6 +532,452 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/cdn"
     },
     {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "List available options for a Shared CDN service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cdn.availableOptions[]"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/cdn/availableOptions"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "List all domains for a Shared CDN service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cdn.domain[]"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/cdn/domain"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get details for a domain on a Shared CDN service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cdn.domain"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/cdn/domain/{domainName}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Generate URL to logs archive",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "date",
+              "description": "Logs date (default is yesterday)",
+              "fullType": "date",
+              "name": "date",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "cdn.logs"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/cdn/domain/{domainName}/logs"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "List all options for a domain",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cdn.domain.option[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Add an option on a domain",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cdn.domain.add.option",
+              "description": "Request Body",
+              "fullType": "cdn.domain.add.option",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cdn.domain.option"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/cdn/domain/{domainName}/option"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Remove or Reset an option to his default value",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Option name",
+              "fullType": "string",
+              "name": "optionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get details for an option on a domain",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Option name",
+              "fullType": "string",
+              "name": "optionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cdn.domain.option"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Update an option on a domain",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cdn.domain.option",
+              "description": "Request Body",
+              "fullType": "cdn.domain.option",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Option name",
+              "fullType": "string",
+              "name": "optionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cdn.domain.option"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/cdn/domain/{domainName}/option/{optionName}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Flush cache content on CDN for a domain",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cdn.operation"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/cdn/domain/{domainName}/purge"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Trigger a refresh for a domain",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Domain name",
+              "fullType": "string",
+              "name": "domainName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cdn.operation"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/cdn/domain/{domainName}/refresh"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "List all operations for a Shared CDN service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cdn.operation[]"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/cdn/operation"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get details for a Shared CDN operation",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cdn.operation"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/cdn/operation/{id}"
+    },
+    {
       "description": "serviceInfos operations",
       "operations": [
         {
@@ -5496,6 +5942,459 @@ export const schema: Schema = {
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
+    "cdn.DomainStatusEnum": {
+      "description": "Domain status",
+      "enum": [
+        "ok",
+        "to_disable",
+        "disabling",
+        "disabled",
+        "to_refresh",
+        "refreshing",
+        "to_delete",
+        "deleting"
+      ],
+      "enumType": "string",
+      "id": "DomainStatusEnum",
+      "namespace": "cdn"
+    },
+    "cdn.OperationFunctionEnum": {
+      "description": "Operation function",
+      "enum": [
+        "service_install",
+        "domain_purge",
+        "domain_refresh",
+        "domain_delete",
+        "domain_disable",
+        "ssl_install",
+        "ssl_delete"
+      ],
+      "enumType": "string",
+      "id": "OperationFunctionEnum",
+      "namespace": "cdn"
+    },
+    "cdn.OperationOfferEnum": {
+      "description": "Shared CDN offer",
+      "enum": [
+        "basic",
+        "security",
+        "advanced"
+      ],
+      "enumType": "string",
+      "id": "OperationOfferEnum",
+      "namespace": "cdn"
+    },
+    "cdn.OperationStatusEnum": {
+      "description": "Operation status",
+      "enum": [
+        "todo",
+        "doing",
+        "done",
+        "error",
+        "cancelled"
+      ],
+      "enumType": "string",
+      "id": "OperationStatusEnum",
+      "namespace": "cdn"
+    },
+    "cdn.OptionPatternTypeEnum": {
+      "description": "Option pattern type",
+      "enum": [
+        "extension",
+        "regex"
+      ],
+      "enumType": "string",
+      "id": "OptionPatternTypeEnum",
+      "namespace": "cdn"
+    },
+    "cdn.OptionTypeEnum": {
+      "description": "Option type",
+      "enum": [
+        "devmode",
+        "brotli",
+        "cache_rule"
+      ],
+      "enumType": "string",
+      "id": "OptionTypeEnum",
+      "namespace": "cdn"
+    },
+    "cdn.OptionTypePostEnum": {
+      "description": "Option type",
+      "enum": [
+        "cache_rule"
+      ],
+      "enumType": "string",
+      "id": "OptionTypePostEnum",
+      "namespace": "cdn"
+    },
+    "cdn.availableOptions": {
+      "description": "Option type available",
+      "id": "availableOptions",
+      "namespace": "cdn",
+      "properties": {
+        "maxItems": {
+          "canBeNull": false,
+          "description": "Max option items",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Option type",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cdn.domain": {
+      "description": "Domain details",
+      "id": "domain",
+      "namespace": "cdn",
+      "properties": {
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Domain name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "needRefresh": {
+          "canBeNull": false,
+          "description": "The domain configuration has been updated, it needs a refresh",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Domain status",
+          "fullType": "cdn.DomainStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.DomainStatusEnum"
+        },
+        "updatedDate": {
+          "canBeNull": false,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "cdn.domain.add.option": {
+      "description": "Option details",
+      "id": "option",
+      "namespace": "cdn.domain.add",
+      "properties": {
+        "config": {
+          "canBeNull": true,
+          "description": "Option configuration",
+          "fullType": "cdn.domain.option.config",
+          "readOnly": false,
+          "required": false,
+          "type": "cdn.domain.option.config"
+        },
+        "enabled": {
+          "canBeNull": false,
+          "description": "Enable / Disable the option",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Option name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "pattern": {
+          "canBeNull": true,
+          "description": "Url pattern",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Option type",
+          "fullType": "cdn.OptionTypePostEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cdn.OptionTypePostEnum"
+        }
+      }
+    },
+    "cdn.domain.option": {
+      "description": "Option details",
+      "id": "option",
+      "namespace": "cdn.domain",
+      "properties": {
+        "config": {
+          "canBeNull": true,
+          "description": "Option configuration",
+          "fullType": "cdn.domain.option.config",
+          "readOnly": false,
+          "required": false,
+          "type": "cdn.domain.option.config"
+        },
+        "enabled": {
+          "canBeNull": false,
+          "description": "Enable / Disable the option",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": true,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Option name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "pattern": {
+          "canBeNull": true,
+          "description": "Url pattern",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Option type",
+          "fullType": "cdn.OptionTypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cdn.OptionTypeEnum"
+        }
+      }
+    },
+    "cdn.domain.option.config": {
+      "description": "Option configuration",
+      "id": "config",
+      "namespace": "cdn.domain.option",
+      "properties": {
+        "patternType": {
+          "canBeNull": true,
+          "description": "Option pattern type",
+          "fullType": "cdn.OptionPatternTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cdn.OptionPatternTypeEnum"
+        },
+        "priority": {
+          "canBeNull": true,
+          "description": "Cache Rule priority (lower is the strongest priority)",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "ttl": {
+          "canBeNull": true,
+          "description": "Cache time in seconds",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cdn.logs": {
+      "description": "Logs archive URL",
+      "id": "logs",
+      "namespace": "cdn",
+      "properties": {
+        "url": {
+          "canBeNull": false,
+          "description": "URL to logs archive",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "validity": {
+          "canBeNull": false,
+          "description": "URL validity",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "cdn.operation": {
+      "description": "Operation details",
+      "id": "operation",
+      "namespace": "cdn",
+      "properties": {
+        "comment": {
+          "canBeNull": true,
+          "description": "Comment",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "function": {
+          "canBeNull": false,
+          "description": "Operation function",
+          "fullType": "cdn.OperationFunctionEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.OperationFunctionEnum"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Operation id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "parameter": {
+          "canBeNull": false,
+          "description": "Operation parameter",
+          "fullType": "cdn.operation.parameter",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.operation.parameter"
+        },
+        "service": {
+          "canBeNull": false,
+          "description": "Shared CDN service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Operation status",
+          "fullType": "cdn.OperationStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.OperationStatusEnum"
+        },
+        "todoDate": {
+          "canBeNull": false,
+          "description": "Next execution date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "updatedDate": {
+          "canBeNull": false,
+          "description": "Last execution date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "cdn.operation.parameter": {
+      "description": "Operation parameter",
+      "id": "parameter",
+      "namespace": "cdn.operation",
+      "properties": {
+        "anycastIp": {
+          "canBeNull": true,
+          "description": "CDN anycast IP",
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv4"
+        },
+        "cluster": {
+          "canBeNull": true,
+          "description": "Cluster name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "domainName": {
+          "canBeNull": true,
+          "description": "Domain name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "fingerprint": {
+          "canBeNull": true,
+          "description": "CDN certificate fingerprint",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "offer": {
+          "canBeNull": true,
+          "description": "Shared CDN offer",
+          "fullType": "cdn.OperationOfferEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cdn.OperationOfferEnum"
+        },
+        "pattern": {
+          "canBeNull": true,
+          "description": "Pattern to purge on CDN",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "service": {
+          "canBeNull": true,
+          "description": "Service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "sslId": {
+          "canBeNull": true,
+          "description": "CDN ssl id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "complexType.ChartSerie<T>": {
       "description": "A value set tagged with its unit and serie name",
       "generics": [
@@ -6932,6 +7831,7 @@ export const schema: Schema = {
         "nodejs-14",
         "python-3.7",
         "python-3.8",
+        "python-3.9",
         "ruby-2.6",
         "ruby-2.7"
       ],
@@ -7030,6 +7930,7 @@ export const schema: Schema = {
         "php7.2",
         "php7.3",
         "php7.4",
+        "php8.0",
         "python2",
         "python3",
         "ruby2.4",
@@ -8984,7 +9885,8 @@ export const schema: Schema = {
         "7.1",
         "7.2",
         "7.3",
-        "7.4"
+        "7.4",
+        "8.0"
       ],
       "enumType": "string",
       "id": "AvailableEngineVersionEnum",
@@ -9016,6 +9918,7 @@ export const schema: Schema = {
         "7.2",
         "7.3",
         "7.4",
+        "8.0",
         "AUTO"
       ],
       "enumType": "string",

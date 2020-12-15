@@ -1260,8 +1260,10 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2021-01-08T10:00:00+01:00",
+            "deprecatedDate": "2020-12-08T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get information on a possible migration of a VPS Cloud 2014 to VPS Cloud 2020",
           "httpMethod": "GET",
@@ -1280,8 +1282,10 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2021-01-08T10:00:00+01:00",
+            "deprecatedDate": "2020-12-08T10:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Schedule the migration of a VPS Cloud 2014 to VPS Cloud 2020",
           "httpMethod": "POST",
@@ -2079,6 +2083,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/vps/{serviceName}/start"
+    },
+    {
+      "description": "statistics operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Return monitoring statistics about the virtual machine",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vps.VpsMonitoringStatistics"
+        }
+      ],
+      "path": "/vps/{serviceName}/statistics"
     },
     {
       "description": "status operations",
@@ -4526,6 +4556,34 @@ export const schema: Schema = {
       "id": "VpsMonitoringPeriodEnum",
       "namespace": "vps"
     },
+    "vps.VpsMonitoringStatistics": {
+      "description": "Statistics about resource usage",
+      "id": "VpsMonitoringStatistics",
+      "namespace": "vps",
+      "properties": {
+        "cpu": {
+          "canBeNull": false,
+          "description": "Average CPU usage in percentage over the last 24 hours",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
+        },
+        "disk": {
+          "canBeNull": false,
+          "description": "Current disk usage in percentage",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
+        },
+        "memory": {
+          "canBeNull": false,
+          "description": "Average memory usage in percentage over the last 24 hours",
+          "readOnly": false,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
     "vps.VpsNetbootEnum": {
       "description": "All values a VPS netboot mode can be in",
       "enum": [
@@ -4580,6 +4638,7 @@ export const schema: Schema = {
     "vps.VpsStateEnum": {
       "description": "All states a VPS can be in",
       "enum": [
+        "backuping",
         "installing",
         "maintenance",
         "rebooting",
@@ -4931,16 +4990,95 @@ export const schema: Schema = {
         }
       }
     },
+    "vps.migration.OptionMapping2016": {
+      "description": "Mapping between a VPS 2016 option code and a VPS 2020 option code",
+      "id": "OptionMapping2016",
+      "namespace": "vps.migration",
+      "properties": {
+        "currentPlan": {
+          "canBeNull": false,
+          "description": "VPS option current plan code",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "newPlan": {
+          "canBeNull": false,
+          "description": "New VPS option plan code after migration",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "product": {
+          "canBeNull": false,
+          "description": "VPS option product",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "vps.migration.StatusEnum": {
       "description": "All status a migration task can be in",
       "enum": [
+        "available",
         "notAvailable",
+        "ongoing",
         "planned",
         "toPlan"
       ],
       "enumType": "string",
       "id": "StatusEnum",
       "namespace": "vps.migration"
+    },
+    "vps.migration.VPS2016to2020": {
+      "description": "A structure describing a migration from VPS 2016 to VPS 2020",
+      "id": "VPS2016to2020",
+      "namespace": "vps.migration",
+      "properties": {
+        "currentPlan": {
+          "canBeNull": false,
+          "description": "VPS current plan code",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "date": {
+          "canBeNull": true,
+          "description": "Migration start date",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "newPlan": {
+          "canBeNull": false,
+          "description": "New VPS plan code after migration",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "options": {
+          "canBeNull": false,
+          "description": "Mapping of VPS options from VPS 2016 to VPS 2020",
+          "readOnly": false,
+          "required": false,
+          "type": "vps.migration.OptionMapping2016[]"
+        },
+        "product": {
+          "canBeNull": false,
+          "description": "VPS product",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the migration task",
+          "readOnly": false,
+          "required": false,
+          "type": "vps.migration.StatusEnum"
+        }
+      }
     },
     "vps.order.rule.Datacenter": {
       "description": "Datacenter rules",

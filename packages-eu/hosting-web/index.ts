@@ -4,6 +4,138 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /hosting/web Models
  * Source: https://eu.api.ovh.com/1.0/hosting/web.json
  */
+export namespace cdn {
+    /**
+     * Domain status
+     * type fullname: cdn.DomainStatusEnum
+     */
+    export type DomainStatusEnum = "ok" | "to_disable" | "disabling" | "disabled" | "to_refresh" | "refreshing" | "to_delete" | "deleting"
+    /**
+     * Operation function
+     * type fullname: cdn.OperationFunctionEnum
+     */
+    export type OperationFunctionEnum = "service_install" | "domain_purge" | "domain_refresh" | "domain_delete" | "domain_disable" | "ssl_install" | "ssl_delete"
+    /**
+     * Shared CDN offer
+     * type fullname: cdn.OperationOfferEnum
+     */
+    export type OperationOfferEnum = "basic" | "security" | "advanced"
+    /**
+     * Operation status
+     * type fullname: cdn.OperationStatusEnum
+     */
+    export type OperationStatusEnum = "todo" | "doing" | "done" | "error" | "cancelled"
+    /**
+     * Option pattern type
+     * type fullname: cdn.OptionPatternTypeEnum
+     */
+    export type OptionPatternTypeEnum = "extension" | "regex"
+    /**
+     * Option type
+     * type fullname: cdn.OptionTypeEnum
+     */
+    export type OptionTypeEnum = "devmode" | "brotli" | "cache_rule"
+    /**
+     * Option type
+     * type fullname: cdn.OptionTypePostEnum
+     */
+    export type OptionTypePostEnum = "cache_rule"
+    /**
+     * Option type available
+     * interface fullName: cdn.availableOptions.availableOptions
+     */
+    export interface availableOptions {
+        maxItems: number;
+        type: string;
+    }
+    /**
+     * Domain details
+     * interface fullName: cdn.domain.domain
+     */
+    export interface domain {
+        creationDate: string;
+        name: string;
+        needRefresh: boolean;
+        status: cdn.DomainStatusEnum;
+        updatedDate: string;
+    }
+    export namespace domain {
+        export namespace add {
+            /**
+             * Option details
+             * interface fullName: cdn.domain.add.option.option
+             */
+            export interface option {
+                config?: cdn.domain.option.config;
+                enabled: boolean;
+                name: string;
+                pattern?: string;
+                type: cdn.OptionTypePostEnum;
+            }
+        }
+        /**
+         * Option details
+         * interface fullName: cdn.domain.option.option
+         */
+        export interface option {
+            config?: cdn.domain.option.config;
+            enabled: boolean;
+            name: string;
+            pattern?: string;
+            type: cdn.OptionTypeEnum;
+        }
+        export namespace option {
+            /**
+             * Option configuration
+             * interface fullName: cdn.domain.option.config.config
+             */
+            export interface config {
+                patternType?: cdn.OptionPatternTypeEnum;
+                priority?: number;
+                ttl?: number;
+            }
+        }
+    }
+    /**
+     * Logs archive URL
+     * interface fullName: cdn.logs.logs
+     */
+    export interface logs {
+        url: string;
+        validity: string;
+    }
+    /**
+     * Operation details
+     * interface fullName: cdn.operation.operation
+     */
+    export interface operation {
+        comment?: string;
+        creationDate: string;
+        function: cdn.OperationFunctionEnum;
+        id: number;
+        parameter: cdn.operation.parameter;
+        service: string;
+        status: cdn.OperationStatusEnum;
+        todoDate: string;
+        updatedDate: string;
+    }
+    export namespace operation {
+        /**
+         * Operation parameter
+         * interface fullName: cdn.operation.parameter.parameter
+         */
+        export interface parameter {
+            anycastIp?: string;
+            cluster?: string;
+            domainName?: string;
+            fingerprint?: string;
+            offer?: cdn.OperationOfferEnum;
+            pattern?: string;
+            service?: string;
+            sslId?: number;
+        }
+    }
+}
 export namespace complexType {
     /**
      * A value set tagged with its unit and serie name
@@ -387,7 +519,7 @@ export namespace hosting {
              * Configuration language versions enum
              * type fullname: hosting.web.configuration.VersionEnum
              */
-            export type VersionEnum = "nodejs-12" | "nodejs-14" | "python-3.7" | "python-3.8" | "ruby-2.6" | "ruby-2.7"
+            export type VersionEnum = "nodejs-12" | "nodejs-14" | "python-3.7" | "python-3.8" | "python-3.9" | "ruby-2.6" | "ruby-2.7"
         }
         /**
          * Hosting crons
@@ -408,7 +540,7 @@ export namespace hosting {
              * Cron's language
              * type fullname: hosting.web.cron.LanguageEnum
              */
-            export type LanguageEnum = "node10" | "node11" | "node12" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "php7.4" | "python2" | "python3" | "ruby2.4" | "ruby2.5" | "ruby2.6"
+            export type LanguageEnum = "node10" | "node11" | "node12" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "php7.4" | "php8.0" | "python2" | "python3" | "ruby2.4" | "ruby2.5" | "ruby2.6"
             /**
              * Cron state
              * type fullname: hosting.web.cron.StateEnum
@@ -939,7 +1071,7 @@ export namespace hosting {
              * Hosting available configuration version
              * type fullname: hosting.web.ovhConfig.AvailableEngineVersionEnum
              */
-            export type AvailableEngineVersionEnum = "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4"
+            export type AvailableEngineVersionEnum = "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4" | "8.0"
             /**
              * Hosting configuration engine
              * type fullname: hosting.web.ovhConfig.EngineNameEnum
@@ -949,7 +1081,7 @@ export namespace hosting {
              * Hosting configuration version
              * type fullname: hosting.web.ovhConfig.EngineVersionEnum
              */
-            export type EngineVersionEnum = "4.4" | "5.0" | "5.1" | "5.2" | "5.3" | "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4" | "AUTO"
+            export type EngineVersionEnum = "4.4" | "5.0" | "5.1" | "5.2" | "5.3" | "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "7.4" | "8.0" | "AUTO"
             /**
              * Hosting configuration environment
              * type fullname: hosting.web.ovhConfig.EnvironmentEnum
@@ -1477,6 +1609,131 @@ export interface Hosting {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                availableOptions: {
+                    /**
+                     * List available options for a Shared CDN service
+                     * GET /hosting/web/{serviceName}/cdn/availableOptions
+                     */
+                    $get(): Promise<cdn.availableOptions[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                domain: {
+                    /**
+                     * List all domains for a Shared CDN service
+                     * GET /hosting/web/{serviceName}/cdn/domain
+                     */
+                    $get(): Promise<cdn.domain[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(domainName: string): {
+                        /**
+                         * Get details for a domain on a Shared CDN service
+                         * GET /hosting/web/{serviceName}/cdn/domain/{domainName}
+                         */
+                        $get(): Promise<cdn.domain>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        logs: {
+                            /**
+                             * Generate URL to logs archive
+                             * GET /hosting/web/{serviceName}/cdn/domain/{domainName}/logs
+                             */
+                            $get(params?: { date?: string }): Promise<cdn.logs>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        option: {
+                            /**
+                             * List all options for a domain
+                             * GET /hosting/web/{serviceName}/cdn/domain/{domainName}/option
+                             */
+                            $get(): Promise<cdn.domain.option[]>;
+                            /**
+                             * Add an option on a domain
+                             * POST /hosting/web/{serviceName}/cdn/domain/{domainName}/option
+                             */
+                            $post(params: { config?: cdn.domain.option.config, enabled: boolean, name: string, pattern?: string, type: cdn.OptionTypePostEnum }): Promise<cdn.domain.option>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(optionName: string): {
+                                /**
+                                 * Remove or Reset an option to his default value
+                                 * DELETE /hosting/web/{serviceName}/cdn/domain/{domainName}/option/{optionName}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get details for an option on a domain
+                                 * GET /hosting/web/{serviceName}/cdn/domain/{domainName}/option/{optionName}
+                                 */
+                                $get(): Promise<cdn.domain.option>;
+                                /**
+                                 * Update an option on a domain
+                                 * PUT /hosting/web/{serviceName}/cdn/domain/{domainName}/option/{optionName}
+                                 */
+                                $put(params: { config?: cdn.domain.option.config, enabled: boolean, name?: string, pattern?: string, type: cdn.OptionTypeEnum }): Promise<cdn.domain.option>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        purge: {
+                            /**
+                             * Flush cache content on CDN for a domain
+                             * POST /hosting/web/{serviceName}/cdn/domain/{domainName}/purge
+                             */
+                            $post(): Promise<cdn.operation>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        refresh: {
+                            /**
+                             * Trigger a refresh for a domain
+                             * POST /hosting/web/{serviceName}/cdn/domain/{domainName}/refresh
+                             */
+                            $post(): Promise<cdn.operation>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                    };
+                }
+                operation: {
+                    /**
+                     * List all operations for a Shared CDN service
+                     * GET /hosting/web/{serviceName}/cdn/operation
+                     */
+                    $get(): Promise<cdn.operation[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(id: number): {
+                        /**
+                         * Get details for a Shared CDN operation
+                         * GET /hosting/web/{serviceName}/cdn/operation/{id}
+                         */
+                        $get(): Promise<cdn.operation>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    };
+                }
                 serviceInfos: {
                     /**
                      * Get this object properties

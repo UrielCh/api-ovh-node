@@ -384,6 +384,15 @@ export namespace vps {
      */
     export type VpsMonitoringPeriodEnum = "lastday" | "lastmonth" | "lastweek" | "lastyear" | "today"
     /**
+     * Statistics about resource usage
+     * interface fullName: vps.VpsMonitoringStatistics.VpsMonitoringStatistics
+     */
+    export interface VpsMonitoringStatistics {
+        cpu: number;
+        disk: number;
+        memory: number;
+    }
+    /**
      * All values a VPS netboot mode can be in
      * type fullname: vps.VpsNetbootEnum
      */
@@ -407,7 +416,7 @@ export namespace vps {
      * All states a VPS can be in
      * type fullname: vps.VpsStateEnum
      */
-    export type VpsStateEnum = "installing" | "maintenance" | "rebooting" | "running" | "stopped" | "stopping" | "upgrading"
+    export type VpsStateEnum = "backuping" | "installing" | "maintenance" | "rebooting" | "running" | "stopped" | "stopping" | "upgrading"
     /**
      * Available types for the VPS monitoring and use
      * type fullname: vps.VpsStatisticTypeEnum
@@ -532,10 +541,31 @@ export namespace vps {
             vps2020code: string;
         }
         /**
+         * Mapping between a VPS 2016 option code and a VPS 2020 option code
+         * interface fullName: vps.migration.OptionMapping2016.OptionMapping2016
+         */
+        export interface OptionMapping2016 {
+            currentPlan: string;
+            newPlan: string;
+            product: string;
+        }
+        /**
          * All status a migration task can be in
          * type fullname: vps.migration.StatusEnum
          */
-        export type StatusEnum = "notAvailable" | "planned" | "toPlan"
+        export type StatusEnum = "available" | "notAvailable" | "ongoing" | "planned" | "toPlan"
+        /**
+         * A structure describing a migration from VPS 2016 to VPS 2020
+         * interface fullName: vps.migration.VPS2016to2020.VPS2016to2020
+         */
+        export interface VPS2016to2020 {
+            currentPlan: string;
+            date?: string;
+            newPlan: string;
+            options: vps.migration.OptionMapping2016[];
+            product: string;
+            status: vps.migration.StatusEnum;
+        }
     }
     export namespace order {
         export namespace rule {
@@ -1287,6 +1317,17 @@ export interface Vps {
              * POST /vps/{serviceName}/start
              */
             $post(): Promise<vps.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        statistics: {
+            /**
+             * Return monitoring statistics about the virtual machine
+             * GET /vps/{serviceName}/statistics
+             */
+            $get(): Promise<vps.VpsMonitoringStatistics>;
             /**
              * Controle cache
              */

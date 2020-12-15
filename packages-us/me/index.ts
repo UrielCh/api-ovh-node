@@ -3714,7 +3714,7 @@ export interface Me {
                      * Challenge one payment method
                      * POST /me/payment/method/{paymentMethodId}/challenge
                      */
-                    $post(params: { challenge: string }): Promise<me.payment.method.PaymentMethod>;
+                    $post(params: { challenge: string }): Promise<void>;
                     /**
                      * Controle cache
                      */

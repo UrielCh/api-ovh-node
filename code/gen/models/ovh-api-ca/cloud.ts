@@ -620,6 +620,152 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/ai/capabilities/serving/region"
     },
     {
+      "description": "List Training Platform available features",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List Training Platform available features",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.training.Features"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/capabilities/training/feature"
+    },
+    {
+      "description": "List Training Platform Preset Model Images",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List Training Platform Preset Model Images",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.training.PresetImage[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/capabilities/training/presetImage"
+    },
+    {
+      "description": "List Training Platform available regions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List Region",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.training.Region[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/capabilities/training/region"
+    },
+    {
+      "description": "List Training Platform available regions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get Region Information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.training.Region"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/capabilities/training/region/{region}"
+    },
+    {
+      "description": "List Available GPU Topology and the max available gpu",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List Available GPU Topology and the max available gpu",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region",
+              "fullType": "string",
+              "name": "region",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.training.Gpu[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/capabilities/training/region/{region}/gpu"
+    },
+    {
       "description": "Manage serving engine namespaces",
       "operations": [
         {
@@ -1230,6 +1376,322 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/ai/serving/{namespaceId}/token/{tokenId}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get authorization status",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.training.AuthorizationStatus"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Authorization of Training Platform service by allowing access to your object storage containers",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/training/authorization"
+    },
+    {
+      "description": "Manage AI Training Jobs",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List jobs",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.training.Job[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a new job",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.ai.training.JobSpec",
+              "description": "Request Body",
+              "fullType": "cloud.project.ai.training.JobSpec",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.training.Job"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/training/job"
+    },
+    {
+      "description": "Manage AI Training Jobs",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get job information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Job ID",
+              "fullType": "string",
+              "name": "jobId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.training.Job"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/training/job/{jobId}"
+    },
+    {
+      "description": "Kill a Training Platform job",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Kill a Training Platform job",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Job ID",
+              "fullType": "string",
+              "name": "jobId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/training/job/{jobId}/kill"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get the logs of a job",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Job ID",
+              "fullType": "string",
+              "name": "jobId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.training.JobLogs"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/training/job/{jobId}/logs"
+    },
+    {
+      "description": "Manage AI Training Registries",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List registry",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.training.Registry[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a new docker registry",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.project.ai.training.Registry",
+              "description": "Request Body",
+              "fullType": "cloud.project.ai.training.Registry",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.training.Registry"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/training/registry"
+    },
+    {
+      "description": "Manage AI Training Registries",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Detach the current registry",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Registry ID",
+              "fullType": "string",
+              "name": "registryId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get registry information",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Registry ID",
+              "fullType": "string",
+              "name": "registryId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.ai.training.Registry"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/ai/training/registry/{registryId}"
     },
     {
       "description": "List the cloud.Alerting objects",
@@ -3912,6 +4374,152 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/kube/{kubeId}/flavors"
+    },
+    {
+      "description": "Manage your api-server ip restrictions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List your ip restrictions on your cluster",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipBlock[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Append a list of ip restrictions on your cluster",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectKubeIpRestrictionUpsert",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectKubeIpRestrictionUpsert",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipBlock[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Remove the current list and add a list of ip restrictions on your cluster",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectKubeIpRestrictionUpsert",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectKubeIpRestrictionUpsert",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipBlock[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/ipRestrictions"
+    },
+    {
+      "description": "Manage your api-server ip restrictions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete an ip restriction from your cluster",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "Ip",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/ipRestrictions/{ip}"
     },
     {
       "description": "Get your cluster configuration",
@@ -13568,6 +14176,29 @@ export const schema: Schema = {
       "id": "IpSubTypeEnum",
       "namespace": "cloud.ip"
     },
+    "cloud.kube.AuditLogs": {
+      "description": "Managed Kubernetes Audit Logs",
+      "id": "AuditLogs",
+      "namespace": "cloud.kube",
+      "properties": {
+        "expirationDate": {
+          "canBeNull": false,
+          "description": "Temporary url expiration date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "Temporary logs URL",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "cloud.kube.Cluster": {
       "description": "Managed Kubernetes cluster description",
       "id": "Cluster",
@@ -13685,7 +14316,10 @@ export const schema: Schema = {
         "GRA5",
         "GRA7",
         "BHS5",
-        "SBG5"
+        "SBG5",
+        "WAW1",
+        "SGP1",
+        "SYD1"
       ],
       "enumType": "string",
       "id": "ClusterCreationRegionEnum",
@@ -14149,7 +14783,10 @@ export const schema: Schema = {
         "GRA5",
         "GRA7",
         "BHS5",
-        "SBG5"
+        "SBG5",
+        "WAW1",
+        "SGP1",
+        "SYD1"
       ],
       "enumType": "string",
       "id": "RegionEnum",
@@ -14233,11 +14870,11 @@ export const schema: Schema = {
     "cloud.kube.UpgradeVersionEnum": {
       "description": "List of available versions for upgrade",
       "enum": [
-        "1.14",
         "1.15",
         "1.16",
         "1.17",
-        "1.18"
+        "1.18",
+        "1.19"
       ],
       "enumType": "string",
       "id": "UpgradeVersionEnum",
@@ -14257,10 +14894,10 @@ export const schema: Schema = {
     "cloud.kube.VersionEnum": {
       "description": "List of available versions for installation",
       "enum": [
-        "1.15",
         "1.16",
         "1.17",
-        "1.18"
+        "1.18",
+        "1.19"
       ],
       "enumType": "string",
       "id": "VersionEnum",
@@ -14421,6 +15058,14 @@ export const schema: Schema = {
       "id": "NetworkRegion",
       "namespace": "cloud.network",
       "properties": {
+        "openstackId": {
+          "canBeNull": true,
+          "description": "Network id on openstack region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "region": {
           "canBeNull": false,
           "description": "Network region",
@@ -14950,6 +15595,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "cloud.project.loadbalancer.ConfigurationVersion"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Creation date and time of the load balancer",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "description": {
           "canBeNull": true,
@@ -16264,28 +16917,6 @@ export const schema: Schema = {
         }
       }
     },
-    "cloud.project.ai.training.DataSyncDirectionEnum": {
-      "description": "Data Sync Direction",
-      "enum": [
-        "from-object-storage",
-        "to-object-storage"
-      ],
-      "enumType": "string",
-      "id": "DataSyncDirectionEnum",
-      "namespace": "cloud.project.ai.training"
-    },
-    "cloud.project.ai.training.DataSyncStatusEnum": {
-      "description": "Data Sync Direction",
-      "enum": [
-        "running",
-        "pending",
-        "error",
-        "done"
-      ],
-      "enumType": "string",
-      "id": "DataSyncStatusEnum",
-      "namespace": "cloud.project.ai.training"
-    },
     "cloud.project.ai.training.Features": {
       "description": "Training Platform Data Object",
       "id": "Features",
@@ -16571,12 +17202,15 @@ export const schema: Schema = {
       "enum": [
         "QUEUED",
         "PENDING",
-        "SYNCING",
+        "INITIALIZING",
+        "FINALIZING",
         "RUNNING",
+        "TIMEOUT",
         "FAILED",
         "ERROR",
         "DONE",
-        "INTERRUPTED"
+        "INTERRUPTED",
+        "INTERRUPTING"
       ],
       "enumType": "string",
       "id": "JobStateEnum",
@@ -16594,6 +17228,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "history": {
+          "canBeNull": false,
+          "description": "Job state history",
+          "fullType": "cloud.project.ai.training.JobStatusHistory[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.training.JobStatusHistory[]"
         },
         "infos": {
           "canBeNull": true,
@@ -16658,6 +17300,29 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "datetime"
+        }
+      }
+    },
+    "cloud.project.ai.training.JobStatusHistory": {
+      "description": "Training Platform Job Status History Object",
+      "id": "JobStatusHistory",
+      "namespace": "cloud.project.ai.training",
+      "properties": {
+        "date": {
+          "canBeNull": false,
+          "description": "Date when the status occurred",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "State of the job",
+          "fullType": "cloud.project.ai.training.JobStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.training.JobStateEnum"
         }
       }
     },
@@ -17557,12 +18222,28 @@ export const schema: Schema = {
           "type": "string"
         },
         "port": {
-          "canBeNull": false,
-          "description": "Port to listen",
+          "canBeNull": true,
+          "description": "Port to listen (deprecated: see ports)",
           "fullType": "long",
           "readOnly": false,
-          "required": true,
+          "required": false,
           "type": "long"
+        },
+        "portRanges": {
+          "canBeNull": true,
+          "description": "Port ranges to listen",
+          "fullType": "cloud.project.loadbalancer.PortRange[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.PortRange[]"
+        },
+        "ports": {
+          "canBeNull": true,
+          "description": "Ports to listen",
+          "fullType": "long[]",
+          "readOnly": false,
+          "required": false,
+          "type": "long[]"
         },
         "whitelist": {
           "canBeNull": false,
@@ -17574,18 +18255,26 @@ export const schema: Schema = {
         }
       }
     },
-    "cloud.project.loadbalancer.Region": {
-      "description": "Region information",
-      "id": "Region",
+    "cloud.project.loadbalancer.PortRange": {
+      "description": "A port range",
+      "id": "PortRange",
       "namespace": "cloud.project.loadbalancer",
       "properties": {
-        "region": {
+        "end": {
           "canBeNull": false,
-          "description": "Region name",
-          "fullType": "string",
-          "readOnly": true,
+          "description": "Port range end",
+          "fullType": "long",
+          "readOnly": false,
           "required": false,
-          "type": "string"
+          "type": "long"
+        },
+        "start": {
+          "canBeNull": false,
+          "description": "Port range start",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
@@ -19076,6 +19765,14 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "openstackId": {
+          "canBeNull": true,
+          "description": "User id on openstack",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "roles": {
           "canBeNull": false,
           "description": "User roles",
@@ -19130,6 +19827,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "openstackId": {
+          "canBeNull": true,
+          "description": "User id on openstack",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "password": {
           "canBeNull": false,

@@ -471,6 +471,7 @@ export namespace pack {
                 installFees: pack.xdsl.addressMove.Price;
                 modemRental: pack.xdsl.addressMove.Price;
                 price: pack.xdsl.addressMove.Price;
+                promotion?: pack.xdsl.migrationAndAddressMove.Promotion;
             }
         }
         export namespace migration {
@@ -495,6 +496,7 @@ export namespace pack {
                 offerName: string;
                 options: pack.xdsl.migration.OfferAvailableOption[];
                 price: order.Price;
+                promotion?: pack.xdsl.migrationAndAddressMove.Promotion;
                 subServicesToDelete: pack.xdsl.migration.SubServiceToDelete[];
                 url: string;
             }
@@ -541,6 +543,27 @@ export namespace pack {
                 numberToDelete: number;
                 services: string[];
                 type: pack.xdsl.ServiceNameEnum;
+            }
+        }
+        export namespace migrationAndAddressMove {
+            /**
+             * Migration or address move offer promotion
+             * interface fullName: pack.xdsl.migrationAndAddressMove.Promotion.Promotion
+             */
+            export interface Promotion {
+                endDate?: string;
+                id: string;
+                installFee: pack.xdsl.migrationAndAddressMove.PromotionDetails;
+                startDate?: string;
+                subscription: pack.xdsl.migrationAndAddressMove.PromotionDetails;
+            }
+            /**
+             * Migration or address move offer promotion details
+             * interface fullName: pack.xdsl.migrationAndAddressMove.PromotionDetails.PromotionDetails
+             */
+            export interface PromotionDetails {
+                discount: order.Price;
+                duration?: string;
             }
         }
         export namespace promotionCode {
@@ -799,7 +822,7 @@ export interface Pack {
                      * Move the access to another address
                      * POST /pack/xdsl/{packName}/addressMove/moveOffer
                      */
-                    $post(params: { acceptContracts: boolean, buildingReference?: string, contactPhone?: string, eligibilityReference: string, engageMonths?: number, floor?: string, keepCurrentNumber: boolean, meeting?: xdsleligibilityBookMeetingSlot, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[] }): Promise<pack.xdsl.AsyncTask<number>>;
+                    $post(params: { acceptContracts: boolean, building?: string, buildingReference?: string, contactPhone?: string, door?: string, eligibilityReference: string, engageMonths?: number, floor?: string, keepCurrentNumber: boolean, meeting?: xdsleligibilityBookMeetingSlot, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, residence?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[] }): Promise<pack.xdsl.AsyncTask<number>>;
                     /**
                      * Controle cache
                      */

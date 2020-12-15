@@ -4114,7 +4114,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Private Cloud Reseller offers",
+          "description": "Get informations about Dedicated Cloud Reseller offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4134,7 +4134,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Post a new Private Cloud Reseller item in your cart",
+          "description": "Post a new Dedicated Cloud Reseller item in your cart",
           "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [
@@ -4148,7 +4148,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Private Cloud Reseller offer",
+              "description": "Identifier of the Dedicated Cloud Reseller offer",
               "fullType": "string",
               "name": "planCode",
               "paramType": "body",
@@ -4192,7 +4192,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Private Cloud Reseller options",
+          "description": "Get informations about Dedicated Cloud Reseller options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4206,7 +4206,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Private Cloud Reseller you want to consult options",
+              "description": "Identifier of the Dedicated Cloud Reseller you want to consult options",
               "fullType": "string",
               "name": "planCode",
               "paramType": "query",
@@ -4220,7 +4220,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Post a new Private Cloud Reseller option in your cart",
+          "description": "Post a new Dedicated Cloud Reseller option in your cart",
           "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [
@@ -4242,7 +4242,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of a Private Cloud Reseller option offer",
+              "description": "Identifier of a Dedicated Cloud Reseller option offer",
               "fullType": "string",
               "name": "planCode",
               "paramType": "body",
@@ -4286,7 +4286,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Private Cloud Reseller Enterprise offers",
+          "description": "Get informations about Dedicated Cloud Reseller Enterprise offers",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4306,7 +4306,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Post a new Private Cloud Reseller Enterprise item in your cart",
+          "description": "Post a new Dedicated Cloud Reseller Enterprise item in your cart",
           "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [
@@ -4320,7 +4320,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Private Cloud Reseller Enterprise offer",
+              "description": "Identifier of the Dedicated Cloud Reseller Enterprise offer",
               "fullType": "string",
               "name": "planCode",
               "paramType": "body",
@@ -4364,7 +4364,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about Private Cloud Reseller Enterprise options",
+          "description": "Get informations about Dedicated Cloud Reseller Enterprise options",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -4378,7 +4378,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the Private Cloud Reseller Enterprise you want to consult options",
+              "description": "Identifier of the Dedicated Cloud Reseller Enterprise you want to consult options",
               "fullType": "string",
               "name": "planCode",
               "paramType": "query",
@@ -4392,7 +4392,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Post a new Private Cloud Reseller Enterprise option in your cart",
+          "description": "Post a new Dedicated Cloud Reseller Enterprise option in your cart",
           "httpMethod": "POST",
           "noAuthentication": true,
           "parameters": [
@@ -4414,7 +4414,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of a Private Cloud Reseller Enterprise option offer",
+              "description": "Identifier of a Dedicated Cloud Reseller Enterprise option offer",
               "fullType": "string",
               "name": "planCode",
               "paramType": "body",
@@ -6046,13 +6046,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about additional Private Cloud offer for your service",
+          "description": "Get informations about additional Dedicated Cloud offer for your service",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The private cloud service name",
+              "description": "The Dedicated Cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6066,7 +6066,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Post an additional Private Cloud option in your cart",
+          "description": "Post an additional Dedicated Cloud option in your cart",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -6088,7 +6088,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the additional private cloud offer",
+              "description": "Identifier of the additional Dedicated Cloud offer",
               "fullType": "string",
               "name": "planCode",
               "paramType": "body",
@@ -6112,7 +6112,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The private cloud service name",
+              "description": "The Dedicated Cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6149,13 +6149,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about additional Private Cloud offer for your service",
+          "description": "Get informations about additional Dedicated Cloud offer for your service",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The private cloud service name",
+              "description": "The Dedicated Cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6169,7 +6169,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Post an additional Private Cloud option in your cart",
+          "description": "Post an additional Dedicated Cloud option in your cart",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -6191,7 +6191,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the additional private cloud offer",
+              "description": "Identifier of the additional Dedicated Cloud offer",
               "fullType": "string",
               "name": "planCode",
               "paramType": "body",
@@ -6215,7 +6215,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The private cloud service name",
+              "description": "The Dedicated Cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6252,13 +6252,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about additional Private Cloud offer for your service",
+          "description": "Get informations about additional Dedicated Cloud offer for your service",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The private cloud service name",
+              "description": "The Dedicated Cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6272,7 +6272,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Post an additional Private Cloud option in your cart",
+          "description": "Post an additional Dedicated Cloud option in your cart",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -6294,7 +6294,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the additional private cloud offer",
+              "description": "Identifier of the additional Dedicated Cloud offer",
               "fullType": "string",
               "name": "planCode",
               "paramType": "body",
@@ -6318,7 +6318,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The private cloud service name",
+              "description": "The Dedicated Cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6355,13 +6355,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get informations about additional Private Cloud Enterprise offer for your service",
+          "description": "Get informations about additional Dedicated Cloud Enterprise offer for your service",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "The private cloud service name",
+              "description": "The Dedicated Cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -6375,7 +6375,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Post an additional Private Cloud Enterprise option in your cart",
+          "description": "Post an additional Dedicated Cloud Enterprise option in your cart",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -6397,7 +6397,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Identifier of the additional private cloud enterprise offer",
+              "description": "Identifier of the additional Dedicated Cloud enterprise offer",
               "fullType": "string",
               "name": "planCode",
               "paramType": "body",
@@ -6421,7 +6421,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The private cloud service name",
+              "description": "The Dedicated Cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -7236,7 +7236,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Retrieve information of Private Cloud catalog",
+          "description": "Retrieve information of Dedicated Cloud catalog",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -7264,7 +7264,7 @@ export const schema: Schema = {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
-          "description": "Retrieve information of Private Cloud CDI catalog",
+          "description": "Retrieve information of Dedicated Cloud CDI catalog",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -7292,7 +7292,7 @@ export const schema: Schema = {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
-          "description": "Retrieve information of Private Cloud Dedicated Cloud catalog",
+          "description": "Retrieve information of Dedicated Cloud catalog",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -7318,7 +7318,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Retrieve information of Hosted Private Cloud Enterprise catalog",
+          "description": "Retrieve information of Hosted Dedicated Cloud Enterprise catalog",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -7344,7 +7344,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Retrieve information of Private Cloud Reseller catalog",
+          "description": "Retrieve information of Dedicated Cloud Reseller catalog",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -7370,7 +7370,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Retrieve information of Private Cloud Reseller Enterprise catalog",
+          "description": "Retrieve information of Dedicated Cloud Reseller Enterprise catalog",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -7398,7 +7398,7 @@ export const schema: Schema = {
             "description": "Deprecated, will be removed",
             "value": "DEPRECATED"
           },
-          "description": "Retrieve information of Private Cloud SDDC catalog",
+          "description": "Retrieve information of Dedicated Cloud SDDC catalog",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -7580,6 +7580,32 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Retrieve Logs catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/logs"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
           "description": "Retrieve OVH Cloud Connect catalog",
           "httpMethod": "GET",
           "noAuthentication": true,
@@ -7606,7 +7632,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Retrieve Private Cloud catalog",
+          "description": "Retrieve Dedicated Cloud catalog",
           "httpMethod": "GET",
           "noAuthentication": true,
           "parameters": [
@@ -10321,7 +10347,7 @@ export const schema: Schema = {
       "path": "/order/dedicatedCloud/{serviceName}"
     },
     {
-      "description": "Order additional bandwidth in your Private Cloud",
+      "description": "Order additional bandwidth for your Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -10358,7 +10384,7 @@ export const schema: Schema = {
       "path": "/order/dedicatedCloud/{serviceName}/additionalBandwidth"
     },
     {
-      "description": "Order additional bandwidth in your Private Cloud",
+      "description": "Order additional bandwidth for your Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -10466,7 +10492,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Private Cloud)",
+              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Dedicated Cloud)",
               "fullType": "long",
               "name": "datacenterId",
               "paramType": "query",
@@ -10527,7 +10553,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Private Cloud)",
+              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Dedicated Cloud)",
               "fullType": "long",
               "name": "datacenterId",
               "paramType": "query",
@@ -10566,7 +10592,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Private Cloud)",
+              "description": "Datacenter where the filer will be mounted (if not precised, will be mounted in each Datacenter of this Dedicated Cloud)",
               "fullType": "long",
               "name": "datacenterId",
               "paramType": "body",
@@ -10780,7 +10806,7 @@ export const schema: Schema = {
       "path": "/order/dedicatedCloud/{serviceName}/host/{duration}"
     },
     {
-      "description": "Order an IP block for your Private Cloud",
+      "description": "Order an IP block for your Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -10857,7 +10883,7 @@ export const schema: Schema = {
       "path": "/order/dedicatedCloud/{serviceName}/ip"
     },
     {
-      "description": "Order an IP block for your Private Cloud",
+      "description": "Order an IP block for your Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -11021,7 +11047,7 @@ export const schema: Schema = {
       "path": "/order/dedicatedCloud/{serviceName}/ip/{duration}"
     },
     {
-      "description": "Enable windows templates (SPLA) in your Private Cloud",
+      "description": "Enable windows templates (SPLA) in your Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -11097,7 +11123,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "The id of a particular ressource you want to upgrade in your Private Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
+              "description": "The id of a particular ressource you want to upgrade in your Dedicated Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
               "fullType": "long",
               "name": "upgradedRessourceId",
               "paramType": "query",
@@ -11158,7 +11184,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "The id of a particular ressource you want to upgrade in your Private Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
+              "description": "The id of a particular ressource you want to upgrade in your Dedicated Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
               "fullType": "long",
               "name": "upgradedRessourceId",
               "paramType": "query",
@@ -11197,7 +11223,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "long",
-              "description": "The id of a particular ressource you want to upgrade in your Private Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
+              "description": "The id of a particular ressource you want to upgrade in your Dedicated Cloud (useless for \"all\" UpgradeRessourceTypeEnum)",
               "fullType": "long",
               "name": "upgradedRessourceId",
               "paramType": "body",
@@ -11274,7 +11300,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ip",
-              "description": "An avaiable ip from one of your Private Cloud public IP blocks",
+              "description": "An avaiable ip from one of your Dedicated Cloud public IP blocks",
               "fullType": "ip",
               "name": "firstPublicIpAddress",
               "paramType": "query",
@@ -11282,7 +11308,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ip",
-              "description": "Another avaiable ip from one of your Private Cloud public IP blocks",
+              "description": "Another avaiable ip from one of your Dedicated Cloud public IP blocks",
               "fullType": "ip",
               "name": "secondPublicIpAddress",
               "paramType": "query",
@@ -11313,7 +11339,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ip",
-              "description": "An avaiable ip from one of your Private Cloud public IP blocks",
+              "description": "An avaiable ip from one of your Dedicated Cloud public IP blocks",
               "fullType": "ip",
               "name": "firstPublicIpAddress",
               "paramType": "body",
@@ -11321,7 +11347,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ip",
-              "description": "Another avaiable ip from one of your Private Cloud public IP blocks",
+              "description": "Another avaiable ip from one of your Dedicated Cloud public IP blocks",
               "fullType": "ip",
               "name": "secondPublicIpAddress",
               "paramType": "body",
@@ -17216,7 +17242,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "The private cloud service name",
+              "description": "The Dedicated Cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17250,7 +17276,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The private cloud service name",
+              "description": "The Dedicated Cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -17302,7 +17328,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "The private cloud service name",
+              "description": "The Dedicated Cloud service name",
               "fullType": "string",
               "name": "serviceName",
               "paramType": "path",
@@ -21989,7 +22015,7 @@ export const schema: Schema = {
       }
     },
     "order.cart.DurationUnitEnum": {
-      "description": "Unit corresponding to a duration range",
+      "description": "Unit that correspond to a duration range",
       "enum": [
         "month",
         "day",
@@ -22469,7 +22495,8 @@ export const schema: Schema = {
         "renew",
         "upgrade",
         "downgrade",
-        "detach"
+        "detach",
+        "dynamic"
       ],
       "enumType": "string",
       "id": "GenericProductPricingCapacitiesEnum",
@@ -23230,7 +23257,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.pcc.Catalog": {
-      "description": "Describe a Private Cloud commercial catalog",
+      "description": "Describe a Dedicated Cloud commercial catalog",
       "id": "Catalog",
       "namespace": "order.catalog.pcc",
       "properties": {
@@ -23252,7 +23279,7 @@ export const schema: Schema = {
         },
         "commercialRanges": {
           "canBeNull": false,
-          "description": "Describes Commercial Ranges of a Private Cloud",
+          "description": "Describes Commercial Ranges of a Dedicated Cloud",
           "fullType": "order.catalog.pcc.CommercialRange[]",
           "readOnly": false,
           "required": false,
@@ -23277,13 +23304,13 @@ export const schema: Schema = {
       }
     },
     "order.catalog.pcc.CommercialRange": {
-      "description": "Describes the Commercial Range of a Private Cloud",
+      "description": "Describes the Commercial Range of a Dedicated Cloud",
       "id": "CommercialRange",
       "namespace": "order.catalog.pcc",
       "properties": {
         "datacenters": {
           "canBeNull": false,
-          "description": "Describes Private Cloud Datacenters",
+          "description": "Describes Dedicated Cloud Datacenters",
           "fullType": "order.catalog.pcc.Datacenter[]",
           "readOnly": false,
           "required": false,
@@ -23308,7 +23335,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.pcc.Datacenter": {
-      "description": "Describes a Private Cloud Datacenter",
+      "description": "Describes a Dedicated Cloud Datacenter",
       "id": "Datacenter",
       "namespace": "order.catalog.pcc",
       "properties": {
@@ -23346,7 +23373,7 @@ export const schema: Schema = {
         },
         "hypervisors": {
           "canBeNull": false,
-          "description": "Describes Private Cloud Hypervisors",
+          "description": "Describes Dedicated Cloud Hypervisors",
           "fullType": "order.catalog.pcc.Hypervisor[]",
           "readOnly": false,
           "required": false,
@@ -23363,14 +23390,14 @@ export const schema: Schema = {
         "managementFees": {
           "canBeNull": true,
           "description": "Describes the management cost of a range of Dedicated Cloud",
-          "fullType": "order.catalog.pcc.managementFees[]",
+          "fullType": "order.catalog.pcc.managementFees",
           "readOnly": false,
           "required": false,
-          "type": "order.catalog.pcc.managementFees[]"
+          "type": "order.catalog.pcc.managementFees"
         },
         "orderable": {
           "canBeNull": false,
-          "description": "Describes if a Private Cloud can be ordered on a Datacenter",
+          "description": "Describes if a Dedicated Cloud can be ordered on a Datacenter",
           "fullType": "boolean",
           "readOnly": false,
           "required": false,
@@ -23419,7 +23446,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.pcc.Host": {
-      "description": "Describes a Private Cloud Host",
+      "description": "Describes a Dedicated Cloud Host",
       "id": "Host",
       "namespace": "order.catalog.pcc",
       "properties": {
@@ -23457,7 +23484,7 @@ export const schema: Schema = {
         },
         "specifications": {
           "canBeNull": false,
-          "description": "Describes Private Cloud Host specifications",
+          "description": "Describes Dedicated Cloud Host specifications",
           "fullType": "order.catalog.pcc.HostSpecifications",
           "readOnly": false,
           "required": false,
@@ -23474,7 +23501,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.pcc.HostCpuSpecifications": {
-      "description": "Describes a Private Cloud Host CPU",
+      "description": "Describes a Dedicated Cloud Host CPU",
       "id": "HostCpuSpecifications",
       "namespace": "order.catalog.pcc",
       "properties": {
@@ -23529,7 +23556,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.pcc.HostMemorySpecifications": {
-      "description": "Describes a Private Cloud Host Memory",
+      "description": "Describes a Dedicated Cloud Host Memory",
       "id": "HostMemorySpecifications",
       "namespace": "order.catalog.pcc",
       "properties": {
@@ -23544,7 +23571,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.pcc.HostNetworkSpecifications": {
-      "description": "Describes a Private Cloud Host Network",
+      "description": "Describes a Dedicated Cloud Host Network",
       "id": "HostNetworkSpecifications",
       "namespace": "order.catalog.pcc",
       "properties": {
@@ -23567,7 +23594,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.pcc.HostSpecifications": {
-      "description": "Describes a Private Cloud Host Hardware",
+      "description": "Describes a Dedicated Cloud Host Hardware",
       "id": "HostSpecifications",
       "namespace": "order.catalog.pcc",
       "properties": {
@@ -23598,13 +23625,13 @@ export const schema: Schema = {
       }
     },
     "order.catalog.pcc.Hypervisor": {
-      "description": "Describes a Private Cloud Hypervisor",
+      "description": "Describes a Dedicated Cloud Hypervisor",
       "id": "Hypervisor",
       "namespace": "order.catalog.pcc",
       "properties": {
         "hosts": {
           "canBeNull": false,
-          "description": "Describes Private Cloud Hosts",
+          "description": "Describes Dedicated Cloud Hosts",
           "fullType": "order.catalog.pcc.Host[]",
           "readOnly": false,
           "required": false,
@@ -23620,7 +23647,7 @@ export const schema: Schema = {
         },
         "options": {
           "canBeNull": false,
-          "description": "Describes Private Cloud Options",
+          "description": "Describes Dedicated Cloud Options",
           "fullType": "order.catalog.pcc.Option[]",
           "readOnly": false,
           "required": false,
@@ -23636,7 +23663,7 @@ export const schema: Schema = {
         },
         "servicePacks": {
           "canBeNull": false,
-          "description": "Describes Private Cloud Service Packs",
+          "description": "Describes Dedicated Cloud Service Packs",
           "fullType": "order.catalog.pcc.ServicePack[]",
           "readOnly": false,
           "required": false,
@@ -23652,7 +23679,7 @@ export const schema: Schema = {
         },
         "storages": {
           "canBeNull": false,
-          "description": "Describes Private Cloud Storages",
+          "description": "Describes Dedicated Cloud Storages",
           "fullType": "order.catalog.pcc.Storage[]",
           "readOnly": false,
           "required": false,
@@ -23669,7 +23696,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.pcc.Option": {
-      "description": "Describes a Private Cloud Option",
+      "description": "Describes a Dedicated Cloud Option",
       "id": "Option",
       "namespace": "order.catalog.pcc",
       "properties": {
@@ -23724,7 +23751,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.pcc.ServicePack": {
-      "description": "Describes a Private Cloud Service Pack",
+      "description": "Describes a Dedicated Cloud Service Pack",
       "id": "ServicePack",
       "namespace": "order.catalog.pcc",
       "properties": {
@@ -23763,7 +23790,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.pcc.ServicePackOption": {
-      "description": "Describes a Private Cloud service pack option",
+      "description": "Describes a Dedicated Cloud service pack option",
       "id": "ServicePackOption",
       "namespace": "order.catalog.pcc",
       "properties": {
@@ -23794,7 +23821,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.pcc.Storage": {
-      "description": "Describes a Private Cloud Storage",
+      "description": "Describes a Dedicated Cloud Storage",
       "id": "Storage",
       "namespace": "order.catalog.pcc",
       "properties": {
@@ -23832,7 +23859,7 @@ export const schema: Schema = {
         },
         "specifications": {
           "canBeNull": false,
-          "description": "Describes Private Cloud Storage specifications",
+          "description": "Describes Dedicated Cloud Storage specifications",
           "fullType": "order.catalog.pcc.StorageSpecifications",
           "readOnly": false,
           "required": false,
@@ -23841,7 +23868,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.pcc.StorageSpecifications": {
-      "description": "Describes a Private Cloud Storage",
+      "description": "Describes a Dedicated Cloud Storage",
       "id": "StorageSpecifications",
       "namespace": "order.catalog.pcc",
       "properties": {
@@ -23887,7 +23914,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.privateCloud.Capabilities": {
-      "description": "Describes capabilities of a Private Cloud type of service",
+      "description": "Describes capabilities of a Dedicated Cloud type of service",
       "id": "Capabilities",
       "namespace": "order.catalog.privateCloud",
       "properties": {
@@ -24005,7 +24032,7 @@ export const schema: Schema = {
       }
     },
     "order.catalog.privateCloud.Catalog": {
-      "description": "Describe a Private Cloud commercial catalog",
+      "description": "Describe a Dedicated Cloud commercial catalog",
       "id": "Catalog",
       "namespace": "order.catalog.privateCloud",
       "properties": {
@@ -24068,13 +24095,13 @@ export const schema: Schema = {
       }
     },
     "order.catalog.privateCloud.Zone": {
-      "description": "Describe a Private Cloud zone",
+      "description": "Describe a Dedicated Cloud zone",
       "id": "Zone",
       "namespace": "order.catalog.privateCloud",
       "properties": {
         "cityName": {
           "canBeNull": false,
-          "description": "City where Private Cloud instance will be delivered",
+          "description": "City where Dedicated Cloud instance will be delivered",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -24082,7 +24109,7 @@ export const schema: Schema = {
         },
         "country": {
           "canBeNull": false,
-          "description": "Country where Private Cloud instance will be delivered",
+          "description": "Country where Dedicated Cloud instance will be delivered",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -24090,7 +24117,7 @@ export const schema: Schema = {
         },
         "defaultHypervisor": {
           "canBeNull": false,
-          "description": "Default hypervisor for this Private Cloud zone",
+          "description": "Default hypervisor for this Dedicated Cloud zone",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -24098,7 +24125,7 @@ export const schema: Schema = {
         },
         "defaultVersion": {
           "canBeNull": false,
-          "description": "Default version for this Private Cloud zone",
+          "description": "Default version for this Dedicated Cloud zone",
           "fullType": "string",
           "readOnly": false,
           "required": false,

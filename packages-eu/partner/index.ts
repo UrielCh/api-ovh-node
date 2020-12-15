@@ -11,165 +11,82 @@ export namespace nichandle {
      */
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
 }
-export namespace partner {
+export namespace partner2 {
     /**
      * Acceptance status
-     * type fullname: partner.AcceptanceStatusEnum
+     * type fullname: partner2.AcceptanceStatusEnum
      */
     export type AcceptanceStatusEnum = "Open" | "Rejected" | "RegisteredQualified" | "AdvancedQualified" | "Registered" | "Advanced" | "AdvancedHandOperated"
     /**
      * Account Entity
-     * interface fullName: partner.Account.Account
+     * interface fullName: partner2.Account.Account
      */
     export interface Account {
-        city: string;
-        country: nichandle.CountryEnum;
+        city?: string;
+        companyTurnover?: number;
+        country?: nichandle.CountryEnum;
         name: string;
+        numberOfEmployees?: partner2.employeesNumberEnum;
+        partnerType?: partner2.partnerTypeEnum;
+        yearEstablished?: string;
     }
     /**
      * Area of expertise
-     * type fullname: partner.AreaOfExpertiseEnum
+     * type fullname: partner2.AreaOfExpertiseEnum
      */
     export type AreaOfExpertiseEnum = "HPC" | "DC" | "PC" | "Orchestration" | "BigData" | "VPS" | "SecurityCertif" | "DomainName" | "EmailMsSolution" | "WH" | "Connectivity" | "VoIP"
     /**
      * Contact Entity
-     * interface fullName: partner.Contact.Contact
+     * interface fullName: partner2.Contact.Contact
      */
     export interface Contact {
         email: string;
         firstName: string;
+        jobTitle?: string;
         lastName: string;
         phone: string;
-        position: partner.PositionEnum;
+        position: partner2.PositionEnum;
     }
     /**
      * Partner Entity
-     * interface fullName: partner.Partner.Partner
+     * interface fullName: partner2.Partner.Partner
      */
     export interface Partner {
-        acceptanceStatus: partner.AcceptanceStatusEnum;
-        account: partner.Account;
-        areaOfExpertise: partner.AreaOfExpertiseEnum[];
-        contact: partner.Contact;
-        partnersProgramReason: string;
+        acceptanceStatus?: partner2.AcceptanceStatusEnum;
+        account: partner2.Account;
+        areaOfExpertise?: partner2.AreaOfExpertiseEnum[];
+        contact: partner2.Contact;
+        partnersProgramReason?: string;
+        partnership: partner2.PartnerShip;
+        salesProjection?: number;
+    }
+    /**
+     * Partner ship evolution
+     * interface fullName: partner2.PartnerShip.PartnerShip
+     */
+    export interface PartnerShip {
+        areaOfExpertise?: partner2.AreaOfExpertiseEnum[];
+        emailCommunication: boolean;
+        partnersProgramReason?: string;
+        salesGrowthOpportunities?: string;
         salesProjection: number;
+        supportAgreementStatement: boolean;
     }
     /**
      * Job positions
-     * type fullname: partner.PositionEnum
+     * type fullname: partner2.PositionEnum
      */
     export type PositionEnum = "ITSysAdmin" | "ITDevops" | "ITOther" | "Marketing" | "Sales" | "Purchasing" | "RD" | "AF" | "HR" | "Production" | "LC" | "Other"
-    export namespace form {
-        /**
-         * Field
-         * interface fullName: partner.form.Field.Field
-         */
-        export interface Field {
-            fieldConfig: partner.form.field.Config;
-        }
-        /**
-         * Partner Form Schema
-         * interface fullName: partner.form.Schema.Schema
-         */
-        export interface Schema {
-            account: partner.form.schema.Account;
-            areaOfExpertise: partner.form.schema.AreaOfExpertise;
-            contact: partner.form.schema.Contact;
-            partnersProgramReason: partner.form.Field;
-            salesProjection: partner.form.Field;
-        }
-        export namespace field {
-            /**
-             * Field configuration
-             * interface fullName: partner.form.field.Config.Config
-             */
-            export interface Config {
-                label: string;
-                section: string;
-                type: string;
-            }
-        }
-        export namespace schema {
-            /**
-             * Partner account schema
-             * interface fullName: partner.form.schema.Account.Account
-             */
-            export interface Account {
-                city: partner.form.Field;
-                country: partner.form.schema.account.Country;
-                name: partner.form.Field;
-            }
-            /**
-             * Partner area of expertise
-             * interface fullName: partner.form.schema.AreaOfExpertise.AreaOfExpertise
-             */
-            export interface AreaOfExpertise {
-                fieldConfig: partner.form.field.Config;
-                options: partner.form.schema.areaOfExpertise.Option[];
-            }
-            /**
-             * Partner contact schema
-             * interface fullName: partner.form.schema.Contact.Contact
-             */
-            export interface Contact {
-                email: partner.form.Field;
-                firstName: partner.form.Field;
-                lastName: partner.form.Field;
-                phone: partner.form.Field;
-                position: partner.form.schema.contact.Position;
-            }
-            export namespace account {
-                /**
-                 * Partner account country
-                 * interface fullName: partner.form.schema.account.Country.Country
-                 */
-                export interface Country {
-                    fieldConfig: partner.form.field.Config;
-                    options: partner.form.schema.account.country.Option[];
-                }
-                export namespace country {
-                    /**
-                     * Partner country options
-                     * interface fullName: partner.form.schema.account.country.Option.Option
-                     */
-                    export interface Option {
-                        text: string;
-                        value: nichandle.CountryEnum;
-                    }
-                }
-            }
-            export namespace areaOfExpertise {
-                /**
-                 * Partner area of expertise option
-                 * interface fullName: partner.form.schema.areaOfExpertise.Option.Option
-                 */
-                export interface Option {
-                    text: string;
-                    value: partner.AreaOfExpertiseEnum;
-                }
-            }
-            export namespace contact {
-                /**
-                 * Partner contact position
-                 * interface fullName: partner.form.schema.contact.Position.Position
-                 */
-                export interface Position {
-                    fieldConfig: partner.form.field.Config;
-                    options: partner.form.schema.contact.position.Option[];
-                }
-                export namespace position {
-                    /**
-                     * Partner position options
-                     * interface fullName: partner.form.schema.contact.position.Option.Option
-                     */
-                    export interface Option {
-                        text: string;
-                        value: partner.PositionEnum;
-                    }
-                }
-            }
-        }
-    }
+    /**
+     * employeesNumber
+     * type fullname: partner2.employeesNumberEnum
+     */
+    export type employeesNumberEnum = "1Or2" | "3To5" | "6To9" | "10To19" | "20To49" | "50To99" | "100To199" | "200To249" | "250To499" | "500to999" | "1000to1999" | "2000to4999" | "5000to9999" | "over10000"
+    /**
+     * partner type
+     * type fullname: partner2.partnerTypeEnum
+     */
+    export type partnerTypeEnum = "valueAddedReseller" | "systemsIntegrator" | "iaasProvider" | "managedServiceProvider" | "softwareEditor" | "consultingCompany" | "trainingCompany" | "webAgency" | "telecomOperators" | "other"
 }
 
 /**
@@ -187,27 +104,14 @@ export interface Partner {
      * Get partner status
      * GET /partner
      */
-    $get(): Promise<partner.Partner>;
+    $get(): Promise<partner2.Partner>;
     /**
      * Register as a partner
      * POST /partner
      */
-    $post(params: { acceptanceStatus?: partner.AcceptanceStatusEnum, account: partner.Account, areaOfExpertise: partner.AreaOfExpertiseEnum[], contact: partner.Contact, partnersProgramReason: string, salesProjection: number }): Promise<void>;
+    $post(params: { acceptanceStatus?: partner2.AcceptanceStatusEnum, account: partner2.Account, areaOfExpertise?: partner2.AreaOfExpertiseEnum[], contact: partner2.Contact, partnersProgramReason?: string, partnership?: partner2.PartnerShip, salesProjection?: number }): Promise<void>;
     /**
      * Controle cache
      */
     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-    form: {
-        schema: {
-            /**
-             * Get partner form schema
-             * GET /partner/form/schema
-             */
-            $get(): Promise<partner.form.Schema>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-        }
-    }
 }

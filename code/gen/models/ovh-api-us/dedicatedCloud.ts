@@ -23,7 +23,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud"
     },
     {
-      "description": "Private Cloud",
+      "description": "Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -86,7 +86,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Networks allowed to access to this Private Cloud management interface",
+          "description": "Networks allowed to access to this Dedicated Cloud management interface",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -141,14 +141,14 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/allowedNetwork"
     },
     {
-      "description": "Network allowed to connect to the Private Cloud management interface",
+      "description": "Network allowed to connect to the Dedicated Cloud management interface",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Remove this network from your Private Cloud",
+          "description": "Remove this network from your Dedicated Cloud",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -288,7 +288,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task"
     },
     {
-      "description": "Operation on a Private Cloud component",
+      "description": "Operation on a Dedicated Cloud component",
       "operations": [
         {
           "apiStatus": {
@@ -430,7 +430,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/resetTaskState"
     },
     {
-      "description": "The features available in your Private Cloud",
+      "description": "The features available in your Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -463,13 +463,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Update this Private Cloud properties.",
+          "description": "Update this Dedicated Cloud properties.",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "string",
-              "description": "Description of your Private Cloud",
+              "description": "Description of your Dedicated Cloud",
               "fullType": "string",
               "name": "description",
               "paramType": "body",
@@ -485,7 +485,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "dedicatedCloud.UserAccessPolicyEnum",
-              "description": "Access policy of your Private Cloud: opened to every IPs or filtered",
+              "description": "Access policy of your Dedicated Cloud: opened to each IP or filtered",
               "fullType": "dedicatedCloud.UserAccessPolicyEnum",
               "name": "userAccessPolicy",
               "paramType": "body",
@@ -493,7 +493,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "The maximum amount of connected users allowed on the Private Cloud management interface",
+              "description": "The maximum amount of connected users allowed on the Dedicated Cloud management interface",
               "fullType": "long",
               "name": "userLimitConcurrentSession",
               "paramType": "body",
@@ -501,7 +501,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "dedicatedCloud.UserLogoutPolicyEnum",
-              "description": "Logout policy of your Private Cloud",
+              "description": "Logout policy of your Dedicated Cloud",
               "fullType": "dedicatedCloud.UserLogoutPolicyEnum",
               "name": "userLogoutPolicy",
               "paramType": "body",
@@ -509,7 +509,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "long",
-              "description": "The timeout (in seconds) for the user sessions on the Private Cloud management interface. 0 value disable the timeout",
+              "description": "The timeout (in seconds) for the user sessions on the Dedicated Cloud management interface. 0 value disables the timeout",
               "fullType": "long",
               "name": "userSessionTimeout",
               "paramType": "body",
@@ -537,7 +537,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get the name of the commercial ranges compliant with your Private Cloud",
+          "description": "Get the name of the commercial ranges compliant with your Dedicated Cloud",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -563,7 +563,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get the name of the commercial ranges orderable in your Private Cloud",
+          "description": "Get the name of the commercial ranges orderable for your Dedicated Cloud",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -647,7 +647,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Datacenters associated with this Private Cloud",
+          "description": "Datacenters associated with this Dedicated Cloud",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -667,7 +667,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Add a new Datacenter in your Private Cloud",
+          "description": "Add a new Datacenter in your Dedicated Cloud",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -702,14 +702,14 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter"
     },
     {
-      "description": "Private Cloud Datacenter",
+      "description": "Dedicated Cloud Datacenter",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Remove this Datacenter from your Private Cloud. (It has to be empty in order to be removable)",
+          "description": "Remove this Datacenter from your Dedicated Cloud. (It has to be empty in order to be removable)",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -874,7 +874,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Edit the backup on a Private Cloud",
+          "description": "Edit the backup on a Dedicated Cloud",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -972,7 +972,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Disable backup solution on a Private Cloud",
+          "description": "Disable backup solution on a Dedicated Cloud",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -1009,7 +1009,7 @@ export const schema: Schema = {
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
           },
-          "description": "Enable backup solution on a Private Cloud",
+          "description": "Enable backup solution on a Dedicated Cloud",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -1212,7 +1212,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "ip",
-              "description": "Your primary OVH Private Cloud public IP for the secured replication data tunnel endpoint",
+              "description": "Your primary OVH Dedicated Cloud public IP for the secured replication data tunnel endpoint",
               "fullType": "ip",
               "name": "primaryEndpointIp",
               "paramType": "body",
@@ -1228,7 +1228,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ip",
-              "description": "Your secondary OVH Private Cloud public IP for the secured replication data tunnel endpoint",
+              "description": "Your secondary OVH Dedicated Cloud public IP for the secured replication data tunnel endpoint",
               "fullType": "ip",
               "name": "secondaryEndpointIp",
               "paramType": "body",
@@ -1236,7 +1236,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Your secondary OVH Private Cloud",
+              "description": "Your secondary OVH Dedicated Cloud",
               "fullType": "string",
               "name": "secondaryServiceName",
               "paramType": "body",
@@ -1379,7 +1379,7 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
-          "description": "Configure vpn between your OVH Private Cloud and your onsite infrastructure",
+          "description": "Configure vpn between your OVH Dedicated Cloud and your onsite infrastructure",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -1524,13 +1524,13 @@ export const schema: Schema = {
             "replacement": "/order/cart/{cartId}/privateCloud",
             "value": "DEPRECATED"
           },
-          "description": "Enable Zerto replication between your OVH Private Cloud and your onsite infrastructure",
+          "description": "Enable Zerto replication between your OVH Dedicated Cloud and your onsite infrastructure",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "ipBlock",
-              "description": "Internal zerto subnet for your OVH Private Cloud (ip/cidr)",
+              "description": "Internal zerto subnet for your OVH Dedicated Cloud (ip/cidr)",
               "fullType": "ipBlock",
               "name": "localVraNetwork",
               "paramType": "body",
@@ -1538,7 +1538,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "ip",
-              "description": "Your OVH Private Cloud public IP for the secured replication data tunnel endpoint",
+              "description": "Your OVH Dedicated Cloud public IP for the secured replication data tunnel endpoint",
               "fullType": "ip",
               "name": "ovhEndpointIp",
               "paramType": "body",
@@ -1609,7 +1609,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer"
     },
     {
-      "description": "Private Cloud Filer",
+      "description": "Dedicated Cloud Filer",
       "operations": [
         {
           "apiStatus": {
@@ -1753,7 +1753,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Remove the filer from your Private Cloud.",
+          "description": "Remove the filer from your Dedicated Cloud.",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -1846,7 +1846,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task"
     },
     {
-      "description": "Operation on a Private Cloud component",
+      "description": "Operation on a Dedicated Cloud component",
       "operations": [
         {
           "apiStatus": {
@@ -2046,7 +2046,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host"
     },
     {
-      "description": "Private Cloud Host",
+      "description": "Dedicated Cloud Host",
       "operations": [
         {
           "apiStatus": {
@@ -2095,7 +2095,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Add a spare host to your Private Cloud.",
+          "description": "Add a spare host to your Dedicated Cloud.",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -2232,7 +2232,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Remove the host from your Private Cloud.",
+          "description": "Remove the host from your Dedicated Cloud.",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -2501,7 +2501,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task"
     },
     {
-      "description": "Operation on a Private Cloud component",
+      "description": "Operation on a Dedicated Cloud component",
       "operations": [
         {
           "apiStatus": {
@@ -2674,7 +2674,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available filers in a given Private Cloud Datacenter",
+          "description": "List available filers in a given Dedicated Cloud Datacenter",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2708,7 +2708,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List available hosts in a given Private Cloud Datacenter",
+          "description": "List available hosts in a given Dedicated Cloud Datacenter",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -2827,7 +2827,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly"
     },
     {
-      "description": "Private management gateway deployed in your Private Cloud to block all public access",
+      "description": "Private management gateway deployed in your Dedicated Cloud to block all public access",
       "operations": [
         {
           "apiStatus": {
@@ -2868,7 +2868,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Remove the private gateway in your Private Cloud and open public access.",
+          "description": "Remove the private gateway in your Dedicated Cloud and open public access.",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -2902,7 +2902,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Deploy a private gateway on your Private Cloud to block all public access",
+          "description": "Deploy a private gateway on your Dedicated Cloud to block all public access",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -2924,7 +2924,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
-              "description": "Portgroup in your Private Cloud used to deploy the private gateway",
+              "description": "Portgroup in your Dedicated Cloud used to deploy the private gateway",
               "fullType": "string",
               "name": "portgroup",
               "paramType": "body",
@@ -3003,7 +3003,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task"
     },
     {
-      "description": "Operation on a Private Cloud component",
+      "description": "Operation on a Dedicated Cloud component",
       "operations": [
         {
           "apiStatus": {
@@ -3179,7 +3179,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm"
     },
     {
-      "description": "Private Cloud Virtual Machine",
+      "description": "Dedicated Cloud Virtual Machine",
       "operations": [
         {
           "apiStatus": {
@@ -3221,7 +3221,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}"
     },
     {
-      "description": "Private Cloud Backup Job",
+      "description": "Dedicated Cloud Backup Job",
       "operations": [
         {
           "apiStatus": {
@@ -3456,7 +3456,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints"
     },
     {
-      "description": "Private Cloud Restore Point",
+      "description": "Dedicated Cloud Restore Point",
       "operations": [
         {
           "apiStatus": {
@@ -3770,7 +3770,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/restoreBackup"
     },
     {
-      "description": "Private Cloud Active Directory Federation option",
+      "description": "Dedicated Cloud Active Directory Federation option",
       "operations": [
         {
           "apiStatus": {
@@ -3803,7 +3803,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Active Directories linked to this Private Cloud",
+          "description": "Active Directories linked to this Dedicated Cloud",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -3906,7 +3906,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/federation/activeDirectory"
     },
     {
-      "description": "Private Cloud federation option access network",
+      "description": "Dedicated Cloud federation option access network",
       "operations": [
         {
           "apiStatus": {
@@ -4075,7 +4075,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Filers mounted on all Datacenters of your Private Cloud Vsphere",
+          "description": "Filers mounted on all Datacenters of your Dedicated Cloud Vsphere",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -4094,7 +4094,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/filer"
     },
     {
-      "description": "Private Cloud Filer",
+      "description": "Dedicated Cloud Filer",
       "operations": [
         {
           "apiStatus": {
@@ -4214,7 +4214,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Remove the filer from your Private Cloud.",
+          "description": "Remove the filer from your Dedicated Cloud.",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -4291,7 +4291,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/filer/{filerId}/task"
     },
     {
-      "description": "Operation on a Private Cloud component",
+      "description": "Operation on a Dedicated Cloud component",
       "operations": [
         {
           "apiStatus": {
@@ -4440,7 +4440,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get filtered tasks associated with this Private Cloud",
+          "description": "Get filtered tasks associated with this Dedicated Cloud",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -4587,7 +4587,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/globalTasks"
     },
     {
-      "description": "Private Cloud VMware Hybrid Cloud Extension option",
+      "description": "Dedicated Cloud VMware Hybrid Cloud Extension option",
       "operations": [
         {
           "apiStatus": {
@@ -4726,7 +4726,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/hcx/enable"
     },
     {
-      "description": "The Private Cloud Hds option",
+      "description": "The Dedicated Cloud Hds option",
       "operations": [
         {
           "apiStatus": {
@@ -4868,7 +4868,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/hds/enable"
     },
     {
-      "description": "The Private Cloud Hipaa option",
+      "description": "The Dedicated Cloud Hipaa option",
       "operations": [
         {
           "apiStatus": {
@@ -5017,7 +5017,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Ip Blocks attached to this Private Cloud",
+          "description": "Ip Blocks attached to this Dedicated Cloud",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -5036,7 +5036,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/ip"
     },
     {
-      "description": "IP Blocks associated with a Private Cloud",
+      "description": "IP Blocks associated with a Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -5154,7 +5154,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/ip/{network}/task"
     },
     {
-      "description": "Operation on a Private Cloud component",
+      "description": "Operation on a Dedicated Cloud component",
       "operations": [
         {
           "apiStatus": {
@@ -5303,7 +5303,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get the new Prices for your Private Cloud",
+          "description": "Get the new Prices for your Dedicated Cloud",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -5322,7 +5322,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/newPrices"
     },
     {
-      "description": "The Private Cloud Nsx option",
+      "description": "The Dedicated Cloud Nsx option",
       "operations": [
         {
           "apiStatus": {
@@ -5497,7 +5497,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Order a new hourly Filer mounted in every Datacenter of a given Private Cloud",
+          "description": "Order a new hourly Filer mounted in every Datacenter of a given Dedicated Cloud",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -5531,7 +5531,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get the current password policy for your Private Cloud",
+          "description": "Get the current password policy for your Dedicated Cloud",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -5550,7 +5550,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/passwordPolicy"
     },
     {
-      "description": "The Private Cloud PCI-DSS option",
+      "description": "The Dedicated Cloud PCI-DSS option",
       "operations": [
         {
           "apiStatus": {
@@ -5725,7 +5725,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Robots that can run on this Private Cloud",
+          "description": "Robots that can run on this Dedicated Cloud",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -5744,7 +5744,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/robot"
     },
     {
-      "description": "The robots used in Private Cloud",
+      "description": "The robots used in Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -5864,7 +5864,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Service Pack compliant with the current Private Cloud",
+          "description": "Service Pack compliant with the current Dedicated Cloud",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -5883,7 +5883,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/servicePacks"
     },
     {
-      "description": "List of Service Pack compliant with the current Private Cloud",
+      "description": "List of Service Packs compliant with the current Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -5924,7 +5924,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Tasks associated with this Private Cloud",
+          "description": "Tasks associated with this Dedicated Cloud",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -5959,7 +5959,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/task"
     },
     {
-      "description": "Operation on a Private Cloud component",
+      "description": "Operation on a Dedicated Cloud component",
       "operations": [
         {
           "apiStatus": {
@@ -6110,7 +6110,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Ip allowed to bypass the two factor authentication on this Private Cloud management interface",
+          "description": "Ip allowed to bypass the two factor authentication on this Dedicated Cloud management interface",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -6234,7 +6234,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Change Private Cloud Two facter authentication whitelist properties",
+          "description": "Change Dedicated Cloud Two factor authentication whitelist properties",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -6339,7 +6339,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Private Cloud users",
+          "description": "Dedicated Cloud users",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -6367,7 +6367,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Create a new User in your Private Cloud",
+          "description": "Create a new User in your Dedicated Cloud",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -6429,7 +6429,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "dedicatedCloud.right.NetworkRoleEnum",
-              "description": "Determine how this user will be able to act on this Private Cloud v(x)Lans",
+              "description": "Determine how this user will be able to act on this Dedicated Cloud v(x)Lans",
               "fullType": "dedicatedCloud.right.NetworkRoleEnum",
               "name": "networkRole",
               "paramType": "body",
@@ -6445,7 +6445,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "password",
-              "description": "The user password. It must fits your Private Cloud password policy. If this field is empty, a random password will be generated and sent by email.",
+              "description": "The user password. It must fits your Dedicated Cloud password policy. If this field is empty, a random password will be generated and sent by email.",
               "fullType": "password",
               "name": "password",
               "paramType": "body",
@@ -6469,7 +6469,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "dedicatedCloud.right.RightEnum",
-              "description": "Determine what kind of access the User will have in all Datacenters of your Private Cloud (default is disabled)",
+              "description": "Determine what kind of access the User will have in all Datacenters of your Dedicated Cloud (default is disabled)",
               "fullType": "dedicatedCloud.right.RightEnum",
               "name": "right",
               "paramType": "body",
@@ -6485,7 +6485,7 @@ export const schema: Schema = {
             },
             {
               "dataType": "dedicatedCloud.right.VmNetworkRoleEnum",
-              "description": "Determine how this user will be able to act on this Private Cloud VM Network",
+              "description": "Determine how this user will be able to act on this Dedicated Cloud VM Network",
               "fullType": "dedicatedCloud.right.VmNetworkRoleEnum",
               "name": "vmNetworkRole",
               "paramType": "body",
@@ -6506,14 +6506,14 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/user"
     },
     {
-      "description": "Private Cloud User",
+      "description": "Dedicated Cloud User",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Remove a given user from your Private Cloud",
+          "description": "Remove a given user from your Dedicated Cloud",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -6575,13 +6575,13 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Change Private Cloud user password",
+          "description": "Change Dedicated Cloud user password",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "password",
-              "description": "New password for this Private Cloud user. It must fits your Private Cloud password policy. If this field is empty, a random password will be generated and sent by email.",
+              "description": "New password for this Dedicated Cloud user. It must fit your Dedicated Cloud password policy. If this field is empty, a random password will be generated and sent by email.",
               "fullType": "password",
               "name": "password",
               "paramType": "body",
@@ -6617,7 +6617,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Change Private Cloud user properties",
+          "description": "Change Dedicated Cloud user properties",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -6781,7 +6781,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Disable the given Private Cloud user ",
+          "description": "Disable the given Dedicated Cloud user ",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -6815,7 +6815,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Enable the given Private Cloud user ",
+          "description": "Enable the given Dedicated Cloud user ",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -6911,7 +6911,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Add a new object right to user in datacenter on Private Cloud",
+          "description": "Add a new object right to user in datacenter on Dedicated Cloud",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -6970,14 +6970,14 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/objectRight"
     },
     {
-      "description": "Private Cloud User object right",
+      "description": "Dedicated Cloud User object right",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Remove an object right from user in datacenter on Private Cloud",
+          "description": "Remove an object right from user in datacenter on Dedicated Cloud",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -7082,7 +7082,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/right"
     },
     {
-      "description": "Private Cloud User right",
+      "description": "Dedicated Cloud User right",
       "operations": [
         {
           "apiStatus": {
@@ -7217,7 +7217,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/user/{userId}/task"
     },
     {
-      "description": "Operation on a Private Cloud component",
+      "description": "Operation on a Dedicated Cloud component",
       "operations": [
         {
           "apiStatus": {
@@ -7385,7 +7385,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/vcenterVersion"
     },
     {
-      "description": "The Private Cloud Vendor option",
+      "description": "The Dedicated Cloud Vendor option",
       "operations": [
         {
           "apiStatus": {
@@ -7486,7 +7486,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Private Cloud vlans",
+          "description": "Dedicated Cloud vlans",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -7505,7 +7505,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/vlan"
     },
     {
-      "description": "Private Cloud Vlan",
+      "description": "Dedicated Cloud Vlan",
       "operations": [
         {
           "apiStatus": {
@@ -7539,7 +7539,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/vlan/{vlanId}"
     },
     {
-      "description": "Private Cloud VM Encryption option",
+      "description": "Dedicated Cloud VM Encryption option",
       "operations": [
         {
           "apiStatus": {
@@ -7572,7 +7572,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "VM Encryption KMS linked to this Private Cloud",
+          "description": "VM Encryption KMS linked to this Dedicated Cloud",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -7635,7 +7635,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/vmEncryption/kms"
     },
     {
-      "description": "Private Cloud VM Encryption option access network",
+      "description": "Dedicated Cloud VM Encryption option access network",
       "operations": [
         {
           "apiStatus": {
@@ -7754,7 +7754,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "This Private Cloud vrack",
+          "description": "This Dedicated Cloud vrack",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -7835,7 +7835,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/vrack/{vrack}"
     },
     {
-      "description": "The Private Cloud vRealize Operations option",
+      "description": "The Dedicated Cloud vRealize Operations option",
       "operations": [
         {
           "apiStatus": {
@@ -7994,7 +7994,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/commercialRange"
     },
     {
-      "description": "The commercial ranges actually available in your Private Cloud",
+      "description": "The commercial ranges actually available for your Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -8037,7 +8037,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/location"
     },
     {
-      "description": "PccZones actually available in Private Cloud",
+      "description": "PccZones actually available in Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -8089,7 +8089,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/location/{pccZone}/hostProfile"
     },
     {
-      "description": "Host profiles actually available in Private Cloud",
+      "description": "Host profiles actually available in Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -8149,7 +8149,7 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/location/{pccZone}/hypervisor"
     },
     {
-      "description": "Hypervisors actually available in Private Cloud",
+      "description": "Hypervisors actually available in Dedicated Cloud",
       "operations": [
         {
           "apiStatus": {
@@ -8610,7 +8610,7 @@ export const schema: Schema = {
       "namespace": "dedicated"
     },
     "dedicatedCloud.AllowedNetwork": {
-      "description": "Network allowed to connect to the Private Cloud management interface",
+      "description": "Network allowed to connect to the Dedicated Cloud management interface",
       "id": "AllowedNetwork",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -8760,7 +8760,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.AutoScaleVirtual": {
-      "description": "Private Cloud AutoScale option",
+      "description": "Dedicated Cloud AutoScale option",
       "id": "AutoScaleVirtual",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -8886,7 +8886,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.BackupJob": {
-      "description": "Private Cloud Backup Job",
+      "description": "Dedicated Cloud Backup Job",
       "id": "BackupJob",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -8984,13 +8984,13 @@ export const schema: Schema = {
       "namespace": "dedicatedCloud"
     },
     "dedicatedCloud.Capabilities": {
-      "description": "The features available in your Private Cloud",
+      "description": "The features available in your Dedicated Cloud",
       "id": "Capabilities",
       "namespace": "dedicatedCloud",
       "properties": {
         "addRessourceRightStatus": {
           "canBeNull": false,
-          "description": "canAddRessource right order status in this Private Cloud",
+          "description": "canAddRessource right order status in this Dedicated Cloud",
           "fullType": "dedicatedCloud.capabilities.FeatureStatusEnum",
           "readOnly": true,
           "required": false,
@@ -8998,7 +8998,7 @@ export const schema: Schema = {
         },
         "backupStatus": {
           "canBeNull": false,
-          "description": "Backup feature order status for this Private Cloud",
+          "description": "Backup feature order status for this Dedicated Cloud",
           "fullType": "dedicatedCloud.capabilities.FeatureStatusEnum",
           "readOnly": true,
           "required": false,
@@ -9006,7 +9006,7 @@ export const schema: Schema = {
         },
         "canAddUser": {
           "canBeNull": false,
-          "description": "if true user can be added in this Private Cloud (with POST /dedicatedCloud/{serviceName}/user",
+          "description": "if true user can be added in this Dedicated Cloud (with POST /dedicatedCloud/{serviceName}/user",
           "fullType": "boolean",
           "readOnly": true,
           "required": false,
@@ -9014,7 +9014,7 @@ export const schema: Schema = {
         },
         "fullAdminRoUserStatus": {
           "canBeNull": false,
-          "description": "fullAdminRO user right order status in this Private Cloud",
+          "description": "fullAdminRO user right order status in this Dedicated Cloud",
           "fullType": "dedicatedCloud.capabilities.FeatureStatusEnum",
           "readOnly": true,
           "required": false,
@@ -9022,7 +9022,7 @@ export const schema: Schema = {
         },
         "nexus1000vStatus": {
           "canBeNull": false,
-          "description": "Nexus 1000v feature order status in this Private Cloud ?",
+          "description": "Nexus 1000v feature order status in this Dedicated Cloud ?",
           "fullType": "dedicatedCloud.capabilities.FeatureStatusEnum",
           "readOnly": true,
           "required": false,
@@ -9030,7 +9030,7 @@ export const schema: Schema = {
         },
         "upgradable": {
           "canBeNull": false,
-          "description": "Hypervisor upgrade order status in this Private Cloud (upgrade with POST /dedicatedCloud/{serviceName}/upgradeHypervisor)",
+          "description": "Hypervisor upgrade order status in this Dedicated Cloud (upgrade with POST /dedicatedCloud/{serviceName}/upgradeHypervisor)",
           "fullType": "boolean",
           "readOnly": true,
           "required": false,
@@ -9047,7 +9047,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.Cluster": {
-      "description": "Private Cloud Cluster",
+      "description": "Dedicated Cloud Cluster",
       "id": "Cluster",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -9198,7 +9198,7 @@ export const schema: Schema = {
       "namespace": "dedicatedCloud"
     },
     "dedicatedCloud.CommercialRange": {
-      "description": "The commercial ranges actually available in your Private Cloud",
+      "description": "The commercial ranges actually available for your Dedicated Cloud",
       "id": "CommercialRange",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -9236,7 +9236,7 @@ export const schema: Schema = {
         },
         "range": {
           "canBeNull": true,
-          "description": "The range of this Datacenter in this Private Cloud version",
+          "description": "The range of this Datacenter in this Dedicated Cloud version",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -9245,7 +9245,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.Datacenter": {
-      "description": "Private Cloud Datacenter",
+      "description": "Dedicated Cloud Datacenter",
       "id": "Datacenter",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -9304,7 +9304,7 @@ export const schema: Schema = {
         },
         "version": {
           "canBeNull": false,
-          "description": "Os version installed on your Private Cloud",
+          "description": "Os version installed on your Dedicated Cloud",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -9313,7 +9313,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.Federation": {
-      "description": "Private Cloud Active Directory Federation option",
+      "description": "Dedicated Cloud Active Directory Federation option",
       "id": "Federation",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -9328,7 +9328,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.FederationAccessNetwork": {
-      "description": "Private Cloud federation option access network",
+      "description": "Dedicated Cloud federation option access network",
       "id": "FederationAccessNetwork",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -9423,7 +9423,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.Filer": {
-      "description": "Private Cloud Filer",
+      "description": "Dedicated Cloud Filer",
       "id": "Filer",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -9550,7 +9550,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.GenerationEnum": {
-      "description": "The generation of a Private Cloud",
+      "description": "The generation of a Dedicated Cloud",
       "enum": [
         "1.0",
         "2.0"
@@ -9560,7 +9560,7 @@ export const schema: Schema = {
       "namespace": "dedicatedCloud"
     },
     "dedicatedCloud.Hcx": {
-      "description": "Private Cloud VMware Hybrid Cloud Extension option",
+      "description": "Dedicated Cloud VMware Hybrid Cloud Extension option",
       "id": "Hcx",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -9591,7 +9591,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.Hds": {
-      "description": "The Private Cloud Hds option",
+      "description": "The Dedicated Cloud Hds option",
       "id": "Hds",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -9606,7 +9606,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.Hipaa": {
-      "description": "The Private Cloud Hipaa option",
+      "description": "The Dedicated Cloud Hipaa option",
       "id": "Hipaa",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -9621,7 +9621,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.Host": {
-      "description": "Private Cloud Host",
+      "description": "Dedicated Cloud Host",
       "id": "Host",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -9796,7 +9796,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.HostProfile": {
-      "description": "Host profiles actually available in Private Cloud",
+      "description": "Host profiles actually available in Dedicated Cloud",
       "id": "HostProfile",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -9929,7 +9929,7 @@ export const schema: Schema = {
       "namespace": "dedicatedCloud"
     },
     "dedicatedCloud.Ip": {
-      "description": "IP Blocks associated with a Private Cloud",
+      "description": "IP Blocks associated with a Dedicated Cloud",
       "id": "Ip",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -10071,7 +10071,7 @@ export const schema: Schema = {
       "namespace": "dedicatedCloud"
     },
     "dedicatedCloud.Nsx": {
-      "description": "The Private Cloud Nsx option",
+      "description": "The Dedicated Cloud Nsx option",
       "id": "Nsx",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -10094,7 +10094,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.ObjectRight": {
-      "description": "Private Cloud User object right",
+      "description": "Dedicated Cloud User object right",
       "id": "ObjectRight",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -10148,7 +10148,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.Os": {
-      "description": "Hypervisors actually available in Private Cloud",
+      "description": "Hypervisors actually available in Dedicated Cloud",
       "id": "Os",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -10207,7 +10207,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.PccZone": {
-      "description": "PccZones actually available in Private Cloud",
+      "description": "PccZones actually available in Dedicated Cloud",
       "id": "PccZone",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -10246,7 +10246,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.PciDss": {
-      "description": "The Private Cloud PCI-DSS option",
+      "description": "The Dedicated Cloud PCI-DSS option",
       "id": "PciDss",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -10261,7 +10261,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.PrivateGateway": {
-      "description": "Private management gateway deployed in your Private Cloud to block all public access",
+      "description": "Private management gateway deployed in your Dedicated Cloud to block all public access",
       "id": "PrivateGateway",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -10283,7 +10283,7 @@ export const schema: Schema = {
         },
         "customerPortGroup": {
           "canBeNull": true,
-          "description": "Portgroup in your Private Cloud used to deploy the private gateway",
+          "description": "Portgroup in your Dedicated Cloud used to deploy the private gateway",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -10300,7 +10300,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.RestorePoint": {
-      "description": "Private Cloud Restore Point",
+      "description": "Dedicated Cloud Restore Point",
       "id": "RestorePoint",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -10347,13 +10347,13 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.Right": {
-      "description": "Private Cloud User right",
+      "description": "Dedicated Cloud User right",
       "id": "Right",
       "namespace": "dedicatedCloud",
       "properties": {
         "canAddRessource": {
           "canBeNull": false,
-          "description": "Determine if the user can add ressources in your Private Cloud",
+          "description": "Determine if the user can add ressources in your Dedicated Cloud",
           "fullType": "boolean",
           "readOnly": false,
           "required": false,
@@ -10368,7 +10368,7 @@ export const schema: Schema = {
         },
         "networkRole": {
           "canBeNull": false,
-          "description": "Determine how this user can interact with the Private Cloud V(x)Lans",
+          "description": "Determine how this user can interact with the Dedicated Cloud V(x)Lans",
           "fullType": "dedicatedCloud.right.NetworkRoleEnum",
           "readOnly": false,
           "required": false,
@@ -10376,7 +10376,7 @@ export const schema: Schema = {
         },
         "right": {
           "canBeNull": false,
-          "description": "Determine what kind of access the User will have in this Datacenter of your Private Cloud",
+          "description": "Determine what kind of access the User will have in this Datacenter of your Dedicated Cloud",
           "fullType": "dedicatedCloud.right.RightEnum",
           "readOnly": false,
           "required": false,
@@ -10391,7 +10391,7 @@ export const schema: Schema = {
         },
         "vmNetworkRole": {
           "canBeNull": false,
-          "description": "Determine how this user can interact with the Private Cloud VM Network",
+          "description": "Determine how this user can interact with the Dedicated Cloud VM Network",
           "fullType": "dedicatedCloud.right.VmNetworkRoleEnum",
           "readOnly": false,
           "required": false,
@@ -10400,7 +10400,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.Robot": {
-      "description": "The robots used in Private Cloud",
+      "description": "The robots used in Dedicated Cloud",
       "id": "Robot",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -10447,7 +10447,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.ServicePack": {
-      "description": "List of Service Pack compliant with the current Private Cloud",
+      "description": "List of Service Packs compliant with the current Dedicated Cloud",
       "id": "ServicePack",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -10494,7 +10494,7 @@ export const schema: Schema = {
       "namespace": "dedicatedCloud"
     },
     "dedicatedCloud.Task": {
-      "description": "Operation on a Private Cloud component",
+      "description": "Operation on a Dedicated Cloud component",
       "id": "Task",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -10710,7 +10710,7 @@ export const schema: Schema = {
       "namespace": "dedicatedCloud"
     },
     "dedicatedCloud.User": {
-      "description": "Private Cloud User",
+      "description": "Dedicated Cloud User",
       "id": "User",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -10772,7 +10772,7 @@ export const schema: Schema = {
         },
         "isEnableManageable": {
           "canBeNull": false,
-          "description": "Check if the given Private Cloud user can be enabled or disabled ?",
+          "description": "Check if the given Dedicated Cloud user can be enabled or disabled ?",
           "fullType": "boolean",
           "readOnly": true,
           "required": false,
@@ -10872,7 +10872,7 @@ export const schema: Schema = {
       "namespace": "dedicatedCloud"
     },
     "dedicatedCloud.VMEncryption": {
-      "description": "Private Cloud VM Encryption option",
+      "description": "Dedicated Cloud VM Encryption option",
       "id": "VMEncryption",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -10887,7 +10887,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.VMEncryptionAccessNetwork": {
-      "description": "Private Cloud VM Encryption option access network",
+      "description": "Dedicated Cloud VM Encryption option access network",
       "id": "VMEncryptionAccessNetwork",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -10942,7 +10942,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.Vendor": {
-      "description": "The Private Cloud Vendor option",
+      "description": "The Dedicated Cloud Vendor option",
       "id": "Vendor",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -10995,7 +10995,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.Vlan": {
-      "description": "Private Cloud Vlan",
+      "description": "Dedicated Cloud Vlan",
       "id": "Vlan",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -11045,7 +11045,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.Vm": {
-      "description": "Private Cloud Virtual Machine",
+      "description": "Dedicated Cloud Virtual Machine",
       "id": "Vm",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -11324,7 +11324,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.Vrops": {
-      "description": "The Private Cloud vRealize Operations option",
+      "description": "The Dedicated Cloud vRealize Operations option",
       "id": "Vrops",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -11826,7 +11826,7 @@ export const schema: Schema = {
       "namespace": "dedicatedCloud.cluster"
     },
     "dedicatedCloud.dedicatedCloud": {
-      "description": "Private Cloud",
+      "description": "Dedicated Cloud",
       "id": "dedicatedCloud",
       "namespace": "dedicatedCloud",
       "properties": {
@@ -11840,7 +11840,7 @@ export const schema: Schema = {
         },
         "bandwidth": {
           "canBeNull": false,
-          "description": "The current bandwidth of your Private Cloud",
+          "description": "The current bandwidth of your Dedicated Cloud",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -11848,7 +11848,7 @@ export const schema: Schema = {
         },
         "billingType": {
           "canBeNull": false,
-          "description": "Billing type of your Private Cloud",
+          "description": "Billing type of your Dedicated Cloud",
           "fullType": "dedicatedCloud.BillingTypeEnum",
           "readOnly": true,
           "required": false,
@@ -11856,7 +11856,7 @@ export const schema: Schema = {
         },
         "certifiedInterfaceUrl": {
           "canBeNull": false,
-          "description": "Url to the Private Cloud certified interface",
+          "description": "Url to the Dedicated Cloud certified interface",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -11864,7 +11864,7 @@ export const schema: Schema = {
         },
         "commercialRange": {
           "canBeNull": false,
-          "description": "The current version of your Private Cloud",
+          "description": "The current version of your Dedicated Cloud",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -11872,7 +11872,7 @@ export const schema: Schema = {
         },
         "description": {
           "canBeNull": false,
-          "description": "Description of your Private Cloud",
+          "description": "Description of your Dedicated Cloud",
           "fullType": "string",
           "readOnly": false,
           "required": false,
@@ -11880,7 +11880,7 @@ export const schema: Schema = {
         },
         "generation": {
           "canBeNull": false,
-          "description": "Generation of your Private Cloud",
+          "description": "Generation of your Dedicated Cloud",
           "fullType": "dedicatedCloud.GenerationEnum",
           "readOnly": true,
           "required": false,
@@ -11888,7 +11888,7 @@ export const schema: Schema = {
         },
         "location": {
           "canBeNull": false,
-          "description": "Datacenter where your Private Cloud is physically located",
+          "description": "Datacenter where your Dedicated Cloud is physically located",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -11912,7 +11912,7 @@ export const schema: Schema = {
         },
         "serviceName": {
           "canBeNull": false,
-          "description": "Service name of your Private Cloud",
+          "description": "Service name of your Dedicated Cloud",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -11944,7 +11944,7 @@ export const schema: Schema = {
         },
         "state": {
           "canBeNull": false,
-          "description": "Current state of your Private Cloud",
+          "description": "Current state of your Dedicated Cloud",
           "fullType": "dedicatedCloud.StateEnum",
           "readOnly": true,
           "required": false,
@@ -11952,7 +11952,7 @@ export const schema: Schema = {
         },
         "userAccessPolicy": {
           "canBeNull": false,
-          "description": "Access policy of your Private Cloud : opened to every IPs or filtered",
+          "description": "Access policy of your Dedicated Cloud : opened to every IPs or filtered",
           "fullType": "dedicatedCloud.UserAccessPolicyEnum",
           "readOnly": false,
           "required": false,
@@ -11960,7 +11960,7 @@ export const schema: Schema = {
         },
         "userLimitConcurrentSession": {
           "canBeNull": false,
-          "description": "The maximum amount of connected users allowed on the Private Cloud management interface",
+          "description": "The maximum amount of connected users allowed on the Dedicated Cloud management interface",
           "fullType": "long",
           "readOnly": false,
           "required": false,
@@ -11975,7 +11975,7 @@ export const schema: Schema = {
         },
         "userSessionTimeout": {
           "canBeNull": false,
-          "description": "The timeout (in seconds) for the user sessions on the Private Cloud management interface. 0 value disable the timeout",
+          "description": "The timeout (in seconds) for the user sessions on the Dedicated Cloud management interface. 0 value disable the timeout",
           "fullType": "long",
           "readOnly": false,
           "required": false,
@@ -11983,7 +11983,7 @@ export const schema: Schema = {
         },
         "vScopeUrl": {
           "canBeNull": false,
-          "description": "Url to the Private Cloud vScope interface",
+          "description": "Url to the Dedicated Cloud vScope interface",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -11999,7 +11999,7 @@ export const schema: Schema = {
         },
         "webInterfaceUrl": {
           "canBeNull": false,
-          "description": "Url to the Private Cloud web interface",
+          "description": "Url to the Dedicated Cloud web interface",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -12073,7 +12073,7 @@ export const schema: Schema = {
         },
         "localSiteInformation": {
           "canBeNull": true,
-          "description": "Information about the site installed on this Private Cloud",
+          "description": "Information about the site installed on this Dedicated Cloud",
           "readOnly": false,
           "required": false,
           "type": "dedicatedCloud.disasterRecovery.LocalSiteDetails"
@@ -12478,7 +12478,7 @@ export const schema: Schema = {
       }
     },
     "dedicatedCloud.option.StateEnum": {
-      "description": "States of a Private Cloud option",
+      "description": "States of a Dedicated Cloud option",
       "enum": [
         "disabled",
         "disabling",
@@ -12493,7 +12493,7 @@ export const schema: Schema = {
       "namespace": "dedicatedCloud.option"
     },
     "dedicatedCloud.optionAccessNetwork.StateEnum": {
-      "description": "States of a Private Cloud option",
+      "description": "States of a Dedicated Cloud option",
       "enum": [
         "creating",
         "deleting",

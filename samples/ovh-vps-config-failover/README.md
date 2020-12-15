@@ -23,7 +23,7 @@ then
 Configure the IP-failover on OVH VPS using Debian / CentOS
 
 ```bash
-npx ovh-vps-config-failover gen
+npx ovh-vps-config-failover gen -i eth0 -v
 ```
 
 ![ovh-vps-config-failover on vps](https://github.com/UrielCh/api-ovh-node/blob/master/samples/ressources/ovh-vps-config-failover.gif?raw=true "preview")

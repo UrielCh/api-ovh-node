@@ -100,6 +100,105 @@ export const schema: Schema = {
       "path": "/services/{serviceId}/billing/engagement"
     },
     {
+      "description": "List all available engagements a given service can subscribe to",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List all available engagements a given service can subscribe to",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.billing.Pricing[]"
+        }
+      ],
+      "path": "/services/{serviceId}/billing/engagement/available"
+    },
+    {
+      "description": "Manage the Engagement request on this Service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete the ongoing Engagement request on this Service",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get the ongoing Engagement request on this Service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.billing.engagement.EngagementRequest"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Request an Engagement on this Service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.billing.engagement.EngagementRequestCreation",
+              "description": "Request Body",
+              "fullType": "services.billing.engagement.EngagementRequestCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.billing.engagement.EngagementRequest"
+        }
+      ],
+      "path": "/services/{serviceId}/billing/engagement/request"
+    },
+    {
       "description": "Detach your option offer to a standalone offer",
       "operations": [
         {
@@ -1039,7 +1138,8 @@ export const schema: Schema = {
         "renew",
         "upgrade",
         "downgrade",
-        "detach"
+        "detach",
+        "dynamic"
       ],
       "enumType": "string",
       "id": "GenericProductPricingCapacitiesEnum",
@@ -1194,6 +1294,148 @@ export const schema: Schema = {
       "id": "InvoiceLineTypeEnum",
       "namespace": "services.billing"
     },
+    "services.billing.Pricing": {
+      "description": "Representation of a service pricing",
+      "id": "Pricing",
+      "namespace": "services.billing",
+      "properties": {
+        "capacities": {
+          "canBeNull": false,
+          "description": "Capacities of the pricing (type of pricing)",
+          "fullType": "order.cart.GenericProductPricingCapacitiesEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductPricingCapacitiesEnum[]"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the pricing",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "duration": {
+          "canBeNull": false,
+          "description": "Default renew interval displayed using ISO8601",
+          "fullType": "duration",
+          "readOnly": true,
+          "required": false,
+          "type": "duration"
+        },
+        "engagementConfiguration": {
+          "canBeNull": true,
+          "description": "Pricing's engagement configuration",
+          "fullType": "services.billing.Pricing.EngagementConfiguration",
+          "readOnly": true,
+          "required": false,
+          "type": "services.billing.Pricing.EngagementConfiguration"
+        },
+        "interval": {
+          "canBeNull": false,
+          "description": "Interval of renewal",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maximumQuantity": {
+          "canBeNull": true,
+          "description": "Maximum quantity that can be ordered",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maximumRepeat": {
+          "canBeNull": true,
+          "description": "Maximum repeat for renewal",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minimumQuantity": {
+          "canBeNull": false,
+          "description": "Minimum quantity that can be ordered",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minimumRepeat": {
+          "canBeNull": false,
+          "description": "Minimum repeat for renewal",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Price of the product",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "priceInUcents": {
+          "canBeNull": false,
+          "description": "Price of the product in micro-centims",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "pricingMode": {
+          "canBeNull": false,
+          "description": "Pricing model identifier",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "pricingType": {
+          "canBeNull": false,
+          "description": "Pricing type",
+          "fullType": "order.cart.GenericProductPricingTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductPricingTypeEnum"
+        }
+      }
+    },
+    "services.billing.Pricing.EngagementConfiguration": {
+      "description": "Configuration of an engagement triggered by a given pricing",
+      "id": "EngagementConfiguration",
+      "namespace": "services.billing.Pricing",
+      "properties": {
+        "defaultEndAction": {
+          "canBeNull": false,
+          "description": "Default action executed once the engagement is fully consumed",
+          "fullType": "services.billing.engagement.EndStrategyEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "services.billing.engagement.EndStrategyEnum"
+        },
+        "duration": {
+          "canBeNull": false,
+          "description": "Engagement's duration displayed using ISO8601",
+          "fullType": "duration",
+          "readOnly": true,
+          "required": false,
+          "type": "duration"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Engagement type, either fully pre-paid (upfront) or periodically paid up to engagement duration (periodic)",
+          "fullType": "services.billing.engagement.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "services.billing.engagement.TypeEnum"
+        }
+      }
+    },
     "services.billing.engagement.EndRule": {
       "description": "Description of the rule applied at the end of the Engagement",
       "id": "EndRule",
@@ -1275,6 +1517,93 @@ export const schema: Schema = {
         }
       }
     },
+    "services.billing.engagement.EngagementRequest": {
+      "description": "Ongoing Engagement request on a Service",
+      "id": "EngagementRequest",
+      "namespace": "services.billing.engagement",
+      "properties": {
+        "options": {
+          "canBeNull": false,
+          "description": "Option Pricings this request will migrate the Services to",
+          "fullType": "services.billing.engagement.EngagementRequestOption[]",
+          "readOnly": true,
+          "required": false,
+          "type": "services.billing.engagement.EngagementRequestOption[]"
+        },
+        "order": {
+          "canBeNull": true,
+          "description": "If not null, Order to pay in order to trigger the Engagement",
+          "fullType": "services.operation.Order",
+          "readOnly": true,
+          "required": false,
+          "type": "services.operation.Order"
+        },
+        "pricing": {
+          "canBeNull": false,
+          "description": "Pricing this request will migrate the Service to",
+          "fullType": "services.billing.Pricing",
+          "readOnly": true,
+          "required": false,
+          "type": "services.billing.Pricing"
+        },
+        "requestDate": {
+          "canBeNull": false,
+          "description": "Date the request was made on",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        }
+      }
+    },
+    "services.billing.engagement.EngagementRequestCreation": {
+      "description": "Parameters needed to create an Engagement",
+      "id": "EngagementRequestCreation",
+      "namespace": "services.billing.engagement",
+      "properties": {
+        "pricingMode": {
+          "canBeNull": false,
+          "description": "Pricing mode to use in order to engage the Service",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "services.billing.engagement.EngagementRequestOption": {
+      "description": "Pricing detail for an Ongoing Engagement request on an option Service",
+      "id": "EngagementRequestOption",
+      "namespace": "services.billing.engagement",
+      "properties": {
+        "pricing": {
+          "canBeNull": false,
+          "description": "Pricing this request will migrate the option Service to",
+          "fullType": "services.billing.Pricing",
+          "readOnly": true,
+          "required": false,
+          "type": "services.billing.Pricing"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": "Service ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "services.billing.engagement.TypeEnum": {
+      "description": "Engagement's type, either fully pre-paid (upfront) or periodically paid up to engagement duration (periodic)",
+      "enum": [
+        "periodic",
+        "upfront"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "services.billing.engagement"
+    },
     "services.billing.engagement.UpdateEndRuleRequest": {
       "description": "Update your Engagement end rules",
       "id": "UpdateEndRuleRequest",
@@ -1287,6 +1616,194 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "services.billing.engagement.EndStrategyEnum"
+        }
+      }
+    },
+    "services.consumption.Detail": {
+      "description": "Element's quantity consumed for a given time range",
+      "id": "Detail",
+      "namespace": "services.consumption",
+      "properties": {
+        "beginDate": {
+          "canBeNull": true,
+          "description": "Begin date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "endDate": {
+          "canBeNull": true,
+          "description": "End date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "pricingMode": {
+          "canBeNull": false,
+          "description": "Pricing mode used during detail's time period",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Consumed quantity",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "services.consumption.Element": {
+      "description": "Consumption information for a specific offer",
+      "id": "Element",
+      "namespace": "services.consumption",
+      "properties": {
+        "details": {
+          "canBeNull": false,
+          "description": "List of consumption details for this element",
+          "fullType": "services.consumption.Detail[]",
+          "readOnly": true,
+          "required": false,
+          "type": "services.consumption.Detail[]"
+        },
+        "metadata": {
+          "canBeNull": true,
+          "description": "List of metadata related to this element",
+          "fullType": "complexType.SafeKeyValue<string>[]",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.SafeKeyValue<string>[]"
+        },
+        "planCode": {
+          "canBeNull": false,
+          "description": "Identifier of the offer",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "planFamily": {
+          "canBeNull": false,
+          "description": "Family of the offer",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Total price of the element",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Consumed quantity",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "uniqueId": {
+          "canBeNull": true,
+          "description": "Unique ID of the consumed resource",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "services.consumption.PricePlanFamily": {
+      "description": "Consumed amount for a given commercial offer's family",
+      "id": "PricePlanFamily",
+      "namespace": "services.consumption",
+      "properties": {
+        "planFamily": {
+          "canBeNull": false,
+          "description": "Commercial offer's range",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Consumed amount by resources related to the given family",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
+    },
+    "services.consumption.Summary": {
+      "description": "Summary of the consumption of a service",
+      "id": "Summary",
+      "namespace": "services.consumption",
+      "properties": {
+        "beginDate": {
+          "canBeNull": false,
+          "description": "Begin date of the returned consumption snapshot",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "endDate": {
+          "canBeNull": false,
+          "description": "End date of the returned consumption snapshot",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": true,
+          "description": "Consumption transaction ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "orderId": {
+          "canBeNull": true,
+          "description": "Order ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Total price of the service's consumption",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "priceByPlanFamily": {
+          "canBeNull": false,
+          "description": "All the categories of commercial offers involved in the consumption of the service and their price",
+          "fullType": "services.consumption.PricePlanFamily[]",
+          "readOnly": true,
+          "required": false,
+          "type": "services.consumption.PricePlanFamily[]"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": "Service ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
@@ -1349,6 +1866,14 @@ export const schema: Schema = {
       "id": "Billing",
       "namespace": "services.expanded",
       "properties": {
+        "engagement": {
+          "canBeNull": true,
+          "description": "Engagement summary for this Service",
+          "fullType": "services.expanded.EngagementSummary",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.EngagementSummary"
+        },
         "expirationDate": {
           "canBeNull": true,
           "description": "Expiration date",
@@ -1356,6 +1881,22 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "datetime"
+        },
+        "group": {
+          "canBeNull": true,
+          "description": "Group informations",
+          "fullType": "services.expanded.Group",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Group"
+        },
+        "lifecycle": {
+          "canBeNull": true,
+          "description": "Service life cycle",
+          "fullType": "services.expanded.Lifecycle",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Lifecycle"
         },
         "nextBillingDate": {
           "canBeNull": true,
@@ -1372,8 +1913,215 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "services.expanded.Plan"
+        },
+        "pricing": {
+          "canBeNull": true,
+          "description": "Service current Pricing",
+          "fullType": "services.billing.Pricing",
+          "readOnly": true,
+          "required": false,
+          "type": "services.billing.Pricing"
+        },
+        "renew": {
+          "canBeNull": true,
+          "description": "Service life renew",
+          "fullType": "services.expanded.Renew",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Renew"
         }
       }
+    },
+    "services.expanded.Customer": {
+      "description": "Customer service relative informations",
+      "id": "Customer",
+      "namespace": "services.expanded",
+      "properties": {
+        "contacts": {
+          "canBeNull": false,
+          "description": "Customer contact list",
+          "fullType": "services.expanded.Customer.Contact[]",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Customer.Contact[]"
+        }
+      }
+    },
+    "services.expanded.Customer.Contact": {
+      "description": "Customer contact service relative informations",
+      "id": "Contact",
+      "namespace": "services.expanded.Customer",
+      "properties": {
+        "customerCode": {
+          "canBeNull": false,
+          "description": "Customer code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of customer contact",
+          "fullType": "services.expanded.Customer.Contact.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Customer.Contact.TypeEnum"
+        }
+      }
+    },
+    "services.expanded.Customer.Contact.TypeEnum": {
+      "description": "Typology of customer contact",
+      "enum": [
+        "administrator",
+        "billing",
+        "technical"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "services.expanded.Customer.Contact"
+    },
+    "services.expanded.EngagementSummary": {
+      "description": "Engagement summary for a Service",
+      "id": "EngagementSummary",
+      "namespace": "services.expanded",
+      "properties": {
+        "endDate": {
+          "canBeNull": true,
+          "description": "Engagement end date",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "endRule": {
+          "canBeNull": true,
+          "description": "Describes the rule applied at the end of the Engagement",
+          "fullType": "services.billing.engagement.EndRule",
+          "readOnly": true,
+          "required": false,
+          "type": "services.billing.engagement.EndRule"
+        }
+      }
+    },
+    "services.expanded.Group": {
+      "description": "Billing group of the service",
+      "id": "Group",
+      "namespace": "services.expanded",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Billing group id",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "services.expanded.Lifecycle": {
+      "description": "Service life cycle",
+      "id": "Lifecycle",
+      "namespace": "services.expanded",
+      "properties": {
+        "capacities": {
+          "canBeNull": false,
+          "description": "Life cycle capacities",
+          "fullType": "services.expanded.Lifecycle.Capacities",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Lifecycle.Capacities"
+        },
+        "current": {
+          "canBeNull": false,
+          "description": "Current life cycle configuration",
+          "fullType": "services.expanded.Lifecycle.Current",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Lifecycle.Current"
+        }
+      }
+    },
+    "services.expanded.Lifecycle.ActionEnum": {
+      "description": "Life cycle action",
+      "enum": [
+        "terminateAtExpirationDate",
+        "terminateAtEngagementDate",
+        "terminate",
+        "earlyRenewal"
+      ],
+      "enumType": "string",
+      "id": "ActionEnum",
+      "namespace": "services.expanded.Lifecycle"
+    },
+    "services.expanded.Lifecycle.Capacities": {
+      "description": "Service life cycle options",
+      "id": "Capacities",
+      "namespace": "services.expanded.Lifecycle",
+      "properties": {
+        "actions": {
+          "canBeNull": false,
+          "description": "Possible actions",
+          "fullType": "services.expanded.Lifecycle.ActionEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Lifecycle.ActionEnum[]"
+        }
+      }
+    },
+    "services.expanded.Lifecycle.Current": {
+      "description": "Current life cycle configuration",
+      "id": "Current",
+      "namespace": "services.expanded.Lifecycle",
+      "properties": {
+        "creationDate": {
+          "canBeNull": true,
+          "description": "Service creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "pendingActions": {
+          "canBeNull": false,
+          "description": "Pending actions",
+          "fullType": "services.expanded.Lifecycle.ActionEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Lifecycle.ActionEnum[]"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Current life cycle state",
+          "fullType": "services.expanded.Lifecycle.StateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Lifecycle.StateEnum"
+        },
+        "terminationDate": {
+          "canBeNull": true,
+          "description": "Scheduled termination date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "services.expanded.Lifecycle.StateEnum": {
+      "description": "Life cycle service state",
+      "enum": [
+        "active",
+        "toRenew",
+        "error",
+        "unpaid",
+        "unrenewed",
+        "rupture",
+        "terminated"
+      ],
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "services.expanded.Lifecycle"
     },
     "services.expanded.Plan": {
       "description": "Plan of the service",
@@ -1421,6 +2169,77 @@ export const schema: Schema = {
         }
       }
     },
+    "services.expanded.Renew": {
+      "description": "Service renew informations",
+      "id": "Renew",
+      "namespace": "services.expanded",
+      "properties": {
+        "capacities": {
+          "canBeNull": false,
+          "description": "Renew capacities",
+          "fullType": "services.expanded.Renew.Capacities",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Renew.Capacities"
+        },
+        "current": {
+          "canBeNull": false,
+          "description": "Current renew configuration",
+          "fullType": "services.expanded.Renew.Current",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Renew.Current"
+        }
+      }
+    },
+    "services.expanded.Renew.Capacities": {
+      "description": "Service renew capacities",
+      "id": "Capacities",
+      "namespace": "services.expanded.Renew",
+      "properties": {
+        "mode": {
+          "canBeNull": false,
+          "description": "Renew mode capacities",
+          "fullType": "services.expanded.Renew.ModeEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Renew.ModeEnum[]"
+        }
+      }
+    },
+    "services.expanded.Renew.Current": {
+      "description": "Current renew configuration",
+      "id": "Current",
+      "namespace": "services.expanded.Renew",
+      "properties": {
+        "mode": {
+          "canBeNull": true,
+          "description": "Renew mode",
+          "fullType": "services.expanded.Renew.ModeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Renew.ModeEnum"
+        },
+        "nextDate": {
+          "canBeNull": true,
+          "description": "Scheduled renew date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "services.expanded.Renew.ModeEnum": {
+      "description": "Renew mode",
+      "enum": [
+        "automatic",
+        "manual"
+      ],
+      "enumType": "string",
+      "id": "ModeEnum",
+      "namespace": "services.expanded.Renew"
+    },
     "services.expanded.Resource": {
       "description": "Resource of the service",
       "id": "Resource",
@@ -1449,8 +2268,30 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "services.expanded.Product"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Resource state",
+          "fullType": "services.expanded.Resource.StateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Resource.StateEnum"
         }
       }
+    },
+    "services.expanded.Resource.StateEnum": {
+      "description": "Resource state",
+      "enum": [
+        "toActivate",
+        "active",
+        "toSuspend",
+        "suspended",
+        "toDelete",
+        "deleted"
+      ],
+      "enumType": "string",
+      "id": "StateEnum",
+      "namespace": "services.expanded.Resource"
     },
     "services.expanded.Route": {
       "description": "Route of the service",
@@ -1496,6 +2337,14 @@ export const schema: Schema = {
           "required": false,
           "type": "services.expanded.Billing"
         },
+        "customer": {
+          "canBeNull": false,
+          "description": "Customer information",
+          "fullType": "services.expanded.Customer",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.Customer"
+        },
         "parentServiceId": {
           "canBeNull": true,
           "description": "Parent service ID",
@@ -1527,6 +2376,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "tags": {
+          "canBeNull": false,
+          "description": "Service tags",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
         }
       }
     },
@@ -1892,8 +2749,27 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "usage": {
+          "canBeNull": true,
+          "description": "Disk's usage",
+          "fullType": "services.expanded.technical.baremetalServer.storage.Disk.UsageEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.storage.Disk.UsageEnum"
         }
       }
+    },
+    "services.expanded.technical.baremetalServer.storage.Disk.UsageEnum": {
+      "description": "Type of disk's usage",
+      "enum": [
+        "cache",
+        "data",
+        "os"
+      ],
+      "enumType": "string",
+      "id": "UsageEnum",
+      "namespace": "services.expanded.technical.baremetalServer.storage.Disk"
     },
     "services.form.Answer": {
       "description": "Answer to a form",

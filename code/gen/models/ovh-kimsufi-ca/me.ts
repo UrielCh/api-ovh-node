@@ -6048,7 +6048,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.payment.method.PaymentMethod"
+          "responseType": "void"
         }
       ],
       "path": "/me/payment/method/{paymentMethodId}/challenge"

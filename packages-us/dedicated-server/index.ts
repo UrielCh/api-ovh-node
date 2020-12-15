@@ -238,29 +238,6 @@ export namespace dedicated {
             storage?: dedicated.server.backup.BackupContainer;
         }
         /**
-         * Backup Ftp assigned to this server
-         * interface fullName: dedicated.server.BackupFtp.BackupFtp
-         */
-        export interface BackupFtp {
-            ftpBackupName: string;
-            quota?: complexType.UnitAndValue<number>;
-            readOnlyDate?: string;
-            type: dedicated.server.BackupStorageTypeEnum;
-            usage?: complexType.UnitAndValue<number>;
-        }
-        /**
-         * Backup Ftp ACL for this server and Backup Ftp
-         * interface fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
-         */
-        export interface BackupFtpAcl {
-            cifs: boolean;
-            ftp: boolean;
-            ipBlock: string;
-            isApplied: boolean;
-            lastUpdate: string;
-            nfs: boolean;
-        }
-        /**
          * Different backup storage capacity in gigabytes
          * type fullname: dedicated.server.BackupStorageCapacityEnum
          */
@@ -273,11 +250,6 @@ export namespace dedicated {
             capacities?: dedicated.server.BackupStorageCapacityEnum[];
             orderable: boolean;
         }
-        /**
-         * Different backup storage type
-         * type fullname: dedicated.server.BackupStorageTypeEnum
-         */
-        export type BackupStorageTypeEnum = "included" | "storage"
         /**
          * A structure describing bandwidth informations about this dedicated server
          * interface fullName: dedicated.server.BandwidthDetails.BandwidthDetails
@@ -1754,86 +1726,6 @@ export interface Dedicated {
                          * POST /dedicated/server/{serviceName}/features/backupCloud/password
                          */
                         $post(): Promise<dedicated.server.backup.BackupPassword>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    }
-                }
-                backupFTP: {
-                    /**
-                     * Terminate your Backup FTP service, ALL DATA WILL BE PERMANENTLY DELETED
-                     * DELETE /dedicated/server/{serviceName}/features/backupFTP
-                     */
-                    $delete(): Promise<dedicated.server.Task>;
-                    /**
-                     * Get this object properties
-                     * GET /dedicated/server/{serviceName}/features/backupFTP
-                     */
-                    $get(): Promise<dedicated.server.BackupFtp>;
-                    /**
-                     * Create a new Backup FTP space
-                     * POST /dedicated/server/{serviceName}/features/backupFTP
-                     */
-                    $post(): Promise<dedicated.server.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    access: {
-                        /**
-                         * List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
-                         * GET /dedicated/server/{serviceName}/features/backupFTP/access
-                         */
-                        $get(): Promise<string[]>;
-                        /**
-                         * Create a new Backup FTP ACL
-                         * POST /dedicated/server/{serviceName}/features/backupFTP/access
-                         */
-                        $post(params: { cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean }): Promise<dedicated.server.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        $(ipBlock: string): {
-                            /**
-                             * Revoke this ACL
-                             * DELETE /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
-                             */
-                            $delete(): Promise<dedicated.server.Task>;
-                            /**
-                             * Get this object properties
-                             * GET /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
-                             */
-                            $get(): Promise<dedicated.server.BackupFtpAcl>;
-                            /**
-                             * Alter this object properties
-                             * PUT /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
-                             */
-                            $put(params?: { cifs?: boolean, ftp?: boolean, ipBlock?: string, isApplied?: boolean, lastUpdate?: string, nfs?: boolean }): Promise<void>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        };
-                    }
-                    authorizableBlocks: {
-                        /**
-                         * Get all IP blocks that can be used in the ACL
-                         * GET /dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks
-                         */
-                        $get(): Promise<string[]>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    }
-                    password: {
-                        /**
-                         * Change your Backup FTP password
-                         * POST /dedicated/server/{serviceName}/features/backupFTP/password
-                         */
-                        $post(): Promise<dedicated.server.Task>;
                         /**
                          * Controle cache
                          */

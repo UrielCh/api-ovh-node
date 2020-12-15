@@ -30,7 +30,7 @@ export namespace dedicated {
 }
 export namespace dedicatedCloud {
     /**
-     * Network allowed to connect to the Private Cloud management interface
+     * Network allowed to connect to the Dedicated Cloud management interface
      * interface fullName: dedicatedCloud.AllowedNetwork.AllowedNetwork
      */
     export interface AllowedNetwork {
@@ -63,7 +63,7 @@ export namespace dedicatedCloud {
         timeDelayStorageScaleOut: number;
     }
     /**
-     * Private Cloud AutoScale option
+     * Dedicated Cloud AutoScale option
      * interface fullName: dedicatedCloud.AutoScaleVirtual.AutoScaleVirtual
      */
     export interface AutoScaleVirtual {
@@ -89,7 +89,7 @@ export namespace dedicatedCloud {
         vmwareVmId?: string;
     }
     /**
-     * Private Cloud Backup Job
+     * Dedicated Cloud Backup Job
      * interface fullName: dedicatedCloud.BackupJob.BackupJob
      */
     export interface BackupJob {
@@ -117,7 +117,7 @@ export namespace dedicatedCloud {
      */
     export type BlockRegisterEnum = "arin" | "ripe"
     /**
-     * The features available in your Private Cloud
+     * The features available in your Dedicated Cloud
      * interface fullName: dedicatedCloud.Capabilities.Capabilities
      */
     export interface Capabilities {
@@ -130,7 +130,7 @@ export namespace dedicatedCloud {
         userAccessPolicyStatus: dedicatedCloudcapabilitiesFeatureStatusEnum;
     }
     /**
-     * Private Cloud Cluster
+     * Dedicated Cloud Cluster
      * interface fullName: dedicatedCloud.Cluster.Cluster
      */
     export interface Cluster {
@@ -149,7 +149,7 @@ export namespace dedicatedCloud {
      */
     export type CommercialNameEnum = "CDI" | "CDI-HDS" | "CDI-HIPAA" | "CDI-NSX" | "CDI-NSX-VROPS" | "CDI-PCIDSS" | "CDI-UNKNOWN" | "CDI-VROPS" | "DC" | "DC-ANCIENT" | "DC-ANCIENT-HDS" | "DC-ANCIENT-HIPAA" | "DC-ANCIENT-NSX" | "DC-ANCIENT-NSX-VROPS" | "DC-ANCIENT-PCIDSS" | "DC-ANCIENT-UNKNOWN" | "DC-ANCIENT-VROPS" | "DC-HDS" | "DC-HIPAA" | "DC-LEGACY" | "DC-LEGACY-HDS" | "DC-LEGACY-HIPAA" | "DC-LEGACY-NSX" | "DC-LEGACY-NSX-VROPS" | "DC-LEGACY-PCIDSS" | "DC-LEGACY-UNKNOWN" | "DC-LEGACY-VROPS" | "DC-NSX" | "DC-NSX-VROPS" | "DC-PCIDSS" | "DC-UNKNOWN" | "DC-VROPS" | "ESSENTIALS" | "ESSENTIALS-HDS" | "ESSENTIALS-HIPAA" | "ESSENTIALS-NSX" | "ESSENTIALS-NSX-VROPS" | "ESSENTIALS-PCIDSS" | "ESSENTIALS-UNKNOWN" | "ESSENTIALS-VROPS" | "PREMIER" | "PREMIER-HDS" | "PREMIER-HIPAA" | "PREMIER-NSX" | "PREMIER-NSX-VROPS" | "PREMIER-PCIDSS" | "PREMIER-UNKNOWN" | "PREMIER-VROPS" | "SDDC" | "SDDC-HDS" | "SDDC-HIPAA" | "SDDC-LEGACY" | "SDDC-LEGACY-HDS" | "SDDC-LEGACY-HIPAA" | "SDDC-LEGACY-PCIDSS" | "SDDC-LEGACY-UNKNOWN" | "SDDC-LEGACY-VROPS" | "SDDC-LEGACY-VROPS-WITHOUT-NSX" | "SDDC-LEGACY-WITHOUT-NSX" | "SDDC-PCIDSS" | "SDDC-UNKNOWN" | "SDDC-VROPS" | "SDDC-VROPS-WITHOUT-NSX" | "SDDC-WITHOUT-NSX" | "UNKNOWN" | "UNKNOWN-HDS" | "UNKNOWN-HIPAA" | "UNKNOWN-NSX" | "UNKNOWN-NSX-VROPS" | "UNKNOWN-PCIDSS" | "UNKNOWN-UNKNOWN" | "UNKNOWN-VROPS"
     /**
-     * The commercial ranges actually available in your Private Cloud
+     * The commercial ranges actually available for your Dedicated Cloud
      * interface fullName: dedicatedCloud.CommercialRange.CommercialRange
      */
     export interface CommercialRange {
@@ -160,7 +160,7 @@ export namespace dedicatedCloud {
         range?: string;
     }
     /**
-     * Private Cloud Datacenter
+     * Dedicated Cloud Datacenter
      * interface fullName: dedicatedCloud.Datacenter.Datacenter
      */
     export interface Datacenter {
@@ -174,14 +174,14 @@ export namespace dedicatedCloud {
         version: string;
     }
     /**
-     * Private Cloud Active Directory Federation option
+     * Dedicated Cloud Active Directory Federation option
      * interface fullName: dedicatedCloud.Federation.Federation
      */
     export interface Federation {
         state: dedicatedCloudoptionStateEnum;
     }
     /**
-     * Private Cloud federation option access network
+     * Dedicated Cloud federation option access network
      * interface fullName: dedicatedCloud.FederationAccessNetwork.FederationAccessNetwork
      */
     export interface FederationAccessNetwork {
@@ -198,7 +198,7 @@ export namespace dedicatedCloud {
         username: string;
     }
     /**
-     * Private Cloud Filer
+     * Dedicated Cloud Filer
      * interface fullName: dedicatedCloud.Filer.Filer
      */
     export interface Filer {
@@ -219,12 +219,12 @@ export namespace dedicatedCloud {
         vmTotal?: number;
     }
     /**
-     * The generation of a Private Cloud
+     * The generation of a Dedicated Cloud
      * type fullname: dedicatedCloud.GenerationEnum
      */
     export type GenerationEnum = "1.0" | "2.0"
     /**
-     * Private Cloud VMware Hybrid Cloud Extension option
+     * Dedicated Cloud VMware Hybrid Cloud Extension option
      * interface fullName: dedicatedCloud.Hcx.Hcx
      */
     export interface Hcx {
@@ -233,21 +233,21 @@ export namespace dedicatedCloud {
         version?: string;
     }
     /**
-     * The Private Cloud Hds option
+     * The Dedicated Cloud Hds option
      * interface fullName: dedicatedCloud.Hds.Hds
      */
     export interface Hds {
         state: dedicatedCloudoptionStateEnum;
     }
     /**
-     * The Private Cloud Hipaa option
+     * The Dedicated Cloud Hipaa option
      * interface fullName: dedicatedCloud.Hipaa.Hipaa
      */
     export interface Hipaa {
         state: dedicatedCloudoptionStateEnum;
     }
     /**
-     * Private Cloud Host
+     * Dedicated Cloud Host
      * interface fullName: dedicatedCloud.Host.Host
      */
     export interface Host {
@@ -274,7 +274,7 @@ export namespace dedicatedCloud {
         vmVcpuTotal?: number;
     }
     /**
-     * Host profiles actually available in Private Cloud
+     * Host profiles actually available in Dedicated Cloud
      * interface fullName: dedicatedCloud.HostProfile.HostProfile
      */
     export interface HostProfile {
@@ -320,7 +320,7 @@ export namespace dedicatedCloud {
      */
     export type HypervisorVersionEnum = "4.1" | "5.0" | "5.1" | "5.5" | "6.0" | "6.5" | "6.7" | "hv3.1" | "hvdc3.1" | "nc1.0"
     /**
-     * IP Blocks associated with a Private Cloud
+     * IP Blocks associated with a Dedicated Cloud
      * interface fullName: dedicatedCloud.Ip.Ip
      */
     export interface Ip {
@@ -354,7 +354,7 @@ export namespace dedicatedCloud {
      */
     export type ManagementInterfaceEnum = "azure" | "openstack" | "systemcenter" | "vcloud" | "vcsa" | "vsphere"
     /**
-     * The Private Cloud Nsx option
+     * The Dedicated Cloud Nsx option
      * interface fullName: dedicatedCloud.Nsx.Nsx
      */
     export interface Nsx {
@@ -362,7 +362,7 @@ export namespace dedicatedCloud {
         url?: string;
     }
     /**
-     * Private Cloud User object right
+     * Dedicated Cloud User object right
      * interface fullName: dedicatedCloud.ObjectRight.ObjectRight
      */
     export interface ObjectRight {
@@ -374,7 +374,7 @@ export namespace dedicatedCloud {
         vmwareObjectId: string;
     }
     /**
-     * Hypervisors actually available in Private Cloud
+     * Hypervisors actually available in Dedicated Cloud
      * interface fullName: dedicatedCloud.Os.Os
      */
     export interface Os {
@@ -392,7 +392,7 @@ export namespace dedicatedCloud {
         realVersion: string;
     }
     /**
-     * PccZones actually available in Private Cloud
+     * PccZones actually available in Dedicated Cloud
      * interface fullName: dedicatedCloud.PccZone.PccZone
      */
     export interface PccZone {
@@ -402,14 +402,14 @@ export namespace dedicatedCloud {
         pccZone: string;
     }
     /**
-     * The Private Cloud PCI-DSS option
+     * The Dedicated Cloud PCI-DSS option
      * interface fullName: dedicatedCloud.PciDss.PciDss
      */
     export interface PciDss {
         state: dedicatedCloudoptionStateEnum;
     }
     /**
-     * Private management gateway deployed in your Private Cloud to block all public access
+     * Private management gateway deployed in your Dedicated Cloud to block all public access
      * interface fullName: dedicatedCloud.PrivateGateway.PrivateGateway
      */
     export interface PrivateGateway {
@@ -419,7 +419,7 @@ export namespace dedicatedCloud {
         state: dedicatedCloudoptionStateEnum;
     }
     /**
-     * Private Cloud Restore Point
+     * Dedicated Cloud Restore Point
      * interface fullName: dedicatedCloud.RestorePoint.RestorePoint
      */
     export interface RestorePoint {
@@ -430,7 +430,7 @@ export namespace dedicatedCloud {
         type?: dedicatedCloudbackupBackupTypeEnum;
     }
     /**
-     * Private Cloud User right
+     * Dedicated Cloud User right
      * interface fullName: dedicatedCloud.Right.Right
      */
     export interface Right {
@@ -442,7 +442,7 @@ export namespace dedicatedCloud {
         vmNetworkRole: dedicatedCloudrightVmNetworkRoleEnum;
     }
     /**
-     * The robots used in Private Cloud
+     * The robots used in Dedicated Cloud
      * interface fullName: dedicatedCloud.Robot.Robot
      */
     export interface Robot {
@@ -453,7 +453,7 @@ export namespace dedicatedCloud {
         type: string;
     }
     /**
-     * List of Service Pack compliant with the current Private Cloud
+     * List of Service Packs compliant with the current Dedicated Cloud
      * interface fullName: dedicatedCloud.ServicePack.ServicePack
      */
     export interface ServicePack {
@@ -466,7 +466,7 @@ export namespace dedicatedCloud {
      */
     export type StateEnum = "available" | "delivered" | "disabled" | "disabling" | "error" | "migrating" | "provisionning" | "recycling" | "reserved" | "toDisable" | "toProvision" | "toRecycle" | "toRemove" | "toUnprovision" | "unprovisionning" | "upgrading"
     /**
-     * Operation on a Private Cloud component
+     * Operation on a Dedicated Cloud component
      * interface fullName: dedicatedCloud.Task.Task
      */
     export interface Task {
@@ -504,7 +504,7 @@ export namespace dedicatedCloud {
      */
     export type TwoFAWhitelistStateEnum = "enabled" | "enabling" | "error" | "migrating" | "removed" | "removing"
     /**
-     * Private Cloud User
+     * Dedicated Cloud User
      * interface fullName: dedicatedCloud.User.User
      */
     export interface User {
@@ -537,14 +537,14 @@ export namespace dedicatedCloud {
      */
     export type UserLogoutPolicyEnum = "first" | "last"
     /**
-     * Private Cloud VM Encryption option
+     * Dedicated Cloud VM Encryption option
      * interface fullName: dedicatedCloud.VMEncryption.VMEncryption
      */
     export interface VMEncryption {
         state: dedicatedCloudoptionStateEnum;
     }
     /**
-     * Private Cloud VM Encryption option access network
+     * Dedicated Cloud VM Encryption option access network
      * interface fullName: dedicatedCloud.VMEncryptionAccessNetwork.VMEncryptionAccessNetwork
      */
     export interface VMEncryptionAccessNetwork {
@@ -556,7 +556,7 @@ export namespace dedicatedCloud {
         state: dedicatedCloudoptionAccessNetworkStateEnum;
     }
     /**
-     * The Private Cloud Vendor option
+     * The Dedicated Cloud Vendor option
      * interface fullName: dedicatedCloud.Vendor.Vendor
      */
     export interface Vendor {
@@ -577,7 +577,7 @@ export namespace dedicatedCloud {
         minor: string;
     }
     /**
-     * Private Cloud Vlan
+     * Dedicated Cloud Vlan
      * interface fullName: dedicatedCloud.Vlan.Vlan
      */
     export interface Vlan {
@@ -589,7 +589,7 @@ export namespace dedicatedCloud {
         vlanNumber: number;
     }
     /**
-     * Private Cloud Virtual Machine
+     * Dedicated Cloud Virtual Machine
      * interface fullName: dedicatedCloud.Vm.Vm
      */
     export interface Vm {
@@ -629,7 +629,7 @@ export namespace dedicatedCloud {
         writeRate?: number;
     }
     /**
-     * The Private Cloud vRealize Operations option
+     * The Dedicated Cloud vRealize Operations option
      * interface fullName: dedicatedCloud.Vrops.Vrops
      */
     export interface Vrops {
@@ -776,7 +776,7 @@ export namespace dedicatedCloud {
         export type ClusterDrsModeEnum = "fullyAutomated" | "manual" | "partiallyAutomated"
     }
     /**
-     * Private Cloud
+     * Dedicated Cloud
      * interface fullName: dedicatedCloud.dedicatedCloud.dedicatedCloud
      */
     export interface dedicatedCloud {
@@ -963,14 +963,14 @@ export namespace dedicatedCloud {
     }
     export namespace option {
         /**
-         * States of a Private Cloud option
+         * States of a Dedicated Cloud option
          * type fullname: dedicatedCloud.option.StateEnum
          */
         export type StateEnum = "disabled" | "disabling" | "enabled" | "enabling" | "error" | "migrating" | "unknown"
     }
     export namespace optionAccessNetwork {
         /**
-         * States of a Private Cloud option
+         * States of a Dedicated Cloud option
          * type fullname: dedicatedCloud.optionAccessNetwork.StateEnum
          */
         export type StateEnum = "creating" | "deleting" | "delivered" | "error" | "toCreate" | "toDelete" | "toUpdate" | "unknown" | "updating"
@@ -1474,7 +1474,7 @@ export interface DedicatedCloud {
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         allowedNetwork: {
             /**
-             * Networks allowed to access to this Private Cloud management interface
+             * Networks allowed to access to this Dedicated Cloud management interface
              * GET /dedicatedCloud/{serviceName}/allowedNetwork
              */
             $get(): Promise<number[]>;
@@ -1489,7 +1489,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(networkAccessId: number): {
                 /**
-                 * Remove this network from your Private Cloud
+                 * Remove this network from your Dedicated Cloud
                  * DELETE /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
                  */
                 $delete(): Promise<dedicatedCloud.Task>;
@@ -1566,7 +1566,7 @@ export interface DedicatedCloud {
         }
         changeProperties: {
             /**
-             * Update this Private Cloud properties.
+             * Update this Dedicated Cloud properties.
              * POST /dedicatedCloud/{serviceName}/changeProperties
              */
             $post(params?: { description?: string, sslV3?: boolean, userAccessPolicy?: dedicatedCloudUserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloudUserLogoutPolicyEnum, userSessionTimeout?: number }): Promise<dedicatedCloud.Task>;
@@ -1578,7 +1578,7 @@ export interface DedicatedCloud {
         commercialRange: {
             compliance: {
                 /**
-                 * Get the name of the commercial ranges compliant with your Private Cloud
+                 * Get the name of the commercial ranges compliant with your Dedicated Cloud
                  * GET /dedicatedCloud/{serviceName}/commercialRange/compliance
                  */
                 $get(): Promise<string[]>;
@@ -1589,7 +1589,7 @@ export interface DedicatedCloud {
             }
             orderable: {
                 /**
-                 * Get the name of the commercial ranges orderable in your Private Cloud
+                 * Get the name of the commercial ranges orderable for your Dedicated Cloud
                  * GET /dedicatedCloud/{serviceName}/commercialRange/orderable
                  */
                 $get(): Promise<string[]>;
@@ -1612,12 +1612,12 @@ export interface DedicatedCloud {
         }
         datacenter: {
             /**
-             * Datacenters associated with this Private Cloud
+             * Datacenters associated with this Dedicated Cloud
              * GET /dedicatedCloud/{serviceName}/datacenter
              */
             $get(): Promise<number[]>;
             /**
-             * Add a new Datacenter in your Private Cloud
+             * Add a new Datacenter in your Dedicated Cloud
              * POST /dedicatedCloud/{serviceName}/datacenter
              */
             $post(params: { commercialRangeName: string, vrackName?: string }): Promise<dedicatedCloud.Task>;
@@ -1627,7 +1627,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(datacenterId: number): {
                 /**
-                 * Remove this Datacenter from your Private Cloud. (It has to be empty in order to be removable)
+                 * Remove this Datacenter from your Dedicated Cloud. (It has to be empty in order to be removable)
                  * DELETE /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
                  */
                 $delete(): Promise<dedicatedCloud.Task>;
@@ -1668,7 +1668,7 @@ export interface DedicatedCloud {
                     }
                     changeProperties: {
                         /**
-                         * Edit the backup on a Private Cloud
+                         * Edit the backup on a Dedicated Cloud
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties
                          */
                         $post(params: { backupDurationInReport: boolean, backupOffer: dedicatedCloudbackupOfferTypeEnum, backupSizeInReport: boolean, diskSizeInReport: boolean, fullDayInReport: boolean, mailAddress?: string, restorePointInReport: boolean, scheduleHour?: string }): Promise<dedicatedCloud.Task>;
@@ -1679,7 +1679,7 @@ export interface DedicatedCloud {
                     }
                     disable: {
                         /**
-                         * Disable backup solution on a Private Cloud
+                         * Disable backup solution on a Dedicated Cloud
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/disable
                          */
                         $post(): Promise<dedicatedCloud.Task>;
@@ -1690,7 +1690,7 @@ export interface DedicatedCloud {
                     }
                     enable: {
                         /**
-                         * Enable backup solution on a Private Cloud
+                         * Enable backup solution on a Dedicated Cloud
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable
                          */
                         $post(params?: { backupOffer?: dedicatedCloudbackupOfferTypeEnum }): Promise<dedicatedCloud.Task>;
@@ -1794,7 +1794,7 @@ export interface DedicatedCloud {
                     zertoSingle: {
                         configureVpn: {
                             /**
-                             * Configure vpn between your OVH Private Cloud and your onsite infrastructure
+                             * Configure vpn between your OVH Dedicated Cloud and your onsite infrastructure
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/configureVpn
                              */
                             $post(params: { preSharedKey: string, remoteEndpointInternalIp: string, remoteEndpointPublicIp: string, remoteVraNetwork?: string, remoteZvmInternalIp: string }): Promise<dedicatedCloud.Task>;
@@ -1827,7 +1827,7 @@ export interface DedicatedCloud {
                         }
                         enable: {
                             /**
-                             * Enable Zerto replication between your OVH Private Cloud and your onsite infrastructure
+                             * Enable Zerto replication between your OVH Dedicated Cloud and your onsite infrastructure
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/enable
                              */
                             $post(params: { localVraNetwork: string, ovhEndpointIp: string, remoteVraNetwork: string }): Promise<dedicatedCloud.Task>;
@@ -1882,7 +1882,7 @@ export interface DedicatedCloud {
                         }
                         remove: {
                             /**
-                             * Remove the filer from your Private Cloud.
+                             * Remove the filer from your Dedicated Cloud.
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/remove
                              */
                             $post(): Promise<dedicatedCloud.Task>;
@@ -1959,7 +1959,7 @@ export interface DedicatedCloud {
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         addHostSpare: {
                             /**
-                             * Add a spare host to your Private Cloud.
+                             * Add a spare host to your Dedicated Cloud.
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/addHostSpare
                              */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
@@ -1992,7 +1992,7 @@ export interface DedicatedCloud {
                         }
                         remove: {
                             /**
-                             * Remove the host from your Private Cloud.
+                             * Remove the host from your Dedicated Cloud.
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/remove
                              */
                             $post(): Promise<dedicatedCloud.Task>;
@@ -2115,7 +2115,7 @@ export interface DedicatedCloud {
                 }
                 orderableFilerProfiles: {
                     /**
-                     * List available filers in a given Private Cloud Datacenter
+                     * List available filers in a given Dedicated Cloud Datacenter
                      * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles
                      */
                     $get(): Promise<dedicatedCloud.filer.Profile[]>;
@@ -2126,7 +2126,7 @@ export interface DedicatedCloud {
                 }
                 orderableHostProfiles: {
                     /**
-                     * List available hosts in a given Private Cloud Datacenter
+                     * List available hosts in a given Dedicated Cloud Datacenter
                      * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles
                      */
                     $get(): Promise<dedicatedCloud.host.Profile[]>;
@@ -2147,7 +2147,7 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     disable: {
                         /**
-                         * Remove the private gateway in your Private Cloud and open public access.
+                         * Remove the private gateway in your Dedicated Cloud and open public access.
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway/disable
                          */
                         $post(): Promise<dedicatedCloud.Task>;
@@ -2158,7 +2158,7 @@ export interface DedicatedCloud {
                     }
                     enable: {
                         /**
-                         * Deploy a private gateway on your Private Cloud to block all public access
+                         * Deploy a private gateway on your Dedicated Cloud to block all public access
                          * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway/enable
                          */
                         $post(params: { ip: string, netmask: string, portgroup: string }): Promise<dedicatedCloud.Task>;
@@ -2363,7 +2363,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             activeDirectory: {
                 /**
-                 * Active Directories linked to this Private Cloud
+                 * Active Directories linked to this Dedicated Cloud
                  * GET /dedicatedCloud/{serviceName}/federation/activeDirectory
                  */
                 $get(): Promise<number[]>;
@@ -2418,7 +2418,7 @@ export interface DedicatedCloud {
         }
         filer: {
             /**
-             * Filers mounted on all Datacenters of your Private Cloud Vsphere
+             * Filers mounted on all Datacenters of your Dedicated Cloud Vsphere
              * GET /dedicatedCloud/{serviceName}/filer
              */
             $get(): Promise<number[]>;
@@ -2460,7 +2460,7 @@ export interface DedicatedCloud {
                 }
                 remove: {
                     /**
-                     * Remove the filer from your Private Cloud.
+                     * Remove the filer from your Dedicated Cloud.
                      * POST /dedicatedCloud/{serviceName}/filer/{filerId}/remove
                      */
                     $post(): Promise<dedicatedCloud.Task>;
@@ -2517,7 +2517,7 @@ export interface DedicatedCloud {
         }
         globalTasks: {
             /**
-             * Get filtered tasks associated with this Private Cloud
+             * Get filtered tasks associated with this Dedicated Cloud
              * GET /dedicatedCloud/{serviceName}/globalTasks
              */
             $get(params?: { datacenterId?: number, endDate_from?: string, endDate_to?: string, executionDate_from?: string, executionDate_to?: string, filerId?: number, hostId?: number, lastModificationDate_from?: string, lastModificationDate_to?: string, name?: string, networkAccessId?: number, orderId?: number, parentTaskId?: number, state?: dedicatedCloudTaskStateEnum[], userId?: number, vlanId?: number }): Promise<number[]>;
@@ -2693,7 +2693,7 @@ export interface DedicatedCloud {
         }
         ip: {
             /**
-             * Ip Blocks attached to this Private Cloud
+             * Ip Blocks attached to this Dedicated Cloud
              * GET /dedicatedCloud/{serviceName}/ip
              */
             $get(): Promise<string[]>;
@@ -2770,7 +2770,7 @@ export interface DedicatedCloud {
         }
         newPrices: {
             /**
-             * Get the new Prices for your Private Cloud
+             * Get the new Prices for your Dedicated Cloud
              * GET /dedicatedCloud/{serviceName}/newPrices
              */
             $get(): Promise<dedicatedCloud.resourceNewPrices>;
@@ -2836,7 +2836,7 @@ export interface DedicatedCloud {
         }
         orderNewFilerHourly: {
             /**
-             * Order a new hourly Filer mounted in every Datacenter of a given Private Cloud
+             * Order a new hourly Filer mounted in every Datacenter of a given Dedicated Cloud
              * POST /dedicatedCloud/{serviceName}/orderNewFilerHourly
              */
             $post(params: { name: string }): Promise<dedicatedCloud.Task>;
@@ -2858,7 +2858,7 @@ export interface DedicatedCloud {
         }
         passwordPolicy: {
             /**
-             * Get the current password policy for your Private Cloud
+             * Get the current password policy for your Dedicated Cloud
              * GET /dedicatedCloud/{serviceName}/passwordPolicy
              */
             $get(): Promise<dedicatedCloud.passwordPolicy>;
@@ -2935,7 +2935,7 @@ export interface DedicatedCloud {
         }
         robot: {
             /**
-             * Robots that can run on this Private Cloud
+             * Robots that can run on this Dedicated Cloud
              * GET /dedicatedCloud/{serviceName}/robot
              */
             $get(): Promise<string[]>;
@@ -2984,7 +2984,7 @@ export interface DedicatedCloud {
         }
         servicePacks: {
             /**
-             * Service Pack compliant with the current Private Cloud
+             * Service Pack compliant with the current Dedicated Cloud
              * GET /dedicatedCloud/{serviceName}/servicePacks
              */
             $get(): Promise<string[]>;
@@ -3006,7 +3006,7 @@ export interface DedicatedCloud {
         }
         task: {
             /**
-             * Tasks associated with this Private Cloud
+             * Tasks associated with this Dedicated Cloud
              * GET /dedicatedCloud/{serviceName}/task
              */
             $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
@@ -3061,7 +3061,7 @@ export interface DedicatedCloud {
         }
         twoFAWhitelist: {
             /**
-             * Ip allowed to bypass the two factor authentication on this Private Cloud management interface
+             * Ip allowed to bypass the two factor authentication on this Dedicated Cloud management interface
              * GET /dedicatedCloud/{serviceName}/twoFAWhitelist
              */
             $get(): Promise<number[]>;
@@ -3091,7 +3091,7 @@ export interface DedicatedCloud {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 changeProperties: {
                     /**
-                     * Change Private Cloud Two facter authentication whitelist properties
+                     * Change Dedicated Cloud Two factor authentication whitelist properties
                      * POST /dedicatedCloud/{serviceName}/twoFAWhitelist/{id}/changeProperties
                      */
                     $post(params?: { description?: string }): Promise<dedicatedCloud.Task>;
@@ -3126,12 +3126,12 @@ export interface DedicatedCloud {
         }
         user: {
             /**
-             * Private Cloud users
+             * Dedicated Cloud users
              * GET /dedicatedCloud/{serviceName}/user
              */
             $get(params?: { name?: string }): Promise<number[]>;
             /**
-             * Create a new User in your Private Cloud
+             * Create a new User in your Dedicated Cloud
              * POST /dedicatedCloud/{serviceName}/user
              */
             $post(params: { canAddRessource?: boolean, canManageRights?: boolean, email?: string, expirationDate?: string, firstName?: string, lastName?: string, name: string, networkRole?: dedicatedCloudrightNetworkRoleEnum, nsxRight?: boolean, password?: string, phoneNumber?: string, receiveAlerts?: boolean, right?: dedicatedCloudrightRightEnum, tokenValidator?: boolean, vmNetworkRole?: dedicatedCloudrightVmNetworkRoleEnum }): Promise<dedicatedCloud.Task>;
@@ -3141,7 +3141,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(userId: number): {
                 /**
-                 * Remove a given user from your Private Cloud
+                 * Remove a given user from your Dedicated Cloud
                  * DELETE /dedicatedCloud/{serviceName}/user/{userId}
                  */
                 $delete(): Promise<dedicatedCloud.Task>;
@@ -3156,7 +3156,7 @@ export interface DedicatedCloud {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 changePassword: {
                     /**
-                     * Change Private Cloud user password
+                     * Change Dedicated Cloud user password
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/changePassword
                      */
                     $post(params?: { password?: string }): Promise<dedicatedCloud.Task>;
@@ -3167,7 +3167,7 @@ export interface DedicatedCloud {
                 }
                 changeProperties: {
                     /**
-                     * Change Private Cloud user properties
+                     * Change Dedicated Cloud user properties
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/changeProperties
                      */
                     $post(params?: { canManageIpFailOvers?: boolean, canManageNetwork?: boolean, canManageRights?: boolean, email?: string, firstName?: string, fullAdminRo?: boolean, lastName?: string, nsxRight?: boolean, phoneNumber?: string, receiveAlerts?: boolean, tokenValidator?: boolean }): Promise<dedicatedCloud.Task>;
@@ -3189,7 +3189,7 @@ export interface DedicatedCloud {
                 }
                 disable: {
                     /**
-                     * Disable the given Private Cloud user 
+                     * Disable the given Dedicated Cloud user 
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/disable
                      */
                     $post(): Promise<dedicatedCloud.Task>;
@@ -3200,7 +3200,7 @@ export interface DedicatedCloud {
                 }
                 enable: {
                     /**
-                     * Enable the given Private Cloud user 
+                     * Enable the given Dedicated Cloud user 
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/enable
                      */
                     $post(): Promise<dedicatedCloud.Task>;
@@ -3227,7 +3227,7 @@ export interface DedicatedCloud {
                      */
                     $get(): Promise<number[]>;
                     /**
-                     * Add a new object right to user in datacenter on Private Cloud
+                     * Add a new object right to user in datacenter on Dedicated Cloud
                      * POST /dedicatedCloud/{serviceName}/user/{userId}/objectRight
                      */
                     $post(params: { propagate?: boolean, right: dedicatedCloudrightRightEnum, type: dedicatedCloudrightUserObjectRightTypeEnum, vmwareObjectId: string }): Promise<dedicatedCloud.Task>;
@@ -3237,7 +3237,7 @@ export interface DedicatedCloud {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(objectRightId: number): {
                         /**
-                         * Remove an object right from user in datacenter on Private Cloud
+                         * Remove an object right from user in datacenter on Dedicated Cloud
                          * DELETE /dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}
                          */
                         $delete(): Promise<dedicatedCloud.Task>;
@@ -3371,7 +3371,7 @@ export interface DedicatedCloud {
         }
         vlan: {
             /**
-             * Private Cloud vlans
+             * Dedicated Cloud vlans
              * GET /dedicatedCloud/{serviceName}/vlan
              */
             $get(): Promise<number[]>;
@@ -3403,7 +3403,7 @@ export interface DedicatedCloud {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             kms: {
                 /**
-                 * VM Encryption KMS linked to this Private Cloud
+                 * VM Encryption KMS linked to this Dedicated Cloud
                  * GET /dedicatedCloud/{serviceName}/vmEncryption/kms
                  */
                 $get(): Promise<number[]>;
@@ -3447,7 +3447,7 @@ export interface DedicatedCloud {
         }
         vrack: {
             /**
-             * This Private Cloud vrack
+             * This Dedicated Cloud vrack
              * GET /dedicatedCloud/{serviceName}/vrack
              */
             $get(): Promise<string[]>;

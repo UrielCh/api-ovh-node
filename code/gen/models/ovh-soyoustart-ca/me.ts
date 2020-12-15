@@ -6048,7 +6048,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "me.payment.method.PaymentMethod"
+          "responseType": "void"
         }
       ],
       "path": "/me/payment/method/{paymentMethodId}/challenge"
@@ -12276,104 +12276,6 @@ export const schema: Schema = {
       "id": "MethodEnum",
       "namespace": "http"
     },
-    "me.Migration": {
-      "description": "Country Migration",
-      "id": "Migration",
-      "namespace": "me",
-      "properties": {
-        "from": {
-          "canBeNull": false,
-          "description": "Billing country to migrate from",
-          "fullType": "nichandle.OvhSubsidiaryEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "nichandle.OvhSubsidiaryEnum"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Migration Id",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "status": {
-          "canBeNull": false,
-          "description": "Migration status",
-          "fullType": "me.migration.StatusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "me.migration.StatusEnum"
-        },
-        "steps": {
-          "canBeNull": true,
-          "description": "Migration steps",
-          "fullType": "me.migration.Step[]",
-          "readOnly": true,
-          "required": false,
-          "type": "me.migration.Step[]"
-        },
-        "to": {
-          "canBeNull": false,
-          "description": "Billing country to migrate to",
-          "fullType": "nichandle.OvhSubsidiaryEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "nichandle.OvhSubsidiaryEnum"
-        }
-      }
-    },
-    "me.agreements.AgreementStatusEnum": {
-      "description": "State of the agreement",
-      "enum": [
-        "obsolete",
-        "todo",
-        "ko",
-        "ok"
-      ],
-      "enumType": "string",
-      "id": "AgreementStatusEnum",
-      "namespace": "me.agreements"
-    },
-    "me.agreements.ContractAgreement": {
-      "description": "Contract Agreement",
-      "id": "ContractAgreement",
-      "namespace": "me.agreements",
-      "properties": {
-        "agreed": {
-          "canBeNull": false,
-          "description": "State of the agreement",
-          "fullType": "me.agreements.AgreementStatusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "me.agreements.AgreementStatusEnum"
-        },
-        "contractId": {
-          "canBeNull": false,
-          "description": "Contract ID",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "date": {
-          "canBeNull": false,
-          "description": "Date of creation if the agreement is not signed. Date of signature if the agreement is signed",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Contract Agreement ID",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        }
-      }
-    },
     "me.consent.Campaign": {
       "description": "Consent campaign",
       "id": "Campaign",
@@ -12476,213 +12378,6 @@ export const schema: Schema = {
           "type": "boolean"
         }
       }
-    },
-    "me.migration.Contract": {
-      "description": "contract",
-      "id": "Contract",
-      "namespace": "me.migration",
-      "properties": {
-        "active": {
-          "canBeNull": false,
-          "description": "Status",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "date": {
-          "canBeNull": false,
-          "description": "Date",
-          "fullType": "date",
-          "readOnly": true,
-          "required": false,
-          "type": "date"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "ID",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "name": {
-          "canBeNull": false,
-          "description": "Name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "pdf": {
-          "canBeNull": false,
-          "description": "PDF URL",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "text": {
-          "canBeNull": false,
-          "description": "Text of the contract",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
-    "me.migration.StatusEnum": {
-      "description": "Status of the migration",
-      "enum": [
-        "CANCELED",
-        "CHECKED",
-        "DOING",
-        "MIGRATED",
-        "TO_CHECK",
-        "TODO"
-      ],
-      "enumType": "string",
-      "id": "StatusEnum",
-      "namespace": "me.migration"
-    },
-    "me.migration.Step": {
-      "description": "Country Migration Step",
-      "id": "Step",
-      "namespace": "me.migration",
-      "properties": {
-        "contracts": {
-          "canBeNull": true,
-          "description": "Contracts data",
-          "fullType": "me.migration.step.Contracts",
-          "readOnly": true,
-          "required": false,
-          "type": "me.migration.step.Contracts"
-        },
-        "debt": {
-          "canBeNull": true,
-          "description": "Debt data",
-          "fullType": "me.migration.step.Debt",
-          "readOnly": true,
-          "required": false,
-          "type": "me.migration.step.Debt"
-        },
-        "name": {
-          "canBeNull": false,
-          "description": "Migration step name",
-          "fullType": "me.migration.step.NameEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "me.migration.step.NameEnum"
-        },
-        "orders": {
-          "canBeNull": true,
-          "description": "Orders data",
-          "fullType": "me.migration.step.Orders",
-          "readOnly": true,
-          "required": false,
-          "type": "me.migration.step.Orders"
-        },
-        "status": {
-          "canBeNull": false,
-          "description": "Billing step status",
-          "fullType": "me.migration.step.StatusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "me.migration.step.StatusEnum"
-        }
-      }
-    },
-    "me.migration.step.Contracts": {
-      "description": "Country Migration step contracts data",
-      "id": "Contracts",
-      "namespace": "me.migration.step",
-      "properties": {
-        "agreements": {
-          "canBeNull": false,
-          "description": "Array of contract agreements to accept",
-          "fullType": "me.agreements.ContractAgreement[]",
-          "readOnly": true,
-          "required": false,
-          "type": "me.agreements.ContractAgreement[]"
-        }
-      }
-    },
-    "me.migration.step.Debt": {
-      "description": "Country Migration step debt data",
-      "id": "Debt",
-      "namespace": "me.migration.step",
-      "properties": {
-        "balanceAmount": {
-          "canBeNull": true,
-          "description": "Balance amount",
-          "fullType": "order.Price",
-          "readOnly": true,
-          "required": false,
-          "type": "order.Price"
-        },
-        "ovhAccountAmount": {
-          "canBeNull": true,
-          "description": "OVH Account amount",
-          "fullType": "order.Price",
-          "readOnly": true,
-          "required": false,
-          "type": "order.Price"
-        }
-      }
-    },
-    "me.migration.step.NameEnum": {
-      "description": "Name of the migration step",
-      "enum": [
-        "ORDERS",
-        "DEBT",
-        "NIC",
-        "CONTRACTS"
-      ],
-      "enumType": "string",
-      "id": "NameEnum",
-      "namespace": "me.migration.step"
-    },
-    "me.migration.step.Orders": {
-      "description": "Country Migration step orders data",
-      "id": "Orders",
-      "namespace": "me.migration.step",
-      "properties": {
-        "pendingOperations": {
-          "canBeNull": false,
-          "description": "Whether there is pending operations",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "pendingPromotions": {
-          "canBeNull": false,
-          "description": "Whether there is pending promotions",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
-        "pendingSubscriptions": {
-          "canBeNull": false,
-          "description": "Whether there is pending subscriptions",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        }
-      }
-    },
-    "me.migration.step.StatusEnum": {
-      "description": "Status of the migration step",
-      "enum": [
-        "OK",
-        "PENDING"
-      ],
-      "enumType": "string",
-      "id": "StatusEnum",
-      "namespace": "me.migration.step"
     },
     "me.payment.method.AvailablePaymentMethod": {
       "description": "Available payment method object",
@@ -14307,8 +14002,25 @@ export const schema: Schema = {
         "ASIA",
         "AU",
         "CA",
+        "CZ",
+        "DE",
+        "ES",
+        "EU",
+        "FI",
+        "FR",
+        "GB",
+        "IE",
+        "IT",
+        "LT",
+        "MA",
+        "NL",
+        "PL",
+        "PT",
         "QC",
         "SG",
+        "SN",
+        "TN",
+        "US",
         "WE",
         "WS"
       ],
@@ -15243,7 +14955,6 @@ export const schema: Schema = {
       }
     },
     "order.CurrencyCodeEnum": {
-      "description": "Currency code",
       "enum": [
         "AUD",
         "CAD",
@@ -15293,31 +15004,25 @@ export const schema: Schema = {
       "namespace": "order"
     },
     "order.Price": {
-      "description": "Price with its currency and textual representation",
+      "description": "Price with it's currency and textual representation",
       "id": "Price",
       "namespace": "order",
       "properties": {
         "currencyCode": {
           "canBeNull": false,
-          "description": "Currency code",
-          "fullType": "order.CurrencyCodeEnum",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "order.CurrencyCodeEnum"
         },
         "text": {
           "canBeNull": false,
-          "description": "Textual representation",
-          "fullType": "string",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "description": "The effective price",
-          "fullType": "double",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "double"
         }

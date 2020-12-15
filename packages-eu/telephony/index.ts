@@ -467,6 +467,7 @@ export namespace telephony {
         recordStatus: boolean;
         reportEmail?: string;
         reportStatus: telephony.ConferenceReportStatusEnum;
+        roomNumber: number;
         whiteLabelReport: boolean;
     }
     /**
@@ -474,6 +475,35 @@ export namespace telephony {
      * type fullname: telephony.ConferenceReportStatusEnum
      */
     export type ConferenceReportStatusEnum = "customer" | "none" | "other"
+    /**
+     * Conference room
+     * interface fullName: telephony.ConferenceRoom.ConferenceRoom
+     */
+    export interface ConferenceRoom {
+        announceFile: boolean;
+        announceFilename?: string;
+        announceSoundId?: number;
+        anonymousRejection: boolean;
+        enterMuted: boolean;
+        eventsChannel: string;
+        expirationDate?: string;
+        language: telephony.ConferenceLanguageEnum;
+        pin: string;
+        recordStatus: boolean;
+        reportEmail?: string;
+        reportStatus: telephony.ConferenceReportStatusEnum;
+        roomNumber: number;
+        whiteLabelReport: boolean;
+    }
+    /**
+     * Get realtime statistics about all rooms of your conference number
+     * interface fullName: telephony.ConferenceRoomsStatistics.ConferenceRoomsStatistics
+     */
+    export interface ConferenceRoomsStatistics {
+        activeRoomsCount: number;
+        participantsCount: number;
+        roomsCount: number;
+    }
     /**
      * List public web access of your conference
      * interface fullName: telephony.ConferenceWebAccess.ConferenceWebAccess
@@ -3297,6 +3327,213 @@ export interface Telephony {
                         }
                     };
                 }
+                rooms: {
+                    /**
+                     * List your conferences rooms for this number
+                     * GET /telephony/{billingAccount}/conference/{serviceName}/rooms
+                     */
+                    $get(): Promise<number[]>;
+                    /**
+                     * Create a new conference room on your conference service
+                     * POST /telephony/{billingAccount}/conference/{serviceName}/rooms
+                     */
+                    $post(params?: { roomNumber?: number }): Promise<telephony.ConferenceRoom>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(roomNumber: number): {
+                        /**
+                         * Get this object properties
+                         * GET /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}
+                         */
+                        $get(): Promise<telephony.ConferenceRoom>;
+                        /**
+                         * Alter this object properties
+                         * PUT /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}
+                         */
+                        $put(params?: { announceFile?: boolean, announceFilename?: string, announceSoundId?: number, anonymousRejection?: boolean, enterMuted?: boolean, eventsChannel?: string, expirationDate?: string, language?: telephony.ConferenceLanguageEnum, pin?: string, recordStatus?: boolean, reportEmail?: string, reportStatus?: telephony.ConferenceReportStatusEnum, roomNumber?: number, whiteLabelReport?: boolean }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        histories: {
+                            /**
+                             * List your past conferences for this room
+                             * GET /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/histories
+                             */
+                            $get(): Promise<number[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(id: number): {
+                                /**
+                                 * Get this object properties
+                                 * GET /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/histories/{id}
+                                 */
+                                $get(): Promise<telephony.ConferenceHistory>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        lock: {
+                            /**
+                             * Lock the conference room
+                             * POST /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/lock
+                             */
+                            $post(): Promise<telephony.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        participants: {
+                            /**
+                             * Current participants of the conference room
+                             * GET /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants
+                             */
+                            $get(): Promise<number[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(id: number): {
+                                /**
+                                 * Get this object properties
+                                 * GET /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}
+                                 */
+                                $get(): Promise<telephony.ConferenceParticipants>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                deaf: {
+                                    /**
+                                     * Make a participant deaf in your conference room
+                                     * POST /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/deaf
+                                     */
+                                    $post(): Promise<telephony.Task>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                }
+                                energy: {
+                                    /**
+                                     * Change a participant level of audio transmission
+                                     * POST /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/energy
+                                     */
+                                    $post(params: { value: number }): Promise<telephony.Task>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                }
+                                kick: {
+                                    /**
+                                     * Eject a participant from your conference room
+                                     * POST /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/kick
+                                     */
+                                    $post(): Promise<telephony.Task>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                }
+                                mute: {
+                                    /**
+                                     * Mute a participant in your conference room
+                                     * POST /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/mute
+                                     */
+                                    $post(): Promise<telephony.Task>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                }
+                                undeaf: {
+                                    /**
+                                     * Make a participant undeaf your conference room
+                                     * POST /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/undeaf
+                                     */
+                                    $post(): Promise<telephony.Task>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                }
+                                unmute: {
+                                    /**
+                                     * Unmute a participant in your conference room
+                                     * POST /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/participants/{id}/unmute
+                                     */
+                                    $post(): Promise<telephony.Task>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                                }
+                            };
+                        }
+                        unlock: {
+                            /**
+                             * Unlock the conference room
+                             * POST /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/unlock
+                             */
+                            $post(): Promise<telephony.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        webAccess: {
+                            /**
+                             * List your conference room  web access
+                             * GET /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/webAccess
+                             */
+                            $get(): Promise<number[]>;
+                            /**
+                             * Add a public web access to your conference
+                             * POST /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/webAccess
+                             */
+                            $post(params: { type: telephony.ConferenceWebAccessTypeEnum }): Promise<telephony.ConferenceWebAccess>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(id: number): {
+                                /**
+                                 * Delete a public web access to your conference
+                                 * DELETE /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/webAccess/{id}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get this object properties
+                                 * GET /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/webAccess/{id}
+                                 */
+                                $get(): Promise<telephony.ConferenceWebAccess>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    };
+                }
+                roomsStats: {
+                    /**
+                     * Get realtime statistics about all rooms of your conference number
+                     * GET /telephony/{billingAccount}/conference/{serviceName}/roomsStats
+                     */
+                    $get(): Promise<telephony.ConferenceRoomsStatistics>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
                 settings: {
                     /**
                      * Get this object properties
@@ -3307,7 +3544,7 @@ export interface Telephony {
                      * Alter this object properties
                      * PUT /telephony/{billingAccount}/conference/{serviceName}/settings
                      */
-                    $put(params?: { announceFile?: boolean, announceFilename?: string, announceSoundId?: number, anonymousRejection?: boolean, enterMuted?: boolean, eventsChannel?: string, language?: telephony.ConferenceLanguageEnum, pin?: string, recordStatus?: boolean, reportEmail?: string, reportStatus?: telephony.ConferenceReportStatusEnum, whiteLabelReport?: boolean }): Promise<void>;
+                    $put(params?: { announceFile?: boolean, announceFilename?: string, announceSoundId?: number, anonymousRejection?: boolean, enterMuted?: boolean, eventsChannel?: string, language?: telephony.ConferenceLanguageEnum, pin?: string, recordStatus?: boolean, reportEmail?: string, reportStatus?: telephony.ConferenceReportStatusEnum, roomNumber?: number, whiteLabelReport?: boolean }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -3315,7 +3552,7 @@ export interface Telephony {
                 }
                 unlock: {
                     /**
-                     * Lock the conference room
+                     * Unlock the conference room
                      * POST /telephony/{billingAccount}/conference/{serviceName}/unlock
                      */
                     $post(): Promise<telephony.Task>;

@@ -8481,6 +8481,14 @@ export const schema: Schema = {
       "id": "NetworkRegion",
       "namespace": "cloud.network",
       "properties": {
+        "openstackId": {
+          "canBeNull": true,
+          "description": "Network id on openstack region",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "region": {
           "canBeNull": false,
           "description": "Network region",
@@ -10167,6 +10175,14 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "openstackId": {
+          "canBeNull": true,
+          "description": "User id on openstack",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "roles": {
           "canBeNull": false,
           "description": "User roles",
@@ -10221,6 +10237,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "openstackId": {
+          "canBeNull": true,
+          "description": "User id on openstack",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "password": {
           "canBeNull": false,
