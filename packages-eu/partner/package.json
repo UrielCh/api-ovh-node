@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/partner",
     "description": "Add typing to to ovh api partner",
-    "version": "3.1.8",
+    "version": "3.1.13",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
