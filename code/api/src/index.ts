@@ -603,7 +603,6 @@ by default I will ask for all rights`);
             error.message += ` in ${((new Date().getTime() - t0) / 1000).toFixed(1)} Sec.`;
             throw new OvhError(error);
         }
-        let extraErrorMessage = '';
         const makeRequest = () => new Promise((resolve, reject) => {
             const { maxRetry } = this;
             let req = https.request(options, (res: IncomingMessage) => {
@@ -638,14 +637,12 @@ by default I will ask for all rights`);
                         return handleResponse(res, body).then(resolve, reject)
                     })
             }).on('timeout', () => {
-                // TODO improve this error handeling
-                extraErrorMessage = `Timeout event triggered, retryCnt: ${retryCnt}`;
-                req.abort();
-            }).on('error', async (e) => {
+                req.destroy(Error('timeout event triggered'));
+            }).on('error', async (error: Error) => {
                 // network connextion error like read ECONNRESET
                 retryCnt++;
                 if (retryCnt <= this.maxRetry) {
-                    this.emit('warning', { retryCnt: retryCnt, maxRetry: this.maxRetry, method: httpMethod, path, statusCode: 0, statusMessage: `${e}` });
+                    this.emit('warning', { retryCnt: retryCnt, maxRetry: this.maxRetry, method: httpMethod, path, statusCode: 0, statusMessage: `${error.message}` });
                     await wait(retryCnt * this.retrySleep)
                     makeRequest().then(resolve, reject);
                     return;
@@ -654,8 +651,6 @@ by default I will ask for all rights`);
                 if (retryCnt > 0)
                     message += ` after ${retryCnt} retries`;
                 message += ` in ${((new Date().getTime() - t0) / 1000).toFixed(1)} Sec.`;
-                if (extraErrorMessage)
-                    message += `${EOL}${extraErrorMessage}`;
                     
                 reject(new OvhError({
                     method: options.method as HttpMethod,
@@ -663,7 +658,7 @@ by default I will ask for all rights`);
                     httpCode: '',
                     errorCode: 'NETWORK_ERROR',
                     message
-                }, e))
+                }, error))
             });
 
             // mocked socket has no setTimeout
