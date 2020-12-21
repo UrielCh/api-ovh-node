@@ -179,11 +179,11 @@ export interface OvhApiEvent {
     once(ev: 'debug', listener: (txt: string) => void): this;
     emit(ev: 'debug', txt: string): boolean;
     /**
-     * emited on OVH connexion error berore futher retry
+     * emited on OVH connexion error before futher retries.
      */
-    on(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage: string }) => void): this;
-    once(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage: string }) => void): this;
-    emit(ev: 'warning', params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage: string }): boolean;
+    on(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage?: string, error?: Error }) => void): this;
+    once(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage?: string, error?: Error }) => void): this;
+    emit(ev: 'warning', params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage?: string, error?: Error }): boolean;
 
     on(ev: 'warningMsg', listener: (params: string) => void): this;
     once(ev: 'warningMsg', listener: (params: string) => void): this;
@@ -374,13 +374,13 @@ by default I will ask for all rights`);
     /**
      * Execute a request on the API
      *
-     * @param httpMethod: The HTTP method
+     * @param method: The HTTP method
      * @param path: The request path
      * @param pathTemplate: The request path template
      * @param params: The request parameters (passed as query string or body params)
      */
-    public async doRequest(httpMethod: string, path: string, pathTemplate: string, params?: {[key:string]: any}): Promise<any> {
-        httpMethod = httpMethod.toUpperCase();
+    public async doRequest(method: string, path: string, pathTemplate: string, params?: {[key:string]: any}): Promise<any> {
+        method = method.toUpperCase();
         let size = 0;
         /**
          * Time drift
@@ -397,7 +397,7 @@ by default I will ask for all rights`);
         // httpMethod === 'GET' && this.queryCache
         if (this.queryCache) {
             cacheSilot = this.queryCache.silot(pathTemplate);
-            if (cacheSilot && httpMethod === 'GET') {
+            if (cacheSilot && method === 'GET') {
                 const value = await cacheSilot.get(path);
                 if (value !== undefined)
                     return value;
@@ -410,7 +410,7 @@ by default I will ask for all rights`);
         let options: RequestOptions = {
             host: this.host,
             port: this.port,
-            method: httpMethod,
+            method: method,
             path: this.basePath + path,
             timeout: this.timeout,
         };
@@ -423,7 +423,7 @@ by default I will ask for all rights`);
                     return '*'
                 return e;
             }).join('/');
-            this.querySet.add(`${httpMethod} ${template}`);
+            this.querySet.add(`${method} ${template}`);
         }
 
         // Headers
@@ -446,7 +446,7 @@ by default I will ask for all rights`);
          */
         let reqBody: string = '';
         if (typeof (params) === 'object' && Object.keys(params).length > 0) {
-            if (httpMethod === 'PUT' || httpMethod === 'POST') {
+            if (method === 'PUT' || method === 'POST') {
                 // Escape unicode
                 reqBody = JSON
                     .stringify(params)
@@ -468,13 +468,13 @@ by default I will ask for all rights`);
             if (typeof (this.consumerKey) === 'string') {
                 options.headers['X-Ovh-Consumer'] = this.consumerKey;
                 options.headers['X-Ovh-Signature'] = this.signRequest(
-                    httpMethod, `https://${options.host}${options.path}`,
+                    method, `https://${options.host}${options.path}`,
                     reqBody, XOvhTimestamp
                 );
             }
         }
         if (this.listenerCount('request')) {
-            this.emit('request', { method: httpMethod, path, pathTemplate })
+            this.emit('request', { method: method, path, pathTemplate })
         }
         if (this.listenerCount('debug')) {
             this.emit('debug', `[OVH] API call: ${options.method} ${options.path} ${reqBody}`);
@@ -542,7 +542,7 @@ by default I will ask for all rights`);
                         path: options.path as string,
                         errorCode: 'HTTP_ERROR',
                         httpCode: `${statusCode} ${statusMessage}`,
-                        message: `[OVH] Unable to parse ${httpMethod} ${path} JSON reponse:${body}`
+                        message: `[OVH] Unable to parse ${method} ${path} JSON reponse:${body}`
                     }, e);
                 }
             } else {
@@ -550,15 +550,15 @@ by default I will ask for all rights`);
             }
 
             if (this.listenerCount('debug')) {
-                this.emit('debug', `[OVH] API response to ${httpMethod} ${path}: ${body}`);
+                this.emit('debug', `[OVH] API response to ${method} ${path}: ${body}`);
             }
             if (statusCode === 200) {
                 if (cacheSilot) {
-                    if (httpMethod === 'GET')
+                    if (method === 'GET')
                         await cacheSilot.store(path, responseData, size);
                     else {
                         await cacheSilot.discard(path);
-                        if (httpMethod === 'DELETE') {
+                        if (method === 'DELETE') {
                             await cacheSilot.discard(path.replace(/\/[^/]+$/, ''));
                         }
                     }
@@ -586,7 +586,7 @@ by default I will ask for all rights`);
                         }, e);
                     }
                     await waitForCertValidation(newCert);
-                    let resp = await this.request(httpMethod, path, params);
+                    let resp = await this.request(method, path, params);
                     this.updatingCert = false;
                     return resp;
                 }
@@ -626,9 +626,8 @@ by default I will ask for all rights`);
                                     }
                                 } catch (e) { }
                             }
-
                             if ((statusCode === 504 || statusCode === 408)) {
-                                this.emit('warning', { retryCnt, maxRetry, method: httpMethod, path, statusCode, statusMessage: res.statusMessage });
+                                this.emit('warning', { retryCnt, maxRetry, method: method, path, statusCode, statusMessage: res.statusMessage });
                                 await wait(this.retrySleep * retryCnt);
                                 makeRequest().then(resolve, reject);
                                 return;
@@ -642,7 +641,8 @@ by default I will ask for all rights`);
                 // network connextion error like read ECONNRESET
                 retryCnt++;
                 if (retryCnt <= this.maxRetry) {
-                    this.emit('warning', { retryCnt: retryCnt, maxRetry: this.maxRetry, method: httpMethod, path, statusCode: 0, statusMessage: `${error.message}` });
+                    const statusCode = 0;
+                    this.emit('warning', { retryCnt, maxRetry, method, path, statusCode, error });
                     await wait(retryCnt * this.retrySleep)
                     makeRequest().then(resolve, reject);
                     return;
@@ -678,7 +678,6 @@ by default I will ask for all rights`);
             }
             req.end();
         });
-
         return makeRequest();// end return Query promise
     }
 
