@@ -163,7 +163,7 @@ export interface OvhParams {
  * simple wait promise generator
  * @param duration wime to wait in ms
  */
-const wait = (duration: number) => new Promise(resolve => setTimeout(() => (resolve()), duration));
+const wait = (duration: number) => new Promise(resolve => setTimeout(() => (resolve(0)), duration));
 /**
  * interface for explicite events typing
  */
@@ -512,10 +512,10 @@ by default I will ask for all rights`);
                             writeFile(this.certCache, jsonData, { encoding: 'utf-8', mode: 0o600 }, (err) => {
                                 if (err)
                                     this.emit('warningMsg', `Failed to write in ${this.certCache} ${err}`);
-                                done();
+                                done(0);
                             });
                         } else
-                            done();
+                            done(0);
                         return false;
                     }
                 } catch ({ errorCode }) {
@@ -603,7 +603,7 @@ by default I will ask for all rights`);
             error.message += ` in ${((new Date().getTime() - t0) / 1000).toFixed(1)} Sec.`;
             throw new OvhError(error);
         }
-
+        let extraErrorMessage = '';
         const makeRequest = () => new Promise((resolve, reject) => {
             const { maxRetry } = this;
             let req = https.request(options, (res: IncomingMessage) => {
@@ -638,8 +638,8 @@ by default I will ask for all rights`);
                         return handleResponse(res, body).then(resolve, reject)
                     })
             }).on('timeout', () => {
-                // TODO remove this debug
-                console.error('req abort timeout, retryCnt: ${retryCnt}');
+                // TODO improve this error handeling
+                extraErrorMessage = `Timeout event triggered, retryCnt: ${retryCnt}`;
                 req.abort();
             }).on('error', async (e) => {
                 // network connextion error like read ECONNRESET
@@ -654,7 +654,9 @@ by default I will ask for all rights`);
                 if (retryCnt > 0)
                     message += ` after ${retryCnt} retries`;
                 message += ` in ${((new Date().getTime() - t0) / 1000).toFixed(1)} Sec.`;
-
+                if (extraErrorMessage)
+                    message += `${EOL}${extraErrorMessage}`;
+                    
                 reject(new OvhError({
                     method: options.method as HttpMethod,
                     path: options.path as string,
