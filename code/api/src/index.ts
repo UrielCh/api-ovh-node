@@ -164,36 +164,11 @@ export interface OvhParams {
  * @param duration wime to wait in ms
  */
 const wait = (duration: number) => new Promise(resolve => setTimeout(() => (resolve(0)), duration));
-/**
- * interface for explicite events typing
- */
-export interface OvhApiEvent {
-    /**
-     * emit before each request (sent a single time in case of retry)
-     */
-    on(ev: 'request', listener: (params: { method: string, path: string, pathTemplate: string }) => void): this;
-    once(ev: 'request', listener: (params: { method: string, path: string, pathTemplate: string }) => void): this;
-    emit(ev: 'request', params: { method: string, path: string, pathTemplate: string }): boolean;
-
-    on(ev: 'debug', listener: (txt: string) => void): this;
-    once(ev: 'debug', listener: (txt: string) => void): this;
-    emit(ev: 'debug', txt: string): boolean;
-    /**
-     * emited on OVH connexion error before futher retries.
-     */
-    on(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage?: string, error?: Error }) => void): this;
-    once(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage?: string, error?: Error }) => void): this;
-    emit(ev: 'warning', params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage?: string, error?: Error }): boolean;
-
-    on(ev: 'warningMsg', listener: (params: string) => void): this;
-    once(ev: 'warningMsg', listener: (params: string) => void): this;
-    emit(ev: 'warningMsg', params: string): boolean;
-}
 
 /**
  * Main ovh api connector
  */
-export default class OvhApi extends EventEmitter implements OvhRequestable, OvhApiEvent {
+export default class OvhApi extends EventEmitter implements OvhRequestable {
     appKey: string;
     appSecret: string;
     consumerKey: string | null;
@@ -288,6 +263,67 @@ by default I will ask for all rights`);
         }
     }
 
+
+    /**
+     * emited before each request
+     */
+    on(ev: 'request', listener: (params: { method: string, path: string, pathTemplate: string }) => void): this;
+    /**
+     * emited verbose debug data
+     */
+    on(ev: 'debug', listener: (txt: string) => void): this;
+    /**
+     * emited on OVH connexion error before futher retries.
+     */
+    on(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage?: string, error?: Error }) => void): this;
+    /**
+     * non Http Warning message
+     */
+    on(ev: 'warningMsg', listener: (params: string) => void): this;
+    on(ev: 'request' | 'debug' | 'warning' | 'warningMsg', listener: (...args: any[]) => void): this {
+        return super.on(ev, listener);
+    }
+
+    /**
+     * emited before each request
+     */
+    once(ev: 'request', listener: (params: { method: string, path: string, pathTemplate: string }) => void): this;
+    /**
+     * emited verbose debug data
+     */
+    once(ev: 'debug', listener: (txt: string) => void): this;
+    /**
+     * emited on OVH connexion error before futher retries.
+     */
+    once(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage?: string, error?: Error }) => void): this;
+    /**
+     * non Http Warning message
+     */
+    once(ev: 'warningMsg', listener: (params: string) => void): this;
+    once(ev: 'request' | 'debug' | 'warning' | 'warningMsg', listener: (...args: any[]) => void): this {
+        return super.once(ev, listener);
+    }
+
+    /**
+     * emited before each request
+     */
+    emit(ev: 'request', params: { method: string, path: string, pathTemplate: string }): boolean;
+    /**
+     * emited verbose debug data
+     */
+    emit(ev: 'debug', txt: string): boolean;
+    /**
+     * emited on OVH connexion error before futher retries.
+     */
+    emit(ev: 'warning', params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage?: string, error?: Error }): boolean;
+    /**
+     * non Http Warning message
+     */
+    emit(ev: 'warningMsg', params: string): boolean;
+    emit(ev: 'request' | 'debug' | 'warning' | 'warningMsg', ...args: any[]): boolean {
+        return super.emit(ev, ...args);
+    }
+
     async cache(template: string, param?: ICacheOptions | CacheAction): Promise<any> {
         if (!this.queryCache) {
             this.queryCache = new Cache({ slotClass: this.slotClass });
@@ -379,8 +415,8 @@ by default I will ask for all rights`);
      * @param pathTemplate: The request path template
      * @param params: The request parameters (passed as query string or body params)
      */
-    public async doRequest(method: string, path: string, pathTemplate: string, params?: {[key:string]: any}): Promise<any> {
-        method = method.toUpperCase();
+    public async doRequest(httpMethod: string, path: string, pathTemplate: string, params?: { [key: string]: any }): Promise<any> {
+        const method = httpMethod.toUpperCase() as HttpMethod;
         let size = 0;
         /**
          * Time drift
@@ -410,7 +446,7 @@ by default I will ask for all rights`);
         let options: RequestOptions = {
             host: this.host,
             port: this.port,
-            method: method,
+            method,
             path: this.basePath + path,
             timeout: this.timeout,
         };
@@ -474,10 +510,10 @@ by default I will ask for all rights`);
             }
         }
         if (this.listenerCount('request')) {
-            this.emit('request', { method: method, path, pathTemplate })
+            this.emit('request', { method, path, pathTemplate })
         }
         if (this.listenerCount('debug')) {
-            this.emit('debug', `[OVH] API call: ${options.method} ${options.path} ${reqBody}`);
+            this.emit('debug', `[OVH] API call: ${method} ${options.path} ${reqBody}`);
         }
         // retry the Query thith a new cert
         const waitForCertValidation = async (newCert: OvhCredentialNew) => new Promise(async (done) => {
@@ -525,7 +561,7 @@ by default I will ask for all rights`);
             }
         });
 
-        let retryCnt = -1;
+        let retryCnt = 1;
         // Promisify https.request
         const t0 = new Date().getTime();
 
@@ -538,7 +574,7 @@ by default I will ask for all rights`);
                     responseData = JSON.parse(body);
                 } catch (e) {
                     throw new OvhError({
-                        method: options.method as HttpMethod,
+                        method,
                         path: options.path as string,
                         errorCode: 'HTTP_ERROR',
                         httpCode: `${statusCode} ${statusMessage}`,
@@ -578,7 +614,7 @@ by default I will ask for all rights`);
                         newCert = await this.queryForCredencial()
                     } catch (e) {
                         throw new OvhError({
-                            method: options.method as HttpMethod,
+                            method,
                             path: options.path as string,
                             errorCode: 'HTTP_ERROR',
                             httpCode: `${statusCode} ${statusMessage}`,
@@ -596,9 +632,9 @@ by default I will ask for all rights`);
                 error.errorCode = "HTTP_ERROR";
             if (!error.httpCode)
                 error.httpCode = `${statusCode} ${statusMessage}`;
-            error.method = options.method as HttpMethod;
+            error.method = method;
             error.path = options.path as string;
-            if (retryCnt > 0)
+            if (retryCnt > 1)
                 error.message += ` after ${retryCnt} retries`;
             error.message += ` in ${((new Date().getTime() - t0) / 1000).toFixed(1)} Sec.`;
             throw new OvhError(error);
@@ -609,7 +645,6 @@ by default I will ask for all rights`);
                 let body = '';
                 res.on('data', (chunk) => body += chunk)
                     .on('end', async () => {
-                        retryCnt++;
                         // 504 Gateway Time-out
                         // 408 Request Time-out
                         let { statusCode } = res;
@@ -627,7 +662,8 @@ by default I will ask for all rights`);
                                 } catch (e) { }
                             }
                             if ((statusCode === 504 || statusCode === 408)) {
-                                this.emit('warning', { retryCnt, maxRetry, method: method, path, statusCode, statusMessage: res.statusMessage });
+                                retryCnt++;
+                                this.emit('warning', { retryCnt, maxRetry, method, path, statusCode, statusMessage: res.statusMessage });
                                 await wait(this.retrySleep * retryCnt);
                                 makeRequest().then(resolve, reject);
                                 return;
@@ -639,21 +675,21 @@ by default I will ask for all rights`);
                 req.destroy(Error('timeout event triggered'));
             }).on('error', async (error: Error) => {
                 // network connextion error like read ECONNRESET
-                retryCnt++;
                 if (retryCnt <= this.maxRetry) {
                     const statusCode = 0;
+                    retryCnt++;
                     this.emit('warning', { retryCnt, maxRetry, method, path, statusCode, error });
                     await wait(retryCnt * this.retrySleep)
                     makeRequest().then(resolve, reject);
                     return;
                 }
                 let message = 'fail to etablish a valid connexion';
-                if (retryCnt > 0)
+                if (retryCnt > 1)
                     message += ` after ${retryCnt} retries`;
                 message += ` in ${((new Date().getTime() - t0) / 1000).toFixed(1)} Sec.`;
-                    
+
                 reject(new OvhError({
-                    method: options.method as HttpMethod,
+                    method,
                     path: options.path as string,
                     httpCode: '',
                     errorCode: 'NETWORK_ERROR',
