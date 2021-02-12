@@ -43,6 +43,5 @@
         "build": "lerna run build",
         "do-publish": "npm run clean && npm run install-all && npm run bootstrap && npm run clean-cache && lerna publish patch --yes"
     },
-    "dependencies": {},
     "name": "api-ovh-node"
 }
