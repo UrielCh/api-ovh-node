@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-ca/email-exchange",
     "description": "Add typing to to ovh api email-exchange",
-    "version": "3.1.11",
+    "version": "3.1.14",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",

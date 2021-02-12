@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-ca/dedicated-cloud",
     "description": "Add typing to to ovh api dedicated-cloud",
-    "version": "3.1.13",
+    "version": "3.1.14",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
