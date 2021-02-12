@@ -1,48 +1,48 @@
 {
-  "author": "uriel Chemouni",
-  "description": "Api Ovh helper",
-  "version": "1.2.0",
-  "private": true,
-  "workspaces": [
-    "packages-*/*",
-    "kimsufi-*/*",
-    "soyoustart-*/*",
-    "common",
-    "sample"
-  ],
-  "license": "MIT",
-  "devDependencies": {
-    "@types/debounce": "^1.2.0",
-    "@types/node": "^14.14.5",
-    "lerna": "^3.22.1",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.0.5"
-  },
-  "publishConfig": {
-    "access": "restricted"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/UrielCh/api-ovh-node.git"
-  },
-  "scripts": {
-    "all": "npm run regen gen && git add . && git commit -avm 'regen' && git push && npm run do-publish",
-    "gen": "cd code && cd gen && npm install && ts-node src/index.ts",
-    "regen": "cd code && cd gen && npm install && ts-node src/index.ts",
-    "preparenv": "npm install -g typescript ts-node",
-    "clean": "npm run clean0 && npm run clean1 && npm run clean2 && npm run clean3 && npm run clean-cache && npm run clean5",
-    "clean0": "rimraf ./code/*/index.d.ts ./code/*/index.js",
-    "clean1": "rimraf ./packages-*/*/index.d.ts   ./packages-*/*/index.js ./code/*/index.d.ts ./code/*/index.js",
-    "clean2": "rimraf ./kimsufi-*/*/index.d.ts    ./kimsufi-*/*/index.js",
-    "clean3": "rimraf ./soyoustart-*/*/index.d.ts ./soyoustart-*/*/index.js",
-    "clean-cache": "rimraf ./*/*/.cache",
-    "clean5": "lerna clean -y",
-    "install-all": "lerna exec --stream -- npm i --cache ./.cache",
-    "bootstrap": "lerna bootstrap --concurrency=1 --ignore-scripts --force-local",
-    "bootstrap2": "lerna bootstrap --mutex file:/tmp/.npm-mutex --force-local",
-    "build": "lerna run build",
-    "do-publish": "npm run clean && npm run install-all && npm run bootstrap && npm run clean-cache && lerna publish patch --yes"
-  },
-  "dependencies": {},
-  "name": "api-ovh-node"
+    "author": "uriel Chemouni",
+    "description": "Api Ovh helper",
+    "version": "1.2.0",
+    "private": true,
+    "workspaces": [
+        "packages-*/*",
+        "kimsufi-*/*",
+        "soyoustart-*/*",
+        "common",
+        "sample"
+    ],
+    "license": "MIT",
+    "devDependencies": {
+        "@types/debounce": "^1.2.0",
+        "@types/node": "^14.14.5",
+        "lerna": "^3.22.1",
+        "rimraf": "^3.0.2",
+        "typescript": "^4.0.5"
+    },
+    "publishConfig": {
+        "access": "restricted"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/UrielCh/api-ovh-node.git"
+    },
+    "scripts": {
+        "all": "npm install && npm run regen gen && git add . && git commit -avm 'regen' && git push && npm run do-publish",
+        "gen": "cd code && cd gen && npm install && ts-node src/index.ts",
+        "regen": "cd code && cd gen && npm install && ts-node src/index.ts",
+        "preparenv": "npm install -g typescript ts-node",
+        "clean": "npm run clean0 && npm run clean1 && npm run clean2 && npm run clean3 && npm run clean-cache && npm run clean5",
+        "clean0": "rimraf ./code/*/index.d.ts ./code/*/index.js",
+        "clean1": "rimraf ./packages-*/*/index.d.ts   ./packages-*/*/index.js ./code/*/index.d.ts ./code/*/index.js",
+        "clean2": "rimraf ./kimsufi-*/*/index.d.ts    ./kimsufi-*/*/index.js",
+        "clean3": "rimraf ./soyoustart-*/*/index.d.ts ./soyoustart-*/*/index.js",
+        "clean-cache": "rimraf ./*/*/.cache",
+        "clean5": "lerna clean -y",
+        "install-all": "lerna exec --stream -- npm i --cache ./.cache",
+        "bootstrap": "lerna bootstrap --concurrency=1 --ignore-scripts --force-local",
+        "bootstrap2": "lerna bootstrap --mutex file:/tmp/.npm-mutex --force-local",
+        "build": "lerna run build",
+        "do-publish": "npm run clean && npm run install-all && npm run bootstrap && npm run clean-cache && lerna publish patch --yes"
+    },
+    "dependencies": {},
+    "name": "api-ovh-node"
 }
