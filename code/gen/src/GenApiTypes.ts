@@ -43,7 +43,7 @@ let loadJson = (options: https.RequestOptions): Promise<any> => {
                 .on('end', () => {
                     if (res.statusCode !== 200) {
                         return reject(
-                            Error(`[OVH] Unable to load schema https://${options.host}:${options.port}${options.path}, HTTP response code: ${res.statusCode}`));
+                            Error(`[OVH] Unable to load schema "https://${options.host}:${options.port}${options.path}", HTTP response code: ${res.statusCode}`));
                     }
                     try {
                         return resolve(JSON.parse(body));
@@ -53,7 +53,7 @@ let loadJson = (options: https.RequestOptions): Promise<any> => {
                     }
                 });
         })
-            .on('error', (err) => reject(`[OVH] Unable to fetch the schemas: ${err}`));
+            .on('error', (err) => reject(`[OVH] Unable to fetch the schemas: "https://${options.host}:${options.port}${options.path}" Err:${err}`));
     })
 }
 
