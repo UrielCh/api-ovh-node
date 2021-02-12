@@ -284,17 +284,6 @@ export const schema: Schema = {
       "id": "MethodEnum",
       "namespace": "auth"
     },
-    "auth.ShouldDisplayMFAEnrollmentEnum": {
-      "description": "All ShouldDisplayMFAEnrollment values",
-      "enum": [
-        "false",
-        "forced",
-        "true"
-      ],
-      "enumType": "string",
-      "id": "ShouldDisplayMFAEnrollmentEnum",
-      "namespace": "auth"
-    },
     "http.MethodEnum": {
       "description": "All HTTP methods available",
       "enum": [

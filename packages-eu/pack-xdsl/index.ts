@@ -281,7 +281,7 @@ export namespace pack {
          * Service name
          * type fullname: pack.xdsl.ServiceNameEnum
          */
-        export type ServiceNameEnum = "domain" | "emailPro" | "exchangeAccount" | "exchangeIndividual" | "exchangeLite" | "exchangeOrganization" | "hostedEmail" | "hubic" | "modem" | "overTheBoxHardware" | "overTheBoxService" | "siteBuilderFull" | "siteBuilderStart" | "voipAlias" | "voipBillingAccount" | "voipEcoFax" | "voipLine" | "voipTrunk" | "xdslAccess"
+        export type ServiceNameEnum = "domain" | "emailPro" | "exchangeAccount" | "exchangeIndividual" | "exchangeLite" | "exchangeOrganization" | "hostedEmail" | "hubic" | "modem" | "overTheBoxHardware" | "overTheBoxService" | "voipAlias" | "voipBillingAccount" | "voipEcoFax" | "voipLine" | "voipTrunk" | "xdslAccess"
         /**
          * Shipping address
          * interface fullName: pack.xdsl.ShippingAddress.ShippingAddress
@@ -300,26 +300,6 @@ export namespace pack {
          * type fullname: pack.xdsl.ShippingAddressContextEnum
          */
         export type ShippingAddressContextEnum = "migration" | "voipLine"
-        /**
-         * SiteBuilder available domain infos
-         * interface fullName: pack.xdsl.SiteBuilderDomain.SiteBuilderDomain
-         */
-        export interface SiteBuilderDomain {
-            defaultSubDomain: string;
-            domain: string;
-        }
-        /**
-         * SiteBuilder template infos
-         * interface fullName: pack.xdsl.SiteBuilderTemplate.SiteBuilderTemplate
-         */
-        export interface SiteBuilderTemplate {
-            bkId: number;
-            id: number;
-            name: string;
-            previewImg: string;
-            reference: string;
-            thumbImage: string;
-        }
         /**
          * Describes the current status of a task
          * interface fullName: pack.xdsl.Task.Task
@@ -1333,90 +1313,6 @@ export interface Pack {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-            siteBuilderFull: {
-                options: {
-                    domains: {
-                        /**
-                         * Get the available domains
-                         * GET /pack/xdsl/{packName}/siteBuilderFull/options/domains
-                         */
-                        $get(): Promise<pack.xdsl.SiteBuilderDomain[]>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    }
-                    templates: {
-                        /**
-                         * Get the available templates
-                         * GET /pack/xdsl/{packName}/siteBuilderFull/options/templates
-                         */
-                        $get(): Promise<pack.xdsl.SiteBuilderTemplate[]>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    }
-                }
-                services: {
-                    /**
-                     * Sitebuilder full services
-                     * GET /pack/xdsl/{packName}/siteBuilderFull/services
-                     */
-                    $get(): Promise<string[]>;
-                    /**
-                     * Activate a sitebuilder full service
-                     * POST /pack/xdsl/{packName}/siteBuilderFull/services
-                     */
-                    $post(params: { domain: string, subdomain: string, templateId: number }): Promise<pack.xdsl.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-            }
-            siteBuilderStart: {
-                options: {
-                    domains: {
-                        /**
-                         * Get the available domains
-                         * GET /pack/xdsl/{packName}/siteBuilderStart/options/domains
-                         */
-                        $get(): Promise<pack.xdsl.SiteBuilderDomain[]>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    }
-                    templates: {
-                        /**
-                         * Get the available templates
-                         * GET /pack/xdsl/{packName}/siteBuilderStart/options/templates
-                         */
-                        $get(): Promise<pack.xdsl.SiteBuilderTemplate[]>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    }
-                }
-                services: {
-                    /**
-                     * Sitebuilder start services
-                     * GET /pack/xdsl/{packName}/siteBuilderStart/services
-                     */
-                    $get(): Promise<string[]>;
-                    /**
-                     * Activate a sitebuilder full service
-                     * POST /pack/xdsl/{packName}/siteBuilderStart/services
-                     */
-                    $post(params: { domain: string, subdomain: string, templateId: number }): Promise<pack.xdsl.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
             }
             subServices: {
                 /**

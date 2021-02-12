@@ -1595,6 +1595,14 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "complexType.SafeKeyValue<string>[]",
+              "description": "Metadata",
+              "fullType": "complexType.SafeKeyValue<string>[]",
+              "name": "userMetadata",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
               "description": "The internal name of your dedicated server",
               "fullType": "string",
@@ -2140,7 +2148,7 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg"
     },
     {
-      "description": "group operations",
+      "description": "aggregation operations",
       "operations": [
         {
           "apiStatus": {
@@ -2179,15 +2187,97 @@ export const schema: Schema = {
           "responseType": "dedicated.server.Task"
         }
       ],
+      "path": "/dedicated/server/{serviceName}/ola/aggregation"
+    },
+    {
+      "description": "group operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2021-04-08T00:00:00+01:00",
+            "deprecatedDate": "2021-01-08T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dedicated/server/{serviceName}/ola/aggregation",
+            "value": "DEPRECATED"
+          },
+          "description": "OLA : Group interfaces into an aggregation",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Resulting VirtualNetworkInterface name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid[]",
+              "description": "Interfaces to aggregate",
+              "fullType": "uuid[]",
+              "name": "virtualNetworkInterfaces",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.Task"
+        }
+      ],
       "path": "/dedicated/server/{serviceName}/ola/group"
+    },
+    {
+      "description": "reset operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "OLA : Reset interfaces to default configuration",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Interface to reset",
+              "fullType": "uuid",
+              "name": "virtualNetworkInterface",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your dedicated server",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicated.server.Task"
+        }
+      ],
+      "path": "/dedicated/server/{serviceName}/ola/reset"
     },
     {
       "description": "ungroup operations",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-04-08T00:00:00+01:00",
+            "deprecatedDate": "2021-01-08T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dedicated/server/{serviceName}/ola/reset",
+            "value": "DEPRECATED"
           },
           "description": "OLA : Ungroup interfaces",
           "httpMethod": "POST",
@@ -5112,8 +5202,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-04-08T00:00:00+01:00",
+            "deprecatedDate": "2021-01-08T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dedicated/server/{serviceName}/ola/aggregation",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
@@ -5153,8 +5246,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-04-08T00:00:00+01:00",
+            "deprecatedDate": "2021-01-08T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dedicated/server/{serviceName}/ola/aggregation",
+            "value": "DEPRECATED"
           },
           "description": "Disable this VirtualNetworkInterface",
           "httpMethod": "POST",
@@ -5187,8 +5283,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-04-08T00:00:00+01:00",
+            "deprecatedDate": "2021-01-08T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dedicated/server/{serviceName}/ola/aggregation",
+            "value": "DEPRECATED"
           },
           "description": "Enable this VirtualNetworkInterface",
           "httpMethod": "POST",
@@ -5224,7 +5323,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Server Vracks",
+          "description": "Server Vracks (LEGACY)",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -5243,14 +5342,14 @@ export const schema: Schema = {
       "path": "/dedicated/server/{serviceName}/vrack"
     },
     {
-      "description": "vrack dedicated server interfaces",
+      "description": "vrack dedicated server interfaces (LEGACY)",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "remove this server from this vrack",
+          "description": "remove this server from this vrack (LEGACY)",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -5315,7 +5414,7 @@ export const schema: Schema = {
             "replacement": "/dedicated/server/{serviceName}/networkInterfaceController",
             "value": "DEPRECATED"
           },
-          "description": "Retrieve vrack traffic graph values",
+          "description": "Retrieve vrack traffic graph values (LEGACY)",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -5438,6 +5537,14 @@ export const schema: Schema = {
             },
             {
               "dataType": "string",
+              "description": "The name of the gpu hardware part",
+              "fullType": "string",
+              "name": "gpu",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
               "description": "The name of the memory hardware part",
               "fullType": "string",
               "name": "memory",
@@ -5465,6 +5572,14 @@ export const schema: Schema = {
               "description": "The name of the storage hardware part",
               "fullType": "string",
               "name": "storage",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of the system storage hardware part",
+              "fullType": "string",
+              "name": "systemStorage",
               "paramType": "query",
               "required": false
             }
@@ -5564,6 +5679,28 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "double"
+        }
+      }
+    },
+    "complexType.SafeKeyValue<T>": {
+      "description": "Key and value, with proper key strings",
+      "generics": [
+        "T"
+      ],
+      "id": "SafeKeyValue",
+      "namespace": "complexType",
+      "properties": {
+        "key": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
         }
       }
     },
@@ -6231,6 +6368,23 @@ export const schema: Schema = {
       "id": "ImageTypesEnum",
       "namespace": "dedicated"
     },
+    "dedicated.OperationFunctionEnum": {
+      "description": "List of operation type",
+      "enum": [
+        "bmc/javaKvm",
+        "bmc/restart",
+        "bmc/revokeSessions",
+        "bmc/sshSol",
+        "bmc/testPassword",
+        "bmc/testPing",
+        "bmc/testWeb",
+        "bmc/webKvm",
+        "bmc/webSol"
+      ],
+      "enumType": "string",
+      "id": "OperationFunctionEnum",
+      "namespace": "dedicated"
+    },
     "dedicated.OsAvailabilitiesEnum": {
       "description": "Operating system name",
       "enum": [
@@ -6489,7 +6643,9 @@ export const schema: Schema = {
         "private",
         "private_lag",
         "provisioning",
-        "public"
+        "provisioning_lag",
+        "public",
+        "public_lag"
       ],
       "enumType": "string",
       "id": "NetworkInterfaceControllerLinkTypeEnum",
@@ -6573,6 +6729,29 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "AlertLanguageEnum",
       "namespace": "dedicated.server"
+    },
+    "dedicated.server.BMC": {
+      "description": "Server BMC interface (formerly named IPMI)",
+      "id": "BMC",
+      "namespace": "dedicated.server",
+      "properties": {
+        "available": {
+          "canBeNull": false,
+          "description": "True, if a BMC is available on this server",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "supportedFeatures": {
+          "canBeNull": false,
+          "description": "A structure describing the BMC supported features",
+          "fullType": "dedicated.server.BmcSupportedFeatures",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.server.BmcSupportedFeatures"
+        }
+      }
     },
     "dedicated.server.BackupCloud": {
       "description": "Backup Cloud assigned to this server",
@@ -7000,6 +7179,185 @@ export const schema: Schema = {
         }
       }
     },
+    "dedicated.server.BmcJavaKvmValue": {
+      "description": "Java KVM session information",
+      "id": "BmcJavaKvmValue",
+      "namespace": "dedicated.server",
+      "properties": {
+        "expirationDate": {
+          "canBeNull": false,
+          "description": "Date on which the credentials will no longer be retrievable",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "jnlp": {
+          "canBeNull": false,
+          "description": "value",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "dedicated.server.BmcSshSolValue": {
+      "description": "Ssh SOL session information",
+      "id": "BmcSshSolValue",
+      "namespace": "dedicated.server",
+      "properties": {
+        "expirationDate": {
+          "canBeNull": false,
+          "description": "Date on which the credentials will no longer be retrievable",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "uri": {
+          "canBeNull": false,
+          "description": "Ssh user and host in \"user@host\" format",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "dedicated.server.BmcSupportedFeatures": {
+      "description": "A structure describing the BMC supported features",
+      "id": "BmcSupportedFeatures",
+      "namespace": "dedicated.server",
+      "properties": {
+        "javaKvm": {
+          "canBeNull": false,
+          "description": "Access to the KVM through a Java web launch application",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "sshSol": {
+          "canBeNull": false,
+          "description": "Access to the virtual serial port of your server through a SSH client",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "testPassword": {
+          "canBeNull": false,
+          "description": "Test that the access to the BMC is operational",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "testPing": {
+          "canBeNull": false,
+          "description": "Test that the BMC is reachable",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "testWeb": {
+          "canBeNull": false,
+          "description": "Test that the Web interface of the BMC is operational",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "webKvm": {
+          "canBeNull": false,
+          "description": "Access to the KVM through a Web interface",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "webSol": {
+          "canBeNull": false,
+          "description": "Access to the virtual serial port of your server through a Web interface",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "dedicated.server.BmcTestResult": {
+      "description": "A structure describing BMC test result",
+      "id": "BmcTestResult",
+      "namespace": "dedicated.server",
+      "properties": {
+        "expirationDate": {
+          "canBeNull": false,
+          "description": "Date of expiration of the result of this test",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "message": {
+          "canBeNull": true,
+          "description": "Error message, null if the test is successfully executed",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Test result, true if successful",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "dedicated.server.BmcTestTypeEnum": {
+      "description": "List of tests to run on a BMC",
+      "enum": [
+        "password",
+        "ping",
+        "web"
+      ],
+      "enumType": "string",
+      "id": "BmcTestTypeEnum",
+      "namespace": "dedicated.server"
+    },
+    "dedicated.server.BmcWebKvmValue": {
+      "description": "Web KVM session information",
+      "id": "BmcWebKvmValue",
+      "namespace": "dedicated.server",
+      "properties": {
+        "expirationDate": {
+          "canBeNull": false,
+          "description": "Date on which the credentials will no longer be retrievable",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "URL of the Web KVM session",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "dedicated.server.BmcWebSolValue": {
+      "description": "Web SOL session information",
+      "id": "BmcWebSolValue",
+      "namespace": "dedicated.server",
+      "properties": {
+        "expirationDate": {
+          "canBeNull": false,
+          "description": "Date on which the credentials will no longer be retrievable",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "URL of the Web SOL session",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "dedicated.server.BootModeEnum": {
       "description": "Server boot mode",
       "enum": [
@@ -7145,7 +7503,7 @@ export const schema: Schema = {
         },
         "userMetadatas": {
           "canBeNull": true,
-          "description": "Metadas",
+          "description": "Metadata",
           "readOnly": false,
           "required": false,
           "type": "complexType.SafeKeyValueCanBeNull<string>[]"
@@ -8479,6 +8837,69 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "OlaInterfaceModeEnum",
       "namespace": "dedicated.server"
+    },
+    "dedicated.server.Operation": {
+      "description": "Server operations",
+      "id": "Operation",
+      "namespace": "dedicated.server",
+      "properties": {
+        "comment": {
+          "canBeNull": true,
+          "description": "Details of this task",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "doneDate": {
+          "canBeNull": true,
+          "description": "Completion date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "function": {
+          "canBeNull": false,
+          "description": "Function name",
+          "fullType": "dedicated.OperationFunctionEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.OperationFunctionEnum"
+        },
+        "lastUpdate": {
+          "canBeNull": true,
+          "description": "Last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "operationId": {
+          "canBeNull": false,
+          "description": "The unique identifier of the operation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Task Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Task status",
+          "fullType": "dedicated.TaskStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.TaskStatusEnum"
+        }
+      }
     },
     "dedicated.server.Option": {
       "description": "Information about the options of a dedicated server",
@@ -10319,6 +10740,7 @@ export const schema: Schema = {
       "description": "Available VirtualNetworkInterface modes",
       "enum": [
         "public",
+        "public_aggregation",
         "vrack",
         "vrack_aggregation"
       ],
@@ -11073,7 +11495,7 @@ export const schema: Schema = {
       "namespace": "vrack"
     },
     "vrack.dedicatedServer": {
-      "description": "vrack dedicated server interfaces",
+      "description": "vrack dedicated server interfaces (LEGACY)",
       "id": "dedicatedServer",
       "namespace": "vrack",
       "properties": {

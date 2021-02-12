@@ -162,8 +162,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get product availability",
           "httpMethod": "GET",
@@ -2151,6 +2151,169 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/capabilities/loadbalancer/region/{regionName}"
     },
     {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List all Certificates for a tenant",
+          "errors": [
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::CouldNotDeleteCertificate",
+            "Client::Forbidden::QuotaReached",
+            "Server::InternalServerError::CouldNotImportCertificate",
+            "Server::InternalServerError::CouldNotListCertificate",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotSerializeResponse",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "operationId": "listCertificates",
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Add a new certificate",
+          "errors": [
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::CouldNotDeleteCertificate",
+            "Client::Forbidden::QuotaReached",
+            "Server::InternalServerError::CouldNotImportCertificate",
+            "Server::InternalServerError::CouldNotListCertificate",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotSerializeResponse",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "operationId": "addCertificate",
+          "parameters": [
+            {
+              "dataType": "cloud.project.CertificateAdd",
+              "description": "Request Body",
+              "fullType": "cloud.project.CertificateAdd",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.Certificate"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/certificate"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a certificate",
+          "errors": [
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::CouldNotDeleteCertificate",
+            "Client::Forbidden::QuotaReached",
+            "Server::InternalServerError::CouldNotImportCertificate",
+            "Server::InternalServerError::CouldNotListCertificate",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotSerializeResponse",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "operationId": "deleteCertificate",
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Certificate ID",
+              "fullType": "uuid",
+              "name": "certificateId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a certificate",
+          "errors": [
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::CouldNotDeleteCertificate",
+            "Client::Forbidden::QuotaReached",
+            "Server::InternalServerError::CouldNotImportCertificate",
+            "Server::InternalServerError::CouldNotListCertificate",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotSerializeResponse",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "operationId": "getCertificate",
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Certificate ID",
+              "fullType": "uuid",
+              "name": "certificateId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.Certificate"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/certificate/{certificateId}"
+    },
+    {
       "description": "Change the contacts of this service",
       "operations": [
         {
@@ -3825,6 +3988,40 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
+          "description": "Shelve an instance. The resources dedicated to the Public Cloud instance are released. The data of the local storage will be stored, the duration of the operation depends on the size of the local disk. The instance can be unshelved at any time. Meanwhile hourly instances will not be billed. The Snapshot Storage used to store the instance's data will be billed.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Instance ID",
+              "fullType": "string",
+              "name": "instanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/instance/{instanceId}/shelve"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
           "description": "Snapshot an instance",
           "httpMethod": "POST",
           "noAuthentication": false,
@@ -3900,7 +4097,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Stop an instance",
+          "description": "Stop an instance. The resources dedicated to the Public Cloud instances are still reserved. The instance can be restarted at any time. Meanwhile, the same price is charged for the instance.",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -3925,6 +4122,40 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/instance/{instanceId}/stop"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Unshelve an instance. The resources dedicated to the Public Cloud instance are restored. The duration of the operation depends on the size of the local disk. Instance billing will get back to normal and the snapshot used to store the instance's data will be deleted.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Instance ID",
+              "fullType": "string",
+              "name": "instanceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/instance/{instanceId}/unshelve"
     },
     {
       "description": "Missing description",
@@ -10951,6 +11182,14 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.ProjectKubeCreationNodePool"
         },
+        "privateNetworkId": {
+          "canBeNull": true,
+          "description": "OpenStack private network (or vrack) ID to bind to cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "region": {
           "canBeNull": false,
           "description": "Kubernetes region",
@@ -11161,6 +11400,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "long"
+        },
+        "nodesToRemove": {
+          "canBeNull": true,
+          "description": "Nodes to delete during downscale",
+          "fullType": "uuid[]",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid[]"
         }
       }
     },
@@ -11169,6 +11416,14 @@ export const schema: Schema = {
       "id": "ProjectKubeResetCreation",
       "namespace": "cloud",
       "properties": {
+        "privateNetworkId": {
+          "canBeNull": true,
+          "description": "OpenStack private network (or vrack) ID to bind to cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "version": {
           "canBeNull": true,
           "description": "Kubernetes version to use after reset, by default it keeps the current version",
@@ -12849,6 +13104,60 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.billingView.MonthlyCertification": {
+      "description": "MonthlyCertification",
+      "id": "MonthlyCertification",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "details": {
+          "canBeNull": false,
+          "description": "Details about certifications",
+          "fullType": "cloud.billingView.MonthlyCertificationDetail[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.MonthlyCertificationDetail[]"
+        },
+        "reference": {
+          "canBeNull": false,
+          "description": "Certification reference",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
+    "cloud.billingView.MonthlyCertificationDetail": {
+      "description": "MonthlyCertificationDetail",
+      "id": "MonthlyCertificationDetail",
+      "namespace": "cloud.billingView",
+      "properties": {
+        "activation": {
+          "canBeNull": false,
+          "description": "Certification activation",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Total price",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
     "cloud.billingView.MonthlyInstance": {
       "description": "MonthlyInstance",
       "id": "MonthlyInstance",
@@ -12986,6 +13295,14 @@ export const schema: Schema = {
       "id": "MonthlyResources",
       "namespace": "cloud.billingView",
       "properties": {
+        "certification": {
+          "canBeNull": false,
+          "description": "Details about certifications",
+          "fullType": "cloud.billingView.MonthlyCertification[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.billingView.MonthlyCertification[]"
+        },
         "instance": {
           "canBeNull": false,
           "description": "Details about monthly instances",
@@ -14996,6 +15313,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "privateNetworkId": {
+          "canBeNull": true,
+          "description": "OpenStack private network (or vrack) ID to bind to cluster",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "region": {
           "canBeNull": false,
           "description": "Cluster region",
@@ -15305,6 +15630,14 @@ export const schema: Schema = {
         "antiAffinity": {
           "canBeNull": false,
           "description": "Enable anti affinity groups for nodes in the pool",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "autoscale": {
+          "canBeNull": false,
+          "description": "Enable auto-scaling for the pool",
           "fullType": "boolean",
           "readOnly": true,
           "required": false,
@@ -16129,6 +16462,153 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "BillTypeEnum",
+      "namespace": "cloud.project"
+    },
+    "cloud.project.Certificate": {
+      "description": "A Certificate to use in your NFVs",
+      "id": "Certificate",
+      "namespace": "cloud.project",
+      "properties": {
+        "expireAt": {
+          "canBeNull": false,
+          "description": "Date after when the certificate is not valid",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "fingerprint": {
+          "canBeNull": false,
+          "description": "Fingerprint of the cert (prefixed by hashing algorithm used)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique ID of the certificate",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "issuer": {
+          "canBeNull": false,
+          "description": "Issue of the certificate (extract from certificate)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "kind": {
+          "canBeNull": false,
+          "description": "Kind of certificate",
+          "fullType": "cloud.project.CertificateKindEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.CertificateKindEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the certificate",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "serialNumber": {
+          "canBeNull": false,
+          "description": "Serial number of the certificate (extract from certificate)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "serverAlternativeNames": {
+          "canBeNull": false,
+          "description": "List of SANs (extract from certificate)",
+          "fullType": "cloud.project.certificate.ServerAlternativeName[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.certificate.ServerAlternativeName[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Certificate status, to quickly know it can safely be used",
+          "fullType": "cloud.project.CertificateStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.CertificateStatusEnum"
+        },
+        "subject": {
+          "canBeNull": false,
+          "description": "Subject of the certificate (extract from certificate)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "validAt": {
+          "canBeNull": false,
+          "description": "Date after when the certificate is valid",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Version of certificate (incremented every time you push a new certificate with the same name)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.CertificateAdd": {
+      "description": "Add a new certificate",
+      "id": "CertificateAdd",
+      "namespace": "cloud.project",
+      "properties": {
+        "import": {
+          "canBeNull": true,
+          "description": "Import an existing certificate",
+          "fullType": "cloud.project.certificate.Import",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.certificate.Import"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the certificate",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.CertificateKindEnum": {
+      "description": "Certificate kind",
+      "enum": [
+        "IMPORTED"
+      ],
+      "enumType": "string",
+      "id": "CertificateKindEnum",
+      "namespace": "cloud.project"
+    },
+    "cloud.project.CertificateStatusEnum": {
+      "description": "Certificate status",
+      "enum": [
+        "OK",
+        "EXPIRED",
+        "NOT_YET_VALID",
+        "REVOKED"
+      ],
+      "enumType": "string",
+      "id": "CertificateStatusEnum",
       "namespace": "cloud.project"
     },
     "cloud.project.CurrentUsage": {
@@ -17169,6 +17649,14 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.project.ai.serving.APIStatusEnum"
         },
+        "autoscalingSpec": {
+          "canBeNull": true,
+          "description": "Autoscaling specification",
+          "fullType": "cloud.project.ai.serving.AutoscalingSpec",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.ai.serving.AutoscalingSpec"
+        },
         "createdAt": {
           "canBeNull": false,
           "description": "Model creation date",
@@ -17176,6 +17664,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "datetime"
+        },
+        "flavor": {
+          "canBeNull": true,
+          "description": "Flavor id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
         },
         "id": {
           "canBeNull": false,
@@ -18298,6 +18794,72 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "cloud.project.certificate.Import": {
+      "description": "Import external certificate",
+      "id": "Import",
+      "namespace": "cloud.project.certificate",
+      "properties": {
+        "cert": {
+          "canBeNull": false,
+          "description": "PEM encoded certificate",
+          "fullType": "text",
+          "readOnly": false,
+          "required": true,
+          "type": "text"
+        },
+        "chain": {
+          "canBeNull": true,
+          "description": "Optional PEM encoded certificate chain",
+          "fullType": "text",
+          "readOnly": false,
+          "required": false,
+          "type": "text"
+        },
+        "key": {
+          "canBeNull": false,
+          "description": "PEM encoded certificate private key",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        }
+      }
+    },
+    "cloud.project.certificate.ServerAlternativeName": {
+      "description": "Certificate SAN",
+      "id": "ServerAlternativeName",
+      "namespace": "cloud.project.certificate",
+      "properties": {
+        "kind": {
+          "canBeNull": false,
+          "description": "SAN kind",
+          "fullType": "cloud.project.certificate.ServerAlternativeNameKindEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.certificate.ServerAlternativeNameKindEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the given kind",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.certificate.ServerAlternativeNameKindEnum": {
+      "description": "SAN kind",
+      "enum": [
+        "EMAIL",
+        "DNS",
+        "URI",
+        "IP"
+      ],
+      "enumType": "string",
+      "id": "ServerAlternativeNameKindEnum",
+      "namespace": "cloud.project.certificate"
     },
     "cloud.project.dataProcessing.AuthorizationStatus": {
       "description": "Authorization status",
@@ -20733,7 +21295,8 @@ export const schema: Schema = {
         "image_operator",
         "volume_operator",
         "objectstore_operator",
-        "ai_training_operator"
+        "ai_training_operator",
+        "ai_training_read"
       ],
       "enumType": "string",
       "id": "RoleEnum",

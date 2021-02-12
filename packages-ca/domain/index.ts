@@ -566,6 +566,121 @@ export namespace domain {
             }
         }
     }
+    export namespace extensions {
+        /**
+         * Result of extensions by category request
+         * interface fullName: domain.extensions.CategoryNameWithExtensions.CategoryNameWithExtensions
+         */
+        export interface CategoryNameWithExtensions {
+            extensions: string[];
+            name: string;
+        }
+        /**
+         * A domain name extension
+         * interface fullName: domain.extensions.Extension.Extension
+         */
+        export interface Extension {
+            name: string;
+        }
+        /**
+         * Result of extensions by category request
+         * interface fullName: domain.extensions.ExtensionsByCategory.ExtensionsByCategory
+         */
+        export interface ExtensionsByCategory {
+            geolocalization: domain.extensions.CategoryNameWithExtensions[];
+            thematic: domain.extensions.CategoryNameWithExtensions[];
+        }
+        /**
+         * Type used to change the order of extensions results
+         * type fullname: domain.extensions.OrderByTypeEnum
+         */
+        export type OrderByTypeEnum = "trending" | "alphabetical"
+        export namespace registryConfigurations {
+            /**
+             * The registry configurations applied when creating a domain name
+             * interface fullName: domain.extensions.registryConfigurations.CreateLifecycleRegistryConfiguration.CreateLifecycleRegistryConfiguration
+             */
+            export interface CreateLifecycleRegistryConfiguration {
+                allowedPeriodsInMonths?: number[];
+            }
+            /**
+             * The registry configurations applied to the DNS of a domain name
+             * interface fullName: domain.extensions.registryConfigurations.DNSRegistryConfiguration.DNSRegistryConfiguration
+             */
+            export interface DNSRegistryConfiguration {
+                isDNSSECSupported: boolean;
+                maxNumber: number;
+                minNumber: number;
+            }
+            /**
+             * The registry configurations applied to a domain name
+             * interface fullName: domain.extensions.registryConfigurations.DomainRegistryConfiguration.DomainRegistryConfiguration
+             */
+            export interface DomainRegistryConfiguration {
+                isPremiumSupported: boolean;
+                label: domain.extensions.registryConfigurations.LabelDomainRegistryConfiguration;
+            }
+            /**
+             * The registry configurations applied to the domain name label
+             * interface fullName: domain.extensions.registryConfigurations.LabelDomainRegistryConfiguration.LabelDomainRegistryConfiguration
+             */
+            export interface LabelDomainRegistryConfiguration {
+                isIDNSupported: boolean;
+                maxLength: number;
+                minLength: number;
+            }
+            /**
+             * The registry configurations of the lifecycle of a domain name
+             * interface fullName: domain.extensions.registryConfigurations.LifecycleRegistryConfiguration.LifecycleRegistryConfiguration
+             */
+            export interface LifecycleRegistryConfiguration {
+                create: domain.extensions.registryConfigurations.CreateLifecycleRegistryConfiguration;
+                order: domain.extensions.registryConfigurations.OrderLifecycleRegistryConfiguration;
+                renew: domain.extensions.registryConfigurations.RenewLifecycleRegistryConfiguration;
+                restore: domain.extensions.registryConfigurations.RestoreLifecycleRegistryConfiguration;
+                transfer: domain.extensions.registryConfigurations.TransferLifecycleRegistryConfiguration;
+            }
+            /**
+             * The registry configurations applied when ordering a domain name
+             * interface fullName: domain.extensions.registryConfigurations.OrderLifecycleRegistryConfiguration.OrderLifecycleRegistryConfiguration
+             */
+            export interface OrderLifecycleRegistryConfiguration {
+                maxMonths: number;
+                minMonths: number;
+            }
+            /**
+             * The registry configurations applied to a domain extension (TLD, SLD)
+             * interface fullName: domain.extensions.registryConfigurations.RegistryConfigurations.RegistryConfigurations
+             */
+            export interface RegistryConfigurations {
+                dns: domain.extensions.registryConfigurations.DNSRegistryConfiguration;
+                domain: domain.extensions.registryConfigurations.DomainRegistryConfiguration;
+                lifecycle: domain.extensions.registryConfigurations.LifecycleRegistryConfiguration;
+            }
+            /**
+             * The registry configurations applied when renewing a domain name
+             * interface fullName: domain.extensions.registryConfigurations.RenewLifecycleRegistryConfiguration.RenewLifecycleRegistryConfiguration
+             */
+            export interface RenewLifecycleRegistryConfiguration {
+                allowedPeriodsInMonths?: number[];
+                gracePeriodInDays?: number;
+            }
+            /**
+             * The registry configurations applied when restoring a domain name
+             * interface fullName: domain.extensions.registryConfigurations.RestoreLifecycleRegistryConfiguration.RestoreLifecycleRegistryConfiguration
+             */
+            export interface RestoreLifecycleRegistryConfiguration {
+                gracePeriodInDays?: number;
+            }
+            /**
+             * The registry configurations applied when transfering a domain name
+             * interface fullName: domain.extensions.registryConfigurations.TransferLifecycleRegistryConfiguration.TransferLifecycleRegistryConfiguration
+             */
+            export interface TransferLifecycleRegistryConfiguration {
+                allowedPeriodsInMonths?: number[];
+            }
+        }
+    }
     export namespace rules {
         /**
          * Representation of the optin rule
@@ -1078,6 +1193,50 @@ export interface Domain {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
+    }
+    extensions: {
+        /**
+         * List all extensions
+         * GET /domain/extensions
+         */
+        $get(params?: { geolocalizations?: string, orderBy?: domain.extensions.OrderByTypeEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, thematics?: string }): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        byCategory: {
+            /**
+             * List extensions, grouped by category types (like 'thematic', 'geolocalization') and category names (like 'europe')
+             * GET /domain/extensions/byCategory
+             */
+            $get(): Promise<domain.extensions.ExtensionsByCategory>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        $(name: string): {
+            /**
+             * Get an extension
+             * GET /domain/extensions/{name}
+             */
+            $get(): Promise<domain.extensions.Extension>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            registryConfigurations: {
+                /**
+                 * Retrieve registry configurations for an extension
+                 * GET /domain/extensions/{name}/registryConfigurations
+                 */
+                $get(): Promise<domain.extensions.registryConfigurations.RegistryConfigurations>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+        };
     }
     rules: {
         /**

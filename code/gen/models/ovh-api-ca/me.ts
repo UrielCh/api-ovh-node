@@ -14138,6 +14138,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "paymentSubType": {
+          "canBeNull": true,
+          "description": "Payment method sub-type",
+          "fullType": "me.payment.AvailableSubTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.payment.AvailableSubTypeEnum"
+        },
         "paymentType": {
           "canBeNull": false,
           "description": "Payment method type",
@@ -14163,6 +14171,16 @@ export const schema: Schema = {
           "type": "boolean"
         }
       }
+    },
+    "me.payment.AvailableSubTypeEnum": {
+      "description": "Payment method available sub-type enum",
+      "enum": [
+        "NONE",
+        "CHORUS"
+      ],
+      "enumType": "string",
+      "id": "AvailableSubTypeEnum",
+      "namespace": "me.payment"
     },
     "me.payment.Icon": {
       "description": "Icon",
@@ -14534,6 +14552,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "long"
+        },
+        "paymentSubType": {
+          "canBeNull": true,
+          "description": "Payment sub-type",
+          "fullType": "me.payment.AvailableSubTypeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "me.payment.AvailableSubTypeEnum"
         },
         "paymentType": {
           "canBeNull": false,

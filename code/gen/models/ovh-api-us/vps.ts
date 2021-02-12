@@ -191,6 +191,40 @@ export const schema: Schema = {
       "path": "/vps/{serviceName}/automatedBackup/detachBackup"
     },
     {
+      "description": "reschedule operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Change the scheduled time of your daily backup",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "time",
+              "description": "New scheduled time of your daily backup",
+              "fullType": "time",
+              "name": "schedule",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your VPS offer",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "vps.Task"
+        }
+      ],
+      "path": "/vps/{serviceName}/automatedBackup/reschedule"
+    },
+    {
       "description": "restore operations",
       "operations": [
         {
@@ -3054,6 +3088,7 @@ export const schema: Schema = {
         "rebootVm",
         "reinstallVm",
         "removeVeeamBackup",
+        "rescheduleAutoBackup",
         "restoreFullVeeamBackup",
         "restoreVeeamBackup",
         "restoreVm",

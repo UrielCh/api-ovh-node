@@ -592,7 +592,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "add a dedicated server to this vrack",
+          "description": "add a dedicated server to this vrack (LEGACY)",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
@@ -619,14 +619,14 @@ export const schema: Schema = {
       "path": "/vrack/{serviceName}/dedicatedServer"
     },
     {
-      "description": "vrack dedicated server interfaces",
+      "description": "vrack dedicated server interfaces (LEGACY)",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "remove this server from this vrack",
+          "description": "remove this server from this vrack (LEGACY)",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
@@ -691,7 +691,7 @@ export const schema: Schema = {
             "replacement": "/dedicated/server/{serviceName}/networkInterfaceController",
             "value": "DEPRECATED"
           },
-          "description": "Retrieve vrack traffic graph values",
+          "description": "Retrieve vrack traffic graph values (LEGACY)",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
@@ -1911,7 +1911,7 @@ export const schema: Schema = {
       }
     },
     "vrack.dedicatedServer": {
-      "description": "vrack dedicated server interfaces",
+      "description": "vrack dedicated server interfaces (LEGACY)",
       "id": "dedicatedServer",
       "namespace": "vrack",
       "properties": {

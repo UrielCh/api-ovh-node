@@ -718,6 +718,14 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "complexType.SafeKeyValue<string>[]",
+              "description": "Metadata",
+              "fullType": "complexType.SafeKeyValue<string>[]",
+              "name": "userMetadata",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
               "description": "The internal name of your dedicated server",
               "fullType": "string",
@@ -2607,8 +2615,11 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-04-08T00:00:00+01:00",
+            "deprecatedDate": "2021-01-08T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dedicated/server/{serviceName}/ola/aggregation",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
@@ -2648,8 +2659,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-04-08T00:00:00+01:00",
+            "deprecatedDate": "2021-01-08T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dedicated/server/{serviceName}/ola/aggregation",
+            "value": "DEPRECATED"
           },
           "description": "Disable this VirtualNetworkInterface",
           "httpMethod": "POST",
@@ -2682,8 +2696,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "deletionDate": "2021-04-08T00:00:00+01:00",
+            "deprecatedDate": "2021-01-08T00:00:00+01:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/dedicated/server/{serviceName}/ola/aggregation",
+            "value": "DEPRECATED"
           },
           "description": "Enable this VirtualNetworkInterface",
           "httpMethod": "POST",
@@ -2749,6 +2766,28 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "double"
+        }
+      }
+    },
+    "complexType.SafeKeyValue<T>": {
+      "description": "Key and value, with proper key strings",
+      "generics": [
+        "T"
+      ],
+      "id": "SafeKeyValue",
+      "namespace": "complexType",
+      "properties": {
+        "key": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "T"
         }
       }
     },
@@ -2856,6 +2895,23 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "ImageTypesEnum",
+      "namespace": "dedicated"
+    },
+    "dedicated.OperationFunctionEnum": {
+      "description": "List of operation type",
+      "enum": [
+        "bmc/javaKvm",
+        "bmc/restart",
+        "bmc/revokeSessions",
+        "bmc/sshSol",
+        "bmc/testPassword",
+        "bmc/testPing",
+        "bmc/testWeb",
+        "bmc/webKvm",
+        "bmc/webSol"
+      ],
+      "enumType": "string",
+      "id": "OperationFunctionEnum",
       "namespace": "dedicated"
     },
     "dedicated.TaskFunctionEnum": {
@@ -2992,7 +3048,9 @@ export const schema: Schema = {
         "private",
         "private_lag",
         "provisioning",
-        "public"
+        "provisioning_lag",
+        "public",
+        "public_lag"
       ],
       "enumType": "string",
       "id": "NetworkInterfaceControllerLinkTypeEnum",
@@ -3344,7 +3402,7 @@ export const schema: Schema = {
         },
         "userMetadatas": {
           "canBeNull": true,
-          "description": "Metadas",
+          "description": "Metadata",
           "readOnly": false,
           "required": false,
           "type": "complexType.SafeKeyValueCanBeNull<string>[]"
@@ -4436,6 +4494,69 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "OlaInterfaceModeEnum",
       "namespace": "dedicated.server"
+    },
+    "dedicated.server.Operation": {
+      "description": "Server operations",
+      "id": "Operation",
+      "namespace": "dedicated.server",
+      "properties": {
+        "comment": {
+          "canBeNull": true,
+          "description": "Details of this task",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "doneDate": {
+          "canBeNull": true,
+          "description": "Completion date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "function": {
+          "canBeNull": false,
+          "description": "Function name",
+          "fullType": "dedicated.OperationFunctionEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.OperationFunctionEnum"
+        },
+        "lastUpdate": {
+          "canBeNull": true,
+          "description": "Last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "operationId": {
+          "canBeNull": false,
+          "description": "The unique identifier of the operation",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Task Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Task status",
+          "fullType": "dedicated.TaskStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.TaskStatusEnum"
+        }
+      }
     },
     "dedicated.server.Option": {
       "description": "Information about the options of a dedicated server",
@@ -5595,6 +5716,7 @@ export const schema: Schema = {
       "description": "Available VirtualNetworkInterface modes",
       "enum": [
         "public",
+        "public_aggregation",
         "vrack",
         "vrack_aggregation"
       ],

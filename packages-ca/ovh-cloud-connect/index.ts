@@ -60,6 +60,22 @@ export namespace ovhcloudconnect {
         status: ovhcloudconnect.key.StatusEnum;
     }
     /**
+     * OVHcloud Connect Metrics
+     * interface fullName: ovhcloudconnect.Metrics.Metrics
+     */
+    export interface Metrics {
+        timestamp: number;
+        value: ovhcloudconnect.MetricsValue;
+    }
+    /**
+     * OVHcloud Connect Metrics value
+     * interface fullName: ovhcloudconnect.MetricsValue.MetricsValue
+     */
+    export interface MetricsValue {
+        unit: ovhcloudconnect.interf.MetricsUnitEnum;
+        value: number;
+    }
+    /**
      * OVHcloud Connect Service Pop Configuration
      * interface fullName: ovhcloudconnect.PopConfig.PopConfig
      */
@@ -132,6 +148,21 @@ export namespace ovhcloudconnect {
          * type fullname: ovhcloudconnect.interf.LightStatusEnum
          */
         export type LightStatusEnum = "up" | "down" | "unknown"
+        /**
+         * Enum values for the period of the statistics
+         * type fullname: ovhcloudconnect.interf.MetricsPeriodEnum
+         */
+        export type MetricsPeriodEnum = "hourly" | "daily" | "weekly"
+        /**
+         * Enum values for the type of the statistics
+         * type fullname: ovhcloudconnect.interf.MetricsTypeEnum
+         */
+        export type MetricsTypeEnum = "light:in" | "light:out" | "traffic:download" | "traffic:upload" | "error:download" | "error:upload"
+        /**
+         * Enum values for the unit of the statistics
+         * type fullname: ovhcloudconnect.interf.MetricsUnitEnum
+         */
+        export type MetricsUnitEnum = "dbm" | "bytes/s" | "error/s"
         /**
          * Enum values for interface status
          * type fullname: ovhcloudconnect.interf.StatusEnum
@@ -461,6 +492,17 @@ export interface OvhCloudConnect {
                      * POST /ovhCloudConnect/{serviceName}/interface/{id}/lock
                      */
                     $post(): Promise<ovhcloudconnect.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                statistics: {
+                    /**
+                     * Statistics for an OCC interface for a given type
+                     * GET /ovhCloudConnect/{serviceName}/interface/{id}/statistics
+                     */
+                    $get(params: { period: ovhcloudconnect.interf.MetricsPeriodEnum, type: ovhcloudconnect.interf.MetricsTypeEnum }): Promise<ovhcloudconnect.Metrics[]>;
                     /**
                      * Controle cache
                      */

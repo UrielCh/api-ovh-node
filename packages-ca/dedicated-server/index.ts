@@ -23,6 +23,14 @@ export namespace complexType {
     }
     /**
      * Key and value, with proper key strings
+     * interface fullName: complexType.SafeKeyValue.SafeKeyValue
+     */
+    export interface SafeKeyValue<T> {
+        key: string;
+        value: T;
+    }
+    /**
+     * Key and value, with proper key strings
      * interface fullName: complexType.SafeKeyValueCanBeNull.SafeKeyValueCanBeNull
      */
     export interface SafeKeyValueCanBeNull<T> {
@@ -142,6 +150,11 @@ export namespace dedicated {
      */
     export type ImageTypesEnum = "qcow2" | "raw"
     /**
+     * List of operation type
+     * type fullname: dedicated.OperationFunctionEnum
+     */
+    export type OperationFunctionEnum = "bmc/javaKvm" | "bmc/restart" | "bmc/revokeSessions" | "bmc/sshSol" | "bmc/testPassword" | "bmc/testPing" | "bmc/testWeb" | "bmc/webKvm" | "bmc/webSol"
+    /**
      * Operating system name
      * type fullname: dedicated.OsAvailabilitiesEnum
      */
@@ -199,7 +212,7 @@ export namespace dedicated {
          * List NetworkInterfaceController linktype
          * type fullname: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum
          */
-        export type NetworkInterfaceControllerLinkTypeEnum = "isolated" | "private" | "private_lag" | "provisioning" | "public"
+        export type NetworkInterfaceControllerLinkTypeEnum = "isolated" | "private" | "private_lag" | "provisioning" | "provisioning_lag" | "public" | "public_lag"
     }
     export namespace server {
         /**
@@ -227,6 +240,14 @@ export namespace dedicated {
          * type fullname: dedicated.server.AlertLanguageEnum
          */
         export type AlertLanguageEnum = "cz" | "de" | "en" | "es" | "fi" | "fr" | "it" | "lt" | "nl" | "pl" | "pt"
+        /**
+         * Server BMC interface (formerly named IPMI)
+         * interface fullName: dedicated.server.BMC.BMC
+         */
+        export interface BMC {
+            available: boolean;
+            supportedFeatures: dedicated.server.BmcSupportedFeatures;
+        }
         /**
          * Backup Cloud assigned to this server
          * interface fullName: dedicated.server.BackupCloud.BackupCloud
@@ -367,6 +388,65 @@ export namespace dedicated {
         export interface BiosSettingsSupportSgxOptions {
             prmrr: dedicated.server.BiosSettingsSgxPrmrrEnum[];
             status: dedicated.server.BiosSettingsSgxStatusEnum[];
+        }
+        /**
+         * Java KVM session information
+         * interface fullName: dedicated.server.BmcJavaKvmValue.BmcJavaKvmValue
+         */
+        export interface BmcJavaKvmValue {
+            expirationDate: string;
+            jnlp: string;
+        }
+        /**
+         * Ssh SOL session information
+         * interface fullName: dedicated.server.BmcSshSolValue.BmcSshSolValue
+         */
+        export interface BmcSshSolValue {
+            expirationDate: string;
+            uri: string;
+        }
+        /**
+         * A structure describing the BMC supported features
+         * interface fullName: dedicated.server.BmcSupportedFeatures.BmcSupportedFeatures
+         */
+        export interface BmcSupportedFeatures {
+            javaKvm: boolean;
+            sshSol: boolean;
+            testPassword: boolean;
+            testPing: boolean;
+            testWeb: boolean;
+            webKvm: boolean;
+            webSol: boolean;
+        }
+        /**
+         * A structure describing BMC test result
+         * interface fullName: dedicated.server.BmcTestResult.BmcTestResult
+         */
+        export interface BmcTestResult {
+            expirationDate: string;
+            message?: string;
+            status: boolean;
+        }
+        /**
+         * List of tests to run on a BMC
+         * type fullname: dedicated.server.BmcTestTypeEnum
+         */
+        export type BmcTestTypeEnum = "password" | "ping" | "web"
+        /**
+         * Web KVM session information
+         * interface fullName: dedicated.server.BmcWebKvmValue.BmcWebKvmValue
+         */
+        export interface BmcWebKvmValue {
+            expirationDate: string;
+            url: string;
+        }
+        /**
+         * Web SOL session information
+         * interface fullName: dedicated.server.BmcWebSolValue.BmcWebSolValue
+         */
+        export interface BmcWebSolValue {
+            expirationDate: string;
+            url: string;
         }
         /**
          * Server boot mode
@@ -796,6 +876,19 @@ export namespace dedicated {
          * type fullname: dedicated.server.OlaInterfaceModeEnum
          */
         export type OlaInterfaceModeEnum = "public" | "vrack"
+        /**
+         * Server operations
+         * interface fullName: dedicated.server.Operation.Operation
+         */
+        export interface Operation {
+            comment?: string;
+            doneDate?: string;
+            function: dedicated.OperationFunctionEnum;
+            lastUpdate?: string;
+            operationId: string;
+            startDate: string;
+            status: dedicated.TaskStatusEnum;
+        }
         /**
          * Information about the options of a dedicated server
          * interface fullName: dedicated.server.Option.Option
@@ -1332,7 +1425,7 @@ export namespace dedicated {
          * Available VirtualNetworkInterface modes
          * type fullname: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum
          */
-        export type VirtualNetworkInterfaceModeEnum = "public" | "vrack" | "vrack_aggregation"
+        export type VirtualNetworkInterfaceModeEnum = "public" | "public_aggregation" | "vrack" | "vrack_aggregation"
     }
 }
 export namespace license {
@@ -1469,7 +1562,7 @@ export namespace vrack {
      */
     export type TaskStatusEnum = "cancelled" | "doing" | "done" | "init" | "todo"
     /**
-     * vrack dedicated server interfaces
+     * vrack dedicated server interfaces (LEGACY)
      * interface fullName: vrack.dedicatedServer.dedicatedServer
      */
     export interface dedicatedServer {
@@ -1534,7 +1627,7 @@ export interface Dedicated {
                  * List the availability of dedicated server
                  * GET /dedicated/server/datacenter/availabilities
                  */
-                $get(params?: { datacenters?: string, excludeDatacenters?: boolean, memory?: string, planCode?: string, server?: string, storage?: string }): Promise<dedicated.DatacenterAvailability[]>;
+                $get(params?: { datacenters?: string, excludeDatacenters?: boolean, gpu?: string, memory?: string, planCode?: string, server?: string, storage?: string, systemStorage?: string }): Promise<dedicated.DatacenterAvailability[]>;
                 /**
                  * Controle cache
                  */
@@ -2020,7 +2113,7 @@ export interface Dedicated {
                      * Start an install
                      * POST /dedicated/server/{serviceName}/install/start
                      */
-                    $post(params: { details?: dedicated.server.InstallCustom, partitionSchemeName?: string, templateName: string }): Promise<dedicated.server.Task>;
+                    $post(params: { details?: dedicated.server.InstallCustom, partitionSchemeName?: string, templateName: string, userMetadata?: complexType.SafeKeyValue<string>[] }): Promise<dedicated.server.Task>;
                     /**
                      * Controle cache
                      */
@@ -2206,12 +2299,34 @@ export interface Dedicated {
                 };
             }
             ola: {
+                aggregation: {
+                    /**
+                     * OLA : Group interfaces into an aggregation
+                     * POST /dedicated/server/{serviceName}/ola/aggregation
+                     */
+                    $post(params: { name: string, virtualNetworkInterfaces: string[] }): Promise<dedicated.server.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
                 group: {
                     /**
                      * OLA : Group interfaces into an aggregation
                      * POST /dedicated/server/{serviceName}/ola/group
                      */
                     $post(params: { name: string, virtualNetworkInterfaces: string[] }): Promise<dedicated.server.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                reset: {
+                    /**
+                     * OLA : Reset interfaces to default configuration
+                     * POST /dedicated/server/{serviceName}/ola/reset
+                     */
+                    $post(params: { virtualNetworkInterface: string }): Promise<dedicated.server.Task>;
                     /**
                      * Controle cache
                      */
@@ -3089,7 +3204,7 @@ export interface Dedicated {
             }
             vrack: {
                 /**
-                 * Server Vracks
+                 * Server Vracks (LEGACY)
                  * GET /dedicated/server/{serviceName}/vrack
                  */
                 $get(): Promise<string[]>;
@@ -3099,7 +3214,7 @@ export interface Dedicated {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(vrack: string): {
                     /**
-                     * remove this server from this vrack
+                     * remove this server from this vrack (LEGACY)
                      * DELETE /dedicated/server/{serviceName}/vrack/{vrack}
                      */
                     $delete(): Promise<vrack.Task>;
@@ -3114,7 +3229,7 @@ export interface Dedicated {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     mrtg: {
                         /**
-                         * Retrieve vrack traffic graph values
+                         * Retrieve vrack traffic graph values (LEGACY)
                          * GET /dedicated/server/{serviceName}/vrack/{vrack}/mrtg
                          */
                         $get(params: { period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum }): Promise<dedicated.server.MrtgTimestampValue[]>;

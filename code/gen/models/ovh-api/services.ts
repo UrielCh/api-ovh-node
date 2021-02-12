@@ -126,6 +126,39 @@ export const schema: Schema = {
       "path": "/services/{serviceId}/billing/engagement/available"
     },
     {
+      "description": "Change your Engagement end rules",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Change your Engagement end rules",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.billing.engagement.UpdateEndRuleRequest",
+              "description": "Request Body",
+              "fullType": "services.billing.engagement.UpdateEndRuleRequest",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/services/{serviceId}/billing/engagement/endRule"
+    },
+    {
       "description": "Manage the Engagement request on this Service",
       "operations": [
         {
@@ -1533,10 +1566,10 @@ export const schema: Schema = {
         "order": {
           "canBeNull": true,
           "description": "If not null, Order to pay in order to trigger the Engagement",
-          "fullType": "services.operation.Order",
+          "fullType": "order.Order",
           "readOnly": true,
           "required": false,
-          "type": "services.operation.Order"
+          "type": "order.Order"
         },
         "pricing": {
           "canBeNull": false,
@@ -1766,7 +1799,7 @@ export const schema: Schema = {
           "type": "datetime"
         },
         "id": {
-          "canBeNull": true,
+          "canBeNull": false,
           "description": "Consumption transaction ID",
           "fullType": "long",
           "readOnly": true,
@@ -1874,6 +1907,14 @@ export const schema: Schema = {
           "required": false,
           "type": "services.expanded.EngagementSummary"
         },
+        "engagementRequest": {
+          "canBeNull": true,
+          "description": "Ongoing engagement request summary for this Service",
+          "fullType": "services.expanded.EngagementRequestSummary",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.EngagementRequestSummary"
+        },
         "expirationDate": {
           "canBeNull": true,
           "description": "Expiration date",
@@ -1980,6 +2021,29 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "TypeEnum",
       "namespace": "services.expanded.Customer.Contact"
+    },
+    "services.expanded.EngagementRequestSummary": {
+      "description": "Engagement request summary for a Service",
+      "id": "EngagementRequestSummary",
+      "namespace": "services.expanded",
+      "properties": {
+        "pricingMode": {
+          "canBeNull": false,
+          "description": "Future pricing mode of the service, when the request has been processed",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "requestDate": {
+          "canBeNull": false,
+          "description": "Date on which the request has been made",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        }
+      }
     },
     "services.expanded.EngagementSummary": {
       "description": "Engagement summary for a Service",

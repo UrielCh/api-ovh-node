@@ -1428,10 +1428,16 @@ export namespace me {
             merchantId?: string;
             oneshot: boolean;
             organizationId?: string;
+            paymentSubType?: me.payment.AvailableSubTypeEnum;
             paymentType: string;
             registerable: boolean;
             registerableWithTransaction: boolean;
         }
+        /**
+         * Payment method available sub-type enum
+         * type fullname: me.payment.AvailableSubTypeEnum
+         */
+        export type AvailableSubTypeEnum = "NONE" | "CHORUS"
         /**
          * Icon
          * interface fullName: me.payment.Icon.Icon
@@ -1518,6 +1524,7 @@ export namespace me {
                 default: boolean;
                 description?: string;
                 orderId?: number;
+                paymentSubType?: me.payment.AvailableSubTypeEnum;
                 paymentType: string;
                 register: boolean;
             }
@@ -4410,7 +4417,7 @@ export interface Me {
              * Register a new payment method
              * POST /me/payment/method
              */
-            $post(params: { callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, orderId?: number, paymentType: string, register?: boolean }): Promise<me.payment.method.Validation>;
+            $post(params: { callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, orderId?: number, paymentSubType?: me.payment.AvailableSubTypeEnum, paymentType: string, register?: boolean }): Promise<me.payment.method.Validation>;
             /**
              * Controle cache
              */

@@ -244,13 +244,6 @@ export namespace cloud {
     }
     /**
      * Missing description
-     * interface fullName: cloud.ProjectMigrationUpdate.ProjectMigrationUpdate
-     */
-    export interface ProjectMigrationUpdate {
-        date: string;
-    }
-    /**
-     * Missing description
      * interface fullName: cloud.ProjectNetworkPrivateCreation.ProjectNetworkPrivateCreation
      */
     export interface ProjectNetworkPrivateCreation {
@@ -572,258 +565,6 @@ export namespace cloud {
             domain: cloud.authentication.Domain;
             id: string;
             name: string;
-        }
-    }
-    export namespace billingView {
-        /**
-         * BandwidthInstance
-         * interface fullName: cloud.billingView.BandwidthInstance.BandwidthInstance
-         */
-        export interface BandwidthInstance {
-            quantity: cloud.billingView.Quantity;
-            totalPrice: number;
-        }
-        /**
-         * BandwidthStorage
-         * interface fullName: cloud.billingView.BandwidthStorage.BandwidthStorage
-         */
-        export interface BandwidthStorage {
-            quantity: cloud.billingView.Quantity;
-            totalPrice: number;
-        }
-        /**
-         * Component
-         * interface fullName: cloud.billingView.Component.Component
-         */
-        export interface Component {
-            name: string;
-            quantity: cloud.billingView.Quantity;
-            totalPrice: number;
-        }
-        /**
-         * HourlyInstance
-         * interface fullName: cloud.billingView.HourlyInstance.HourlyInstance
-         */
-        export interface HourlyInstance {
-            details: cloud.billingView.HourlyInstanceDetail[];
-            quantity: cloud.billingView.Quantity;
-            reference: string;
-            region: string;
-            totalPrice: number;
-        }
-        /**
-         * HourlyInstanceBandwidth
-         * interface fullName: cloud.billingView.HourlyInstanceBandwidth.HourlyInstanceBandwidth
-         */
-        export interface HourlyInstanceBandwidth {
-            incomingBandwidth?: cloud.billingView.BandwidthInstance;
-            outgoingBandwidth?: cloud.billingView.BandwidthInstance;
-            region: string;
-            totalPrice: number;
-        }
-        /**
-         * HourlyInstanceDetail
-         * interface fullName: cloud.billingView.HourlyInstanceDetail.HourlyInstanceDetail
-         */
-        export interface HourlyInstanceDetail {
-            instanceId: string;
-            quantity: cloud.billingView.Quantity;
-            totalPrice: number;
-        }
-        /**
-         * HourlyInstanceOption
-         * interface fullName: cloud.billingView.HourlyInstanceOption.HourlyInstanceOption
-         */
-        export interface HourlyInstanceOption {
-            details: cloud.billingView.HourlyInstanceOptionDetail[];
-            quantity: cloud.billingView.Quantity;
-            reference: string;
-            region: string;
-            totalPrice: number;
-        }
-        /**
-         * HourlyInstanceOptionDetail
-         * interface fullName: cloud.billingView.HourlyInstanceOptionDetail.HourlyInstanceOptionDetail
-         */
-        export interface HourlyInstanceOptionDetail {
-            instanceId: string;
-            quantity: cloud.billingView.Quantity;
-            totalPrice: number;
-        }
-        /**
-         * HourlyResources
-         * interface fullName: cloud.billingView.HourlyResources.HourlyResources
-         */
-        export interface HourlyResources {
-            instance: cloud.billingView.HourlyInstance[];
-            instanceBandwidth: cloud.billingView.HourlyInstanceBandwidth[];
-            instanceOption: cloud.billingView.HourlyInstanceOption[];
-            snapshot: cloud.billingView.HourlySnapshot[];
-            storage: cloud.billingView.HourlyStorage[];
-            volume: cloud.billingView.HourlyVolume[];
-        }
-        /**
-         * HourlySnapshot
-         * interface fullName: cloud.billingView.HourlySnapshot.HourlySnapshot
-         */
-        export interface HourlySnapshot {
-            instance?: cloud.billingView.InstanceSnapshot;
-            region: string;
-            totalPrice: number;
-            volume?: cloud.billingView.VolumeSnapshot;
-        }
-        /**
-         * HourlyStorage
-         * interface fullName: cloud.billingView.HourlyStorage.HourlyStorage
-         */
-        export interface HourlyStorage {
-            incomingBandwidth?: cloud.billingView.BandwidthStorage;
-            outgoingBandwidth?: cloud.billingView.BandwidthStorage;
-            region: string;
-            stored?: cloud.billingView.StoredStorage;
-            totalPrice: number;
-            type: cloud.billingView.StorageTypeEnum;
-        }
-        /**
-         * HourlyVolume
-         * interface fullName: cloud.billingView.HourlyVolume.HourlyVolume
-         */
-        export interface HourlyVolume {
-            details: cloud.billingView.HourlyVolumeDetail[];
-            quantity: cloud.billingView.Quantity;
-            region: string;
-            totalPrice: number;
-            type: string;
-        }
-        /**
-         * HourlyVolumeDetail
-         * interface fullName: cloud.billingView.HourlyVolumeDetail.HourlyVolumeDetail
-         */
-        export interface HourlyVolumeDetail {
-            quantity: cloud.billingView.Quantity;
-            totalPrice: number;
-            volumeId: string;
-        }
-        /**
-         * InstanceSnapshot
-         * interface fullName: cloud.billingView.InstanceSnapshot.InstanceSnapshot
-         */
-        export interface InstanceSnapshot {
-            quantity: cloud.billingView.Quantity;
-            totalPrice: number;
-        }
-        /**
-         * MonthlyInstance
-         * interface fullName: cloud.billingView.MonthlyInstance.MonthlyInstance
-         */
-        export interface MonthlyInstance {
-            details: cloud.billingView.MonthlyInstanceDetail[];
-            reference: string;
-            region: string;
-            totalPrice: number;
-        }
-        /**
-         * MonthlyInstanceDetail
-         * interface fullName: cloud.billingView.MonthlyInstanceDetail.MonthlyInstanceDetail
-         */
-        export interface MonthlyInstanceDetail {
-            activation: string;
-            instanceId: string;
-            totalPrice: number;
-        }
-        /**
-         * MonthlyInstanceOption
-         * interface fullName: cloud.billingView.MonthlyInstanceOption.MonthlyInstanceOption
-         */
-        export interface MonthlyInstanceOption {
-            details: cloud.billingView.MonthlyInstanceOptionDetail[];
-            reference: string;
-            region: string;
-            totalPrice: number;
-        }
-        /**
-         * MonthlyInstanceOptionDetail
-         * interface fullName: cloud.billingView.MonthlyInstanceOptionDetail.MonthlyInstanceOptionDetail
-         */
-        export interface MonthlyInstanceOptionDetail {
-            instanceId: string;
-            totalPrice: number;
-        }
-        /**
-         * MonthlyResources
-         * interface fullName: cloud.billingView.MonthlyResources.MonthlyResources
-         */
-        export interface MonthlyResources {
-            instance: cloud.billingView.MonthlyInstance[];
-            instanceOption: cloud.billingView.MonthlyInstanceOption[];
-        }
-        /**
-         * Quantity
-         * interface fullName: cloud.billingView.Quantity.Quantity
-         */
-        export interface Quantity {
-            unit: cloud.billingView.UnitQuantityEnum;
-            value: number;
-        }
-        /**
-         * RegionalizedResource
-         * interface fullName: cloud.billingView.RegionalizedResource.RegionalizedResource
-         */
-        export interface RegionalizedResource {
-            components: cloud.billingView.Component[];
-            region: string;
-        }
-        /**
-         * StorageTypeEnum
-         * type fullname: cloud.billingView.StorageTypeEnum
-         */
-        export type StorageTypeEnum = "pcs" | "pca"
-        /**
-         * StoredStorage
-         * interface fullName: cloud.billingView.StoredStorage.StoredStorage
-         */
-        export interface StoredStorage {
-            quantity: cloud.billingView.Quantity;
-            totalPrice: number;
-        }
-        /**
-         * TypedResources
-         * interface fullName: cloud.billingView.TypedResources.TypedResources
-         */
-        export interface TypedResources {
-            resources: cloud.billingView.RegionalizedResource[];
-            totalPrice: number;
-            type: string;
-        }
-        /**
-         * UnitQuantity
-         * type fullname: cloud.billingView.UnitQuantityEnum
-         */
-        export type UnitQuantityEnum = "GiB" | "GiBh" | "Hour" | "Minute" | "Second" | "Unit"
-        /**
-         * UsedCredit
-         * interface fullName: cloud.billingView.UsedCredit.UsedCredit
-         */
-        export interface UsedCredit {
-            description: string;
-            id: number;
-            usedAmount: number;
-        }
-        /**
-         * UsedCredits
-         * interface fullName: cloud.billingView.UsedCredits.UsedCredits
-         */
-        export interface UsedCredits {
-            details: cloud.billingView.UsedCredit[];
-            totalCredit: number;
-        }
-        /**
-         * VolumeSnapshot
-         * interface fullName: cloud.billingView.VolumeSnapshot.VolumeSnapshot
-         */
-        export interface VolumeSnapshot {
-            quantity: cloud.billingView.Quantity;
-            totalPrice: number;
         }
     }
     export namespace capabilities {
@@ -1577,90 +1318,6 @@ export namespace cloud {
          */
         export type TypeEnum = "static" | "public" | "private"
     }
-    export namespace usage {
-        /**
-         * PaymentTypeEnum
-         * type fullname: cloud.usage.PaymentTypeEnum
-         */
-        export type PaymentTypeEnum = "pre" | "post"
-        /**
-         * Period
-         * interface fullName: cloud.usage.Period.Period
-         */
-        export interface Period {
-            from: string;
-            to: string;
-        }
-        /**
-         * UsageBill
-         * interface fullName: cloud.usage.UsageBill.UsageBill
-         */
-        export interface UsageBill {
-            bill_id: string;
-            credit: number;
-            part: number;
-            payment_type: cloud.usage.PaymentTypeEnum;
-            total: number;
-        }
-        /**
-         * UsageCurrent
-         * interface fullName: cloud.usage.UsageCurrent.UsageCurrent
-         */
-        export interface UsageCurrent {
-            hourlyUsage?: cloud.billingView.HourlyResources;
-            lastUpdate: string;
-            monthlyUsage?: cloud.billingView.MonthlyResources;
-            period: cloud.usage.Period;
-            resourcesUsage?: cloud.billingView.TypedResources[];
-        }
-        /**
-         * UsageCurrentBills
-         * interface fullName: cloud.usage.UsageCurrentBills.UsageCurrentBills
-         */
-        export interface UsageCurrentBills {
-            bills: cloud.usage.UsageBill[];
-        }
-        /**
-         * UsageForecast
-         * interface fullName: cloud.usage.UsageForecast.UsageForecast
-         */
-        export interface UsageForecast {
-            hourlyUsage?: cloud.billingView.HourlyResources;
-            lastUpdate: string;
-            monthlyUsage?: cloud.billingView.MonthlyResources;
-            period: cloud.usage.Period;
-            resourcesUsage?: cloud.billingView.TypedResources[];
-            usableCredits?: cloud.billingView.UsedCredits;
-        }
-        /**
-         * UsageHistory
-         * interface fullName: cloud.usage.UsageHistory.UsageHistory
-         */
-        export interface UsageHistory {
-            id: string;
-            lastUpdate: string;
-            period: cloud.usage.Period;
-        }
-        /**
-         * UsageHistoryDetail
-         * interface fullName: cloud.usage.UsageHistoryDetail.UsageHistoryDetail
-         */
-        export interface UsageHistoryDetail {
-            hourlyUsage?: cloud.billingView.HourlyResources;
-            id: string;
-            lastUpdate: string;
-            monthlyUsage?: cloud.billingView.MonthlyResources;
-            period: cloud.usage.Period;
-            resourcesUsage?: cloud.billingView.TypedResources[];
-        }
-        /**
-         * UsageHistoryDetailBills
-         * interface fullName: cloud.usage.UsageHistoryDetailBills.UsageHistoryDetailBills
-         */
-        export interface UsageHistoryDetailBills {
-            bills: cloud.usage.UsageBill[];
-        }
-    }
     export namespace user {
         /**
          * Openrc
@@ -1685,7 +1342,7 @@ export namespace cloud {
          * RoleEnum
          * type fullname: cloud.user.RoleEnum
          */
-        export type RoleEnum = "admin" | "authentication" | "administrator" | "compute_operator" | "infrastructure_supervisor" | "network_security_operator" | "network_operator" | "backup_operator" | "image_operator" | "volume_operator" | "objectstore_operator" | "ai_training_operator"
+        export type RoleEnum = "admin" | "authentication" | "administrator" | "compute_operator" | "infrastructure_supervisor" | "network_security_operator" | "network_operator" | "backup_operator" | "image_operator" | "volume_operator" | "objectstore_operator" | "ai_training_operator" | "ai_training_read"
         /**
          * S3Credentials
          * interface fullName: cloud.user.S3Credentials.S3Credentials
@@ -2168,6 +1825,17 @@ export interface Cloud {
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
+                    shelve: {
+                        /**
+                         * Shelve an instance. The resources dedicated to the Public Cloud instance are released. The data of the local storage will be stored, the duration of the operation depends on the size of the local disk. The instance can be unshelved at any time. Meanwhile hourly instances will not be billed. The Snapshot Storage used to store the instance's data will be billed.
+                         * POST /cloud/project/{serviceName}/instance/{instanceId}/shelve
+                         */
+                        $post(): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
                     snapshot: {
                         /**
                          * Snapshot an instance
@@ -2192,8 +1860,19 @@ export interface Cloud {
                     }
                     stop: {
                         /**
-                         * Stop an instance
+                         * Stop an instance. The resources dedicated to the Public Cloud instances are still reserved. The instance can be restarted at any time. Meanwhile, the same price is charged for the instance.
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/stop
+                         */
+                        $post(): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    unshelve: {
+                        /**
+                         * Unshelve an instance. The resources dedicated to the Public Cloud instance are restored. The duration of the operation depends on the size of the local disk. Instance billing will get back to normal and the snapshot used to store the instance's data will be deleted.
+                         * POST /cloud/project/{serviceName}/instance/{instanceId}/unshelve
                          */
                         $post(): Promise<void>;
                         /**

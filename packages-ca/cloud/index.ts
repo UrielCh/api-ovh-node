@@ -369,6 +369,7 @@ export namespace cloud {
     export interface ProjectKubeCreation {
         name?: string;
         nodepool?: cloud.ProjectKubeCreationNodePool;
+        privateNetworkId?: string;
         region: cloud.kube.ClusterCreationRegionEnum;
         version?: cloud.kube.VersionEnum;
     }
@@ -421,12 +422,14 @@ export namespace cloud {
         desiredNodes?: number;
         maxNodes?: number;
         minNodes?: number;
+        nodesToRemove?: string[];
     }
     /**
      * Missing description
      * interface fullName: cloud.ProjectKubeResetCreation.ProjectKubeResetCreation
      */
     export interface ProjectKubeResetCreation {
+        privateNetworkId?: string;
         version?: cloud.kube.VersionEnum;
         workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum;
     }
@@ -950,6 +953,23 @@ export namespace cloud {
             totalPrice: number;
         }
         /**
+         * MonthlyCertification
+         * interface fullName: cloud.billingView.MonthlyCertification.MonthlyCertification
+         */
+        export interface MonthlyCertification {
+            details: cloud.billingView.MonthlyCertificationDetail[];
+            reference: string;
+            totalPrice: number;
+        }
+        /**
+         * MonthlyCertificationDetail
+         * interface fullName: cloud.billingView.MonthlyCertificationDetail.MonthlyCertificationDetail
+         */
+        export interface MonthlyCertificationDetail {
+            activation: string;
+            totalPrice: number;
+        }
+        /**
          * MonthlyInstance
          * interface fullName: cloud.billingView.MonthlyInstance.MonthlyInstance
          */
@@ -991,6 +1011,7 @@ export namespace cloud {
          * interface fullName: cloud.billingView.MonthlyResources.MonthlyResources
          */
         export interface MonthlyResources {
+            certification: cloud.billingView.MonthlyCertification[];
             instance: cloud.billingView.MonthlyInstance[];
             instanceOption: cloud.billingView.MonthlyInstanceOption[];
         }
@@ -1558,6 +1579,7 @@ export namespace cloud {
             name: string;
             nextUpgradeVersions?: cloud.kube.UpgradeVersionEnum[];
             nodesUrl: string;
+            privateNetworkId?: string;
             region: cloud.kube.RegionEnum;
             status: cloud.kube.ClusterStatusEnum;
             updatePolicy: string;
@@ -1640,6 +1662,7 @@ export namespace cloud {
          */
         export interface NodePool {
             antiAffinity: boolean;
+            autoscale: boolean;
             availableNodes: number;
             createdAt: string;
             currentNodes: number;
@@ -1899,6 +1922,42 @@ export namespace cloud {
          * type fullname: cloud.project.BillTypeEnum
          */
         export type BillTypeEnum = "creditPurchased" | "monthlyConsumption" | "monthlyInstanceActivation"
+        /**
+         * A Certificate to use in your NFVs
+         * interface fullName: cloud.project.Certificate.Certificate
+         */
+        export interface Certificate {
+            expireAt: string;
+            fingerprint: string;
+            id: string;
+            issuer: string;
+            kind: cloud.project.CertificateKindEnum;
+            name: string;
+            serialNumber: string;
+            serverAlternativeNames: cloud.project.certificate.ServerAlternativeName[];
+            status: cloud.project.CertificateStatusEnum;
+            subject: string;
+            validAt: string;
+            version: number;
+        }
+        /**
+         * Add a new certificate
+         * interface fullName: cloud.project.CertificateAdd.CertificateAdd
+         */
+        export interface CertificateAdd {
+            import?: cloud.project.certificate.Import;
+            name: string;
+        }
+        /**
+         * Certificate kind
+         * type fullname: cloud.project.CertificateKindEnum
+         */
+        export type CertificateKindEnum = "IMPORTED"
+        /**
+         * Certificate status
+         * type fullname: cloud.project.CertificateStatusEnum
+         */
+        export type CertificateStatusEnum = "OK" | "EXPIRED" | "NOT_YET_VALID" | "REVOKED"
         /**
          * Usage information for current month on your project
          * interface fullName: cloud.project.CurrentUsage.CurrentUsage
@@ -2219,7 +2278,9 @@ export namespace cloud {
                  */
                 export interface Model {
                     apiStatus: cloud.project.ai.serving.APIStatusEnum;
+                    autoscalingSpec?: cloud.project.ai.serving.AutoscalingSpec;
                     createdAt: string;
+                    flavor?: string;
                     id: string;
                     replicas?: number;
                     url?: string;
@@ -2504,6 +2565,30 @@ export namespace cloud {
                     username: string;
                 }
             }
+        }
+        export namespace certificate {
+            /**
+             * Import external certificate
+             * interface fullName: cloud.project.certificate.Import.Import
+             */
+            export interface Import {
+                cert: string;
+                chain?: string;
+                key: string;
+            }
+            /**
+             * Certificate SAN
+             * interface fullName: cloud.project.certificate.ServerAlternativeName.ServerAlternativeName
+             */
+            export interface ServerAlternativeName {
+                kind: cloud.project.certificate.ServerAlternativeNameKindEnum;
+                name: string;
+            }
+            /**
+             * SAN kind
+             * type fullname: cloud.project.certificate.ServerAlternativeNameKindEnum
+             */
+            export type ServerAlternativeNameKindEnum = "EMAIL" | "DNS" | "URI" | "IP"
         }
         export namespace dataProcessing {
             /**
@@ -3119,7 +3204,7 @@ export namespace cloud {
          * RoleEnum
          * type fullname: cloud.user.RoleEnum
          */
-        export type RoleEnum = "admin" | "authentication" | "administrator" | "compute_operator" | "infrastructure_supervisor" | "network_security_operator" | "network_operator" | "backup_operator" | "image_operator" | "volume_operator" | "objectstore_operator" | "ai_training_operator"
+        export type RoleEnum = "admin" | "authentication" | "administrator" | "compute_operator" | "infrastructure_supervisor" | "network_security_operator" | "network_operator" | "backup_operator" | "image_operator" | "volume_operator" | "objectstore_operator" | "ai_training_operator" | "ai_training_read"
         /**
          * S3Credentials
          * interface fullName: cloud.user.S3Credentials.S3Credentials
@@ -3945,6 +4030,38 @@ export interface Cloud {
                     }
                 }
             }
+            certificate: {
+                /**
+                 * List all Certificates for a tenant
+                 * GET /cloud/project/{serviceName}/certificate
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Add a new certificate
+                 * POST /cloud/project/{serviceName}/certificate
+                 */
+                $post(params: { import?: cloud.project.certificate.Import, name: string }): Promise<cloud.project.Certificate>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(certificateId: string): {
+                    /**
+                     * Delete a certificate
+                     * DELETE /cloud/project/{serviceName}/certificate/{certificateId}
+                     */
+                    $delete(): Promise<void>;
+                    /**
+                     * Get a certificate
+                     * GET /cloud/project/{serviceName}/certificate/{certificateId}
+                     */
+                    $get(): Promise<cloud.project.Certificate>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            }
             changeContact: {
                 /**
                  * Launch a contact change procedure
@@ -4434,6 +4551,17 @@ export interface Cloud {
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
+                    shelve: {
+                        /**
+                         * Shelve an instance. The resources dedicated to the Public Cloud instance are released. The data of the local storage will be stored, the duration of the operation depends on the size of the local disk. The instance can be unshelved at any time. Meanwhile hourly instances will not be billed. The Snapshot Storage used to store the instance's data will be billed.
+                         * POST /cloud/project/{serviceName}/instance/{instanceId}/shelve
+                         */
+                        $post(): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
                     snapshot: {
                         /**
                          * Snapshot an instance
@@ -4458,8 +4586,19 @@ export interface Cloud {
                     }
                     stop: {
                         /**
-                         * Stop an instance
+                         * Stop an instance. The resources dedicated to the Public Cloud instances are still reserved. The instance can be restarted at any time. Meanwhile, the same price is charged for the instance.
                          * POST /cloud/project/{serviceName}/instance/{instanceId}/stop
+                         */
+                        $post(): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    unshelve: {
+                        /**
+                         * Unshelve an instance. The resources dedicated to the Public Cloud instance are restored. The duration of the operation depends on the size of the local disk. Instance billing will get back to normal and the snapshot used to store the instance's data will be deleted.
+                         * POST /cloud/project/{serviceName}/instance/{instanceId}/unshelve
                          */
                         $post(): Promise<void>;
                         /**
@@ -4534,7 +4673,7 @@ export interface Cloud {
                  * Create a new managed Kubernetes cluster
                  * POST /cloud/project/{serviceName}/kube
                  */
-                $post(params: { name?: string, nodepool?: cloud.ProjectKubeCreationNodePool, region: cloud.kube.ClusterCreationRegionEnum, version?: cloud.kube.VersionEnum }): Promise<cloud.kube.Cluster>;
+                $post(params: { name?: string, nodepool?: cloud.ProjectKubeCreationNodePool, privateNetworkId?: string, region: cloud.kube.ClusterCreationRegionEnum, version?: cloud.kube.VersionEnum }): Promise<cloud.kube.Cluster>;
                 /**
                  * Controle cache
                  */
@@ -4697,7 +4836,7 @@ export interface Cloud {
                              * Update your nodepool (quota or size)
                              * PUT /cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}
                              */
-                            $put(params?: { desiredNodes?: number, maxNodes?: number, minNodes?: number }): Promise<void>;
+                            $put(params?: { desiredNodes?: number, maxNodes?: number, minNodes?: number, nodesToRemove?: string[] }): Promise<void>;
                             /**
                              * Controle cache
                              */
@@ -4720,7 +4859,7 @@ export interface Cloud {
                          * Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled
                          * POST /cloud/project/{serviceName}/kube/{kubeId}/reset
                          */
-                        $post(params?: { version?: cloud.kube.VersionEnum, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum }): Promise<void>;
+                        $post(params?: { privateNetworkId?: string, version?: cloud.kube.VersionEnum, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum }): Promise<void>;
                         /**
                          * Controle cache
                          */

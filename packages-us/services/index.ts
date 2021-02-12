@@ -103,6 +103,34 @@ export namespace order {
     export type ReductionTypeEnum = "percentage" | "forced_amount" | "fixed_amount"
     export namespace cart {
         /**
+         * Representation of a generic product
+         * interface fullName: order.cart.GenericProductDefinition.GenericProductDefinition
+         */
+        export interface GenericProductDefinition {
+            planCode: string;
+            prices: order.cart.GenericProductPricing[];
+            productName: string;
+            productType: order.cart.GenericProductTypeEnum;
+        }
+        /**
+         * Representation of a product pricing
+         * interface fullName: order.cart.GenericProductPricing.GenericProductPricing
+         */
+        export interface GenericProductPricing {
+            capacities: order.cart.GenericProductPricingCapacitiesEnum[];
+            description: string;
+            duration: string;
+            interval: number;
+            maximumQuantity?: number;
+            maximumRepeat?: number;
+            minimumQuantity: number;
+            minimumRepeat: number;
+            price: order.Price;
+            priceInUcents: number;
+            pricingMode: string;
+            pricingType: order.cart.GenericProductPricingTypeEnum;
+        }
+        /**
          * Capacity of a pricing (type)
          * type fullname: order.cart.GenericProductPricingCapacitiesEnum
          */
@@ -112,6 +140,11 @@ export namespace order {
          * type fullname: order.cart.GenericProductPricingTypeEnum
          */
         export type GenericProductPricingTypeEnum = "rental" | "consumption" | "purchase"
+        /**
+         * Type of a product
+         * type fullname: order.cart.GenericProductTypeEnum
+         */
+        export type GenericProductTypeEnum = "delivery" | "deposit" | "shipping" | "cloud_service" | "saas_license" | "storage" | "domain"
     }
 }
 export namespace services {
@@ -210,7 +243,7 @@ export namespace services {
              */
             export interface EngagementRequest {
                 options: services.billing.engagement.EngagementRequestOption[];
-                order?: services.operation.Order;
+                order?: order.Order;
                 pricing: services.billing.Pricing;
                 requestDate: string;
             }
@@ -234,6 +267,13 @@ export namespace services {
              * type fullname: services.billing.engagement.TypeEnum
              */
             export type TypeEnum = "periodic" | "upfront"
+            /**
+             * Update your Engagement end rules
+             * interface fullName: services.billing.engagement.UpdateEndRuleRequest.UpdateEndRuleRequest
+             */
+            export interface UpdateEndRuleRequest {
+                strategy: services.billing.engagement.EndStrategyEnum;
+            }
         }
     }
     export namespace consumption {
@@ -275,7 +315,7 @@ export namespace services {
         export interface Summary {
             beginDate: string;
             endDate: string;
-            id?: number;
+            id: number;
             orderId?: number;
             price: order.Price;
             priceByPlanFamily: services.consumption.PricePlanFamily[];
@@ -288,10 +328,47 @@ export namespace services {
          * interface fullName: services.expanded.Billing.Billing
          */
         export interface Billing {
+            engagement?: services.expanded.EngagementSummary;
+            engagementRequest?: services.expanded.EngagementRequestSummary;
             expirationDate?: string;
+            group?: services.expanded.Group;
+            lifecycle?: services.expanded.Lifecycle;
             nextBillingDate?: string;
             plan?: services.expanded.Plan;
             pricing?: services.billing.Pricing;
+            renew?: services.expanded.Renew;
+        }
+        /**
+         * Customer service relative informations
+         * interface fullName: services.expanded.Customer.Customer
+         */
+        export interface Customer {
+            contacts: services.expanded.Customer.Contact[];
+        }
+        export namespace Customer {
+            /**
+             * Customer contact service relative informations
+             * interface fullName: services.expanded.Customer.Contact.Contact
+             */
+            export interface Contact {
+                customerCode: string;
+                type: services.expanded.Customer.Contact.TypeEnum;
+            }
+            export namespace Contact {
+                /**
+                 * Typology of customer contact
+                 * type fullname: services.expanded.Customer.Contact.TypeEnum
+                 */
+                export type TypeEnum = "administrator" | "billing" | "technical"
+            }
+        }
+        /**
+         * Engagement request summary for a Service
+         * interface fullName: services.expanded.EngagementRequestSummary.EngagementRequestSummary
+         */
+        export interface EngagementRequestSummary {
+            pricingMode: string;
+            requestDate: string;
         }
         /**
          * Engagement summary for a Service
@@ -300,6 +377,50 @@ export namespace services {
         export interface EngagementSummary {
             endDate?: string;
             endRule?: services.billing.engagement.EndRule;
+        }
+        /**
+         * Billing group of the service
+         * interface fullName: services.expanded.Group.Group
+         */
+        export interface Group {
+            id: number;
+        }
+        /**
+         * Service life cycle
+         * interface fullName: services.expanded.Lifecycle.Lifecycle
+         */
+        export interface Lifecycle {
+            capacities: services.expanded.Lifecycle.Capacities;
+            current: services.expanded.Lifecycle.Current;
+        }
+        export namespace Lifecycle {
+            /**
+             * Life cycle action
+             * type fullname: services.expanded.Lifecycle.ActionEnum
+             */
+            export type ActionEnum = "terminateAtExpirationDate" | "terminateAtEngagementDate" | "terminate" | "earlyRenewal"
+            /**
+             * Service life cycle options
+             * interface fullName: services.expanded.Lifecycle.Capacities.Capacities
+             */
+            export interface Capacities {
+                actions: services.expanded.Lifecycle.ActionEnum[];
+            }
+            /**
+             * Current life cycle configuration
+             * interface fullName: services.expanded.Lifecycle.Current.Current
+             */
+            export interface Current {
+                creationDate?: string;
+                pendingActions: services.expanded.Lifecycle.ActionEnum[];
+                state: services.expanded.Lifecycle.StateEnum;
+                terminationDate?: string;
+            }
+            /**
+             * Life cycle service state
+             * type fullname: services.expanded.Lifecycle.StateEnum
+             */
+            export type StateEnum = "active" | "toRenew" | "error" | "unpaid" | "unrenewed" | "rupture" | "terminated"
         }
         /**
          * Plan of the service
@@ -318,6 +439,36 @@ export namespace services {
             name: string;
         }
         /**
+         * Service renew informations
+         * interface fullName: services.expanded.Renew.Renew
+         */
+        export interface Renew {
+            capacities: services.expanded.Renew.Capacities;
+            current: services.expanded.Renew.Current;
+        }
+        export namespace Renew {
+            /**
+             * Service renew capacities
+             * interface fullName: services.expanded.Renew.Capacities.Capacities
+             */
+            export interface Capacities {
+                mode: services.expanded.Renew.ModeEnum[];
+            }
+            /**
+             * Current renew configuration
+             * interface fullName: services.expanded.Renew.Current.Current
+             */
+            export interface Current {
+                mode?: services.expanded.Renew.ModeEnum;
+                nextDate?: string;
+            }
+            /**
+             * Renew mode
+             * type fullname: services.expanded.Renew.ModeEnum
+             */
+            export type ModeEnum = "automatic" | "manual"
+        }
+        /**
          * Resource of the service
          * interface fullName: services.expanded.Resource.Resource
          */
@@ -325,6 +476,14 @@ export namespace services {
             displayName: string;
             name: string;
             product?: services.expanded.Product;
+            state: services.expanded.Resource.StateEnum;
+        }
+        export namespace Resource {
+            /**
+             * Resource state
+             * type fullname: services.expanded.Resource.StateEnum
+             */
+            export type StateEnum = "toActivate" | "active" | "toSuspend" | "suspended" | "toDelete" | "deleted"
         }
         /**
          * Route of the service
@@ -341,10 +500,12 @@ export namespace services {
          */
         export interface Service {
             billing: services.expanded.Billing;
+            customer: services.expanded.Customer;
             parentServiceId?: number;
             resource: services.expanded.Resource;
             route?: services.expanded.Route;
             serviceId: number;
+            tags: string[];
         }
         /**
          * Technical information of a baremetal service
@@ -533,6 +694,38 @@ export namespace services {
             order?: order.Order;
         }
     }
+    export namespace terminate {
+        /**
+         * Confirm service termination request
+         * interface fullName: services.terminate.ConfirmServiceTerminationRequest.ConfirmServiceTerminationRequest
+         */
+        export interface ConfirmServiceTerminationRequest {
+            acknowledgePotentialFees: boolean;
+            token: string;
+        }
+        /**
+         * Termination instructions
+         * interface fullName: services.terminate.TerminationAnswer.TerminationAnswer
+         */
+        export interface TerminationAnswer {
+            message: string;
+        }
+        /**
+         * Termination fees
+         * interface fullName: services.terminate.TerminationFees.TerminationFees
+         */
+        export interface TerminationFees {
+            durationLeft: string;
+            fees: order.Price;
+        }
+        /**
+         * Service termination request
+         * interface fullName: services.terminate.TerminationRequest.TerminationRequest
+         */
+        export interface TerminationRequest {
+            acknowledgePotentialFees: boolean;
+        }
+    }
 }
 
 /**
@@ -547,10 +740,10 @@ export default proxyServices;
  */
 export interface Services {
     /**
-     * Get list of your service details
+     * List available services
      * GET /services
      */
-    $get(): Promise<services.expanded.Service[]>;
+    $get(params?: { orderBy?: string, routes?: string, sort?: string }): Promise<number[]>;
     /**
      * Controle cache
      */
@@ -576,7 +769,127 @@ export interface Services {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                available: {
+                    /**
+                     * List all available engagements a given service can subscribe to
+                     * GET /services/{serviceId}/billing/engagement/available
+                     */
+                    $get(): Promise<services.billing.Pricing[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                endRule: {
+                    /**
+                     * Change your Engagement end rules
+                     * PUT /services/{serviceId}/billing/engagement/endRule
+                     */
+                    $put(params: { strategy: services.billing.engagement.EndStrategyEnum }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                request: {
+                    /**
+                     * Delete the ongoing Engagement request on this Service
+                     * DELETE /services/{serviceId}/billing/engagement/request
+                     */
+                    $delete(): Promise<void>;
+                    /**
+                     * Get the ongoing Engagement request on this Service
+                     * GET /services/{serviceId}/billing/engagement/request
+                     */
+                    $get(): Promise<services.billing.engagement.EngagementRequest>;
+                    /**
+                     * Request an Engagement on this Service
+                     * POST /services/{serviceId}/billing/engagement/request
+                     */
+                    $post(params: { pricingMode: string }): Promise<services.billing.engagement.EngagementRequest>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
             }
+        }
+        detach: {
+            /**
+             * List offers this option can be converted to
+             * GET /services/{serviceId}/detach
+             */
+            $get(): Promise<order.cart.GenericProductDefinition[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(planCode: string): {
+                /**
+                 * View an offer this option can be converted to
+                 * GET /services/{serviceId}/detach/{planCode}
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                execute: {
+                    /**
+                     * Perform the migration to a standalone offer. May require you to pay an Order
+                     * POST /services/{serviceId}/detach/{planCode}/execute
+                     */
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                simulate: {
+                    /**
+                     * Simulate the migration to a standalone offer. It won't generate any Order or issue any changes to your Service
+                     * POST /services/{serviceId}/detach/{planCode}/simulate
+                     */
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            };
+        }
+        form: {
+            /**
+             * List available forms for service
+             * GET /services/{serviceId}/form
+             */
+            $get(): Promise<services.form.Description[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(formName: string): {
+                /**
+                 * Get specified form description for service
+                 * GET /services/{serviceId}/form/{formName}
+                 */
+                $get(): Promise<services.form.Description>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                answer: {
+                    /**
+                     * Post answers to the form for your service
+                     * POST /services/{serviceId}/form/{formName}/answer
+                     */
+                    $post(params: { answers: services.form.Answer[] }): Promise<services.form.Response>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            };
         }
         options: {
             /**
@@ -588,6 +901,50 @@ export interface Services {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        upgrade: {
+            /**
+             * List offers this option can be converted to
+             * GET /services/{serviceId}/upgrade
+             */
+            $get(): Promise<order.cart.GenericProductDefinition[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(planCode: string): {
+                /**
+                 * View an offer this option can be converted to
+                 * GET /services/{serviceId}/upgrade/{planCode}
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                execute: {
+                    /**
+                     * Perform the migration to another offer. May require you to pay an Order
+                     * POST /services/{serviceId}/upgrade/{planCode}/execute
+                     */
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                simulate: {
+                    /**
+                     * Simulate the conversion to another offer. It won't generate any Order or issue any changes to your Service
+                     * POST /services/{serviceId}/upgrade/{planCode}/simulate
+                     */
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            };
         }
     };
 }

@@ -786,6 +786,56 @@ export const schema: Schema = {
             "description": "Beta version",
             "value": "BETA"
           },
+          "description": "Statistics for an OCC interface for a given type",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Service name",
+              "fullType": "uuid",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "ovhcloudconnect.interface.MetricsPeriodEnum",
+              "description": "The period the statistics are fetched for",
+              "fullType": "ovhcloudconnect.interface.MetricsPeriodEnum",
+              "name": "period",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "ovhcloudconnect.interface.MetricsTypeEnum",
+              "description": "The type of statistic to be fetched",
+              "fullType": "ovhcloudconnect.interface.MetricsTypeEnum",
+              "name": "type",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "ovhcloudconnect.Metrics[]"
+        }
+      ],
+      "path": "/ovhCloudConnect/{serviceName}/interface/{id}/statistics"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
           "description": "Unlock the port",
           "httpMethod": "POST",
           "noAuthentication": false,
@@ -1342,6 +1392,50 @@ export const schema: Schema = {
         }
       }
     },
+    "ovhcloudconnect.Metrics": {
+      "description": "OVHcloud Connect Metrics",
+      "id": "Metrics",
+      "namespace": "ovhcloudconnect",
+      "properties": {
+        "timestamp": {
+          "canBeNull": false,
+          "description": "timestamp corresponding to the value",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "value": {
+          "canBeNull": false,
+          "fullType": "ovhcloudconnect.MetricsValue",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.MetricsValue"
+        }
+      }
+    },
+    "ovhcloudconnect.MetricsValue": {
+      "description": "OVHcloud Connect Metrics value",
+      "id": "MetricsValue",
+      "namespace": "ovhcloudconnect",
+      "properties": {
+        "unit": {
+          "canBeNull": false,
+          "description": "Unit in which the value is expressed",
+          "fullType": "ovhcloudconnect.interface.MetricsUnitEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ovhcloudconnect.interface.MetricsUnitEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        }
+      }
+    },
     "ovhcloudconnect.PopConfig": {
       "description": "OVHcloud Connect Service Pop Configuration",
       "id": "PopConfig",
@@ -1595,6 +1689,42 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "LightStatusEnum",
+      "namespace": "ovhcloudconnect.interface"
+    },
+    "ovhcloudconnect.interface.MetricsPeriodEnum": {
+      "description": "Enum values for the period of the statistics",
+      "enum": [
+        "hourly",
+        "daily",
+        "weekly"
+      ],
+      "enumType": "string",
+      "id": "MetricsPeriodEnum",
+      "namespace": "ovhcloudconnect.interface"
+    },
+    "ovhcloudconnect.interface.MetricsTypeEnum": {
+      "description": "Enum values for the type of the statistics",
+      "enum": [
+        "light:in",
+        "light:out",
+        "traffic:download",
+        "traffic:upload",
+        "error:download",
+        "error:upload"
+      ],
+      "enumType": "string",
+      "id": "MetricsTypeEnum",
+      "namespace": "ovhcloudconnect.interface"
+    },
+    "ovhcloudconnect.interface.MetricsUnitEnum": {
+      "description": "Enum values for the unit of the statistics",
+      "enum": [
+        "dbm",
+        "bytes/s",
+        "error/s"
+      ],
+      "enumType": "string",
+      "id": "MetricsUnitEnum",
       "namespace": "ovhcloudconnect.interface"
     },
     "ovhcloudconnect.interface.StatusEnum": {

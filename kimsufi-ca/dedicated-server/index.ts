@@ -23,6 +23,14 @@ export namespace complexType {
     }
     /**
      * Key and value, with proper key strings
+     * interface fullName: complexType.SafeKeyValue.SafeKeyValue
+     */
+    export interface SafeKeyValue<T> {
+        key: string;
+        value: T;
+    }
+    /**
+     * Key and value, with proper key strings
      * interface fullName: complexType.SafeKeyValueCanBeNull.SafeKeyValueCanBeNull
      */
     export interface SafeKeyValueCanBeNull<T> {
@@ -54,6 +62,11 @@ export namespace dedicated {
      * type fullname: dedicated.ImageTypesEnum
      */
     export type ImageTypesEnum = "qcow2" | "raw"
+    /**
+     * List of operation type
+     * type fullname: dedicated.OperationFunctionEnum
+     */
+    export type OperationFunctionEnum = "bmc/javaKvm" | "bmc/restart" | "bmc/revokeSessions" | "bmc/sshSol" | "bmc/testPassword" | "bmc/testPing" | "bmc/testWeb" | "bmc/webKvm" | "bmc/webSol"
     /**
      * different task operation
      * type fullname: dedicated.TaskFunctionEnum
@@ -97,7 +110,7 @@ export namespace dedicated {
          * List NetworkInterfaceController linktype
          * type fullname: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum
          */
-        export type NetworkInterfaceControllerLinkTypeEnum = "isolated" | "private" | "private_lag" | "provisioning" | "public"
+        export type NetworkInterfaceControllerLinkTypeEnum = "isolated" | "private" | "private_lag" | "provisioning" | "provisioning_lag" | "public" | "public_lag"
     }
     export namespace server {
         /**
@@ -521,6 +534,19 @@ export namespace dedicated {
          */
         export type OlaInterfaceModeEnum = "public" | "vrack"
         /**
+         * Server operations
+         * interface fullName: dedicated.server.Operation.Operation
+         */
+        export interface Operation {
+            comment?: string;
+            doneDate?: string;
+            function: dedicated.OperationFunctionEnum;
+            lastUpdate?: string;
+            operationId: string;
+            startDate: string;
+            status: dedicated.TaskStatusEnum;
+        }
+        /**
          * Information about the options of a dedicated server
          * interface fullName: dedicated.server.Option.Option
          */
@@ -855,7 +881,7 @@ export namespace dedicated {
          * Available VirtualNetworkInterface modes
          * type fullname: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum
          */
-        export type VirtualNetworkInterfaceModeEnum = "public" | "vrack" | "vrack_aggregation"
+        export type VirtualNetworkInterfaceModeEnum = "public" | "public_aggregation" | "vrack" | "vrack_aggregation"
     }
 }
 export namespace secondaryDns {
@@ -1177,7 +1203,7 @@ export interface Dedicated {
                      * Start an install
                      * POST /dedicated/server/{serviceName}/install/start
                      */
-                    $post(params: { details?: dedicated.server.InstallCustom, partitionSchemeName?: string, templateName: string }): Promise<dedicated.server.Task>;
+                    $post(params: { details?: dedicated.server.InstallCustom, partitionSchemeName?: string, templateName: string, userMetadata?: complexType.SafeKeyValue<string>[] }): Promise<dedicated.server.Task>;
                     /**
                      * Controle cache
                      */

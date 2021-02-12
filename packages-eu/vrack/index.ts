@@ -132,7 +132,7 @@ export namespace vrack {
         name: string;
     }
     /**
-     * vrack dedicated server interfaces
+     * vrack dedicated server interfaces (LEGACY)
      * interface fullName: vrack.dedicatedServer.dedicatedServer
      */
     export interface dedicatedServer {
@@ -402,7 +402,7 @@ export interface Vrack {
              */
             $get(): Promise<string[]>;
             /**
-             * add a dedicated server to this vrack
+             * add a dedicated server to this vrack (LEGACY)
              * POST /vrack/{serviceName}/dedicatedServer
              */
             $post(params: { dedicatedServer: string }): Promise<vrack.Task>;
@@ -412,7 +412,7 @@ export interface Vrack {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(dedicatedServer: string): {
                 /**
-                 * remove this server from this vrack
+                 * remove this server from this vrack (LEGACY)
                  * DELETE /vrack/{serviceName}/dedicatedServer/{dedicatedServer}
                  */
                 $delete(): Promise<vrack.Task>;
@@ -427,7 +427,7 @@ export interface Vrack {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 mrtg: {
                     /**
-                     * Retrieve vrack traffic graph values
+                     * Retrieve vrack traffic graph values (LEGACY)
                      * GET /vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg
                      */
                     $get(params: { period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum }): Promise<dedicated.server.MrtgTimestampValue[]>;

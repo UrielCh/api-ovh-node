@@ -308,7 +308,7 @@ export namespace vps {
      * All type a VPS task can be
      * type fullname: vps.TaskTypeEnum
      */
-    export type TaskTypeEnum = "addVeeamBackupJob" | "changeRootPassword" | "createSnapshot" | "deleteSnapshot" | "deliverVm" | "getConsoleUrl" | "internalTask" | "migrate" | "openConsoleAccess" | "provisioningAdditionalIp" | "reOpenVm" | "rebootVm" | "reinstallVm" | "removeVeeamBackup" | "restoreFullVeeamBackup" | "restoreVeeamBackup" | "restoreVm" | "revertSnapshot" | "setMonitoring" | "setNetboot" | "startVm" | "stopVm" | "upgradeVm"
+    export type TaskTypeEnum = "addVeeamBackupJob" | "changeRootPassword" | "createSnapshot" | "deleteSnapshot" | "deliverVm" | "getConsoleUrl" | "internalTask" | "migrate" | "openConsoleAccess" | "provisioningAdditionalIp" | "reOpenVm" | "rebootVm" | "reinstallVm" | "removeVeeamBackup" | "rescheduleAutoBackup" | "restoreFullVeeamBackup" | "restoreVeeamBackup" | "restoreVm" | "revertSnapshot" | "setMonitoring" | "setNetboot" | "startVm" | "stopVm" | "upgradeVm"
     /**
      * Installation template for a VPS Virtual Machine
      * interface fullName: vps.Template.Template
@@ -760,6 +760,17 @@ export interface Vps {
                  * POST /vps/{serviceName}/automatedBackup/detachBackup
                  */
                 $post(params: { restorePoint: string }): Promise<vps.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            reschedule: {
+                /**
+                 * Change the scheduled time of your daily backup
+                 * POST /vps/{serviceName}/automatedBackup/reschedule
+                 */
+                $post(params: { schedule: string }): Promise<vps.Task>;
                 /**
                  * Controle cache
                  */

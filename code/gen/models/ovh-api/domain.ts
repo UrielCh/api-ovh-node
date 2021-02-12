@@ -1788,8 +1788,11 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "deletionDate": "2021-08-31T00:00:00+00:00",
+            "deprecatedDate": "2021-02-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/domain/extensions",
+            "value": "DEPRECATED"
           },
           "description": "List all the extensions for a specific country",
           "httpMethod": "GET",
@@ -2023,6 +2026,125 @@ export const schema: Schema = {
         }
       ],
       "path": "/domain/data/smd/{smdId}"
+    },
+    {
+      "description": "Operations on domain name extensions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List all extensions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Filter only extensions related to this list of geolocalization places (comma separated). Default to empty.",
+              "fullType": "string",
+              "name": "geolocalizations",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "domain.extensions.OrderByTypeEnum",
+              "description": "Order results by name (alphabetical) or trending importance (trending). Default to alphabetical.",
+              "fullType": "domain.extensions.OrderByTypeEnum",
+              "name": "orderBy",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "OVHcloud subsidiary targeted. Useful only when orderBy is equal to trending. Default to FR.",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter only extensions related to this list of thematics (comma separated). Default to empty.",
+              "fullType": "string",
+              "name": "thematics",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/domain/extensions"
+    },
+    {
+      "description": "Operations on domain name extensions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get an extension",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "domain.extensions.Extension"
+        }
+      ],
+      "path": "/domain/extensions/{name}"
+    },
+    {
+      "description": "Retrieve registry configurations for an extension",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve registry configurations for an extension",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "domain.extensions.registryConfigurations.RegistryConfigurations"
+        }
+      ],
+      "path": "/domain/extensions/{name}/registryConfigurations"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List extensions, grouped by category types (like 'thematic', 'geolocalization') and category names (like 'europe')",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "domain.extensions.ExtensionsByCategory"
+        }
+      ],
+      "path": "/domain/extensions/byCategory"
     },
     {
       "description": "Rules for creating a domain",
@@ -5860,6 +5982,331 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "domain.extensions.CategoryNameWithExtensions": {
+      "description": "Result of extensions by category request",
+      "id": "CategoryNameWithExtensions",
+      "namespace": "domain.extensions",
+      "properties": {
+        "extensions": {
+          "canBeNull": false,
+          "description": "List of extensions",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the category",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "domain.extensions.Extension": {
+      "description": "A domain name extension",
+      "id": "Extension",
+      "namespace": "domain.extensions",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "The extension name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "domain.extensions.ExtensionsByCategory": {
+      "description": "Result of extensions by category request",
+      "id": "ExtensionsByCategory",
+      "namespace": "domain.extensions",
+      "properties": {
+        "geolocalization": {
+          "canBeNull": false,
+          "description": "Geolocalizations groups extensions by geographical place, like 'europe'",
+          "fullType": "domain.extensions.CategoryNameWithExtensions[]",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.extensions.CategoryNameWithExtensions[]"
+        },
+        "thematic": {
+          "canBeNull": false,
+          "description": "Thematics groups extensions by a thematic like 'gastronomy' for '.pizza'",
+          "fullType": "domain.extensions.CategoryNameWithExtensions[]",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.extensions.CategoryNameWithExtensions[]"
+        }
+      }
+    },
+    "domain.extensions.OrderByTypeEnum": {
+      "description": "Type used to change the order of extensions results",
+      "enum": [
+        "trending",
+        "alphabetical"
+      ],
+      "enumType": "string",
+      "id": "OrderByTypeEnum",
+      "namespace": "domain.extensions"
+    },
+    "domain.extensions.registryConfigurations.CreateLifecycleRegistryConfiguration": {
+      "description": "The registry configurations applied when creating a domain name",
+      "id": "CreateLifecycleRegistryConfiguration",
+      "namespace": "domain.extensions.registryConfigurations",
+      "properties": {
+        "allowedPeriodsInMonths": {
+          "canBeNull": true,
+          "description": "The number of months allowed for a domain creation",
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
+        }
+      }
+    },
+    "domain.extensions.registryConfigurations.DNSRegistryConfiguration": {
+      "description": "The registry configurations applied to the DNS of a domain name",
+      "id": "DNSRegistryConfiguration",
+      "namespace": "domain.extensions.registryConfigurations",
+      "properties": {
+        "isDNSSECSupported": {
+          "canBeNull": false,
+          "description": "Whether DNSSEC is supported by the registry/backend and handled by OVHcloud",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "maxNumber": {
+          "canBeNull": false,
+          "description": "The maximum required number of DNS",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minNumber": {
+          "canBeNull": false,
+          "description": "The minimum required number of DNS",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "domain.extensions.registryConfigurations.DomainRegistryConfiguration": {
+      "description": "The registry configurations applied to a domain name",
+      "id": "DomainRegistryConfiguration",
+      "namespace": "domain.extensions.registryConfigurations",
+      "properties": {
+        "isPremiumSupported": {
+          "canBeNull": false,
+          "description": "Whether premium domains are supported by the registry and handled by OVHcloud",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "label": {
+          "canBeNull": false,
+          "description": "The registry configurations applied to the domain name label",
+          "fullType": "domain.extensions.registryConfigurations.LabelDomainRegistryConfiguration",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.extensions.registryConfigurations.LabelDomainRegistryConfiguration"
+        }
+      }
+    },
+    "domain.extensions.registryConfigurations.LabelDomainRegistryConfiguration": {
+      "description": "The registry configurations applied to the domain name label",
+      "id": "LabelDomainRegistryConfiguration",
+      "namespace": "domain.extensions.registryConfigurations",
+      "properties": {
+        "isIDNSupported": {
+          "canBeNull": false,
+          "description": "Whether International Domain Names are supported by the registry and handled by OVHcloud",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "maxLength": {
+          "canBeNull": false,
+          "description": "The maximum length allowed for a domain name (without the extension)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minLength": {
+          "canBeNull": false,
+          "description": "The minimum length allowed for a domain name (without the extension)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "domain.extensions.registryConfigurations.LifecycleRegistryConfiguration": {
+      "description": "The registry configurations of the lifecycle of a domain name",
+      "id": "LifecycleRegistryConfiguration",
+      "namespace": "domain.extensions.registryConfigurations",
+      "properties": {
+        "create": {
+          "canBeNull": false,
+          "description": "The registry configurations applied when creating a domain name",
+          "fullType": "domain.extensions.registryConfigurations.CreateLifecycleRegistryConfiguration",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.extensions.registryConfigurations.CreateLifecycleRegistryConfiguration"
+        },
+        "order": {
+          "canBeNull": false,
+          "description": "The registry configurations applied when ordering a domain name",
+          "fullType": "domain.extensions.registryConfigurations.OrderLifecycleRegistryConfiguration",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.extensions.registryConfigurations.OrderLifecycleRegistryConfiguration"
+        },
+        "renew": {
+          "canBeNull": false,
+          "description": "The registry configurations applied when renewing a domain name",
+          "fullType": "domain.extensions.registryConfigurations.RenewLifecycleRegistryConfiguration",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.extensions.registryConfigurations.RenewLifecycleRegistryConfiguration"
+        },
+        "restore": {
+          "canBeNull": false,
+          "description": "The registry configurations applied when restoring a domain name",
+          "fullType": "domain.extensions.registryConfigurations.RestoreLifecycleRegistryConfiguration",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.extensions.registryConfigurations.RestoreLifecycleRegistryConfiguration"
+        },
+        "transfer": {
+          "canBeNull": false,
+          "description": "The registry configurations applied when transfering a domain name",
+          "fullType": "domain.extensions.registryConfigurations.TransferLifecycleRegistryConfiguration",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.extensions.registryConfigurations.TransferLifecycleRegistryConfiguration"
+        }
+      }
+    },
+    "domain.extensions.registryConfigurations.OrderLifecycleRegistryConfiguration": {
+      "description": "The registry configurations applied when ordering a domain name",
+      "id": "OrderLifecycleRegistryConfiguration",
+      "namespace": "domain.extensions.registryConfigurations",
+      "properties": {
+        "maxMonths": {
+          "canBeNull": false,
+          "description": "The maximum number of months a domain can be ordered for",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minMonths": {
+          "canBeNull": false,
+          "description": "The minimum number of months a domain can be ordered for",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "domain.extensions.registryConfigurations.RegistryConfigurations": {
+      "description": "The registry configurations applied to a domain extension (TLD, SLD)",
+      "id": "RegistryConfigurations",
+      "namespace": "domain.extensions.registryConfigurations",
+      "properties": {
+        "dns": {
+          "canBeNull": false,
+          "description": "Configurations on the DNS associated to the domain for the given extension",
+          "fullType": "domain.extensions.registryConfigurations.DNSRegistryConfiguration",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.extensions.registryConfigurations.DNSRegistryConfiguration"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Configurations on the domain name itself for the given extension",
+          "fullType": "domain.extensions.registryConfigurations.DomainRegistryConfiguration",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.extensions.registryConfigurations.DomainRegistryConfiguration"
+        },
+        "lifecycle": {
+          "canBeNull": false,
+          "description": "Configurations on the lifecycle of a domain for the given extension",
+          "fullType": "domain.extensions.registryConfigurations.LifecycleRegistryConfiguration",
+          "readOnly": true,
+          "required": false,
+          "type": "domain.extensions.registryConfigurations.LifecycleRegistryConfiguration"
+        }
+      }
+    },
+    "domain.extensions.registryConfigurations.RenewLifecycleRegistryConfiguration": {
+      "description": "The registry configurations applied when renewing a domain name",
+      "id": "RenewLifecycleRegistryConfiguration",
+      "namespace": "domain.extensions.registryConfigurations",
+      "properties": {
+        "allowedPeriodsInMonths": {
+          "canBeNull": true,
+          "description": "The number of months allowed for a domain renewal",
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
+        },
+        "gracePeriodInDays": {
+          "canBeNull": true,
+          "description": "The number of calendar days between the expiration date and the redemption period when a renew can be executed. During this period, the domain has expired and is suspended. It's the number of days before real deletion. The customer can still renew.",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "domain.extensions.registryConfigurations.RestoreLifecycleRegistryConfiguration": {
+      "description": "The registry configurations applied when restoring a domain name",
+      "id": "RestoreLifecycleRegistryConfiguration",
+      "namespace": "domain.extensions.registryConfigurations",
+      "properties": {
+        "gracePeriodInDays": {
+          "canBeNull": true,
+          "description": "The number of calendar days in which the customer still can restore their domain after expiration. During this period, the domain has been deleted. The customer can still restore it until these days are over. Then the domain is returned to public, if not restored.",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "domain.extensions.registryConfigurations.TransferLifecycleRegistryConfiguration": {
+      "description": "The registry configurations applied when transfering a domain name",
+      "id": "TransferLifecycleRegistryConfiguration",
+      "namespace": "domain.extensions.registryConfigurations",
+      "properties": {
+        "allowedPeriodsInMonths": {
+          "canBeNull": true,
+          "description": "The number of months allowed for a domain transfer",
+          "fullType": "long[]",
+          "readOnly": true,
+          "required": false,
+          "type": "long[]"
         }
       }
     },

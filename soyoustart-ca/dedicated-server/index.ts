@@ -23,6 +23,14 @@ export namespace complexType {
     }
     /**
      * Key and value, with proper key strings
+     * interface fullName: complexType.SafeKeyValue.SafeKeyValue
+     */
+    export interface SafeKeyValue<T> {
+        key: string;
+        value: T;
+    }
+    /**
+     * Key and value, with proper key strings
      * interface fullName: complexType.SafeKeyValueCanBeNull.SafeKeyValueCanBeNull
      */
     export interface SafeKeyValueCanBeNull<T> {
@@ -78,6 +86,11 @@ export namespace dedicated {
      */
     export type ImageTypesEnum = "qcow2" | "raw"
     /**
+     * List of operation type
+     * type fullname: dedicated.OperationFunctionEnum
+     */
+    export type OperationFunctionEnum = "bmc/javaKvm" | "bmc/restart" | "bmc/revokeSessions" | "bmc/sshSol" | "bmc/testPassword" | "bmc/testPing" | "bmc/testWeb" | "bmc/webKvm" | "bmc/webSol"
+    /**
      * profile firewall asa
      * type fullname: dedicated.ProfileFirewallEnum
      */
@@ -130,7 +143,7 @@ export namespace dedicated {
          * List NetworkInterfaceController linktype
          * type fullname: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum
          */
-        export type NetworkInterfaceControllerLinkTypeEnum = "isolated" | "private" | "private_lag" | "provisioning" | "public"
+        export type NetworkInterfaceControllerLinkTypeEnum = "isolated" | "private" | "private_lag" | "provisioning" | "provisioning_lag" | "public" | "public_lag"
     }
     export namespace server {
         /**
@@ -158,6 +171,14 @@ export namespace dedicated {
          * type fullname: dedicated.server.AlertLanguageEnum
          */
         export type AlertLanguageEnum = "cz" | "de" | "en" | "es" | "fi" | "fr" | "it" | "lt" | "nl" | "pl" | "pt"
+        /**
+         * Server BMC interface (formerly named IPMI)
+         * interface fullName: dedicated.server.BMC.BMC
+         */
+        export interface BMC {
+            available: boolean;
+            supportedFeatures: dedicated.server.BmcSupportedFeatures;
+        }
         /**
          * Backup Ftp assigned to this server
          * interface fullName: dedicated.server.BackupFtp.BackupFtp
@@ -260,6 +281,65 @@ export namespace dedicated {
         export interface BiosSettingsSupportSgxOptions {
             prmrr: dedicated.server.BiosSettingsSgxPrmrrEnum[];
             status: dedicated.server.BiosSettingsSgxStatusEnum[];
+        }
+        /**
+         * Java KVM session information
+         * interface fullName: dedicated.server.BmcJavaKvmValue.BmcJavaKvmValue
+         */
+        export interface BmcJavaKvmValue {
+            expirationDate: string;
+            jnlp: string;
+        }
+        /**
+         * Ssh SOL session information
+         * interface fullName: dedicated.server.BmcSshSolValue.BmcSshSolValue
+         */
+        export interface BmcSshSolValue {
+            expirationDate: string;
+            uri: string;
+        }
+        /**
+         * A structure describing the BMC supported features
+         * interface fullName: dedicated.server.BmcSupportedFeatures.BmcSupportedFeatures
+         */
+        export interface BmcSupportedFeatures {
+            javaKvm: boolean;
+            sshSol: boolean;
+            testPassword: boolean;
+            testPing: boolean;
+            testWeb: boolean;
+            webKvm: boolean;
+            webSol: boolean;
+        }
+        /**
+         * A structure describing BMC test result
+         * interface fullName: dedicated.server.BmcTestResult.BmcTestResult
+         */
+        export interface BmcTestResult {
+            expirationDate: string;
+            message?: string;
+            status: boolean;
+        }
+        /**
+         * List of tests to run on a BMC
+         * type fullname: dedicated.server.BmcTestTypeEnum
+         */
+        export type BmcTestTypeEnum = "password" | "ping" | "web"
+        /**
+         * Web KVM session information
+         * interface fullName: dedicated.server.BmcWebKvmValue.BmcWebKvmValue
+         */
+        export interface BmcWebKvmValue {
+            expirationDate: string;
+            url: string;
+        }
+        /**
+         * Web SOL session information
+         * interface fullName: dedicated.server.BmcWebSolValue.BmcWebSolValue
+         */
+        export interface BmcWebSolValue {
+            expirationDate: string;
+            url: string;
         }
         /**
          * Server boot mode
@@ -684,6 +764,19 @@ export namespace dedicated {
          * type fullname: dedicated.server.OlaInterfaceModeEnum
          */
         export type OlaInterfaceModeEnum = "public" | "vrack"
+        /**
+         * Server operations
+         * interface fullName: dedicated.server.Operation.Operation
+         */
+        export interface Operation {
+            comment?: string;
+            doneDate?: string;
+            function: dedicated.OperationFunctionEnum;
+            lastUpdate?: string;
+            operationId: string;
+            startDate: string;
+            status: dedicated.TaskStatusEnum;
+        }
         /**
          * Information about the options of a dedicated server
          * interface fullName: dedicated.server.Option.Option
@@ -1127,7 +1220,7 @@ export namespace dedicated {
          * Available VirtualNetworkInterface modes
          * type fullname: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum
          */
-        export type VirtualNetworkInterfaceModeEnum = "public" | "vrack" | "vrack_aggregation"
+        export type VirtualNetworkInterfaceModeEnum = "public" | "public_aggregation" | "vrack" | "vrack_aggregation"
     }
 }
 export namespace license {
@@ -1661,7 +1754,7 @@ export interface Dedicated {
                      * Start an install
                      * POST /dedicated/server/{serviceName}/install/start
                      */
-                    $post(params: { details?: dedicated.server.InstallCustom, partitionSchemeName?: string, templateName: string }): Promise<dedicated.server.Task>;
+                    $post(params: { details?: dedicated.server.InstallCustom, partitionSchemeName?: string, templateName: string, userMetadata?: complexType.SafeKeyValue<string>[] }): Promise<dedicated.server.Task>;
                     /**
                      * Controle cache
                      */

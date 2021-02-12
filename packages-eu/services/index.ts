@@ -243,7 +243,7 @@ export namespace services {
              */
             export interface EngagementRequest {
                 options: services.billing.engagement.EngagementRequestOption[];
-                order?: services.operation.Order;
+                order?: order.Order;
                 pricing: services.billing.Pricing;
                 requestDate: string;
             }
@@ -315,7 +315,7 @@ export namespace services {
         export interface Summary {
             beginDate: string;
             endDate: string;
-            id?: number;
+            id: number;
             orderId?: number;
             price: order.Price;
             priceByPlanFamily: services.consumption.PricePlanFamily[];
@@ -348,6 +348,7 @@ export namespace services {
          */
         export interface Billing {
             engagement?: services.expanded.EngagementSummary;
+            engagementRequest?: services.expanded.EngagementRequestSummary;
             expirationDate?: string;
             group?: services.expanded.Group;
             lifecycle?: services.expanded.Lifecycle;
@@ -379,6 +380,14 @@ export namespace services {
                  */
                 export type TypeEnum = "administrator" | "billing" | "technical"
             }
+        }
+        /**
+         * Engagement request summary for a Service
+         * interface fullName: services.expanded.EngagementRequestSummary.EngagementRequestSummary
+         */
+        export interface EngagementRequestSummary {
+            pricingMode: string;
+            requestDate: string;
         }
         /**
          * Engagement summary for a Service
@@ -785,6 +794,17 @@ export interface Services {
                      * GET /services/{serviceId}/billing/engagement/available
                      */
                     $get(): Promise<services.billing.Pricing[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                endRule: {
+                    /**
+                     * Change your Engagement end rules
+                     * PUT /services/{serviceId}/billing/engagement/endRule
+                     */
+                    $put(params: { strategy: services.billing.engagement.EndStrategyEnum }): Promise<void>;
                     /**
                      * Controle cache
                      */
