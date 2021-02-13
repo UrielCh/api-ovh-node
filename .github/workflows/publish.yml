@@ -11,7 +11,8 @@ jobs:
 
       - name: Run a multi-line script
         run: |
-          npm install -g npm@7.5.4
+          npm --version
+          npm install npm@7.5.4
           npm ci
           npm run gen
           git status
