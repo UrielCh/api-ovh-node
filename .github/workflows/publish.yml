@@ -28,7 +28,10 @@ jobs:
           npm run install-all
           npm run bootstrap
           npm run clean-cache
-          # git commit -avm 'update package-lock.json'
+      - name: commot changes
+        continue-on-error: true
+        run: |
+          git commit -avm 'update package-lock.json'
           git push
       - name: Publishing with lerna
         env:
