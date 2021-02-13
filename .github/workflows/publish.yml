@@ -12,7 +12,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           npm --version
-          npm install npm@7.5.4
+          npm install npm@7.5.4 ts-node
           npm install
           npm run gen
           git status
