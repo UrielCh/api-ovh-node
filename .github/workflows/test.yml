@@ -1,8 +1,6 @@
 name: Workflow
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
 jobs:
   test:
     runs-on: ubuntu-latest
