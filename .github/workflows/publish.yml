@@ -1,0 +1,16 @@
+name: publish
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a multi-line script
+        run: |
+          npm ci
+          npm run gen
+          git status
