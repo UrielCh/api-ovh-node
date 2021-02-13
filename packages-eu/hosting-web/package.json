@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/hosting-web",
     "description": "Add typing to to ovh api hosting-web",
-    "version": "3.1.14",
+    "version": "3.1.15",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
