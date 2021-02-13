@@ -12,8 +12,6 @@ jobs:
           npm --version
           npm install --no-save npm@7.5.4 ts-node
           npm install
-      - name: gerenerate wrapper
-        run: |
           npm run gen
           git status
           git add .
