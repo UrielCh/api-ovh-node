@@ -7,11 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      #- name: Install dependences
-      #  run: |
-      #    npm --version
-      #    npm install --save-dev npm@7.5.4
-      #    npm install
+      - name: Install dependences
+        run: |
+          npm --version
+          npm install --save-dev npm@7.5.4
+          npm install
       #- name: Regen source files
       #  run: |
       #    npm run gen
