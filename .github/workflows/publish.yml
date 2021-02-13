@@ -10,7 +10,7 @@ jobs:
       - name: install deps
         run: |
           npm --version
-          npm install --no-save npm@7.5.4 ts-node
+          npm install --save-dev npm@7.5.4 ts-node
           npm install
           npm run gen
           git status
