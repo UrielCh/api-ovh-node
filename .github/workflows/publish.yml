@@ -7,8 +7,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - name: install deps
+        uses: actions/checkout@v2
         run: |
           npm --version
           npm install --no-save npm@7.5.4 ts-node
