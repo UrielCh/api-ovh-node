@@ -26,4 +26,4 @@ jobs:
           npm run install-all
           npm run bootstrap
           npm run clean-cache
-          lerna publish patch --yes
+          npm run lerna
