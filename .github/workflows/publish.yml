@@ -13,6 +13,6 @@ jobs:
         run: |
           npm --version
           npm install npm@7.5.4
-          npm ci
+          npm install
           npm run gen
           git status
