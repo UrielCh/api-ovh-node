@@ -9,6 +9,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install dependences
         run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           npm --version
           npm install --save-dev npm@7.5.4
           npm install
@@ -16,8 +18,6 @@ jobs:
       #  run: |
       #    npm run gen
       #    git status
-      #    git config user.name github-actions
-      #    git config user.email github-actions@github.com
       #- name: Commit changes
       #  run: |
       #    git add .
@@ -28,7 +28,7 @@ jobs:
           npm run install-all
           npm run bootstrap
           npm run clean-cache
-          git commit -avm 'update package-lock.json'
+      # git commit -avm 'update package-lock.json'
           git push
       - name: Publishing with lerna
         env:
