@@ -7,23 +7,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: install deps
+      - name: install dependences
         run: |
           npm --version
-          npm install --save-dev npm@7.5.4 ts-node
+          npm install --save-dev npm@7.5.4
           npm install
+      - name: regen source files
+        run: |
           npm run gen
           git status
           git config user.name github-actions
           git config user.email github-actions@github.com
+      - name: commit changes
+        run: |
           git add .
           git commit -avm 'regen model files'
+          git push
+      - name: building generated package
+        run: |
+          npm run install-all
+          npm run bootstrap
+          npm run clean-cache
+          git commit -avm 'update package-lock.json'
           git push
       - name: publishing with lerna
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          npm run install-all
-          npm run bootstrap
-          npm run clean-cache
           npm run lerna
