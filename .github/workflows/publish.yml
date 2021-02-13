@@ -7,25 +7,24 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      steps:
-        - uses: actions/checkout@v2
-        - name: install deps
-          run: |
-            npm --version
-            npm install --no-save npm@7.5.4 ts-node
-            npm install
-        - name: gerenerate wrapper
-          run: |
-            npm run gen
-            git status
-            git add .
-            git commit -avm 'regen'
-            git push
-        - name: publishing with lerna
-          env:
-            NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          run: |
-            npm run install-all
-            npm run bootstrap
-            npm run clean-cache
-            lerna publish patch --yes
+      - uses: actions/checkout@v2
+      - name: install deps
+        run: |
+          npm --version
+          npm install --no-save npm@7.5.4 ts-node
+          npm install
+      - name: gerenerate wrapper
+        run: |
+          npm run gen
+          git status
+          git add .
+          git commit -avm 'regen'
+          git push
+      - name: publishing with lerna
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm run install-all
+          npm run bootstrap
+          npm run clean-cache
+          lerna publish patch --yes
