@@ -1,0 +1,24 @@
+
+name: publish
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: Ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependences
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git config commit.gpgsign false
+          npm --version
+          npm install --save-dev npm@7.5.4
+          npm install
+      - name: Publishing with lerna
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          npm whoami
