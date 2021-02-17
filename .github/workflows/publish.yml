@@ -22,7 +22,7 @@ jobs:
       - name: Commit changes in model
         run: |
           git add .
-          git commit -avm 'regen model files'
+          git commit -avm 'Regenerate model files'
           git push
       - name: Building generated package
         run: |
