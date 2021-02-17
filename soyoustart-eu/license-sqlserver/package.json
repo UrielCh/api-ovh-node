@@ -1,7 +1,7 @@
 {
     "name": "@ovh-soyoustart/license-sqlserver",
     "description": "Add typing to to ovh api license-sqlserver",
-    "version": "3.1.15",
+    "version": "3.1.16",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
