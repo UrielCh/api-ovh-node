@@ -15,15 +15,15 @@ jobs:
           npm --version
           npm install --save-dev npm@7.5.4
           npm install
-      - name: Regenerate wrappers source files
-        run: |
-          npm run gen
-          git status
-      - name: Commit changes in model
-        run: |
-          git add .
-          git commit -avm 'Regenerate model files'
-          git push
+      # - name: Regenerate wrappers source files
+      #   run: |
+      #     npm run gen
+      #     git status
+      # - name: Commit changes in model
+      #   run: |
+      #     git add .
+      #     git commit -avm 'Regenerate model files'
+      #     git push
       - name: Building generated package
         run: |
           npm run install-all
@@ -38,5 +38,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
           npm whoami
           npm run lerna
