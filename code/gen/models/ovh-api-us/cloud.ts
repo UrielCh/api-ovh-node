@@ -6979,7 +6979,9 @@ export const schema: Schema = {
         "RESCUING",
         "UNRESCUING",
         "SNAPSHOTTING",
-        "RESUMING"
+        "RESUMING",
+        "SHELVING",
+        "UNSHELVING"
       ],
       "enumType": "string",
       "id": "InstanceStatusEnum",

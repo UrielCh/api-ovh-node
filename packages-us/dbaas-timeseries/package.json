@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-us/dbaas-timeseries",
     "description": "Add typing to to ovh api dbaas-timeseries",
-    "version": "3.1.15",
+    "version": "3.1.17",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
