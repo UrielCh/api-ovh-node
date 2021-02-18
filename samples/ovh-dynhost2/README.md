@@ -12,6 +12,12 @@ This script use the npm packages `@ovh-api/api` and `@ovh-api/domain`
 npm install -g ovh-dynhost2
 ```
 
+or without setup
+
+```bash
+npx ovh-dynhost2 --help
+```
+
 ## Usage
 
 ```bash

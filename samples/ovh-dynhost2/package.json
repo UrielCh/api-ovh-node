@@ -1,45 +1,46 @@
 {
-  "name": "ovh-dynhost2",
-  "version": "2.0.1",
-  "description": "Update a Ovh DynHost or a A entry with your current IP",
-  "main": "index.js",
-  "keywords": [
-    "ovh",
-    "dns",
-    "dynhost"
-  ],
-  "license": "MIT",
-  "author": "Uriel Chemouni <uchemouni@gmail.com>",
-  "bin": {
-    "ovh-dynhost2": "./bin/ovh-dynhost2"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/UrielCh/api-ovh-node.git"
-  },
-  "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
-  "scripts": {
-    "build": "tsc -p .",
-    "build:watch": "tsc -p . --watch",
-    "prepare": "npm run build"
-  },
-  "dependencies": {
-    "@ovh-api/api": "^3.1.5",
-    "@ovh-api/domain": "^3.1.11",
-    "chalk": "^4.1.0",
-    "commander": "^6.2.0",
-    "node-libcurl": "^2.2.0"
-  },
-  "devDependencies": {
-    "@types/node": "^14.14.5",
-    "ts-node": "^9.0.0",
-    "typescript": "^4.0.5"
-  },
-  "files": [
-    "bin/ovh-dynhost2",
-    "index.js"
-  ]
+    "name": "ovh-dynhost2",
+    "version": "2.0.2",
+    "description": "Update a Ovh DynHost or a A entry with your current IP.",
+    "main": "index.js",
+    "keywords": [
+        "ovh",
+        "dns",
+        "dyndns",
+        "dynhost"
+    ],
+    "license": "MIT",
+    "author": "Uriel Chemouni <uchemouni@gmail.com>",
+    "bin": {
+        "ovh-dynhost2": "./bin/ovh-dynhost2"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/UrielCh/api-ovh-node.git"
+    },
+    "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
+    "scripts": {
+        "build": "tsc -p .",
+        "build:watch": "tsc -p . --watch",
+        "prepare": "npm run build"
+    },
+    "dependencies": {
+        "@ovh-api/api": "^3.1.7",
+        "@ovh-api/domain": "^3.1.14",
+        "chalk": "^4.1.0",
+        "commander": "^7.1.0",
+        "node-libcurl": "^2.3.0"
+    },
+    "devDependencies": {
+        "@types/node": "^14.14.28",
+        "ts-node": "^9.1.1",
+        "typescript": "^4.1.5"
+    },
+    "files": [
+        "bin/ovh-dynhost2",
+        "index.js"
+    ]
 }
