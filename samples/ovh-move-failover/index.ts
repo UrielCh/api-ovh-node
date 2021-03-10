@@ -51,13 +51,18 @@ async function indexSource(): Promise<{ [key: string]: IPSelection }> {
       let extraDesc = '';
       if (data.type === 'vps') {
         const extra = await api.vps.$(routedTo).$get();
-        extraDesc = extra.displayName || extra.name;
+        extraDesc = extra.displayName || extra.name; // displayName(name)
         extraDesc += ' ';
       }
-      if (data.type === 'cloud') {
+      else if (data.type === 'cloud') {
         const extra = await api.cloud.project.$(routedTo).$get();
-        extraDesc = extra.description || extra.project_id;
+        extraDesc = extra.projectName || extra.project_id;
+        if (extra.description)
+          extraDesc += `(${extra.description})`;
         extraDesc += ' ';
+      }
+      else{
+        extraDesc += '(Not implemented ' + data.type + ')';
       }
       indexed[routedTo].desc =`${extraDesc}${data.type} IP`;
     }
@@ -131,7 +136,7 @@ async function getValiDest(toMove: IPSelection): Promise<ip.Destination[]> {
     }
   }
   if (!dests) {
-    throw Error('No movable ip failover found in source.')
+    throw Error('No movable ip failover found in source. ' + toMove.key + ' ' + toMove.desc);
   }
   let dests2 = [] as ip.Destination[];
   if (dests.cloudProject)
@@ -186,7 +191,7 @@ async function main(source: string, dest: string, options: Options) {
     if (source) {
       console.log(`Can not find source: ${source}`);
     }
-    console.log(`available sources are:`);
+    console.log(`Available sources are:`);
     for (const key of Object.keys(indexed)) {
       if (indexed[key].type == 'DEST')
         console.log(`- ${chalk.green(key)} (${indexed[key].desc}) constains ${indexed[key].ips.length} IPs`)      
@@ -202,7 +207,7 @@ async function main(source: string, dest: string, options: Options) {
     if (dest)
       console.error(`${dest} is not a valid destination, valid destination are:`);
     else
-      console.log(`valid destination are:`);
+      console.log(`Valid destination are:`);
     for (const d of Object.values(indexedDest)) {
       if (d.nexthop)
         console.log(`- ${d.nexthop} (from project ${d.to})`);
@@ -260,7 +265,7 @@ program.description('Migrate IP from source to destination, source can be any fa
 program.option('-c, --cache <cacheFile>', 'cache cert in file');
 program.arguments('[source] [destination]')
 program.parse(process.argv);
+const options: Options = program.opts();
 const source = program.args[0];
 const dest = program.args[1];
-const options: Options = program.opts();
 main(source, dest, options).catch(e => console.error(e.message));
