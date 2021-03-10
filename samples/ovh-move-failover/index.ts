@@ -3,8 +3,12 @@ import ApiCloud, { Cloud } from '@ovh-api/cloud';
 import ApiVps, { Vps } from '@ovh-api/vps';
 import Ovh from '@ovh-api/api';
 import Bluebird from 'bluebird';
-import program from 'commander';
+import { Command } from 'commander';
 import chalk from 'chalk';
+
+interface Options{
+  cache?: string;
+};
 
 const accessRules = `GET /ip, GET /ip/*, POST /ip/*/move, GET /ip/*/move, GET /cloud/project/*, GET /cloud/project/*/ip/failover, GET /cloud/project, GET /vps/*`
 
@@ -162,7 +166,7 @@ async function indexDestination(dests2: ip.Destination[]) {
   return indexedDest
 }
 
-async function main(source: string, dest: string) {
+async function main(source: string, dest: string, options: Options) {
   if (!source)
     console.log('Listing all IP sopurces');
   else if (!dest)
@@ -170,7 +174,7 @@ async function main(source: string, dest: string) {
   else
     console.log(`Migrate ${source} to ${dest}`);
 
-  let ovh = new Ovh({ accessRules, certCache: program.cache });
+  let ovh = new Ovh({ accessRules, certCache: options.cache });
   api = {
     ip: ApiIp(ovh),
     cloud: ApiCloud(ovh),
@@ -246,6 +250,7 @@ async function main(source: string, dest: string) {
   }
 }
 
+const program = new Command();
 const { version } = require('./package.json');
 program.version(version);
 program.description('Migrate IP from source to destination, source can be any failover ip or service, if omit paral list available values');
@@ -254,4 +259,5 @@ program.arguments('[source] [destination]')
 program.parse(process.argv);
 const source = program.args[0];
 const dest = program.args[1];
-main(source, dest).catch(e => console.error(e.message));
+const options: Options = program.opts();
+main(source, dest, options).catch(e => console.error(e.message));

@@ -5,7 +5,7 @@
 If nodejs is not installed:
 
 ```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 bash
 nvm install node
 ```
@@ -13,7 +13,7 @@ nvm install node
 or
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 bash
 nvm install node
 ```

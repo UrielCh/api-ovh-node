@@ -7,11 +7,22 @@ import * as ca from '@ovh-api-ca/me'
 import Ovh, { OvhParams } from '@ovh-api/api'
 import path from 'path'
 import fetch from 'node-fetch'
-import program from 'commander'
+import { Command } from 'commander'
 import Bluebird, { Promise } from 'bluebird'
 
 const { version } = require('./package.json');
 
+interface options {
+  utc?: string;
+  maxAge?: string;
+  token?: string;
+  dest?: string;
+  api?: string;
+  split?: string;
+  concurrency?: string;
+}
+
+const program = new Command();
 program
   .version(version)
   .option('-u, --utc', 'use UTC times, by defaut use localhost timezone')
@@ -22,6 +33,9 @@ program
   .option('--token <tokenfile>', 'save and reuse the certificat by storing them in a file')
   .option('-m, --max-age <timeYMD>', 'max time back you want to download, end with Y/M/D (Year/Month/Day)', /^[0-9]+[YMD]$/, '1Y')
   .parse(process.argv)
+
+
+const options = program.opts();
 
 /**
  * list all existing Invoices
@@ -65,7 +79,7 @@ interface CsvLine {
 
 function parseDate(date: Date): { year: string, month: string, day: string } {
   let year, month, day;
-  if (program.utc) {
+  if (options.utc) {
     year = String(date.getUTCFullYear())
     month = ('0' + (1 + date.getUTCMonth())).slice(-2)
     day = ('0' + date.getUTCDate()).slice(-2)
@@ -79,23 +93,23 @@ function parseDate(date: Date): { year: string, month: string, day: string } {
 
 async function main(root: string, type: 'pdf' | 'html') {
   let importLimit = '';
-  if (program.maxAge) {
-    program.maxAge = program.maxAge.toUpperCase()
-    if (!program.maxAge.match(/^[0-9]+[YMD]$/))
+  if (options.maxAge) {
+    options.maxAge = options.maxAge.toUpperCase()
+    if (!options.maxAge.match(/^[0-9]+[YMD]$/))
       throw Error('invalid max-age value, should be a number ending by Y, M or D');
     const now = new Date();
-    let year = program.utc ? now.getUTCFullYear() : now.getFullYear();
-    let month = program.utc ? now.getUTCMonth() : now.getMonth();
-    let day = program.utc ? now.getUTCDate() : now.getDate();
+    let year = options.utc ? now.getUTCFullYear() : now.getFullYear();
+    let month = options.utc ? now.getUTCMonth() : now.getMonth();
+    let day = options.utc ? now.getUTCDate() : now.getDate();
     let importRimeLimit: Date;
-    if (program.maxAge.endsWith('Y')) {
-      year -= Number(program.maxAge.replace(/[^0-9]/g, ''));
+    if (options.maxAge.endsWith('Y')) {
+      year -= Number(options.maxAge.replace(/[^0-9]/g, ''));
       importRimeLimit = new Date(year, 0, 1, 0, 0, 0, 0);
-    } else if (program.maxAge.endsWith('M')) {
-      month -= Number(program.maxAge.replace(/[^0-9]/g, ''));
+    } else if (options.maxAge.endsWith('M')) {
+      month -= Number(options.maxAge.replace(/[^0-9]/g, ''));
       importRimeLimit = new Date(year, month, 1, 0, 0, 0, 0);
-    } else if (program.maxAge.endsWith('D')) {
-      day -= Number(program.maxAge.replace(/[^0-9]/g, ''));
+    } else if (options.maxAge.endsWith('D')) {
+      day -= Number(options.maxAge.replace(/[^0-9]/g, ''));
       importRimeLimit = new Date(year, month, day, 0, 0, 0, 0);
     } else {
       // can not get here.
@@ -109,19 +123,19 @@ async function main(root: string, type: 'pdf' | 'html') {
   let token = null;
   let param: OvhParams = { accessRules: `GET /me, GET /me/bill, GET /me/bill/*` };
   try {
-    if (program.token && fse.existsSync(program.token)) {
-      token = await fse.readJson(program.token)
+    if (options.token && fse.existsSync(options.token)) {
+      token = await fse.readJson(options.token)
       param = { ...param, ...token }
-      console.log(`Using previous token from ${program.token}`)
-      program.token = null
+      console.log(`Using previous token from ${options.token}`)
+      options.token = null
     }
   } catch (e) { console.error(e) }
 
-  if (program.a == 'us') {
+  if (options.a == 'us') {
     param.endpoint = 'ovh-us';
     // need param.appKey;
     // need param.appSecret;
-  } else if (program.a == 'ca') {
+  } else if (options.a == 'ca') {
     param.endpoint = 'ovh-ca';
     // need param.appKey;
     // need param.appSecret;
@@ -130,19 +144,19 @@ async function main(root: string, type: 'pdf' | 'html') {
   let ovh = new Ovh(param)
   let apiMe: eu.Me | us.Me | ca.Me;
 
-  if (program.a == 'us') {
+  if (options.api == 'us') {
     apiMe = us.proxyMe(ovh)
-  } else if (program.a == 'ca') {
+  } else if (options.api == 'ca') {
     apiMe = ca.proxyMe(ovh)
   } else {
     apiMe = eu.proxyMe(ovh)
   }
 
   const me = await apiMe.$get()
-  if (program.token) {
-    console.log(`Saving generarted token for next time in ${program.token}`)
+  if (options.token) {
+    console.log(`Saving generarted token for next time in ${options.token}`)
     let { appKey, appSecret, consumerKey } = ovh
-    await fse.writeJSON(program.token, { appKey, appSecret, consumerKey }, { spaces: 2 })
+    await fse.writeJSON(options.token, { appKey, appSecret, consumerKey }, { spaces: 2 })
   }
   //const dbInvoice = new Set() as Set<string>;
   const invoiceTSV = {} as { [key: string]: CsvLine };
@@ -165,7 +179,7 @@ async function main(root: string, type: 'pdf' | 'html') {
   const toFilePath = (line: CsvLine) => {
     const [year, month] = line.date.split('-')
     let subDir = ''
-    switch (program.split.toLowerCase()) {
+    switch (options.split.toLowerCase()) {
       case 'month':
         subDir = `${year}${path.sep}${month}`
         break
@@ -279,7 +293,7 @@ async function main(root: string, type: 'pdf' | 'html') {
     if (!invoiceTSV[billId])
       invoiceTSV[billId] = line;
   }
-  const concurrency = Number(program.concurrency) || 1
+  const concurrency = Number(options.concurrency) || 1
   if (concurrency >= 3)
     console.error('Warning a hi concurrency may triger OVH query rate limit')
   await Promise.map(billIds, (item, index, length) => getInvoice(item), { concurrency })
@@ -298,7 +312,7 @@ async function main(root: string, type: 'pdf' | 'html') {
     console.log('No new invoice. Bye.')
   }
 }
-if (program.dest)
-  main(<string>program.dest, 'pdf').catch(err => console.error(err))
+if (options.dest)
+  main(options.dest, 'pdf').catch(err => console.error(err))
 else if (!program.help)
   console.log('--help for usage')

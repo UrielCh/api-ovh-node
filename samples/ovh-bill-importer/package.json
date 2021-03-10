@@ -1,6 +1,6 @@
 {
   "name": "ovh-bill-importer",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Download and organize all your ovh.com / OVHcloud bills",
   "main": "index.js",
   "keywords": [
@@ -31,22 +31,22 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@ovh-api-ca/me": "^3.1.2",
-    "@ovh-api-us/me": "^3.1.2",
-    "@ovh-api/api": "^3.1.1",
+    "@ovh-api-ca/me": "^3.1.14",
+    "@ovh-api-us/me": "^3.1.14",
+    "@ovh-api/api": "^3.1.7",
     "@ovh-api/common": "^3.1.2",
-    "@ovh-api/me": "^3.1.2",
+    "@ovh-api/me": "^3.1.14",
     "bluebird": "^3.7.2",
-    "commander": "^5.1.0",
-    "fs-extra": "^9.0.0",
-    "node-fetch": "^2.6.0"
+    "commander": "^7.1.0",
+    "fs-extra": "^9.1.0",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
-    "@types/bluebird": "^3.5.30",
-    "@types/fs-extra": "^8.1.0",
-    "@types/node-fetch": "^2.5.7",
-    "ts-node": "^8.9.1",
-    "typescript": "^3.8.3"
+    "@types/bluebird": "^3.5.33",
+    "@types/fs-extra": "^9.0.8",
+    "@types/node-fetch": "^2.5.8",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
   },
   "files": [
     "bin"

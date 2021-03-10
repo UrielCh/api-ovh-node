@@ -1,10 +1,30 @@
 # ovh-move-failover
 
-TODO publish sample.
+## install nodejs
+
+[![NPM Version](https://img.shields.io/npm/v/ovh-move-failover.svg?style=flat)](https://www.npmjs.org/package/ovh-move-failover)
+
+If nodejs is not installed:
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+bash
+nvm install node
+```
+
+or
+
+```bash
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+bash
+nvm install node
+```
+
+## migrate IPs
 
 
 '''bash
-ovh-move-failover  --help
+npx ovh-move-failover  --help
 Usage: ovh-move-failover [options] [source] [destination]
 
 Migrate IP from source to destination, source can be any failover ip or service, if omit paral list available values
