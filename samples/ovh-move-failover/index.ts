@@ -118,7 +118,7 @@ async function indexSource(): Promise<{ [key: string]: IPSelection }> {
 
 async function getValiDest(toMove: IPSelection): Promise<ip.Destination[]> {
   console.log(`You select ${toMove.ips.length} ip for migration:`);
-  console.log(toMove);
+  // console.log(toMove);
   console.log(`${toMove.ips.map(b => b.ip).join(', ')}`);
   console.log();
   let dests: ip.Destinations | undefined;;
@@ -168,9 +168,9 @@ async function indexDestination(dests2: ip.Destination[]) {
 
 async function main(source: string, dest: string, options: Options) {
   if (!source)
-    console.log('Listing all IP sopurces');
+    console.log('Listing all IP sources');
   else if (!dest)
-    console.log(`List destination fo migrate ${source}`);
+    console.log(`Listing valid destination for ${source} IPs`);
   else
     console.log(`Migrate ${source} to ${dest}`);
 
@@ -199,7 +199,10 @@ async function main(source: string, dest: string, options: Options) {
   const indexedDest = await indexDestination(dests2);
   const validDest = indexedDest[dest];
   if (!validDest) {
-    console.error(`${dest} is not a valid destination, valid destination are:`);
+    if (dest)
+      console.error(`${dest} is not a valid destination, valid destination are:`);
+    else
+      console.log(`valid destination are:`);
     for (const d of Object.values(indexedDest)) {
       if (d.nexthop)
         console.log(`- ${d.nexthop} (from project ${d.to})`);
