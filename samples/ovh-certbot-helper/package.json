@@ -1,0 +1,41 @@
+{
+  "name": "ovh-certbot-helper",
+  "version": "0.0.1",
+  "description": "Generate for you a certbot-dns-ovh config file",
+  "main": "index.js",
+  "keywords": [
+    "ovh",
+    "dns",
+    "certbot",
+    "ssl"
+  ],
+  "typings": "index.d.ts",
+  "license": "MIT",
+  "author": "Uriel Chemouni <uchemouni@gmail.com>",
+  "bin": {
+    "ovh-certbot-helper": "./bin/ovh-certbot-helper"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UrielCh/api-ovh-node.git"
+  },
+  "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
+  "scripts": {
+    "run": "npm run build && node index.js",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "@ovh-api/api": "^3.1.7",
+    "@ovh-api/auth": "^3.1.14",
+    "@ovh-api/common": "^3.1.2"
+  },
+  "devDependencies": {
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  }
+}

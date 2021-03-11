@@ -1,5 +1,7 @@
 # ovh-move-failover
 
+A command line tools to move Ovh failover between servers.
+
 ## install nodejs
 
 [![NPM Version](https://img.shields.io/npm/v/ovh-move-failover.svg?style=flat)](https://www.npmjs.org/package/ovh-move-failover)
