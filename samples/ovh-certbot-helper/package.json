@@ -1,6 +1,6 @@
 {
   "name": "ovh-certbot-helper",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generate for you a certbot-dns-ovh config file",
   "main": "index.js",
   "keywords": [
