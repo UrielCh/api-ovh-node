@@ -7,6 +7,8 @@
     "ovh",
     "dns",
     "certbot",
+    "certbot-dns-ovh",
+    "https",
     "ssl"
   ],
   "typings": "index.d.ts",
