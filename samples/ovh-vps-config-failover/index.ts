@@ -8,9 +8,10 @@ import program from 'commander'
 import IPCIDR from "ip-cidr";
 
 interface Option {
-  verbose?: boolean,
-  cert?: string
-  interface?: string
+  verbose?: boolean;
+  cert?: string;
+  interface?: string;
+  ip?: string;
 };
 
 type DistName = 'centos' | 'debian';
@@ -91,16 +92,24 @@ ONBOOT=yes
 }
 
 async function identDist(): Promise<DistName> {
-  let list = (await fse.readdir('/etc'))
-    .filter(n => ~n.indexOf('-release'));
-  let release = list.join(' ');
-  let iscentos = ~release.indexOf('centos')
-  if (iscentos)
-    return 'centos';
-  return 'debian';
+  try {
+    let list = (await fse.readdir('/etc'))
+      .filter(n => ~n.indexOf('-release'));
+    let release = list.join(' ');
+    let iscentos = ~release.indexOf('centos')
+    if (iscentos)
+      return 'centos';
+    return 'debian';
+  } catch (e) {
+    console.error('distribution detection failed, fallback to debian.')
+    return 'debian';
+  }
 }
 
 async function detectNetwork(options: Option): Promise<{ mainIP: string, iface: string }> {
+  if (options.ip && options.interface) {
+    return { mainIP: options.ip, iface: options.interface };
+  }
   const networks = networkInterfaces()
   if (!networks)
     throw 'os.networkInterfaces() failed';
@@ -114,7 +123,7 @@ async function detectNetwork(options: Option): Promise<{ mainIP: string, iface: 
   const iface = ifaces[0];
   const network = networks[iface];
   if (!network)
-    throw Error('targeted netinteface loosed !');
+    throw Error('targeted net interface loosed !');
   // test common interface
   const mainIP = network.filter(a => a.family == 'IPv4')[0].address
   if (!mainIP)
@@ -148,18 +157,21 @@ async function genFailover(options: Option) {
   _option = options;
   const { mainIP, iface } = await detectNetwork(options);
 
-  // search hostname in /etc/hosts
-  const hosts = await readFile('/etc/hosts', 'utf8');
   let serviceName = '';
-
-  // try to find a VPS name
-  let m = hosts.match(/127.0.1.1\s+([a-z0-9]+\.ovh\.net)/);
-  if (!m)
-    m = hosts.match(/\s([a-z0-9]+\.ovh\.net)/);
-  if (m) {
-    serviceName = m[1];
-  } else {
-    console.log('Failed to identify host name from /etc/hosts contents, I can deal with it...');
+  try {
+    // search hostname in /etc/hosts
+    const hosts = await readFile('/etc/hosts', 'utf8');
+    // try to find a VPS name
+    let m = hosts.match(/127.0.1.1\s+([a-z0-9]+\.ovh\.net)/);
+    if (!m)
+      m = hosts.match(/\s([a-z0-9]+\.ovh\.net)/);
+    if (m) {
+      serviceName = m[1];
+    } else {
+      console.log('Failed to identify host name from /etc/hosts contents, I can deal with it...');
+    }
+  } catch (e) {
+    console.log('Failed access /etc/hosts serviceName detection failed.');
   }
   // distrib is debian or centOS ?
   const distrib: DistName = await identDist();
@@ -226,6 +238,7 @@ program.version(version)
 program.command('catch-all')
   .description('Configure this host to handle all of your failover IPs.  (Only use this option if you know what you are doing)')
   .option('-i, --interface <inet>', 'force interface name if auto detection failed')
+  .option('--ip <ip>', 'provide main server, and skip IP auto-detection')
   .option('-v, --verbose', 'generate verbose alias name instead of number')
   .option('-c, --cert <cache file>', 'stoge certificat in a file')
   .action(genAllFailover);
@@ -233,6 +246,7 @@ program.command('catch-all')
 program.command('gen')
   .description('Configure this host to handle his failover IPs.')
   .option('-i, --interface <inet>', 'force interface name if auto detection failed')
+  .option('--ip <ip>', 'provide main server, and skip IP auto-detection')
   .option('-v, --verbose', 'generate verbose alias name instead of number')
   .option('-c, --cert <cache file>', 'stoge certificat in a file')
   .action(genFailover);
