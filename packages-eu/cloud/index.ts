@@ -2493,7 +2493,7 @@ export namespace cloud {
                     defaultHttpPort?: number;
                     env?: cloud.project.ai.training.JobEnv[];
                     image: string;
-                    labels?: map[string]string;
+                    labels?: { [key: string]: string };
                     name: string;
                     readUser?: string;
                     region: string;
@@ -4443,7 +4443,7 @@ export interface Cloud {
                          * Create a new job
                          * POST /cloud/project/{serviceName}/ai/training/job
                          */
-                        $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.training.JobEnv[], image: string, labels?: map[string]string, name?: string, readUser?: string, region: string, resources: cloud.project.ai.training.JobResource, shutdown?: string, sshPublicKeys?: string[], timeout?: number, unsecureHttp?: boolean, volumes?: cloud.project.ai.training.JobVolume[] }): Promise<cloud.project.ai.training.Job>;
+                        $post(params: { command?: string[], defaultHttpPort?: number, env?: cloud.project.ai.training.JobEnv[], image: string, labels?: { [key: string]: string }, name?: string, readUser?: string, region: string, resources: cloud.project.ai.training.JobResource, shutdown?: string, sshPublicKeys?: string[], timeout?: number, unsecureHttp?: boolean, volumes?: cloud.project.ai.training.JobVolume[] }): Promise<cloud.project.ai.training.Job>;
                         /**
                          * Controle cache
                          */
