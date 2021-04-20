@@ -10,8 +10,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "List available services",
           "httpMethod": "GET",
@@ -27,8 +27,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -53,8 +53,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Details of the consumption of your account",
           "httpMethod": "GET",
@@ -119,8 +119,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -153,8 +153,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -173,8 +173,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Stable production version",
-            "value": "PRODUCTION"
+            "description": "Deprecated, will be removed",
+            "value": "DEPRECATED"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",

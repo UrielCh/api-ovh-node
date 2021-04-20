@@ -8468,6 +8468,110 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "price.DedicatedCloud.2018v1.Rbx2d.Infrastructure.Filer.HourlyEnum",
+              "description": "type of the hourly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v1.Rbx2d.Infrastructure.Filer.HourlyEnum",
+              "name": "filerProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v1/rbx2d/infrastructure/filer/hourly/{filerProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud monthly filer ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud monthly filer ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v1.Rbx2d.Infrastructure.Filer.MonthlyEnum",
+              "description": "type of the monthly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v1.Rbx2d.Infrastructure.Filer.MonthlyEnum",
+              "name": "filerProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v1/rbx2d/infrastructure/filer/monthly/{filerProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud hourly host ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud hourly host ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v1.Rbx2d.Infrastructure.Host.HourlyEnum",
+              "description": "type of the hourly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v1.Rbx2d.Infrastructure.Host.HourlyEnum",
+              "name": "hostProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v1/rbx2d/infrastructure/host/hourly/{hostProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud monthly host ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud monthly host ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v1.Rbx2d.Infrastructure.Host.MonthlyEnum",
+              "description": "type of the monthly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v1.Rbx2d.Infrastructure.Host.MonthlyEnum",
+              "name": "hostProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v1/rbx2d/infrastructure/host/monthly/{hostProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud hourly filer ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud hourly filer ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Filer.HourlyEnum",
@@ -9182,6 +9286,110 @@ export const schema: Schema = {
         }
       ],
       "path": "/price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/monthly/{hostProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud hourly filer ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud hourly filer ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v2.Rbx2d.Infrastructure.Filer.HourlyEnum",
+              "description": "type of the hourly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v2.Rbx2d.Infrastructure.Filer.HourlyEnum",
+              "name": "filerProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v2/rbx2d/infrastructure/filer/hourly/{filerProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud monthly filer ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud monthly filer ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v2.Rbx2d.Infrastructure.Filer.MonthlyEnum",
+              "description": "type of the monthly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v2.Rbx2d.Infrastructure.Filer.MonthlyEnum",
+              "name": "filerProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v2/rbx2d/infrastructure/filer/monthly/{filerProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud hourly host ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud hourly host ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v2.Rbx2d.Infrastructure.Host.HourlyEnum",
+              "description": "type of the hourly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v2.Rbx2d.Infrastructure.Host.HourlyEnum",
+              "name": "hostProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v2/rbx2d/infrastructure/host/hourly/{hostProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud monthly host ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud monthly host ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v2.Rbx2d.Infrastructure.Host.MonthlyEnum",
+              "description": "type of the monthly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v2.Rbx2d.Infrastructure.Host.MonthlyEnum",
+              "name": "hostProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v2/rbx2d/infrastructure/host/monthly/{hostProfile}"
     },
     {
       "description": "Get price of dedicated Cloud hourly filer ressources",
@@ -9924,6 +10132,110 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "price.DedicatedCloud.2018v3.Rbx2d.Infrastructure.Filer.HourlyEnum",
+              "description": "type of the hourly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v3.Rbx2d.Infrastructure.Filer.HourlyEnum",
+              "name": "filerProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v3/rbx2d/infrastructure/filer/hourly/{filerProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud monthly filer ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud monthly filer ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v3.Rbx2d.Infrastructure.Filer.MonthlyEnum",
+              "description": "type of the monthly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v3.Rbx2d.Infrastructure.Filer.MonthlyEnum",
+              "name": "filerProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v3/rbx2d/infrastructure/filer/monthly/{filerProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud hourly host ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud hourly host ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v3.Rbx2d.Infrastructure.Host.HourlyEnum",
+              "description": "type of the hourly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v3.Rbx2d.Infrastructure.Host.HourlyEnum",
+              "name": "hostProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v3/rbx2d/infrastructure/host/hourly/{hostProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud monthly host ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud monthly host ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v3.Rbx2d.Infrastructure.Host.MonthlyEnum",
+              "description": "type of the monthly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v3.Rbx2d.Infrastructure.Host.MonthlyEnum",
+              "name": "hostProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v3/rbx2d/infrastructure/host/monthly/{hostProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud hourly filer ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud hourly filer ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Filer.HourlyEnum",
@@ -10638,6 +10950,110 @@ export const schema: Schema = {
         }
       ],
       "path": "/price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/monthly/{hostProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud hourly filer ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud hourly filer ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v4.Rbx2d.Infrastructure.Filer.HourlyEnum",
+              "description": "type of the hourly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v4.Rbx2d.Infrastructure.Filer.HourlyEnum",
+              "name": "filerProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v4/rbx2d/infrastructure/filer/hourly/{filerProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud monthly filer ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud monthly filer ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v4.Rbx2d.Infrastructure.Filer.MonthlyEnum",
+              "description": "type of the monthly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v4.Rbx2d.Infrastructure.Filer.MonthlyEnum",
+              "name": "filerProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v4/rbx2d/infrastructure/filer/monthly/{filerProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud hourly host ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud hourly host ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v4.Rbx2d.Infrastructure.Host.HourlyEnum",
+              "description": "type of the hourly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v4.Rbx2d.Infrastructure.Host.HourlyEnum",
+              "name": "hostProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v4/rbx2d/infrastructure/host/hourly/{hostProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud monthly host ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud monthly host ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v4.Rbx2d.Infrastructure.Host.MonthlyEnum",
+              "description": "type of the monthly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v4.Rbx2d.Infrastructure.Host.MonthlyEnum",
+              "name": "hostProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v4/rbx2d/infrastructure/host/monthly/{hostProfile}"
     },
     {
       "description": "Get price of dedicated Cloud hourly filer ressources",
@@ -11380,6 +11796,110 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "price.DedicatedCloud.2018v5.Rbx2d.Infrastructure.Filer.HourlyEnum",
+              "description": "type of the hourly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v5.Rbx2d.Infrastructure.Filer.HourlyEnum",
+              "name": "filerProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v5/rbx2d/infrastructure/filer/hourly/{filerProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud monthly filer ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud monthly filer ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v5.Rbx2d.Infrastructure.Filer.MonthlyEnum",
+              "description": "type of the monthly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v5.Rbx2d.Infrastructure.Filer.MonthlyEnum",
+              "name": "filerProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v5/rbx2d/infrastructure/filer/monthly/{filerProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud hourly host ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud hourly host ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v5.Rbx2d.Infrastructure.Host.HourlyEnum",
+              "description": "type of the hourly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v5.Rbx2d.Infrastructure.Host.HourlyEnum",
+              "name": "hostProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v5/rbx2d/infrastructure/host/hourly/{hostProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud monthly host ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud monthly host ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v5.Rbx2d.Infrastructure.Host.MonthlyEnum",
+              "description": "type of the monthly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v5.Rbx2d.Infrastructure.Host.MonthlyEnum",
+              "name": "hostProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v5/rbx2d/infrastructure/host/monthly/{hostProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud hourly filer ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud hourly filer ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Filer.HourlyEnum",
@@ -12108,6 +12628,110 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
+              "dataType": "price.DedicatedCloud.2018v6.Rbx2d.Infrastructure.Filer.HourlyEnum",
+              "description": "type of the hourly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v6.Rbx2d.Infrastructure.Filer.HourlyEnum",
+              "name": "filerProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v6/rbx2d/infrastructure/filer/hourly/{filerProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud monthly filer ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud monthly filer ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v6.Rbx2d.Infrastructure.Filer.MonthlyEnum",
+              "description": "type of the monthly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v6.Rbx2d.Infrastructure.Filer.MonthlyEnum",
+              "name": "filerProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v6/rbx2d/infrastructure/filer/monthly/{filerProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud hourly host ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud hourly host ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v6.Rbx2d.Infrastructure.Host.HourlyEnum",
+              "description": "type of the hourly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v6.Rbx2d.Infrastructure.Host.HourlyEnum",
+              "name": "hostProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v6/rbx2d/infrastructure/host/hourly/{hostProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud monthly host ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud monthly host ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v6.Rbx2d.Infrastructure.Host.MonthlyEnum",
+              "description": "type of the monthly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v6.Rbx2d.Infrastructure.Host.MonthlyEnum",
+              "name": "hostProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v6/rbx2d/infrastructure/host/monthly/{hostProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud hourly filer ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud hourly filer ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
               "dataType": "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Filer.HourlyEnum",
               "description": "type of the hourly ressources you want to order",
               "fullType": "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Filer.HourlyEnum",
@@ -12822,6 +13446,110 @@ export const schema: Schema = {
         }
       ],
       "path": "/price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/monthly/{hostProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud hourly filer ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud hourly filer ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v7.Rbx2d.Infrastructure.Filer.HourlyEnum",
+              "description": "type of the hourly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v7.Rbx2d.Infrastructure.Filer.HourlyEnum",
+              "name": "filerProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v7/rbx2d/infrastructure/filer/hourly/{filerProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud monthly filer ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud monthly filer ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v7.Rbx2d.Infrastructure.Filer.MonthlyEnum",
+              "description": "type of the monthly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v7.Rbx2d.Infrastructure.Filer.MonthlyEnum",
+              "name": "filerProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v7/rbx2d/infrastructure/filer/monthly/{filerProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud hourly host ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud hourly host ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v7.Rbx2d.Infrastructure.Host.HourlyEnum",
+              "description": "type of the hourly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v7.Rbx2d.Infrastructure.Host.HourlyEnum",
+              "name": "hostProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v7/rbx2d/infrastructure/host/hourly/{hostProfile}"
+    },
+    {
+      "description": "Get price of dedicated Cloud monthly host ressources",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get price of dedicated Cloud monthly host ressources",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "price.DedicatedCloud.2018v7.Rbx2d.Infrastructure.Host.MonthlyEnum",
+              "description": "type of the monthly ressources you want to order",
+              "fullType": "price.DedicatedCloud.2018v7.Rbx2d.Infrastructure.Host.MonthlyEnum",
+              "name": "hostProfile",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.Price"
+        }
+      ],
+      "path": "/price/dedicatedCloud/2018v7/rbx2d/infrastructure/host/monthly/{hostProfile}"
     },
     {
       "description": "Get price of dedicated Cloud hourly filer ressources",
@@ -20704,6 +21432,78 @@ export const schema: Schema = {
       "id": "MonthlyEnum",
       "namespace": "price.DedicatedCloud.2018v1.Rbx2b.Infrastructure.Host"
     },
+    "price.DedicatedCloud.2018v1.Rbx2d.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Rbx2d.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v1.Rbx2d.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Rbx2d.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v1.Rbx2d.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Rbx2d.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v1.Rbx2d.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v1.Rbx2d.Infrastructure.Host"
+    },
     "price.DedicatedCloud.2018v1.Sbg1a.Infrastructure.Filer.HourlyEnum": {
       "description": "Enum of Hourlys",
       "enum": [
@@ -21207,6 +22007,78 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "MonthlyEnum",
       "namespace": "price.DedicatedCloud.2018v2.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v2.Rbx2d.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Rbx2d.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v2.Rbx2d.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Rbx2d.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v2.Rbx2d.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Rbx2d.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v2.Rbx2d.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v2.Rbx2d.Infrastructure.Host"
     },
     "price.DedicatedCloud.2018v2.Sbg1a.Infrastructure.Filer.HourlyEnum": {
       "description": "Enum of Hourlys",
@@ -21712,6 +22584,78 @@ export const schema: Schema = {
       "id": "MonthlyEnum",
       "namespace": "price.DedicatedCloud.2018v3.Rbx2b.Infrastructure.Host"
     },
+    "price.DedicatedCloud.2018v3.Rbx2d.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Rbx2d.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v3.Rbx2d.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Rbx2d.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v3.Rbx2d.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Rbx2d.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v3.Rbx2d.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v3.Rbx2d.Infrastructure.Host"
+    },
     "price.DedicatedCloud.2018v3.Sbg1a.Infrastructure.Filer.HourlyEnum": {
       "description": "Enum of Hourlys",
       "enum": [
@@ -22215,6 +23159,78 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "MonthlyEnum",
       "namespace": "price.DedicatedCloud.2018v4.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v4.Rbx2d.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Rbx2d.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v4.Rbx2d.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Rbx2d.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v4.Rbx2d.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Rbx2d.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v4.Rbx2d.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v4.Rbx2d.Infrastructure.Host"
     },
     "price.DedicatedCloud.2018v4.Sbg1a.Infrastructure.Filer.HourlyEnum": {
       "description": "Enum of Hourlys",
@@ -22720,6 +23736,78 @@ export const schema: Schema = {
       "id": "MonthlyEnum",
       "namespace": "price.DedicatedCloud.2018v5.Rbx2b.Infrastructure.Host"
     },
+    "price.DedicatedCloud.2018v5.Rbx2d.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Rbx2d.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v5.Rbx2d.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Rbx2d.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v5.Rbx2d.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Rbx2d.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v5.Rbx2d.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v5.Rbx2d.Infrastructure.Host"
+    },
     "price.DedicatedCloud.2018v5.Sbg1a.Infrastructure.Filer.HourlyEnum": {
       "description": "Enum of Hourlys",
       "enum": [
@@ -23224,6 +24312,78 @@ export const schema: Schema = {
       "id": "MonthlyEnum",
       "namespace": "price.DedicatedCloud.2018v6.Rbx2b.Infrastructure.Host"
     },
+    "price.DedicatedCloud.2018v6.Rbx2d.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Rbx2d.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v6.Rbx2d.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Rbx2d.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v6.Rbx2d.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Rbx2d.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v6.Rbx2d.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v6.Rbx2d.Infrastructure.Host"
+    },
     "price.DedicatedCloud.2018v6.Sbg1a.Infrastructure.Filer.HourlyEnum": {
       "description": "Enum of Hourlys",
       "enum": [
@@ -23727,6 +24887,78 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "MonthlyEnum",
       "namespace": "price.DedicatedCloud.2018v7.Rbx2b.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v7.Rbx2d.Infrastructure.Filer.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Rbx2d.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v7.Rbx2d.Infrastructure.Filer.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "nfs-1200-GB",
+        "nfs-13200-GB",
+        "nfs-1600-GB",
+        "nfs-18000-GB",
+        "nfs-2000-GB",
+        "nfs-2400-GB",
+        "nfs-3000-GB",
+        "nfs-3300-GB",
+        "nfs-36000-GB",
+        "nfs-6000-GB",
+        "nfs-6600-GB",
+        "nfs-800-GB",
+        "nfs-9000-GB"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Rbx2d.Infrastructure.Filer"
+    },
+    "price.DedicatedCloud.2018v7.Rbx2d.Infrastructure.Host.HourlyEnum": {
+      "description": "Enum of Hourlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "HourlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Rbx2d.Infrastructure.Host"
+    },
+    "price.DedicatedCloud.2018v7.Rbx2d.Infrastructure.Host.MonthlyEnum": {
+      "description": "Enum of Monthlys",
+      "enum": [
+        "SDDC-128",
+        "SDDC-16",
+        "SDDC-256",
+        "SDDC-512",
+        "SDDC-64",
+        "SDDCVSAN-256",
+        "SDDCVSAN-512"
+      ],
+      "enumType": "string",
+      "id": "MonthlyEnum",
+      "namespace": "price.DedicatedCloud.2018v7.Rbx2d.Infrastructure.Host"
     },
     "price.DedicatedCloud.2018v7.Sbg1a.Infrastructure.Filer.HourlyEnum": {
       "description": "Enum of Hourlys",

@@ -26,7 +26,7 @@ export namespace dedicated {
      * ovh datacenter
      * type fullname: dedicated.DatacenterEnum
      */
-    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "dc1" | "eri1" | "gra1" | "gra2" | "gsw" | "hil1" | "lim1" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sgp1" | "syd1" | "vin1" | "waw1"
+    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "dc1" | "eri1" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "lim1" | "lim3" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sgp1" | "syd1" | "syd2" | "vin1" | "waw1"
 }
 export namespace dedicatedCloud {
     /**
@@ -217,6 +217,21 @@ export namespace dedicatedCloud {
         spaceUsed?: number;
         state: dedicatedCloudfilerStateEnum;
         vmTotal?: number;
+    }
+    /**
+     * Display filer data migration status
+     * interface fullName: dedicatedCloud.FilerDataMigrationTask.FilerDataMigrationTask
+     */
+    export interface FilerDataMigrationTask {
+        creationDate?: string;
+        domain: string;
+        doneDate?: string;
+        filerId: number;
+        filerName: string;
+        id: number;
+        progress: number;
+        status: dedicatedCloudTaskStateEnum;
+        transfered: string;
     }
     /**
      * The generation of a Dedicated Cloud
@@ -1666,6 +1681,17 @@ export interface DedicatedCloud {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    batchRestore: {
+                        /**
+                         * Restores the last restore points for each backup located in the given backup repository to the given Datacenter
+                         * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/batchRestore
+                         */
+                        $post(params: { backupJobName?: string, backupRepositoryName: string }): Promise<dedicatedCloud.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
                     canOptimizeProxies: {
                         /**
                          * Generates recommendation for Backup Proxies optimization
@@ -1710,6 +1736,17 @@ export interface DedicatedCloud {
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
+                    generateReport: {
+                        /**
+                         * Generates an email report with all the backups, their last restore point, their size and their location
+                         * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/generateReport
+                         */
+                        $post(): Promise<dedicatedCloud.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
                     offerCapabilities: {
                         /**
                          * List backup offer capabilities
@@ -1739,6 +1776,28 @@ export interface DedicatedCloud {
                      * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/checkBackupJobs
                      */
                     $post(): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                copyFiler: {
+                    /**
+                     * Copy an SBG Filer and mount it in a given Datacenter
+                     * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/copyFiler
+                     */
+                    $post(params: { accept: boolean, filerId: number }): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                copyFilerStatus: {
+                    /**
+                     * List SBG Filer data migration status
+                     * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/copyFilerStatus
+                     */
+                    $get(): Promise<dedicatedCloud.FilerDataMigrationTask[]>;
                     /**
                      * Controle cache
                      */
@@ -3561,6 +3620,7 @@ type dedicatedCloudfilerNodeTypeEnum = dedicatedCloud.filer.NodeTypeEnum;
 type dedicatedCloudressourcesBillingTypeEnum = dedicatedCloud.ressources.BillingTypeEnum;
 type dedicatedCloudfilerConnexionStateEnum = dedicatedCloud.filer.ConnexionStateEnum;
 type dedicatedCloudfilerStateEnum = dedicatedCloud.filer.StateEnum;
+type dedicatedCloudTaskStateEnum = dedicatedCloud.TaskStateEnum;
 type dedicatedCloudhostSystemConnectionState = dedicatedCloud.hostSystemConnectionState;
 type dedicatedCloudhostStateEnum = dedicatedCloud.host.StateEnum;
 type dedicatedCloudHostStockHypervisor = dedicatedCloud.HostStockHypervisor;
@@ -3571,7 +3631,6 @@ type dedicatedCloudrightRightEnum = dedicatedCloud.right.RightEnum;
 type dedicatedCloudrightUserObjectRightTypeEnum = dedicatedCloud.right.UserObjectRightTypeEnum;
 type dedicatedCloudbackupBackupTypeEnum = dedicatedCloud.backup.BackupTypeEnum;
 type dedicatedCloudrightVmNetworkRoleEnum = dedicatedCloud.right.VmNetworkRoleEnum;
-type dedicatedCloudTaskStateEnum = dedicatedCloud.TaskStateEnum;
 type dedicatedClouduserActivationStateEnum = dedicatedCloud.user.ActivationStateEnum;
 type dedicatedClouduserStateEnum = dedicatedCloud.user.StateEnum;
 type dedicatedCloudvlanStateEnum = dedicatedCloud.vlan.StateEnum;

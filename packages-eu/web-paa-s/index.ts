@@ -59,6 +59,16 @@ export namespace services {
 }
 export namespace webPaaS {
     /**
+     * Valid addon offers faimly
+     * type fullname: webPaaS.AddonFamilyEnum
+     */
+    export type AddonFamilyEnum = "storage" | "user_license" | "staging_environment"
+    /**
+     * Valid addon product name
+     * type fullname: webPaaS.AddonProductNameEnum
+     */
+    export type AddonProductNameEnum = "additional-storage" | "additional-staging-environment" | "additional-user-license"
+    /**
      * Capabilties Response
      * interface fullName: webPaaS.Capabilities.Capabilities
      */
@@ -75,7 +85,7 @@ export namespace webPaaS {
      * Valid offers by Web PaaS
      * type fullname: webPaaS.OfferEnum
      */
-    export type OfferEnum = "start-1"
+    export type OfferEnum = "start-1" | "start-2" | "start-4" | "start-8" | "start-16" | "develop-1" | "develop-2" | "develop-4" | "develop-8" | "develop-16" | "expand-1" | "expand-2" | "expand-4" | "expand-8" | "expand-16"
     /**
      * Supported regions for deployment
      * type fullname: webPaaS.RegionEnum
@@ -87,10 +97,16 @@ export namespace webPaaS {
      */
     export type StatusEnum = "ACTIVE" | "PENDING" | "CANCELED" | "CANCELING" | "CANCELLATION_REQUESTED" | "TERMINATED" | "SUSPENDED" | "EXPIRED" | "ERROR" | "CLOSED" | "TO_SETTLE" | "SETTLING" | "SETTLED"
     /**
+     * Storage Units
+     * type fullname: webPaaS.StorageUnitEnum
+     */
+    export type StorageUnitEnum = "GB"
+    /**
      * Partner subscription
      * interface fullName: webPaaS.Subscription.Subscription
      */
     export interface Subscription {
+        addons: webPaaS.SubscriptionAddon[];
         createdAt: string;
         endDate?: string;
         metadata: webPaaS.SubscriptionMetadata;
@@ -100,6 +116,15 @@ export namespace webPaaS {
         serviceId: string;
         startDate?: string;
         status: webPaaS.StatusEnum;
+    }
+    /**
+     * Subscription addon details
+     * interface fullName: webPaaS.SubscriptionAddon.SubscriptionAddon
+     */
+    export interface SubscriptionAddon {
+        planFamilyName: webPaaS.AddonFamilyEnum;
+        productName: webPaaS.AddonProductNameEnum;
+        serviceName: string;
     }
     /**
      * Subscription metadata
@@ -131,6 +156,15 @@ export namespace webPaaS {
             customerId: string;
             customerType: webPaaS.CustomerTypeEnum;
         }
+        export namespace project {
+            /**
+             * Add Customer details
+             * interface fullName: webPaaS.subscription.project.AddCustomer.AddCustomer
+             */
+            export interface AddCustomer {
+                accountName: string;
+            }
+        }
     }
     export namespace subscriptionMetadata {
         /**
@@ -138,11 +172,13 @@ export namespace webPaaS {
          * interface fullName: webPaaS.subscriptionMetadata.Project.Project
          */
         export interface Project {
+            availableEnvironments: number;
             availableUserLicenses: number;
             environment: number;
             region: webPaaS.RegionEnum;
             renewDate?: string;
             storage?: number;
+            storageUnit?: webPaaS.StorageUnitEnum;
             userLicenses?: number;
             vcpu: number;
         }
@@ -201,28 +237,6 @@ export interface WebPaaS {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-            customer: {
-                /**
-                 * List customers added to a project
-                 * GET /webPaaS/subscription/{serviceName}/customer
-                 */
-                $get(): Promise<webPaaS.subscription.Customer[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                $(customerId: string): {
-                    /**
-                     * Get the customer details
-                     * GET /webPaaS/subscription/{serviceName}/customer/{customerId}
-                     */
-                    $get(): Promise<webPaaS.subscription.Customer>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                };
             }
             serviceInfos: {
                 /**

@@ -768,7 +768,7 @@ export interface Email {
                          * Create new mailbox in exchange server
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/account
                          */
-                        $post(params: { company?: string, displayName?: string, domain: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, license: email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], outlookLicense?: boolean, password: string, SAMAccountName?: string, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration }): Promise<email.exchange.Task>;
+                        $post(params: { company?: string, displayName?: string, domain: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, license: email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], outlookLicense?: boolean, password: string, quota?: number, SAMAccountName?: string, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration }): Promise<email.exchange.Task>;
                         /**
                          * Controle cache
                          */

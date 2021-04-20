@@ -376,7 +376,7 @@ export namespace billing {
      * Reusable payment mean type
      * type fullname: billing.ReusablePaymentMeanEnum
      */
-    export type ReusablePaymentMeanEnum = "CREDIT_CARD" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "bankAccount" | "creditCard" | "fidelityAccount" | "ovhAccount" | "paypal"
+    export type ReusablePaymentMeanEnum = "CREDIT_CARD" | "CURRENT_ACCOUNT" | "DEFERRED_PAYMENT_ACCOUNT" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "bankAccount" | "creditCard" | "fidelityAccount" | "ovhAccount" | "paypal"
     /**
      * SLA properties
      * interface fullName: billing.SlaOperation.SlaOperation
@@ -648,7 +648,7 @@ export namespace billing {
          * List of payment type enum
          * type fullname: billing.paymentMethod.PaymentTypeEnum
          */
-        export type PaymentTypeEnum = "BANK_ACCOUNT" | "CREDIT_CARD" | "DEFERRED_PAYMENT_ACCOUNT" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL"
+        export type PaymentTypeEnum = "BANK_ACCOUNT" | "CREDIT_CARD" | "CURRENT_ACCOUNT" | "DEFERRED_PAYMENT_ACCOUNT" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL"
         /**
          * List of payment method status enum
          * type fullname: billing.paymentMethod.StatusEnum
@@ -770,7 +770,7 @@ export namespace debt {
          * All operations a debt entry can represent
          * type fullname: debt.entry.OperationEnum
          */
-        export type OperationEnum = "CANCEL" | "CASH_MANUAL" | "CHECK_MANUAL" | "CREDITCARD" | "CREDITCARD_AUTOMATIC" | "CREDITCARD_MANUAL" | "CREDIT_ACCOUNT_AUTOMATIC" | "EDINAR_MANUAL" | "IDEAL_MANUAL" | "MULTIBANCO_MANUAL" | "ORDER" | "PAYPAL_AUTOMATIC" | "PAYPAL_MANUAL" | "PAYU_MANUAL" | "RECOVERY_TRANSFER_AUTOMATIC" | "REFUND" | "REFUND_CHECK" | "REFUND_CREDITCARD" | "REFUND_CREDIT_ACCOUNT" | "REFUND_LOSS" | "REFUND_PAYPAL" | "REFUND_PAYU" | "REFUND_SEPA" | "REFUND_TRANSFER" | "REFUND_UNKNOWN" | "SEPA_AUTOMATIC" | "TRANSFER_MANUAL" | "UNPAID_CHECK" | "UNPAID_CREDITCARD" | "UNPAID_CREDIT_ACCOUNT" | "UNPAID_PAYPAL" | "UNPAID_SEPA" | "UNPAID_WITHDRAW" | "WARRANT_MANUAL" | "WITHDRAW_AUTOMATIC"
+        export type OperationEnum = "CANCEL" | "CASH_MANUAL" | "CHECK_MANUAL" | "CREDITCARD" | "CREDITCARD_AUTOMATIC" | "CREDITCARD_MANUAL" | "CREDIT_ACCOUNT_AUTOMATIC" | "EDINAR_MANUAL" | "IDEAL_AUTOMATIC" | "IDEAL_MANUAL" | "MULTIBANCO_AUTOMATIC" | "MULTIBANCO_MANUAL" | "ORDER" | "PAYPAL_AUTOMATIC" | "PAYPAL_MANUAL" | "PAYU_AUTOMATIC" | "PAYU_MANUAL" | "RECOVERY_TRANSFER_AUTOMATIC" | "REFUND" | "REFUND_CHECK" | "REFUND_CREDITCARD" | "REFUND_CREDIT_ACCOUNT" | "REFUND_IDEAL" | "REFUND_LOSS" | "REFUND_MULTIBANCO" | "REFUND_PAYPAL" | "REFUND_PAYU" | "REFUND_SEPA" | "REFUND_TRANSFER" | "REFUND_UNKNOWN" | "SEPA_AUTOMATIC" | "TRANSFER_MANUAL" | "UNPAID_CHECK" | "UNPAID_CREDITCARD" | "UNPAID_CREDIT_ACCOUNT" | "UNPAID_IDEAL" | "UNPAID_MULTIBANCO" | "UNPAID_PAYPAL" | "UNPAID_PAYU" | "UNPAID_SEPA" | "UNPAID_WITHDRAW" | "WARRANT_MANUAL" | "WITHDRAW_AUTOMATIC"
         /**
          * All status a debt entry can be in
          * type fullname: debt.entry.StatusEnum
@@ -811,12 +811,12 @@ export namespace dedicated {
      * Os type
      * type fullname: dedicated.TemplateOsTypeEnum
      */
-    export type TemplateOsTypeEnum = "bsd" | "linux" | "solaris" | "windows"
+    export type TemplateOsTypeEnum = "bsd" | "ibm" | "linux" | "solaris" | "unix" | "windows"
     /**
      * Os usage definition
      * type fullname: dedicated.TemplateOsUsageEnum
      */
-    export type TemplateOsUsageEnum = "basic" | "customer" | "hosting" | "other" | "readyToUse" | "virtualisation"
+    export type TemplateOsUsageEnum = "basic" | "customer" | "database" | "hosting" | "management" | "other" | "readyToUse" | "virtualisation" | "virtualization"
     /**
      * partition type
      * type fullname: dedicated.TemplatePartitionTypeEnum
@@ -918,6 +918,29 @@ export namespace http {
     export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
 export namespace me {
+    export namespace abuse {
+        /**
+         * Get report API response
+         * interface fullName: me.abuse.Abuse.Abuse
+         */
+        export interface Abuse {
+            category: me.abuse.AbuseCategoryEnum;
+            creationDate: string;
+            publicId: string;
+            service: string;
+            status: me.abuse.AbuseStatusEnum;
+        }
+        /**
+         * The abuse categories
+         * type fullname: me.abuse.AbuseCategoryEnum
+         */
+        export type AbuseCategoryEnum = "Compromised" | "Copyright" | "Illegal" | "Intrusion" | "Malware" | "Network Attack" | "Other" | "Phishing" | "Spam"
+        /**
+         * The abuse status
+         * type fullname: me.abuse.AbuseStatusEnum
+         */
+        export type AbuseStatusEnum = "Answered" | "Claimed" | "Closed" | "Escalated" | "Open" | "Paused" | "Reopened" | "Updated" | "WaitingAnswer"
+    }
     export namespace billing {
         export namespace group {
             /**
@@ -1137,7 +1160,9 @@ export namespace me {
             export interface AvailablePaymentMethod {
                 icon: me.payment.method.Icon;
                 integration: paymentmethodIntegrationType;
+                merchantId?: string;
                 oneshot: boolean;
+                paymentSubType?: string;
                 paymentType: string;
                 registerable: boolean;
                 registerableWithTransaction: boolean;
@@ -1197,6 +1222,7 @@ export namespace me {
                     merchantId?: string;
                     organizationId?: string;
                     paymentMethodId: number;
+                    transactionId: number;
                     url?: string;
                     validationType: paymentmethodIntegrationType;
                 }
@@ -1772,7 +1798,7 @@ export namespace payment {
          * Payment method integration type
          * type fullname: payment.method.IntegrationType
          */
-        export type IntegrationType = "DONE" | "IFRAME_VANTIV" | "IN_CONTEXT" | "REDIRECT"
+        export type IntegrationType = "COMPONENT" | "DONE" | "IFRAME_VANTIV" | "IN_CONTEXT" | "POST_FORM" | "REDIRECT"
     }
 }
 export namespace service {
@@ -1838,6 +1864,28 @@ export interface Me {
      * Controle cache
      */
     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    abuse: {
+        /**
+         * Retrieve abuse cases list
+         * GET /me/abuse
+         */
+        $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $(id: string): {
+            /**
+             * Check specific abuse case
+             * GET /me/abuse/{id}
+             */
+            $get(): Promise<me.abuse.Abuse>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        };
+    }
     accessRestriction: {
         backupCode: {
             /**
@@ -3590,7 +3638,7 @@ export interface Me {
              * Pay an order and register a new payment method if necessary
              * POST /me/payment/method
              */
-            $post(params: { callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, orderId?: number, paymentType: string, register?: boolean }): Promise<me.payment.method.Register.ValidationResult>;
+            $post(params: { callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, formData?: string, orderId?: number, paymentSubType?: string, paymentType: string, register?: boolean }): Promise<me.payment.method.Register.ValidationResult>;
             /**
              * Controle cache
              */
@@ -3621,6 +3669,17 @@ export interface Me {
                      * POST /me/payment/method/{paymentMethodId}/challenge
                      */
                     $post(params: { challenge: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                details: {
+                    /**
+                     * Add details to one payment method challenge
+                     * POST /me/payment/method/{paymentMethodId}/details
+                     */
+                    $post(params: { details: string, transactionId: number }): Promise<me.payment.method.Register.ValidationResult>;
                     /**
                      * Controle cache
                      */

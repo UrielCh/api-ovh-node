@@ -341,6 +341,7 @@ export namespace billing {
         operation: billing.ovhAccount.OperationEnum;
         order: number;
         previousBalance: orderPrice;
+        retrievableAmount: orderPrice;
     }
     /**
      * Details about an Order
@@ -465,10 +466,24 @@ export namespace billing {
         url: string;
     }
     /**
+     * Information about a Bill entry
+     * interface fullName: billing.RefundDetail.RefundDetail
+     */
+    export interface RefundDetail {
+        description: string;
+        domain: string;
+        quantity: string;
+        reference: string;
+        refundDetailId: string;
+        refundId: string;
+        totalPrice: orderPrice;
+        unitPrice: orderPrice;
+    }
+    /**
      * Reusable payment mean type
      * type fullname: billing.ReusablePaymentMeanEnum
      */
-    export type ReusablePaymentMeanEnum = "CREDIT_CARD" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "bankAccount" | "creditCard" | "fidelityAccount" | "ovhAccount" | "paypal"
+    export type ReusablePaymentMeanEnum = "CREDIT_CARD" | "CURRENT_ACCOUNT" | "DEFERRED_PAYMENT_ACCOUNT" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "bankAccount" | "creditCard" | "fidelityAccount" | "ovhAccount" | "paypal"
     /**
      * SLA properties
      * interface fullName: billing.SlaOperation.SlaOperation
@@ -540,6 +555,82 @@ export namespace billing {
         totalPrice: orderPrice;
         unitPrice: orderPrice;
         withdrawalDetailId: string;
+    }
+    export namespace credit {
+        /**
+         * Credit balance
+         * interface fullName: billing.credit.Balance.Balance
+         */
+        export interface Balance {
+            amount: orderPrice;
+            balanceDetails: billing.credit.balance.BalanceDetail[];
+            balanceName: string;
+            booked: billing.credit.balance.BookedMovement[];
+            creationDate: string;
+            expiring: billing.credit.balance.ExpiringMovement[];
+            expiringSummary: billing.credit.balance.ExpiringMovement[];
+            lastUpdate: string;
+            type: billing.credit.balance.Type;
+        }
+        export namespace balance {
+            /**
+             * Part of a balance
+             * interface fullName: billing.credit.balance.BalanceDetail.BalanceDetail
+             */
+            export interface BalanceDetail {
+                amount: orderPrice;
+                serviceId?: number;
+            }
+            /**
+             * Movement already booked on orders
+             * interface fullName: billing.credit.balance.BookedMovement.BookedMovement
+             */
+            export interface BookedMovement {
+                amount: orderPrice;
+                orderId: number;
+            }
+            /**
+             * Movement expiring soon
+             * interface fullName: billing.credit.balance.ExpiringMovement.ExpiringMovement
+             */
+            export interface ExpiringMovement {
+                amount: orderPrice;
+                creationDate: string;
+                expirationDate: string;
+                lastUpdate: string;
+                sourceObject: billing.credit.balance.movement.SubObject;
+            }
+            /**
+             * Credit balance
+             * interface fullName: billing.credit.balance.Movement.Movement
+             */
+            export interface Movement {
+                amount: orderPrice;
+                balanceName: string;
+                creationDate: string;
+                expirationDate?: string;
+                lastUpdate: string;
+                movementId: number;
+                orderId?: number;
+                sourceObject: billing.credit.balance.movement.SubObject;
+                type: string;
+            }
+            /**
+             * Balance type
+             * type fullname: billing.credit.balance.Type
+             */
+            export type Type = "PREPAID_ACCOUNT" | "VOUCHER" | "DEPOSIT" | "BONUS"
+            export namespace movement {
+                /**
+                 * Movement sub object
+                 * interface fullName: billing.credit.balance.movement.SubObject.SubObject
+                 */
+                export interface SubObject {
+                    id?: string;
+                    name?: string;
+                }
+            }
+        }
     }
     export namespace fidelityAccount {
         /**
@@ -744,7 +835,7 @@ export namespace billing {
          * List of payment type enum
          * type fullname: billing.paymentMethod.PaymentTypeEnum
          */
-        export type PaymentTypeEnum = "BANK_ACCOUNT" | "CREDIT_CARD" | "DEFERRED_PAYMENT_ACCOUNT" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL"
+        export type PaymentTypeEnum = "BANK_ACCOUNT" | "CREDIT_CARD" | "CURRENT_ACCOUNT" | "DEFERRED_PAYMENT_ACCOUNT" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL"
         /**
          * List of payment method status enum
          * type fullname: billing.paymentMethod.StatusEnum
@@ -925,7 +1016,7 @@ export namespace debt {
          * All operations a debt entry can represent
          * type fullname: debt.entry.OperationEnum
          */
-        export type OperationEnum = "CANCEL" | "CASH_MANUAL" | "CHECK_MANUAL" | "CREDITCARD" | "CREDITCARD_AUTOMATIC" | "CREDITCARD_MANUAL" | "CREDIT_ACCOUNT_AUTOMATIC" | "EDINAR_MANUAL" | "IDEAL_MANUAL" | "MULTIBANCO_MANUAL" | "ORDER" | "PAYPAL_AUTOMATIC" | "PAYPAL_MANUAL" | "PAYU_MANUAL" | "RECOVERY_TRANSFER_AUTOMATIC" | "REFUND" | "REFUND_CHECK" | "REFUND_CREDITCARD" | "REFUND_CREDIT_ACCOUNT" | "REFUND_LOSS" | "REFUND_PAYPAL" | "REFUND_PAYU" | "REFUND_SEPA" | "REFUND_TRANSFER" | "REFUND_UNKNOWN" | "SEPA_AUTOMATIC" | "TRANSFER_MANUAL" | "UNPAID_CHECK" | "UNPAID_CREDITCARD" | "UNPAID_CREDIT_ACCOUNT" | "UNPAID_PAYPAL" | "UNPAID_SEPA" | "UNPAID_WITHDRAW" | "WARRANT_MANUAL" | "WITHDRAW_AUTOMATIC"
+        export type OperationEnum = "CANCEL" | "CASH_MANUAL" | "CHECK_MANUAL" | "CREDITCARD" | "CREDITCARD_AUTOMATIC" | "CREDITCARD_MANUAL" | "CREDIT_ACCOUNT_AUTOMATIC" | "EDINAR_MANUAL" | "IDEAL_AUTOMATIC" | "IDEAL_MANUAL" | "MULTIBANCO_AUTOMATIC" | "MULTIBANCO_MANUAL" | "ORDER" | "PAYPAL_AUTOMATIC" | "PAYPAL_MANUAL" | "PAYU_AUTOMATIC" | "PAYU_MANUAL" | "RECOVERY_TRANSFER_AUTOMATIC" | "REFUND" | "REFUND_CHECK" | "REFUND_CREDITCARD" | "REFUND_CREDIT_ACCOUNT" | "REFUND_IDEAL" | "REFUND_LOSS" | "REFUND_MULTIBANCO" | "REFUND_PAYPAL" | "REFUND_PAYU" | "REFUND_SEPA" | "REFUND_TRANSFER" | "REFUND_UNKNOWN" | "SEPA_AUTOMATIC" | "TRANSFER_MANUAL" | "UNPAID_CHECK" | "UNPAID_CREDITCARD" | "UNPAID_CREDIT_ACCOUNT" | "UNPAID_IDEAL" | "UNPAID_MULTIBANCO" | "UNPAID_PAYPAL" | "UNPAID_PAYU" | "UNPAID_SEPA" | "UNPAID_WITHDRAW" | "WARRANT_MANUAL" | "WITHDRAW_AUTOMATIC"
         /**
          * All status a debt HistoryOrder entry can be in
          * type fullname: debt.entry.StatusDebtOrderEnum
@@ -971,12 +1062,12 @@ export namespace dedicated {
      * Os type
      * type fullname: dedicated.TemplateOsTypeEnum
      */
-    export type TemplateOsTypeEnum = "bsd" | "linux" | "solaris" | "windows"
+    export type TemplateOsTypeEnum = "bsd" | "ibm" | "linux" | "solaris" | "unix" | "windows"
     /**
      * Os usage definition
      * type fullname: dedicated.TemplateOsUsageEnum
      */
-    export type TemplateOsUsageEnum = "basic" | "customer" | "hosting" | "other" | "readyToUse" | "virtualisation"
+    export type TemplateOsUsageEnum = "basic" | "customer" | "database" | "hosting" | "management" | "other" | "readyToUse" | "virtualisation" | "virtualization"
     /**
      * partition type
      * type fullname: dedicated.TemplatePartitionTypeEnum
@@ -1069,7 +1160,7 @@ export namespace domain {
      * Operation functions
      * type fullname: domain.NicOperationFunctionEnum
      */
-    export type NicOperationFunctionEnum = "ContactControl" | "DnsAnycastActivate" | "DnsAnycastDeactivate" | "DnssecDisable" | "DnssecEnable" | "DnssecResigning" | "DnssecRollKsk" | "DnssecRollZsk" | "DomainContactControl" | "DomainContactUpdate" | "DomainControl" | "DomainCreate" | "DomainDelete" | "DomainDnsUpdate" | "DomainDsUpdate" | "DomainHold" | "DomainHostCreate" | "DomainHostDelete" | "DomainHostUpdate" | "DomainIncomingTransfer" | "DomainLock" | "DomainOutgoingTransfer" | "DomainRenew" | "DomainRestore" | "DomainTrade" | "ZoneImport"
+    export type NicOperationFunctionEnum = "ContactControl" | "DnsAnycastActivate" | "DnsAnycastDeactivate" | "DnssecDisable" | "DnssecEnable" | "DnssecResigning" | "DnssecRollKsk" | "DnssecRollZsk" | "DomainAfterMarket" | "DomainContactControl" | "DomainContactUpdate" | "DomainControl" | "DomainCreate" | "DomainDelete" | "DomainDnsUpdate" | "DomainDsUpdate" | "DomainEmailRedirectionsCreate" | "DomainEmailRedirectionsDelete" | "DomainHold" | "DomainHostCreate" | "DomainHostDelete" | "DomainHostUpdate" | "DomainIncomingTransfer" | "DomainLock" | "DomainOutgoingTransfer" | "DomainRegistryDelete" | "DomainRenew" | "DomainResourceDelete" | "DomainRestore" | "DomainTrade" | "ZoneImport"
     /**
      * operation Action
      * type fullname: domain.OperationActionEnum
@@ -1143,6 +1234,70 @@ export namespace me {
             value: boolean;
         }
     }
+    export namespace incident {
+        /**
+         * Original service that can be migrated
+         * interface fullName: me.incident.MigrateServices.MigrateServices
+         */
+        export interface MigrateServices {
+            dryRun: boolean;
+            serviceIds: number[];
+        }
+        /**
+         * Order created in order to migrate a service
+         * interface fullName: me.incident.Order.Order
+         */
+        export interface Order {
+            order: order.Order;
+        }
+        /**
+         * Commercial gesture applied for the service migration
+         * interface fullName: me.incident.PercentagePromotion.PercentagePromotion
+         */
+        export interface PercentagePromotion {
+            duration: string;
+            value: number;
+        }
+        /**
+         * Commercial offer a customer can migrate his service to
+         * interface fullName: me.incident.ProposedOffer.ProposedOffer
+         */
+        export interface ProposedOffer {
+            configurations: me.incident.ProposedOfferConfiguration[];
+            plan: order.cart.GenericProductDefinition;
+            pricingMode: string;
+            promotion: me.incident.PercentagePromotion;
+        }
+        /**
+         * Config
+         * interface fullName: me.incident.ProposedOfferConfiguration.ProposedOfferConfiguration
+         */
+        export interface ProposedOfferConfiguration {
+            name: string;
+            value: string;
+        }
+        /**
+         * Service you may migrate to a given offer
+         * interface fullName: me.incident.ServiceMigration.ServiceMigration
+         */
+        export interface ServiceMigration {
+            addons: me.incident.ServiceMigration[];
+            orderId?: number;
+            proposedOffer: me.incident.ProposedOffer;
+            serviceToMigrate?: me.incident.ServiceToMigrate;
+        }
+        /**
+         * Original service that can be migrated
+         * interface fullName: me.incident.ServiceToMigrate.ServiceToMigrate
+         */
+        export interface ServiceToMigrate {
+            description: string;
+            metadata: complexType.SafeKeyValue<string>[];
+            route?: string;
+            serviceId: number;
+            serviceName: string;
+        }
+    }
     export namespace payment {
         export namespace method {
             /**
@@ -1152,7 +1307,9 @@ export namespace me {
             export interface AvailablePaymentMethod {
                 icon: me.payment.method.Icon;
                 integration: paymentmethodIntegrationType;
+                merchantId?: string;
                 oneshot: boolean;
+                paymentSubType?: string;
                 paymentType: string;
                 registerable: boolean;
                 registerableWithTransaction: boolean;
@@ -1212,6 +1369,7 @@ export namespace me {
                     merchantId?: string;
                     organizationId?: string;
                     paymentMethodId: number;
+                    transactionId: number;
                     url?: string;
                     validationType: paymentmethodIntegrationType;
                 }
@@ -1776,22 +1934,135 @@ export namespace nichandle {
 }
 export namespace order {
     /**
+     * A contract
+     * interface fullName: order.Contract.Contract
+     */
+    export interface Contract {
+        content: string;
+        name: string;
+        url: string;
+    }
+    /**
+     * Currency code
      * type fullname: order.CurrencyCodeEnum
      */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    /**
+     * An order
+     * interface fullName: order.Order.Order
+     */
+    export interface Order {
+        contracts: order.Contract[];
+        details: order.OrderDetail[];
+        orderId?: number;
+        prices: order.OrderPrices;
+        url?: string;
+    }
+    /**
+     * Detail of an order
+     * interface fullName: order.OrderDetail.OrderDetail
+     */
+    export interface OrderDetail {
+        cartItemID?: number;
+        description: string;
+        detailType?: orderOrderDetailTypeEnum;
+        domain: string;
+        originalTotalPrice: orderPrice;
+        quantity: number;
+        reductionTotalPrice: orderPrice;
+        reductions: order.Reduction[];
+        totalPrice: orderPrice;
+        unitPrice: orderPrice;
+    }
     /**
      * Product type of item in order
      * type fullname: order.OrderDetailTypeEnum
      */
     export type OrderDetailTypeEnum = "ACCESSORY" | "CAUTION" | "CHOOSED" | "CONSUMPTION" | "CREATION" | "DELIVERY" | "DURATION" | "GIFT" | "INSTALLATION" | "LICENSE" | "MUTE" | "OTHER" | "OUTPLAN" | "QUANTITY" | "REFUND" | "RENEW" | "SPECIAL" | "SWITCH" | "TRANSFER" | "VOUCHER"
     /**
-     * Price with it's currency and textual representation
+     * Prices of an order
+     * interface fullName: order.OrderPrices.OrderPrices
+     */
+    export interface OrderPrices {
+        originalWithoutTax?: orderPrice;
+        reduction?: orderPrice;
+        tax: orderPrice;
+        withTax: orderPrice;
+        withoutTax: orderPrice;
+    }
+    /**
+     * Price with its currency and textual representation
      * interface fullName: order.Price.Price
      */
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
+    }
+    /**
+     * Order detail reduction
+     * interface fullName: order.Reduction.Reduction
+     */
+    export interface Reduction {
+        context: order.ReductionContextEnum;
+        price: orderPrice;
+        type: order.ReductionTypeEnum;
+        value: orderPrice;
+    }
+    /**
+     * Context of the reduction
+     * type fullname: order.ReductionContextEnum
+     */
+    export type ReductionContextEnum = "promotion" | "voucher"
+    /**
+     * Type of reduction
+     * type fullname: order.ReductionTypeEnum
+     */
+    export type ReductionTypeEnum = "percentage" | "forced_amount" | "fixed_amount"
+    export namespace cart {
+        /**
+         * Representation of a generic product
+         * interface fullName: order.cart.GenericProductDefinition.GenericProductDefinition
+         */
+        export interface GenericProductDefinition {
+            planCode: string;
+            prices: order.cart.GenericProductPricing[];
+            productName: string;
+            productType: order.cart.GenericProductTypeEnum;
+        }
+        /**
+         * Representation of a product pricing
+         * interface fullName: order.cart.GenericProductPricing.GenericProductPricing
+         */
+        export interface GenericProductPricing {
+            capacities: order.cart.GenericProductPricingCapacitiesEnum[];
+            description: string;
+            duration: string;
+            interval: number;
+            maximumQuantity?: number;
+            maximumRepeat?: number;
+            minimumQuantity: number;
+            minimumRepeat: number;
+            price: orderPrice;
+            priceInUcents: number;
+            pricingMode: string;
+            pricingType: order.cart.GenericProductPricingTypeEnum;
+        }
+        /**
+         * Capacity of a pricing (type)
+         * type fullname: order.cart.GenericProductPricingCapacitiesEnum
+         */
+        export type GenericProductPricingCapacitiesEnum = "installation" | "renew" | "upgrade" | "downgrade" | "detach" | "dynamic"
+        /**
+         * Type of a pricing
+         * type fullname: order.cart.GenericProductPricingTypeEnum
+         */
+        export type GenericProductPricingTypeEnum = "rental" | "consumption" | "purchase"
+        /**
+         * Type of a product
+         * type fullname: order.cart.GenericProductTypeEnum
+         */
+        export type GenericProductTypeEnum = "delivery" | "deposit" | "shipping" | "cloud_service" | "saas_license" | "storage" | "domain"
     }
 }
 export namespace payment {
@@ -1820,7 +2091,7 @@ export namespace payment {
          * Payment method integration type
          * type fullname: payment.method.IntegrationType
          */
-        export type IntegrationType = "DONE" | "IFRAME_VANTIV" | "IN_CONTEXT" | "REDIRECT"
+        export type IntegrationType = "COMPONENT" | "DONE" | "IFRAME_VANTIV" | "IN_CONTEXT" | "POST_FORM" | "REDIRECT"
     }
 }
 export namespace telephony {
@@ -2717,6 +2988,63 @@ export interface Me {
             }
         };
     }
+    credit: {
+        balance: {
+            /**
+             * Retrieve credit balance names
+             * GET /me/credit/balance
+             */
+            $get(params?: { type?: billing.credit.balance.Type }): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(balanceName: string): {
+                /**
+                 * Retrieve a credit balance
+                 * GET /me/credit/balance/{balanceName}
+                 */
+                $get(): Promise<billing.credit.Balance>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                movement: {
+                    /**
+                     * Retrieve movements for a specific balance
+                     * GET /me/credit/balance/{balanceName}/movement
+                     */
+                    $get(): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(movementId: number): {
+                        /**
+                         * Retrieve a specific movement for a credit balance
+                         * GET /me/credit/balance/{balanceName}/movement/{movementId}
+                         */
+                        $get(): Promise<billing.credit.balance.Movement>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    };
+                }
+            };
+        }
+        code: {
+            /**
+             * Validate a code to generate associated credit movement
+             * POST /me/credit/code
+             */
+            $post(params: { inputCode: string, serviceId?: number }): Promise<billing.credit.balance.Movement>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+    }
     debtAccount: {
         /**
          * Get this object properties
@@ -3210,6 +3538,26 @@ export interface Me {
             };
         }
     }
+    incident: {
+        sbg: {
+            migrateServices: {
+                /**
+                 * Get all services you can migrate
+                 * GET /me/incident/sbg/migrateServices
+                 */
+                $get(): Promise<me.incident.ServiceMigration[]>;
+                /**
+                 * Ask for impacted services migration
+                 * POST /me/incident/sbg/migrateServices
+                 */
+                $post(params?: { dryRun?: boolean, serviceIds?: number[] }): Promise<me.incident.Order>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+        }
+    }
     installationTemplate: {
         /**
          * Your customized operating system installation templates
@@ -3530,6 +3878,38 @@ export interface Me {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            balance: {
+                /**
+                 * List credit balances applied on this Order
+                 * GET /me/order/{orderId}/balance
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Use a credit balance on this Order
+                 * POST /me/order/{orderId}/balance
+                 */
+                $post(params: { balanceName: string }): Promise<billing.CreditBalance>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(balanceName: string): {
+                    /**
+                     * Remove a credit balance from this Order
+                     * DELETE /me/order/{orderId}/balance/{balanceName}
+                     */
+                    $delete(): Promise<void>;
+                    /**
+                     * Get this object properties
+                     * GET /me/order/{orderId}/balance/{balanceName}
+                     */
+                    $get(): Promise<billing.CreditBalance>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            }
             bill: {
                 /**
                  * Get this object properties
@@ -3799,6 +4179,17 @@ export interface Me {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    requestRefund: {
+                        /**
+                         * request a refund of this credit note to your original payment method
+                         * POST /me/ovhAccount/{ovhAccountId}/movements/{movementId}/requestRefund
+                         */
+                        $post(params: { amount: number }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
                 };
             }
             retrieveMoney: {
@@ -3847,7 +4238,7 @@ export interface Me {
              * Pay an order and register a new payment method if necessary
              * POST /me/payment/method
              */
-            $post(params: { callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, orderId?: number, paymentType: string, register?: boolean }): Promise<me.payment.method.Register.ValidationResult>;
+            $post(params: { callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, formData?: string, orderId?: number, paymentSubType?: string, paymentType: string, register?: boolean }): Promise<me.payment.method.Register.ValidationResult>;
             /**
              * Controle cache
              */
@@ -3878,6 +4269,17 @@ export interface Me {
                      * POST /me/payment/method/{paymentMethodId}/challenge
                      */
                     $post(params: { challenge: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                details: {
+                    /**
+                     * Add details to one payment method challenge
+                     * POST /me/payment/method/{paymentMethodId}/details
+                     */
+                    $post(params: { details: string, transactionId: number }): Promise<me.payment.method.Register.ValidationResult>;
                     /**
                      * Controle cache
                      */
@@ -4137,6 +4539,15 @@ export interface Me {
         }
     }
     refund: {
+        /**
+         * List of all the refunds the logged account has
+         * GET /me/refund
+         */
+        $get(params?: { date_from?: string, date_to?: string, orderId?: number }): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         export: {
             /**
              * Exports a bundle of refunds
@@ -4148,6 +4559,50 @@ export interface Me {
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
+        $(refundId: string): {
+            /**
+             * Get this object properties
+             * GET /me/refund/{refundId}
+             */
+            $get(): Promise<billing.Refund>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            details: {
+                /**
+                 * Give access to all entries of the refund
+                 * GET /me/refund/{refundId}/details
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(refundDetailId: string): {
+                    /**
+                     * Get this object properties
+                     * GET /me/refund/{refundId}/details/{refundDetailId}
+                     */
+                    $get(): Promise<billing.RefundDetail>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            }
+            payment: {
+                /**
+                 * Get this object properties
+                 * GET /me/refund/{refundId}/payment
+                 */
+                $get(): Promise<billing.Payment>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+        };
     }
     sla: {
         /**

@@ -106,7 +106,7 @@ export namespace vrack {
      * Possible values for vrack zone
      * type fullname: vrack.VrackZoneEnum
      */
-    export type VrackZoneEnum = "bhs" | "fra1" | "gra" | "lon1" | "pdx1" | "rbx" | "sbg" | "sgp1" | "syd1" | "was1" | "waw"
+    export type VrackZoneEnum = "bhs" | "fra1" | "gra" | "lon1" | "pdx1" | "rbx" | "sbg" | "sgp1" | "syd1" | "syd2" | "was1" | "waw"
     /**
      * PublicCloud project in vrack
      * interface fullName: vrack.cloudProject.cloudProject

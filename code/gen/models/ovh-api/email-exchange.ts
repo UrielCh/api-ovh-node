@@ -294,6 +294,14 @@ export const schema: Schema = {
               "required": true
             },
             {
+              "dataType": "long",
+              "description": "Quota specified in GB. Check pricing table before use",
+              "fullType": "long",
+              "name": "quota",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "string",
               "description": "SAM account name (exchange 2010 login)",
               "fullType": "string",

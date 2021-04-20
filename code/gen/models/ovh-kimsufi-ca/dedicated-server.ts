@@ -2861,9 +2861,11 @@ export const schema: Schema = {
         "eri1",
         "gra1",
         "gra2",
+        "gra3",
         "gsw",
         "hil1",
         "lim1",
+        "lim3",
         "p19",
         "rbx-hz",
         "rbx1",
@@ -2880,6 +2882,7 @@ export const schema: Schema = {
         "sbg4",
         "sgp1",
         "syd1",
+        "syd2",
         "vin1",
         "waw1"
       ],
@@ -2920,6 +2923,8 @@ export const schema: Schema = {
         "INFRA_002_VirtualNetworkInterface",
         "INFRA_002_VirtualNetworkInterface_group",
         "INFRA_002_VirtualNetworkInterface_ungroup",
+        "INFRA_ONE_NETWORK_VirtualNetworkInterface_group",
+        "INFRA_ONE_NETWORK_VirtualNetworkInterface_ungroup",
         "addVirtualMac",
         "addWindowSplaFromExistingSerial",
         "applyBackupFtpAcls",
@@ -3154,6 +3159,7 @@ export const schema: Schema = {
     "dedicated.server.BandwidthTypeEnum": {
       "description": " Different Bandwidth type",
       "enum": [
+        "improved",
         "included",
         "platinum",
         "premium",
@@ -3481,6 +3487,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "noIntervention": {
+          "canBeNull": false,
+          "description": "Prevent datacenter intervention",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "os": {
           "canBeNull": false,
@@ -6058,6 +6072,7 @@ export const schema: Schema = {
         "CNAME",
         "DKIM",
         "DMARC",
+        "DNAME",
         "LOC",
         "MX",
         "NAPTR",

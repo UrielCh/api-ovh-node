@@ -2140,11 +2140,72 @@ export const schema: Schema = {
           "description": "List extensions, grouped by category types (like 'thematic', 'geolocalization') and category names (like 'europe')",
           "httpMethod": "GET",
           "noAuthentication": false,
-          "parameters": [],
+          "parameters": [
+            {
+              "dataType": "domain.extensions.CategoryTypeEnum[]",
+              "description": "Filter by category types",
+              "fullType": "domain.extensions.CategoryTypeEnum[]",
+              "name": "categoryType",
+              "paramType": "query",
+              "required": false
+            }
+          ],
           "responseType": "domain.extensions.ExtensionsByCategory"
         }
       ],
       "path": "/domain/extensions/byCategory"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Lists highlighted extensions, ordered by decreased importance",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "OVHcloud subsidiary targeted. Highlighted extensions are different from one subsidiary to another. Default to FR.",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/domain/extensions/highlighted"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List extensions with their pricing attributes. It especially documents whether an extension has been implemented recently or whether the price has dropped",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "OVHcloud subsidiary targeted. Attributes may be different from one subsidiary to another. Default to FR.",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "domain.extensions.ExtensionsPricingAttributes[]"
+        }
+      ],
+      "path": "/domain/extensions/pricingAttributes"
     },
     {
       "description": "Rules for creating a domain",
@@ -2984,6 +3045,136 @@ export const schema: Schema = {
         }
       ],
       "path": "/domain/zone/{zoneName}/import"
+    },
+    {
+      "description": "List the domain.zone.Option objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List zone options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your zone",
+              "fullType": "string",
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/domain/zone/{zoneName}/option"
+    },
+    {
+      "description": "Information about the options of a zone",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The option name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your zone",
+              "fullType": "string",
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "domain.zone.Option"
+        }
+      ],
+      "path": "/domain/zone/{zoneName}/option/{name}"
+    },
+    {
+      "description": "serviceInfos operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The option name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your zone",
+              "fullType": "string",
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.Service"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Alter this object properties",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "service.RenewType",
+              "description": "Renew type",
+              "fullType": "service.RenewType",
+              "name": "renew",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The option name",
+              "fullType": "string",
+              "name": "name",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your zone",
+              "fullType": "string",
+              "name": "zoneName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/domain/zone/{zoneName}/option/{name}/serviceInfos"
     },
     {
       "description": "List the domain.zone.Record objects",
@@ -5225,7 +5416,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "The admin contact data",
           "fullType": "nichandle.Nichandle",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "nichandle.Nichandle"
         },
@@ -5233,7 +5424,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "The domain data",
           "fullType": "domain.Data",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "domain.Data"
         },
@@ -5241,7 +5432,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "The extra data of the rule",
           "fullType": "domain.configuration.rules.RuleExtraData",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "domain.configuration.rules.RuleExtraData"
         },
@@ -5249,7 +5440,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "The owner contact data",
           "fullType": "domain.Contact",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "domain.Contact"
         },
@@ -5257,7 +5448,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "The tech contact data",
           "fullType": "nichandle.Nichandle",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "nichandle.Nichandle"
         }
@@ -5272,7 +5463,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "Whether you accept the domain specific conditions or not",
           "fullType": "boolean",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "boolean"
         },
@@ -5280,7 +5471,7 @@ export const schema: Schema = {
           "canBeNull": true,
           "description": "The auth info code for the domain",
           "fullType": "password",
-          "readOnly": true,
+          "readOnly": false,
           "required": false,
           "type": "password"
         }
@@ -5290,6 +5481,7 @@ export const schema: Schema = {
       "description": "Type of rule configuration",
       "enum": [
         "string",
+        "string[]",
         "text",
         "bool",
         "number",
@@ -6008,6 +6200,16 @@ export const schema: Schema = {
         }
       }
     },
+    "domain.extensions.CategoryTypeEnum": {
+      "description": "Type of extension category",
+      "enum": [
+        "thematic",
+        "geolocalization"
+      ],
+      "enumType": "string",
+      "id": "CategoryTypeEnum",
+      "namespace": "domain.extensions"
+    },
     "domain.extensions.Extension": {
       "description": "A domain name extension",
       "id": "Extension",
@@ -6029,7 +6231,7 @@ export const schema: Schema = {
       "namespace": "domain.extensions",
       "properties": {
         "geolocalization": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Geolocalizations groups extensions by geographical place, like 'europe'",
           "fullType": "domain.extensions.CategoryNameWithExtensions[]",
           "readOnly": true,
@@ -6037,12 +6239,43 @@ export const schema: Schema = {
           "type": "domain.extensions.CategoryNameWithExtensions[]"
         },
         "thematic": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "Thematics groups extensions by a thematic like 'gastronomy' for '.pizza'",
           "fullType": "domain.extensions.CategoryNameWithExtensions[]",
           "readOnly": true,
           "required": false,
           "type": "domain.extensions.CategoryNameWithExtensions[]"
+        }
+      }
+    },
+    "domain.extensions.ExtensionsPricingAttributes": {
+      "description": "Result of getting pricing attributes of an extension",
+      "id": "ExtensionsPricingAttributes",
+      "namespace": "domain.extensions",
+      "properties": {
+        "brandNew": {
+          "canBeNull": false,
+          "description": "Parameter is true when the extension has been created recently and we want to highlight this fact",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Extension name, like 'com' or 'co.uk'",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "priceDrop": {
+          "canBeNull": false,
+          "description": "Parameter is true when the extension price has dropped recently and we want to highlight this fact",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         }
       }
     },
@@ -6333,21 +6566,6 @@ export const schema: Schema = {
         }
       }
     },
-    "domain.zone.Anycast": {
-      "description": "DNS Anycast service",
-      "id": "Anycast",
-      "namespace": "domain.zone",
-      "properties": {
-        "name": {
-          "canBeNull": false,
-          "description": "Zone name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
-    },
     "domain.zone.Dnssec": {
       "description": "Manage Dnssec for this zone",
       "id": "Dnssec",
@@ -6433,6 +6651,21 @@ export const schema: Schema = {
         "zone": {
           "canBeNull": false,
           "description": "Zone of the DynHost record",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "domain.zone.Option": {
+      "description": "Information about the options of a zone",
+      "id": "Option",
+      "namespace": "domain.zone",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "The option name",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -7641,6 +7874,7 @@ export const schema: Schema = {
         "CNAME",
         "DKIM",
         "DMARC",
+        "DNAME",
         "LOC",
         "MX",
         "NAPTR",

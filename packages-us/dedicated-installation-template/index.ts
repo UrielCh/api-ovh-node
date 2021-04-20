@@ -47,12 +47,12 @@ export namespace dedicated {
      * Os type
      * type fullname: dedicated.TemplateOsTypeEnum
      */
-    export type TemplateOsTypeEnum = "bsd" | "linux" | "solaris" | "windows"
+    export type TemplateOsTypeEnum = "bsd" | "ibm" | "linux" | "solaris" | "unix" | "windows"
     /**
      * Os usage definition
      * type fullname: dedicated.TemplateOsUsageEnum
      */
-    export type TemplateOsUsageEnum = "basic" | "customer" | "hosting" | "other" | "readyToUse" | "virtualisation"
+    export type TemplateOsUsageEnum = "basic" | "customer" | "database" | "hosting" | "management" | "other" | "readyToUse" | "virtualisation" | "virtualization"
     /**
      * partition type
      * type fullname: dedicated.TemplatePartitionTypeEnum

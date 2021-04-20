@@ -3113,6 +3113,33 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
+        webPaaS: {
+            /**
+             * List available services
+             * GET /order/cartServiceOption/webPaaS
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(serviceName: string): {
+                /**
+                 * Get informations about additional Web PaaS offer for your service
+                 * GET /order/cartServiceOption/webPaaS/{serviceName}
+                 */
+                $get(): Promise<order.cart.GenericOptionDefinition[]>;
+                /**
+                 * Post an additional Web PaaS option in your cart
+                 * POST /order/cartServiceOption/webPaaS/{serviceName}
+                 */
+                $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
     }
     catalog: {
         formatted: {
@@ -3494,6 +3521,17 @@ export interface Order {
                 /**
                  * Retrieve Web Hosting catalog
                  * GET /order/catalog/public/webHosting
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            webPaaS: {
+                /**
+                 * Retrieve Web PaaS catalog
+                 * GET /order/catalog/public/webPaaS
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**

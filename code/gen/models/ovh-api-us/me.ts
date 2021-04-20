@@ -42,6 +42,49 @@ export const schema: Schema = {
       "path": "/me"
     },
     {
+      "description": "Get abuse related to your account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve abuse cases list",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/me/abuse"
+    },
+    {
+      "description": "Get abuse related to your account",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Check specific abuse case",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Id",
+              "fullType": "string",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "me.abuse.Abuse"
+        }
+      ],
+      "path": "/me/abuse/{id}"
+    },
+    {
       "description": "SOTP Two-Factor Authentication",
       "operations": [
         {
@@ -5758,10 +5801,26 @@ export const schema: Schema = {
               "required": false
             },
             {
+              "dataType": "string",
+              "description": "Additional payment information",
+              "fullType": "string",
+              "name": "formData",
+              "paramType": "body",
+              "required": false
+            },
+            {
               "dataType": "long",
               "description": "The ID of one order to pay it",
               "fullType": "long",
               "name": "orderId",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Payment sub-type",
+              "fullType": "string",
+              "name": "paymentSubType",
               "paramType": "body",
               "required": false
             },
@@ -5902,6 +5961,48 @@ export const schema: Schema = {
         }
       ],
       "path": "/me/payment/method/{paymentMethodId}/challenge"
+    },
+    {
+      "description": "Add details to your payment method challenge",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Add details to one payment method challenge",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Details data",
+              "fullType": "string",
+              "name": "details",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Transaction ID",
+              "fullType": "long",
+              "name": "transactionId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Payment method ID",
+              "fullType": "long",
+              "name": "paymentMethodId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "me.payment.method.Register.ValidationResult"
+        }
+      ],
+      "path": "/me/payment/method/{paymentMethodId}/details"
     },
     {
       "description": "Finalize one payment method registration",
@@ -8530,6 +8631,8 @@ export const schema: Schema = {
       "description": "Reusable payment mean type",
       "enum": [
         "CREDIT_CARD",
+        "CURRENT_ACCOUNT",
+        "DEFERRED_PAYMENT_ACCOUNT",
         "ENTERPRISE",
         "INTERNAL_TRUSTED_ACCOUNT",
         "PAYPAL",
@@ -9390,6 +9493,7 @@ export const schema: Schema = {
       "enum": [
         "BANK_ACCOUNT",
         "CREDIT_CARD",
+        "CURRENT_ACCOUNT",
         "DEFERRED_PAYMENT_ACCOUNT",
         "ENTERPRISE",
         "INTERNAL_TRUSTED_ACCOUNT",
@@ -10108,18 +10212,23 @@ export const schema: Schema = {
         "CREDITCARD_MANUAL",
         "CREDIT_ACCOUNT_AUTOMATIC",
         "EDINAR_MANUAL",
+        "IDEAL_AUTOMATIC",
         "IDEAL_MANUAL",
+        "MULTIBANCO_AUTOMATIC",
         "MULTIBANCO_MANUAL",
         "ORDER",
         "PAYPAL_AUTOMATIC",
         "PAYPAL_MANUAL",
+        "PAYU_AUTOMATIC",
         "PAYU_MANUAL",
         "RECOVERY_TRANSFER_AUTOMATIC",
         "REFUND",
         "REFUND_CHECK",
         "REFUND_CREDITCARD",
         "REFUND_CREDIT_ACCOUNT",
+        "REFUND_IDEAL",
         "REFUND_LOSS",
+        "REFUND_MULTIBANCO",
         "REFUND_PAYPAL",
         "REFUND_PAYU",
         "REFUND_SEPA",
@@ -10130,7 +10239,10 @@ export const schema: Schema = {
         "UNPAID_CHECK",
         "UNPAID_CREDITCARD",
         "UNPAID_CREDIT_ACCOUNT",
+        "UNPAID_IDEAL",
+        "UNPAID_MULTIBANCO",
         "UNPAID_PAYPAL",
+        "UNPAID_PAYU",
         "UNPAID_SEPA",
         "UNPAID_WITHDRAW",
         "WARRANT_MANUAL",
@@ -10289,8 +10401,10 @@ export const schema: Schema = {
       "description": "Os type",
       "enum": [
         "bsd",
+        "ibm",
         "linux",
         "solaris",
+        "unix",
         "windows"
       ],
       "enumType": "string",
@@ -10302,10 +10416,13 @@ export const schema: Schema = {
       "enum": [
         "basic",
         "customer",
+        "database",
         "hosting",
+        "management",
         "other",
         "readyToUse",
-        "virtualisation"
+        "virtualisation",
+        "virtualization"
       ],
       "enumType": "string",
       "id": "TemplateOsUsageEnum",
@@ -10689,6 +10806,87 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "MethodEnum",
       "namespace": "http"
+    },
+    "me.abuse.Abuse": {
+      "description": "Get report API response",
+      "id": "Abuse",
+      "namespace": "me.abuse",
+      "properties": {
+        "category": {
+          "canBeNull": false,
+          "description": "Abuse category",
+          "fullType": "me.abuse.AbuseCategoryEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.abuse.AbuseCategoryEnum"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date of the abuse",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "publicId": {
+          "canBeNull": false,
+          "description": "Public ID of the abuse case",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "service": {
+          "canBeNull": false,
+          "description": "Service where is hosted the abuse",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Abuse case status",
+          "fullType": "me.abuse.AbuseStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.abuse.AbuseStatusEnum"
+        }
+      }
+    },
+    "me.abuse.AbuseCategoryEnum": {
+      "description": "The abuse categories",
+      "enum": [
+        "Compromised",
+        "Copyright",
+        "Illegal",
+        "Intrusion",
+        "Malware",
+        "Network Attack",
+        "Other",
+        "Phishing",
+        "Spam"
+      ],
+      "enumType": "string",
+      "id": "AbuseCategoryEnum",
+      "namespace": "me.abuse"
+    },
+    "me.abuse.AbuseStatusEnum": {
+      "description": "The abuse status",
+      "enum": [
+        "Answered",
+        "Claimed",
+        "Closed",
+        "Escalated",
+        "Open",
+        "Paused",
+        "Reopened",
+        "Updated",
+        "WaitingAnswer"
+      ],
+      "enumType": "string",
+      "id": "AbuseStatusEnum",
+      "namespace": "me.abuse"
     },
     "me.billing.group.BillingGroup": {
       "description": "Missing description",
@@ -11434,6 +11632,14 @@ export const schema: Schema = {
           "required": false,
           "type": "payment.method.IntegrationType"
         },
+        "merchantId": {
+          "canBeNull": true,
+          "description": "Payment method merchant ID",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "oneshot": {
           "canBeNull": false,
           "description": "Payment method type is possible to pay in oneshot mode ?",
@@ -11441,6 +11647,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "boolean"
+        },
+        "paymentSubType": {
+          "canBeNull": true,
+          "description": "Payment method sub-type",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "paymentType": {
           "canBeNull": false,
@@ -11698,6 +11912,14 @@ export const schema: Schema = {
         "paymentMethodId": {
           "canBeNull": false,
           "description": "Register new payment method ID",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "transactionId": {
+          "canBeNull": false,
+          "description": "Linked transaction ID",
           "fullType": "long",
           "readOnly": false,
           "required": false,
@@ -13896,9 +14118,11 @@ export const schema: Schema = {
     "payment.method.IntegrationType": {
       "description": "Payment method integration type",
       "enum": [
+        "COMPONENT",
         "DONE",
         "IFRAME_VANTIV",
         "IN_CONTEXT",
+        "POST_FORM",
         "REDIRECT"
       ],
       "enumType": "string",

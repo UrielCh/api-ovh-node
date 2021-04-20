@@ -4183,6 +4183,42 @@ export const schema: Schema = {
       "path": "/me/identity/user/{user}/enable"
     },
     {
+      "description": "Migrate your impacted services",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Get all services you can migrate",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "me.incident.ServiceMigration[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Ask for impacted services migration",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "me.incident.MigrateServices",
+              "description": "Request Body",
+              "fullType": "me.incident.MigrateServices",
+              "paramType": "body",
+              "required": true
+            }
+          ],
+          "responseType": "me.incident.Order"
+        }
+      ],
+      "path": "/me/incident/sbg/migrateServices"
+    },
+    {
       "description": "List the dedicated.installationTemplate.Templates objects",
       "operations": [
         {
@@ -5435,6 +5471,122 @@ export const schema: Schema = {
       "path": "/me/order/{orderId}/availableRegisteredPaymentMean"
     },
     {
+      "description": "List the billing.CreditBalance objects",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List credit balances applied on this Order",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Use a credit balance on this Order",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Balance name to use on this Order",
+              "fullType": "string",
+              "name": "balanceName",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "billing.CreditBalance"
+        }
+      ],
+      "path": "/me/order/{orderId}/balance"
+    },
+    {
+      "description": "Credit balance applied on an Order",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Remove a credit balance from this Order",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Credit balance name",
+              "fullType": "string",
+              "name": "balanceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get this object properties",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Credit balance name",
+              "fullType": "string",
+              "name": "balanceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "orderId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "billing.CreditBalance"
+        }
+      ],
+      "path": "/me/order/{orderId}/balance/{balanceName}"
+    },
+    {
       "description": "Details about a Bill",
       "operations": [
         {
@@ -6197,6 +6349,48 @@ export const schema: Schema = {
       "path": "/me/ovhAccount/{ovhAccountId}/movements/{movementId}"
     },
     {
+      "description": "requestRefund operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "request a refund of this credit note to your original payment method",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "The amount in cents you want to retrieve",
+              "fullType": "long",
+              "name": "amount",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "movementId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "",
+              "fullType": "string",
+              "name": "ovhAccountId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/me/ovhAccount/{ovhAccountId}/movements/{movementId}/requestRefund"
+    },
+    {
       "description": "retrieveMoney operations",
       "operations": [
         {
@@ -6472,6 +6666,39 @@ export const schema: Schema = {
         }
       ],
       "path": "/me/payment/method/{paymentMethodId}/challenge"
+    },
+    {
+      "description": "Add details to your payment method challenge",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Alpha version",
+            "value": "ALPHA"
+          },
+          "description": "Add details to your payment method challenge",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "me.payment.method.Details",
+              "description": "Request Body",
+              "fullType": "me.payment.method.Details",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Payment method ID",
+              "fullType": "long",
+              "name": "paymentMethodId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "me.payment.method.Validation"
+        }
+      ],
+      "path": "/me/payment/method/{paymentMethodId}/details"
     },
     {
       "description": "Finalize operation",
@@ -7050,14 +7277,14 @@ export const schema: Schema = {
       "path": "/me/paymentMean/deferredPaymentAccount/{id}/chooseAsDefaultPaymentMean"
     },
     {
-      "description": "List the billing.Paypal objects",
+      "description": "List the payment mean paypals",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "List of Paypal accounts usable for payments on this account",
+          "description": "List of payment mean paypals",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [],
@@ -7068,55 +7295,38 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Enable payment through a new PayPal account",
+          "description": "Add a new payment mean paypal",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Custom description of this account",
-              "fullType": "string",
-              "name": "description",
+              "dataType": "me.paymentMean.PaypalCreation",
+              "description": "Request Body",
+              "fullType": "me.paymentMean.PaypalCreation",
               "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "string",
-              "description": "Callback URL where the customer will be redirected to after validation",
-              "fullType": "string",
-              "name": "returnUrl",
-              "paramType": "body",
-              "required": false
-            },
-            {
-              "dataType": "boolean",
-              "description": "Set as default payment mean once validated",
-              "fullType": "boolean",
-              "name": "setDefault",
-              "paramType": "body",
-              "required": false
+              "required": true
             }
           ],
-          "responseType": "billing.PaymentMeanValidation"
+          "responseType": "me.paymentMean.PaypalValidation"
         }
       ],
       "path": "/me/paymentMean/paypal"
     },
     {
-      "description": "Paypal account info",
+      "description": "List the payment mean paypals",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Disable payment through this PayPal account",
+          "description": "Disable payment through this paypal",
           "httpMethod": "DELETE",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -7130,20 +7340,20 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Get this object properties",
+          "description": "Get paypal properties",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
               "required": true
             }
           ],
-          "responseType": "billing.Paypal"
+          "responseType": "me.paymentMean.Paypal"
         },
         {
           "apiStatus": {
@@ -7155,15 +7365,15 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "billing.Paypal",
-              "description": "New object properties",
-              "fullType": "billing.Paypal",
+              "dataType": "me.paymentMean.Paypal",
+              "description": "Request Body",
+              "fullType": "me.paymentMean.Paypal",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -7176,28 +7386,27 @@ export const schema: Schema = {
       "path": "/me/paymentMean/paypal/{id}"
     },
     {
-      "description": "challenge operations",
+      "description": "Challenge operations",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Challenge your bank account",
+          "description": "Challenge your paypal",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Payload to answer the challenge",
-              "fullType": "string",
-              "name": "challenge",
+              "dataType": "me.paymentMean.PaypalChallengeCreation",
+              "description": "Request Body",
+              "fullType": "me.paymentMean.PaypalChallengeCreation",
               "paramType": "body",
               "required": true
             },
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -7210,20 +7419,20 @@ export const schema: Schema = {
       "path": "/me/paymentMean/paypal/{id}/challenge"
     },
     {
-      "description": "chooseAsDefaultPaymentMean operations",
+      "description": "Choose this paypal as default",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Choose this Paypal agreement as your default payment mean. Will cancel the previous choice.",
+          "description": "Choose this paypal as your default payment mean. Will cancel the previous choice.",
           "httpMethod": "POST",
           "noAuthentication": false,
           "parameters": [
             {
               "dataType": "long",
-              "description": "Id of the object",
+              "description": "Id",
               "fullType": "long",
               "name": "id",
               "paramType": "path",
@@ -9904,6 +10113,13 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "order.Price"
+        },
+        "retrievableAmount": {
+          "canBeNull": false,
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
         }
       }
     },
@@ -10494,6 +10710,8 @@ export const schema: Schema = {
       "description": "Reusable payment mean type",
       "enum": [
         "CREDIT_CARD",
+        "CURRENT_ACCOUNT",
+        "DEFERRED_PAYMENT_ACCOUNT",
         "ENTERPRISE",
         "INTERNAL_TRUSTED_ACCOUNT",
         "PAYPAL",
@@ -11647,6 +11865,7 @@ export const schema: Schema = {
       "enum": [
         "BANK_ACCOUNT",
         "CREDIT_CARD",
+        "CURRENT_ACCOUNT",
         "DEFERRED_PAYMENT_ACCOUNT",
         "ENTERPRISE",
         "INTERNAL_TRUSTED_ACCOUNT",
@@ -11700,13 +11919,15 @@ export const schema: Schema = {
       "properties": {
         "key": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "string",
+          "readOnly": true,
           "required": false,
           "type": "string"
         },
         "value": {
           "canBeNull": false,
-          "readOnly": false,
+          "fullType": "T",
+          "readOnly": true,
           "required": false,
           "type": "T"
         }
@@ -12594,18 +12815,23 @@ export const schema: Schema = {
         "CREDITCARD_MANUAL",
         "CREDIT_ACCOUNT_AUTOMATIC",
         "EDINAR_MANUAL",
+        "IDEAL_AUTOMATIC",
         "IDEAL_MANUAL",
+        "MULTIBANCO_AUTOMATIC",
         "MULTIBANCO_MANUAL",
         "ORDER",
         "PAYPAL_AUTOMATIC",
         "PAYPAL_MANUAL",
+        "PAYU_AUTOMATIC",
         "PAYU_MANUAL",
         "RECOVERY_TRANSFER_AUTOMATIC",
         "REFUND",
         "REFUND_CHECK",
         "REFUND_CREDITCARD",
         "REFUND_CREDIT_ACCOUNT",
+        "REFUND_IDEAL",
         "REFUND_LOSS",
+        "REFUND_MULTIBANCO",
         "REFUND_PAYPAL",
         "REFUND_PAYU",
         "REFUND_SEPA",
@@ -12616,7 +12842,10 @@ export const schema: Schema = {
         "UNPAID_CHECK",
         "UNPAID_CREDITCARD",
         "UNPAID_CREDIT_ACCOUNT",
+        "UNPAID_IDEAL",
+        "UNPAID_MULTIBANCO",
         "UNPAID_PAYPAL",
+        "UNPAID_PAYU",
         "UNPAID_SEPA",
         "UNPAID_WITHDRAW",
         "WARRANT_MANUAL",
@@ -12788,8 +13017,10 @@ export const schema: Schema = {
       "description": "Os type",
       "enum": [
         "bsd",
+        "ibm",
         "linux",
         "solaris",
+        "unix",
         "windows"
       ],
       "enumType": "string",
@@ -12801,10 +13032,13 @@ export const schema: Schema = {
       "enum": [
         "basic",
         "customer",
+        "database",
         "hosting",
+        "management",
         "other",
         "readyToUse",
-        "virtualisation"
+        "virtualisation",
+        "virtualization"
       ],
       "enumType": "string",
       "id": "TemplateOsUsageEnum",
@@ -13170,6 +13404,7 @@ export const schema: Schema = {
         "DnssecResigning",
         "DnssecRollKsk",
         "DnssecRollZsk",
+        "DomainAfterMarket",
         "DomainContactControl",
         "DomainContactUpdate",
         "DomainControl",
@@ -13177,6 +13412,8 @@ export const schema: Schema = {
         "DomainDelete",
         "DomainDnsUpdate",
         "DomainDsUpdate",
+        "DomainEmailRedirectionsCreate",
+        "DomainEmailRedirectionsDelete",
         "DomainHold",
         "DomainHostCreate",
         "DomainHostDelete",
@@ -13184,7 +13421,9 @@ export const schema: Schema = {
         "DomainIncomingTransfer",
         "DomainLock",
         "DomainOutgoingTransfer",
+        "DomainRegistryDelete",
         "DomainRenew",
+        "DomainResourceDelete",
         "DomainRestore",
         "DomainTrade",
         "ZoneImport"
@@ -13407,6 +13646,189 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "long"
+        }
+      }
+    },
+    "me.billing.purchaseOrder.Creation": {
+      "description": "Purchase order creation payload",
+      "id": "Creation",
+      "namespace": "me.billing.purchaseOrder",
+      "properties": {
+        "billingGroupId": {
+          "canBeNull": true,
+          "description": "Billing Group identifier",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "endDate": {
+          "canBeNull": true,
+          "description": "End date",
+          "fullType": "date",
+          "readOnly": false,
+          "required": false,
+          "type": "date"
+        },
+        "reference": {
+          "canBeNull": false,
+          "description": "Reference",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Start date",
+          "fullType": "date",
+          "readOnly": false,
+          "required": true,
+          "type": "date"
+        }
+      }
+    },
+    "me.billing.purchaseOrder.PurchaseOrder": {
+      "description": "Purchase Order",
+      "id": "PurchaseOrder",
+      "namespace": "me.billing.purchaseOrder",
+      "properties": {
+        "billingGroupId": {
+          "canBeNull": true,
+          "description": "Billing Group identifier",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Description",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "endDate": {
+          "canBeNull": true,
+          "description": "End date",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Purchase Order identifier",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "reference": {
+          "canBeNull": false,
+          "description": "Reference",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Start date",
+          "fullType": "date",
+          "readOnly": true,
+          "required": false,
+          "type": "date"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status",
+          "fullType": "me.billing.purchaseOrder.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.billing.purchaseOrder.StatusEnum"
+        }
+      }
+    },
+    "me.billing.purchaseOrder.StatusEnum": {
+      "description": "Status of the Purchase Order",
+      "enum": [
+        "CREATED",
+        "DELETED"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "me.billing.purchaseOrder"
+    },
+    "me.billing.purchaseOrder.Update": {
+      "description": "Purchase order update payload",
+      "id": "Update",
+      "namespace": "me.billing.purchaseOrder",
+      "properties": {
+        "billingGroupId": {
+          "canBeNull": true,
+          "description": "Billing group identifier",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Description",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "endDate": {
+          "canBeNull": true,
+          "description": "End date",
+          "fullType": "date",
+          "readOnly": false,
+          "required": false,
+          "type": "date"
+        },
+        "reference": {
+          "canBeNull": true,
+          "description": "Reference",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "startDate": {
+          "canBeNull": true,
+          "description": "Start date",
+          "fullType": "date",
+          "readOnly": false,
+          "required": false,
+          "type": "date"
         }
       }
     },
@@ -14040,6 +14462,215 @@ export const schema: Schema = {
         }
       }
     },
+    "me.incident.MigrateServices": {
+      "description": "Original service that can be migrated",
+      "id": "MigrateServices",
+      "namespace": "me.incident",
+      "properties": {
+        "dryRun": {
+          "canBeNull": false,
+          "description": "If false, the order will be registered; if true, the order will be returned but not registered. Useful to compute prices",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "serviceIds": {
+          "canBeNull": false,
+          "description": "IDs of the services to migrate",
+          "fullType": "long[]",
+          "readOnly": false,
+          "required": false,
+          "type": "long[]"
+        }
+      }
+    },
+    "me.incident.Order": {
+      "description": "Order created in order to migrate a service",
+      "id": "Order",
+      "namespace": "me.incident",
+      "properties": {
+        "order": {
+          "canBeNull": false,
+          "description": "Order created in order to migrate a service",
+          "fullType": "order.Order",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Order"
+        }
+      }
+    },
+    "me.incident.PercentagePromotion": {
+      "description": "Commercial gesture applied for the service migration",
+      "id": "PercentagePromotion",
+      "namespace": "me.incident",
+      "properties": {
+        "duration": {
+          "canBeNull": false,
+          "description": "Duration applied for the commercial gesture",
+          "fullType": "duration",
+          "readOnly": true,
+          "required": false,
+          "type": "duration"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "Percentage of the discount",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "me.incident.ProposedOffer": {
+      "description": "Commercial offer a customer can migrate his service to",
+      "id": "ProposedOffer",
+      "namespace": "me.incident",
+      "properties": {
+        "configurations": {
+          "canBeNull": false,
+          "description": "List of configurations used for the migration",
+          "fullType": "me.incident.ProposedOfferConfiguration[]",
+          "readOnly": true,
+          "required": false,
+          "type": "me.incident.ProposedOfferConfiguration[]"
+        },
+        "plan": {
+          "canBeNull": false,
+          "description": "Proposed commercial offer",
+          "fullType": "order.cart.GenericProductDefinition",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductDefinition"
+        },
+        "pricingMode": {
+          "canBeNull": false,
+          "description": "Pricing mode used to bill the offer",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "promotion": {
+          "canBeNull": false,
+          "description": "Promotion applied to the commercial offer",
+          "fullType": "me.incident.PercentagePromotion",
+          "readOnly": true,
+          "required": false,
+          "type": "me.incident.PercentagePromotion"
+        }
+      }
+    },
+    "me.incident.ProposedOfferConfiguration": {
+      "description": "Config",
+      "id": "ProposedOfferConfiguration",
+      "namespace": "me.incident",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "value",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "me.incident.ServiceMigration": {
+      "description": "Service you may migrate to a given offer",
+      "id": "ServiceMigration",
+      "namespace": "me.incident",
+      "properties": {
+        "addons": {
+          "canBeNull": false,
+          "description": "Options to migrate linked to the original service",
+          "fullType": "me.incident.ServiceMigration[]",
+          "readOnly": true,
+          "required": false,
+          "type": "me.incident.ServiceMigration[]"
+        },
+        "orderId": {
+          "canBeNull": true,
+          "description": "ID of an ongoing migration order",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "proposedOffer": {
+          "canBeNull": false,
+          "description": "Proposed commercial offer to replace the service",
+          "fullType": "me.incident.ProposedOffer",
+          "readOnly": true,
+          "required": false,
+          "type": "me.incident.ProposedOffer"
+        },
+        "serviceToMigrate": {
+          "canBeNull": true,
+          "description": "Description of the service to migrate",
+          "fullType": "me.incident.ServiceToMigrate",
+          "readOnly": true,
+          "required": false,
+          "type": "me.incident.ServiceToMigrate"
+        }
+      }
+    },
+    "me.incident.ServiceToMigrate": {
+      "description": "Original service that can be migrated",
+      "id": "ServiceToMigrate",
+      "namespace": "me.incident",
+      "properties": {
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the offer of the service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "metadata": {
+          "canBeNull": false,
+          "description": "Additional information on the service",
+          "fullType": "complexType.SafeKeyValue<string>[]",
+          "readOnly": true,
+          "required": false,
+          "type": "complexType.SafeKeyValue<string>[]"
+        },
+        "route": {
+          "canBeNull": true,
+          "description": "Route",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": "ID of the migratable service",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "serviceName": {
+          "canBeNull": false,
+          "description": "Name of the migratable service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "me.partnerLevel.Level": {
       "description": "Partner level of an account",
       "id": "Level",
@@ -14217,8 +14848,10 @@ export const schema: Schema = {
       "description": "Register integration type enum",
       "enum": [
         "NONE",
+        "COMPONENT",
         "IFRAME_VANTIV",
         "IN_CONTEXT",
+        "POST_FORM",
         "REDIRECT"
       ],
       "enumType": "string",
@@ -14420,6 +15053,14 @@ export const schema: Schema = {
           "required": false,
           "type": "payment.method.IntegrationType"
         },
+        "merchantId": {
+          "canBeNull": true,
+          "description": "Payment method merchant ID",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "oneshot": {
           "canBeNull": false,
           "description": "Payment method type is possible to pay in oneshot mode ?",
@@ -14427,6 +15068,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "boolean"
+        },
+        "paymentSubType": {
+          "canBeNull": true,
+          "description": "Payment method sub-type",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
         },
         "paymentType": {
           "canBeNull": false,
@@ -14545,6 +15194,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "formData": {
+          "canBeNull": true,
+          "description": "Additional payment information",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "orderId": {
           "canBeNull": true,
           "description": "Order ID to pay it if it's possible (in oneshot transaction or while registration)",
@@ -14576,6 +15233,29 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "boolean"
+        }
+      }
+    },
+    "me.payment.method.Details": {
+      "description": "Add details to one payment method challenge",
+      "id": "Details",
+      "namespace": "me.payment.method",
+      "properties": {
+        "details": {
+          "canBeNull": false,
+          "description": "Details data",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "transactionId": {
+          "canBeNull": false,
+          "description": "Transaction ID",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },
@@ -14806,6 +15486,14 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "transactionId": {
+          "canBeNull": false,
+          "description": "Linked transaction ID",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
         "url": {
           "canBeNull": true,
           "description": "Register validation URL",
@@ -14947,6 +15635,14 @@ export const schema: Schema = {
         "paymentMethodId": {
           "canBeNull": false,
           "description": "Registered new payment method ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "transactionId": {
+          "canBeNull": true,
+          "description": "Registered new transaction ID",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -15195,6 +15891,170 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "me.paymentMean.Paypal": {
+      "description": "Paypal informations",
+      "id": "Paypal",
+      "namespace": "me.paymentMean",
+      "properties": {
+        "agreementId": {
+          "canBeNull": false,
+          "description": "Paypal agreement",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Paypal creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "defaultPaymentMean": {
+          "canBeNull": false,
+          "description": "This paypal is the default payment mean?",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Custom description of this paypal",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "email": {
+          "canBeNull": false,
+          "description": "Paypal associated email",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "icon": {
+          "canBeNull": true,
+          "description": "Payment method type icon",
+          "fullType": "me.paymentMean.IconData",
+          "readOnly": true,
+          "required": false,
+          "type": "me.paymentMean.IconData"
+        },
+        "id": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Paypal state",
+          "fullType": "me.paymentMean.PaypalStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.paymentMean.PaypalStateEnum"
+        }
+      }
+    },
+    "me.paymentMean.PaypalChallengeCreation": {
+      "description": "Missing description",
+      "id": "PaypalChallengeCreation",
+      "namespace": "me.paymentMean",
+      "properties": {
+        "challenge": {
+          "canBeNull": false,
+          "description": "Payload to answer the challenge",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "me.paymentMean.PaypalCreation": {
+      "description": "Missing description",
+      "id": "PaypalCreation",
+      "namespace": "me.paymentMean",
+      "properties": {
+        "description": {
+          "canBeNull": true,
+          "description": "Custom description of this account",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "returnUrl": {
+          "canBeNull": true,
+          "description": "Callback URL where the customer will be redirected to after validation",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "setDefault": {
+          "canBeNull": true,
+          "description": "Set as default payment mean once validated",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "me.paymentMean.PaypalStateEnum": {
+      "description": "State of you paypal",
+      "enum": [
+        "failing",
+        "tooManyFailures",
+        "valid"
+      ],
+      "enumType": "string",
+      "id": "PaypalStateEnum",
+      "namespace": "me.paymentMean"
+    },
+    "me.paymentMean.PaypalValidation": {
+      "description": "A validation required to add a payment mean paypal",
+      "id": "PaypalValidation",
+      "namespace": "me.paymentMean",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "submitUrl": {
+          "canBeNull": true,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "URL where redirect for registration process",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "validationType": {
+          "canBeNull": false,
+          "description": "Kind of registration validation",
+          "fullType": "me.paymentMean.ValidationTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.paymentMean.ValidationTypeEnum"
         }
       }
     },
@@ -17707,6 +18567,37 @@ export const schema: Schema = {
         }
       }
     },
+    "order.Contract": {
+      "description": "A contract",
+      "id": "Contract",
+      "namespace": "order",
+      "properties": {
+        "content": {
+          "canBeNull": false,
+          "description": "Terms of the contract",
+          "fullType": "text",
+          "readOnly": true,
+          "required": false,
+          "type": "text"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the contract",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "URL to download the contract",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "order.CurrencyCodeEnum": {
       "description": "Currency code",
       "enum": [
@@ -17728,6 +18619,140 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "CurrencyCodeEnum",
       "namespace": "order"
+    },
+    "order.Order": {
+      "description": "An order",
+      "id": "Order",
+      "namespace": "order",
+      "properties": {
+        "contracts": {
+          "canBeNull": false,
+          "description": "List of contracts related to the order",
+          "fullType": "order.Contract[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Contract[]"
+        },
+        "details": {
+          "canBeNull": false,
+          "description": "Details of the order",
+          "fullType": "order.OrderDetail[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.OrderDetail[]"
+        },
+        "orderId": {
+          "canBeNull": true,
+          "description": "Identifier of the order",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "prices": {
+          "canBeNull": false,
+          "description": "Prices of the order including with and without taxes",
+          "fullType": "order.OrderPrices",
+          "readOnly": true,
+          "required": false,
+          "type": "order.OrderPrices"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "URL to download the order",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "order.OrderDetail": {
+      "description": "Detail of an order",
+      "id": "OrderDetail",
+      "namespace": "order",
+      "properties": {
+        "cartItemID": {
+          "canBeNull": true,
+          "description": "Cart Item ID the details is related to",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the detail",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "detailType": {
+          "canBeNull": true,
+          "description": "Type of detail",
+          "fullType": "order.OrderDetailTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.OrderDetailTypeEnum"
+        },
+        "domain": {
+          "canBeNull": false,
+          "description": "Service name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "originalTotalPrice": {
+          "canBeNull": false,
+          "description": "Original price of the detail before reduction application",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Quantity of the service",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "reductionTotalPrice": {
+          "canBeNull": false,
+          "description": "Total price of the reduction",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "reductions": {
+          "canBeNull": false,
+          "description": "List of reductions applied to the detail",
+          "fullType": "order.Reduction[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Reduction[]"
+        },
+        "totalPrice": {
+          "canBeNull": false,
+          "description": "Price total of the services",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "unitPrice": {
+          "canBeNull": false,
+          "description": "Unitary price of the service",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
     },
     "order.OrderDetailTypeEnum": {
       "description": "Product type of item in order",
@@ -17756,6 +18781,53 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "OrderDetailTypeEnum",
       "namespace": "order"
+    },
+    "order.OrderPrices": {
+      "description": "Prices of an order",
+      "id": "OrderPrices",
+      "namespace": "order",
+      "properties": {
+        "originalWithoutTax": {
+          "canBeNull": true,
+          "description": "Price before reduction application",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "reduction": {
+          "canBeNull": true,
+          "description": "Price concerning the reduced amount",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "tax": {
+          "canBeNull": false,
+          "description": "Tax amount",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "withTax": {
+          "canBeNull": false,
+          "description": "Price with tax",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "withoutTax": {
+          "canBeNull": false,
+          "description": "Price without tax",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
     },
     "order.Price": {
       "description": "Price with its currency and textual representation",
@@ -17787,6 +18859,248 @@ export const schema: Schema = {
           "type": "double"
         }
       }
+    },
+    "order.Reduction": {
+      "description": "Order detail reduction",
+      "id": "Reduction",
+      "namespace": "order",
+      "properties": {
+        "context": {
+          "canBeNull": false,
+          "description": "In which context the reduction is applied",
+          "fullType": "order.ReductionContextEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.ReductionContextEnum"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Reduction price applied with this promotion",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Reduction effect, price modification",
+          "fullType": "order.ReductionTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.ReductionTypeEnum"
+        },
+        "value": {
+          "canBeNull": false,
+          "description": "The reduction value",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        }
+      }
+    },
+    "order.ReductionContextEnum": {
+      "description": "Context of the reduction",
+      "enum": [
+        "promotion",
+        "voucher"
+      ],
+      "enumType": "string",
+      "id": "ReductionContextEnum",
+      "namespace": "order"
+    },
+    "order.ReductionTypeEnum": {
+      "description": "Type of reduction",
+      "enum": [
+        "percentage",
+        "forced_amount",
+        "fixed_amount"
+      ],
+      "enumType": "string",
+      "id": "ReductionTypeEnum",
+      "namespace": "order"
+    },
+    "order.cart.GenericProductDefinition": {
+      "description": "Representation of a generic product",
+      "id": "GenericProductDefinition",
+      "namespace": "order.cart",
+      "properties": {
+        "planCode": {
+          "canBeNull": false,
+          "description": "Product offer identifier",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "prices": {
+          "canBeNull": false,
+          "description": "Prices of the product offer",
+          "fullType": "order.cart.GenericProductPricing[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductPricing[]"
+        },
+        "productName": {
+          "canBeNull": false,
+          "description": "Name of the product",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "productType": {
+          "canBeNull": false,
+          "description": "Product type",
+          "fullType": "order.cart.GenericProductTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductTypeEnum"
+        }
+      }
+    },
+    "order.cart.GenericProductPricing": {
+      "description": "Representation of a product pricing",
+      "id": "GenericProductPricing",
+      "namespace": "order.cart",
+      "properties": {
+        "capacities": {
+          "canBeNull": false,
+          "description": "Capacities of the pricing (type of pricing)",
+          "fullType": "order.cart.GenericProductPricingCapacitiesEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductPricingCapacitiesEnum[]"
+        },
+        "description": {
+          "canBeNull": false,
+          "description": "Description of the pricing",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "duration": {
+          "canBeNull": false,
+          "description": "Duration for ordering the product",
+          "fullType": "duration",
+          "readOnly": true,
+          "required": false,
+          "type": "duration"
+        },
+        "interval": {
+          "canBeNull": false,
+          "description": "Interval of renewal",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maximumQuantity": {
+          "canBeNull": true,
+          "description": "Maximum quantity that can be ordered",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "maximumRepeat": {
+          "canBeNull": true,
+          "description": "Maximum repeat for renewal",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minimumQuantity": {
+          "canBeNull": false,
+          "description": "Minimum quantity that can be ordered",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minimumRepeat": {
+          "canBeNull": false,
+          "description": "Minimum repeat for renewal",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "price": {
+          "canBeNull": false,
+          "description": "Price of the product",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "priceInUcents": {
+          "canBeNull": false,
+          "description": "Price of the product in micro-centims",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "pricingMode": {
+          "canBeNull": false,
+          "description": "Pricing model identifier",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "pricingType": {
+          "canBeNull": false,
+          "description": "Pricing type",
+          "fullType": "order.cart.GenericProductPricingTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.cart.GenericProductPricingTypeEnum"
+        }
+      }
+    },
+    "order.cart.GenericProductPricingCapacitiesEnum": {
+      "description": "Capacity of a pricing (type)",
+      "enum": [
+        "installation",
+        "renew",
+        "upgrade",
+        "downgrade",
+        "detach",
+        "dynamic"
+      ],
+      "enumType": "string",
+      "id": "GenericProductPricingCapacitiesEnum",
+      "namespace": "order.cart"
+    },
+    "order.cart.GenericProductPricingTypeEnum": {
+      "description": "Type of a pricing",
+      "enum": [
+        "rental",
+        "consumption",
+        "purchase"
+      ],
+      "enumType": "string",
+      "id": "GenericProductPricingTypeEnum",
+      "namespace": "order.cart"
+    },
+    "order.cart.GenericProductTypeEnum": {
+      "description": "Type of a product",
+      "enum": [
+        "delivery",
+        "deposit",
+        "shipping",
+        "cloud_service",
+        "saas_license",
+        "storage",
+        "domain"
+      ],
+      "enumType": "string",
+      "id": "GenericProductTypeEnum",
+      "namespace": "order.cart"
     },
     "payment.method.AvailablePaymentMethod": {
       "description": "Available payment methods",
@@ -17861,9 +19175,11 @@ export const schema: Schema = {
     "payment.method.IntegrationType": {
       "description": "Payment method integration type",
       "enum": [
+        "COMPONENT",
         "DONE",
         "IFRAME_VANTIV",
         "IN_CONTEXT",
+        "POST_FORM",
         "REDIRECT"
       ],
       "enumType": "string",

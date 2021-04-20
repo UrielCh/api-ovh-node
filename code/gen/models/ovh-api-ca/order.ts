@@ -6846,6 +6846,109 @@ export const schema: Schema = {
       "path": "/order/cartServiceOption/webHosting/{serviceName}"
     },
     {
+      "description": "Operations about the WEBPAAS service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/cartServiceOption/webPaaS"
+    },
+    {
+      "description": "Listing offers /order/cartServiceOption/webPaaS/#serviceName#",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get informations about additional Web PaaS offer for your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The Web PaaS subscription Id",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Post an additional Web PaaS option in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart identifier",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Duration selected for the purchase of the product",
+              "fullType": "duration",
+              "name": "duration",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of the additional Web PaaS offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Pricing mode selected for the purchase of the product",
+              "fullType": "string",
+              "name": "pricingMode",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity of product desired",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The Web PaaS subscription Id",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cartServiceOption/webPaaS/{serviceName}"
+    },
+    {
       "description": "Missing description",
       "operations": [
         {
@@ -7753,6 +7856,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/order/catalog/public/webHosting"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve Web PaaS catalog",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult catalog",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.public.Catalog"
+        }
+      ],
+      "path": "/order/catalog/public/webPaaS"
     },
     {
       "description": "Operations about the CDNANYCAST service",

@@ -3497,6 +3497,13 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "boolean"
+        },
+        "isResellerOffer": {
+          "canBeNull": false,
+          "description": "Whether or not this pack is a reseller offer",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         }
       }
     },

@@ -3099,6 +3099,8 @@ export const schema: Schema = {
         "INFRA_002_VirtualNetworkInterface",
         "INFRA_002_VirtualNetworkInterface_group",
         "INFRA_002_VirtualNetworkInterface_ungroup",
+        "INFRA_ONE_NETWORK_VirtualNetworkInterface_group",
+        "INFRA_ONE_NETWORK_VirtualNetworkInterface_ungroup",
         "addVirtualMac",
         "addWindowSplaFromExistingSerial",
         "applyBackupFtpAcls",

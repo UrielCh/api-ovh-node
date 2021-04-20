@@ -8737,7 +8737,7 @@ export const schema: Schema = {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "The current calls of your line",
+          "description": "The active calls of your line as a call center agent",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [

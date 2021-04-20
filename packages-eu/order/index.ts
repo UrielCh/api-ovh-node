@@ -326,7 +326,7 @@ export namespace hosting {
          * Different Ruby versions available
          * type fullname: hosting.web.RubyVersionAvailableEnum
          */
-        export type RubyVersionAvailableEnum = "ruby-2.4" | "ruby-2.5" | "ruby-2.6"
+        export type RubyVersionAvailableEnum = "ruby-2.5" | "ruby-2.6"
         export namespace database {
             /**
              * Struct which describs quota and available for a specific type of database
@@ -3727,6 +3727,22 @@ export interface Order {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                options: {
+                    /**
+                     * Get information about webPaaS options
+                     * GET /order/cart/{cartId}/webPaaS/options
+                     */
+                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    /**
+                     * Post a new webPaaS option in your cart
+                     * POST /order/cart/{cartId}/webPaaS/options
+                     */
+                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
             }
             xdsl: {
                 /**
@@ -8095,6 +8111,44 @@ export interface Order {
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/webHosting/{serviceName}/{planCode}
+                     */
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            };
+        }
+        webPaaS: {
+            /**
+             * List available services
+             * GET /order/upgrade/webPaaS
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(serviceName: string): {
+                /**
+                 * Retrieve available offers to upgrade your service to
+                 * GET /order/upgrade/webPaaS/{serviceName}
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(planCode: string): {
+                    /**
+                     * Get a provisional order for the selected upgrade of your service
+                     * GET /order/upgrade/webPaaS/{serviceName}/{planCode}
+                     */
+                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    /**
+                     * Perform the requested upgrade of your service
+                     * POST /order/upgrade/webPaaS/{serviceName}/{planCode}
                      */
                     $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     /**

@@ -4127,6 +4127,125 @@ export const schema: Schema = {
         }
       }
     },
+    "ipLoadbalancing.Frontend.Frontend": {
+      "description": "Frontend",
+      "id": "Frontend",
+      "namespace": "ipLoadbalancing.Frontend",
+      "properties": {
+        "allowedSource": {
+          "canBeNull": true,
+          "description": "Restrict iplb access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time",
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
+        },
+        "dedicatedIpfo": {
+          "canBeNull": true,
+          "description": "Only attach frontend on these ip. No restriction if null",
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
+        },
+        "defaultBackendId": {
+          "canBeNull": true,
+          "description": "Default Backend of your frontend",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "defaultSslId": {
+          "canBeNull": true,
+          "description": "Default ssl served to your customer",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "deniedSource": {
+          "canBeNull": true,
+          "description": "Deny iplb access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time",
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
+        },
+        "disabled": {
+          "canBeNull": false,
+          "description": "Disable frontend. Default: 'false'",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "hsts": {
+          "canBeNull": false,
+          "description": "HTTP Strict Transport Security. Default: 'false'",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "httpHeader": {
+          "canBeNull": true,
+          "description": "Add header to your frontend. Useful variables admitted : %ci <=> client_ip, %cp <=> client_port",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Id of your frontend",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "port": {
+          "canBeNull": false,
+          "description": "Port(s) attached to your frontend",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "redirectLocation": {
+          "canBeNull": true,
+          "description": "HTTP redirection (Ex : http://www.ovh.com)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "ssl": {
+          "canBeNull": false,
+          "description": "SSL deciphering. Default: 'false'",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Type of your frontend",
+          "fullType": "ipLoadbalancing.ProxyTypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "ipLoadbalancing.ProxyTypeEnum"
+        },
+        "zone": {
+          "canBeNull": false,
+          "description": "Zone of you frontend",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "ipLoadbalancing.InstancesState": {
       "description": "A structure describing the current state of an IPLB instances",
       "id": "InstancesState",
@@ -4398,6 +4517,16 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "ProxyProtocolVersionEnum",
+      "namespace": "ipLoadbalancing"
+    },
+    "ipLoadbalancing.ProxyTypeEnum": {
+      "description": "Possible values for proxy type",
+      "enum": [
+        "http",
+        "tcp"
+      ],
+      "enumType": "string",
+      "id": "ProxyTypeEnum",
       "namespace": "ipLoadbalancing"
     },
     "ipLoadbalancing.Quota.Quota": {
@@ -5904,6 +6033,22 @@ export const schema: Schema = {
           "required": false,
           "type": "boolean"
         },
+        "vrackNetworkId": {
+          "canBeNull": true,
+          "description": "Internal Load Balancer identifier of the vRack private network attached to your frontend.",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "vrackVrouterId": {
+          "canBeNull": true,
+          "description": "Virtual Router Identifier. 1-255",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "zone": {
           "canBeNull": false,
           "description": "Zone of you frontend",
@@ -5998,6 +6143,22 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "boolean"
+        },
+        "vrackNetworkId": {
+          "canBeNull": true,
+          "description": "Internal Load Balancer identifier of the vRack private network attached to your frontend.",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "vrackVrouterId": {
+          "canBeNull": true,
+          "description": "Virtual Router Identifier. 1-255",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         },
         "zone": {
           "canBeNull": false,

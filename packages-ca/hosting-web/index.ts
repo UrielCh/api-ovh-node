@@ -6,6 +6,21 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  */
 export namespace cdn {
     /**
+     * Serie Name
+     * type fullname: cdn.DomainStatisticsNameEnum
+     */
+    export type DomainStatisticsNameEnum = "hit" | "miss"
+    /**
+     * Statistics Period
+     * type fullname: cdn.DomainStatisticsPeriodEnum
+     */
+    export type DomainStatisticsPeriodEnum = "day" | "week" | "month" | "year"
+    /**
+     * Serie Unit
+     * type fullname: cdn.DomainStatisticsUnitEnum
+     */
+    export type DomainStatisticsUnitEnum = "req/min"
+    /**
      * Domain status
      * type fullname: cdn.DomainStatusEnum
      */
@@ -26,6 +41,11 @@ export namespace cdn {
      */
     export type OperationStatusEnum = "todo" | "doing" | "done" | "error" | "cancelled"
     /**
+     * Option category
+     * type fullname: cdn.OptionCategoryEnum
+     */
+    export type OptionCategoryEnum = "cache" | "performance" | "security"
+    /**
      * Option pattern type
      * type fullname: cdn.OptionPatternTypeEnum
      */
@@ -34,7 +54,7 @@ export namespace cdn {
      * Option type
      * type fullname: cdn.OptionTypeEnum
      */
-    export type OptionTypeEnum = "devmode" | "brotli" | "cache_rule"
+    export type OptionTypeEnum = "devmode" | "brotli" | "cache_rule" | "https_redirect" | "hsts" | "mixed_content" | "cors" | "waf"
     /**
      * Option type
      * type fullname: cdn.OptionTypePostEnum
@@ -45,6 +65,7 @@ export namespace cdn {
      * interface fullName: cdn.availableOptions.availableOptions
      */
     export interface availableOptions {
+        category?: cdn.OptionCategoryEnum;
         maxItems: number;
         type: string;
     }
@@ -90,9 +111,30 @@ export namespace cdn {
              * interface fullName: cdn.domain.option.config.config
              */
             export interface config {
+                origins?: string;
                 patternType?: cdn.OptionPatternTypeEnum;
                 priority?: number;
+                statusCode?: number;
                 ttl?: number;
+            }
+        }
+        /**
+         * Domain Statistics Datapoints
+         * interface fullName: cdn.domain.statistics.statistics
+         */
+        export interface statistics {
+            name: cdn.DomainStatisticsNameEnum;
+            points: cdn.domain.statistics.point[];
+            unit: cdn.DomainStatisticsUnitEnum;
+        }
+        export namespace statistics {
+            /**
+             * Statistics Datapoint
+             * interface fullName: cdn.domain.statistics.point.point
+             */
+            export interface point {
+                timestamp: number;
+                value?: number;
             }
         }
     }
@@ -300,7 +342,7 @@ export namespace hosting {
          * Hosting's offer
          * type fullname: hosting.web.OfferCapabilitiesEnum
          */
-        export type OfferCapabilitiesEnum = "1000gp" | "20gp" | "240gp" | "240pack" | "240plan" | "300gp" | "60gp" | "720pack" | "720plan" | "90pack" | "90plan" | "CLOUDWEB_1" | "CLOUDWEB_2" | "CLOUDWEB_3" | "KS" | "PERFORMANCE_1" | "PERFORMANCE_2" | "PERFORMANCE_3" | "PERFORMANCE_4" | "PERSO" | "POWER_BETA_1" | "PRO" | "START" | "business" | "cloudweb1" | "cloudweb2" | "cloudweb3" | "cloudwebbetax1" | "depro2012" | "deprol2012" | "deproxl2012" | "deproxxl2012" | "destart2012" | "destartl2012" | "destartxl2012" | "domainpack" | "itbusiness2012" | "itperso2012" | "itpremium2012" | "kimsufi2015" | "mailpack" | "mailplan" | "mediapack" | "mediaplan" | "ovhpro1To" | "ovhpro2To" | "ovhpro5To" | "paas2014beta" | "perf2014x1" | "perf2014x2" | "perf2014x3" | "perf2014x4" | "perso2010" | "perso2014" | "powerBeta1" | "premium" | "pro2010" | "pro2014" | "start10g" | "start10m" | "start1g" | "start1ges" | "start1m" | "start5g" | "starter" | "xxlpack" | "xxlplan"
+        export type OfferCapabilitiesEnum = "1000gp" | "20gp" | "240gp" | "240pack" | "240plan" | "300gp" | "60gp" | "720pack" | "720plan" | "90pack" | "90plan" | "CLOUDWEB_1" | "CLOUDWEB_2" | "CLOUDWEB_3" | "KS" | "PERFORMANCE_1" | "PERFORMANCE_2" | "PERFORMANCE_3" | "PERFORMANCE_4" | "PERSO" | "POWER_BETA_1" | "PRO" | "START" | "business" | "cloudweb1" | "cloudweb2" | "cloudweb3" | "cloudwebbetax1" | "depro2012" | "deprol2012" | "deproxl2012" | "deproxxl2012" | "destart2012" | "destartl2012" | "destartxl2012" | "domainpack" | "hostingAtScaleX128" | "hostingAtScaleX16" | "hostingAtScaleX20" | "hostingAtScaleX24" | "hostingAtScaleX32" | "hostingAtScaleX64" | "hostingAtScaleX8" | "itbusiness2012" | "itperso2012" | "itpremium2012" | "kimsufi2015" | "mailpack" | "mailplan" | "mediapack" | "mediaplan" | "ovhpro1To" | "ovhpro2To" | "ovhpro5To" | "paas2014beta" | "perf2014x1" | "perf2014x2" | "perf2014x3" | "perf2014x4" | "perso2010" | "perso2014" | "powerBeta1" | "powerbeta1" | "premium" | "pro2010" | "pro2014" | "start10g" | "start10m" | "start1g" | "start1ges" | "start1m" | "start5g" | "starter" | "xxlpack" | "xxlplan"
         /**
          * Hosting's offer
          * type fullname: hosting.web.OfferEnum
@@ -356,7 +398,7 @@ export namespace hosting {
          * Different Ruby versions available
          * type fullname: hosting.web.RubyVersionAvailableEnum
          */
-        export type RubyVersionAvailableEnum = "ruby-2.4" | "ruby-2.5" | "ruby-2.6"
+        export type RubyVersionAvailableEnum = "ruby-2.5" | "ruby-2.6"
         /**
          * Web Hosting
          * interface fullName: hosting.web.Service.Service
@@ -422,10 +464,12 @@ export namespace hosting {
          * interface fullName: hosting.web.attachedDomain.attachedDomain
          */
         export interface attachedDomain {
+            capabilities: hosting.web.attachedDomain.Capabilities[];
             cdn: hosting.web.attachedDomain.CdnEnum;
             domain: string;
             firewall: hosting.web.attachedDomain.FirewallEnum;
             ipLocation?: hosting.web.CountryEnum;
+            isFlushable: boolean;
             ownLog?: string;
             path: string;
             runtimeId?: number;
@@ -434,6 +478,16 @@ export namespace hosting {
             taskId?: number;
         }
         export namespace attachedDomain {
+            /**
+             * Provides the capabilities related to the attachedDomain
+             * interface fullName: hosting.web.attachedDomain.Capabilities.Capabilities
+             */
+            export interface Capabilities {
+                description: string;
+                href: string;
+                key: string;
+                method: hosting.web.attachedDomain.MethodEnum;
+            }
             /**
              * Attached domain cdn enum
              * type fullname: hosting.web.attachedDomain.CdnEnum
@@ -444,6 +498,11 @@ export namespace hosting {
              * type fullname: hosting.web.attachedDomain.FirewallEnum
              */
             export type FirewallEnum = "active" | "none"
+            /**
+             * Method type
+             * type fullname: hosting.web.attachedDomain.MethodEnum
+             */
+            export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
             /**
              * AttachedDomain status
              * type fullname: hosting.web.attachedDomain.StatusEnum
@@ -540,7 +599,7 @@ export namespace hosting {
              * Cron's language
              * type fullname: hosting.web.cron.LanguageEnum
              */
-            export type LanguageEnum = "node10" | "node11" | "node12" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "php7.4" | "php8.0" | "python2" | "python3" | "ruby2.4" | "ruby2.5" | "ruby2.6"
+            export type LanguageEnum = "node10" | "node11" | "node12" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "php7.4" | "php8.0" | "python2" | "python3" | "ruby2.5" | "ruby2.6"
             /**
              * Cron state
              * type fullname: hosting.web.cron.StateEnum
@@ -1157,7 +1216,7 @@ export namespace hosting {
              * Runtime backend type enum
              * type fullname: hosting.web.runtime.TypeEnum
              */
-            export type TypeEnum = "nodejs-10" | "nodejs-11" | "nodejs-12" | "nodejs-8" | "nodejs-9" | "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3" | "phpfpm-7.4" | "python-2" | "python-3" | "ruby-2.4" | "ruby-2.5" | "ruby-2.6"
+            export type TypeEnum = "nodejs-10" | "nodejs-11" | "nodejs-12" | "nodejs-8" | "nodejs-9" | "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3" | "phpfpm-7.4" | "python-2" | "python-3" | "ruby-2.5" | "ruby-2.6"
         }
         /**
          * Hostedssl
@@ -1537,7 +1596,7 @@ export interface Hosting {
                      * Alter this object properties
                      * PUT /hosting/web/{serviceName}/attachedDomain/{domain}
                      */
-                    $put(params?: { cdn?: hosting.web.attachedDomain.CdnEnum, domain?: string, firewall?: hosting.web.attachedDomain.FirewallEnum, ipLocation?: hosting.web.CountryEnum, ownLog?: string, path?: string, runtimeId?: number, ssl?: boolean, status?: hosting.web.attachedDomain.StatusEnum, taskId?: number }): Promise<void>;
+                    $put(params?: { capabilities?: hosting.web.attachedDomain.Capabilities[], cdn?: hosting.web.attachedDomain.CdnEnum, domain?: string, firewall?: hosting.web.attachedDomain.FirewallEnum, ipLocation?: hosting.web.CountryEnum, isFlushable?: boolean, ownLog?: string, path?: string, runtimeId?: number, ssl?: boolean, status?: hosting.web.attachedDomain.StatusEnum, taskId?: number }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -1705,6 +1764,17 @@ export interface Hosting {
                              * POST /hosting/web/{serviceName}/cdn/domain/{domainName}/refresh
                              */
                             $post(): Promise<cdn.operation>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        statistics: {
+                            /**
+                             * Get CDN statistics for a domain
+                             * GET /hosting/web/{serviceName}/cdn/domain/{domainName}/statistics
+                             */
+                            $get(params?: { period?: cdn.DomainStatisticsPeriodEnum }): Promise<cdn.domain.statistics[]>;
                             /**
                              * Controle cache
                              */

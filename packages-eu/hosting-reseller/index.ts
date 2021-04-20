@@ -7,11 +7,27 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
 export namespace hosting {
     export namespace reseller {
         /**
+         * Plesk to Public Cloud migration status type
+         * type fullname: hosting.reseller.metaMigrationStatusTypeEnum
+         */
+        export type metaMigrationStatusTypeEnum = "done" | "pending" | "planned"
+        /**
+         * Plesk instance migration meta details
+         * interface fullName: hosting.reseller.metaMigrationType.metaMigrationType
+         */
+        export interface metaMigrationType {
+            contractApproved: boolean;
+            dateOfApproval?: string;
+            pcProject?: string;
+            status: hosting.reseller.metaMigrationStatusTypeEnum;
+        }
+        /**
          * Plesk instance meta details
          * interface fullName: hosting.reseller.metaType.metaType
          */
         export interface metaType {
             email: string;
+            migration?: hosting.reseller.metaMigrationType;
             region: string;
         }
         /**
@@ -194,6 +210,17 @@ export interface Hosting {
                  * POST /hosting/reseller/{serviceName}/language
                  */
                 $post(params: { language: reseller.pleskLanguageTypeEnum }): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            migration: {
+                /**
+                 * Register a migration request
+                 * POST /hosting/reseller/{serviceName}/migration
+                 */
+                $post(params: { pcProject: string, readAndAgreedContract: boolean }): Promise<string>;
                 /**
                  * Controle cache
                  */

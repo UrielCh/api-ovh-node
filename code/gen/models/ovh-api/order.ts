@@ -8012,6 +8012,67 @@ export const schema: Schema = {
       "path": "/order/cart/{cartId}/webPaaS"
     },
     {
+      "description": "webPaaS options",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get information about webPaaS options",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Identifier of a webPaaS offer",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericOptionDefinition[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Post a new webPaaS option in your cart",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "order.cart.GenericOptionCreation",
+              "description": "Request Body",
+              "fullType": "order.cart.GenericOptionCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Cart ID",
+              "fullType": "string",
+              "name": "cartId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.Item"
+        }
+      ],
+      "path": "/order/cart/{cartId}/webPaaS/options"
+    },
+    {
       "description": "List of xdsl product",
       "operations": [
         {
@@ -26353,6 +26414,135 @@ export const schema: Schema = {
       "path": "/order/upgrade/webHosting/{serviceName}/{planCode}"
     },
     {
+      "description": "Operations about the WEBPAAS service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/upgrade/webPaaS"
+    },
+    {
+      "description": "Listing offers /order/upgrade/webPaaS",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve available offers to upgrade your service to",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The WebPaaS service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        }
+      ],
+      "path": "/order/upgrade/webPaaS/{serviceName}"
+    },
+    {
+      "description": "Listing offers /order/upgrade/webPaaS/#serviceName#",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a provisional order for the selected upgrade of your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The WebPaaS service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.upgrade.OperationAndOrder"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Perform the requested upgrade of your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "Indicates that order will be automatically paid with preferred payment method",
+              "fullType": "boolean",
+              "name": "autoPayWithPreferredPaymentMethod",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The WebPaaS service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.upgrade.OperationAndOrder"
+        }
+      ],
+      "path": "/order/upgrade/webPaaS/{serviceName}/{planCode}"
+    },
+    {
       "description": "Operations about the VEEAMCC service",
       "operations": [
         {
@@ -28863,7 +29053,6 @@ export const schema: Schema = {
     "hosting.web.RubyVersionAvailableEnum": {
       "description": "Different Ruby versions available",
       "enum": [
-        "ruby-2.4",
         "ruby-2.5",
         "ruby-2.6"
       ],

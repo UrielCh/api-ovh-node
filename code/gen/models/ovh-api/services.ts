@@ -159,6 +159,39 @@ export const schema: Schema = {
       "path": "/services/{serviceId}/billing/engagement/endRule"
     },
     {
+      "description": "Flush the engagement of this service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Flush the engagement of this service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "services.billing.engagement.EngagementFlushRequest",
+              "description": "Request Body",
+              "fullType": "services.billing.engagement.EngagementFlushRequest",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.billing.engagement.EngagementFlushOrder"
+        }
+      ],
+      "path": "/services/{serviceId}/billing/engagement/flush"
+    },
+    {
       "description": "Manage the Engagement request on this Service",
       "operations": [
         {
@@ -499,6 +532,32 @@ export const schema: Schema = {
         }
       ],
       "path": "/services/{serviceId}/options"
+    },
+    {
+      "description": "View the technical details of the service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "View the technical details of the service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.expanded.TechnicalDetails"
+        }
+      ],
+      "path": "/services/{serviceId}/technicalDetails"
     },
     {
       "description": "Upgrade your offer to another offer",
@@ -1527,6 +1586,52 @@ export const schema: Schema = {
         }
       }
     },
+    "services.billing.engagement.EngagementFlushOrder": {
+      "description": "Order created when flushing the engagement of a service",
+      "id": "EngagementFlushOrder",
+      "namespace": "services.billing.engagement",
+      "properties": {
+        "order": {
+          "canBeNull": false,
+          "description": "Order created to flush the engagement of the service",
+          "fullType": "order.Order",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Order"
+        }
+      }
+    },
+    "services.billing.engagement.EngagementFlushRequest": {
+      "description": "Parameters needed to flush the engagement",
+      "id": "EngagementFlushRequest",
+      "namespace": "services.billing.engagement",
+      "properties": {
+        "autoPayWithPreferredPaymentMethod": {
+          "canBeNull": false,
+          "description": "Indicates that order, if needed, will be automatically paid with preferred payment method",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "dryRun": {
+          "canBeNull": false,
+          "description": "If false, the order will be registered; if true, the order will be returned but not registered. Useful to compute prices",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "terminateSubscription": {
+          "canBeNull": false,
+          "description": "If true, when the order will be paid, the service termination workflow will automatically be started",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
     "services.billing.engagement.EngagementPeriod": {
       "description": "Period of Engagement",
       "id": "EngagementPeriod",
@@ -2478,6 +2583,14 @@ export const schema: Schema = {
           "required": false,
           "type": "services.expanded.technical.baremetalServer.Bandwidth"
         },
+        "gpu": {
+          "canBeNull": true,
+          "description": "Technical information on server gpu",
+          "fullType": "services.expanded.technical.baremetalServer.Gpu",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.Gpu"
+        },
         "memory": {
           "canBeNull": true,
           "description": "Technical information on server memory",
@@ -2512,11 +2625,34 @@ export const schema: Schema = {
         }
       }
     },
+    "services.expanded.technical.baremetalServer.Aggregation": {
+      "description": "Aggregation information",
+      "id": "Aggregation",
+      "namespace": "services.expanded.technical.baremetalServer",
+      "properties": {
+        "upTo": {
+          "canBeNull": false,
+          "description": "Maximum aggregated bandwidth (in Mbps)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "services.expanded.technical.baremetalServer.Bandwidth": {
       "description": "Technical information on bandwidth of a baremetal service",
       "id": "Bandwidth",
       "namespace": "services.expanded.technical.baremetalServer",
       "properties": {
+        "aggregation": {
+          "canBeNull": true,
+          "description": "Aggregation information",
+          "fullType": "services.expanded.technical.baremetalServer.Aggregation",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.Aggregation"
+        },
         "burst": {
           "canBeNull": false,
           "description": "Bandwidth burst",
@@ -2544,6 +2680,60 @@ export const schema: Schema = {
         "limit": {
           "canBeNull": false,
           "description": "Bandwidth limit",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "services.expanded.technical.baremetalServer.Gpu": {
+      "description": "Technical details for a GPU",
+      "id": "Gpu",
+      "namespace": "services.expanded.technical.baremetalServer",
+      "properties": {
+        "brand": {
+          "canBeNull": false,
+          "description": "GPU brand",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "memory": {
+          "canBeNull": false,
+          "description": "GPU memory",
+          "fullType": "services.expanded.technical.baremetalServer.GpuMemory",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.GpuMemory"
+        },
+        "model": {
+          "canBeNull": false,
+          "description": "GPU model",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "number": {
+          "canBeNull": false,
+          "description": "Number of GPUs",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "services.expanded.technical.baremetalServer.GpuMemory": {
+      "description": "Technical details for a GPU Memory",
+      "id": "GpuMemory",
+      "namespace": "services.expanded.technical.baremetalServer",
+      "properties": {
+        "size": {
+          "canBeNull": false,
+          "description": "Memory size (in GB)",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -2649,6 +2839,14 @@ export const schema: Schema = {
       "id": "Vrack",
       "namespace": "services.expanded.technical.baremetalServer",
       "properties": {
+        "aggregation": {
+          "canBeNull": true,
+          "description": "Aggregation information",
+          "fullType": "services.expanded.technical.baremetalServer.Aggregation",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.Aggregation"
+        },
         "burst": {
           "canBeNull": false,
           "description": "Bandwidth burst",

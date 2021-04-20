@@ -1214,8 +1214,8 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Customer identifier for shipping address. By default Internet access address will be used.",
-              "fullType": "coreTypes.AccountId:string",
+              "description": "Customer identifier for shipping address. By default Internet access address will be used. Allowed values are nichandle or «/me/contact/xyz»",
+              "fullType": "string",
               "name": "contactShipping",
               "paramType": "body",
               "required": false

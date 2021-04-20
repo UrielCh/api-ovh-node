@@ -169,6 +169,229 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/activateMonthlyBilling"
     },
     {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List all available regions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/capabilities/loadbalancer/region"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get specific information of a region",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.loadbalancer.Region"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/capabilities/loadbalancer/region/{regionName}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List all Certificates for a tenant",
+          "errors": [
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::CouldNotDeleteCertificate",
+            "Client::Forbidden::QuotaReached",
+            "Server::InternalServerError::CouldNotImportCertificate",
+            "Server::InternalServerError::CouldNotListCertificate",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotSerializeResponse",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "operationId": "listCertificates",
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Add a new certificate",
+          "errors": [
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::CouldNotDeleteCertificate",
+            "Client::Forbidden::QuotaReached",
+            "Server::InternalServerError::CouldNotImportCertificate",
+            "Server::InternalServerError::CouldNotListCertificate",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotSerializeResponse",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "operationId": "addCertificate",
+          "parameters": [
+            {
+              "dataType": "cloud.project.CertificateAdd",
+              "description": "Request Body",
+              "fullType": "cloud.project.CertificateAdd",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.Certificate"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/certificate"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a certificate",
+          "errors": [
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::CouldNotDeleteCertificate",
+            "Client::Forbidden::QuotaReached",
+            "Server::InternalServerError::CouldNotImportCertificate",
+            "Server::InternalServerError::CouldNotListCertificate",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotSerializeResponse",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "operationId": "deleteCertificate",
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Certificate ID",
+              "fullType": "uuid",
+              "name": "certificateId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a certificate",
+          "errors": [
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::CouldNotDeleteCertificate",
+            "Client::Forbidden::QuotaReached",
+            "Server::InternalServerError::CouldNotImportCertificate",
+            "Server::InternalServerError::CouldNotListCertificate",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotSerializeResponse",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "operationId": "getCertificate",
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Certificate ID",
+              "fullType": "uuid",
+              "name": "certificateId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.Certificate"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/certificate/{certificateId}"
+    },
+    {
       "description": "Confirm termination of your service",
       "operations": [
         {
@@ -1624,6 +1847,635 @@ export const schema: Schema = {
       "path": "/cloud/project/{serviceName}/lab/{labId}/agreement"
     },
     {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List all load balancer for a tenant",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "operationId": "listLoadBalancers",
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "uuid[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a load balancer",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "operationId": "createLoadBalancer",
+          "parameters": [
+            {
+              "dataType": "cloud.project.LoadBalancerCreation",
+              "description": "Request Body",
+              "fullType": "cloud.project.LoadBalancerCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.LoadBalancer"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/loadbalancer"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a load balancer",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "operationId": "deleteLoadBalancer",
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Load balancer ID",
+              "fullType": "uuid",
+              "name": "loadBalancerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a load balancer",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "operationId": "getLoadBalancer",
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Load balancer ID",
+              "fullType": "uuid",
+              "name": "loadBalancerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.LoadBalancer"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Update a load balancer",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "operationId": "updateLoadBalancer",
+          "parameters": [
+            {
+              "dataType": "cloud.project.LoadBalancer",
+              "description": "Request Body",
+              "fullType": "cloud.project.LoadBalancer",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Load balancer ID",
+              "fullType": "uuid",
+              "name": "loadBalancerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.LoadBalancer"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/loadbalancer/{loadBalancerId}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List all versions of the configuration",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "operationId": "listLoadBalancerConfigurations",
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Load balancer ID",
+              "fullType": "uuid",
+              "name": "loadBalancerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "long[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Create a configuration",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "operationId": "createLoadBalancerConfiguration",
+          "parameters": [
+            {
+              "dataType": "cloud.project.loadbalancer.ConfigurationCreation",
+              "description": "Request Body",
+              "fullType": "cloud.project.loadbalancer.ConfigurationCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "uuid",
+              "description": "Load balancer ID",
+              "fullType": "uuid",
+              "name": "loadBalancerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.loadbalancer.Configuration"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/loadbalancer/{loadBalancerId}/configuration"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete a configuration",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "operationId": "deleteLoadBalancerConfiguration",
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Load balancer ID",
+              "fullType": "uuid",
+              "name": "loadBalancerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Version",
+              "fullType": "long",
+              "name": "version",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a configuration",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "operationId": "getLoadBalancerConfiguration",
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Load balancer ID",
+              "fullType": "uuid",
+              "name": "loadBalancerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Version",
+              "fullType": "long",
+              "name": "version",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.loadbalancer.Configuration"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/loadbalancer/{loadBalancerId}/configuration/{version}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Apply a configuration",
+          "errors": [
+            "Client::BadRequest::CouldNotAssignIPToLoadBalancer",
+            "Client::BadRequest::CouldNotAssignRegionToLoadBalancer",
+            "Client::BadRequest::CouldNotCreateLoadBalancerConfigurationVersionMismatch",
+            "Client::BadRequest::CouldNotCurrentDeleteLoadBalancerConfiguration",
+            "Client::BadRequest::UnprocessableEntity",
+            "Client::Forbidden::LoadBalancerIsFrozen",
+            "Client::Forbidden::NotWhiteListed",
+            "Server::InternalServerError::CouldNotApplyLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotCreateLoadBalancer",
+            "Server::InternalServerError::CouldNotCreateLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancer",
+            "Server::InternalServerError::CouldNotDeleteLoadBalancerConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancer",
+            "Server::InternalServerError::CouldNotFindLoadBalancerConfigurations",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIP",
+            "Server::InternalServerError::CouldNotFindLoadBalancerIPAddresses",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLastAppliedConfiguration",
+            "Server::InternalServerError::CouldNotFindLoadBalancerLatestConfiguration",
+            "Server::InternalServerError::CouldNotFindRegion",
+            "Server::InternalServerError::CouldNotListLoadBalancers",
+            "Server::InternalServerError::CouldNotListRegions",
+            "Server::InternalServerError::CouldNotParseRequest",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancer",
+            "Server::InternalServerError::CouldNotUpdateLoadBalancerConfiguration",
+            "Server::InternalServerError::MarshalingError",
+            "Server::InternalServerError::MissingParameterInRequestContext"
+          ],
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "operationId": "applyLoadBalancerConfiguration",
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Load balancer ID",
+              "fullType": "uuid",
+              "name": "loadBalancerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Version",
+              "fullType": "long",
+              "name": "version",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.loadbalancer.Configuration"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/loadbalancer/{loadBalancerId}/configuration/{version}/apply"
+    },
+    {
       "description": "Missing description",
       "operations": [
         {
@@ -2348,6 +3200,103 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/region/{regionName}/quota/allowed"
+    },
+    {
+      "description": "Get storage quotas",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete storage quota on region",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get storage quotas on region",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.quota.storage.Quota"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Update storage quota on region",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.quota.storage.QuotaUpdate",
+              "description": "Request Body",
+              "fullType": "cloud.quota.storage.QuotaUpdate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Region name",
+              "fullType": "string",
+              "name": "regionName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/region/{regionName}/quota/storage"
     },
     {
       "description": "Manage your automated backups",
@@ -3800,7 +4749,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.S3Credentials[]"
+          "responseType": "cloud.user.S3CredentialsWithSecret[]"
         },
         {
           "apiStatus": {
@@ -3906,7 +4855,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "cloud.user.S3Credentials"
+          "responseType": "cloud.user.S3CredentialsWithSecret"
         }
       ],
       "path": "/cloud/project/{serviceName}/user/{userId}/s3Credentials/{access}"
@@ -7935,6 +8884,413 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.Certificate": {
+      "description": "A Certificate to use in your NFVs",
+      "id": "Certificate",
+      "namespace": "cloud.project",
+      "properties": {
+        "expireAt": {
+          "canBeNull": false,
+          "description": "Date after when the certificate is not valid",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "fingerprint": {
+          "canBeNull": false,
+          "description": "Fingerprint of the cert (prefixed by hashing algorithm used)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Unique ID of the certificate",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "issuer": {
+          "canBeNull": false,
+          "description": "Issue of the certificate (extract from certificate)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "kind": {
+          "canBeNull": false,
+          "description": "Kind of certificate",
+          "fullType": "cloud.project.CertificateKindEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.CertificateKindEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the certificate",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "serialNumber": {
+          "canBeNull": false,
+          "description": "Serial number of the certificate (extract from certificate)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "serverAlternativeNames": {
+          "canBeNull": false,
+          "description": "List of SANs (extract from certificate)",
+          "fullType": "cloud.project.certificate.ServerAlternativeName[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.certificate.ServerAlternativeName[]"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Certificate status, to quickly know it can safely be used",
+          "fullType": "cloud.project.CertificateStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.CertificateStatusEnum"
+        },
+        "subject": {
+          "canBeNull": false,
+          "description": "Subject of the certificate (extract from certificate)",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "validAt": {
+          "canBeNull": false,
+          "description": "Date after when the certificate is valid",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Version of certificate (incremented every time you push a new certificate with the same name)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.CertificateAdd": {
+      "description": "Add a new certificate",
+      "id": "CertificateAdd",
+      "namespace": "cloud.project",
+      "properties": {
+        "import": {
+          "canBeNull": true,
+          "description": "Import an existing certificate",
+          "fullType": "cloud.project.certificate.Import",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.certificate.Import"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the certificate",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.CertificateKindEnum": {
+      "description": "Certificate kind",
+      "enum": [
+        "IMPORTED"
+      ],
+      "enumType": "string",
+      "id": "CertificateKindEnum",
+      "namespace": "cloud.project"
+    },
+    "cloud.project.CertificateStatusEnum": {
+      "description": "Certificate status",
+      "enum": [
+        "OK",
+        "EXPIRED",
+        "NOT_YET_VALID",
+        "REVOKED"
+      ],
+      "enumType": "string",
+      "id": "CertificateStatusEnum",
+      "namespace": "cloud.project"
+    },
+    "cloud.project.HTTPLoadBalancer": {
+      "description": "A HTTP load balancer to handle workload",
+      "id": "HTTPLoadBalancer",
+      "namespace": "cloud.project",
+      "properties": {
+        "address": {
+          "canBeNull": false,
+          "description": "Address to reach the HTTP load balancer",
+          "fullType": "cloud.project.loadbalancer.Address",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Address"
+        },
+        "configuration": {
+          "canBeNull": false,
+          "description": "Information about version of the configuration",
+          "fullType": "cloud.project.loadbalancer.ConfigurationVersion",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.ConfigurationVersion"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Creation date and time of the HTTP load balancer",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Description of the HTTP load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "egressAddress": {
+          "canBeNull": false,
+          "description": "IPs used by the HTTP load balancer to contact backend's servers",
+          "fullType": "cloud.project.loadbalancer.Addresses",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Addresses"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the HTTP load balancer",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name of the HTTP load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region where the HTTP load balancer is hosted",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of a HTTP load balancer",
+          "fullType": "cloud.project.loadbalancer.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.StatusEnum"
+        }
+      }
+    },
+    "cloud.project.HTTPLoadBalancerCreation": {
+      "description": "A load balancer to handle workload",
+      "id": "HTTPLoadBalancerCreation",
+      "namespace": "cloud.project",
+      "properties": {
+        "description": {
+          "canBeNull": true,
+          "description": "Description of the HTTP load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the HTTP load balancer",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name of the HTTP load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "networking": {
+          "canBeNull": true,
+          "description": "Networking definition",
+          "fullType": "cloud.project.loadbalancer.networking.NetworkingCreation",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.NetworkingCreation"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region where the HTTP load balancer is hosted",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.LoadBalancer": {
+      "description": "A load balancer to handle workload",
+      "id": "LoadBalancer",
+      "namespace": "cloud.project",
+      "properties": {
+        "address": {
+          "canBeNull": false,
+          "description": "Address to reach the load balancer",
+          "fullType": "cloud.project.loadbalancer.Address",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Address"
+        },
+        "configuration": {
+          "canBeNull": false,
+          "description": "Information about version of the configuration",
+          "fullType": "cloud.project.loadbalancer.ConfigurationVersion",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.ConfigurationVersion"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Creation date and time of the load balancer",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Description of the load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "egressAddress": {
+          "canBeNull": false,
+          "description": "IPs used by the load balancer to contact backend's servers",
+          "fullType": "cloud.project.loadbalancer.Addresses",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Addresses"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the load balancer",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name of the load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "networking": {
+          "canBeNull": false,
+          "description": "Networking definition",
+          "fullType": "cloud.project.loadbalancer.networking.Networking",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.Networking"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of a load balancer",
+          "fullType": "cloud.project.loadbalancer.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.StatusEnum"
+        }
+      }
+    },
+    "cloud.project.LoadBalancerCreation": {
+      "description": "A load balancer to handle workload",
+      "id": "LoadBalancerCreation",
+      "namespace": "cloud.project",
+      "properties": {
+        "description": {
+          "canBeNull": true,
+          "description": "Description of the load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the load balancer",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name of the load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "networking": {
+          "canBeNull": true,
+          "description": "Networking definition",
+          "fullType": "cloud.project.loadbalancer.networking.NetworkingCreation",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.NetworkingCreation"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
     "cloud.project.ProjectStatus": {
       "description": "Possible values for project status",
       "enum": [
@@ -7960,6 +9316,1222 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "ProjectStatusEnum",
       "namespace": "cloud.project"
+    },
+    "cloud.project.certificate.Import": {
+      "description": "Import external certificate",
+      "id": "Import",
+      "namespace": "cloud.project.certificate",
+      "properties": {
+        "cert": {
+          "canBeNull": false,
+          "description": "PEM encoded certificate",
+          "fullType": "text",
+          "readOnly": false,
+          "required": true,
+          "type": "text"
+        },
+        "chain": {
+          "canBeNull": true,
+          "description": "Optional PEM encoded certificate chain",
+          "fullType": "text",
+          "readOnly": false,
+          "required": false,
+          "type": "text"
+        },
+        "key": {
+          "canBeNull": false,
+          "description": "PEM encoded certificate private key",
+          "fullType": "password",
+          "readOnly": false,
+          "required": true,
+          "type": "password"
+        }
+      }
+    },
+    "cloud.project.certificate.ServerAlternativeName": {
+      "description": "Certificate SAN",
+      "id": "ServerAlternativeName",
+      "namespace": "cloud.project.certificate",
+      "properties": {
+        "kind": {
+          "canBeNull": false,
+          "description": "SAN kind",
+          "fullType": "cloud.project.certificate.ServerAlternativeNameKindEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.certificate.ServerAlternativeNameKindEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Name of the given kind",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.certificate.ServerAlternativeNameKindEnum": {
+      "description": "SAN kind",
+      "enum": [
+        "EMAIL",
+        "DNS",
+        "URI",
+        "IP"
+      ],
+      "enumType": "string",
+      "id": "ServerAlternativeNameKindEnum",
+      "namespace": "cloud.project.certificate"
+    },
+    "cloud.project.loadbalancer.ActionDispatch": {
+      "description": "HTTP load balancer dispatch action",
+      "id": "ActionDispatch",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "The backend name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "target": {
+          "canBeNull": false,
+          "description": "Target name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.ActionRedirect": {
+      "description": "HTTP load balancer redirect action",
+      "id": "ActionRedirect",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "location": {
+          "canBeNull": false,
+          "description": "Location url",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The backend name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "statusCode": {
+          "canBeNull": false,
+          "description": "StatusCode for redirect action",
+          "fullType": "cloud.project.loadbalancer.action.RedirectStatusCodeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.action.RedirectStatusCodeEnum"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.ActionReject": {
+      "description": "HTTP load balancer reject action",
+      "id": "ActionReject",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "The backend name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "statusCode": {
+          "canBeNull": false,
+          "description": "StatusCode for reject action",
+          "fullType": "cloud.project.loadbalancer.action.RejectStatusCodeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.action.RejectStatusCodeEnum"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.ActionRewrite": {
+      "description": "HTTP load balancer rewrite action",
+      "id": "ActionRewrite",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "location": {
+          "canBeNull": false,
+          "description": "Location url",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The backend name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.Actions": {
+      "description": "HTTP load balancer actions",
+      "id": "Actions",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "dispatch": {
+          "canBeNull": true,
+          "description": "List of dispatch actions",
+          "fullType": "cloud.project.loadbalancer.ActionDispatch[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.ActionDispatch[]"
+        },
+        "redirect": {
+          "canBeNull": true,
+          "description": "List of redirect actions",
+          "fullType": "cloud.project.loadbalancer.ActionRedirect[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.ActionRedirect[]"
+        },
+        "reject": {
+          "canBeNull": true,
+          "description": "List of reject actions",
+          "fullType": "cloud.project.loadbalancer.ActionReject[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.ActionReject[]"
+        },
+        "rewrite": {
+          "canBeNull": true,
+          "description": "List of rewrite actions",
+          "fullType": "cloud.project.loadbalancer.ActionRewrite[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.ActionRewrite[]"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.Address": {
+      "description": "Address to reach the load balancer",
+      "id": "Address",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "ipv4": {
+          "canBeNull": false,
+          "description": "IP version 4",
+          "fullType": "ipv4",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv4"
+        },
+        "ipv6": {
+          "canBeNull": true,
+          "description": "IP version 6",
+          "fullType": "ipv6",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv6"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.Addresses": {
+      "description": "IP list split in version 4 and 6",
+      "id": "Addresses",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "ipv4": {
+          "canBeNull": false,
+          "description": "IP version 4 list",
+          "fullType": "ipv4Block[]",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv4Block[]"
+        },
+        "ipv6": {
+          "canBeNull": true,
+          "description": "IP version 6 list",
+          "fullType": "ipv6Block[]",
+          "readOnly": true,
+          "required": false,
+          "type": "ipv6Block[]"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.Backend": {
+      "description": "A load balancer backend",
+      "id": "Backend",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "balancer": {
+          "canBeNull": true,
+          "description": "Use a specific balancer algorithm",
+          "fullType": "cloud.project.loadbalancer.backend.BalancerAlgorithmEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.backend.BalancerAlgorithmEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The backend name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "proxyProtocol": {
+          "canBeNull": true,
+          "description": "Use proxy protocol on backend",
+          "fullType": "cloud.project.loadbalancer.backend.ProxyProtocolEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.backend.ProxyProtocolEnum"
+        },
+        "servers": {
+          "canBeNull": false,
+          "description": "List of server in backend",
+          "fullType": "cloud.project.loadbalancer.Server[]",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.Server[]"
+        },
+        "sticky": {
+          "canBeNull": true,
+          "description": "Enable sticky session, only usable with http-mode frontends",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.BackendSelector": {
+      "description": "Select a load balancer backend",
+      "id": "BackendSelector",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "The backend name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.Condition": {
+      "description": "A condition",
+      "id": "Condition",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "key": {
+          "canBeNull": true,
+          "description": "The condition name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "match": {
+          "canBeNull": false,
+          "description": "Criterion matching operation",
+          "fullType": "cloud.project.loadbalancer.condition.MatchEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.condition.MatchEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The condition name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "negate": {
+          "canBeNull": true,
+          "description": "Negate the condition",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Criterion used to chose the appropriate action",
+          "fullType": "cloud.project.loadbalancer.condition.TypeEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.condition.TypeEnum"
+        },
+        "values": {
+          "canBeNull": false,
+          "description": "The list of values to match",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": true,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.Configuration": {
+      "description": "A load balancer configuration",
+      "id": "Configuration",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "backends": {
+          "canBeNull": false,
+          "description": "List of backends",
+          "fullType": "cloud.project.loadbalancer.Backend[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Backend[]"
+        },
+        "certificates": {
+          "canBeNull": false,
+          "description": "List of certificate ID",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "frontends": {
+          "canBeNull": false,
+          "description": "List of frontends",
+          "fullType": "cloud.project.loadbalancer.Frontend[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Frontend[]"
+        },
+        "networking": {
+          "canBeNull": false,
+          "description": "networking configuration",
+          "fullType": "cloud.project.loadbalancer.configuration.networking.Networking",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.configuration.networking.Networking"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Identifier and version of the configuration",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.ConfigurationCreation": {
+      "description": "A load balancer configuration",
+      "id": "ConfigurationCreation",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "backends": {
+          "canBeNull": false,
+          "description": "List of backends",
+          "fullType": "cloud.project.loadbalancer.Backend[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Backend[]"
+        },
+        "certificates": {
+          "canBeNull": false,
+          "description": "List of certificate ID",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "frontends": {
+          "canBeNull": false,
+          "description": "List of frontends",
+          "fullType": "cloud.project.loadbalancer.Frontend[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Frontend[]"
+        },
+        "networking": {
+          "canBeNull": true,
+          "description": "networking configuration",
+          "fullType": "cloud.project.loadbalancer.configuration.networking.Networking",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.configuration.networking.Networking"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Identifier and version of the configuration",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.ConfigurationVersion": {
+      "description": "Information about version of the configuration",
+      "id": "ConfigurationVersion",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "applied": {
+          "canBeNull": false,
+          "description": "Applied version of the configuration",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "latest": {
+          "canBeNull": false,
+          "description": "Latest version of the configuration",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.EntryPoint": {
+      "description": "A load balancer entryPoint",
+      "id": "EntryPoint",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "defaultTarget": {
+          "canBeNull": false,
+          "description": "The default target name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The frontend name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "portRanges": {
+          "canBeNull": true,
+          "description": "Port ranges to listen",
+          "fullType": "cloud.project.loadbalancer.PortRange[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.PortRange[]"
+        },
+        "ports": {
+          "canBeNull": true,
+          "description": "Ports to listen",
+          "fullType": "long[]",
+          "readOnly": false,
+          "required": false,
+          "type": "long[]"
+        },
+        "rules": {
+          "canBeNull": false,
+          "description": "List of rules",
+          "fullType": "cloud.project.loadbalancer.Rule[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Rule[]"
+        },
+        "tls": {
+          "canBeNull": false,
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.Frontend": {
+      "description": "A load balancer frontend",
+      "id": "Frontend",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "backends": {
+          "canBeNull": false,
+          "description": "Selector for backend",
+          "fullType": "cloud.project.loadbalancer.BackendSelector[]",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.BackendSelector[]"
+        },
+        "mode": {
+          "canBeNull": true,
+          "description": "Load balancing mode",
+          "fullType": "cloud.project.loadbalancer.frontend.ModeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.frontend.ModeEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The frontend name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "port": {
+          "canBeNull": true,
+          "description": "Port to listen (deprecated: see ports)",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "portRanges": {
+          "canBeNull": true,
+          "description": "Port ranges to listen",
+          "fullType": "cloud.project.loadbalancer.PortRange[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.PortRange[]"
+        },
+        "ports": {
+          "canBeNull": true,
+          "description": "Ports to listen",
+          "fullType": "long[]",
+          "readOnly": false,
+          "required": false,
+          "type": "long[]"
+        },
+        "tls": {
+          "canBeNull": false,
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "whitelist": {
+          "canBeNull": false,
+          "description": "IP range to whitelist",
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.HTTPConfiguration": {
+      "description": "A HTTP load balancer configuration",
+      "id": "HTTPConfiguration",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "actions": {
+          "canBeNull": true,
+          "description": "All actions",
+          "fullType": "cloud.project.loadbalancer.Actions",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Actions"
+        },
+        "certificates": {
+          "canBeNull": false,
+          "description": "List of certificate ID",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "conditions": {
+          "canBeNull": true,
+          "description": "List of conditions",
+          "fullType": "cloud.project.loadbalancer.Condition[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Condition[]"
+        },
+        "entryPoints": {
+          "canBeNull": false,
+          "description": "List of entryPoints",
+          "fullType": "cloud.project.loadbalancer.EntryPoint[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.EntryPoint[]"
+        },
+        "networking": {
+          "canBeNull": false,
+          "description": "networking configuration",
+          "fullType": "cloud.project.loadbalancer.configuration.networking.Networking",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.configuration.networking.Networking"
+        },
+        "targets": {
+          "canBeNull": true,
+          "description": "List of targets",
+          "fullType": "cloud.project.loadbalancer.Target[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Target[]"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Identifier and version of the configuration",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.HTTPConfigurationCreation": {
+      "description": "A HTTP load balancer configuration",
+      "id": "HTTPConfigurationCreation",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "actions": {
+          "canBeNull": true,
+          "description": "All actions",
+          "fullType": "cloud.project.loadbalancer.Actions",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Actions"
+        },
+        "certificates": {
+          "canBeNull": false,
+          "description": "List of certificate ID",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "conditions": {
+          "canBeNull": true,
+          "description": "List of conditions",
+          "fullType": "cloud.project.loadbalancer.Condition[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Condition[]"
+        },
+        "entryPoints": {
+          "canBeNull": false,
+          "description": "List of entryPoints",
+          "fullType": "cloud.project.loadbalancer.EntryPoint[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.EntryPoint[]"
+        },
+        "networking": {
+          "canBeNull": true,
+          "description": "networking configuration",
+          "fullType": "cloud.project.loadbalancer.configuration.networking.Networking",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.configuration.networking.Networking"
+        },
+        "targets": {
+          "canBeNull": true,
+          "description": "List of targets",
+          "fullType": "cloud.project.loadbalancer.Target[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Target[]"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Identifier and version of the configuration",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.PortRange": {
+      "description": "A port range",
+      "id": "PortRange",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "end": {
+          "canBeNull": false,
+          "description": "Port range end",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "start": {
+          "canBeNull": false,
+          "description": "Port range start",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.Region": {
+      "description": "Region information",
+      "id": "Region",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "region": {
+          "canBeNull": false,
+          "description": "Region name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.Rule": {
+      "description": "A entrypoint rule",
+      "id": "Rule",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "action": {
+          "canBeNull": false,
+          "description": "The action name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "conditions": {
+          "canBeNull": false,
+          "description": "The list of condition to match",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.Server": {
+      "description": "A load balancer backend server",
+      "id": "Server",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "ip": {
+          "canBeNull": false,
+          "description": "IP address of a server",
+          "fullType": "ip",
+          "readOnly": false,
+          "required": true,
+          "type": "ip"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Server name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "noCheck": {
+          "canBeNull": true,
+          "description": "Disable health check",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "port": {
+          "canBeNull": false,
+          "description": "Port that the server listen",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
+          "type": "long"
+        },
+        "weight": {
+          "canBeNull": true,
+          "description": "Weight of the server in the backend",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.StatusEnum": {
+      "description": "Status of a load balancer",
+      "enum": [
+        "CREATED",
+        "APPLYING",
+        "RUNNING",
+        "DELETING",
+        "ERROR",
+        "FROZEN"
+      ],
+      "enumType": "string",
+      "id": "StatusEnum",
+      "namespace": "cloud.project.loadbalancer"
+    },
+    "cloud.project.loadbalancer.Target": {
+      "description": "A load balancer target",
+      "id": "Target",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "balancer": {
+          "canBeNull": true,
+          "description": "Use a specific balancer algorithm",
+          "fullType": "cloud.project.loadbalancer.target.BalancerAlgorithmEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.target.BalancerAlgorithmEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "The backend name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "proxyProtocol": {
+          "canBeNull": true,
+          "description": "Use proxy protocol on target",
+          "fullType": "cloud.project.loadbalancer.target.ProxyProtocolEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.target.ProxyProtocolEnum"
+        },
+        "servers": {
+          "canBeNull": false,
+          "description": "List of server in target",
+          "fullType": "cloud.project.loadbalancer.Server[]",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.Server[]"
+        },
+        "sticky": {
+          "canBeNull": true,
+          "description": "Enable sticky session, only usable with http-mode frontends",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.action.RedirectStatusCodeEnum": {
+      "description": "Available status code for Redirect action",
+      "enum": [
+        "301",
+        "302",
+        "303",
+        "307",
+        "308"
+      ],
+      "enumType": "string",
+      "id": "RedirectStatusCodeEnum",
+      "namespace": "cloud.project.loadbalancer.action"
+    },
+    "cloud.project.loadbalancer.action.RejectStatusCodeEnum": {
+      "description": "Available status code for Reject action",
+      "enum": [
+        "200",
+        "400",
+        "403",
+        "405",
+        "408",
+        "429",
+        "500",
+        "502",
+        "503",
+        "504"
+      ],
+      "enumType": "string",
+      "id": "RejectStatusCodeEnum",
+      "namespace": "cloud.project.loadbalancer.action"
+    },
+    "cloud.project.loadbalancer.backend.BalancerAlgorithmEnum": {
+      "description": "Available load balancer backend balancer algorithm",
+      "enum": [
+        "roundrobin",
+        "static-rr",
+        "leastconn",
+        "first",
+        "source"
+      ],
+      "enumType": "string",
+      "id": "BalancerAlgorithmEnum",
+      "namespace": "cloud.project.loadbalancer.backend"
+    },
+    "cloud.project.loadbalancer.backend.ProxyProtocolEnum": {
+      "description": "Available load balancer backend proxy-protocol",
+      "enum": [
+        "v1",
+        "v2",
+        "v2-ssl",
+        "v2-cn"
+      ],
+      "enumType": "string",
+      "id": "ProxyProtocolEnum",
+      "namespace": "cloud.project.loadbalancer.backend"
+    },
+    "cloud.project.loadbalancer.condition.MatchEnum": {
+      "description": "Matching operator",
+      "enum": [
+        "is",
+        "start-with",
+        "end-with",
+        "regex",
+        "exists"
+      ],
+      "enumType": "string",
+      "id": "MatchEnum",
+      "namespace": "cloud.project.loadbalancer.condition"
+    },
+    "cloud.project.loadbalancer.condition.TypeEnum": {
+      "description": "Matching field",
+      "enum": [
+        "method",
+        "cookie",
+        "path",
+        "host",
+        "header",
+        "source",
+        "query-param"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "cloud.project.loadbalancer.condition"
+    },
+    "cloud.project.loadbalancer.configuration.networking.Egress": {
+      "description": "Networking configuration egress definition",
+      "id": "Egress",
+      "namespace": "cloud.project.loadbalancer.configuration.networking",
+      "properties": {
+        "id": {
+          "canBeNull": true,
+          "description": "vrack networking id",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "kind": {
+          "canBeNull": false,
+          "description": "networking egress kind definition",
+          "fullType": "cloud.project.loadbalancer.networking.egress.KindEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.networking.egress.KindEnum"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.configuration.networking.Ingress": {
+      "description": "Networking configuration ingress definition",
+      "id": "Ingress",
+      "namespace": "cloud.project.loadbalancer.configuration.networking",
+      "properties": {
+        "kind": {
+          "canBeNull": false,
+          "description": "networking configuration ingress kind definition",
+          "fullType": "cloud.project.loadbalancer.networking.ingress.KindEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.networking.ingress.KindEnum"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.configuration.networking.Networking": {
+      "description": "Networking configuration object",
+      "id": "Networking",
+      "namespace": "cloud.project.loadbalancer.configuration.networking",
+      "properties": {
+        "egress": {
+          "canBeNull": true,
+          "description": "Networking configuration definition for egress",
+          "fullType": "cloud.project.loadbalancer.configuration.networking.Egress",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.configuration.networking.Egress"
+        },
+        "ingress": {
+          "canBeNull": true,
+          "description": "Networking configuration definition for ingress",
+          "fullType": "cloud.project.loadbalancer.configuration.networking.Ingress",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.configuration.networking.Ingress"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.frontend.ModeEnum": {
+      "description": "Available load balancer frontend mode",
+      "enum": [
+        "TCP"
+      ],
+      "enumType": "string",
+      "id": "ModeEnum",
+      "namespace": "cloud.project.loadbalancer.frontend"
+    },
+    "cloud.project.loadbalancer.networking.Egress": {
+      "description": "Networking Egress definition",
+      "id": "Egress",
+      "namespace": "cloud.project.loadbalancer.networking",
+      "properties": {
+        "id": {
+          "canBeNull": true,
+          "description": "vrack networking id",
+          "fullType": "uuid",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid"
+        },
+        "kind": {
+          "canBeNull": false,
+          "description": "networking egress kind definition",
+          "fullType": "cloud.project.loadbalancer.networking.egress.KindEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.networking.egress.KindEnum"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.networking.EgressCreation": {
+      "description": "Networking Egress definition",
+      "id": "EgressCreation",
+      "namespace": "cloud.project.loadbalancer.networking",
+      "properties": {
+        "kind": {
+          "canBeNull": false,
+          "description": "networking egress kind definition",
+          "fullType": "cloud.project.loadbalancer.networking.egress.KindEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.networking.egress.KindEnum"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.networking.Ingress": {
+      "description": "Networking Ingress definition",
+      "id": "Ingress",
+      "namespace": "cloud.project.loadbalancer.networking",
+      "properties": {
+        "kind": {
+          "canBeNull": false,
+          "description": "networking ingress kind definition",
+          "fullType": "cloud.project.loadbalancer.networking.ingress.KindEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.ingress.KindEnum"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.networking.IngressCreation": {
+      "description": "Networking Ingress definition",
+      "id": "IngressCreation",
+      "namespace": "cloud.project.loadbalancer.networking",
+      "properties": {
+        "kind": {
+          "canBeNull": false,
+          "description": "networking ingress kind definition",
+          "fullType": "cloud.project.loadbalancer.networking.ingress.KindEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.project.loadbalancer.networking.ingress.KindEnum"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.networking.Networking": {
+      "description": "Networking object",
+      "id": "Networking",
+      "namespace": "cloud.project.loadbalancer.networking",
+      "properties": {
+        "egress": {
+          "canBeNull": false,
+          "description": "Networking definition for egress",
+          "fullType": "cloud.project.loadbalancer.networking.Egress",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.Egress"
+        },
+        "ingress": {
+          "canBeNull": false,
+          "description": "Networking definition for ingress",
+          "fullType": "cloud.project.loadbalancer.networking.Ingress",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.Ingress"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.networking.NetworkingCreation": {
+      "description": "Networking creation object",
+      "id": "NetworkingCreation",
+      "namespace": "cloud.project.loadbalancer.networking",
+      "properties": {
+        "egress": {
+          "canBeNull": true,
+          "description": "Networking definition for egress",
+          "fullType": "cloud.project.loadbalancer.networking.EgressCreation",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.EgressCreation"
+        },
+        "ingress": {
+          "canBeNull": true,
+          "description": "Networking definition for ingress",
+          "fullType": "cloud.project.loadbalancer.networking.IngressCreation",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.IngressCreation"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.networking.egress.KindEnum": {
+      "description": "Networking kind",
+      "enum": [
+        "public",
+        "vrack"
+      ],
+      "enumType": "string",
+      "id": "KindEnum",
+      "namespace": "cloud.project.loadbalancer.networking.egress"
+    },
+    "cloud.project.loadbalancer.networking.ingress.KindEnum": {
+      "description": "Networking kind",
+      "enum": [
+        "public"
+      ],
+      "enumType": "string",
+      "id": "KindEnum",
+      "namespace": "cloud.project.loadbalancer.networking.ingress"
+    },
+    "cloud.project.loadbalancer.target.BalancerAlgorithmEnum": {
+      "description": "Available load balancer target balancer algorithm",
+      "enum": [
+        "roundrobin",
+        "static-rr",
+        "leastconn",
+        "first",
+        "source"
+      ],
+      "enumType": "string",
+      "id": "BalancerAlgorithmEnum",
+      "namespace": "cloud.project.loadbalancer.target"
+    },
+    "cloud.project.loadbalancer.target.ProxyProtocolEnum": {
+      "description": "Available load balancer target proxy-protocol",
+      "enum": [
+        "v1",
+        "v2",
+        "v2-ssl",
+        "v2-cn"
+      ],
+      "enumType": "string",
+      "id": "ProxyProtocolEnum",
+      "namespace": "cloud.project.loadbalancer.target"
     },
     "cloud.quota.AllowedQuota": {
       "description": "Quotas",
@@ -8228,6 +10800,60 @@ export const schema: Schema = {
           "fullType": "long",
           "readOnly": true,
           "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.quota.storage.Quota": {
+      "description": "Cloud Storage Quota",
+      "id": "Quota",
+      "namespace": "cloud.quota.storage",
+      "properties": {
+        "bytesUsed": {
+          "canBeNull": false,
+          "description": "Quota used in bytes",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "containerCount": {
+          "canBeNull": false,
+          "description": "Number of containers on account",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "objectCount": {
+          "canBeNull": false,
+          "description": "Number of objects on account",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "quotaBytes": {
+          "canBeNull": true,
+          "description": "Quota in bytes",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.quota.storage.QuotaUpdate": {
+      "description": "Update storage quota",
+      "id": "QuotaUpdate",
+      "namespace": "cloud.quota.storage",
+      "properties": {
+        "quotaBytes": {
+          "canBeNull": false,
+          "description": "New quota in bytes",
+          "fullType": "long",
+          "readOnly": false,
+          "required": true,
           "type": "long"
         }
       }
@@ -8955,37 +11581,6 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "RoleEnum",
       "namespace": "cloud.user"
-    },
-    "cloud.user.S3Credentials": {
-      "description": "S3Credentials",
-      "id": "S3Credentials",
-      "namespace": "cloud.user",
-      "properties": {
-        "access": {
-          "canBeNull": false,
-          "description": "S3 Access key",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "tenantId": {
-          "canBeNull": false,
-          "description": "Tenant id",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "userId": {
-          "canBeNull": false,
-          "description": "User id",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        }
-      }
     },
     "cloud.user.S3CredentialsWithSecret": {
       "description": "S3CredentialsWithSecret",

@@ -4865,7 +4865,7 @@ export interface Telephony {
                 }
                 calls: {
                     /**
-                     * The current calls of your line
+                     * The active calls of your line as a call center agent
                      * GET /telephony/{billingAccount}/line/{serviceName}/calls
                      */
                     $get(): Promise<number[]>;

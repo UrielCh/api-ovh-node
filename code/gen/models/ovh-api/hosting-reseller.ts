@@ -167,6 +167,48 @@ export const schema: Schema = {
       "path": "/hosting/reseller/{serviceName}/language"
     },
     {
+      "description": "Reseller.post_migration",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Register a migration request",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The Public Cloud Project ID.",
+              "fullType": "string",
+              "name": "pcProject",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "whether the customer read and agreed the migration contract",
+              "fullType": "boolean",
+              "name": "readAndAgreedContract",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The internal name of your reseller service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string"
+        }
+      ],
+      "path": "/hosting/reseller/{serviceName}/migration"
+    },
+    {
       "description": "Reseller.reboot",
       "operations": [
         {
@@ -516,6 +558,52 @@ export const schema: Schema = {
   ],
   "basePath": "https://eu.api.ovh.com/1.0",
   "models": {
+    "hosting.reseller.metaMigrationStatusTypeEnum": {
+      "description": "Plesk to Public Cloud migration status type",
+      "enum": [
+        "done",
+        "pending",
+        "planned"
+      ],
+      "enumType": "string",
+      "id": "metaMigrationStatusTypeEnum",
+      "namespace": "hosting.reseller"
+    },
+    "hosting.reseller.metaMigrationType": {
+      "description": "Plesk instance migration meta details",
+      "id": "metaMigrationType",
+      "namespace": "hosting.reseller",
+      "properties": {
+        "contractApproved": {
+          "canBeNull": false,
+          "description": "Whether the customer has approved the migration contract",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "dateOfApproval": {
+          "canBeNull": true,
+          "description": "Date of the migration request (and contract approval) registration",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "pcProject": {
+          "canBeNull": true,
+          "description": "Public Cloud Project ID",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of the migration",
+          "readOnly": false,
+          "required": false,
+          "type": "hosting.reseller.metaMigrationStatusTypeEnum"
+        }
+      }
+    },
     "hosting.reseller.metaType": {
       "description": "Plesk instance meta details",
       "id": "metaType",
@@ -527,6 +615,13 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "migration": {
+          "canBeNull": true,
+          "description": "Registered migration request detail",
+          "readOnly": false,
+          "required": false,
+          "type": "hosting.reseller.metaMigrationType"
         },
         "region": {
           "canBeNull": false,

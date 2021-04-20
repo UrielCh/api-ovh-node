@@ -420,8 +420,10 @@ export const schema: Schema = {
       "description": "Os type",
       "enum": [
         "bsd",
+        "ibm",
         "linux",
         "solaris",
+        "unix",
         "windows"
       ],
       "enumType": "string",
@@ -433,10 +435,13 @@ export const schema: Schema = {
       "enum": [
         "basic",
         "customer",
+        "database",
         "hosting",
+        "management",
         "other",
         "readyToUse",
-        "virtualisation"
+        "virtualisation",
+        "virtualization"
       ],
       "enumType": "string",
       "id": "TemplateOsUsageEnum",

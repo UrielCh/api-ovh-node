@@ -391,7 +391,7 @@ export namespace domain {
              * Type of rule configuration
              * type fullname: domain.configuration.rules.TypeEnum
              */
-            export type TypeEnum = "string" | "text" | "bool" | "number" | "json" | "contact" | "domain" | "date_ISO8601"
+            export type TypeEnum = "string" | "string[]" | "text" | "bool" | "number" | "json" | "contact" | "domain" | "date_ISO8601"
         }
     }
     export namespace configurations {
@@ -576,6 +576,11 @@ export namespace domain {
             name: string;
         }
         /**
+         * Type of extension category
+         * type fullname: domain.extensions.CategoryTypeEnum
+         */
+        export type CategoryTypeEnum = "thematic" | "geolocalization"
+        /**
          * A domain name extension
          * interface fullName: domain.extensions.Extension.Extension
          */
@@ -587,8 +592,17 @@ export namespace domain {
          * interface fullName: domain.extensions.ExtensionsByCategory.ExtensionsByCategory
          */
         export interface ExtensionsByCategory {
-            geolocalization: domain.extensions.CategoryNameWithExtensions[];
-            thematic: domain.extensions.CategoryNameWithExtensions[];
+            geolocalization?: domain.extensions.CategoryNameWithExtensions[];
+            thematic?: domain.extensions.CategoryNameWithExtensions[];
+        }
+        /**
+         * Result of getting pricing attributes of an extension
+         * interface fullName: domain.extensions.ExtensionsPricingAttributes.ExtensionsPricingAttributes
+         */
+        export interface ExtensionsPricingAttributes {
+            brandNew: boolean;
+            name: string;
+            priceDrop: boolean;
         }
         /**
          * Type used to change the order of extensions results
@@ -713,13 +727,6 @@ export namespace domain {
     }
     export namespace zone {
         /**
-         * DNS Anycast service
-         * interface fullName: domain.zone.Anycast.Anycast
-         */
-        export interface Anycast {
-            name: string;
-        }
-        /**
          * Manage Dnssec for this zone
          * interface fullName: domain.zone.Dnssec.Dnssec
          */
@@ -745,6 +752,13 @@ export namespace domain {
             subDomain?: string;
             ttl?: number;
             zone: string;
+        }
+        /**
+         * Information about the options of a zone
+         * interface fullName: domain.zone.Option.Option
+         */
+        export interface Option {
+            name: string;
         }
         /**
          * Zone resource records
@@ -968,7 +982,7 @@ export namespace zone {
      * Resource record fieldType
      * type fullname: zone.NamedResolutionFieldTypeEnum
      */
-    export type NamedResolutionFieldTypeEnum = "A" | "AAAA" | "CAA" | "CNAME" | "DKIM" | "DMARC" | "LOC" | "MX" | "NAPTR" | "NS" | "PTR" | "SPF" | "SRV" | "SSHFP" | "TLSA" | "TXT"
+    export type NamedResolutionFieldTypeEnum = "A" | "AAAA" | "CAA" | "CNAME" | "DKIM" | "DMARC" | "DNAME" | "LOC" | "MX" | "NAPTR" | "NS" | "PTR" | "SPF" | "SRV" | "SSHFP" | "TLSA" | "TXT"
     /**
      * Redirection type enum : visible -> Redirection by http code 302, visiblePermanent -> Redirection by http code 301, invisible -> Redirection by html frame
      * type fullname: zone.RedirectionTypeEnum
@@ -1229,7 +1243,29 @@ export interface Domain {
              * List extensions, grouped by category types (like 'thematic', 'geolocalization') and category names (like 'europe')
              * GET /domain/extensions/byCategory
              */
-            $get(): Promise<domain.extensions.ExtensionsByCategory>;
+            $get(params?: { categoryType?: domain.extensions.CategoryTypeEnum[] }): Promise<domain.extensions.ExtensionsByCategory>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        highlighted: {
+            /**
+             * Lists highlighted extensions, ordered by decreased importance
+             * GET /domain/extensions/highlighted
+             */
+            $get(params?: { ovhSubsidiary?: nichandle.OvhSubsidiaryEnum }): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        pricingAttributes: {
+            /**
+             * List extensions with their pricing attributes. It especially documents whether an extension has been implemented recently or whether the price has dropped
+             * GET /domain/extensions/pricingAttributes
+             */
+            $get(params?: { ovhSubsidiary?: nichandle.OvhSubsidiaryEnum }): Promise<domain.extensions.ExtensionsPricingAttributes[]>;
             /**
              * Controle cache
              */
@@ -1484,6 +1520,44 @@ export interface Domain {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            option: {
+                /**
+                 * List zone options
+                 * GET /domain/zone/{zoneName}/option
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(name: string): {
+                    /**
+                     * Get this object properties
+                     * GET /domain/zone/{zoneName}/option/{name}
+                     */
+                    $get(): Promise<domain.zone.Option>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    serviceInfos: {
+                        /**
+                         * Get this object properties
+                         * GET /domain/zone/{zoneName}/option/{name}/serviceInfos
+                         */
+                        $get(): Promise<services.Service>;
+                        /**
+                         * Alter this object properties
+                         * PUT /domain/zone/{zoneName}/option/{name}/serviceInfos
+                         */
+                        $put(params: { renew: service.RenewType }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                };
             }
             record: {
                 /**
