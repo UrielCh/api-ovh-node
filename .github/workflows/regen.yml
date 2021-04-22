@@ -1,0 +1,30 @@
+name: regen-model
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: Ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          registry-url: https://registry.npmjs.org
+      - name: Install dependences
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git config commit.gpgsign false
+          npm --version
+          npm install --save-dev npm@7.5.4
+          npm install
+      - name: Regenerate wrappers source files
+        run: |
+          npm run gen
+          git status
+      - name: Commit changes in model
+        run: |
+          git add .
+          git commit -avm 'Regenerate model files'
+          git push
