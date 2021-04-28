@@ -289,7 +289,7 @@ const append = (value: string, previous: string[]) => { previous.push(value); re
 program.version(version)
     .description('create and update dyndnh host entry.');
 
-program.option('-v, --verbose', 'verbose process', append, []);
+program.option('-v, --verbose', 'verbose process');
 program.option('-s, --standard', 'use standard DNS entry instead of dynhost', append, []);
 program.option('-d, --domain <domain>', 'add domain to configure', append, []);
 program.option('-u, --url <url>', 'add url used to find public IP', append, []);
