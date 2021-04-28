@@ -4,9 +4,11 @@ import http from 'http';
 import https, { RequestOptions } from 'https';
 import chalk from 'chalk';
 import os, { EOL } from 'os';
-import { Curl } from 'node-libcurl';
+// import { Curl } from 'node-libcurl';
 import fs from 'fs';
 import { Command, OptionValues } from "commander";
+
+import child_process from 'child_process';
 
 const program = new Command();
 
@@ -48,28 +50,39 @@ class DynHost {
     }
 
     async doCurl(url: string): Promise<string> {
-        return new Promise((resolve, reject) => {
-            const curl = new Curl();
-            let cmd = `curl "${url}"`;
-            curl.setOpt(Curl.option.URL, url);
-            if (this.options.interface) {
-                curl.setOpt(Curl.option.INTERFACE, this.options.interface);
-                cmd += ` --interface ${this.options.interface}`
+        let cmd = `curl "${url}"`;
+        if (this.options.interface) {
+            cmd += ` --interface ${this.options.interface}`
+        }
+        if (this.options.verbose) {
+            console.log(cmd);
+        }
+        try {
+            const { Curl } = require('node-libcurl');
+            if (Curl) {
+                return new Promise((resolve, reject) => {
+                    const curl = new Curl();
+                    curl.setOpt(Curl.option.URL, url);
+                    if (this.options.interface) {
+                        curl.setOpt(Curl.option.INTERFACE, this.options.interface);
+                    }
+                    curl.on('end', function (statusCode: number, data: string, headers: any) {
+                        if (statusCode >= 200 && statusCode < 300)
+                            resolve(data);
+                        else
+                            reject(data);
+                        curl.close();
+                    });
+                    curl.on('error', curl.close.bind(curl));
+                    curl.perform();
+                });
             }
-            if (this.options.verbose) {
-                console.log(cmd);
-            }
-            curl.on('end', function (statusCode: number, data: string, headers: any) {
-                if (statusCode >= 200 && statusCode < 300)
-                    resolve(data);
-                else
-                    reject(data);
-                curl.close();
-            });
-            curl.on('error', curl.close.bind(curl));
-            curl.perform();
-        });
+        } catch (e) {
+        }
+        // fallback use curl binary
+        return child_process.execSync(cmd, {encoding: 'utf8'});
     }
+
 
     async detectPublicIpFrom(urls: string[]) {
         if (this.lastIp) return this.lastIp;
@@ -176,7 +189,11 @@ class DynHost {
     async main() {
         let { url, domain, local } = this.options;
 
-        if (local && !local.match(/$(\d+\.){3}\d+$/)) {
+        if (local) {
+            if (!local.match(/$(\d+\.){3}\d+$/)) {
+                console.error(`invalid local value: '${local}' should be an IPv4`);
+                process.exit(1);
+            }
             const netss = os.networkInterfaces();
             let nets = netss[local];
             if (nets) {
@@ -300,7 +317,9 @@ program.option('-c, --credential <credential>', 'provide a credential as {appKey
 program.option('--curl', 'use curl');
 program.option('--timeout <timeout>', 'timeout to get ip address', /\d+/, '2000');
 
-program.action(() => new DynHost().main().catch(console.error))
+program.action(() => {
+    new DynHost().main().catch(console.error);
+})
 
 program.command('dump')
     .description('dump compact credential for quick deploy')
