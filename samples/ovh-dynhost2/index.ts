@@ -5,25 +5,30 @@ import https, { RequestOptions } from 'https';
 import chalk from 'chalk';
 import os, { EOL } from 'os';
 import { Curl } from 'node-libcurl';
-import program from 'commander';
 import fs from 'fs';
+import { Command, OptionValues } from "commander";
+
+const program = new Command();
 
 class DynHost {
     private lastIp = "";
     private apiDomain?: Domain;
     private engine?: Ovh;
+    private options: OptionValues;
 
-    constructor() { }
+    constructor() {
+        this.options = program.opts();
+     }
 
     async doGet(url: string): Promise<string> {
         return new Promise((resolve, reject) => {
-            const timeout = Number(program.timeout);
+            const timeout = Number(this.options.timeout);
             const data: string[] = [];
             const options: RequestOptions = {
                 timeout,
             };
-            if (program.local) {
-                options.localAddress = program.local;
+            if (this.options.local) {
+                options.localAddress = this.options.local;
             }
             const req = https.get(url, options, (res: http.IncomingMessage) => {
                 res.setEncoding('utf8');
@@ -44,8 +49,8 @@ class DynHost {
         return new Promise((resolve, reject) => {
             const curl = new Curl();
             curl.setOpt(Curl.option.URL, url);
-            if (program.interface)
-                curl.setOpt(Curl.option.INTERFACE, program.interface);
+            if (this.options.interface)
+                curl.setOpt(Curl.option.INTERFACE, this.options.interface);
             curl.on('end', function (statusCode: number, data: string, headers: any) {
                 if (statusCode >= 200 && statusCode < 300)
                     resolve(data);
@@ -68,9 +73,9 @@ class DynHost {
                 // discard it
                 urls.splice(index, 1);
                 // download it
-                console.log(`Detecting IP using ${chalk.green(url)} ${program.curl ? 'With CURL' : ''}`);
+                console.log(`Detecting IP using ${chalk.green(url)} ${this.options.curl ? 'With CURL' : ''}`);
                 let text = '';
-                if (!program.curl) {
+                if (!this.options.curl) {
                     text = await this.doGet(url);
                 } else {
                     text = await this.doCurl(url);
@@ -92,15 +97,15 @@ class DynHost {
     async getApiDomain(): Promise<Domain> {
         if (this.apiDomain)
             return this.apiDomain;
-        let token = program.token;
+        let token = this.options.token;
 
         if (!token) {
             token = "token.json";
             console.error(`Token file path ${chalk.redBright('not')} provided using ${chalk.green(token)}`);
         }
 
-        if (program.credential) {
-            const [appKey, appSecret, consumerKey] = (program.credential as string).split(/:/);
+        if (this.options.credential) {
+            const [appKey, appSecret, consumerKey] = (this.options.credential as string).split(/:/);
             const tokenData = JSON.stringify({ appKey, appSecret, consumerKey }, null, 2) + EOL;
             await fs.promises.writeFile(token, tokenData, {encoding: 'utf-8'});
         }
@@ -161,15 +166,15 @@ class DynHost {
     }
 
     async main() {
-        let { url, domain } = program;
+        let { url, domain, local } = this.options;
 
-        if (program.local && !program.local.match(/$(\d+\.){3}\d+$/)) {
+        if (local && !local.match(/$(\d+\.){3}\d+$/)) {
             const netss = os.networkInterfaces();
-            let nets = netss[program.local];
+            let nets = netss[local];
             if (nets) {
                 nets = nets.filter(net => net.address)
-                console.log(`Replacing local ${chalk.green(program.local)} by ${chalk.yellow(nets[0].address)}`);
-                program.local = nets[0].address;
+                console.log(`Replacing local ${chalk.green(local)} by ${chalk.yellow(nets[0].address)}`);
+                local = nets[0].address;
             }
         }
 
@@ -201,7 +206,7 @@ class DynHost {
             }
             records = records.filter(rec => (rec.fieldType === 'A' || rec.fieldType === 'AAAA' || rec.fieldType === 'CNAME'));
 
-            if (program.standard) {
+            if (this.options.standard) {
                 for (const subId of subidDyn) {
                     console.log(`Removing dynHost ${chalk.green(subDomain)}.${chalk.yellow(service)} id: ${chalk.yellow(subId)}`);
                     await recordApiDyn.$(subId).$delete();
