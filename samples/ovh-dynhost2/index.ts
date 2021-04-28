@@ -30,6 +30,8 @@ class DynHost {
             if (this.options.local) {
                 options.localAddress = this.options.local;
             }
+            if (this.options.verbose)
+                console.log(`https.get("${url}", ${JSON.stringify(this.options)})`)
             const req = https.get(url, options, (res: http.IncomingMessage) => {
                 res.setEncoding('utf8');
                 res.on('data', (chunk: string) => data.push(chunk));
@@ -48,9 +50,15 @@ class DynHost {
     async doCurl(url: string): Promise<string> {
         return new Promise((resolve, reject) => {
             const curl = new Curl();
+            let cmd = `curl "${url}"`;
             curl.setOpt(Curl.option.URL, url);
-            if (this.options.interface)
+            if (this.options.interface) {
                 curl.setOpt(Curl.option.INTERFACE, this.options.interface);
+                cmd += ` --interface ${this.options.interface}`
+            }
+            if (this.options.verbose) {
+                console.log(cmd);
+            }
             curl.on('end', function (statusCode: number, data: string, headers: any) {
                 if (statusCode >= 200 && statusCode < 300)
                     resolve(data);
@@ -281,7 +289,8 @@ const append = (value: string, previous: string[]) => { previous.push(value); re
 program.version(version)
     .description('create and update dyndnh host entry.');
 
-program.option('-s, --standard ', 'use standard DNS entry instead of dynhost', append, []);
+program.option('-v, --verbose', 'verbose process', append, []);
+program.option('-s, --standard', 'use standard DNS entry instead of dynhost', append, []);
 program.option('-d, --domain <domain>', 'add domain to configure', append, []);
 program.option('-u, --url <url>', 'add url used to find public IP', append, []);
 program.option('-l, --local <localAdress>', 'Local address to bind if you have mutiple gateway');
