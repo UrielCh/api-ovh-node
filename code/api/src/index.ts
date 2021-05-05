@@ -588,7 +588,7 @@ by default I will ask for all rights`);
             if (this.listenerCount('debug')) {
                 this.emit('debug', `[OVH] API response to ${method} ${path}: ${body}`);
             }
-            if (statusCode === 200) {
+            if (statusCode === 200 || statusCode === 204) {
                 if (cacheSilot) {
                     if (method === 'GET')
                         await cacheSilot.store(path, responseData, size);
