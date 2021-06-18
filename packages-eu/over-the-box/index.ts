@@ -46,6 +46,11 @@ export namespace overTheBox {
         price: order.Price;
     }
     /**
+     * Status of the service
+     * type fullname: overTheBox.AvailableStatusEnum
+     */
+    export type AvailableStatusEnum = "disabled" | "enabled"
+    /**
      * Backup
      * interface fullName: overTheBox.Backup.Backup
      */
@@ -160,6 +165,7 @@ export namespace overTheBox {
      */
     export interface Service {
         SOCKSProxyEnabled: boolean;
+        autoMTU: overTheBox.AvailableStatusEnum;
         customerDescription?: string;
         graphEndpoint?: overTheBox.GraphEndpoint;
         releaseChannel: string;
@@ -310,11 +316,22 @@ export interface OverTheBox {
          * Alter this object properties
          * PUT /overTheBox/{serviceName}
          */
-        $put(params?: { SOCKSProxyEnabled?: boolean, customerDescription?: string, graphEndpoint?: overTheBox.GraphEndpoint, releaseChannel?: string, serviceName?: string, status?: overTheBox.ServiceStatusEnum, tunnelMode?: overTheBox.TunnelModeEnum }): Promise<void>;
+        $put(params?: { SOCKSProxyEnabled?: boolean, autoMTU?: overTheBox.AvailableStatusEnum, customerDescription?: string, graphEndpoint?: overTheBox.GraphEndpoint, releaseChannel?: string, serviceName?: string, status?: overTheBox.ServiceStatusEnum, tunnelMode?: overTheBox.TunnelModeEnum }): Promise<void>;
         /**
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        autoMTU: {
+            /**
+             * Change the value of autoMTU
+             * PUT /overTheBox/{serviceName}/autoMTU
+             */
+            $put(params: { mtuAuto: overTheBox.AvailableStatusEnum }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
         availableReleaseChannels: {
             /**
              * List available release channels for this service

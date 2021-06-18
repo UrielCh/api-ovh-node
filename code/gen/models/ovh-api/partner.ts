@@ -403,7 +403,8 @@ export const schema: Schema = {
         "EmailMsSolution",
         "WH",
         "Connectivity",
-        "VoIP"
+        "VoIP",
+        "PCIDSS"
       ],
       "enumType": "string",
       "id": "AreaOfExpertiseEnum",
@@ -596,7 +597,9 @@ export const schema: Schema = {
         "HR",
         "Production",
         "LC",
-        "Other"
+        "Other",
+        "BusinessOwner",
+        "PreSales"
       ],
       "enumType": "string",
       "id": "PositionEnum",

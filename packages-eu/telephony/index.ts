@@ -1631,6 +1631,7 @@ export namespace telephony {
         brand: string;
         description: string;
         macAddress: string;
+        maxSimultaneousCalls: number;
         maxline: number;
         mgcpIpRestriction?: string;
         phoneConfiguration: telephony.PhoneConfigurationProperty[];
@@ -2169,6 +2170,7 @@ export namespace telephony {
      * interface fullName: telephony.TelephonyService.TelephonyService
      */
     export interface TelephonyService {
+        associatedDeviceMac?: string;
         country: telephony.NumberCountryEnum;
         countryCode: telephony.NumberCountryCodeEnum;
         currentOutplan: order.Price;
@@ -3200,7 +3202,7 @@ export interface Telephony {
                      * List your past conferences for this number
                      * GET /telephony/{billingAccount}/conference/{serviceName}/histories
                      */
-                    $get(): Promise<number[]>;
+                    $get(params?: { dateBegin_from?: string, dateBegin_to?: string }): Promise<number[]>;
                     /**
                      * Controle cache
                      */
@@ -3362,7 +3364,7 @@ export interface Telephony {
                              * List your past conferences for this room
                              * GET /telephony/{billingAccount}/conference/{serviceName}/rooms/{roomNumber}/histories
                              */
-                            $get(): Promise<number[]>;
+                            $get(params?: { dateBegin_from?: string, dateBegin_to?: string }): Promise<number[]>;
                             /**
                              * Controle cache
                              */
@@ -5174,7 +5176,7 @@ export interface Telephony {
                      * Alter this object properties
                      * PUT /telephony/{billingAccount}/line/{serviceName}/phone
                      */
-                    $put(params?: { brand?: string, description?: string, macAddress?: string, maxline?: number, mgcpIpRestriction?: string, phoneConfiguration?: telephony.PhoneConfigurationProperty[], protocol?: telephonyProtocolEnum, userPassword?: string }): Promise<void>;
+                    $put(params?: { brand?: string, description?: string, macAddress?: string, maxSimultaneousCalls?: number, maxline?: number, mgcpIpRestriction?: string, phoneConfiguration?: telephony.PhoneConfigurationProperty[], protocol?: telephonyProtocolEnum, userPassword?: string }): Promise<void>;
                     /**
                      * Controle cache
                      */
@@ -7208,7 +7210,7 @@ export interface Telephony {
                  * Alter this object properties
                  * PUT /telephony/{billingAccount}/service/{serviceName}
                  */
-                $put(params?: { country?: telephony.NumberCountryEnum, countryCode?: telephony.NumberCountryCodeEnum, currentOutplan?: order.Price, description?: string, featureType?: telephony.TypeEnum, getPublicOffer?: telephony.LineOffer, hasFaxCapabilities?: boolean, offers?: string[], properties?: telephony.PropertyEnum[], rio?: string, serviceName?: string, serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number }): Promise<void>;
+                $put(params?: { associatedDeviceMac?: string, country?: telephony.NumberCountryEnum, countryCode?: telephony.NumberCountryCodeEnum, currentOutplan?: order.Price, description?: string, featureType?: telephony.TypeEnum, getPublicOffer?: telephony.LineOffer, hasFaxCapabilities?: boolean, offers?: string[], properties?: telephony.PropertyEnum[], rio?: string, serviceName?: string, serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number }): Promise<void>;
                 /**
                  * Controle cache
                  */

@@ -623,8 +623,8 @@ export namespace domain {
              */
             export interface DNSRegistryConfiguration {
                 isDNSSECSupported: boolean;
-                maxNumber: number;
-                minNumber: number;
+                maxNumber?: number;
+                minNumber?: number;
             }
             /**
              * The registry configurations applied to a domain name
@@ -640,8 +640,8 @@ export namespace domain {
              */
             export interface LabelDomainRegistryConfiguration {
                 isIDNSupported: boolean;
-                maxLength: number;
-                minLength: number;
+                maxLength?: number;
+                minLength?: number;
             }
             /**
              * The registry configurations of the lifecycle of a domain name
@@ -659,8 +659,8 @@ export namespace domain {
              * interface fullName: domain.extensions.registryConfigurations.OrderLifecycleRegistryConfiguration.OrderLifecycleRegistryConfiguration
              */
             export interface OrderLifecycleRegistryConfiguration {
-                maxMonths: number;
-                minMonths: number;
+                maxMonths?: number;
+                minMonths?: number;
             }
             /**
              * The registry configurations applied to a domain extension (TLD, SLD)

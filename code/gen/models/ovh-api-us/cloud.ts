@@ -173,6 +173,66 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List Kubernetes available flavors for a region",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "cloud.kube.RegionEnum",
+              "description": "The region to list available flavors from",
+              "fullType": "cloud.kube.RegionEnum",
+              "name": "region",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "cloud.kube.Flavor[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/capabilities/kube/flavors"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List Kubernetes available regions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.RegionEnum[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/capabilities/kube/regions"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
@@ -227,6 +287,124 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/capabilities/loadbalancer/region/{regionName}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List all available sizes",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.loadbalancer.SizeEnum[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/capabilities/loadbalancer/size"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get specific information of load balancer size",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "cloud.project.loadbalancer.SizeEnum",
+              "description": "Size",
+              "fullType": "cloud.project.loadbalancer.SizeEnum",
+              "name": "size",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.project.loadbalancer.LoadBalancerSizeCapability"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/capabilities/loadbalancer/size/{size}"
+    },
+    {
+      "description": "",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List product availability",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "OVH subsidiary",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code filter",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Plan family filter",
+              "fullType": "string",
+              "name": "planFamily",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Product filter",
+              "fullType": "string",
+              "name": "product",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "cloud.capabilities.Availability"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/capabilities/productAvailability"
     },
     {
       "description": "",
@@ -1723,6 +1901,972 @@ export const schema: Schema = {
         }
       ],
       "path": "/cloud/project/{serviceName}/ip/failover/{id}/attach"
+    },
+    {
+      "description": "Manage your clusters",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List your managed Kubernetes clusters",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "string[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a new managed Kubernetes cluster",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectKubeCreation",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectKubeCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.Cluster"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube"
+    },
+    {
+      "description": "Manage your clusters",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete your managed Kubernetes cluster",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get information about your managed Kubernetes cluster",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.Cluster"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update information about your managed Kubernetes cluster",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectKubeUpdate",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectKubeUpdate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}"
+    },
+    {
+      "description": "Generate a temporary url to retrieve auditlogs",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Generate a temporary url to retrieve auditlogs",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.AuditLogs"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/auditLogs"
+    },
+    {
+      "description": "List all flavors available",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List all flavors available",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.Flavor[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/flavors"
+    },
+    {
+      "description": "Manage your api-server ip restrictions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List your ip restrictions on your cluster",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipBlock[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Append a list of ip restrictions on your cluster",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectKubeIpRestrictionUpsert",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectKubeIpRestrictionUpsert",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipBlock[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Remove the current list and add a list of ip restrictions on your cluster",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectKubeIpRestrictionUpsert",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectKubeIpRestrictionUpsert",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "ipBlock[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/ipRestrictions"
+    },
+    {
+      "description": "Manage your api-server ip restrictions",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Delete an ip restriction from your cluster",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "ipBlock",
+              "description": "Ip",
+              "fullType": "ipBlock",
+              "name": "ip",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/ipRestrictions/{ip}"
+    },
+    {
+      "description": "Get your cluster configuration",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Generate kubeconfig file",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.Kubeconfig"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/kubeconfig"
+    },
+    {
+      "description": "Reset your cluster's kubeconfig",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Reset kubeconfig: Certificates will be regenerated, nodes will be reinstalled",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/kubeconfig/reset"
+    },
+    {
+      "description": "Manage your nodes",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List your nodes",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.Node[]"
+        },
+        {
+          "apiStatus": {
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-07-01T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}",
+            "value": "DEPRECATED"
+          },
+          "description": "Deploy a node for your cluster. This call is deprecated. In the meantime it will create a new node pool for each call. We encourage you to now either create a new nodepool or change the size on an existing one",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectKubeNodeCreation",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectKubeNodeCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.Node"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/node"
+    },
+    {
+      "description": "Manage your nodes",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete a specific node on your cluster. This will also decrease by one the desirednodes value of its nodepool",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Node ID",
+              "fullType": "string",
+              "name": "nodeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get information on a specific node on your cluster",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Node ID",
+              "fullType": "string",
+              "name": "nodeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.Node"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}"
+    },
+    {
+      "description": "Manage your nodepools",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List your nodepools",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.NodePool[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Create a nodepool on your cluster",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectKubeNodePoolCreation",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectKubeNodePoolCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.NodePool"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/nodepool"
+    },
+    {
+      "description": "Manage your nodepools",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Delete a nodepool from your cluster",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Node pool ID",
+              "fullType": "string",
+              "name": "nodePoolId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get information on a specific nodepool on your cluster",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Node pool ID",
+              "fullType": "string",
+              "name": "nodePoolId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.NodePool"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Update your nodepool (quota or size)",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectKubeNodePoolUpdate",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectKubeNodePoolUpdate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Node pool ID",
+              "fullType": "string",
+              "name": "nodePoolId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}"
+    },
+    {
+      "description": "List nodes",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List all nodes contained in a nodepool",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Node pool ID",
+              "fullType": "string",
+              "name": "nodePoolId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.Node[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}/nodes"
+    },
+    {
+      "description": "Reset your cluster",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectKubeResetCreation",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectKubeResetCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/reset"
+    },
+    {
+      "description": "Update cluster",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Force cluster and node update to the latest patch within minor version or next minor version",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectKubeUpdateCreation",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectKubeUpdateCreation",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/update"
+    },
+    {
+      "description": "Manage the update policy of your cluster",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change the update policy of your cluster",
+          "httpMethod": "PUT",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "cloud.ProjectKubeUpdatePolicyUpdate",
+              "description": "Request Body",
+              "fullType": "cloud.ProjectKubeUpdatePolicyUpdate",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Kube ID",
+              "fullType": "string",
+              "name": "kubeId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "void"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/{kubeId}/updatePolicy"
+    },
+    {
+      "description": "List Kubernetes available regions",
+      "operations": [
+        {
+          "apiStatus": {
+            "deletionDate": "2020-10-01T00:00:00+00:00",
+            "deprecatedDate": "2020-06-10T00:00:00+00:00",
+            "description": "Deprecated, will be removed",
+            "replacement": "/cloud/project/{serviceName}/capabilities/kube/regions",
+            "value": "DEPRECATED"
+          },
+          "description": "List Kubernetes available regions",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "cloud.kube.RegionEnum[]"
+        }
+      ],
+      "path": "/cloud/project/{serviceName}/kube/regions"
     },
     {
       "description": "Manage labs on your Cloud Project",
@@ -3951,6 +5095,14 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "boolean",
+              "description": "Recursively delete objects and container",
+              "fullType": "boolean",
+              "name": "recursive",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "void"
@@ -6235,6 +7387,402 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.ProjectKubeCreation": {
+      "description": "Missing description",
+      "id": "ProjectKubeCreation",
+      "namespace": "cloud",
+      "properties": {
+        "name": {
+          "canBeNull": true,
+          "description": "Kubernetes cluster name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "nodepool": {
+          "canBeNull": true,
+          "description": "Nodepool to init with cluster creation",
+          "fullType": "cloud.ProjectKubeCreationNodePool",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.ProjectKubeCreationNodePool"
+        },
+        "privateNetworkId": {
+          "canBeNull": true,
+          "description": "OpenStack private network (or vrack) ID to bind to cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Kubernetes OpenStack region",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "version": {
+          "canBeNull": true,
+          "description": "Kubernetes version to install",
+          "fullType": "cloud.kube.VersionEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.VersionEnum"
+        }
+      }
+    },
+    "cloud.ProjectKubeCreationNodePool": {
+      "description": "Missing description",
+      "id": "ProjectKubeCreationNodePool",
+      "namespace": "cloud",
+      "properties": {
+        "antiAffinity": {
+          "canBeNull": true,
+          "description": "Enable anti affinity groups for nodes in the pool",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "autoscale": {
+          "canBeNull": true,
+          "description": "Enable the auto-scaling on the pool",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "desiredNodes": {
+          "canBeNull": true,
+          "description": "Number of nodes to instantiate (1 by default)",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "flavorName": {
+          "canBeNull": true,
+          "description": "Nodes flavor",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "maxNodes": {
+          "canBeNull": true,
+          "description": "Higher limit you accept for the desiredNodes value (100 by default)",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "minNodes": {
+          "canBeNull": true,
+          "description": "Lower limit you accept for the desiredNodes value (0 by default)",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "monthlyBilled": {
+          "canBeNull": true,
+          "description": "Enable monthly billing for nodes in the pool",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "NodePool name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.ProjectKubeIpRestrictionUpsert": {
+      "description": "Missing description",
+      "id": "ProjectKubeIpRestrictionUpsert",
+      "namespace": "cloud",
+      "properties": {
+        "ips": {
+          "canBeNull": true,
+          "description": "List of ips to add to the cluster api-server restrictions (format with /subnet available)",
+          "fullType": "ipBlock[]",
+          "readOnly": false,
+          "required": false,
+          "type": "ipBlock[]"
+        }
+      }
+    },
+    "cloud.ProjectKubeNodeCreation": {
+      "description": "Missing description",
+      "id": "ProjectKubeNodeCreation",
+      "namespace": "cloud",
+      "properties": {
+        "flavorName": {
+          "canBeNull": false,
+          "description": "Flavor name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Node name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.ProjectKubeNodePoolCreation": {
+      "description": "Missing description",
+      "id": "ProjectKubeNodePoolCreation",
+      "namespace": "cloud",
+      "properties": {
+        "antiAffinity": {
+          "canBeNull": true,
+          "description": "Enable anti affinity groups for nodes in the pool",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "autoscale": {
+          "canBeNull": true,
+          "description": "Enable the auto-scaling on the pool",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "desiredNodes": {
+          "canBeNull": true,
+          "description": "Number of nodes to instantiate (1 by default)",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "flavorName": {
+          "canBeNull": false,
+          "description": "Nodes flavor",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "maxNodes": {
+          "canBeNull": true,
+          "description": "Higher limit you accept for the desiredNodes value (100 by default)",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "minNodes": {
+          "canBeNull": true,
+          "description": "Lower limit you accept for the desiredNodes value (0 by default)",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "monthlyBilled": {
+          "canBeNull": true,
+          "description": "Enable monthly billing for nodes in the pool",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "NodePool name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.ProjectKubeNodePoolUpdate": {
+      "description": "Missing description",
+      "id": "ProjectKubeNodePoolUpdate",
+      "namespace": "cloud",
+      "properties": {
+        "autoscale": {
+          "canBeNull": true,
+          "description": "Enable the auto-scaling on the pool",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
+        "desiredNodes": {
+          "canBeNull": true,
+          "description": "New number of nodes wanted in the nodepool",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "maxNodes": {
+          "canBeNull": true,
+          "description": "New maximal number of nodes wanted in the nodepool",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "minNodes": {
+          "canBeNull": true,
+          "description": "New minimal number of nodes wanted in the nodepool",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "nodesToRemove": {
+          "canBeNull": true,
+          "description": "Nodes to delete during downscale",
+          "fullType": "uuid[]",
+          "readOnly": false,
+          "required": false,
+          "type": "uuid[]"
+        }
+      }
+    },
+    "cloud.ProjectKubeOpenIdConnectCreation": {
+      "description": "Creation model for OIDC",
+      "id": "ProjectKubeOpenIdConnectCreation",
+      "namespace": "cloud",
+      "properties": {
+        "clientId": {
+          "canBeNull": false,
+          "description": "Client ID",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "issuerUrl": {
+          "canBeNull": false,
+          "description": "Issuer URL",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.ProjectKubeOpenIdConnectUpdate": {
+      "description": "Update model for OIDC",
+      "id": "ProjectKubeOpenIdConnectUpdate",
+      "namespace": "cloud",
+      "properties": {
+        "clientId": {
+          "canBeNull": false,
+          "description": "Client ID",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "issuerUrl": {
+          "canBeNull": false,
+          "description": "Issuer URL",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.ProjectKubeResetCreation": {
+      "description": "Missing description",
+      "id": "ProjectKubeResetCreation",
+      "namespace": "cloud",
+      "properties": {
+        "privateNetworkId": {
+          "canBeNull": true,
+          "description": "OpenStack private network (or vrack) ID to bind to cluster",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "version": {
+          "canBeNull": true,
+          "description": "Kubernetes version to use after reset, by default it keeps the current version",
+          "fullType": "cloud.kube.VersionEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.VersionEnum"
+        },
+        "workerNodesPolicy": {
+          "canBeNull": true,
+          "description": "Worker nodes reset policy, default is delete",
+          "fullType": "cloud.kube.ResetWorkerNodesPolicyEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.ResetWorkerNodesPolicyEnum"
+        }
+      }
+    },
+    "cloud.ProjectKubeUpdate": {
+      "description": "Missing description",
+      "id": "ProjectKubeUpdate",
+      "namespace": "cloud",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Cluster new name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.ProjectKubeUpdateCreation": {
+      "description": "Missing description",
+      "id": "ProjectKubeUpdateCreation",
+      "namespace": "cloud",
+      "properties": {
+        "strategy": {
+          "canBeNull": true,
+          "description": "The update strategy to apply on your service (next patch or minor version)",
+          "fullType": "cloud.kube.UpdateStrategyEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.kube.UpdateStrategyEnum"
+        }
+      }
+    },
+    "cloud.ProjectKubeUpdatePolicyUpdate": {
+      "description": "Missing description",
+      "id": "ProjectKubeUpdatePolicyUpdate",
+      "namespace": "cloud",
+      "properties": {
+        "updatePolicy": {
+          "canBeNull": false,
+          "description": "Update policy",
+          "fullType": "cloud.kube.UpdatePolicyEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.kube.UpdatePolicyEnum"
+        }
+      }
+    },
     "cloud.ProjectNetworkPrivateCreation": {
       "description": "Missing description",
       "id": "ProjectNetworkPrivateCreation",
@@ -6948,6 +8496,99 @@ export const schema: Schema = {
       "id": "ServiceStatusEnum",
       "namespace": "cloud"
     },
+    "cloud.StorageContainer": {
+      "description": "Container",
+      "id": "StorageContainer",
+      "namespace": "cloud",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Container name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "objects": {
+          "canBeNull": false,
+          "description": "Container objects",
+          "fullType": "cloud.StorageObject[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.StorageObject[]"
+        },
+        "objectsCount": {
+          "canBeNull": false,
+          "description": "Container total objects count",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "objectsSize": {
+          "canBeNull": false,
+          "description": "Container total objects size (bytes)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.StorageContainerCreation": {
+      "description": "Create a container",
+      "id": "StorageContainerCreation",
+      "namespace": "cloud",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Container name",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.StorageObject": {
+      "description": "Object",
+      "id": "StorageObject",
+      "namespace": "cloud",
+      "properties": {
+        "etag": {
+          "canBeNull": false,
+          "description": "ETag",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "key": {
+          "canBeNull": false,
+          "description": "Key",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "lastModified": {
+          "canBeNull": false,
+          "description": "Last modification date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size (bytes)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "cloud.Vrack": {
       "description": "A vRack allows to connect your OVH infrastructures accross products and datacenters",
       "id": "Vrack",
@@ -7217,6 +8858,114 @@ export const schema: Schema = {
         },
         "name": {
           "canBeNull": false,
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.capabilities.Availability": {
+      "description": "Public Cloud products availability",
+      "id": "Availability",
+      "namespace": "cloud.capabilities",
+      "properties": {
+        "plans": {
+          "canBeNull": false,
+          "description": "Plan availability",
+          "fullType": "cloud.capabilities.AvailabilityPlan[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.capabilities.AvailabilityPlan[]"
+        },
+        "products": {
+          "canBeNull": false,
+          "description": "Product availability",
+          "fullType": "cloud.capabilities.AvailabilityProduct[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.capabilities.AvailabilityProduct[]"
+        }
+      }
+    },
+    "cloud.capabilities.AvailabilityPlan": {
+      "description": "Public Cloud plan availability",
+      "id": "AvailabilityPlan",
+      "namespace": "cloud.capabilities",
+      "properties": {
+        "code": {
+          "canBeNull": false,
+          "description": "Plan code",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "regions": {
+          "canBeNull": false,
+          "description": "Plan is available on those regions",
+          "fullType": "cloud.capabilities.AvailabilityRegion[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.capabilities.AvailabilityRegion[]"
+        }
+      }
+    },
+    "cloud.capabilities.AvailabilityProduct": {
+      "description": "Public Cloud product availability",
+      "id": "AvailabilityProduct",
+      "namespace": "cloud.capabilities",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "description": "Product name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "regions": {
+          "canBeNull": false,
+          "description": "Product is available on those regions",
+          "fullType": "cloud.capabilities.AvailabilityRegion[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.capabilities.AvailabilityRegion[]"
+        }
+      }
+    },
+    "cloud.capabilities.AvailabilityRegion": {
+      "description": "Details about a region",
+      "id": "AvailabilityRegion",
+      "namespace": "cloud.capabilities",
+      "properties": {
+        "continentCode": {
+          "canBeNull": false,
+          "description": "Region continent code",
+          "fullType": "cloud.RegionContinentEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.RegionContinentEnum"
+        },
+        "datacenter": {
+          "canBeNull": false,
+          "description": "Location of the datacenter where the region is",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "enabled": {
+          "canBeNull": false,
+          "description": "Region is enabled",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Region name",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -7548,7 +9297,8 @@ export const schema: Schema = {
       "enum": [
         "linux",
         "bsd",
-        "windows"
+        "windows",
+        "baremetal-linux"
       ],
       "enumType": "string",
       "id": "OSTypeEnum",
@@ -8452,6 +10202,646 @@ export const schema: Schema = {
       "id": "IpSubTypeEnum",
       "namespace": "cloud.ip"
     },
+    "cloud.kube.AuditLogs": {
+      "description": "Managed Kubernetes Audit Logs",
+      "id": "AuditLogs",
+      "namespace": "cloud.kube",
+      "properties": {
+        "expirationDate": {
+          "canBeNull": false,
+          "description": "Temporary url expiration date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "Temporary logs URL",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.kube.Cluster": {
+      "description": "Managed Kubernetes cluster description",
+      "id": "Cluster",
+      "namespace": "cloud.kube",
+      "properties": {
+        "controlPlaneIsUpToDate": {
+          "canBeNull": false,
+          "description": "True if control-plane is up to date",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Cluster creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Cluster ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "isUpToDate": {
+          "canBeNull": false,
+          "description": "True if all nodes and control-plane are up to date",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Cluster name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "nextUpgradeVersions": {
+          "canBeNull": true,
+          "description": "Kubernetes versions available for upgrade",
+          "fullType": "cloud.kube.UpgradeVersionEnum[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.kube.UpgradeVersionEnum[]"
+        },
+        "nodesUrl": {
+          "canBeNull": false,
+          "description": "Cluster nodes URL",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "privateNetworkId": {
+          "canBeNull": true,
+          "description": "OpenStack private network (or vrack) ID to bind to cluster",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Cluster region",
+          "fullType": "cloud.kube.RegionEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.kube.RegionEnum"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Cluster status",
+          "fullType": "cloud.kube.ClusterStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.kube.ClusterStatusEnum"
+        },
+        "updatePolicy": {
+          "canBeNull": false,
+          "description": "Cluster update policy",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "updatedAt": {
+          "canBeNull": false,
+          "description": "Cluster last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "url": {
+          "canBeNull": false,
+          "description": "Management URL of your cluster",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Kubernetes version of your cluster",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.kube.ClusterStatusEnum": {
+      "description": "Enum values for Status",
+      "enum": [
+        "DELETED",
+        "DELETING",
+        "ERROR",
+        "INSTALLING",
+        "MAINTENANCE",
+        "READY",
+        "REDEPLOYING",
+        "REOPENING",
+        "RESETTING",
+        "RESIZING",
+        "SUSPENDED",
+        "SUSPENDING",
+        "UPDATING",
+        "USER_ERROR",
+        "USER_NODE_NOT_FOUND_ERROR",
+        "USER_NODE_SUSPENDED_SERVICE",
+        "USER_QUOTA_ERROR"
+      ],
+      "enumType": "string",
+      "id": "ClusterStatusEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.Flavor": {
+      "description": "a flavor kind",
+      "id": "Flavor",
+      "namespace": "cloud.kube",
+      "properties": {
+        "category": {
+          "canBeNull": false,
+          "description": "Flavor family",
+          "fullType": "cloud.kube.FlavorCategoryEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.kube.FlavorCategoryEnum"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Flavor name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "state": {
+          "canBeNull": false,
+          "description": "Flavor state",
+          "fullType": "cloud.kube.FlavorStateEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.kube.FlavorStateEnum"
+        }
+      }
+    },
+    "cloud.kube.FlavorCategoryEnum": {
+      "description": "Enum values for category",
+      "enum": [
+        "c",
+        "g",
+        "t",
+        "b",
+        "r",
+        "i"
+      ],
+      "enumType": "string",
+      "id": "FlavorCategoryEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.FlavorStateEnum": {
+      "description": "Enum values for State",
+      "enum": [
+        "available",
+        "unavailable"
+      ],
+      "enumType": "string",
+      "id": "FlavorStateEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.Kubeconfig": {
+      "description": "Kubeconfig description",
+      "id": "Kubeconfig",
+      "namespace": "cloud.kube",
+      "properties": {
+        "content": {
+          "canBeNull": false,
+          "description": "kubeconfig file",
+          "fullType": "password",
+          "readOnly": true,
+          "required": false,
+          "type": "password"
+        }
+      }
+    },
+    "cloud.kube.Node": {
+      "description": "Node installed on your cluster",
+      "id": "Node",
+      "namespace": "cloud.kube",
+      "properties": {
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "deployedAt": {
+          "canBeNull": true,
+          "description": "Node deployment date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "flavor": {
+          "canBeNull": false,
+          "description": "Flavor name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "Node ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "instanceId": {
+          "canBeNull": true,
+          "description": "Public Cloud instance id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "isUpToDate": {
+          "canBeNull": false,
+          "description": "True if the node is up to date",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Node name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "nodePoolId": {
+          "canBeNull": false,
+          "description": "NodePool parent id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "projectId": {
+          "canBeNull": false,
+          "description": "Project id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status",
+          "fullType": "cloud.kube.NodeStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.kube.NodeStatusEnum"
+        },
+        "updatedAt": {
+          "canBeNull": false,
+          "description": "Node last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Node version",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.kube.NodePool": {
+      "description": "NodePool created on your cluster to manage your nodes",
+      "id": "NodePool",
+      "namespace": "cloud.kube",
+      "properties": {
+        "antiAffinity": {
+          "canBeNull": false,
+          "description": "Enable anti affinity groups for nodes in the pool",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "autoscale": {
+          "canBeNull": false,
+          "description": "Enable auto-scaling for the pool",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "availableNodes": {
+          "canBeNull": false,
+          "description": "Number of nodes which are actually ready in the pool",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "currentNodes": {
+          "canBeNull": false,
+          "description": "Number of nodes present in the pool",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "desiredNodes": {
+          "canBeNull": false,
+          "description": "Number of nodes you desire in the pool",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "flavor": {
+          "canBeNull": false,
+          "description": "Flavor name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "NodePool ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "maxNodes": {
+          "canBeNull": false,
+          "description": "Number of nodes you desire in the pool",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "minNodes": {
+          "canBeNull": false,
+          "description": "Number of nodes you desire in the pool",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "monthlyBilled": {
+          "canBeNull": false,
+          "description": "Enable monthly billing on all nodes in the pool",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "NodePool resource name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "projectId": {
+          "canBeNull": false,
+          "description": "Project id",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "sizeStatus": {
+          "canBeNull": false,
+          "description": "Status describing the state between number of nodes wanted and available ones",
+          "fullType": "cloud.kube.NodePoolSizeStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.kube.NodePoolSizeStatusEnum"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Current status",
+          "fullType": "cloud.kube.NodePoolStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.kube.NodePoolStatusEnum"
+        },
+        "upToDateNodes": {
+          "canBeNull": false,
+          "description": "Number of nodes with latest version installed in the pool",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "updatedAt": {
+          "canBeNull": false,
+          "description": "Last update date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
+    "cloud.kube.NodePoolSizeStatusEnum": {
+      "description": "Enum values for NodePool size Status",
+      "enum": [
+        "UNDER_CAPACITY",
+        "CAPACITY_OK",
+        "OVER_CAPACITY"
+      ],
+      "enumType": "string",
+      "id": "NodePoolSizeStatusEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.NodePoolStatusEnum": {
+      "description": "Enum values for NodePool Status",
+      "enum": [
+        "DELETED",
+        "DELETING",
+        "ERROR",
+        "INSTALLING",
+        "MAINTENANCE",
+        "READY",
+        "REDEPLOYING",
+        "REOPENING",
+        "RESETTING",
+        "RESIZING",
+        "SUSPENDED",
+        "SUSPENDING",
+        "UPDATING",
+        "USER_ERROR",
+        "USER_NODE_NOT_FOUND_ERROR",
+        "USER_NODE_SUSPENDED_SERVICE",
+        "USER_QUOTA_ERROR"
+      ],
+      "enumType": "string",
+      "id": "NodePoolStatusEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.NodeStatusEnum": {
+      "description": "Enum values for Status",
+      "enum": [
+        "DELETED",
+        "DELETING",
+        "ERROR",
+        "INSTALLING",
+        "MAINTENANCE",
+        "READY",
+        "REDEPLOYING",
+        "REOPENING",
+        "RESETTING",
+        "RESIZING",
+        "SUSPENDED",
+        "SUSPENDING",
+        "UPDATING",
+        "USER_ERROR",
+        "USER_NODE_NOT_FOUND_ERROR",
+        "USER_NODE_SUSPENDED_SERVICE",
+        "USER_QUOTA_ERROR"
+      ],
+      "enumType": "string",
+      "id": "NodeStatusEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.OpenIdConnect": {
+      "description": "Managed Kubernetes oidc integration",
+      "id": "OpenIdConnect",
+      "namespace": "cloud.kube",
+      "properties": {
+        "clientId": {
+          "canBeNull": false,
+          "description": "Client ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "issuerUrl": {
+          "canBeNull": false,
+          "description": "Issuer URL",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.kube.RegionEnum": {
+      "description": "Enum values for available regions",
+      "enum": [
+        "GRA5",
+        "GRA7",
+        "BHS5",
+        "SBG5",
+        "WAW1",
+        "SGP1",
+        "SYD1",
+        "US-EAST-VA-1",
+        "US-WEST-OR-1"
+      ],
+      "enumType": "string",
+      "id": "RegionEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.ResetWorkerNodesPolicyEnum": {
+      "description": "Enum values for worker nodes reset policy",
+      "enum": [
+        "reinstall",
+        "delete"
+      ],
+      "enumType": "string",
+      "id": "ResetWorkerNodesPolicyEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.UpdatePolicyEnum": {
+      "description": "Enum values for UpdatePolicy",
+      "enum": [
+        "ALWAYS_UPDATE",
+        "MINIMAL_DOWNTIME",
+        "NEVER_UPDATE"
+      ],
+      "enumType": "string",
+      "id": "UpdatePolicyEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.UpdateStrategyEnum": {
+      "description": "Enum values for UpdateStrategy",
+      "enum": [
+        "LATEST_PATCH",
+        "NEXT_MINOR"
+      ],
+      "enumType": "string",
+      "id": "UpdateStrategyEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.UpgradeVersionEnum": {
+      "description": "List of available versions for upgrade",
+      "enum": [
+        "1.16",
+        "1.17",
+        "1.18",
+        "1.19",
+        "1.20"
+      ],
+      "enumType": "string",
+      "id": "UpgradeVersionEnum",
+      "namespace": "cloud.kube"
+    },
+    "cloud.kube.VersionEnum": {
+      "description": "List of available versions for installation",
+      "enum": [
+        "1.17",
+        "1.18",
+        "1.19",
+        "1.20"
+      ],
+      "enumType": "string",
+      "id": "VersionEnum",
+      "namespace": "cloud.kube"
+    },
     "cloud.migration.Migration": {
       "description": "Migration",
       "id": "Migration",
@@ -8884,6 +11274,164 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.ApplicationLoadBalancer": {
+      "description": "A load balancer to handle application workload",
+      "id": "ApplicationLoadBalancer",
+      "namespace": "cloud.project",
+      "properties": {
+        "address": {
+          "canBeNull": false,
+          "description": "Address to reach the load balancer",
+          "fullType": "cloud.project.loadbalancer.Address",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Address"
+        },
+        "configuration": {
+          "canBeNull": false,
+          "description": "Information about version of the configuration",
+          "fullType": "cloud.project.loadbalancer.ConfigurationVersion",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.ConfigurationVersion"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Creation date and time of the load balancer",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "description": {
+          "canBeNull": true,
+          "description": "Description of the load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "egressAddress": {
+          "canBeNull": false,
+          "description": "IPs used by the load balancer to contact backend's servers",
+          "fullType": "cloud.project.loadbalancer.Addresses",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Addresses"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the load balancer",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name of the load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "openstackRegion": {
+          "canBeNull": false,
+          "description": "Openstack region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the load balancer",
+          "fullType": "cloud.project.loadbalancer.SizeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.SizeEnum"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Status of a load balancer",
+          "fullType": "cloud.project.loadbalancer.StatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.StatusEnum"
+        }
+      }
+    },
+    "cloud.project.ApplicationLoadBalancerCreation": {
+      "description": "A load balancer to handle application workload",
+      "id": "ApplicationLoadBalancerCreation",
+      "namespace": "cloud.project",
+      "properties": {
+        "description": {
+          "canBeNull": true,
+          "description": "Description of the load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "id": {
+          "canBeNull": false,
+          "description": "ID of the load balancer",
+          "fullType": "uuid",
+          "readOnly": true,
+          "required": false,
+          "type": "uuid"
+        },
+        "name": {
+          "canBeNull": true,
+          "description": "Name of the load balancer",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "networking": {
+          "canBeNull": true,
+          "description": "Networking definition",
+          "fullType": "cloud.project.loadbalancer.networking.NetworkingCreation",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.networking.NetworkingCreation"
+        },
+        "openstackRegion": {
+          "canBeNull": false,
+          "description": "Openstack Region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "region": {
+          "canBeNull": false,
+          "description": "Region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": true,
+          "description": "Size of the load balancer",
+          "fullType": "cloud.project.loadbalancer.SizeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.SizeEnum"
+        }
+      }
+    },
     "cloud.project.Certificate": {
       "description": "A Certificate to use in your NFVs",
       "id": "Certificate",
@@ -9031,132 +11579,6 @@ export const schema: Schema = {
       "id": "CertificateStatusEnum",
       "namespace": "cloud.project"
     },
-    "cloud.project.HTTPLoadBalancer": {
-      "description": "A HTTP load balancer to handle workload",
-      "id": "HTTPLoadBalancer",
-      "namespace": "cloud.project",
-      "properties": {
-        "address": {
-          "canBeNull": false,
-          "description": "Address to reach the HTTP load balancer",
-          "fullType": "cloud.project.loadbalancer.Address",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.loadbalancer.Address"
-        },
-        "configuration": {
-          "canBeNull": false,
-          "description": "Information about version of the configuration",
-          "fullType": "cloud.project.loadbalancer.ConfigurationVersion",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.loadbalancer.ConfigurationVersion"
-        },
-        "createdAt": {
-          "canBeNull": false,
-          "description": "Creation date and time of the HTTP load balancer",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "description": {
-          "canBeNull": true,
-          "description": "Description of the HTTP load balancer",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "egressAddress": {
-          "canBeNull": false,
-          "description": "IPs used by the HTTP load balancer to contact backend's servers",
-          "fullType": "cloud.project.loadbalancer.Addresses",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.loadbalancer.Addresses"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "ID of the HTTP load balancer",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
-        "name": {
-          "canBeNull": true,
-          "description": "Name of the HTTP load balancer",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "region": {
-          "canBeNull": false,
-          "description": "Region where the HTTP load balancer is hosted",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "status": {
-          "canBeNull": false,
-          "description": "Status of a HTTP load balancer",
-          "fullType": "cloud.project.loadbalancer.StatusEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.loadbalancer.StatusEnum"
-        }
-      }
-    },
-    "cloud.project.HTTPLoadBalancerCreation": {
-      "description": "A load balancer to handle workload",
-      "id": "HTTPLoadBalancerCreation",
-      "namespace": "cloud.project",
-      "properties": {
-        "description": {
-          "canBeNull": true,
-          "description": "Description of the HTTP load balancer",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "ID of the HTTP load balancer",
-          "fullType": "uuid",
-          "readOnly": true,
-          "required": false,
-          "type": "uuid"
-        },
-        "name": {
-          "canBeNull": true,
-          "description": "Name of the HTTP load balancer",
-          "fullType": "string",
-          "readOnly": false,
-          "required": false,
-          "type": "string"
-        },
-        "networking": {
-          "canBeNull": true,
-          "description": "Networking definition",
-          "fullType": "cloud.project.loadbalancer.networking.NetworkingCreation",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.project.loadbalancer.networking.NetworkingCreation"
-        },
-        "region": {
-          "canBeNull": false,
-          "description": "Region where the HTTP load balancer is hosted",
-          "fullType": "string",
-          "readOnly": false,
-          "required": true,
-          "type": "string"
-        }
-      }
-    },
     "cloud.project.LoadBalancer": {
       "description": "A load balancer to handle workload",
       "id": "LoadBalancer",
@@ -9226,6 +11648,14 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.project.loadbalancer.networking.Networking"
         },
+        "openstackRegion": {
+          "canBeNull": false,
+          "description": "Openstack region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
         "region": {
           "canBeNull": false,
           "description": "Region where the load balancer is hosted",
@@ -9233,6 +11663,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the load balancer",
+          "fullType": "cloud.project.loadbalancer.SizeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.SizeEnum"
         },
         "status": {
           "canBeNull": false,
@@ -9281,6 +11719,14 @@ export const schema: Schema = {
           "required": false,
           "type": "cloud.project.loadbalancer.networking.NetworkingCreation"
         },
+        "openstackRegion": {
+          "canBeNull": false,
+          "description": "Openstack Region where the load balancer is hosted",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
         "region": {
           "canBeNull": false,
           "description": "Region where the load balancer is hosted",
@@ -9288,6 +11734,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": true,
           "type": "string"
+        },
+        "size": {
+          "canBeNull": true,
+          "description": "Size of the load balancer",
+          "fullType": "cloud.project.loadbalancer.SizeEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.SizeEnum"
         }
       }
     },
@@ -9568,6 +12022,132 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.project.loadbalancer.ApplicationConfiguration": {
+      "description": "An application load balancer configuration",
+      "id": "ApplicationConfiguration",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "actions": {
+          "canBeNull": true,
+          "description": "All actions",
+          "fullType": "cloud.project.loadbalancer.Actions",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Actions"
+        },
+        "certificates": {
+          "canBeNull": false,
+          "description": "List of certificate ID",
+          "fullType": "string[]",
+          "readOnly": true,
+          "required": false,
+          "type": "string[]"
+        },
+        "conditions": {
+          "canBeNull": true,
+          "description": "List of conditions",
+          "fullType": "cloud.project.loadbalancer.Condition[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Condition[]"
+        },
+        "entryPoints": {
+          "canBeNull": false,
+          "description": "List of entryPoints",
+          "fullType": "cloud.project.loadbalancer.EntryPoint[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.EntryPoint[]"
+        },
+        "networking": {
+          "canBeNull": false,
+          "description": "networking configuration",
+          "fullType": "cloud.project.loadbalancer.configuration.networking.Networking",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.configuration.networking.Networking"
+        },
+        "targets": {
+          "canBeNull": true,
+          "description": "List of targets",
+          "fullType": "cloud.project.loadbalancer.Target[]",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Target[]"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Identifier and version of the configuration",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "cloud.project.loadbalancer.ApplicationConfigurationCreation": {
+      "description": "An application load balancer configuration",
+      "id": "ApplicationConfigurationCreation",
+      "namespace": "cloud.project.loadbalancer",
+      "properties": {
+        "actions": {
+          "canBeNull": true,
+          "description": "All actions",
+          "fullType": "cloud.project.loadbalancer.Actions",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Actions"
+        },
+        "certificates": {
+          "canBeNull": false,
+          "description": "List of certificate ID",
+          "fullType": "string[]",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "conditions": {
+          "canBeNull": true,
+          "description": "List of conditions",
+          "fullType": "cloud.project.loadbalancer.Condition[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Condition[]"
+        },
+        "entryPoints": {
+          "canBeNull": false,
+          "description": "List of entryPoints",
+          "fullType": "cloud.project.loadbalancer.EntryPoint[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.EntryPoint[]"
+        },
+        "networking": {
+          "canBeNull": true,
+          "description": "networking configuration",
+          "fullType": "cloud.project.loadbalancer.configuration.networking.Networking",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.configuration.networking.Networking"
+        },
+        "targets": {
+          "canBeNull": true,
+          "description": "List of targets",
+          "fullType": "cloud.project.loadbalancer.Target[]",
+          "readOnly": false,
+          "required": false,
+          "type": "cloud.project.loadbalancer.Target[]"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "Identifier and version of the configuration",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
     "cloud.project.loadbalancer.Backend": {
       "description": "A load balancer backend",
       "id": "Backend",
@@ -9808,12 +12388,20 @@ export const schema: Schema = {
       "namespace": "cloud.project.loadbalancer",
       "properties": {
         "defaultTarget": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "The default target name",
           "fullType": "string",
           "readOnly": false,
           "required": false,
           "type": "string"
+        },
+        "disableH2": {
+          "canBeNull": false,
+          "description": "Disable HTTP2",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
         },
         "name": {
           "canBeNull": false,
@@ -9926,129 +12514,42 @@ export const schema: Schema = {
         }
       }
     },
-    "cloud.project.loadbalancer.HTTPConfiguration": {
-      "description": "A HTTP load balancer configuration",
-      "id": "HTTPConfiguration",
+    "cloud.project.loadbalancer.LoadBalancerSizeCapability": {
+      "description": "Network load balancer size capability",
+      "id": "LoadBalancerSizeCapability",
       "namespace": "cloud.project.loadbalancer",
       "properties": {
-        "actions": {
-          "canBeNull": true,
-          "description": "All actions",
-          "fullType": "cloud.project.loadbalancer.Actions",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.loadbalancer.Actions"
-        },
-        "certificates": {
+        "bandwidthMbPerSecond": {
           "canBeNull": false,
-          "description": "List of certificate ID",
-          "fullType": "string[]",
-          "readOnly": true,
-          "required": false,
-          "type": "string[]"
-        },
-        "conditions": {
-          "canBeNull": true,
-          "description": "List of conditions",
-          "fullType": "cloud.project.loadbalancer.Condition[]",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.loadbalancer.Condition[]"
-        },
-        "entryPoints": {
-          "canBeNull": false,
-          "description": "List of entryPoints",
-          "fullType": "cloud.project.loadbalancer.EntryPoint[]",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.loadbalancer.EntryPoint[]"
-        },
-        "networking": {
-          "canBeNull": false,
-          "description": "networking configuration",
-          "fullType": "cloud.project.loadbalancer.configuration.networking.Networking",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.loadbalancer.configuration.networking.Networking"
-        },
-        "targets": {
-          "canBeNull": true,
-          "description": "List of targets",
-          "fullType": "cloud.project.loadbalancer.Target[]",
-          "readOnly": true,
-          "required": false,
-          "type": "cloud.project.loadbalancer.Target[]"
-        },
-        "version": {
-          "canBeNull": false,
-          "description": "Identifier and version of the configuration",
+          "description": "Bandwidth allowed in Mb/s",
           "fullType": "long",
           "readOnly": true,
           "required": false,
           "type": "long"
-        }
-      }
-    },
-    "cloud.project.loadbalancer.HTTPConfigurationCreation": {
-      "description": "A HTTP load balancer configuration",
-      "id": "HTTPConfigurationCreation",
-      "namespace": "cloud.project.loadbalancer",
-      "properties": {
-        "actions": {
-          "canBeNull": true,
-          "description": "All actions",
-          "fullType": "cloud.project.loadbalancer.Actions",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.project.loadbalancer.Actions"
         },
-        "certificates": {
+        "maximumConnection": {
           "canBeNull": false,
-          "description": "List of certificate ID",
-          "fullType": "string[]",
-          "readOnly": false,
-          "required": false,
-          "type": "string[]"
-        },
-        "conditions": {
-          "canBeNull": true,
-          "description": "List of conditions",
-          "fullType": "cloud.project.loadbalancer.Condition[]",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.project.loadbalancer.Condition[]"
-        },
-        "entryPoints": {
-          "canBeNull": false,
-          "description": "List of entryPoints",
-          "fullType": "cloud.project.loadbalancer.EntryPoint[]",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.project.loadbalancer.EntryPoint[]"
-        },
-        "networking": {
-          "canBeNull": true,
-          "description": "networking configuration",
-          "fullType": "cloud.project.loadbalancer.configuration.networking.Networking",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.project.loadbalancer.configuration.networking.Networking"
-        },
-        "targets": {
-          "canBeNull": true,
-          "description": "List of targets",
-          "fullType": "cloud.project.loadbalancer.Target[]",
-          "readOnly": false,
-          "required": false,
-          "type": "cloud.project.loadbalancer.Target[]"
-        },
-        "version": {
-          "canBeNull": false,
-          "description": "Identifier and version of the configuration",
+          "description": "Maximum connection allowed on the load balancer",
           "fullType": "long",
           "readOnly": true,
           "required": false,
           "type": "long"
+        },
+        "newConnectionPerSecond": {
+          "canBeNull": false,
+          "description": "Number of new connection allowed per second",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Size of the load balancer",
+          "fullType": "cloud.project.loadbalancer.SizeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "cloud.project.loadbalancer.SizeEnum"
         }
       }
     },
@@ -10104,7 +12605,7 @@ export const schema: Schema = {
           "type": "string"
         },
         "conditions": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "The list of condition to match",
           "fullType": "string[]",
           "readOnly": false,
@@ -10159,6 +12660,17 @@ export const schema: Schema = {
           "type": "long"
         }
       }
+    },
+    "cloud.project.loadbalancer.SizeEnum": {
+      "description": "Size of the load balancer",
+      "enum": [
+        "S",
+        "M",
+        "L"
+      ],
+      "enumType": "string",
+      "id": "SizeEnum",
+      "namespace": "cloud.project.loadbalancer"
     },
     "cloud.project.loadbalancer.StatusEnum": {
       "description": "Status of a load balancer",
@@ -11231,6 +13743,29 @@ export const schema: Schema = {
         }
       }
     },
+    "cloud.storage.AddContainerPolicy": {
+      "description": "Add storage policy for container",
+      "id": "AddContainerPolicy",
+      "namespace": "cloud.storage",
+      "properties": {
+        "objectKey": {
+          "canBeNull": false,
+          "description": "Container object key",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "roleName": {
+          "canBeNull": false,
+          "description": "Policy role",
+          "fullType": "cloud.storage.PolicyRoleEnum",
+          "readOnly": false,
+          "required": true,
+          "type": "cloud.storage.PolicyRoleEnum"
+        }
+      }
+    },
     "cloud.storage.Container": {
       "description": "Container",
       "id": "Container",
@@ -11487,6 +14022,33 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "cloud.storage.PolicyRaw": {
+      "description": "Raw storage policy",
+      "id": "PolicyRaw",
+      "namespace": "cloud.storage",
+      "properties": {
+        "policy": {
+          "canBeNull": false,
+          "description": "Raw storage policy",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "cloud.storage.PolicyRoleEnum": {
+      "description": "Storage policy role",
+      "enum": [
+        "admin",
+        "deny",
+        "readOnly",
+        "readWrite"
+      ],
+      "enumType": "string",
+      "id": "PolicyRoleEnum",
+      "namespace": "cloud.storage"
     },
     "cloud.storage.RetrievalStateEnum": {
       "description": "RetrievalStateEnum",

@@ -2129,6 +2129,7 @@ export const schema: Schema = {
         "enableFirewall",
         "genericMoveFloatingIp",
         "hardReboot",
+        "hardware_update",
         "ipmi/configureSGX",
         "migrateBackupFTP",
         "moveFloatingIp",

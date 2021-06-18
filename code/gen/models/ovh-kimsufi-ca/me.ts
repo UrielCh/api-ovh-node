@@ -2385,21 +2385,21 @@ export const schema: Schema = {
       "path": "/me/contact/{contactId}/fields"
     },
     {
-      "description": "Retrieve credit balance names",
+      "description": "Manage credit balances",
       "operations": [
         {
           "apiStatus": {
             "description": "Stable production version",
             "value": "PRODUCTION"
           },
-          "description": "Retrieve credit balance names",
+          "description": "Retrieve all credit balances",
           "httpMethod": "GET",
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "billing.credit.balance.Type",
-              "description": "Balance type",
-              "fullType": "billing.credit.balance.Type",
+              "dataType": "me.credit.balance.TypeEnum",
+              "description": "Filter by balance type",
+              "fullType": "me.credit.balance.TypeEnum",
               "name": "type",
               "paramType": "query",
               "required": false
@@ -2411,7 +2411,7 @@ export const schema: Schema = {
       "path": "/me/credit/balance"
     },
     {
-      "description": "Retrieve a credit balance",
+      "description": "Manage credit balances",
       "operations": [
         {
           "apiStatus": {
@@ -2431,13 +2431,13 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.credit.Balance"
+          "responseType": "me.credit.Balance"
         }
       ],
       "path": "/me/credit/balance/{balanceName}"
     },
     {
-      "description": "Retrieve movements for a specific balance",
+      "description": "Manage credit balance movements",
       "operations": [
         {
           "apiStatus": {
@@ -2463,7 +2463,7 @@ export const schema: Schema = {
       "path": "/me/credit/balance/{balanceName}/movement"
     },
     {
-      "description": "Retrieve a specific movement for a credit balance",
+      "description": "Manage credit balance movements",
       "operations": [
         {
           "apiStatus": {
@@ -2476,7 +2476,7 @@ export const schema: Schema = {
           "parameters": [
             {
               "dataType": "string",
-              "description": "Credit balance name",
+              "description": "Balance name",
               "fullType": "string",
               "name": "balanceName",
               "paramType": "path",
@@ -2491,13 +2491,13 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "billing.credit.balance.Movement"
+          "responseType": "me.credit.balance.Movement"
         }
       ],
       "path": "/me/credit/balance/{balanceName}/movement/{movementId}"
     },
     {
-      "description": "Validate a code to generate associated credit",
+      "description": "Validate a code to generate associated credit movement",
       "operations": [
         {
           "apiStatus": {
@@ -2509,23 +2509,14 @@ export const schema: Schema = {
           "noAuthentication": false,
           "parameters": [
             {
-              "dataType": "string",
-              "description": "Code to validate",
-              "fullType": "string",
-              "name": "inputCode",
+              "dataType": "me.credit.code.Redeem",
+              "description": "Request Body",
+              "fullType": "me.credit.code.Redeem",
               "paramType": "body",
               "required": true
-            },
-            {
-              "dataType": "long",
-              "description": "Restrict credit to a specific service",
-              "fullType": "coreTypes.ServiceId:long",
-              "name": "serviceId",
-              "paramType": "body",
-              "required": false
             }
           ],
-          "responseType": "billing.credit.balance.Movement"
+          "responseType": "me.credit.balance.Movement"
         }
       ],
       "path": "/me/credit/code"
@@ -9640,6 +9631,13 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "billing.ItemDetail.OrderPlan"
+        },
+        "type": {
+          "canBeNull": true,
+          "description": "Type of the detail to match with values inside the catalog",
+          "readOnly": false,
+          "required": false,
+          "type": "billing.ItemDetail.OrderDetailTypeEnum"
         }
       }
     },
@@ -9647,8 +9645,10 @@ export const schema: Schema = {
       "description": "List of order actions",
       "enum": [
         "consumption",
+        "detach",
         "installation",
         "renew",
+        "revert",
         "upgrade"
       ],
       "enumType": "string",
@@ -9675,6 +9675,16 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "billing.ItemDetail.OrderDetailTypeEnum": {
+      "description": "List of order detail types",
+      "enum": [
+        "plan",
+        "product"
+      ],
+      "enumType": "string",
+      "id": "OrderDetailTypeEnum",
+      "namespace": "billing.ItemDetail"
     },
     "billing.ItemDetail.OrderPlan": {
       "description": "Plan data from order",
@@ -10396,6 +10406,7 @@ export const schema: Schema = {
         "PAYPAL",
         "bankAccount",
         "creditCard",
+        "deferredPaymentAccount",
         "fidelityAccount",
         "ovhAccount",
         "paypal"
@@ -10904,6 +10915,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "datetime"
+        },
+        "destinationObject": {
+          "canBeNull": true,
+          "description": "Object destination of this credit movement",
+          "fullType": "billing.credit.balance.movement.SubObject",
+          "readOnly": true,
+          "required": false,
+          "type": "billing.credit.balance.movement.SubObject"
         },
         "expirationDate": {
           "canBeNull": true,
@@ -12593,6 +12612,529 @@ export const schema: Schema = {
       "id": "TemplateOsHardwareRaidEnum",
       "namespace": "dedicated"
     },
+    "dedicated.TemplateOsInfoLicense": {
+      "description": "A structure describing some interesting facts about an OS template licensing",
+      "id": "TemplateOsInfoLicense",
+      "namespace": "dedicated",
+      "properties": {
+        "os": {
+          "canBeNull": true,
+          "description": "OS template license OS details",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.TemplateOsInfoLicenseItem"
+        },
+        "usage": {
+          "canBeNull": true,
+          "description": "OS template license usage details",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.TemplateOsInfoLicenseItem"
+        }
+      }
+    },
+    "dedicated.TemplateOsInfoLicenseItem": {
+      "description": "A structure describing some interesting facts about an OS template license item",
+      "id": "TemplateOsInfoLicenseItem",
+      "namespace": "dedicated",
+      "properties": {
+        "name": {
+          "canBeNull": true,
+          "description": "OS template license item names",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.TemplateOsInfoLicenseItemEnum[]"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "OS template license item url",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "dedicated.TemplateOsInfoLicenseItemEnum": {
+      "description": "Standard license name according to SPDX",
+      "enum": [
+        "0BSD",
+        "AAL",
+        "ADSL",
+        "AFL-1.1",
+        "AFL-1.2",
+        "AFL-2.0",
+        "AFL-2.1",
+        "AFL-3.0",
+        "AGPL-1.0-only",
+        "AGPL-1.0-or-later",
+        "AGPL-3.0-only",
+        "AGPL-3.0-or-later",
+        "AMDPLPA",
+        "AML",
+        "AMPAS",
+        "ANTLR-PD",
+        "ANTLR-PD-fallback",
+        "APAFML",
+        "APL-1.0",
+        "APSL-1.0",
+        "APSL-1.1",
+        "APSL-1.2",
+        "APSL-2.0",
+        "Abstyles",
+        "Adobe-2006",
+        "Adobe-Glyph",
+        "Afmparse",
+        "Aladdin",
+        "Apache-1.0",
+        "Apache-1.1",
+        "Apache-2.0",
+        "Artistic-1.0",
+        "Artistic-1.0-Perl",
+        "Artistic-1.0-cl8",
+        "Artistic-2.0",
+        "BSD-1-Clause",
+        "BSD-2-Clause",
+        "BSD-2-Clause-Patent",
+        "BSD-2-Clause-Views",
+        "BSD-3-Clause",
+        "BSD-3-Clause-Attribution",
+        "BSD-3-Clause-Clear",
+        "BSD-3-Clause-LBNL",
+        "BSD-3-Clause-Modification",
+        "BSD-3-Clause-No-Nuclear-License",
+        "BSD-3-Clause-No-Nuclear-License-2014",
+        "BSD-3-Clause-No-Nuclear-Warranty",
+        "BSD-3-Clause-Open-MPI",
+        "BSD-4-Clause",
+        "BSD-4-Clause-Shortened",
+        "BSD-4-Clause-UC",
+        "BSD-Protection",
+        "BSD-Source-Code",
+        "BSL-1.0",
+        "BUSL-1.1",
+        "Bahyph",
+        "Barr",
+        "Beerware",
+        "BitTorrent-1.0",
+        "BitTorrent-1.1",
+        "BlueOak-1.0.0",
+        "Borceux",
+        "C-UDA-1.0",
+        "CAL-1.0",
+        "CAL-1.0-Combined-Work-Exception",
+        "CATOSL-1.1",
+        "CC-BY-1.0",
+        "CC-BY-2.0",
+        "CC-BY-2.5",
+        "CC-BY-3.0",
+        "CC-BY-4.0",
+        "CC-BY-NC-1.0",
+        "CC-BY-NC-2.0",
+        "CC-BY-NC-2.5",
+        "CC-BY-NC-3.0",
+        "CC-BY-NC-4.0",
+        "CC-BY-NC-ND-1.0",
+        "CC-BY-NC-ND-2.0",
+        "CC-BY-NC-ND-2.5",
+        "CC-BY-NC-ND-3.0",
+        "CC-BY-NC-ND-4.0",
+        "CC-BY-NC-SA-1.0",
+        "CC-BY-NC-SA-2.0",
+        "CC-BY-NC-SA-2.5",
+        "CC-BY-NC-SA-3.0",
+        "CC-BY-NC-SA-4.0",
+        "CC-BY-ND-1.0",
+        "CC-BY-ND-2.0",
+        "CC-BY-ND-2.5",
+        "CC-BY-ND-3.0",
+        "CC-BY-ND-4.0",
+        "CC-BY-SA-1.0",
+        "CC-BY-SA-2.0",
+        "CC-BY-SA-2.5",
+        "CC-BY-SA-3.0",
+        "CC-BY-SA-4.0",
+        "CC-PDDC",
+        "CC0-1.0",
+        "CDDL-1.0",
+        "CDDL-1.1",
+        "CDLA-Permissive-1.0",
+        "CDLA-Sharing-1.0",
+        "CECILL-1.0",
+        "CECILL-1.1",
+        "CECILL-2.0",
+        "CECILL-2.1",
+        "CECILL-B",
+        "CECILL-C",
+        "CERN-OHL-1.1",
+        "CERN-OHL-1.2",
+        "CERN-OHL-P-2.0",
+        "CERN-OHL-S-2.0",
+        "CERN-OHL-W-2.0",
+        "CNRI-Jython",
+        "CNRI-Python",
+        "CNRI-Python-GPL-Compatible",
+        "CPAL-1.0",
+        "CPL-1.0",
+        "CPOL-1.02",
+        "CUA-OPL-1.0",
+        "Caldera",
+        "ClArtistic",
+        "Condor-1.1",
+        "Crossword",
+        "CrystalStacker",
+        "Cube",
+        "D-FSL-1.0",
+        "DFSG",
+        "DOC",
+        "DRL-1.0",
+        "DSDP",
+        "Dotseqn",
+        "ECL-1.0",
+        "ECL-2.0",
+        "EFL-1.0",
+        "EFL-2.0",
+        "EPICS",
+        "EPL-1.0",
+        "EPL-2.0",
+        "EUDatagrid",
+        "EUPL-1.0",
+        "EUPL-1.1",
+        "EUPL-1.2",
+        "Entessa",
+        "ErlPL-1.1",
+        "Eurosym",
+        "FSFAP",
+        "FSFUL",
+        "FSFULLR",
+        "FTL",
+        "Fair",
+        "Frameworx-1.0",
+        "FreeBSD-DOC",
+        "FreeImage",
+        "GD",
+        "GFDL-1.1-invariants-only",
+        "GFDL-1.1-invariants-or-later",
+        "GFDL-1.1-no-invariants-only",
+        "GFDL-1.1-no-invariants-or-later",
+        "GFDL-1.1-only",
+        "GFDL-1.1-or-later",
+        "GFDL-1.2-invariants-only",
+        "GFDL-1.2-invariants-or-later",
+        "GFDL-1.2-no-invariants-only",
+        "GFDL-1.2-no-invariants-or-later",
+        "GFDL-1.2-only",
+        "GFDL-1.2-or-later",
+        "GFDL-1.3-invariants-only",
+        "GFDL-1.3-invariants-or-later",
+        "GFDL-1.3-no-invariants-only",
+        "GFDL-1.3-no-invariants-or-later",
+        "GFDL-1.3-only",
+        "GFDL-1.3-or-later",
+        "GL2PS",
+        "GLWTPL",
+        "GPL-1.0-only",
+        "GPL-1.0-or-later",
+        "GPL-2.0-only",
+        "GPL-2.0-or-later",
+        "GPL-3.0-only",
+        "GPL-3.0-or-later",
+        "Giftware",
+        "Glide",
+        "Glulxe",
+        "HPND",
+        "HPND-sell-variant",
+        "HTMLTIDY",
+        "HaskellReport",
+        "Hippocratic-2.1",
+        "IBM-pibs",
+        "ICU",
+        "IJG",
+        "IPA",
+        "IPL-1.0",
+        "ISC",
+        "ImageMagick",
+        "Imlib2",
+        "Info-ZIP",
+        "Intel",
+        "Intel-ACPI",
+        "Interbase-1.0",
+        "JPNIC",
+        "JSON",
+        "JasPer-2.0",
+        "LAL-1.2",
+        "LAL-1.3",
+        "LGPL-2.0-only",
+        "LGPL-2.0-or-later",
+        "LGPL-2.1-only",
+        "LGPL-2.1-or-later",
+        "LGPL-3.0-only",
+        "LGPL-3.0-or-later",
+        "LGPLLR",
+        "LPL-1.0",
+        "LPL-1.02",
+        "LPPL-1.0",
+        "LPPL-1.1",
+        "LPPL-1.2",
+        "LPPL-1.3a",
+        "LPPL-1.3c",
+        "Latex2e",
+        "Leptonica",
+        "LiLiQ-P-1.1",
+        "LiLiQ-R-1.1",
+        "LiLiQ-Rplus-1.1",
+        "Libpng",
+        "Linux-OpenIB",
+        "MIT",
+        "MIT-0",
+        "MIT-CMU",
+        "MIT-Modern-Variant",
+        "MIT-advertising",
+        "MIT-enna",
+        "MIT-feh",
+        "MIT-open-group",
+        "MITNFA",
+        "MPL-1.0",
+        "MPL-1.1",
+        "MPL-2.0",
+        "MPL-2.0-no-copyleft-exception",
+        "MS-PL",
+        "MS-RL",
+        "MTLL",
+        "MakeIndex",
+        "MirOS",
+        "Motosoto",
+        "MulanPSL-1.0",
+        "MulanPSL-2.0",
+        "Multics",
+        "Mup",
+        "NAIST-2003",
+        "NASA-1.3",
+        "NBPL-1.0",
+        "NCGL-UK-2.0",
+        "NCSA",
+        "NGPL",
+        "NIST-PD",
+        "NIST-PD-fallback",
+        "NLOD-1.0",
+        "NLPL",
+        "NOSL",
+        "NPL-1.0",
+        "NPL-1.1",
+        "NPOSL-3.0",
+        "NRL",
+        "NTP",
+        "NTP-0",
+        "Naumen",
+        "Net-SNMP",
+        "NetCDF",
+        "Newsletr",
+        "Nokia",
+        "Noweb",
+        "O-UDA-1.0",
+        "OCCT-PL",
+        "OCLC-2.0",
+        "ODC-By-1.0",
+        "ODbL-1.0",
+        "OFL-1.0",
+        "OFL-1.0-RFN",
+        "OFL-1.0-no-RFN",
+        "OFL-1.1",
+        "OFL-1.1-RFN",
+        "OFL-1.1-no-RFN",
+        "OGC-1.0",
+        "OGDL-Taiwan-1.0",
+        "OGL-Canada-2.0",
+        "OGL-UK-1.0",
+        "OGL-UK-2.0",
+        "OGL-UK-3.0",
+        "OGTSL",
+        "OLDAP-1.1",
+        "OLDAP-1.2",
+        "OLDAP-1.3",
+        "OLDAP-1.4",
+        "OLDAP-2.0",
+        "OLDAP-2.0.1",
+        "OLDAP-2.1",
+        "OLDAP-2.2",
+        "OLDAP-2.2.1",
+        "OLDAP-2.2.2",
+        "OLDAP-2.3",
+        "OLDAP-2.4",
+        "OLDAP-2.5",
+        "OLDAP-2.6",
+        "OLDAP-2.7",
+        "OLDAP-2.8",
+        "OML",
+        "OPL-1.0",
+        "OSET-PL-2.1",
+        "OSL-1.0",
+        "OSL-1.1",
+        "OSL-2.0",
+        "OSL-2.1",
+        "OSL-3.0",
+        "OpenSSL",
+        "PDDL-1.0",
+        "PHP-3.0",
+        "PHP-3.01",
+        "PSF-2.0",
+        "Parity-6.0.0",
+        "Parity-7.0.0",
+        "Plexus",
+        "PolyForm-Noncommercial-1.0.0",
+        "PolyForm-Small-Business-1.0.0",
+        "PostgreSQL",
+        "Python-2.0",
+        "QPL-1.0",
+        "Qhull",
+        "RHeCos-1.1",
+        "RPL-1.1",
+        "RPL-1.5",
+        "RPSL-1.0",
+        "RSA-MD",
+        "RSCPL",
+        "Rdisc",
+        "Ruby",
+        "SAX-PD",
+        "SCEA",
+        "SGI-B-1.0",
+        "SGI-B-1.1",
+        "SGI-B-2.0",
+        "SHL-0.5",
+        "SHL-0.51",
+        "SISSL",
+        "SISSL-1.2",
+        "SMLNJ",
+        "SMPPL",
+        "SNIA",
+        "SPL-1.0",
+        "SSH-OpenSSH",
+        "SSH-short",
+        "SSPL-1.0",
+        "SWL",
+        "Saxpath",
+        "Sendmail",
+        "Sendmail-8.23",
+        "SimPL-2.0",
+        "Sleepycat",
+        "Spencer-86",
+        "Spencer-94",
+        "Spencer-99",
+        "SugarCRM-1.1.3",
+        "TAPR-OHL-1.0",
+        "TCL",
+        "TCP-wrappers",
+        "TMate",
+        "TORQUE-1.1",
+        "TOSL",
+        "TU-Berlin-1.0",
+        "TU-Berlin-2.0",
+        "UCL-1.0",
+        "UPL-1.0",
+        "Unicode-DFS-2015",
+        "Unicode-DFS-2016",
+        "Unicode-TOU",
+        "Unlicense",
+        "VOSTROM",
+        "VSL-1.0",
+        "Vim",
+        "W3C",
+        "W3C-19980720",
+        "W3C-20150513",
+        "WTFPL",
+        "Watcom-1.0",
+        "Wsuipa",
+        "X11",
+        "XFree86-1.1",
+        "XSkat",
+        "Xerox",
+        "Xnet",
+        "ZPL-1.1",
+        "ZPL-2.0",
+        "ZPL-2.1",
+        "Zed",
+        "Zend-2.0",
+        "Zimbra-1.3",
+        "Zimbra-1.4",
+        "Zlib",
+        "blessing",
+        "bzip2-1.0.5",
+        "bzip2-1.0.6",
+        "copyleft-next-0.3.0",
+        "copyleft-next-0.3.1",
+        "curl",
+        "diffmark",
+        "dvipdfm",
+        "eGenix",
+        "etalab-2.0",
+        "freeware",
+        "gSOAP-1.3b",
+        "gnuplot",
+        "iMatix",
+        "libpng-2.0",
+        "libselinux-1.0",
+        "libtiff",
+        "mpich2",
+        "proprietary",
+        "psfrag",
+        "psutils",
+        "unknown",
+        "xinetd",
+        "xpp",
+        "zlib-acknowledgement"
+      ],
+      "enumType": "string",
+      "id": "TemplateOsInfoLicenseItemEnum",
+      "namespace": "dedicated"
+    },
+    "dedicated.TemplateOsInfoProject": {
+      "description": "A structure describing some interesting facts about an OS template project",
+      "id": "TemplateOsInfoProject",
+      "namespace": "dedicated",
+      "properties": {
+        "os": {
+          "canBeNull": true,
+          "description": "OS template project OS details",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.TemplateOsInfoProjectItem"
+        },
+        "usage": {
+          "canBeNull": true,
+          "description": "OS template project usage details",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.TemplateOsInfoProjectItem"
+        }
+      }
+    },
+    "dedicated.TemplateOsInfoProjectItem": {
+      "description": "A structure describing some interesting facts about an OS template project item",
+      "id": "TemplateOsInfoProjectItem",
+      "namespace": "dedicated",
+      "properties": {
+        "governance": {
+          "canBeNull": true,
+          "description": "OS template project item governance",
+          "readOnly": false,
+          "required": false,
+          "type": "string[]"
+        },
+        "releaseNotes": {
+          "canBeNull": true,
+          "description": "OS template project item release notes",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "url": {
+          "canBeNull": true,
+          "description": "OS template project item url",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "dedicated.TemplateOsLanguageEnum": {
       "description": "all language available",
       "enum": [
@@ -12642,13 +13184,6 @@ export const schema: Schema = {
       "id": "TemplateOsProperties",
       "namespace": "dedicated",
       "properties": {
-        "changeLog": {
-          "canBeNull": true,
-          "description": "Template change log details",
-          "readOnly": false,
-          "required": false,
-          "type": "text"
-        },
         "customHostname": {
           "canBeNull": true,
           "description": "Set up the server using the provided hostname instead of the default hostname",
@@ -12670,12 +13205,6 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
-        "rating": {
-          "canBeNull": true,
-          "readOnly": false,
-          "required": false,
-          "type": "long"
-        },
         "sshKeyName": {
           "canBeNull": true,
           "description": "Name of the ssh key that should be installed. Password login will be disabled",
@@ -12691,6 +13220,44 @@ export const schema: Schema = {
           "type": "boolean"
         }
       }
+    },
+    "dedicated.TemplateOsSubfamilyEnum": {
+      "description": "Os subfamily definition",
+      "enum": [
+        "aos",
+        "arch",
+        "centos",
+        "cloudlinux",
+        "coreos",
+        "debian",
+        "dgx",
+        "esxi",
+        "fedora",
+        "freebsd",
+        "gentoo",
+        "hyperv",
+        "omnios",
+        "openio",
+        "openmediavault",
+        "opensuse",
+        "ovh",
+        "pcs",
+        "power",
+        "proxmox",
+        "rhel",
+        "slackware",
+        "smartos",
+        "solusvm",
+        "suse",
+        "ubuntu",
+        "windows-server-core",
+        "windows-server-desktop-exp",
+        "xcp",
+        "xen"
+      ],
+      "enumType": "string",
+      "id": "TemplateOsSubfamilyEnum",
+      "namespace": "dedicated"
     },
     "dedicated.TemplateOsTypeEnum": {
       "description": "Os type",
@@ -12747,17 +13314,9 @@ export const schema: Schema = {
           "required": false,
           "type": "dedicated.TemplateOsLanguageEnum[]"
         },
-        "beta": {
-          "canBeNull": true,
-          "description": "This distribution is new, and although tested and functional, may still display odd behaviour",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
         "bitFormat": {
           "canBeNull": false,
-          "description": "this template  bit format",
+          "description": "this template bit format",
           "fullType": "dedicated.server.BitFormatEnum",
           "readOnly": true,
           "required": false,
@@ -12787,14 +13346,6 @@ export const schema: Schema = {
           "required": false,
           "type": "dedicated.TemplateOsLanguageEnum"
         },
-        "deprecated": {
-          "canBeNull": true,
-          "description": "is this distribution deprecated",
-          "fullType": "boolean",
-          "readOnly": true,
-          "required": false,
-          "type": "boolean"
-        },
         "description": {
           "canBeNull": false,
           "description": "information about this template",
@@ -12821,7 +13372,7 @@ export const schema: Schema = {
         },
         "filesystems": {
           "canBeNull": false,
-          "description": "list of all filesystems  available for this template",
+          "description": "list of all filesystems available for this template",
           "fullType": "dedicated.TemplateOsFileSystemEnum[]",
           "readOnly": true,
           "required": false,
@@ -12843,6 +13394,14 @@ export const schema: Schema = {
           "required": false,
           "type": "datetime"
         },
+        "license": {
+          "canBeNull": true,
+          "description": "This distribution licensing details",
+          "fullType": "dedicated.TemplateOsInfoLicense",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.TemplateOsInfoLicense"
+        },
         "lvmReady": {
           "canBeNull": true,
           "description": "This distribution supports Logical Volumes (Linux LVM)",
@@ -12850,6 +13409,30 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "boolean"
+        },
+        "noPartitioning": {
+          "canBeNull": false,
+          "description": "Partitioning customization is not available for this OS template",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "project": {
+          "canBeNull": true,
+          "description": "This distribution project details",
+          "fullType": "dedicated.TemplateOsInfoProject",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.TemplateOsInfoProject"
+        },
+        "subfamily": {
+          "canBeNull": false,
+          "description": "this template subfamily type",
+          "fullType": "dedicated.TemplateOsSubfamilyEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "dedicated.TemplateOsSubfamilyEnum"
         },
         "supportsDistributionKernel": {
           "canBeNull": true,
@@ -13105,6 +13688,8 @@ export const schema: Schema = {
         "DomainResourceDelete",
         "DomainRestore",
         "DomainTrade",
+        "DomainUnhold",
+        "DomainUnlock",
         "ZoneImport"
       ],
       "enumType": "string",
@@ -13307,6 +13892,358 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "boolean"
+        }
+      }
+    },
+    "me.credit.Balance": {
+      "description": "Missing description",
+      "id": "Balance",
+      "namespace": "me.credit",
+      "properties": {
+        "amount": {
+          "canBeNull": false,
+          "description": "Balance amount",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "balanceDetails": {
+          "canBeNull": false,
+          "description": "Balance details, amounts by serviceID",
+          "fullType": "me.credit.balance.BalanceDetails[]",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.BalanceDetails[]"
+        },
+        "balanceName": {
+          "canBeNull": false,
+          "description": "Balance name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "booked": {
+          "canBeNull": false,
+          "description": "Movement already booked on orders",
+          "fullType": "me.credit.balance.BookedMovement[]",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.BookedMovement[]"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Balance creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "expiring": {
+          "canBeNull": false,
+          "description": "Movement expiring soon",
+          "fullType": "me.credit.balance.ExpiringMovement[]",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.ExpiringMovement[]"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Balance last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Balance type",
+          "fullType": "me.credit.balance.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.TypeEnum"
+        }
+      }
+    },
+    "me.credit.balance.BalanceDetails": {
+      "description": "Missing description",
+      "id": "BalanceDetails",
+      "namespace": "me.credit.balance",
+      "properties": {
+        "amount": {
+          "canBeNull": false,
+          "description": "Balance part amount",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "balanceSubName": {
+          "canBeNull": true,
+          "description": "Balance sub name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "expiring": {
+          "canBeNull": false,
+          "description": "Expiring parts of this balance",
+          "fullType": "me.credit.balance.ExpiringMovement[]",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.ExpiringMovement[]"
+        },
+        "serviceId": {
+          "canBeNull": true,
+          "description": "Service ID of this balance part",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "me.credit.balance.BookedMovement": {
+      "description": "Missing description",
+      "id": "BookedMovement",
+      "namespace": "me.credit.balance",
+      "properties": {
+        "amount": {
+          "canBeNull": false,
+          "description": "Movement amount",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "balanceSubName": {
+          "canBeNull": true,
+          "description": "Balance sub name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "orderId": {
+          "canBeNull": false,
+          "description": "Order ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "me.credit.balance.ExpiringMovement": {
+      "description": "Missing description",
+      "id": "ExpiringMovement",
+      "namespace": "me.credit.balance",
+      "properties": {
+        "amount": {
+          "canBeNull": false,
+          "description": "Movement amount",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Movement creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "expirationDate": {
+          "canBeNull": false,
+          "description": "Movement expiration date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Movement last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "sourceObject": {
+          "canBeNull": false,
+          "description": "Object source of this credit movement",
+          "fullType": "me.credit.balance.movement.SubObject",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.movement.SubObject"
+        }
+      }
+    },
+    "me.credit.balance.Movement": {
+      "description": "Missing description",
+      "id": "Movement",
+      "namespace": "me.credit.balance",
+      "properties": {
+        "amount": {
+          "canBeNull": false,
+          "description": "Movement amount",
+          "fullType": "order.Price",
+          "readOnly": true,
+          "required": false,
+          "type": "order.Price"
+        },
+        "balanceName": {
+          "canBeNull": false,
+          "description": "Balance name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "creationDate": {
+          "canBeNull": false,
+          "description": "Movement creation date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "destinationObject": {
+          "canBeNull": true,
+          "description": "Object destination of this credit movement",
+          "fullType": "me.credit.balance.movement.SubObject",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.movement.SubObject"
+        },
+        "expirationDate": {
+          "canBeNull": true,
+          "description": "Movement expiration date",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "lastUpdate": {
+          "canBeNull": false,
+          "description": "Movement last update",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
+        },
+        "movementId": {
+          "canBeNull": false,
+          "description": "Movement ID",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "orderId": {
+          "canBeNull": true,
+          "description": "Order ID associated to this credit movement",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "sourceObject": {
+          "canBeNull": false,
+          "description": "Object source of this credit movement",
+          "fullType": "me.credit.balance.movement.SubObject",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.movement.SubObject"
+        },
+        "type": {
+          "canBeNull": false,
+          "description": "Movement type",
+          "fullType": "me.credit.balance.movement.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "me.credit.balance.movement.TypeEnum"
+        }
+      }
+    },
+    "me.credit.balance.TypeEnum": {
+      "description": "Balance type",
+      "enum": [
+        "PREPAID_ACCOUNT",
+        "VOUCHER",
+        "DEPOSIT",
+        "BONUS"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "me.credit.balance"
+    },
+    "me.credit.balance.movement.SubObject": {
+      "description": "Missing description",
+      "id": "SubObject",
+      "namespace": "me.credit.balance.movement",
+      "properties": {
+        "id": {
+          "canBeNull": false,
+          "description": "Sub object ID",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "name": {
+          "canBeNull": false,
+          "description": "Sub object name",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "me.credit.balance.movement.TypeEnum": {
+      "description": "Balance movement type",
+      "enum": [
+        "BONUS",
+        "CANCEL",
+        "CREDIT_NOTE",
+        "EXPIRE",
+        "GIFT",
+        "MANUAL",
+        "ORDER",
+        "REFUND",
+        "UNPAID",
+        "USE",
+        "VOUCHER"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "me.credit.balance.movement"
+    },
+    "me.credit.code.Redeem": {
+      "description": "Missing description",
+      "id": "Redeem",
+      "namespace": "me.credit.code",
+      "properties": {
+        "inputCode": {
+          "canBeNull": false,
+          "description": "Code to validate",
+          "fullType": "string",
+          "readOnly": false,
+          "required": true,
+          "type": "string"
+        },
+        "serviceId": {
+          "canBeNull": false,
+          "description": "Restrict credit to a specific service",
+          "fullType": "long",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
         }
       }
     },

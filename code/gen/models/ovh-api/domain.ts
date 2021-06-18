@@ -6318,7 +6318,7 @@ export const schema: Schema = {
           "type": "boolean"
         },
         "maxNumber": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "The maximum required number of DNS",
           "fullType": "long",
           "readOnly": true,
@@ -6326,7 +6326,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "minNumber": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "The minimum required number of DNS",
           "fullType": "long",
           "readOnly": true,
@@ -6372,7 +6372,7 @@ export const schema: Schema = {
           "type": "boolean"
         },
         "maxLength": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "The maximum length allowed for a domain name (without the extension)",
           "fullType": "long",
           "readOnly": true,
@@ -6380,7 +6380,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "minLength": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "The minimum length allowed for a domain name (without the extension)",
           "fullType": "long",
           "readOnly": true,
@@ -6442,7 +6442,7 @@ export const schema: Schema = {
       "namespace": "domain.extensions.registryConfigurations",
       "properties": {
         "maxMonths": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "The maximum number of months a domain can be ordered for",
           "fullType": "long",
           "readOnly": true,
@@ -6450,7 +6450,7 @@ export const schema: Schema = {
           "type": "long"
         },
         "minMonths": {
-          "canBeNull": false,
+          "canBeNull": true,
           "description": "The minimum number of months a domain can be ordered for",
           "fullType": "long",
           "readOnly": true,

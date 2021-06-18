@@ -91,6 +91,14 @@ export namespace dedicated {
      */
     export type OperationFunctionEnum = "bmc/javaKvm" | "bmc/restart" | "bmc/revokeSessions" | "bmc/sshSol" | "bmc/testPassword" | "bmc/testPing" | "bmc/testWeb" | "bmc/webKvm" | "bmc/webSol"
     /**
+     * A time slot for a planned intervention
+     * interface fullName: dedicated.PlannedInterventionTimeSlot.PlannedInterventionTimeSlot
+     */
+    export interface PlannedInterventionTimeSlot {
+        endDate: string;
+        startDate: string;
+    }
+    /**
      * profile firewall asa
      * type fullname: dedicated.ProfileFirewallEnum
      */
@@ -104,7 +112,7 @@ export namespace dedicated {
      * different task operation
      * type fullname: dedicated.TaskFunctionEnum
      */
-    export type TaskFunctionEnum = "INFRA_002_VirtualNetworkInterface" | "INFRA_002_VirtualNetworkInterface_group" | "INFRA_002_VirtualNetworkInterface_ungroup" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_group" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_ungroup" | "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "ipmi/configureSGX" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
+    export type TaskFunctionEnum = "INFRA_002_VirtualNetworkInterface" | "INFRA_002_VirtualNetworkInterface_group" | "INFRA_002_VirtualNetworkInterface_ungroup" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_group" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_ungroup" | "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "hardware_update" | "ipmi/configureSGX" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
     /**
      * different task status
      * type fullname: dedicated.TaskStatusEnum
@@ -404,6 +412,7 @@ export namespace dedicated {
             linkSpeed?: number;
             monitoring: boolean;
             name: string;
+            newUpgradeSystem: boolean;
             noIntervention: boolean;
             os: string;
             professionalUse: boolean;
@@ -1369,7 +1378,7 @@ export interface Dedicated {
              * Alter this object properties
              * PUT /dedicated/server/{serviceName}
              */
-            $put(params?: { bootId?: number, commercialRange?: string, datacenter?: dedicated.DatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, noIntervention?: boolean, os?: string, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicated.server.StateEnum, supportLevel?: dedicated.server.SupportLevelEnum }): Promise<void>;
+            $put(params?: { bootId?: number, commercialRange?: string, datacenter?: dedicated.DatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, newUpgradeSystem?: boolean, noIntervention?: boolean, os?: string, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicated.server.StateEnum, supportLevel?: dedicated.server.SupportLevelEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -1488,7 +1497,7 @@ export interface Dedicated {
                  * Start an install with your own image
                  * POST /dedicated/server/{serviceName}/bringYourOwnImage
                  */
-                $post(params: { checkSum: string, checkSumType: dedicated.CheckSumTypesEnum, configdrive?: dedicated.server.ConfigDrive, description?: string, diskGroupId?: number, httpHeader?: complexType.SafeKeyValueCanBeNull<string>[], type: dedicated.ImageTypesEnum, URL: string }): Promise<void>;
+                $post(params: { checkSum?: string, checkSumType?: dedicated.CheckSumTypesEnum, configdrive?: dedicated.server.ConfigDrive, description?: string, diskGroupId?: number, httpHeader?: complexType.SafeKeyValueCanBeNull<string>[], type: dedicated.ImageTypesEnum, URL: string }): Promise<void>;
                 /**
                  * Controle cache
                  */

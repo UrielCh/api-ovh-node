@@ -600,7 +600,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "string[]"
+          "responseType": "dedicatedCloud.compliantRanges[]"
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/commercialRange/compliance"
@@ -1867,6 +1867,90 @@ export const schema: Schema = {
         }
       ],
       "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}"
+    },
+    {
+      "description": "checkGlobalCompatible operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Check if filer on your Dedicated Cloud is capable of converting to global",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Filer Id",
+              "fullType": "long",
+              "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "boolean"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/checkGlobalCompatible"
+    },
+    {
+      "description": "convertToGlobal operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change the filer type to global on your Dedicated Cloud.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "",
+              "fullType": "long",
+              "name": "datacenterId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Filer Id",
+              "fullType": "long",
+              "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Task"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/convertToGlobal"
     },
     {
       "description": "hourlyConsumption operations",
@@ -4346,6 +4430,74 @@ export const schema: Schema = {
       "path": "/dedicatedCloud/{serviceName}/filer/{filerId}"
     },
     {
+      "description": "checkGlobalCompatible operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Check if filer on your Dedicated Cloud is capable of converting to global",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Filer Id",
+              "fullType": "long",
+              "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "boolean"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/filer/{filerId}/checkGlobalCompatible"
+    },
+    {
+      "description": "convertToGlobal operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Change the filer type to global on your Dedicated Cloud.",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Filer Id",
+              "fullType": "long",
+              "name": "filerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Domain of the service",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "dedicatedCloud.Task"
+        }
+      ],
+      "path": "/dedicatedCloud/{serviceName}/filer/{filerId}/convertToGlobal"
+    },
+    {
       "description": "hourlyConsumption operations",
       "operations": [
         {
@@ -6361,9 +6513,9 @@ export const schema: Schema = {
               "required": true
             },
             {
-              "dataType": "ipv4",
-              "description": "IP address of the remote service, e.g. 123.100.200.0",
-              "fullType": "ipv4",
+              "dataType": "ipBlock",
+              "description": "IP address or network of the remote service, e.g. 123.100.200.0",
+              "fullType": "ipBlock",
               "name": "ip",
               "paramType": "body",
               "required": true
@@ -12116,6 +12268,31 @@ export const schema: Schema = {
       "id": "ClusterDrsModeEnum",
       "namespace": "dedicatedCloud.cluster"
     },
+    "dedicatedCloud.compliantRanges": {
+      "description": "compliant range information",
+      "id": "compliantRanges",
+      "namespace": "dedicatedCloud",
+      "properties": {
+        "name": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "upgradeCode": {
+          "canBeNull": true,
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "upgradeRequired": {
+          "canBeNull": false,
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        }
+      }
+    },
     "dedicatedCloud.dedicatedCloud": {
       "description": "Dedicated Cloud",
       "id": "dedicatedCloud",
@@ -13099,6 +13276,14 @@ export const schema: Schema = {
       "id": "twoFAWhitelist",
       "namespace": "dedicatedCloud",
       "properties": {
+        "cidrNetmask": {
+          "canBeNull": false,
+          "description": "IP netmask (CIDR notation) of the remote service",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "description": {
           "canBeNull": false,
           "description": "Description of the trusted IP",

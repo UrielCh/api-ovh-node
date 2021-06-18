@@ -268,12 +268,13 @@ export namespace billing {
             action?: billing.ItemDetail.OrderActionEnum;
             configurations: billing.ItemDetail.OrderConfiguration[];
             plan: billing.ItemDetail.OrderPlan;
+            type?: billing.ItemDetail.OrderDetailTypeEnum;
         }
         /**
          * List of order actions
          * type fullname: billing.ItemDetail.OrderActionEnum
          */
-        export type OrderActionEnum = "consumption" | "installation" | "renew" | "upgrade"
+        export type OrderActionEnum = "consumption" | "detach" | "installation" | "renew" | "revert" | "upgrade"
         /**
          * Configuration of order
          * interface fullName: billing.ItemDetail.OrderConfiguration.OrderConfiguration
@@ -282,6 +283,11 @@ export namespace billing {
             label: string;
             value: string;
         }
+        /**
+         * List of order detail types
+         * type fullname: billing.ItemDetail.OrderDetailTypeEnum
+         */
+        export type OrderDetailTypeEnum = "plan" | "product"
         /**
          * Plan data from order
          * interface fullName: billing.ItemDetail.OrderPlan.OrderPlan
@@ -456,7 +462,7 @@ export namespace billing {
      * Reusable payment mean type
      * type fullname: billing.ReusablePaymentMeanEnum
      */
-    export type ReusablePaymentMeanEnum = "CREDIT_CARD" | "CURRENT_ACCOUNT" | "DEFERRED_PAYMENT_ACCOUNT" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "bankAccount" | "creditCard" | "fidelityAccount" | "ovhAccount" | "paypal"
+    export type ReusablePaymentMeanEnum = "CREDIT_CARD" | "CURRENT_ACCOUNT" | "DEFERRED_PAYMENT_ACCOUNT" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "bankAccount" | "creditCard" | "deferredPaymentAccount" | "fidelityAccount" | "ovhAccount" | "paypal"
     /**
      * SLA properties
      * interface fullName: billing.SlaOperation.SlaOperation
@@ -581,6 +587,7 @@ export namespace billing {
                 amount: orderPrice;
                 balanceName: string;
                 creationDate: string;
+                destinationObject?: billing.credit.balance.movement.SubObject;
                 expirationDate?: string;
                 lastUpdate: string;
                 movementId: number;
@@ -1014,6 +1021,44 @@ export namespace dedicated {
      */
     export type TemplateOsHardwareRaidEnum = "raid0" | "raid1" | "raid10" | "raid5" | "raid50" | "raid6" | "raid60"
     /**
+     * A structure describing some interesting facts about an OS template licensing
+     * interface fullName: dedicated.TemplateOsInfoLicense.TemplateOsInfoLicense
+     */
+    export interface TemplateOsInfoLicense {
+        os?: dedicated.TemplateOsInfoLicenseItem;
+        usage?: dedicated.TemplateOsInfoLicenseItem;
+    }
+    /**
+     * A structure describing some interesting facts about an OS template license item
+     * interface fullName: dedicated.TemplateOsInfoLicenseItem.TemplateOsInfoLicenseItem
+     */
+    export interface TemplateOsInfoLicenseItem {
+        name?: dedicated.TemplateOsInfoLicenseItemEnum[];
+        url?: string;
+    }
+    /**
+     * Standard license name according to SPDX
+     * type fullname: dedicated.TemplateOsInfoLicenseItemEnum
+     */
+    export type TemplateOsInfoLicenseItemEnum = "0BSD" | "AAL" | "ADSL" | "AFL-1.1" | "AFL-1.2" | "AFL-2.0" | "AFL-2.1" | "AFL-3.0" | "AGPL-1.0-only" | "AGPL-1.0-or-later" | "AGPL-3.0-only" | "AGPL-3.0-or-later" | "AMDPLPA" | "AML" | "AMPAS" | "ANTLR-PD" | "ANTLR-PD-fallback" | "APAFML" | "APL-1.0" | "APSL-1.0" | "APSL-1.1" | "APSL-1.2" | "APSL-2.0" | "Abstyles" | "Adobe-2006" | "Adobe-Glyph" | "Afmparse" | "Aladdin" | "Apache-1.0" | "Apache-1.1" | "Apache-2.0" | "Artistic-1.0" | "Artistic-1.0-Perl" | "Artistic-1.0-cl8" | "Artistic-2.0" | "BSD-1-Clause" | "BSD-2-Clause" | "BSD-2-Clause-Patent" | "BSD-2-Clause-Views" | "BSD-3-Clause" | "BSD-3-Clause-Attribution" | "BSD-3-Clause-Clear" | "BSD-3-Clause-LBNL" | "BSD-3-Clause-Modification" | "BSD-3-Clause-No-Nuclear-License" | "BSD-3-Clause-No-Nuclear-License-2014" | "BSD-3-Clause-No-Nuclear-Warranty" | "BSD-3-Clause-Open-MPI" | "BSD-4-Clause" | "BSD-4-Clause-Shortened" | "BSD-4-Clause-UC" | "BSD-Protection" | "BSD-Source-Code" | "BSL-1.0" | "BUSL-1.1" | "Bahyph" | "Barr" | "Beerware" | "BitTorrent-1.0" | "BitTorrent-1.1" | "BlueOak-1.0.0" | "Borceux" | "C-UDA-1.0" | "CAL-1.0" | "CAL-1.0-Combined-Work-Exception" | "CATOSL-1.1" | "CC-BY-1.0" | "CC-BY-2.0" | "CC-BY-2.5" | "CC-BY-3.0" | "CC-BY-4.0" | "CC-BY-NC-1.0" | "CC-BY-NC-2.0" | "CC-BY-NC-2.5" | "CC-BY-NC-3.0" | "CC-BY-NC-4.0" | "CC-BY-NC-ND-1.0" | "CC-BY-NC-ND-2.0" | "CC-BY-NC-ND-2.5" | "CC-BY-NC-ND-3.0" | "CC-BY-NC-ND-4.0" | "CC-BY-NC-SA-1.0" | "CC-BY-NC-SA-2.0" | "CC-BY-NC-SA-2.5" | "CC-BY-NC-SA-3.0" | "CC-BY-NC-SA-4.0" | "CC-BY-ND-1.0" | "CC-BY-ND-2.0" | "CC-BY-ND-2.5" | "CC-BY-ND-3.0" | "CC-BY-ND-4.0" | "CC-BY-SA-1.0" | "CC-BY-SA-2.0" | "CC-BY-SA-2.5" | "CC-BY-SA-3.0" | "CC-BY-SA-4.0" | "CC-PDDC" | "CC0-1.0" | "CDDL-1.0" | "CDDL-1.1" | "CDLA-Permissive-1.0" | "CDLA-Sharing-1.0" | "CECILL-1.0" | "CECILL-1.1" | "CECILL-2.0" | "CECILL-2.1" | "CECILL-B" | "CECILL-C" | "CERN-OHL-1.1" | "CERN-OHL-1.2" | "CERN-OHL-P-2.0" | "CERN-OHL-S-2.0" | "CERN-OHL-W-2.0" | "CNRI-Jython" | "CNRI-Python" | "CNRI-Python-GPL-Compatible" | "CPAL-1.0" | "CPL-1.0" | "CPOL-1.02" | "CUA-OPL-1.0" | "Caldera" | "ClArtistic" | "Condor-1.1" | "Crossword" | "CrystalStacker" | "Cube" | "D-FSL-1.0" | "DFSG" | "DOC" | "DRL-1.0" | "DSDP" | "Dotseqn" | "ECL-1.0" | "ECL-2.0" | "EFL-1.0" | "EFL-2.0" | "EPICS" | "EPL-1.0" | "EPL-2.0" | "EUDatagrid" | "EUPL-1.0" | "EUPL-1.1" | "EUPL-1.2" | "Entessa" | "ErlPL-1.1" | "Eurosym" | "FSFAP" | "FSFUL" | "FSFULLR" | "FTL" | "Fair" | "Frameworx-1.0" | "FreeBSD-DOC" | "FreeImage" | "GD" | "GFDL-1.1-invariants-only" | "GFDL-1.1-invariants-or-later" | "GFDL-1.1-no-invariants-only" | "GFDL-1.1-no-invariants-or-later" | "GFDL-1.1-only" | "GFDL-1.1-or-later" | "GFDL-1.2-invariants-only" | "GFDL-1.2-invariants-or-later" | "GFDL-1.2-no-invariants-only" | "GFDL-1.2-no-invariants-or-later" | "GFDL-1.2-only" | "GFDL-1.2-or-later" | "GFDL-1.3-invariants-only" | "GFDL-1.3-invariants-or-later" | "GFDL-1.3-no-invariants-only" | "GFDL-1.3-no-invariants-or-later" | "GFDL-1.3-only" | "GFDL-1.3-or-later" | "GL2PS" | "GLWTPL" | "GPL-1.0-only" | "GPL-1.0-or-later" | "GPL-2.0-only" | "GPL-2.0-or-later" | "GPL-3.0-only" | "GPL-3.0-or-later" | "Giftware" | "Glide" | "Glulxe" | "HPND" | "HPND-sell-variant" | "HTMLTIDY" | "HaskellReport" | "Hippocratic-2.1" | "IBM-pibs" | "ICU" | "IJG" | "IPA" | "IPL-1.0" | "ISC" | "ImageMagick" | "Imlib2" | "Info-ZIP" | "Intel" | "Intel-ACPI" | "Interbase-1.0" | "JPNIC" | "JSON" | "JasPer-2.0" | "LAL-1.2" | "LAL-1.3" | "LGPL-2.0-only" | "LGPL-2.0-or-later" | "LGPL-2.1-only" | "LGPL-2.1-or-later" | "LGPL-3.0-only" | "LGPL-3.0-or-later" | "LGPLLR" | "LPL-1.0" | "LPL-1.02" | "LPPL-1.0" | "LPPL-1.1" | "LPPL-1.2" | "LPPL-1.3a" | "LPPL-1.3c" | "Latex2e" | "Leptonica" | "LiLiQ-P-1.1" | "LiLiQ-R-1.1" | "LiLiQ-Rplus-1.1" | "Libpng" | "Linux-OpenIB" | "MIT" | "MIT-0" | "MIT-CMU" | "MIT-Modern-Variant" | "MIT-advertising" | "MIT-enna" | "MIT-feh" | "MIT-open-group" | "MITNFA" | "MPL-1.0" | "MPL-1.1" | "MPL-2.0" | "MPL-2.0-no-copyleft-exception" | "MS-PL" | "MS-RL" | "MTLL" | "MakeIndex" | "MirOS" | "Motosoto" | "MulanPSL-1.0" | "MulanPSL-2.0" | "Multics" | "Mup" | "NAIST-2003" | "NASA-1.3" | "NBPL-1.0" | "NCGL-UK-2.0" | "NCSA" | "NGPL" | "NIST-PD" | "NIST-PD-fallback" | "NLOD-1.0" | "NLPL" | "NOSL" | "NPL-1.0" | "NPL-1.1" | "NPOSL-3.0" | "NRL" | "NTP" | "NTP-0" | "Naumen" | "Net-SNMP" | "NetCDF" | "Newsletr" | "Nokia" | "Noweb" | "O-UDA-1.0" | "OCCT-PL" | "OCLC-2.0" | "ODC-By-1.0" | "ODbL-1.0" | "OFL-1.0" | "OFL-1.0-RFN" | "OFL-1.0-no-RFN" | "OFL-1.1" | "OFL-1.1-RFN" | "OFL-1.1-no-RFN" | "OGC-1.0" | "OGDL-Taiwan-1.0" | "OGL-Canada-2.0" | "OGL-UK-1.0" | "OGL-UK-2.0" | "OGL-UK-3.0" | "OGTSL" | "OLDAP-1.1" | "OLDAP-1.2" | "OLDAP-1.3" | "OLDAP-1.4" | "OLDAP-2.0" | "OLDAP-2.0.1" | "OLDAP-2.1" | "OLDAP-2.2" | "OLDAP-2.2.1" | "OLDAP-2.2.2" | "OLDAP-2.3" | "OLDAP-2.4" | "OLDAP-2.5" | "OLDAP-2.6" | "OLDAP-2.7" | "OLDAP-2.8" | "OML" | "OPL-1.0" | "OSET-PL-2.1" | "OSL-1.0" | "OSL-1.1" | "OSL-2.0" | "OSL-2.1" | "OSL-3.0" | "OpenSSL" | "PDDL-1.0" | "PHP-3.0" | "PHP-3.01" | "PSF-2.0" | "Parity-6.0.0" | "Parity-7.0.0" | "Plexus" | "PolyForm-Noncommercial-1.0.0" | "PolyForm-Small-Business-1.0.0" | "PostgreSQL" | "Python-2.0" | "QPL-1.0" | "Qhull" | "RHeCos-1.1" | "RPL-1.1" | "RPL-1.5" | "RPSL-1.0" | "RSA-MD" | "RSCPL" | "Rdisc" | "Ruby" | "SAX-PD" | "SCEA" | "SGI-B-1.0" | "SGI-B-1.1" | "SGI-B-2.0" | "SHL-0.5" | "SHL-0.51" | "SISSL" | "SISSL-1.2" | "SMLNJ" | "SMPPL" | "SNIA" | "SPL-1.0" | "SSH-OpenSSH" | "SSH-short" | "SSPL-1.0" | "SWL" | "Saxpath" | "Sendmail" | "Sendmail-8.23" | "SimPL-2.0" | "Sleepycat" | "Spencer-86" | "Spencer-94" | "Spencer-99" | "SugarCRM-1.1.3" | "TAPR-OHL-1.0" | "TCL" | "TCP-wrappers" | "TMate" | "TORQUE-1.1" | "TOSL" | "TU-Berlin-1.0" | "TU-Berlin-2.0" | "UCL-1.0" | "UPL-1.0" | "Unicode-DFS-2015" | "Unicode-DFS-2016" | "Unicode-TOU" | "Unlicense" | "VOSTROM" | "VSL-1.0" | "Vim" | "W3C" | "W3C-19980720" | "W3C-20150513" | "WTFPL" | "Watcom-1.0" | "Wsuipa" | "X11" | "XFree86-1.1" | "XSkat" | "Xerox" | "Xnet" | "ZPL-1.1" | "ZPL-2.0" | "ZPL-2.1" | "Zed" | "Zend-2.0" | "Zimbra-1.3" | "Zimbra-1.4" | "Zlib" | "blessing" | "bzip2-1.0.5" | "bzip2-1.0.6" | "copyleft-next-0.3.0" | "copyleft-next-0.3.1" | "curl" | "diffmark" | "dvipdfm" | "eGenix" | "etalab-2.0" | "freeware" | "gSOAP-1.3b" | "gnuplot" | "iMatix" | "libpng-2.0" | "libselinux-1.0" | "libtiff" | "mpich2" | "proprietary" | "psfrag" | "psutils" | "unknown" | "xinetd" | "xpp" | "zlib-acknowledgement"
+    /**
+     * A structure describing some interesting facts about an OS template project
+     * interface fullName: dedicated.TemplateOsInfoProject.TemplateOsInfoProject
+     */
+    export interface TemplateOsInfoProject {
+        os?: dedicated.TemplateOsInfoProjectItem;
+        usage?: dedicated.TemplateOsInfoProjectItem;
+    }
+    /**
+     * A structure describing some interesting facts about an OS template project item
+     * interface fullName: dedicated.TemplateOsInfoProjectItem.TemplateOsInfoProjectItem
+     */
+    export interface TemplateOsInfoProjectItem {
+        governance?: string[];
+        releaseNotes?: string;
+        url?: string;
+    }
+    /**
      * all language available
      * type fullname: dedicated.TemplateOsLanguageEnum
      */
@@ -1023,14 +1068,17 @@ export namespace dedicated {
      * interface fullName: dedicated.TemplateOsProperties.TemplateOsProperties
      */
     export interface TemplateOsProperties {
-        changeLog?: string;
         customHostname?: string;
         postInstallationScriptLink?: string;
         postInstallationScriptReturn?: string;
-        rating?: number;
         sshKeyName?: string;
         useDistributionKernel?: boolean;
     }
+    /**
+     * Os subfamily definition
+     * type fullname: dedicated.TemplateOsSubfamilyEnum
+     */
+    export type TemplateOsSubfamilyEnum = "aos" | "arch" | "centos" | "cloudlinux" | "coreos" | "debian" | "dgx" | "esxi" | "fedora" | "freebsd" | "gentoo" | "hyperv" | "omnios" | "openio" | "openmediavault" | "opensuse" | "ovh" | "pcs" | "power" | "proxmox" | "rhel" | "slackware" | "smartos" | "solusvm" | "suse" | "ubuntu" | "windows-server-core" | "windows-server-desktop-exp" | "xcp" | "xen"
     /**
      * Os type
      * type fullname: dedicated.TemplateOsTypeEnum
@@ -1053,19 +1101,21 @@ export namespace dedicated {
          */
         export interface Templates {
             availableLanguages: dedicated.TemplateOsLanguageEnum[];
-            beta?: boolean;
             bitFormat: dedicated.server.BitFormatEnum;
             category: dedicated.TemplateOsUsageEnum;
             customization?: dedicated.TemplateOsProperties;
             defaultLanguage: dedicated.TemplateOsLanguageEnum;
-            deprecated?: boolean;
             description: string;
             distribution: string;
             family: dedicated.TemplateOsTypeEnum;
             filesystems: dedicated.TemplateOsFileSystemEnum[];
             hardRaidConfiguration?: boolean;
             lastModification?: string;
+            license?: dedicated.TemplateOsInfoLicense;
             lvmReady?: boolean;
+            noPartitioning: boolean;
+            project?: dedicated.TemplateOsInfoProject;
+            subfamily: dedicated.TemplateOsSubfamilyEnum;
             supportsDistributionKernel?: boolean;
             supportsGptLabel?: boolean;
             supportsRTM: boolean;
@@ -1133,7 +1183,7 @@ export namespace domain {
      * Operation functions
      * type fullname: domain.NicOperationFunctionEnum
      */
-    export type NicOperationFunctionEnum = "ContactControl" | "DnsAnycastActivate" | "DnsAnycastDeactivate" | "DnssecDisable" | "DnssecEnable" | "DnssecResigning" | "DnssecRollKsk" | "DnssecRollZsk" | "DomainAfterMarket" | "DomainContactControl" | "DomainContactUpdate" | "DomainControl" | "DomainCreate" | "DomainDelete" | "DomainDnsUpdate" | "DomainDsUpdate" | "DomainEmailRedirectionsCreate" | "DomainEmailRedirectionsDelete" | "DomainHold" | "DomainHostCreate" | "DomainHostDelete" | "DomainHostUpdate" | "DomainIncomingTransfer" | "DomainLock" | "DomainOutgoingTransfer" | "DomainRegistryDelete" | "DomainRenew" | "DomainResourceDelete" | "DomainRestore" | "DomainTrade" | "ZoneImport"
+    export type NicOperationFunctionEnum = "ContactControl" | "DnsAnycastActivate" | "DnsAnycastDeactivate" | "DnssecDisable" | "DnssecEnable" | "DnssecResigning" | "DnssecRollKsk" | "DnssecRollZsk" | "DomainAfterMarket" | "DomainContactControl" | "DomainContactUpdate" | "DomainControl" | "DomainCreate" | "DomainDelete" | "DomainDnsUpdate" | "DomainDsUpdate" | "DomainEmailRedirectionsCreate" | "DomainEmailRedirectionsDelete" | "DomainHold" | "DomainHostCreate" | "DomainHostDelete" | "DomainHostUpdate" | "DomainIncomingTransfer" | "DomainLock" | "DomainOutgoingTransfer" | "DomainRegistryDelete" | "DomainRenew" | "DomainResourceDelete" | "DomainRestore" | "DomainTrade" | "DomainUnhold" | "DomainUnlock" | "ZoneImport"
     /**
      * operation Action
      * type fullname: domain.OperationActionEnum
@@ -1205,6 +1255,100 @@ export namespace me {
         export interface Decision {
             timestamp: string;
             value: boolean;
+        }
+    }
+    export namespace credit {
+        /**
+         * Missing description
+         * interface fullName: me.credit.Balance.Balance
+         */
+        export interface Balance {
+            amount: orderPrice;
+            balanceDetails: me.credit.balance.BalanceDetails[];
+            balanceName: string;
+            booked: me.credit.balance.BookedMovement[];
+            creationDate: string;
+            expiring: me.credit.balance.ExpiringMovement[];
+            lastUpdate: string;
+            type: me.credit.balance.TypeEnum;
+        }
+        export namespace balance {
+            /**
+             * Missing description
+             * interface fullName: me.credit.balance.BalanceDetails.BalanceDetails
+             */
+            export interface BalanceDetails {
+                amount: orderPrice;
+                balanceSubName?: string;
+                expiring: me.credit.balance.ExpiringMovement[];
+                serviceId?: number;
+            }
+            /**
+             * Missing description
+             * interface fullName: me.credit.balance.BookedMovement.BookedMovement
+             */
+            export interface BookedMovement {
+                amount: orderPrice;
+                balanceSubName?: string;
+                orderId: number;
+            }
+            /**
+             * Missing description
+             * interface fullName: me.credit.balance.ExpiringMovement.ExpiringMovement
+             */
+            export interface ExpiringMovement {
+                amount: orderPrice;
+                creationDate: string;
+                expirationDate: string;
+                lastUpdate: string;
+                sourceObject: me.credit.balance.movement.SubObject;
+            }
+            /**
+             * Missing description
+             * interface fullName: me.credit.balance.Movement.Movement
+             */
+            export interface Movement {
+                amount: orderPrice;
+                balanceName: string;
+                creationDate: string;
+                destinationObject?: me.credit.balance.movement.SubObject;
+                expirationDate?: string;
+                lastUpdate: string;
+                movementId: number;
+                orderId?: number;
+                sourceObject: me.credit.balance.movement.SubObject;
+                type: me.credit.balance.movement.TypeEnum;
+            }
+            /**
+             * Balance type
+             * type fullname: me.credit.balance.TypeEnum
+             */
+            export type TypeEnum = "PREPAID_ACCOUNT" | "VOUCHER" | "DEPOSIT" | "BONUS"
+            export namespace movement {
+                /**
+                 * Missing description
+                 * interface fullName: me.credit.balance.movement.SubObject.SubObject
+                 */
+                export interface SubObject {
+                    id: string;
+                    name: string;
+                }
+                /**
+                 * Balance movement type
+                 * type fullname: me.credit.balance.movement.TypeEnum
+                 */
+                export type TypeEnum = "BONUS" | "CANCEL" | "CREDIT_NOTE" | "EXPIRE" | "GIFT" | "MANUAL" | "ORDER" | "REFUND" | "UNPAID" | "USE" | "VOUCHER"
+            }
+        }
+        export namespace code {
+            /**
+             * Missing description
+             * interface fullName: me.credit.code.Redeem.Redeem
+             */
+            export interface Redeem {
+                inputCode: string;
+                serviceId: number;
+            }
         }
     }
     export namespace incident {
@@ -2843,10 +2987,10 @@ export interface Me {
     credit: {
         balance: {
             /**
-             * Retrieve credit balance names
+             * Retrieve all credit balances
              * GET /me/credit/balance
              */
-            $get(params?: { type?: billing.credit.balance.Type }): Promise<string[]>;
+            $get(params?: { type?: me.credit.balance.TypeEnum }): Promise<string[]>;
             /**
              * Controle cache
              */
@@ -2856,7 +3000,7 @@ export interface Me {
                  * Retrieve a credit balance
                  * GET /me/credit/balance/{balanceName}
                  */
-                $get(): Promise<billing.credit.Balance>;
+                $get(): Promise<me.credit.Balance>;
                 /**
                  * Controle cache
                  */
@@ -2876,7 +3020,7 @@ export interface Me {
                          * Retrieve a specific movement for a credit balance
                          * GET /me/credit/balance/{balanceName}/movement/{movementId}
                          */
-                        $get(): Promise<billing.credit.balance.Movement>;
+                        $get(): Promise<me.credit.balance.Movement>;
                         /**
                          * Controle cache
                          */
@@ -2890,7 +3034,7 @@ export interface Me {
              * Validate a code to generate associated credit movement
              * POST /me/credit/code
              */
-            $post(params: { inputCode: string, serviceId?: number }): Promise<billing.credit.balance.Movement>;
+            $post(params: { inputCode: string, serviceId?: number }): Promise<me.credit.balance.Movement>;
             /**
              * Controle cache
              */
@@ -3406,7 +3550,7 @@ export interface Me {
              * Alter this object properties
              * PUT /me/installationTemplate/{templateName}
              */
-            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], beta?: boolean, bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, deprecated?: boolean, description?: string, distribution?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, lvmReady?: boolean, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
+            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, description?: string, distribution?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, license?: dedicated.TemplateOsInfoLicense, lvmReady?: boolean, noPartitioning?: boolean, project?: dedicated.TemplateOsInfoProject, subfamily?: dedicated.TemplateOsSubfamilyEnum, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
             /**
              * Controle cache
              */

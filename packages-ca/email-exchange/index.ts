@@ -13,22 +13,29 @@ export namespace email {
         export interface Account {
             SAMAccountName?: string;
             accountLicense: email.exchange.OvhLicenceEnum;
+            city?: string;
             company?: string;
             configured: boolean;
+            countryCode?: email.exchange.CountryCodeEnum;
             creationDate?: string;
             currentUsage?: number;
             deleteAtExpiration?: boolean;
             deleteOutlookAtExpiration?: boolean;
+            description?: string;
             displayName?: string;
             domain: string;
             exchangeGuid?: string;
             expirationDate?: string;
             expirationOutlookDate?: string;
+            fax?: string;
             firstName?: string;
+            forwardingEmail?: string;
             guid?: string;
             hiddenFromGAL: boolean;
             id: number;
             initial?: string;
+            jobDepartment?: string;
+            jobTitle?: string;
             lastLogoffDate?: string;
             lastLogonDate?: string;
             lastName?: string;
@@ -37,18 +44,25 @@ export namespace email {
             litigationPeriod?: number;
             login: string;
             mailingFilter?: email.exchange.MailingFilterEnum[];
+            mobile?: string;
             numberOfAliases: number;
+            office?: string;
             outlookLicense: boolean;
             owaLimited: boolean;
             passwordLastUpdate?: string;
+            phone?: string;
+            postalCode?: string;
             primaryEmailAddress: string;
             quota: number;
+            region?: string;
             renewOutlookPeriod?: email.exchange.renewPeriodEnum;
             renewPeriod?: email.exchange.renewPeriodEnum;
             spamAndVirusConfiguration: email.exchange.spamAndVirusConfiguration;
             spamDetected: boolean;
             spamTicketNumber?: number;
             state: email.exchange.ObjectStateEnum;
+            storeCopyOfEmail: boolean;
+            streetAddress?: string;
             taskPendingId?: number;
         }
         /**
@@ -64,6 +78,11 @@ export namespace email {
          * type fullname: email.exchange.ActiveSyncPolicyEnum
          */
         export type ActiveSyncPolicyEnum = "allow" | "block" | "quarantine"
+        /**
+         * Country Code iso
+         * type fullname: email.exchange.CountryCodeEnum
+         */
+        export type CountryCodeEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
         /**
          * Exchange account license per day
          * interface fullName: email.exchange.DailyLicense.DailyLicense
@@ -768,7 +787,7 @@ export interface Email {
                          * Create new mailbox in exchange server
                          * POST /email/exchange/{organizationName}/service/{exchangeService}/account
                          */
-                        $post(params: { company?: string, displayName?: string, domain: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, license: email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], outlookLicense?: boolean, password: string, quota?: number, SAMAccountName?: string, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration }): Promise<email.exchange.Task>;
+                        $post(params: { city?: string, company?: string, countryCode?: email.exchange.CountryCodeEnum, description?: string, displayName?: string, domain: string, fax?: string, firstName?: string, forwardingEmail?: string, hiddenFromGAL?: boolean, initials?: string, jobDepartment?: string, jobTitle?: string, lastName?: string, license: email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], mobile?: string, office?: string, outlookLicense?: boolean, password: string, phone?: string, postalCode?: string, quota?: number, region?: string, SAMAccountName?: string, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, storeCopyOfEmail?: boolean, streetAddress?: string }): Promise<email.exchange.Task>;
                         /**
                          * Controle cache
                          */
@@ -788,7 +807,7 @@ export interface Email {
                              * Alter this object properties
                              * PUT /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}
                              */
-                            $put(params?: { SAMAccountName?: string, accountLicense?: email.exchange.OvhLicenceEnum, company?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, displayName?: string, domain?: string, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, guid?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, litigation?: boolean, litigationPeriod?: number, login?: string, mailingFilter?: email.exchange.MailingFilterEnum[], numberOfAliases?: number, outlookLicense?: boolean, owaLimited?: boolean, passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewOutlookPeriod?: email.exchange.renewPeriodEnum, renewPeriod?: email.exchange.renewPeriodEnum, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number }): Promise<void>;
+                            $put(params?: { SAMAccountName?: string, accountLicense?: email.exchange.OvhLicenceEnum, city?: string, company?: string, configured?: boolean, countryCode?: email.exchange.CountryCodeEnum, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, description?: string, displayName?: string, domain?: string, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, fax?: string, firstName?: string, forwardingEmail?: string, guid?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, jobDepartment?: string, jobTitle?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, litigation?: boolean, litigationPeriod?: number, login?: string, mailingFilter?: email.exchange.MailingFilterEnum[], mobile?: string, numberOfAliases?: number, office?: string, outlookLicense?: boolean, owaLimited?: boolean, passwordLastUpdate?: string, phone?: string, postalCode?: string, primaryEmailAddress?: string, quota?: number, region?: string, renewOutlookPeriod?: email.exchange.renewPeriodEnum, renewPeriod?: email.exchange.renewPeriodEnum, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, storeCopyOfEmail?: boolean, streetAddress?: string, taskPendingId?: number }): Promise<void>;
                             /**
                              * Controle cache
                              */

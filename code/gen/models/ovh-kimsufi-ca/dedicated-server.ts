@@ -423,7 +423,7 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "checkSum",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "dedicated.CheckSumTypesEnum",
@@ -431,7 +431,7 @@ export const schema: Schema = {
               "fullType": "dedicated.CheckSumTypesEnum",
               "name": "checkSumType",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "dedicated.server.ConfigDrive",
@@ -2917,6 +2917,27 @@ export const schema: Schema = {
       "id": "OperationFunctionEnum",
       "namespace": "dedicated"
     },
+    "dedicated.PlannedInterventionTimeSlot": {
+      "description": "A time slot for a planned intervention",
+      "id": "PlannedInterventionTimeSlot",
+      "namespace": "dedicated",
+      "properties": {
+        "endDate": {
+          "canBeNull": false,
+          "description": "End date for the planned intervention",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Start date for the planned intervention",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        }
+      }
+    },
     "dedicated.TaskFunctionEnum": {
       "description": "different task operation",
       "enum": [
@@ -2940,6 +2961,7 @@ export const schema: Schema = {
         "enableFirewall",
         "genericMoveFloatingIp",
         "hardReboot",
+        "hardware_update",
         "ipmi/configureSGX",
         "migrateBackupFTP",
         "moveFloatingIp",
@@ -3487,6 +3509,13 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "newUpgradeSystem": {
+          "canBeNull": false,
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "noIntervention": {
           "canBeNull": false,

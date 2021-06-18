@@ -32,6 +32,21 @@ export namespace saas {
             peakCount: number;
         }
         /**
+         * Change administrator password
+         * interface fullName: saas.csp2.ChangeAdministratorPasswordCreation.ChangeAdministratorPasswordCreation
+         */
+        export interface ChangeAdministratorPasswordCreation {
+            newPassword: string;
+        }
+        /**
+         * Configure domain
+         * interface fullName: saas.csp2.ConfigureDomainCreation.ConfigureDomainCreation
+         */
+        export interface ConfigureDomainCreation {
+            domain: string;
+            supportedServices: saas.csp2.SupportedServiceEnum[];
+        }
+        /**
          * Office license's type
          * type fullname: saas.csp2.LicenseTypeEnum
          */
@@ -111,6 +126,29 @@ export namespace saas {
             licenceId: number;
             licenceName: string;
             peakCount: number;
+        }
+        /**
+         * Change subscription quantity
+         * interface fullName: saas.csp2.SubscriptionChangeQuantityCreation.SubscriptionChangeQuantityCreation
+         */
+        export interface SubscriptionChangeQuantityCreation {
+            quantity: number;
+        }
+        /**
+         * Create subscription
+         * interface fullName: saas.csp2.SubscriptionCreation.SubscriptionCreation
+         */
+        export interface SubscriptionCreation {
+            licenseId: number;
+            quantity: number;
+        }
+        /**
+         * Create subscription order addon
+         * interface fullName: saas.csp2.SubscriptionOrderAddonCreation.SubscriptionOrderAddonCreation
+         */
+        export interface SubscriptionOrderAddonCreation {
+            licenseId: number;
+            quantity: number;
         }
         /**
          * Supported services of Office365
@@ -206,7 +244,7 @@ export interface Saas {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             billingPeriodPeaks: {
                 /**
-                 * Get the curren billing period's usage peak for each subscription
+                 * Get the current billing period's usage peak for each subscription
                  * GET /saas/csp2/{serviceName}/billingPeriodPeaks
                  */
                 $get(): Promise<saas.csp2.BillingStatistics>;
@@ -375,7 +413,7 @@ export interface Saas {
             }
             usageStatistics: {
                 /**
-                 * Get the usage statistics over the chose period
+                 * Get the usage statistics over the chosen period
                  * GET /saas/csp2/{serviceName}/usageStatistics
                  */
                 $get(params: { timePeriod: msServices.LicensePeriodEnum }): Promise<saas.csp2.Statistics[]>;

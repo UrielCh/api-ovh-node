@@ -534,6 +534,11 @@ export namespace order {
                 name: string;
             }
             /**
+             * Enum values for Billing Strategy
+             * type fullname: order.catalog.publik.BillingStrategyEnum
+             */
+            export type BillingStrategyEnum = "max" | "sum" | "max_retain" | "diff" | "ping" | "custom"
+            /**
              * Describes a Catalog inside a Subsidiary
              * interface fullName: order.catalog.publik.Catalog.Catalog
              */
@@ -554,6 +559,15 @@ export namespace order {
                 isMandatory: boolean;
                 name: string;
                 values: string[];
+            }
+            /**
+             * Describes consumption configuration for a Plan
+             * interface fullName: order.catalog.publik.ConsumptionConfiguration.ConsumptionConfiguration
+             */
+            export interface ConsumptionConfiguration {
+                billingStrategy: order.catalog.publik.BillingStrategyEnum;
+                pingEndPolicy?: order.catalog.publik.PingEndPolicyEnum;
+                prorataUnit: order.catalog.publik.ProrataUnitEnum;
             }
             /**
              * Describes a Dedicated server Catalog inside a Subsidiary
@@ -682,12 +696,18 @@ export namespace order {
                 taxRate: number;
             }
             /**
+             * Enum values for Ping End Policy
+             * type fullname: order.catalog.publik.PingEndPolicyEnum
+             */
+            export type PingEndPolicyEnum = "prorata" | "full"
+            /**
              * Describes a Commercial offer inside a Catalog
              * interface fullName: order.catalog.publik.Plan.Plan
              */
             export interface Plan {
                 addonFamilies: order.catalog.publik.AddonFamily[];
                 configurations: order.catalog.publik.Configuration[];
+                consumptionConfiguration?: order.catalog.publik.ConsumptionConfiguration;
                 family?: string;
                 invoiceName: string;
                 planCode: string;
@@ -738,6 +758,11 @@ export namespace order {
                 description: string;
                 name: string;
             }
+            /**
+             * Enum values for Prorata Unit
+             * type fullname: order.catalog.publik.ProrataUnitEnum
+             */
+            export type ProrataUnitEnum = "hour" | "day"
         }
     }
     export namespace upgrade {
@@ -1424,6 +1449,38 @@ export interface Order {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
+            veeamcc: {
+                /**
+                 * Get informations about Veeam Cloud Connect offers
+                 * GET /order/cart/{cartId}/veeamcc
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new Veeam Cloud Connect item in your cart
+                 * POST /order/cart/{cartId}/veeamcc
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                options: {
+                    /**
+                     * Get informations about Veeam Cloud Connect options
+                     * GET /order/cart/{cartId}/veeamcc/options
+                     */
+                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    /**
+                     * Post a new Veeam Cloud Connect option in your cart
+                     * POST /order/cart/{cartId}/veeamcc/options
+                     */
+                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            }
             vps: {
                 /**
                  * Get informations about VPS offers
@@ -1939,6 +1996,19 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
+        private: {
+            privateCloud: {
+                /**
+                 * Retrieve information of catalog
+                 * GET /order/catalog/private/privateCloud
+                 */
+                $get(params: { catalogName: string, ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.pcc.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+        }
         public: {
             baremetalServers: {
                 /**
@@ -2212,6 +2282,44 @@ export interface Order {
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/privateCloud/{serviceName}/{planCode}
+                     */
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            };
+        }
+        privateCloudManagementFee: {
+            /**
+             * List available services
+             * GET /order/upgrade/privateCloudManagementFee
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(serviceName: string): {
+                /**
+                 * Retrieve available offers to upgrade your service to
+                 * GET /order/upgrade/privateCloudManagementFee/{serviceName}
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(planCode: string): {
+                    /**
+                     * Get a provisional order for the selected upgrade of your service
+                     * GET /order/upgrade/privateCloudManagementFee/{serviceName}/{planCode}
+                     */
+                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    /**
+                     * Perform the requested upgrade of your service
+                     * POST /order/upgrade/privateCloudManagementFee/{serviceName}/{planCode}
                      */
                     $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     /**

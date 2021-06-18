@@ -49,17 +49,27 @@ export namespace cdn {
      * Option pattern type
      * type fullname: cdn.OptionPatternTypeEnum
      */
-    export type OptionPatternTypeEnum = "extension" | "regex"
+    export type OptionPatternTypeEnum = "extension" | "folder" | "regex" | "uri"
+    /**
+     * Option query parameters
+     * type fullname: cdn.OptionQueryParametersEnum
+     */
+    export type OptionQueryParametersEnum = "sorted" | "ignored"
     /**
      * Option type
      * type fullname: cdn.OptionTypeEnum
      */
-    export type OptionTypeEnum = "devmode" | "brotli" | "cache_rule" | "https_redirect" | "hsts" | "mixed_content" | "cors" | "waf"
+    export type OptionTypeEnum = "devmode" | "brotli" | "cache_rule" | "https_redirect" | "hsts" | "mixed_content" | "cors" | "waf" | "prefetch" | "querystring" | "geo_headers" | "mobile_redirect"
     /**
      * Option type
      * type fullname: cdn.OptionTypePostEnum
      */
     export type OptionTypePostEnum = "cache_rule"
+    /**
+     * Purge type
+     * type fullname: cdn.PurgeTypeEnum
+     */
+    export type PurgeTypeEnum = "extension" | "folder" | "regex" | "uri"
     /**
      * Option type available
      * interface fullName: cdn.availableOptions.availableOptions
@@ -111,9 +121,12 @@ export namespace cdn {
              * interface fullName: cdn.domain.option.config.config
              */
             export interface config {
+                destination?: string;
+                followUri?: boolean;
                 origins?: string;
                 patternType?: cdn.OptionPatternTypeEnum;
                 priority?: number;
+                queryParameters?: cdn.OptionQueryParametersEnum;
                 statusCode?: number;
                 ttl?: number;
             }
@@ -359,6 +372,17 @@ export namespace hosting {
          */
         export interface OvhConfigCapabilities {
             containerImage: string[];
+            version: hosting.web.ovhConfig.AvailableEngineVersionEnum;
+        }
+        /**
+         * Struct which recommend default values on ovhConfig file
+         * interface fullName: hosting.web.OvhConfigRecommendedValues.OvhConfigRecommendedValues
+         */
+        export interface OvhConfigRecommendedValues {
+            container: string;
+            engine: string;
+            environment: string;
+            httpFirewall: hosting.web.ovhConfig.HttpFirewallEnum;
             version: hosting.web.ovhConfig.AvailableEngineVersionEnum;
         }
         /**
@@ -2564,6 +2588,17 @@ export interface Hosting {
                  * GET /hosting/web/{serviceName}/ovhConfigCapabilities
                  */
                 $get(): Promise<hosting.web.OvhConfigCapabilities[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            ovhConfigRecommendedValues: {
+                /**
+                 * Get recommended values on ovhConfig file
+                 * GET /hosting/web/{serviceName}/ovhConfigRecommendedValues
+                 */
+                $get(): Promise<hosting.web.OvhConfigRecommendedValues>;
                 /**
                  * Controle cache
                  */

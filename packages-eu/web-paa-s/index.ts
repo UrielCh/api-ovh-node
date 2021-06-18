@@ -69,6 +69,11 @@ export namespace webPaaS {
      */
     export type AddonProductNameEnum = "additional-storage" | "additional-staging-environment" | "additional-user-license"
     /**
+     * addon status
+     * type fullname: webPaaS.AddonStatusEnum
+     */
+    export type AddonStatusEnum = "ACTIVE" | "PENDING" | "SUSPENDED"
+    /**
      * Capabilties Response
      * interface fullName: webPaaS.Capabilities.Capabilities
      */
@@ -124,7 +129,9 @@ export namespace webPaaS {
     export interface SubscriptionAddon {
         planFamilyName: webPaaS.AddonFamilyEnum;
         productName: webPaaS.AddonProductNameEnum;
+        quantity: number;
         serviceName: string;
+        status: webPaaS.AddonStatusEnum;
     }
     /**
      * Subscription metadata
@@ -153,6 +160,7 @@ export namespace webPaaS {
          */
         export interface Customer {
             accountName: string;
+            createdAt: string;
             customerId: string;
             customerType: webPaaS.CustomerTypeEnum;
         }
@@ -237,6 +245,38 @@ export interface WebPaaS {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            customer: {
+                /**
+                 * List customers added to a project
+                 * GET /webPaaS/subscription/{serviceName}/customer
+                 */
+                $get(): Promise<webPaaS.subscription.Customer[]>;
+                /**
+                 * Add customer to the project
+                 * POST /webPaaS/subscription/{serviceName}/customer
+                 */
+                $post(params: { accountName: string }): Promise<webPaaS.subscription.Customer>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(customerId: string): {
+                    /**
+                     * Remove customer from the project
+                     * DELETE /webPaaS/subscription/{serviceName}/customer/{customerId}
+                     */
+                    $delete(): Promise<webPaaS.subscription.Customer>;
+                    /**
+                     * Get the customer details
+                     * GET /webPaaS/subscription/{serviceName}/customer/{customerId}
+                     */
+                    $get(): Promise<webPaaS.subscription.Customer>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
             }
             serviceInfos: {
                 /**

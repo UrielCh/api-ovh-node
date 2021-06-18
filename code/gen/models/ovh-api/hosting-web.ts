@@ -876,6 +876,22 @@ export const schema: Schema = {
               "name": "serviceName",
               "paramType": "path",
               "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Purge pattern",
+              "fullType": "string",
+              "name": "pattern",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "cdn.PurgeTypeEnum",
+              "description": "Purge Pattern Type (default is regex)",
+              "fullType": "cdn.PurgeTypeEnum",
+              "name": "patternType",
+              "paramType": "query",
+              "required": false
             }
           ],
           "responseType": "cdn.operation"
@@ -3964,6 +3980,32 @@ export const schema: Schema = {
       "path": "/hosting/web/{serviceName}/ovhConfigCapabilities"
     },
     {
+      "description": "ovhConfigRecommendedValues operations",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get recommended values on ovhConfig file",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The internal name of your hosting",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "hosting.web.OvhConfigRecommendedValues"
+        }
+      ],
+      "path": "/hosting/web/{serviceName}/ovhConfigRecommendedValues"
+    },
+    {
       "description": "ovhConfigRefresh operations",
       "operations": [
         {
@@ -6085,10 +6127,22 @@ export const schema: Schema = {
       "description": "Option pattern type",
       "enum": [
         "extension",
-        "regex"
+        "folder",
+        "regex",
+        "uri"
       ],
       "enumType": "string",
       "id": "OptionPatternTypeEnum",
+      "namespace": "cdn"
+    },
+    "cdn.OptionQueryParametersEnum": {
+      "description": "Option query parameters",
+      "enum": [
+        "sorted",
+        "ignored"
+      ],
+      "enumType": "string",
+      "id": "OptionQueryParametersEnum",
       "namespace": "cdn"
     },
     "cdn.OptionTypeEnum": {
@@ -6101,7 +6155,11 @@ export const schema: Schema = {
         "hsts",
         "mixed_content",
         "cors",
-        "waf"
+        "waf",
+        "prefetch",
+        "querystring",
+        "geo_headers",
+        "mobile_redirect"
       ],
       "enumType": "string",
       "id": "OptionTypeEnum",
@@ -6114,6 +6172,18 @@ export const schema: Schema = {
       ],
       "enumType": "string",
       "id": "OptionTypePostEnum",
+      "namespace": "cdn"
+    },
+    "cdn.PurgeTypeEnum": {
+      "description": "Purge type",
+      "enum": [
+        "extension",
+        "folder",
+        "regex",
+        "uri"
+      ],
+      "enumType": "string",
+      "id": "PurgeTypeEnum",
       "namespace": "cdn"
     },
     "cdn.availableOptions": {
@@ -6293,6 +6363,22 @@ export const schema: Schema = {
       "id": "config",
       "namespace": "cdn.domain.option",
       "properties": {
+        "destination": {
+          "canBeNull": true,
+          "description": "URL used for Mobile Redirect",
+          "fullType": "string",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "followUri": {
+          "canBeNull": true,
+          "description": "Follow Uri on Mobile Redirect",
+          "fullType": "boolean",
+          "readOnly": false,
+          "required": false,
+          "type": "boolean"
+        },
         "origins": {
           "canBeNull": true,
           "description": "Authorized Origins separated by a comma",
@@ -6316,6 +6402,14 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "long"
+        },
+        "queryParameters": {
+          "canBeNull": true,
+          "description": "Action to apply on query parameters",
+          "fullType": "cdn.OptionQueryParametersEnum",
+          "readOnly": false,
+          "required": false,
+          "type": "cdn.OptionQueryParametersEnum"
         },
         "statusCode": {
           "canBeNull": true,
@@ -7244,6 +7338,48 @@ export const schema: Schema = {
           "readOnly": false,
           "required": false,
           "type": "string[]"
+        },
+        "version": {
+          "canBeNull": false,
+          "description": "PHP version",
+          "readOnly": false,
+          "required": false,
+          "type": "hosting.web.ovhConfig.AvailableEngineVersionEnum"
+        }
+      }
+    },
+    "hosting.web.OvhConfigRecommendedValues": {
+      "description": "Struct which recommend default values on ovhConfig file",
+      "id": "OvhConfigRecommendedValues",
+      "namespace": "hosting.web",
+      "properties": {
+        "container": {
+          "canBeNull": false,
+          "description": "Container image",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "engine": {
+          "canBeNull": false,
+          "description": "Engine name",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "environment": {
+          "canBeNull": false,
+          "description": "Environment configuration",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "httpFirewall": {
+          "canBeNull": false,
+          "description": "Configuration for http firewall",
+          "readOnly": false,
+          "required": false,
+          "type": "hosting.web.ovhConfig.HttpFirewallEnum"
         },
         "version": {
           "canBeNull": false,

@@ -98,7 +98,18 @@ export namespace dedicated {
      * The availability
      * type fullname: dedicated.AvailabilityEnum
      */
-    export type AvailabilityEnum = "1H-high" | "1H-low" | "240H" | "24H" | "72H" | "unavailable" | "unknown"
+    export type AvailabilityEnum = "1440H" | "1H-high" | "1H-low" | "2160H" | "240H" | "24H" | "480H" | "720H" | "72H" | "unavailable" | "unknown"
+    /**
+     * A structure describing the hardware raw availability for each datacenter
+     * interface fullName: dedicated.AvailabilityRawDatacenter.AvailabilityRawDatacenter
+     */
+    export interface AvailabilityRawDatacenter {
+        availability: dedicated.AvailabilityEnum;
+        datacenter: dedicated.AvailabilityDatacenterEnum;
+        lastRule?: string;
+        parentAvailable: number;
+        trueAvailable: number;
+    }
     /**
      * The region
      * type fullname: dedicated.AvailabilityRegionEnum
@@ -145,6 +156,20 @@ export namespace dedicated {
      */
     export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "dc1" | "eri1" | "gra1" | "gra2" | "gra3" | "gsw" | "hil1" | "lim1" | "lim3" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sgp1" | "syd1" | "syd2" | "vin1" | "waw1"
     /**
+     * A structure describing the raw availabilities of dedicated server
+     * interface fullName: dedicated.DatacenterRawAvailability.DatacenterRawAvailability
+     */
+    export interface DatacenterRawAvailability {
+        datacenters: dedicated.AvailabilityRawDatacenter[];
+        fqn: string;
+        gpu?: string;
+        memory?: string;
+        planCode: string;
+        server: string;
+        storage?: string;
+        systemStorage?: string;
+    }
+    /**
      * Type of your image
      * type fullname: dedicated.ImageTypesEnum
      */
@@ -155,10 +180,13 @@ export namespace dedicated {
      */
     export type OperationFunctionEnum = "bmc/javaKvm" | "bmc/restart" | "bmc/revokeSessions" | "bmc/sshSol" | "bmc/testPassword" | "bmc/testPing" | "bmc/testWeb" | "bmc/webKvm" | "bmc/webSol"
     /**
-     * Operating system name
-     * type fullname: dedicated.OsAvailabilitiesEnum
+     * A time slot for a planned intervention
+     * interface fullName: dedicated.PlannedInterventionTimeSlot.PlannedInterventionTimeSlot
      */
-    export type OsAvailabilitiesEnum = "archlinux-installer_64" | "centos5_64" | "centos6-cpanel-latest_64" | "centos6-ovh_64" | "centos6-plesk12_64" | "centos6_64" | "centos7-cpanel-latest_64" | "centos7-directadmin_64" | "centos7-fpga-accelize_64" | "centos7-fpga-intel-opencl_64" | "centos7-plesk125_64" | "centos7-plesk12_64" | "centos7-plesk17_64" | "centos7_64" | "cloudlinux6_64" | "cloudlinux7_64" | "coreos-alpha_64" | "coreos_64" | "debian7-ispconfig3_64" | "debian7-minecraft_64" | "debian7-plesk12_64" | "debian7_64" | "debian8-ispconfig3_64" | "debian8-plesk125_64" | "debian8_64" | "debian8_armhf_32" | "debian9-ispconfig3_64" | "debian9_64" | "debian9_armhf_32" | "dgx1-os-3_64" | "esxi51_64" | "esxi55_64" | "esxi5_64" | "esxi60_64" | "esxi65_64" | "fedora26_64" | "fedora27_64" | "freebsd10-zfs_64" | "freebsd10_64" | "freebsd11-zfs_64" | "gentoo11_64" | "openmediavault3_armhf_32" | "openmediavault_armhf_32" | "opensuse42_64" | "proxmox4-zfs_64" | "proxmox4_64" | "proxmox5-zfs_64" | "proxmox5_64" | "slackware14_64" | "smartos_64" | "solusvm-master-vz_64" | "solusvm-slave-vz_64" | "ubuntu1404-plesk125_64" | "ubuntu1404-server_64" | "ubuntu1510-server_arm64_64" | "ubuntu1510-server_ppc64el_64" | "ubuntu1604-desktop_64" | "ubuntu1604-server_64" | "ubuntu1604-server_armhf_32" | "ubuntu1604-server_ppc64el_64" | "ubuntu1710-server_64" | "win2008r2-dc-virtuozzo46_64" | "win2008r2-dc_64" | "win2008r2-ent-plesk10_64" | "win2008r2-ent-plesk11_64" | "win2008r2-ent-plesk12_64" | "win2008r2-ent-sp2010found_64" | "win2008r2-ent-virtuozzo46_64" | "win2008r2-ent_64" | "win2008r2-std-plesk11_64" | "win2008r2-std-plesk12_64" | "win2008r2-std-sp2010found_64" | "win2008r2-std_64" | "win2008r2-web-plesk11_64" | "win2008r2-web-plesk12_64" | "win2008r2-web-sp2010found_64" | "win2008r2-web_64" | "win2008r2core-dc_64" | "win2008r2core-ent_64" | "win2008r2core-hyperv_64" | "win2008r2core-std_64" | "win2008r2core-web_64" | "win2012-dc_64" | "win2012-hyperv3_64" | "win2012-std-plesk11_64" | "win2012-std-plesk12_64" | "win2012-std_64" | "win2012r2-dc_64" | "win2012r2-hyperv3_64" | "win2012r2-std-plesk12_64" | "win2012r2-std_64" | "win2016-dc_64" | "win2016-std_64" | "win81-pro-sysprep_64" | "xenserver6_64"
+    export interface PlannedInterventionTimeSlot {
+        endDate: string;
+        startDate: string;
+    }
     /**
      * profile firewall asa
      * type fullname: dedicated.ProfileFirewallEnum
@@ -173,7 +201,7 @@ export namespace dedicated {
      * different task operation
      * type fullname: dedicated.TaskFunctionEnum
      */
-    export type TaskFunctionEnum = "INFRA_002_VirtualNetworkInterface" | "INFRA_002_VirtualNetworkInterface_group" | "INFRA_002_VirtualNetworkInterface_ungroup" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_group" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_ungroup" | "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "ipmi/configureSGX" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
+    export type TaskFunctionEnum = "INFRA_002_VirtualNetworkInterface" | "INFRA_002_VirtualNetworkInterface_group" | "INFRA_002_VirtualNetworkInterface_ungroup" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_group" | "INFRA_ONE_NETWORK_VirtualNetworkInterface_ungroup" | "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "hardware_update" | "ipmi/configureSGX" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
     /**
      * different task status
      * type fullname: dedicated.TaskStatusEnum
@@ -516,6 +544,7 @@ export namespace dedicated {
             linkSpeed?: number;
             monitoring: boolean;
             name: string;
+            newUpgradeSystem: boolean;
             noIntervention: boolean;
             os: string;
             professionalUse: boolean;
@@ -1633,6 +1662,17 @@ export interface Dedicated {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                raw: {
+                    /**
+                     * List the raw availability of dedicated server
+                     * GET /dedicated/server/datacenter/availabilities/raw
+                     */
+                    $get(params?: { datacenters?: string, excludeDatacenters?: boolean, gpu?: string, memory?: string, planCode?: string, server?: string, storage?: string, systemStorage?: string }): Promise<dedicated.DatacenterRawAvailability[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
             }
         }
         osAvailabilities: {
@@ -1640,7 +1680,7 @@ export interface Dedicated {
              * List the os available for a specified hardware reference
              * GET /dedicated/server/osAvailabilities
              */
-            $get(params: { hardware: string }): Promise<dedicated.OsAvailabilitiesEnum[]>;
+            $get(params: { hardware: string }): Promise<string[]>;
             /**
              * Controle cache
              */
@@ -1669,7 +1709,7 @@ export interface Dedicated {
              * Alter this object properties
              * PUT /dedicated/server/{serviceName}
              */
-            $put(params?: { bootId?: number, commercialRange?: string, datacenter?: dedicated.DatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, noIntervention?: boolean, os?: string, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicated.server.StateEnum, supportLevel?: dedicated.server.SupportLevelEnum }): Promise<void>;
+            $put(params?: { bootId?: number, commercialRange?: string, datacenter?: dedicated.DatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, newUpgradeSystem?: boolean, noIntervention?: boolean, os?: string, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicated.server.StateEnum, supportLevel?: dedicated.server.SupportLevelEnum }): Promise<void>;
             /**
              * Controle cache
              */
@@ -1788,7 +1828,7 @@ export interface Dedicated {
                  * Start an install with your own image
                  * POST /dedicated/server/{serviceName}/bringYourOwnImage
                  */
-                $post(params: { checkSum: string, checkSumType: dedicated.CheckSumTypesEnum, configdrive?: dedicated.server.ConfigDrive, description?: string, diskGroupId?: number, httpHeader?: complexType.SafeKeyValueCanBeNull<string>[], type: dedicated.ImageTypesEnum, URL: string }): Promise<void>;
+                $post(params: { checkSum?: string, checkSumType?: dedicated.CheckSumTypesEnum, configdrive?: dedicated.server.ConfigDrive, description?: string, diskGroupId?: number, httpHeader?: complexType.SafeKeyValueCanBeNull<string>[], type: dedicated.ImageTypesEnum, URL: string }): Promise<void>;
                 /**
                  * Controle cache
                  */

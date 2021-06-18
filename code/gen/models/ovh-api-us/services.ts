@@ -265,6 +265,268 @@ export const schema: Schema = {
       "path": "/services/{serviceId}/billing/engagement/request"
     },
     {
+      "description": "Get a summary of the ongoing consumption of your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a summary of the ongoing consumption of your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.consumption.Summary"
+        }
+      ],
+      "path": "/services/{serviceId}/consumption"
+    },
+    {
+      "description": "Get each resource consumed by your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get each resource consumed by your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter elements on a commercial offer's family",
+              "fullType": "string",
+              "name": "planFamily",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter elements on a given uniqueId",
+              "fullType": "string",
+              "name": "uniqueId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "services.consumption.Element[]"
+        }
+      ],
+      "path": "/services/{serviceId}/consumption/element"
+    },
+    {
+      "description": "Get a summary of the forecasted consumption of your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a summary of the forecasted consumption of your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.consumption.Summary"
+        }
+      ],
+      "path": "/services/{serviceId}/consumption/forecast"
+    },
+    {
+      "description": "Get each resource forecasted consumption of your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get each resource forecasted consumption of your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter elements on a commercial offer's family",
+              "fullType": "string",
+              "name": "planFamily",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter elements on a given uniqueId",
+              "fullType": "string",
+              "name": "uniqueId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "services.consumption.Element[]"
+        }
+      ],
+      "path": "/services/{serviceId}/consumption/forecast/element"
+    },
+    {
+      "description": "Get a summary of the past consumption of your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List consumption history of your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Order services by services.expanded.Service properties",
+              "fullType": "string",
+              "name": "planFamily",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter services by API route path (comma separated)",
+              "fullType": "string",
+              "name": "uniqueId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "long[]"
+        }
+      ],
+      "path": "/services/{serviceId}/consumption/history"
+    },
+    {
+      "description": "Get a summary of the past consumption of your service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a summary of the past consumption of your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "services.consumption.Summary"
+        }
+      ],
+      "path": "/services/{serviceId}/consumption/history/{id}"
+    },
+    {
+      "description": "Get each resource consumed for the given history",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get each resource consumed for the given history",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "long",
+              "description": "Id",
+              "fullType": "long",
+              "name": "id",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Service ID",
+              "fullType": "long",
+              "name": "serviceId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Filter elements on a commercial offer's family",
+              "fullType": "string",
+              "name": "planFamily",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "Filter elements on a given uniqueId",
+              "fullType": "string",
+              "name": "uniqueId",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "services.consumption.Element[]"
+        }
+      ],
+      "path": "/services/{serviceId}/consumption/history/{id}/element"
+    },
+    {
       "description": "Detach your option offer to a standalone offer",
       "operations": [
         {
@@ -1262,129 +1524,6 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "GenericProductTypeEnum",
       "namespace": "order.cart"
-    },
-    "services.billing.Invoice": {
-      "description": "Invoice details",
-      "id": "Invoice",
-      "namespace": "services.billing",
-      "properties": {
-        "date": {
-          "canBeNull": false,
-          "description": "Invoice date",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "id": {
-          "canBeNull": false,
-          "description": "Invoice reference",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "lines": {
-          "canBeNull": false,
-          "description": "Invoice details",
-          "fullType": "services.billing.InvoiceLine[]",
-          "readOnly": true,
-          "required": false,
-          "type": "services.billing.InvoiceLine[]"
-        }
-      }
-    },
-    "services.billing.InvoiceLine": {
-      "description": "Item details",
-      "id": "InvoiceLine",
-      "namespace": "services.billing",
-      "properties": {
-        "description": {
-          "canBeNull": false,
-          "description": "Description of item",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "periodEnd": {
-          "canBeNull": true,
-          "description": "End period",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "periodStart": {
-          "canBeNull": true,
-          "description": "Start period",
-          "fullType": "datetime",
-          "readOnly": true,
-          "required": false,
-          "type": "datetime"
-        },
-        "price": {
-          "canBeNull": false,
-          "description": "Price without tax",
-          "fullType": "order.Price",
-          "readOnly": true,
-          "required": false,
-          "type": "order.Price"
-        },
-        "quantity": {
-          "canBeNull": false,
-          "description": "Quantity of item",
-          "fullType": "long",
-          "readOnly": true,
-          "required": false,
-          "type": "long"
-        },
-        "serviceName": {
-          "canBeNull": false,
-          "description": "Associated service name",
-          "fullType": "string",
-          "readOnly": true,
-          "required": false,
-          "type": "string"
-        },
-        "totalPrice": {
-          "canBeNull": false,
-          "description": "Price with tax",
-          "fullType": "order.Price",
-          "readOnly": true,
-          "required": false,
-          "type": "order.Price"
-        },
-        "type": {
-          "canBeNull": false,
-          "description": "Type of item",
-          "fullType": "services.billing.InvoiceLineTypeEnum",
-          "readOnly": true,
-          "required": false,
-          "type": "services.billing.InvoiceLineTypeEnum"
-        }
-      }
-    },
-    "services.billing.InvoiceLineTypeEnum": {
-      "description": "Type of line",
-      "enum": [
-        "accessory",
-        "consumption",
-        "creation",
-        "deposit",
-        "duration",
-        "gift",
-        "installation",
-        "misc",
-        "other",
-        "outplan",
-        "quantity",
-        "special",
-        "voucher"
-      ],
-      "enumType": "string",
-      "id": "InvoiceLineTypeEnum",
-      "namespace": "services.billing"
     },
     "services.billing.Pricing": {
       "description": "Representation of a service pricing",
@@ -2739,6 +2878,14 @@ export const schema: Schema = {
           "required": false,
           "type": "services.expanded.technical.baremetalServer.server.Cpu"
         },
+        "extensionCard": {
+          "canBeNull": true,
+          "description": "Technical details for a server extension card",
+          "fullType": "services.expanded.technical.baremetalServer.server.ExtensionCard",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.server.ExtensionCard"
+        },
         "frame": {
           "canBeNull": false,
           "description": "Server frame",
@@ -2747,9 +2894,32 @@ export const schema: Schema = {
           "required": false,
           "type": "services.expanded.technical.baremetalServer.server.Frame"
         },
+        "network": {
+          "canBeNull": true,
+          "description": "Technical details for a server network",
+          "fullType": "services.expanded.technical.baremetalServer.server.Network",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.server.Network"
+        },
         "range": {
           "canBeNull": false,
           "description": "Server's range",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "services": {
+          "canBeNull": true,
+          "description": "Technical details for a server service",
+          "fullType": "services.expanded.technical.baremetalServer.server.Services",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.server.Services"
+        },
+        "useCase": {
+          "canBeNull": true,
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -2770,6 +2940,14 @@ export const schema: Schema = {
           "required": false,
           "type": "services.expanded.technical.baremetalServer.storage.Disk[]"
         },
+        "hotSwap": {
+          "canBeNull": false,
+          "description": "If disk is hot swapable",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
         "raid": {
           "canBeNull": false,
           "description": "Storage raid type",
@@ -2777,6 +2955,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "raidDetails": {
+          "canBeNull": true,
+          "description": "Server raid storage details",
+          "fullType": "services.expanded.technical.baremetalServer.storage.Raid",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.storage.Raid"
         }
       }
     },
@@ -2872,6 +3058,14 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "number": {
+          "canBeNull": false,
+          "description": "CPU number",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "score": {
           "canBeNull": false,
           "description": "Score of cpu",
@@ -2890,14 +3084,14 @@ export const schema: Schema = {
         }
       }
     },
-    "services.expanded.technical.baremetalServer.server.Frame": {
-      "description": "Technical information on frame of a baremetal server service",
-      "id": "Frame",
+    "services.expanded.technical.baremetalServer.server.ExtensionCard": {
+      "description": "Technical details for a server extension card",
+      "id": "ExtensionCard",
       "namespace": "services.expanded.technical.baremetalServer.server",
       "properties": {
         "model": {
           "canBeNull": false,
-          "description": "Server rack Model",
+          "description": "Model of the extension card",
           "fullType": "string",
           "readOnly": true,
           "required": false,
@@ -2905,11 +3099,104 @@ export const schema: Schema = {
         },
         "size": {
           "canBeNull": false,
-          "description": "Server rack size",
+          "description": "Number of available ports",
           "fullType": "string",
           "readOnly": true,
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "services.expanded.technical.baremetalServer.server.Frame": {
+      "description": "Technical information on frame of a baremetal server service",
+      "id": "Frame",
+      "namespace": "services.expanded.technical.baremetalServer.server",
+      "properties": {
+        "dualPowerSupply": {
+          "canBeNull": false,
+          "description": "Server with dual power supply",
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
+        },
+        "maxNbDisks": {
+          "canBeNull": true,
+          "description": "Maximum number of disks",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "model": {
+          "canBeNull": false,
+          "description": "Server frame Model",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "size": {
+          "canBeNull": false,
+          "description": "Server frame size",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "services.expanded.technical.baremetalServer.server.Network": {
+      "description": "Technical details for a server network",
+      "id": "Network",
+      "namespace": "services.expanded.technical.baremetalServer.server",
+      "properties": {
+        "capacity": {
+          "canBeNull": false,
+          "description": "Network card capacity (in Gbps)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "interfaces": {
+          "canBeNull": false,
+          "description": "Number of network links",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        }
+      }
+    },
+    "services.expanded.technical.baremetalServer.server.Services": {
+      "description": "Technical details for a server services",
+      "id": "Services",
+      "namespace": "services.expanded.technical.baremetalServer.server",
+      "properties": {
+        "antiddos": {
+          "canBeNull": false,
+          "description": "AntiDDOS provided by the service",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "includedBackup": {
+          "canBeNull": false,
+          "description": "FTP Backup size in GB",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
+        },
+        "sla": {
+          "canBeNull": false,
+          "description": "SLA of the service (in percent)",
+          "fullType": "double",
+          "readOnly": true,
+          "required": false,
+          "type": "double"
         }
       }
     },
@@ -2926,6 +3213,14 @@ export const schema: Schema = {
           "required": false,
           "type": "long"
         },
+        "dwpd": {
+          "canBeNull": true,
+          "description": "Drive Writes Per Day",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "interface": {
           "canBeNull": false,
           "description": "Interface identifier",
@@ -2934,9 +3229,25 @@ export const schema: Schema = {
           "required": false,
           "type": "string"
         },
+        "latency": {
+          "canBeNull": true,
+          "description": "Latency (in us)",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "number": {
           "canBeNull": false,
           "description": "Number of interfaces",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
+        "read": {
+          "canBeNull": true,
+          "description": "Average number of random read I/O operations per second",
           "fullType": "long",
           "readOnly": true,
           "required": false,
@@ -2965,6 +3276,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "services.expanded.technical.baremetalServer.storage.Disk.UsageEnum"
+        },
+        "write": {
+          "canBeNull": true,
+          "description": "Average number of random write I/O operations per second",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
         }
       }
     },
@@ -2978,6 +3297,47 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "UsageEnum",
       "namespace": "services.expanded.technical.baremetalServer.storage.Disk"
+    },
+    "services.expanded.technical.baremetalServer.storage.Raid": {
+      "description": "Server raid storage type",
+      "id": "Raid",
+      "namespace": "services.expanded.technical.baremetalServer.storage",
+      "properties": {
+        "cardModel": {
+          "canBeNull": true,
+          "description": "Name of the hardraid card model",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "cardSize": {
+          "canBeNull": true,
+          "description": "Number of slots",
+          "fullType": "string",
+          "readOnly": true,
+          "required": false,
+          "type": "string"
+        },
+        "type": {
+          "canBeNull": false,
+          "fullType": "services.expanded.technical.baremetalServer.storage.Raid.TypeEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "services.expanded.technical.baremetalServer.storage.Raid.TypeEnum"
+        }
+      }
+    },
+    "services.expanded.technical.baremetalServer.storage.Raid.TypeEnum": {
+      "description": "RAID type",
+      "enum": [
+        "none",
+        "Soft RAID",
+        "Hard RAID"
+      ],
+      "enumType": "string",
+      "id": "TypeEnum",
+      "namespace": "services.expanded.technical.baremetalServer.storage.Raid"
     },
     "services.form.Answer": {
       "description": "Answer to a form",

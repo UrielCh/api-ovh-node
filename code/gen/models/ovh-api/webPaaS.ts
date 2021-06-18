@@ -10,8 +10,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List available regions and templates",
           "httpMethod": "GET",
@@ -36,8 +36,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List your subscriptions",
           "httpMethod": "GET",
@@ -53,8 +53,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get information about your subscription",
           "httpMethod": "GET",
@@ -79,8 +79,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Confirm termination of your service",
           "httpMethod": "POST",
@@ -133,12 +133,127 @@ export const schema: Schema = {
       "path": "/webPaaS/subscription/{serviceName}/confirmTermination"
     },
     {
+      "description": "Manage customers of a project",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List customers added to a project",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "webPaaS.subscription.Customer[]"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Add customer to the project",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "webPaaS.subscription.project.AddCustomer",
+              "description": "Request Body",
+              "fullType": "webPaaS.subscription.project.AddCustomer",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "webPaaS.subscription.Customer"
+        }
+      ],
+      "path": "/webPaaS/subscription/{serviceName}/customer"
+    },
+    {
+      "description": "Manage customers of a project",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Remove customer from the project",
+          "httpMethod": "DELETE",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Customer ID",
+              "fullType": "uuid",
+              "name": "customerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "webPaaS.subscription.Customer"
+        },
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Get the customer details",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "uuid",
+              "description": "Customer ID",
+              "fullType": "uuid",
+              "name": "customerId",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "webPaaS.subscription.Customer"
+        }
+      ],
+      "path": "/webPaaS/subscription/{serviceName}/customer/{customerId}"
+    },
+    {
       "description": "Details about a Service",
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get this object properties",
           "httpMethod": "GET",
@@ -157,8 +272,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Alter this object properties",
           "httpMethod": "PUT",
@@ -190,8 +305,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Terminate your service",
           "httpMethod": "POST",
@@ -441,6 +556,17 @@ export const schema: Schema = {
       "id": "AddonProductNameEnum",
       "namespace": "webPaaS"
     },
+    "webPaaS.AddonStatusEnum": {
+      "description": "addon status",
+      "enum": [
+        "ACTIVE",
+        "PENDING",
+        "SUSPENDED"
+      ],
+      "enumType": "string",
+      "id": "AddonStatusEnum",
+      "namespace": "webPaaS"
+    },
     "webPaaS.Capabilities": {
       "description": "Capabilties Response",
       "id": "Capabilities",
@@ -644,6 +770,14 @@ export const schema: Schema = {
           "required": false,
           "type": "webPaaS.AddonProductNameEnum"
         },
+        "quantity": {
+          "canBeNull": false,
+          "description": "Addon Quantity",
+          "fullType": "long",
+          "readOnly": true,
+          "required": false,
+          "type": "long"
+        },
         "serviceName": {
           "canBeNull": false,
           "description": "Addon Plan Service Name",
@@ -651,6 +785,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "status": {
+          "canBeNull": false,
+          "description": "Addon Plan Status",
+          "fullType": "webPaaS.AddonStatusEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "webPaaS.AddonStatusEnum"
         }
       }
     },
@@ -744,6 +886,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "createdAt": {
+          "canBeNull": false,
+          "description": "Creation date time of the customer ",
+          "fullType": "datetime",
+          "readOnly": true,
+          "required": false,
+          "type": "datetime"
         },
         "customerId": {
           "canBeNull": false,

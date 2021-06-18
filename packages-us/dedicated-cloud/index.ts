@@ -791,6 +791,15 @@ export namespace dedicatedCloud {
         export type ClusterDrsModeEnum = "fullyAutomated" | "manual" | "partiallyAutomated"
     }
     /**
+     * compliant range information
+     * interface fullName: dedicatedCloud.compliantRanges.compliantRanges
+     */
+    export interface compliantRanges {
+        name: string;
+        upgradeCode?: string;
+        upgradeRequired: boolean;
+    }
+    /**
      * Dedicated Cloud
      * interface fullName: dedicatedCloud.dedicatedCloud.dedicatedCloud
      */
@@ -1100,6 +1109,7 @@ export namespace dedicatedCloud {
      * interface fullName: dedicatedCloud.twoFAWhitelist.twoFAWhitelist
      */
     export interface twoFAWhitelist {
+        cidrNetmask: number;
         description: string;
         id: number;
         ip: string;
@@ -1596,7 +1606,7 @@ export interface DedicatedCloud {
                  * Get the name of the commercial ranges compliant with your Dedicated Cloud
                  * GET /dedicatedCloud/{serviceName}/commercialRange/compliance
                  */
-                $get(): Promise<string[]>;
+                $get(): Promise<dedicatedCloud.compliantRanges[]>;
                 /**
                  * Controle cache
                  */
@@ -1917,6 +1927,28 @@ export interface DedicatedCloud {
                          * Controle cache
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        checkGlobalCompatible: {
+                            /**
+                             * Check if filer on your Dedicated Cloud is capable of converting to global
+                             * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/checkGlobalCompatible
+                             */
+                            $get(): Promise<boolean>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        convertToGlobal: {
+                            /**
+                             * Change the filer type to global on your Dedicated Cloud.
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/convertToGlobal
+                             */
+                            $post(): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         hourlyConsumption: {
                             /**
                              * Hourly consumption associated with this Filer
@@ -2495,6 +2527,28 @@ export interface DedicatedCloud {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                checkGlobalCompatible: {
+                    /**
+                     * Check if filer on your Dedicated Cloud is capable of converting to global
+                     * GET /dedicatedCloud/{serviceName}/filer/{filerId}/checkGlobalCompatible
+                     */
+                    $get(): Promise<boolean>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                convertToGlobal: {
+                    /**
+                     * Change the filer type to global on your Dedicated Cloud.
+                     * POST /dedicatedCloud/{serviceName}/filer/{filerId}/convertToGlobal
+                     */
+                    $post(): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
                 hourlyConsumption: {
                     /**
                      * Hourly consumption associated with this Filer

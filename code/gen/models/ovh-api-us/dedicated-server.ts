@@ -423,7 +423,7 @@ export const schema: Schema = {
               "fullType": "string",
               "name": "checkSum",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "dedicated.CheckSumTypesEnum",
@@ -431,7 +431,7 @@ export const schema: Schema = {
               "fullType": "dedicated.CheckSumTypesEnum",
               "name": "checkSumType",
               "paramType": "body",
-              "required": true
+              "required": false
             },
             {
               "dataType": "dedicated.server.ConfigDrive",
@@ -5169,8 +5169,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List the availability of dedicated server",
           "httpMethod": "GET",
@@ -5247,6 +5247,88 @@ export const schema: Schema = {
       "path": "/dedicated/server/datacenter/availabilities"
     },
     {
+      "description": "List the raw availability of dedicated server",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "List the raw availability of dedicated server",
+          "httpMethod": "GET",
+          "noAuthentication": true,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The names of datacenters separated by commas",
+              "fullType": "string",
+              "name": "datacenters",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "boolean",
+              "description": "If true, all datacenters are returned except those listed in datacenters parameter",
+              "fullType": "boolean",
+              "name": "excludeDatacenters",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of the gpu hardware part",
+              "fullType": "string",
+              "name": "gpu",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of the memory hardware part",
+              "fullType": "string",
+              "name": "memory",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The plan code in which the hardware is involved",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of the base hardware",
+              "fullType": "string",
+              "name": "server",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of the storage hardware part",
+              "fullType": "string",
+              "name": "storage",
+              "paramType": "query",
+              "required": false
+            },
+            {
+              "dataType": "string",
+              "description": "The name of the system storage hardware part",
+              "fullType": "string",
+              "name": "systemStorage",
+              "paramType": "query",
+              "required": false
+            }
+          ],
+          "responseType": "dedicated.DatacenterRawAvailability[]"
+        }
+      ],
+      "path": "/dedicated/server/datacenter/availabilities/raw"
+    },
+    {
       "description": "List the operating systems available for a specified hardware reference",
       "operations": [
         {
@@ -5267,7 +5349,7 @@ export const schema: Schema = {
               "required": true
             }
           ],
-          "responseType": "dedicated.OsAvailabilitiesEnum[]"
+          "responseType": "string[]"
         }
       ],
       "path": "/dedicated/server/osAvailabilities"
@@ -5837,10 +5919,14 @@ export const schema: Schema = {
     "dedicated.AvailabilityEnum": {
       "description": "The availability",
       "enum": [
+        "1440H",
         "1H-high",
         "1H-low",
+        "2160H",
         "240H",
         "24H",
+        "480H",
+        "720H",
         "72H",
         "unavailable",
         "unknown"
@@ -5848,6 +5934,48 @@ export const schema: Schema = {
       "enumType": "string",
       "id": "AvailabilityEnum",
       "namespace": "dedicated"
+    },
+    "dedicated.AvailabilityRawDatacenter": {
+      "description": "A structure describing the hardware raw availability for each datacenter",
+      "id": "AvailabilityRawDatacenter",
+      "namespace": "dedicated",
+      "properties": {
+        "availability": {
+          "canBeNull": false,
+          "description": "Availability status",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.AvailabilityEnum"
+        },
+        "datacenter": {
+          "canBeNull": false,
+          "description": "Datacenter code",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.AvailabilityDatacenterEnum"
+        },
+        "lastRule": {
+          "canBeNull": true,
+          "description": "Last availability rule applied",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "parentAvailable": {
+          "canBeNull": false,
+          "description": "Real stock including parent references",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        },
+        "trueAvailable": {
+          "canBeNull": false,
+          "description": "Real stock",
+          "readOnly": false,
+          "required": false,
+          "type": "long"
+        }
+      }
     },
     "dedicated.AvailabilityRegionEnum": {
       "description": "The region",
@@ -6018,6 +6146,69 @@ export const schema: Schema = {
       "id": "DatacenterEnum",
       "namespace": "dedicated"
     },
+    "dedicated.DatacenterRawAvailability": {
+      "description": "A structure describing the raw availabilities of dedicated server",
+      "id": "DatacenterRawAvailability",
+      "namespace": "dedicated",
+      "properties": {
+        "datacenters": {
+          "canBeNull": false,
+          "description": "The hardware raw availability for each datacenter",
+          "readOnly": false,
+          "required": false,
+          "type": "dedicated.AvailabilityRawDatacenter[]"
+        },
+        "fqn": {
+          "canBeNull": false,
+          "description": "Fully qualified and unique name of the hardware",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "gpu": {
+          "canBeNull": true,
+          "description": "Name of the gpu hardware part",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "memory": {
+          "canBeNull": true,
+          "description": "Name of the memory hardware part",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "planCode": {
+          "canBeNull": false,
+          "description": "Plan code in which the hardware is involved",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "server": {
+          "canBeNull": false,
+          "description": "Name of the base hardware",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "storage": {
+          "canBeNull": true,
+          "description": "Name of the storage hardware part",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        },
+        "systemStorage": {
+          "canBeNull": true,
+          "description": "Name of the system storage hardware part",
+          "readOnly": false,
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
     "dedicated.ImageTypesEnum": {
       "description": "Type of your image",
       "enum": [
@@ -6045,108 +6236,26 @@ export const schema: Schema = {
       "id": "OperationFunctionEnum",
       "namespace": "dedicated"
     },
-    "dedicated.OsAvailabilitiesEnum": {
-      "description": "Operating system name",
-      "enum": [
-        "archlinux-installer_64",
-        "centos5_64",
-        "centos6-cpanel-latest_64",
-        "centos6-ovh_64",
-        "centos6-plesk12_64",
-        "centos6_64",
-        "centos7-cpanel-latest_64",
-        "centos7-directadmin_64",
-        "centos7-fpga-accelize_64",
-        "centos7-fpga-intel-opencl_64",
-        "centos7-plesk125_64",
-        "centos7-plesk12_64",
-        "centos7-plesk17_64",
-        "centos7_64",
-        "cloudlinux6_64",
-        "cloudlinux7_64",
-        "coreos-alpha_64",
-        "coreos_64",
-        "debian7-ispconfig3_64",
-        "debian7-minecraft_64",
-        "debian7-plesk12_64",
-        "debian7_64",
-        "debian8-ispconfig3_64",
-        "debian8-plesk125_64",
-        "debian8_64",
-        "debian8_armhf_32",
-        "debian9-ispconfig3_64",
-        "debian9_64",
-        "debian9_armhf_32",
-        "dgx1-os-3_64",
-        "esxi51_64",
-        "esxi55_64",
-        "esxi5_64",
-        "esxi60_64",
-        "esxi65_64",
-        "fedora26_64",
-        "fedora27_64",
-        "freebsd10-zfs_64",
-        "freebsd10_64",
-        "freebsd11-zfs_64",
-        "gentoo11_64",
-        "openmediavault3_armhf_32",
-        "openmediavault_armhf_32",
-        "opensuse42_64",
-        "proxmox4-zfs_64",
-        "proxmox4_64",
-        "proxmox5-zfs_64",
-        "proxmox5_64",
-        "slackware14_64",
-        "smartos_64",
-        "solusvm-master-vz_64",
-        "solusvm-slave-vz_64",
-        "ubuntu1404-plesk125_64",
-        "ubuntu1404-server_64",
-        "ubuntu1510-server_arm64_64",
-        "ubuntu1510-server_ppc64el_64",
-        "ubuntu1604-desktop_64",
-        "ubuntu1604-server_64",
-        "ubuntu1604-server_armhf_32",
-        "ubuntu1604-server_ppc64el_64",
-        "ubuntu1710-server_64",
-        "win2008r2-dc-virtuozzo46_64",
-        "win2008r2-dc_64",
-        "win2008r2-ent-plesk10_64",
-        "win2008r2-ent-plesk11_64",
-        "win2008r2-ent-plesk12_64",
-        "win2008r2-ent-sp2010found_64",
-        "win2008r2-ent-virtuozzo46_64",
-        "win2008r2-ent_64",
-        "win2008r2-std-plesk11_64",
-        "win2008r2-std-plesk12_64",
-        "win2008r2-std-sp2010found_64",
-        "win2008r2-std_64",
-        "win2008r2-web-plesk11_64",
-        "win2008r2-web-plesk12_64",
-        "win2008r2-web-sp2010found_64",
-        "win2008r2-web_64",
-        "win2008r2core-dc_64",
-        "win2008r2core-ent_64",
-        "win2008r2core-hyperv_64",
-        "win2008r2core-std_64",
-        "win2008r2core-web_64",
-        "win2012-dc_64",
-        "win2012-hyperv3_64",
-        "win2012-std-plesk11_64",
-        "win2012-std-plesk12_64",
-        "win2012-std_64",
-        "win2012r2-dc_64",
-        "win2012r2-hyperv3_64",
-        "win2012r2-std-plesk12_64",
-        "win2012r2-std_64",
-        "win2016-dc_64",
-        "win2016-std_64",
-        "win81-pro-sysprep_64",
-        "xenserver6_64"
-      ],
-      "enumType": "string",
-      "id": "OsAvailabilitiesEnum",
-      "namespace": "dedicated"
+    "dedicated.PlannedInterventionTimeSlot": {
+      "description": "A time slot for a planned intervention",
+      "id": "PlannedInterventionTimeSlot",
+      "namespace": "dedicated",
+      "properties": {
+        "endDate": {
+          "canBeNull": false,
+          "description": "End date for the planned intervention",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        },
+        "startDate": {
+          "canBeNull": false,
+          "description": "Start date for the planned intervention",
+          "readOnly": false,
+          "required": false,
+          "type": "datetime"
+        }
+      }
     },
     "dedicated.ProfileFirewallEnum": {
       "description": "profile firewall asa",
@@ -6192,6 +6301,7 @@ export const schema: Schema = {
         "enableFirewall",
         "genericMoveFloatingIp",
         "hardReboot",
+        "hardware_update",
         "ipmi/configureSGX",
         "migrateBackupFTP",
         "moveFloatingIp",
@@ -7133,6 +7243,13 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string"
+        },
+        "newUpgradeSystem": {
+          "canBeNull": false,
+          "fullType": "boolean",
+          "readOnly": true,
+          "required": false,
+          "type": "boolean"
         },
         "noIntervention": {
           "canBeNull": false,

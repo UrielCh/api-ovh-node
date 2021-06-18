@@ -614,8 +614,12 @@ export namespace services {
                  */
                 export interface Server {
                     cpu: services.expanded.technical.baremetalServer.server.Cpu;
+                    extensionCard?: services.expanded.technical.baremetalServer.server.ExtensionCard;
                     frame: services.expanded.technical.baremetalServer.server.Frame;
+                    network?: services.expanded.technical.baremetalServer.server.Network;
                     range: string;
+                    services?: services.expanded.technical.baremetalServer.server.Services;
+                    useCase?: string;
                 }
                 /**
                  * Technical information of storage of a baremetal service
@@ -623,7 +627,9 @@ export namespace services {
                  */
                 export interface Storage {
                     disks: services.expanded.technical.baremetalServer.storage.Disk[];
+                    hotSwap: boolean;
                     raid: string;
+                    raidDetails?: services.expanded.technical.baremetalServer.storage.Raid;
                 }
                 /**
                  * Technical information of vrack of a baremetal service
@@ -647,16 +653,44 @@ export namespace services {
                         cores: number;
                         frequency: number;
                         model: string;
+                        number: number;
                         score: number;
                         threads: number;
+                    }
+                    /**
+                     * Technical details for a server extension card
+                     * interface fullName: services.expanded.technical.baremetalServer.server.ExtensionCard.ExtensionCard
+                     */
+                    export interface ExtensionCard {
+                        model: string;
+                        size: string;
                     }
                     /**
                      * Technical information on frame of a baremetal server service
                      * interface fullName: services.expanded.technical.baremetalServer.server.Frame.Frame
                      */
                     export interface Frame {
+                        dualPowerSupply: boolean;
+                        maxNbDisks?: number;
                         model: string;
                         size: string;
+                    }
+                    /**
+                     * Technical details for a server network
+                     * interface fullName: services.expanded.technical.baremetalServer.server.Network.Network
+                     */
+                    export interface Network {
+                        capacity: number;
+                        interfaces: number;
+                    }
+                    /**
+                     * Technical details for a server services
+                     * interface fullName: services.expanded.technical.baremetalServer.server.Services.Services
+                     */
+                    export interface Services {
+                        antiddos: string;
+                        includedBackup: number;
+                        sla: number;
                     }
                 }
                 export namespace storage {
@@ -666,11 +700,15 @@ export namespace services {
                      */
                     export interface Disk {
                         capacity: number;
+                        dwpd?: number;
                         interface: string;
+                        latency?: number;
                         number: number;
+                        read?: number;
                         specs: string;
                         technology: string;
                         usage?: services.expanded.technical.baremetalServer.storage.Disk.UsageEnum;
+                        write?: number;
                     }
                     export namespace Disk {
                         /**
@@ -678,6 +716,22 @@ export namespace services {
                          * type fullname: services.expanded.technical.baremetalServer.storage.Disk.UsageEnum
                          */
                         export type UsageEnum = "cache" | "data" | "os"
+                    }
+                    /**
+                     * Server raid storage type
+                     * interface fullName: services.expanded.technical.baremetalServer.storage.Raid.Raid
+                     */
+                    export interface Raid {
+                        cardModel?: string;
+                        cardSize?: string;
+                        type: services.expanded.technical.baremetalServer.storage.Raid.TypeEnum;
+                    }
+                    export namespace Raid {
+                        /**
+                         * RAID type
+                         * type fullname: services.expanded.technical.baremetalServer.storage.Raid.TypeEnum
+                         */
+                        export type TypeEnum = "none" | "Soft RAID" | "Hard RAID"
                     }
                 }
             }
@@ -885,6 +939,83 @@ export interface Services {
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
+            }
+        }
+        consumption: {
+            /**
+             * Get a summary of the ongoing consumption of your service
+             * GET /services/{serviceId}/consumption
+             */
+            $get(): Promise<services.consumption.Summary>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            element: {
+                /**
+                 * Get each resource consumed by your service
+                 * GET /services/{serviceId}/consumption/element
+                 */
+                $get(params?: { planFamily?: string, uniqueId?: string }): Promise<services.consumption.Element[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            forecast: {
+                /**
+                 * Get a summary of the forecasted consumption of your service
+                 * GET /services/{serviceId}/consumption/forecast
+                 */
+                $get(): Promise<services.consumption.Summary>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                element: {
+                    /**
+                     * Get each resource forecasted consumption of your service
+                     * GET /services/{serviceId}/consumption/forecast/element
+                     */
+                    $get(params?: { planFamily?: string, uniqueId?: string }): Promise<services.consumption.Element[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            }
+            history: {
+                /**
+                 * List consumption history of your service
+                 * GET /services/{serviceId}/consumption/history
+                 */
+                $get(params?: { planFamily?: string, uniqueId?: string }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(id: number): {
+                    /**
+                     * Get a summary of the past consumption of your service
+                     * GET /services/{serviceId}/consumption/history/{id}
+                     */
+                    $get(): Promise<services.consumption.Summary>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    element: {
+                        /**
+                         * Get each resource consumed for the given history
+                         * GET /services/{serviceId}/consumption/history/{id}/element
+                         */
+                        $get(params?: { planFamily?: string, uniqueId?: string }): Promise<services.consumption.Element[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                };
             }
         }
         detach: {

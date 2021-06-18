@@ -6850,8 +6850,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "List available services",
           "httpMethod": "GET",
@@ -6867,8 +6867,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Get informations about additional Web PaaS offer for your service",
           "httpMethod": "GET",
@@ -6887,8 +6887,8 @@ export const schema: Schema = {
         },
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Post an additional Web PaaS option in your cart",
           "httpMethod": "POST",
@@ -7576,6 +7576,40 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
+            "description": "Stable production version",
+            "value": "PRODUCTION"
+          },
+          "description": "Retrieve information of catalog",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Name of the private catalog you want to consult.",
+              "fullType": "string",
+              "name": "catalogName",
+              "paramType": "query",
+              "required": true
+            },
+            {
+              "dataType": "nichandle.OvhSubsidiaryEnum",
+              "description": "Subsidiary of the country you want to consult private catalog.",
+              "fullType": "nichandle.OvhSubsidiaryEnum",
+              "name": "ovhSubsidiary",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.catalog.pcc.Catalog"
+        }
+      ],
+      "path": "/order/catalog/private/privateCloud"
+    },
+    {
+      "description": "Missing description",
+      "operations": [
+        {
+          "apiStatus": {
             "description": "Beta version",
             "value": "BETA"
           },
@@ -7862,8 +7896,8 @@ export const schema: Schema = {
       "operations": [
         {
           "apiStatus": {
-            "description": "Beta version",
-            "value": "BETA"
+            "description": "Stable production version",
+            "value": "PRODUCTION"
           },
           "description": "Retrieve Web PaaS catalog",
           "httpMethod": "GET",
@@ -17470,6 +17504,135 @@ export const schema: Schema = {
       "path": "/order/upgrade/privateCloud/{serviceName}/{planCode}"
     },
     {
+      "description": "Operations about the PCC service",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "List available services",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [],
+          "responseType": "string[]"
+        }
+      ],
+      "path": "/order/upgrade/privateCloudManagementFee"
+    },
+    {
+      "description": "Listing offers /order/upgrade/privateCloud",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Retrieve available offers to upgrade your service to",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "The Dedicated Cloud service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.cart.GenericProductDefinition[]"
+        }
+      ],
+      "path": "/order/upgrade/privateCloudManagementFee/{serviceName}"
+    },
+    {
+      "description": "Listing offers /order/upgrade/privateCloud/#serviceName#",
+      "operations": [
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Get a provisional order for the selected upgrade of your service",
+          "httpMethod": "GET",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The Dedicated Cloud service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "query",
+              "required": true
+            }
+          ],
+          "responseType": "order.upgrade.OperationAndOrder"
+        },
+        {
+          "apiStatus": {
+            "description": "Beta version",
+            "value": "BETA"
+          },
+          "description": "Perform the requested upgrade of your service",
+          "httpMethod": "POST",
+          "noAuthentication": false,
+          "parameters": [
+            {
+              "dataType": "boolean",
+              "description": "Indicates that order will be automatically paid with preferred payment method",
+              "fullType": "boolean",
+              "name": "autoPayWithPreferredPaymentMethod",
+              "paramType": "body",
+              "required": false
+            },
+            {
+              "dataType": "long",
+              "description": "Quantity you want to upgrade to",
+              "fullType": "long",
+              "name": "quantity",
+              "paramType": "body",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "Plan code of the offer you want to upgrade to",
+              "fullType": "string",
+              "name": "planCode",
+              "paramType": "path",
+              "required": true
+            },
+            {
+              "dataType": "string",
+              "description": "The Dedicated Cloud service name",
+              "fullType": "string",
+              "name": "serviceName",
+              "paramType": "path",
+              "required": true
+            }
+          ],
+          "responseType": "order.upgrade.OperationAndOrder"
+        }
+      ],
+      "path": "/order/upgrade/privateCloudManagementFee/{serviceName}/{planCode}"
+    },
+    {
       "description": "Operations about the SQLPRIVE service",
       "operations": [
         {
@@ -24436,6 +24599,20 @@ export const schema: Schema = {
         }
       }
     },
+    "order.catalog.public.BillingStrategyEnum": {
+      "description": "Enum values for Billing Strategy",
+      "enum": [
+        "max",
+        "sum",
+        "max_retain",
+        "diff",
+        "ping",
+        "custom"
+      ],
+      "enumType": "string",
+      "id": "BillingStrategyEnum",
+      "namespace": "order.catalog.public"
+    },
     "order.catalog.public.Catalog": {
       "description": "Describes a Catalog inside a Subsidiary",
       "id": "Catalog",
@@ -24527,6 +24704,37 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "string[]"
+        }
+      }
+    },
+    "order.catalog.public.ConsumptionConfiguration": {
+      "description": "Describes consumption configuration for a Plan",
+      "id": "ConsumptionConfiguration",
+      "namespace": "order.catalog.public",
+      "properties": {
+        "billingStrategy": {
+          "canBeNull": false,
+          "description": "Consumption billing strategy",
+          "fullType": "order.catalog.public.BillingStrategyEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.BillingStrategyEnum"
+        },
+        "pingEndPolicy": {
+          "canBeNull": true,
+          "description": "Consumption ping end policy used at end of usage",
+          "fullType": "order.catalog.public.PingEndPolicyEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.PingEndPolicyEnum"
+        },
+        "prorataUnit": {
+          "canBeNull": false,
+          "description": "Consumption prorata unit",
+          "fullType": "order.catalog.public.ProrataUnitEnum",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ProrataUnitEnum"
         }
       }
     },
@@ -25005,6 +25213,16 @@ export const schema: Schema = {
         }
       }
     },
+    "order.catalog.public.PingEndPolicyEnum": {
+      "description": "Enum values for Ping End Policy",
+      "enum": [
+        "prorata",
+        "full"
+      ],
+      "enumType": "string",
+      "id": "PingEndPolicyEnum",
+      "namespace": "order.catalog.public"
+    },
     "order.catalog.public.Plan": {
       "description": "Describes a Commercial offer inside a Catalog",
       "id": "Plan",
@@ -25025,6 +25243,14 @@ export const schema: Schema = {
           "readOnly": true,
           "required": false,
           "type": "order.catalog.public.Configuration[]"
+        },
+        "consumptionConfiguration": {
+          "canBeNull": true,
+          "description": "Configuration when pricing type is consumption",
+          "fullType": "order.catalog.public.ConsumptionConfiguration",
+          "readOnly": true,
+          "required": false,
+          "type": "order.catalog.public.ConsumptionConfiguration"
         },
         "family": {
           "canBeNull": true,
@@ -25255,6 +25481,16 @@ export const schema: Schema = {
           "type": "string"
         }
       }
+    },
+    "order.catalog.public.ProrataUnitEnum": {
+      "description": "Enum values for Prorata Unit",
+      "enum": [
+        "hour",
+        "day"
+      ],
+      "enumType": "string",
+      "id": "ProrataUnitEnum",
+      "namespace": "order.catalog.public"
     },
     "order.upgrade.Operation": {
       "description": "Describes an operation",
